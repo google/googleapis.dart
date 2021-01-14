@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.admin.datatransfer_v1;
 
@@ -31,14 +49,14 @@ class AdminApi {
   final commons.ApiRequester _requester;
 
   ApplicationsResourceApi get applications =>
-      new ApplicationsResourceApi(_requester);
-  TransfersResourceApi get transfers => new TransfersResourceApi(_requester);
+      ApplicationsResourceApi(_requester);
+  TransfersResourceApi get transfers => TransfersResourceApi(_requester);
 
   AdminApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ApplicationsResourceApi {
@@ -62,17 +80,19 @@ class ApplicationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Application> get(core.String applicationId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Application> get(
+    core.String applicationId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (applicationId == null) {
-      throw new core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError("Parameter applicationId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -81,13 +101,16 @@ class ApplicationsResourceApi {
     _url = 'admin/datatransfer/v1/applications/' +
         commons.Escaper.ecapeVariable('$applicationId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Application.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Application.fromJson(data));
   }
 
   /// Lists the applications available for data transfer for a customer.
@@ -111,17 +134,18 @@ class ApplicationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ApplicationsListResponse> list(
-      {core.String pageToken,
-      core.String customerId,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ApplicationsListResponse> list({
+    core.String pageToken,
+    core.String customerId,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -138,14 +162,16 @@ class ApplicationsResourceApi {
 
     _url = 'admin/datatransfer/v1/applications';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ApplicationsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ApplicationsListResponse.fromJson(data));
   }
 }
 
@@ -171,17 +197,19 @@ class TransfersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataTransfer> get(core.String dataTransferId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DataTransfer> get(
+    core.String dataTransferId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (dataTransferId == null) {
-      throw new core.ArgumentError("Parameter dataTransferId is required.");
+      throw core.ArgumentError("Parameter dataTransferId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -190,13 +218,16 @@ class TransfersResourceApi {
     _url = 'admin/datatransfer/v1/transfers/' +
         commons.Escaper.ecapeVariable('$dataTransferId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DataTransfer.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DataTransfer.fromJson(data));
   }
 
   /// Inserts a data transfer request.
@@ -215,17 +246,19 @@ class TransfersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataTransfer> insert(DataTransfer request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DataTransfer> insert(
+    DataTransfer request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -233,13 +266,16 @@ class TransfersResourceApi {
 
     _url = 'admin/datatransfer/v1/transfers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DataTransfer.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DataTransfer.fromJson(data));
   }
 
   /// Lists the transfers for a customer by source user, destination user, or
@@ -270,20 +306,21 @@ class TransfersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataTransfersListResponse> list(
-      {core.String customerId,
-      core.String pageToken,
-      core.String newOwnerUserId,
-      core.int maxResults,
-      core.String status,
-      core.String oldOwnerUserId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DataTransfersListResponse> list({
+    core.String customerId,
+    core.String pageToken,
+    core.String newOwnerUserId,
+    core.int maxResults,
+    core.String status,
+    core.String oldOwnerUserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
@@ -309,14 +346,16 @@ class TransfersResourceApi {
 
     _url = 'admin/datatransfer/v1/transfers';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new DataTransfersListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DataTransfersListResponse.fromJson(data));
   }
 }
 
@@ -360,14 +399,14 @@ class Application {
     if (_json.containsKey("transferParams")) {
       transferParams = (_json["transferParams"] as core.List)
           .map<ApplicationTransferParam>(
-              (value) => new ApplicationTransferParam.fromJson(value))
+              (value) => ApplicationTransferParam.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -382,7 +421,7 @@ class Application {
     }
     if (transferParams != null) {
       _json["transferParams"] =
-          transferParams.map((value) => (value).toJson()).toList();
+          transferParams.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -410,7 +449,7 @@ class ApplicationDataTransfer {
       applicationTransferParams =
           (_json["applicationTransferParams"] as core.List)
               .map<ApplicationTransferParam>(
-                  (value) => new ApplicationTransferParam.fromJson(value))
+                  (value) => ApplicationTransferParam.fromJson(value))
               .toList();
     }
     if (_json.containsKey("applicationTransferStatus")) {
@@ -420,13 +459,13 @@ class ApplicationDataTransfer {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (applicationId != null) {
       _json["applicationId"] = applicationId;
     }
     if (applicationTransferParams != null) {
       _json["applicationTransferParams"] =
-          applicationTransferParams.map((value) => (value).toJson()).toList();
+          applicationTransferParams.map((value) => value.toJson()).toList();
     }
     if (applicationTransferStatus != null) {
       _json["applicationTransferStatus"] = applicationTransferStatus;
@@ -457,7 +496,7 @@ class ApplicationTransferParam {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
@@ -491,7 +530,7 @@ class ApplicationsListResponse {
   ApplicationsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("applications")) {
       applications = (_json["applications"] as core.List)
-          .map<Application>((value) => new Application.fromJson(value))
+          .map<Application>((value) => Application.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -507,10 +546,10 @@ class ApplicationsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (applications != null) {
       _json["applications"] =
-          applications.map((value) => (value).toJson()).toList();
+          applications.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -564,7 +603,7 @@ class DataTransfer {
       applicationDataTransfers =
           (_json["applicationDataTransfers"] as core.List)
               .map<ApplicationDataTransfer>(
-                  (value) => new ApplicationDataTransfer.fromJson(value))
+                  (value) => ApplicationDataTransfer.fromJson(value))
               .toList();
     }
     if (_json.containsKey("etag")) {
@@ -592,10 +631,10 @@ class DataTransfer {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (applicationDataTransfers != null) {
       _json["applicationDataTransfers"] =
-          applicationDataTransfers.map((value) => (value).toJson()).toList();
+          applicationDataTransfers.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -644,7 +683,7 @@ class DataTransfersListResponse {
   DataTransfersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dataTransfers")) {
       dataTransfers = (_json["dataTransfers"] as core.List)
-          .map<DataTransfer>((value) => new DataTransfer.fromJson(value))
+          .map<DataTransfer>((value) => DataTransfer.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -660,10 +699,10 @@ class DataTransfersListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dataTransfers != null) {
       _json["dataTransfers"] =
-          dataTransfers.map((value) => (value).toJson()).toList();
+          dataTransfers.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;

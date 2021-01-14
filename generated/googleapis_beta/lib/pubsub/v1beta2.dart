@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis_beta.pubsub.v1beta2;
 
@@ -28,22 +46,21 @@ class PubsubApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   PubsubApi(http.Client client,
       {core.String rootUrl = "https://pubsub.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsSubscriptionsResourceApi get subscriptions =>
-      new ProjectsSubscriptionsResourceApi(_requester);
-  ProjectsTopicsResourceApi get topics =>
-      new ProjectsTopicsResourceApi(_requester);
+      ProjectsSubscriptionsResourceApi(_requester);
+  ProjectsTopicsResourceApi get topics => ProjectsTopicsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -78,20 +95,22 @@ class ProjectsSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> acknowledge(
-      AcknowledgeRequest request, core.String subscription,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AcknowledgeRequest request,
+    core.String subscription, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (subscription == null) {
-      throw new core.ArgumentError("Parameter subscription is required.");
+      throw core.ArgumentError("Parameter subscription is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -101,13 +120,16 @@ class ProjectsSubscriptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$subscription') +
         ':acknowledge';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Creates a subscription to a given topic. If the subscription already
@@ -139,20 +161,23 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Subscription> create(Subscription request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Subscription> create(
+    Subscription request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -160,13 +185,16 @@ class ProjectsSubscriptionsResourceApi {
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subscription.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subscription.fromJson(data));
   }
 
   /// Deletes an existing subscription. All pending messages in the subscription
@@ -190,16 +218,19 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String subscription, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String subscription, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (subscription == null) {
-      throw new core.ArgumentError("Parameter subscription is required.");
+      throw core.ArgumentError("Parameter subscription is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -207,13 +238,16 @@ class ProjectsSubscriptionsResourceApi {
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$subscription');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the configuration details of a subscription.
@@ -233,17 +267,19 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Subscription> get(core.String subscription,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Subscription> get(
+    core.String subscription, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (subscription == null) {
-      throw new core.ArgumentError("Parameter subscription is required.");
+      throw core.ArgumentError("Parameter subscription is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -251,13 +287,16 @@ class ProjectsSubscriptionsResourceApi {
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$subscription');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subscription.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subscription.fromJson(data));
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -288,17 +327,20 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(core.String resource,
-      {core.int options_requestedPolicyVersion, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int options_requestedPolicyVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if (options_requestedPolicyVersion != null) {
       _queryParams["options.requestedPolicyVersion"] = [
@@ -313,13 +355,16 @@ class ProjectsSubscriptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Lists matching subscriptions.
@@ -345,17 +390,21 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListSubscriptionsResponse> list(core.String project,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListSubscriptionsResponse> list(
+    core.String project, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -371,14 +420,16 @@ class ProjectsSubscriptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$project') +
         '/subscriptions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListSubscriptionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListSubscriptionsResponse.fromJson(data));
   }
 
   /// Modifies the ack deadline for a specific message. This method is useful to
@@ -405,20 +456,22 @@ class ProjectsSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> modifyAckDeadline(
-      ModifyAckDeadlineRequest request, core.String subscription,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ModifyAckDeadlineRequest request,
+    core.String subscription, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (subscription == null) {
-      throw new core.ArgumentError("Parameter subscription is required.");
+      throw core.ArgumentError("Parameter subscription is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -428,13 +481,16 @@ class ProjectsSubscriptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$subscription') +
         ':modifyAckDeadline';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Modifies the `PushConfig` for a specified subscription. This may be used
@@ -461,20 +517,22 @@ class ProjectsSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> modifyPushConfig(
-      ModifyPushConfigRequest request, core.String subscription,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ModifyPushConfigRequest request,
+    core.String subscription, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (subscription == null) {
-      throw new core.ArgumentError("Parameter subscription is required.");
+      throw core.ArgumentError("Parameter subscription is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -484,13 +542,16 @@ class ProjectsSubscriptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$subscription') +
         ':modifyPushConfig';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Pulls messages from the server. Returns an empty list if there are no
@@ -515,20 +576,23 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PullResponse> pull(PullRequest request, core.String subscription,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PullResponse> pull(
+    PullRequest request,
+    core.String subscription, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (subscription == null) {
-      throw new core.ArgumentError("Parameter subscription is required.");
+      throw core.ArgumentError("Parameter subscription is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -538,13 +602,16 @@ class ProjectsSubscriptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$subscription') +
         ':pull';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PullResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PullResponse.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -571,20 +638,22 @@ class ProjectsSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -594,13 +663,16 @@ class ProjectsSubscriptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -629,20 +701,22 @@ class ProjectsSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -652,14 +726,16 @@ class ProjectsSubscriptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -667,7 +743,7 @@ class ProjectsTopicsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsTopicsSubscriptionsResourceApi get subscriptions =>
-      new ProjectsTopicsSubscriptionsResourceApi(_requester);
+      ProjectsTopicsSubscriptionsResourceApi(_requester);
 
   ProjectsTopicsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -695,20 +771,23 @@ class ProjectsTopicsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Topic> create(Topic request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Topic> create(
+    Topic request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -716,13 +795,16 @@ class ProjectsTopicsResourceApi {
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Topic.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Topic.fromJson(data));
   }
 
   /// Deletes the topic with the given name. Returns `NOT_FOUND` if the topic
@@ -746,16 +828,19 @@ class ProjectsTopicsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String topic, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String topic, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (topic == null) {
-      throw new core.ArgumentError("Parameter topic is required.");
+      throw core.ArgumentError("Parameter topic is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -763,13 +848,16 @@ class ProjectsTopicsResourceApi {
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$topic');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the configuration of a topic.
@@ -789,16 +877,19 @@ class ProjectsTopicsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Topic> get(core.String topic, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Topic> get(
+    core.String topic, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (topic == null) {
-      throw new core.ArgumentError("Parameter topic is required.");
+      throw core.ArgumentError("Parameter topic is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -806,13 +897,16 @@ class ProjectsTopicsResourceApi {
 
     _url = 'v1beta2/' + commons.Escaper.ecapeVariableReserved('$topic');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Topic.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Topic.fromJson(data));
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -843,17 +937,20 @@ class ProjectsTopicsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(core.String resource,
-      {core.int options_requestedPolicyVersion, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int options_requestedPolicyVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if (options_requestedPolicyVersion != null) {
       _queryParams["options.requestedPolicyVersion"] = [
@@ -868,13 +965,16 @@ class ProjectsTopicsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Lists matching topics.
@@ -900,17 +1000,21 @@ class ProjectsTopicsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListTopicsResponse> list(core.String project,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListTopicsResponse> list(
+    core.String project, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -926,13 +1030,16 @@ class ProjectsTopicsResourceApi {
         commons.Escaper.ecapeVariableReserved('$project') +
         '/topics';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListTopicsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListTopicsResponse.fromJson(data));
   }
 
   /// Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic
@@ -957,20 +1064,22 @@ class ProjectsTopicsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PublishResponse> publish(
-      PublishRequest request, core.String topic,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    PublishRequest request,
+    core.String topic, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (topic == null) {
-      throw new core.ArgumentError("Parameter topic is required.");
+      throw core.ArgumentError("Parameter topic is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -980,13 +1089,16 @@ class ProjectsTopicsResourceApi {
         commons.Escaper.ecapeVariableReserved('$topic') +
         ':publish';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PublishResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PublishResponse.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -1013,20 +1125,22 @@ class ProjectsTopicsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1036,13 +1150,16 @@ class ProjectsTopicsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -1071,20 +1188,22 @@ class ProjectsTopicsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1094,14 +1213,16 @@ class ProjectsTopicsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -1135,17 +1256,21 @@ class ProjectsTopicsSubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListTopicSubscriptionsResponse> list(core.String topic,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListTopicSubscriptionsResponse> list(
+    core.String topic, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (topic == null) {
-      throw new core.ArgumentError("Parameter topic is required.");
+      throw core.ArgumentError("Parameter topic is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1161,14 +1286,17 @@ class ProjectsTopicsSubscriptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$topic') +
         '/subscriptions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListTopicSubscriptionsResponse.fromJson(data));
+        .then((data) => ListTopicSubscriptionsResponse.fromJson(data));
   }
 }
 
@@ -1188,7 +1316,7 @@ class AcknowledgeRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ackIds != null) {
       _json["ackIds"] = ackIds;
     }
@@ -1253,7 +1381,7 @@ class Binding {
       bindingId = _json["bindingId"];
     }
     if (_json.containsKey("condition")) {
-      condition = new Expr.fromJson(_json["condition"]);
+      condition = Expr.fromJson(_json["condition"]);
     }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
@@ -1265,12 +1393,12 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bindingId != null) {
       _json["bindingId"] = bindingId;
     }
     if (condition != null) {
-      _json["condition"] = (condition).toJson();
+      _json["condition"] = condition.toJson();
     }
     if (members != null) {
       _json["members"] = members;
@@ -1294,7 +1422,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1351,7 +1479,7 @@ class Expr {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -1386,20 +1514,20 @@ class ListSubscriptionsResponse {
     }
     if (_json.containsKey("subscriptions")) {
       subscriptions = (_json["subscriptions"] as core.List)
-          .map<Subscription>((value) => new Subscription.fromJson(value))
+          .map<Subscription>((value) => Subscription.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (subscriptions != null) {
       _json["subscriptions"] =
-          subscriptions.map((value) => (value).toJson()).toList();
+          subscriptions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1428,7 +1556,7 @@ class ListTopicSubscriptionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -1456,19 +1584,19 @@ class ListTopicsResponse {
     }
     if (_json.containsKey("topics")) {
       topics = (_json["topics"] as core.List)
-          .map<Topic>((value) => new Topic.fromJson(value))
+          .map<Topic>((value) => Topic.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (topics != null) {
-      _json["topics"] = topics.map((value) => (value).toJson()).toList();
+      _json["topics"] = topics.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1506,7 +1634,7 @@ class ModifyAckDeadlineRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ackDeadlineSeconds != null) {
       _json["ackDeadlineSeconds"] = ackDeadlineSeconds;
     }
@@ -1532,15 +1660,15 @@ class ModifyPushConfigRequest {
 
   ModifyPushConfigRequest.fromJson(core.Map _json) {
     if (_json.containsKey("pushConfig")) {
-      pushConfig = new PushConfig.fromJson(_json["pushConfig"]);
+      pushConfig = PushConfig.fromJson(_json["pushConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pushConfig != null) {
-      _json["pushConfig"] = (pushConfig).toJson();
+      _json["pushConfig"] = pushConfig.toJson();
     }
     return _json;
   }
@@ -1577,7 +1705,7 @@ class OidcToken {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audience != null) {
       _json["audience"] = audience;
     }
@@ -1635,9 +1763,7 @@ class Policy {
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.base64.decode(etag);
-  }
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -1666,7 +1792,7 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
       bindings = (_json["bindings"] as core.List)
-          .map<Binding>((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -1679,9 +1805,9 @@ class Policy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -1703,16 +1829,16 @@ class PublishRequest {
   PublishRequest.fromJson(core.Map _json) {
     if (_json.containsKey("messages")) {
       messages = (_json["messages"] as core.List)
-          .map<PubsubMessage>((value) => new PubsubMessage.fromJson(value))
+          .map<PubsubMessage>((value) => PubsubMessage.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (messages != null) {
-      _json["messages"] = messages.map((value) => (value).toJson()).toList();
+      _json["messages"] = messages.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1734,7 +1860,7 @@ class PublishResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (messageIds != null) {
       _json["messageIds"] = messageIds;
     }
@@ -1751,9 +1877,7 @@ class PubsubMessage {
   /// The message payload. For JSON requests, the value of this field must be
   /// [base64-encoded](https://tools.ietf.org/html/rfc4648).
   core.String data;
-  core.List<core.int> get dataAsBytes {
-    return convert.base64.decode(data);
-  }
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -1791,7 +1915,7 @@ class PubsubMessage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attributes != null) {
       _json["attributes"] = attributes;
     }
@@ -1837,7 +1961,7 @@ class PullRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maxMessages != null) {
       _json["maxMessages"] = maxMessages;
     }
@@ -1861,17 +1985,17 @@ class PullResponse {
   PullResponse.fromJson(core.Map _json) {
     if (_json.containsKey("receivedMessages")) {
       receivedMessages = (_json["receivedMessages"] as core.List)
-          .map<ReceivedMessage>((value) => new ReceivedMessage.fromJson(value))
+          .map<ReceivedMessage>((value) => ReceivedMessage.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (receivedMessages != null) {
       _json["receivedMessages"] =
-          receivedMessages.map((value) => (value).toJson()).toList();
+          receivedMessages.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1911,7 +2035,7 @@ class PushConfig {
           (_json["attributes"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("oidcToken")) {
-      oidcToken = new OidcToken.fromJson(_json["oidcToken"]);
+      oidcToken = OidcToken.fromJson(_json["oidcToken"]);
     }
     if (_json.containsKey("pushEndpoint")) {
       pushEndpoint = _json["pushEndpoint"];
@@ -1920,12 +2044,12 @@ class PushConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attributes != null) {
       _json["attributes"] = attributes;
     }
     if (oidcToken != null) {
-      _json["oidcToken"] = (oidcToken).toJson();
+      _json["oidcToken"] = oidcToken.toJson();
     }
     if (pushEndpoint != null) {
       _json["pushEndpoint"] = pushEndpoint;
@@ -1949,18 +2073,18 @@ class ReceivedMessage {
       ackId = _json["ackId"];
     }
     if (_json.containsKey("message")) {
-      message = new PubsubMessage.fromJson(_json["message"]);
+      message = PubsubMessage.fromJson(_json["message"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ackId != null) {
       _json["ackId"] = ackId;
     }
     if (message != null) {
-      _json["message"] = (message).toJson();
+      _json["message"] = message.toJson();
     }
     return _json;
   }
@@ -1978,15 +2102,15 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("policy")) {
-      policy = new Policy.fromJson(_json["policy"]);
+      policy = Policy.fromJson(_json["policy"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = (policy).toJson();
+      _json["policy"] = policy.toJson();
     }
     return _json;
   }
@@ -2037,7 +2161,7 @@ class Subscription {
       name = _json["name"];
     }
     if (_json.containsKey("pushConfig")) {
-      pushConfig = new PushConfig.fromJson(_json["pushConfig"]);
+      pushConfig = PushConfig.fromJson(_json["pushConfig"]);
     }
     if (_json.containsKey("topic")) {
       topic = _json["topic"];
@@ -2046,7 +2170,7 @@ class Subscription {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ackDeadlineSeconds != null) {
       _json["ackDeadlineSeconds"] = ackDeadlineSeconds;
     }
@@ -2054,7 +2178,7 @@ class Subscription {
       _json["name"] = name;
     }
     if (pushConfig != null) {
-      _json["pushConfig"] = (pushConfig).toJson();
+      _json["pushConfig"] = pushConfig.toJson();
     }
     if (topic != null) {
       _json["topic"] = topic;
@@ -2081,7 +2205,7 @@ class TestIamPermissionsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -2105,7 +2229,7 @@ class TestIamPermissionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -2133,7 +2257,7 @@ class Topic {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }

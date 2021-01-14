@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis_beta.sqladmin.v1beta4;
 
@@ -28,21 +46,21 @@ class SqladminApi {
 
   final commons.ApiRequester _requester;
 
-  BackupRunsResourceApi get backupRuns => new BackupRunsResourceApi(_requester);
-  DatabasesResourceApi get databases => new DatabasesResourceApi(_requester);
-  FlagsResourceApi get flags => new FlagsResourceApi(_requester);
-  InstancesResourceApi get instances => new InstancesResourceApi(_requester);
-  OperationsResourceApi get operations => new OperationsResourceApi(_requester);
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
-  SslCertsResourceApi get sslCerts => new SslCertsResourceApi(_requester);
-  TiersResourceApi get tiers => new TiersResourceApi(_requester);
-  UsersResourceApi get users => new UsersResourceApi(_requester);
+  BackupRunsResourceApi get backupRuns => BackupRunsResourceApi(_requester);
+  DatabasesResourceApi get databases => DatabasesResourceApi(_requester);
+  FlagsResourceApi get flags => FlagsResourceApi(_requester);
+  InstancesResourceApi get instances => InstancesResourceApi(_requester);
+  OperationsResourceApi get operations => OperationsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  SslCertsResourceApi get sslCerts => SslCertsResourceApi(_requester);
+  TiersResourceApi get tiers => TiersResourceApi(_requester);
+  UsersResourceApi get users => UsersResourceApi(_requester);
 
   SqladminApi(http.Client client,
       {core.String rootUrl = "https://sqladmin.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class BackupRunsResourceApi {
@@ -72,23 +90,26 @@ class BackupRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(
-      core.String project, core.String instance, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String instance,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -101,13 +122,16 @@ class BackupRunsResourceApi {
         '/backupRuns/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Retrieves a resource containing information about a backup run.
@@ -131,23 +155,26 @@ class BackupRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BackupRun> get(
-      core.String project, core.String instance, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String instance,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -160,13 +187,16 @@ class BackupRunsResourceApi {
         '/backupRuns/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new BackupRun.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BackupRun.fromJson(data));
   }
 
   /// Creates a new backup run on demand. This method is applicable only to
@@ -191,23 +221,26 @@ class BackupRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(
-      BackupRun request, core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BackupRun request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -219,13 +252,16 @@ class BackupRunsResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/backupRuns';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists all backup runs associated with a given instance and configuration
@@ -253,20 +289,24 @@ class BackupRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BackupRunsListResponse> list(
-      core.String project, core.String instance,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String instance, {
+    core.int maxResults,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -284,13 +324,16 @@ class BackupRunsResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/backupRuns';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new BackupRunsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BackupRunsListResponse.fromJson(data));
   }
 }
 
@@ -320,23 +363,26 @@ class DatabasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(
-      core.String project, core.String instance, core.String database,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String instance,
+    core.String database, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if (database == null) {
-      throw new core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError("Parameter database is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -349,13 +395,16 @@ class DatabasesResourceApi {
         '/databases/' +
         commons.Escaper.ecapeVariable('$database');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Retrieves a resource containing information about a database inside a
@@ -380,23 +429,26 @@ class DatabasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Database> get(
-      core.String project, core.String instance, core.String database,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String instance,
+    core.String database, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if (database == null) {
-      throw new core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError("Parameter database is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -409,13 +461,16 @@ class DatabasesResourceApi {
         '/databases/' +
         commons.Escaper.ecapeVariable('$database');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Database.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Database.fromJson(data));
   }
 
   /// Inserts a resource containing information about a database inside a Cloud
@@ -440,23 +495,26 @@ class DatabasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(
-      Database request, core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Database request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -468,13 +526,16 @@ class DatabasesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/databases';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists databases in the specified Cloud SQL instance.
@@ -496,20 +557,22 @@ class DatabasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DatabasesListResponse> list(
-      core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -521,13 +584,16 @@ class DatabasesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/databases';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DatabasesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DatabasesListResponse.fromJson(data));
   }
 
   /// Partially updates a resource containing information about a database
@@ -553,27 +619,31 @@ class DatabasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> patch(Database request, core.String project,
-      core.String instance, core.String database,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> patch(
+    Database request,
+    core.String project,
+    core.String instance,
+    core.String database, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if (database == null) {
-      throw new core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError("Parameter database is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -586,13 +656,16 @@ class DatabasesResourceApi {
         '/databases/' +
         commons.Escaper.ecapeVariable('$database');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Updates a resource containing information about a database inside a Cloud
@@ -618,27 +691,31 @@ class DatabasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> update(Database request, core.String project,
-      core.String instance, core.String database,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> update(
+    Database request,
+    core.String project,
+    core.String instance,
+    core.String database, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if (database == null) {
-      throw new core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError("Parameter database is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -651,13 +728,16 @@ class DatabasesResourceApi {
         '/databases/' +
         commons.Escaper.ecapeVariable('$database');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -684,14 +764,16 @@ class FlagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FlagsListResponse> list(
-      {core.String databaseVersion, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FlagsListResponse> list({
+    core.String databaseVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (databaseVersion != null) {
       _queryParams["databaseVersion"] = [databaseVersion];
@@ -702,13 +784,16 @@ class FlagsResourceApi {
 
     _url = 'sql/v1beta4/flags';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FlagsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FlagsListResponse.fromJson(data));
   }
 }
 
@@ -739,20 +824,23 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> addServerCa(core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> addServerCa(
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -764,13 +852,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/addServerCa';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Creates a Cloud SQL instance as a clone of the source instance. Using this
@@ -797,23 +888,26 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> clone(
-      InstancesCloneRequest request, core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    InstancesCloneRequest request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -825,13 +919,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/clone';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes a Cloud SQL instance.
@@ -853,20 +950,23 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -877,13 +977,16 @@ class InstancesResourceApi {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Demotes the stand-alone instance to be a Cloud SQL read replica for an
@@ -907,24 +1010,27 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> demoteMaster(InstancesDemoteMasterRequest request,
-      core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> demoteMaster(
+    InstancesDemoteMasterRequest request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -936,13 +1042,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/demoteMaster';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Exports data from a Cloud SQL instance to a Cloud Storage bucket as a SQL
@@ -968,23 +1077,26 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> export(
-      InstancesExportRequest request, core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    InstancesExportRequest request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -996,13 +1108,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/export';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Failover the instance to its failover replica instance. Using this
@@ -1026,24 +1141,27 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> failover(InstancesFailoverRequest request,
-      core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> failover(
+    InstancesFailoverRequest request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1055,13 +1173,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/failover';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Retrieves a resource containing information about a Cloud SQL instance.
@@ -1082,20 +1203,23 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DatabaseInstance> get(core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DatabaseInstance> get(
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1106,13 +1230,16 @@ class InstancesResourceApi {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DatabaseInstance.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DatabaseInstance.fromJson(data));
   }
 
   /// Imports data into a Cloud SQL instance from a SQL dump or CSV file in
@@ -1137,23 +1264,26 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> import(
-      InstancesImportRequest request, core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    InstancesImportRequest request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1165,13 +1295,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/import';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Creates a new Cloud SQL instance.
@@ -1193,20 +1326,23 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> insert(DatabaseInstance request, core.String project,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> insert(
+    DatabaseInstance request,
+    core.String project, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1216,13 +1352,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$project') +
         '/instances';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists instances under a given project.
@@ -1255,20 +1394,22 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<InstancesListResponse> list(core.String project,
-      {core.String pageToken,
-      core.int maxResults,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<InstancesListResponse> list(
+    core.String project, {
+    core.String pageToken,
+    core.int maxResults,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1287,13 +1428,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$project') +
         '/instances';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new InstancesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => InstancesListResponse.fromJson(data));
   }
 
   /// Lists all of the trusted Certificate Authorities (CAs) for the specified
@@ -1319,20 +1463,22 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InstancesListServerCasResponse> listServerCas(
-      core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1344,14 +1490,17 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/listServerCas';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new InstancesListServerCasResponse.fromJson(data));
+        .then((data) => InstancesListServerCasResponse.fromJson(data));
   }
 
   /// Updates settings of a Cloud SQL instance. This method supports patch
@@ -1376,23 +1525,26 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> patch(
-      DatabaseInstance request, core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    DatabaseInstance request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1403,13 +1555,16 @@ class InstancesResourceApi {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Promotes the read replica instance to be a stand-alone Cloud SQL instance.
@@ -1432,20 +1587,22 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> promoteReplica(
-      core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1457,13 +1614,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/promoteReplica';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes all client certificates and generates a new server SSL certificate
@@ -1486,20 +1646,22 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> resetSslConfig(
-      core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1511,13 +1673,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/resetSslConfig';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Restarts a Cloud SQL instance.
@@ -1539,20 +1704,23 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> restart(core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> restart(
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1564,13 +1732,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/restart';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Restores a backup of a Cloud SQL instance. Using this operation might
@@ -1594,24 +1765,27 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> restoreBackup(InstancesRestoreBackupRequest request,
-      core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> restoreBackup(
+    InstancesRestoreBackupRequest request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1623,13 +1797,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/restoreBackup';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Rotates the server certificate to one signed by the Certificate Authority
@@ -1653,24 +1830,27 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> rotateServerCa(InstancesRotateServerCaRequest request,
-      core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> rotateServerCa(
+    InstancesRotateServerCaRequest request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1682,13 +1862,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/rotateServerCa';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Starts the replication in the read replica instance.
@@ -1710,20 +1893,22 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> startReplica(
-      core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1735,13 +1920,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/startReplica';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Stops the replication in the read replica instance.
@@ -1762,20 +1950,23 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> stopReplica(core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> stopReplica(
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1787,13 +1978,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/stopReplica';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Truncate MySQL general and slow query log tables
@@ -1816,24 +2010,27 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> truncateLog(InstancesTruncateLogRequest request,
-      core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> truncateLog(
+    InstancesTruncateLogRequest request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1845,13 +2042,16 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/truncateLog';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Updates settings of a Cloud SQL instance. Using this operation might cause
@@ -1876,23 +2076,26 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> update(
-      DatabaseInstance request, core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    DatabaseInstance request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1903,13 +2106,16 @@ class InstancesResourceApi {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -1936,20 +2142,23 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String project, core.String operation,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String project,
+    core.String operation, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (operation == null) {
-      throw new core.ArgumentError("Parameter operation is required.");
+      throw core.ArgumentError("Parameter operation is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1960,13 +2169,16 @@ class OperationsResourceApi {
         '/operations/' +
         commons.Escaper.ecapeVariable('$operation');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists all instance operations that have been performed on the given Cloud
@@ -1993,20 +2205,22 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OperationsListResponse> list(core.String project,
-      {core.String instance,
-      core.String pageToken,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<OperationsListResponse> list(
+    core.String project, {
+    core.String instance,
+    core.String pageToken,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance != null) {
       _queryParams["instance"] = [instance];
@@ -2025,13 +2239,16 @@ class OperationsResourceApi {
         commons.Escaper.ecapeVariable('$project') +
         '/operations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new OperationsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => OperationsListResponse.fromJson(data));
   }
 }
 
@@ -2039,7 +2256,7 @@ class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsInstancesResourceApi get instances =>
-      new ProjectsInstancesResourceApi(_requester);
+      ProjectsInstancesResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -2071,25 +2288,26 @@ class ProjectsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> rescheduleMaintenance(
-      SqlInstancesRescheduleMaintenanceRequestBody request,
-      core.String project,
-      core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SqlInstancesRescheduleMaintenanceRequestBody request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2101,13 +2319,16 @@ class ProjectsInstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/rescheduleMaintenance';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Start External primary instance migration.
@@ -2138,20 +2359,23 @@ class ProjectsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> startExternalSync(
-      core.String project, core.String instance,
-      {core.String syncMode, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String instance, {
+    core.String syncMode,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if (syncMode != null) {
       _queryParams["syncMode"] = [syncMode];
@@ -2166,13 +2390,16 @@ class ProjectsInstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/startExternalSync';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Verify External primary instance external sync settings.
@@ -2205,22 +2432,25 @@ class ProjectsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SqlInstancesVerifyExternalSyncSettingsResponse>
-      verifyExternalSyncSettings(core.String project, core.String instance,
-          {core.String syncMode,
-          core.bool verifyConnectionOnly,
-          core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+      verifyExternalSyncSettings(
+    core.String project,
+    core.String instance, {
+    core.String syncMode,
+    core.bool verifyConnectionOnly,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if (syncMode != null) {
       _queryParams["syncMode"] = [syncMode];
@@ -2238,14 +2468,17 @@ class ProjectsInstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/verifyExternalSyncSettings';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new SqlInstancesVerifyExternalSyncSettingsResponse.fromJson(data));
+        SqlInstancesVerifyExternalSyncSettingsResponse.fromJson(data));
   }
 }
 
@@ -2277,24 +2510,27 @@ class SslCertsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SslCert> createEphemeral(SslCertsCreateEphemeralRequest request,
-      core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SslCert> createEphemeral(
+    SslCertsCreateEphemeralRequest request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2306,13 +2542,16 @@ class SslCertsResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/createEphemeral';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SslCert.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SslCert.fromJson(data));
   }
 
   /// Deletes the SSL certificate. For First Generation instances, the
@@ -2337,23 +2576,26 @@ class SslCertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(
-      core.String project, core.String instance, core.String sha1Fingerprint,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String instance,
+    core.String sha1Fingerprint, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if (sha1Fingerprint == null) {
-      throw new core.ArgumentError("Parameter sha1Fingerprint is required.");
+      throw core.ArgumentError("Parameter sha1Fingerprint is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2366,13 +2608,16 @@ class SslCertsResourceApi {
         '/sslCerts/' +
         commons.Escaper.ecapeVariable('$sha1Fingerprint');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Retrieves a particular SSL certificate. Does not include the private key
@@ -2398,23 +2643,26 @@ class SslCertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SslCert> get(
-      core.String project, core.String instance, core.String sha1Fingerprint,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String instance,
+    core.String sha1Fingerprint, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if (sha1Fingerprint == null) {
-      throw new core.ArgumentError("Parameter sha1Fingerprint is required.");
+      throw core.ArgumentError("Parameter sha1Fingerprint is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2427,13 +2675,16 @@ class SslCertsResourceApi {
         '/sslCerts/' +
         commons.Escaper.ecapeVariable('$sha1Fingerprint');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SslCert.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SslCert.fromJson(data));
   }
 
   /// Creates an SSL certificate and returns it along with the private key and
@@ -2459,23 +2710,26 @@ class SslCertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SslCertsInsertResponse> insert(
-      SslCertsInsertRequest request, core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SslCertsInsertRequest request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2487,13 +2741,16 @@ class SslCertsResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/sslCerts';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SslCertsInsertResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SslCertsInsertResponse.fromJson(data));
   }
 
   /// Lists all of the current SSL certificates for the instance.
@@ -2515,20 +2772,22 @@ class SslCertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SslCertsListResponse> list(
-      core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2540,13 +2799,16 @@ class SslCertsResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/sslCerts';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SslCertsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SslCertsListResponse.fromJson(data));
   }
 }
 
@@ -2572,17 +2834,19 @@ class TiersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TiersListResponse> list(core.String project,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<TiersListResponse> list(
+    core.String project, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2592,13 +2856,16 @@ class TiersResourceApi {
         commons.Escaper.ecapeVariable('$project') +
         '/tiers';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TiersListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TiersListResponse.fromJson(data));
   }
 }
 
@@ -2629,20 +2896,25 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String project, core.String instance,
-      {core.String host, core.String name, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String project,
+    core.String instance, {
+    core.String host,
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if (host != null) {
       _queryParams["host"] = [host];
@@ -2660,13 +2932,16 @@ class UsersResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/users';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Creates a new user in a Cloud SQL instance.
@@ -2690,23 +2965,26 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(
-      User request, core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    User request,
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2718,13 +2996,16 @@ class UsersResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/users';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists users in the specified Cloud SQL instance.
@@ -2746,20 +3027,22 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UsersListResponse> list(
-      core.String project, core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2771,13 +3054,16 @@ class UsersResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/users';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UsersListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UsersListResponse.fromJson(data));
   }
 
   /// Updates an existing user in a Cloud SQL instance.
@@ -2805,23 +3091,28 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> update(
-      User request, core.String project, core.String instance,
-      {core.String host, core.String name, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    User request,
+    core.String project,
+    core.String instance, {
+    core.String host,
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if (host != null) {
       _queryParams["host"] = [host];
@@ -2839,13 +3130,16 @@ class UsersResourceApi {
         commons.Escaper.ecapeVariable('$instance') +
         '/users';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -2883,7 +3177,7 @@ class AclEntry {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (expirationTime != null) {
       _json["expirationTime"] = expirationTime;
     }
@@ -2926,7 +3220,7 @@ class ApiWarning {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -2973,8 +3267,8 @@ class BackupConfiguration {
 
   BackupConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey("backupRetentionSettings")) {
-      backupRetentionSettings = new BackupRetentionSettings.fromJson(
-          _json["backupRetentionSettings"]);
+      backupRetentionSettings =
+          BackupRetentionSettings.fromJson(_json["backupRetentionSettings"]);
     }
     if (_json.containsKey("binaryLogEnabled")) {
       binaryLogEnabled = _json["binaryLogEnabled"];
@@ -3004,9 +3298,9 @@ class BackupConfiguration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (backupRetentionSettings != null) {
-      _json["backupRetentionSettings"] = (backupRetentionSettings).toJson();
+      _json["backupRetentionSettings"] = backupRetentionSettings.toJson();
     }
     if (binaryLogEnabled != null) {
       _json["binaryLogEnabled"] = binaryLogEnabled;
@@ -3065,7 +3359,7 @@ class BackupRetentionSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (retainedBackups != null) {
       _json["retainedBackups"] = retainedBackups;
     }
@@ -3166,12 +3460,12 @@ class BackupRun {
       description = _json["description"];
     }
     if (_json.containsKey("diskEncryptionConfiguration")) {
-      diskEncryptionConfiguration = new DiskEncryptionConfiguration.fromJson(
+      diskEncryptionConfiguration = DiskEncryptionConfiguration.fromJson(
           _json["diskEncryptionConfiguration"]);
     }
     if (_json.containsKey("diskEncryptionStatus")) {
       diskEncryptionStatus =
-          new DiskEncryptionStatus.fromJson(_json["diskEncryptionStatus"]);
+          DiskEncryptionStatus.fromJson(_json["diskEncryptionStatus"]);
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
@@ -3180,7 +3474,7 @@ class BackupRun {
       enqueuedTime = _json["enqueuedTime"];
     }
     if (_json.containsKey("error")) {
-      error = new OperationError.fromJson(_json["error"]);
+      error = OperationError.fromJson(_json["error"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -3213,7 +3507,7 @@ class BackupRun {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (backupKind != null) {
       _json["backupKind"] = backupKind;
     }
@@ -3222,10 +3516,10 @@ class BackupRun {
     }
     if (diskEncryptionConfiguration != null) {
       _json["diskEncryptionConfiguration"] =
-          (diskEncryptionConfiguration).toJson();
+          diskEncryptionConfiguration.toJson();
     }
     if (diskEncryptionStatus != null) {
-      _json["diskEncryptionStatus"] = (diskEncryptionStatus).toJson();
+      _json["diskEncryptionStatus"] = diskEncryptionStatus.toJson();
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
@@ -3234,7 +3528,7 @@ class BackupRun {
       _json["enqueuedTime"] = enqueuedTime;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -3284,7 +3578,7 @@ class BackupRunsListResponse {
   BackupRunsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<BackupRun>((value) => new BackupRun.fromJson(value))
+          .map<BackupRun>((value) => BackupRun.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3297,9 +3591,9 @@ class BackupRunsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3338,7 +3632,7 @@ class BinLogCoordinates {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (binLogFileName != null) {
       _json["binLogFileName"] = binLogFileName;
     }
@@ -3376,7 +3670,7 @@ class CloneContext {
   CloneContext.fromJson(core.Map _json) {
     if (_json.containsKey("binLogCoordinates")) {
       binLogCoordinates =
-          new BinLogCoordinates.fromJson(_json["binLogCoordinates"]);
+          BinLogCoordinates.fromJson(_json["binLogCoordinates"]);
     }
     if (_json.containsKey("destinationInstanceName")) {
       destinationInstanceName = _json["destinationInstanceName"];
@@ -3394,9 +3688,9 @@ class CloneContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (binLogCoordinates != null) {
-      _json["binLogCoordinates"] = (binLogCoordinates).toJson();
+      _json["binLogCoordinates"] = binLogCoordinates.toJson();
     }
     if (destinationInstanceName != null) {
       _json["destinationInstanceName"] = destinationInstanceName;
@@ -3472,14 +3766,14 @@ class Database {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("sqlserverDatabaseDetails")) {
-      sqlserverDatabaseDetails = new SqlServerDatabaseDetails.fromJson(
-          _json["sqlserverDatabaseDetails"]);
+      sqlserverDatabaseDetails =
+          SqlServerDatabaseDetails.fromJson(_json["sqlserverDatabaseDetails"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (charset != null) {
       _json["charset"] = charset;
     }
@@ -3505,7 +3799,7 @@ class Database {
       _json["selfLink"] = selfLink;
     }
     if (sqlserverDatabaseDetails != null) {
-      _json["sqlserverDatabaseDetails"] = (sqlserverDatabaseDetails).toJson();
+      _json["sqlserverDatabaseDetails"] = sqlserverDatabaseDetails.toJson();
     }
     return _json;
   }
@@ -3536,7 +3830,7 @@ class DatabaseFlags {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -3574,7 +3868,7 @@ class DatabaseInstanceFailoverReplica {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (available != null) {
       _json["available"] = available;
     }
@@ -3771,19 +4065,19 @@ class DatabaseInstance {
       databaseVersion = _json["databaseVersion"];
     }
     if (_json.containsKey("diskEncryptionConfiguration")) {
-      diskEncryptionConfiguration = new DiskEncryptionConfiguration.fromJson(
+      diskEncryptionConfiguration = DiskEncryptionConfiguration.fromJson(
           _json["diskEncryptionConfiguration"]);
     }
     if (_json.containsKey("diskEncryptionStatus")) {
       diskEncryptionStatus =
-          new DiskEncryptionStatus.fromJson(_json["diskEncryptionStatus"]);
+          DiskEncryptionStatus.fromJson(_json["diskEncryptionStatus"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
     if (_json.containsKey("failoverReplica")) {
-      failoverReplica = new DatabaseInstanceFailoverReplica.fromJson(
-          _json["failoverReplica"]);
+      failoverReplica =
+          DatabaseInstanceFailoverReplica.fromJson(_json["failoverReplica"]);
     }
     if (_json.containsKey("gceZone")) {
       gceZone = _json["gceZone"];
@@ -3793,7 +4087,7 @@ class DatabaseInstance {
     }
     if (_json.containsKey("ipAddresses")) {
       ipAddresses = (_json["ipAddresses"] as core.List)
-          .map<IpMapping>((value) => new IpMapping.fromJson(value))
+          .map<IpMapping>((value) => IpMapping.fromJson(value))
           .toList();
     }
     if (_json.containsKey("ipv6Address")) {
@@ -3812,8 +4106,8 @@ class DatabaseInstance {
       name = _json["name"];
     }
     if (_json.containsKey("onPremisesConfiguration")) {
-      onPremisesConfiguration = new OnPremisesConfiguration.fromJson(
-          _json["onPremisesConfiguration"]);
+      onPremisesConfiguration =
+          OnPremisesConfiguration.fromJson(_json["onPremisesConfiguration"]);
     }
     if (_json.containsKey("project")) {
       project = _json["project"];
@@ -3823,7 +4117,7 @@ class DatabaseInstance {
     }
     if (_json.containsKey("replicaConfiguration")) {
       replicaConfiguration =
-          new ReplicaConfiguration.fromJson(_json["replicaConfiguration"]);
+          ReplicaConfiguration.fromJson(_json["replicaConfiguration"]);
     }
     if (_json.containsKey("replicaNames")) {
       replicaNames = (_json["replicaNames"] as core.List).cast<core.String>();
@@ -3833,19 +4127,19 @@ class DatabaseInstance {
     }
     if (_json.containsKey("scheduledMaintenance")) {
       scheduledMaintenance =
-          new SqlScheduledMaintenance.fromJson(_json["scheduledMaintenance"]);
+          SqlScheduledMaintenance.fromJson(_json["scheduledMaintenance"]);
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("serverCaCert")) {
-      serverCaCert = new SslCert.fromJson(_json["serverCaCert"]);
+      serverCaCert = SslCert.fromJson(_json["serverCaCert"]);
     }
     if (_json.containsKey("serviceAccountEmailAddress")) {
       serviceAccountEmailAddress = _json["serviceAccountEmailAddress"];
     }
     if (_json.containsKey("settings")) {
-      settings = new Settings.fromJson(_json["settings"]);
+      settings = Settings.fromJson(_json["settings"]);
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
@@ -3858,7 +4152,7 @@ class DatabaseInstance {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (backendType != null) {
       _json["backendType"] = backendType;
     }
@@ -3873,16 +4167,16 @@ class DatabaseInstance {
     }
     if (diskEncryptionConfiguration != null) {
       _json["diskEncryptionConfiguration"] =
-          (diskEncryptionConfiguration).toJson();
+          diskEncryptionConfiguration.toJson();
     }
     if (diskEncryptionStatus != null) {
-      _json["diskEncryptionStatus"] = (diskEncryptionStatus).toJson();
+      _json["diskEncryptionStatus"] = diskEncryptionStatus.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (failoverReplica != null) {
-      _json["failoverReplica"] = (failoverReplica).toJson();
+      _json["failoverReplica"] = failoverReplica.toJson();
     }
     if (gceZone != null) {
       _json["gceZone"] = gceZone;
@@ -3892,7 +4186,7 @@ class DatabaseInstance {
     }
     if (ipAddresses != null) {
       _json["ipAddresses"] =
-          ipAddresses.map((value) => (value).toJson()).toList();
+          ipAddresses.map((value) => value.toJson()).toList();
     }
     if (ipv6Address != null) {
       _json["ipv6Address"] = ipv6Address;
@@ -3910,7 +4204,7 @@ class DatabaseInstance {
       _json["name"] = name;
     }
     if (onPremisesConfiguration != null) {
-      _json["onPremisesConfiguration"] = (onPremisesConfiguration).toJson();
+      _json["onPremisesConfiguration"] = onPremisesConfiguration.toJson();
     }
     if (project != null) {
       _json["project"] = project;
@@ -3919,7 +4213,7 @@ class DatabaseInstance {
       _json["region"] = region;
     }
     if (replicaConfiguration != null) {
-      _json["replicaConfiguration"] = (replicaConfiguration).toJson();
+      _json["replicaConfiguration"] = replicaConfiguration.toJson();
     }
     if (replicaNames != null) {
       _json["replicaNames"] = replicaNames;
@@ -3928,19 +4222,19 @@ class DatabaseInstance {
       _json["rootPassword"] = rootPassword;
     }
     if (scheduledMaintenance != null) {
-      _json["scheduledMaintenance"] = (scheduledMaintenance).toJson();
+      _json["scheduledMaintenance"] = scheduledMaintenance.toJson();
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
     if (serverCaCert != null) {
-      _json["serverCaCert"] = (serverCaCert).toJson();
+      _json["serverCaCert"] = serverCaCert.toJson();
     }
     if (serviceAccountEmailAddress != null) {
       _json["serviceAccountEmailAddress"] = serviceAccountEmailAddress;
     }
     if (settings != null) {
-      _json["settings"] = (settings).toJson();
+      _json["settings"] = settings.toJson();
     }
     if (state != null) {
       _json["state"] = state;
@@ -3965,7 +4259,7 @@ class DatabasesListResponse {
   DatabasesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Database>((value) => new Database.fromJson(value))
+          .map<Database>((value) => Database.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3975,9 +4269,9 @@ class DatabasesListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4008,19 +4302,19 @@ class DemoteMasterConfiguration {
     }
     if (_json.containsKey("mysqlReplicaConfiguration")) {
       mysqlReplicaConfiguration =
-          new DemoteMasterMySqlReplicaConfiguration.fromJson(
+          DemoteMasterMySqlReplicaConfiguration.fromJson(
               _json["mysqlReplicaConfiguration"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (mysqlReplicaConfiguration != null) {
-      _json["mysqlReplicaConfiguration"] = (mysqlReplicaConfiguration).toJson();
+      _json["mysqlReplicaConfiguration"] = mysqlReplicaConfiguration.toJson();
     }
     return _json;
   }
@@ -4059,7 +4353,7 @@ class DemoteMasterContext {
     }
     if (_json.containsKey("replicaConfiguration")) {
       replicaConfiguration =
-          new DemoteMasterConfiguration.fromJson(_json["replicaConfiguration"]);
+          DemoteMasterConfiguration.fromJson(_json["replicaConfiguration"]);
     }
     if (_json.containsKey("verifyGtidConsistency")) {
       verifyGtidConsistency = _json["verifyGtidConsistency"];
@@ -4068,7 +4362,7 @@ class DemoteMasterContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -4076,7 +4370,7 @@ class DemoteMasterContext {
       _json["masterInstanceName"] = masterInstanceName;
     }
     if (replicaConfiguration != null) {
-      _json["replicaConfiguration"] = (replicaConfiguration).toJson();
+      _json["replicaConfiguration"] = replicaConfiguration.toJson();
     }
     if (verifyGtidConsistency != null) {
       _json["verifyGtidConsistency"] = verifyGtidConsistency;
@@ -4132,7 +4426,7 @@ class DemoteMasterMySqlReplicaConfiguration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (caCertificate != null) {
       _json["caCertificate"] = caCertificate;
     }
@@ -4190,7 +4484,7 @@ class DenyMaintenancePeriod {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endDate != null) {
       _json["endDate"] = endDate;
     }
@@ -4225,7 +4519,7 @@ class DiskEncryptionConfiguration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -4257,7 +4551,7 @@ class DiskEncryptionStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -4283,7 +4577,7 @@ class ExportContextCsvExportOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (selectQuery != null) {
       _json["selectQuery"] = selectQuery;
     }
@@ -4309,7 +4603,7 @@ class ExportContextSqlExportOptionsMysqlExportOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (masterData != null) {
       _json["masterData"] = masterData;
     }
@@ -4335,7 +4629,7 @@ class ExportContextSqlExportOptions {
   ExportContextSqlExportOptions.fromJson(core.Map _json) {
     if (_json.containsKey("mysqlExportOptions")) {
       mysqlExportOptions =
-          new ExportContextSqlExportOptionsMysqlExportOptions.fromJson(
+          ExportContextSqlExportOptionsMysqlExportOptions.fromJson(
               _json["mysqlExportOptions"]);
     }
     if (_json.containsKey("schemaOnly")) {
@@ -4348,9 +4642,9 @@ class ExportContextSqlExportOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (mysqlExportOptions != null) {
-      _json["mysqlExportOptions"] = (mysqlExportOptions).toJson();
+      _json["mysqlExportOptions"] = mysqlExportOptions.toJson();
     }
     if (schemaOnly != null) {
       _json["schemaOnly"] = schemaOnly;
@@ -4407,7 +4701,7 @@ class ExportContext {
   ExportContext.fromJson(core.Map _json) {
     if (_json.containsKey("csvExportOptions")) {
       csvExportOptions =
-          new ExportContextCsvExportOptions.fromJson(_json["csvExportOptions"]);
+          ExportContextCsvExportOptions.fromJson(_json["csvExportOptions"]);
     }
     if (_json.containsKey("databases")) {
       databases = (_json["databases"] as core.List).cast<core.String>();
@@ -4423,7 +4717,7 @@ class ExportContext {
     }
     if (_json.containsKey("sqlExportOptions")) {
       sqlExportOptions =
-          new ExportContextSqlExportOptions.fromJson(_json["sqlExportOptions"]);
+          ExportContextSqlExportOptions.fromJson(_json["sqlExportOptions"]);
     }
     if (_json.containsKey("uri")) {
       uri = _json["uri"];
@@ -4432,9 +4726,9 @@ class ExportContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (csvExportOptions != null) {
-      _json["csvExportOptions"] = (csvExportOptions).toJson();
+      _json["csvExportOptions"] = csvExportOptions.toJson();
     }
     if (databases != null) {
       _json["databases"] = databases;
@@ -4449,7 +4743,7 @@ class ExportContext {
       _json["offload"] = offload;
     }
     if (sqlExportOptions != null) {
-      _json["sqlExportOptions"] = (sqlExportOptions).toJson();
+      _json["sqlExportOptions"] = sqlExportOptions.toJson();
     }
     if (uri != null) {
       _json["uri"] = uri;
@@ -4480,7 +4774,7 @@ class FailoverContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -4579,7 +4873,7 @@ class Flag {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allowedIntValues != null) {
       _json["allowedIntValues"] = allowedIntValues;
     }
@@ -4627,7 +4921,7 @@ class FlagsListResponse {
   FlagsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Flag>((value) => new Flag.fromJson(value))
+          .map<Flag>((value) => Flag.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4637,9 +4931,9 @@ class FlagsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4678,7 +4972,7 @@ class ImportContextBakImportOptionsEncryptionOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (certPath != null) {
       _json["certPath"] = certPath;
     }
@@ -4701,16 +4995,16 @@ class ImportContextBakImportOptions {
   ImportContextBakImportOptions.fromJson(core.Map _json) {
     if (_json.containsKey("encryptionOptions")) {
       encryptionOptions =
-          new ImportContextBakImportOptionsEncryptionOptions.fromJson(
+          ImportContextBakImportOptionsEncryptionOptions.fromJson(
               _json["encryptionOptions"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (encryptionOptions != null) {
-      _json["encryptionOptions"] = (encryptionOptions).toJson();
+      _json["encryptionOptions"] = encryptionOptions.toJson();
     }
     return _json;
   }
@@ -4738,7 +5032,7 @@ class ImportContextCsvImportOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (columns != null) {
       _json["columns"] = columns;
     }
@@ -4789,11 +5083,11 @@ class ImportContext {
   ImportContext.fromJson(core.Map _json) {
     if (_json.containsKey("bakImportOptions")) {
       bakImportOptions =
-          new ImportContextBakImportOptions.fromJson(_json["bakImportOptions"]);
+          ImportContextBakImportOptions.fromJson(_json["bakImportOptions"]);
     }
     if (_json.containsKey("csvImportOptions")) {
       csvImportOptions =
-          new ImportContextCsvImportOptions.fromJson(_json["csvImportOptions"]);
+          ImportContextCsvImportOptions.fromJson(_json["csvImportOptions"]);
     }
     if (_json.containsKey("database")) {
       database = _json["database"];
@@ -4814,12 +5108,12 @@ class ImportContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bakImportOptions != null) {
-      _json["bakImportOptions"] = (bakImportOptions).toJson();
+      _json["bakImportOptions"] = bakImportOptions.toJson();
     }
     if (csvImportOptions != null) {
-      _json["csvImportOptions"] = (csvImportOptions).toJson();
+      _json["csvImportOptions"] = csvImportOptions.toJson();
     }
     if (database != null) {
       _json["database"] = database;
@@ -4849,15 +5143,15 @@ class InstancesCloneRequest {
 
   InstancesCloneRequest.fromJson(core.Map _json) {
     if (_json.containsKey("cloneContext")) {
-      cloneContext = new CloneContext.fromJson(_json["cloneContext"]);
+      cloneContext = CloneContext.fromJson(_json["cloneContext"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cloneContext != null) {
-      _json["cloneContext"] = (cloneContext).toJson();
+      _json["cloneContext"] = cloneContext.toJson();
     }
     return _json;
   }
@@ -4873,15 +5167,15 @@ class InstancesDemoteMasterRequest {
   InstancesDemoteMasterRequest.fromJson(core.Map _json) {
     if (_json.containsKey("demoteMasterContext")) {
       demoteMasterContext =
-          new DemoteMasterContext.fromJson(_json["demoteMasterContext"]);
+          DemoteMasterContext.fromJson(_json["demoteMasterContext"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (demoteMasterContext != null) {
-      _json["demoteMasterContext"] = (demoteMasterContext).toJson();
+      _json["demoteMasterContext"] = demoteMasterContext.toJson();
     }
     return _json;
   }
@@ -4896,15 +5190,15 @@ class InstancesExportRequest {
 
   InstancesExportRequest.fromJson(core.Map _json) {
     if (_json.containsKey("exportContext")) {
-      exportContext = new ExportContext.fromJson(_json["exportContext"]);
+      exportContext = ExportContext.fromJson(_json["exportContext"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exportContext != null) {
-      _json["exportContext"] = (exportContext).toJson();
+      _json["exportContext"] = exportContext.toJson();
     }
     return _json;
   }
@@ -4919,15 +5213,15 @@ class InstancesFailoverRequest {
 
   InstancesFailoverRequest.fromJson(core.Map _json) {
     if (_json.containsKey("failoverContext")) {
-      failoverContext = new FailoverContext.fromJson(_json["failoverContext"]);
+      failoverContext = FailoverContext.fromJson(_json["failoverContext"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (failoverContext != null) {
-      _json["failoverContext"] = (failoverContext).toJson();
+      _json["failoverContext"] = failoverContext.toJson();
     }
     return _json;
   }
@@ -4942,15 +5236,15 @@ class InstancesImportRequest {
 
   InstancesImportRequest.fromJson(core.Map _json) {
     if (_json.containsKey("importContext")) {
-      importContext = new ImportContext.fromJson(_json["importContext"]);
+      importContext = ImportContext.fromJson(_json["importContext"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (importContext != null) {
-      _json["importContext"] = (importContext).toJson();
+      _json["importContext"] = importContext.toJson();
     }
     return _json;
   }
@@ -4976,8 +5270,7 @@ class InstancesListResponse {
   InstancesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<DatabaseInstance>(
-              (value) => new DatabaseInstance.fromJson(value))
+          .map<DatabaseInstance>((value) => DatabaseInstance.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4988,16 +5281,16 @@ class InstancesListResponse {
     }
     if (_json.containsKey("warnings")) {
       warnings = (_json["warnings"] as core.List)
-          .map<ApiWarning>((value) => new ApiWarning.fromJson(value))
+          .map<ApiWarning>((value) => ApiWarning.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -5006,7 +5299,7 @@ class InstancesListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (warnings != null) {
-      _json["warnings"] = warnings.map((value) => (value).toJson()).toList();
+      _json["warnings"] = warnings.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5030,7 +5323,7 @@ class InstancesListServerCasResponse {
     }
     if (_json.containsKey("certs")) {
       certs = (_json["certs"] as core.List)
-          .map<SslCert>((value) => new SslCert.fromJson(value))
+          .map<SslCert>((value) => SslCert.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -5040,12 +5333,12 @@ class InstancesListServerCasResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activeVersion != null) {
       _json["activeVersion"] = activeVersion;
     }
     if (certs != null) {
-      _json["certs"] = certs.map((value) => (value).toJson()).toList();
+      _json["certs"] = certs.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -5064,15 +5357,15 @@ class InstancesRestoreBackupRequest {
   InstancesRestoreBackupRequest.fromJson(core.Map _json) {
     if (_json.containsKey("restoreBackupContext")) {
       restoreBackupContext =
-          new RestoreBackupContext.fromJson(_json["restoreBackupContext"]);
+          RestoreBackupContext.fromJson(_json["restoreBackupContext"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (restoreBackupContext != null) {
-      _json["restoreBackupContext"] = (restoreBackupContext).toJson();
+      _json["restoreBackupContext"] = restoreBackupContext.toJson();
     }
     return _json;
   }
@@ -5088,15 +5381,15 @@ class InstancesRotateServerCaRequest {
   InstancesRotateServerCaRequest.fromJson(core.Map _json) {
     if (_json.containsKey("rotateServerCaContext")) {
       rotateServerCaContext =
-          new RotateServerCaContext.fromJson(_json["rotateServerCaContext"]);
+          RotateServerCaContext.fromJson(_json["rotateServerCaContext"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (rotateServerCaContext != null) {
-      _json["rotateServerCaContext"] = (rotateServerCaContext).toJson();
+      _json["rotateServerCaContext"] = rotateServerCaContext.toJson();
     }
     return _json;
   }
@@ -5112,15 +5405,15 @@ class InstancesTruncateLogRequest {
   InstancesTruncateLogRequest.fromJson(core.Map _json) {
     if (_json.containsKey("truncateLogContext")) {
       truncateLogContext =
-          new TruncateLogContext.fromJson(_json["truncateLogContext"]);
+          TruncateLogContext.fromJson(_json["truncateLogContext"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (truncateLogContext != null) {
-      _json["truncateLogContext"] = (truncateLogContext).toJson();
+      _json["truncateLogContext"] = truncateLogContext.toJson();
     }
     return _json;
   }
@@ -5150,7 +5443,7 @@ class IpConfiguration {
   IpConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey("authorizedNetworks")) {
       authorizedNetworks = (_json["authorizedNetworks"] as core.List)
-          .map<AclEntry>((value) => new AclEntry.fromJson(value))
+          .map<AclEntry>((value) => AclEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("ipv4Enabled")) {
@@ -5166,10 +5459,10 @@ class IpConfiguration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (authorizedNetworks != null) {
       _json["authorizedNetworks"] =
-          authorizedNetworks.map((value) => (value).toJson()).toList();
+          authorizedNetworks.map((value) => value.toJson()).toList();
     }
     if (ipv4Enabled != null) {
       _json["ipv4Enabled"] = ipv4Enabled;
@@ -5228,7 +5521,7 @@ class IpMapping {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ipAddress != null) {
       _json["ipAddress"] = ipAddress;
     }
@@ -5275,7 +5568,7 @@ class LocationPreference {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (followGaeApplication != null) {
       _json["followGaeApplication"] = followGaeApplication;
     }
@@ -5333,7 +5626,7 @@ class MaintenanceWindow {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (day != null) {
       _json["day"] = day;
     }
@@ -5431,7 +5724,7 @@ class MySqlReplicaConfiguration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (caCertificate != null) {
       _json["caCertificate"] = caCertificate;
     }
@@ -5527,7 +5820,7 @@ class OnPremisesConfiguration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (caCertificate != null) {
       _json["caCertificate"] = caCertificate;
     }
@@ -5669,13 +5962,13 @@ class Operation {
       endTime = _json["endTime"];
     }
     if (_json.containsKey("error")) {
-      error = new OperationErrors.fromJson(_json["error"]);
+      error = OperationErrors.fromJson(_json["error"]);
     }
     if (_json.containsKey("exportContext")) {
-      exportContext = new ExportContext.fromJson(_json["exportContext"]);
+      exportContext = ExportContext.fromJson(_json["exportContext"]);
     }
     if (_json.containsKey("importContext")) {
-      importContext = new ImportContext.fromJson(_json["importContext"]);
+      importContext = ImportContext.fromJson(_json["importContext"]);
     }
     if (_json.containsKey("insertTime")) {
       insertTime = _json["insertTime"];
@@ -5714,18 +6007,18 @@ class Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (exportContext != null) {
-      _json["exportContext"] = (exportContext).toJson();
+      _json["exportContext"] = exportContext.toJson();
     }
     if (importContext != null) {
-      _json["importContext"] = (importContext).toJson();
+      _json["importContext"] = importContext.toJson();
     }
     if (insertTime != null) {
       _json["insertTime"] = insertTime;
@@ -5791,7 +6084,7 @@ class OperationError {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -5818,7 +6111,7 @@ class OperationErrors {
   OperationErrors.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
       errors = (_json["errors"] as core.List)
-          .map<OperationError>((value) => new OperationError.fromJson(value))
+          .map<OperationError>((value) => OperationError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -5828,9 +6121,9 @@ class OperationErrors {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errors != null) {
-      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+      _json["errors"] = errors.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -5856,7 +6149,7 @@ class OperationsListResponse {
   OperationsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Operation>((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -5869,9 +6162,9 @@ class OperationsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -5913,14 +6206,14 @@ class ReplicaConfiguration {
       kind = _json["kind"];
     }
     if (_json.containsKey("mysqlReplicaConfiguration")) {
-      mysqlReplicaConfiguration = new MySqlReplicaConfiguration.fromJson(
+      mysqlReplicaConfiguration = MySqlReplicaConfiguration.fromJson(
           _json["mysqlReplicaConfiguration"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (failoverTarget != null) {
       _json["failoverTarget"] = failoverTarget;
     }
@@ -5928,7 +6221,7 @@ class ReplicaConfiguration {
       _json["kind"] = kind;
     }
     if (mysqlReplicaConfiguration != null) {
-      _json["mysqlReplicaConfiguration"] = (mysqlReplicaConfiguration).toJson();
+      _json["mysqlReplicaConfiguration"] = mysqlReplicaConfiguration.toJson();
     }
     return _json;
   }
@@ -5964,7 +6257,7 @@ class Reschedule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (rescheduleType != null) {
       _json["rescheduleType"] = rescheduleType;
     }
@@ -6009,7 +6302,7 @@ class RestoreBackupContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (backupRunId != null) {
       _json["backupRunId"] = backupRunId;
     }
@@ -6048,7 +6341,7 @@ class RotateServerCaContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -6199,7 +6492,7 @@ class Settings {
     }
     if (_json.containsKey("activeDirectoryConfig")) {
       activeDirectoryConfig =
-          new SqlActiveDirectoryConfig.fromJson(_json["activeDirectoryConfig"]);
+          SqlActiveDirectoryConfig.fromJson(_json["activeDirectoryConfig"]);
     }
     if (_json.containsKey("authorizedGaeApplications")) {
       authorizedGaeApplications =
@@ -6210,7 +6503,7 @@ class Settings {
     }
     if (_json.containsKey("backupConfiguration")) {
       backupConfiguration =
-          new BackupConfiguration.fromJson(_json["backupConfiguration"]);
+          BackupConfiguration.fromJson(_json["backupConfiguration"]);
     }
     if (_json.containsKey("collation")) {
       collation = _json["collation"];
@@ -6226,7 +6519,7 @@ class Settings {
     }
     if (_json.containsKey("databaseFlags")) {
       databaseFlags = (_json["databaseFlags"] as core.List)
-          .map<DatabaseFlags>((value) => new DatabaseFlags.fromJson(value))
+          .map<DatabaseFlags>((value) => DatabaseFlags.fromJson(value))
           .toList();
     }
     if (_json.containsKey("databaseReplicationEnabled")) {
@@ -6235,22 +6528,22 @@ class Settings {
     if (_json.containsKey("denyMaintenancePeriods")) {
       denyMaintenancePeriods = (_json["denyMaintenancePeriods"] as core.List)
           .map<DenyMaintenancePeriod>(
-              (value) => new DenyMaintenancePeriod.fromJson(value))
+              (value) => DenyMaintenancePeriod.fromJson(value))
           .toList();
     }
     if (_json.containsKey("ipConfiguration")) {
-      ipConfiguration = new IpConfiguration.fromJson(_json["ipConfiguration"]);
+      ipConfiguration = IpConfiguration.fromJson(_json["ipConfiguration"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("locationPreference")) {
       locationPreference =
-          new LocationPreference.fromJson(_json["locationPreference"]);
+          LocationPreference.fromJson(_json["locationPreference"]);
     }
     if (_json.containsKey("maintenanceWindow")) {
       maintenanceWindow =
-          new MaintenanceWindow.fromJson(_json["maintenanceWindow"]);
+          MaintenanceWindow.fromJson(_json["maintenanceWindow"]);
     }
     if (_json.containsKey("pricingPlan")) {
       pricingPlan = _json["pricingPlan"];
@@ -6278,12 +6571,12 @@ class Settings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activationPolicy != null) {
       _json["activationPolicy"] = activationPolicy;
     }
     if (activeDirectoryConfig != null) {
-      _json["activeDirectoryConfig"] = (activeDirectoryConfig).toJson();
+      _json["activeDirectoryConfig"] = activeDirectoryConfig.toJson();
     }
     if (authorizedGaeApplications != null) {
       _json["authorizedGaeApplications"] = authorizedGaeApplications;
@@ -6292,7 +6585,7 @@ class Settings {
       _json["availabilityType"] = availabilityType;
     }
     if (backupConfiguration != null) {
-      _json["backupConfiguration"] = (backupConfiguration).toJson();
+      _json["backupConfiguration"] = backupConfiguration.toJson();
     }
     if (collation != null) {
       _json["collation"] = collation;
@@ -6308,26 +6601,26 @@ class Settings {
     }
     if (databaseFlags != null) {
       _json["databaseFlags"] =
-          databaseFlags.map((value) => (value).toJson()).toList();
+          databaseFlags.map((value) => value.toJson()).toList();
     }
     if (databaseReplicationEnabled != null) {
       _json["databaseReplicationEnabled"] = databaseReplicationEnabled;
     }
     if (denyMaintenancePeriods != null) {
       _json["denyMaintenancePeriods"] =
-          denyMaintenancePeriods.map((value) => (value).toJson()).toList();
+          denyMaintenancePeriods.map((value) => value.toJson()).toList();
     }
     if (ipConfiguration != null) {
-      _json["ipConfiguration"] = (ipConfiguration).toJson();
+      _json["ipConfiguration"] = ipConfiguration.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (locationPreference != null) {
-      _json["locationPreference"] = (locationPreference).toJson();
+      _json["locationPreference"] = locationPreference.toJson();
     }
     if (maintenanceWindow != null) {
-      _json["maintenanceWindow"] = (maintenanceWindow).toJson();
+      _json["maintenanceWindow"] = maintenanceWindow.toJson();
     }
     if (pricingPlan != null) {
       _json["pricingPlan"] = pricingPlan;
@@ -6375,7 +6668,7 @@ class SqlActiveDirectoryConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (domain != null) {
       _json["domain"] = domain;
     }
@@ -6446,7 +6739,7 @@ class SqlExternalSyncSettingError {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (detail != null) {
       _json["detail"] = detail;
     }
@@ -6469,15 +6762,15 @@ class SqlInstancesRescheduleMaintenanceRequestBody {
 
   SqlInstancesRescheduleMaintenanceRequestBody.fromJson(core.Map _json) {
     if (_json.containsKey("reschedule")) {
-      reschedule = new Reschedule.fromJson(_json["reschedule"]);
+      reschedule = Reschedule.fromJson(_json["reschedule"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (reschedule != null) {
-      _json["reschedule"] = (reschedule).toJson();
+      _json["reschedule"] = reschedule.toJson();
     }
     return _json;
   }
@@ -6497,7 +6790,7 @@ class SqlInstancesVerifyExternalSyncSettingsResponse {
     if (_json.containsKey("errors")) {
       errors = (_json["errors"] as core.List)
           .map<SqlExternalSyncSettingError>(
-              (value) => new SqlExternalSyncSettingError.fromJson(value))
+              (value) => SqlExternalSyncSettingError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -6507,9 +6800,9 @@ class SqlInstancesVerifyExternalSyncSettingsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errors != null) {
-      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+      _json["errors"] = errors.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -6544,7 +6837,7 @@ class SqlScheduledMaintenance {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (canDefer != null) {
       _json["canDefer"] = canDefer;
     }
@@ -6579,7 +6872,7 @@ class SqlServerDatabaseDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (compatibilityLevel != null) {
       _json["compatibilityLevel"] = compatibilityLevel;
     }
@@ -6611,7 +6904,7 @@ class SqlServerUserDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (disabled != null) {
       _json["disabled"] = disabled;
     }
@@ -6687,7 +6980,7 @@ class SslCert {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cert != null) {
       _json["cert"] = cert;
     }
@@ -6732,7 +7025,7 @@ class SslCertDetail {
 
   SslCertDetail.fromJson(core.Map _json) {
     if (_json.containsKey("certInfo")) {
-      certInfo = new SslCert.fromJson(_json["certInfo"]);
+      certInfo = SslCert.fromJson(_json["certInfo"]);
     }
     if (_json.containsKey("certPrivateKey")) {
       certPrivateKey = _json["certPrivateKey"];
@@ -6741,9 +7034,9 @@ class SslCertDetail {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (certInfo != null) {
-      _json["certInfo"] = (certInfo).toJson();
+      _json["certInfo"] = certInfo.toJson();
     }
     if (certPrivateKey != null) {
       _json["certPrivateKey"] = certPrivateKey;
@@ -6767,7 +7060,7 @@ class SslCertsCreateEphemeralRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (publicKey != null) {
       _json["public_key"] = publicKey;
     }
@@ -6791,7 +7084,7 @@ class SslCertsInsertRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (commonName != null) {
       _json["commonName"] = commonName;
     }
@@ -6819,33 +7112,33 @@ class SslCertsInsertResponse {
 
   SslCertsInsertResponse.fromJson(core.Map _json) {
     if (_json.containsKey("clientCert")) {
-      clientCert = new SslCertDetail.fromJson(_json["clientCert"]);
+      clientCert = SslCertDetail.fromJson(_json["clientCert"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("operation")) {
-      operation = new Operation.fromJson(_json["operation"]);
+      operation = Operation.fromJson(_json["operation"]);
     }
     if (_json.containsKey("serverCaCert")) {
-      serverCaCert = new SslCert.fromJson(_json["serverCaCert"]);
+      serverCaCert = SslCert.fromJson(_json["serverCaCert"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clientCert != null) {
-      _json["clientCert"] = (clientCert).toJson();
+      _json["clientCert"] = clientCert.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (operation != null) {
-      _json["operation"] = (operation).toJson();
+      _json["operation"] = operation.toJson();
     }
     if (serverCaCert != null) {
-      _json["serverCaCert"] = (serverCaCert).toJson();
+      _json["serverCaCert"] = serverCaCert.toJson();
     }
     return _json;
   }
@@ -6864,7 +7157,7 @@ class SslCertsListResponse {
   SslCertsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<SslCert>((value) => new SslCert.fromJson(value))
+          .map<SslCert>((value) => SslCert.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -6874,9 +7167,9 @@ class SslCertsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -6925,7 +7218,7 @@ class Tier {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (DiskQuota != null) {
       _json["DiskQuota"] = DiskQuota;
     }
@@ -6958,7 +7251,7 @@ class TiersListResponse {
   TiersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Tier>((value) => new Tier.fromJson(value))
+          .map<Tier>((value) => Tier.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -6968,9 +7261,9 @@ class TiersListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -7001,7 +7294,7 @@ class TruncateLogContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -7078,7 +7371,7 @@ class User {
     }
     if (_json.containsKey("sqlserverUserDetails")) {
       sqlserverUserDetails =
-          new SqlServerUserDetails.fromJson(_json["sqlserverUserDetails"]);
+          SqlServerUserDetails.fromJson(_json["sqlserverUserDetails"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -7087,7 +7380,7 @@ class User {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -7110,7 +7403,7 @@ class User {
       _json["project"] = project;
     }
     if (sqlserverUserDetails != null) {
-      _json["sqlserverUserDetails"] = (sqlserverUserDetails).toJson();
+      _json["sqlserverUserDetails"] = sqlserverUserDetails.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -7137,7 +7430,7 @@ class UsersListResponse {
   UsersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<User>((value) => new User.fromJson(value))
+          .map<User>((value) => User.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -7150,9 +7443,9 @@ class UsersListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;

@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.script.v1;
 
@@ -87,15 +105,15 @@ class ScriptApi {
 
   final commons.ApiRequester _requester;
 
-  ProcessesResourceApi get processes => new ProcessesResourceApi(_requester);
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
-  ScriptsResourceApi get scripts => new ScriptsResourceApi(_requester);
+  ProcessesResourceApi get processes => ProcessesResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ScriptsResourceApi get scripts => ScriptsResourceApi(_requester);
 
   ScriptApi(http.Client client,
       {core.String rootUrl = "https://script.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProcessesResourceApi {
@@ -156,25 +174,26 @@ class ProcessesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListUserProcessesResponse> list(
-      {core.List<core.String> userProcessFilter_types,
-      core.int pageSize,
-      core.String userProcessFilter_startTime,
-      core.String userProcessFilter_functionName,
-      core.String userProcessFilter_projectName,
-      core.String userProcessFilter_endTime,
-      core.List<core.String> userProcessFilter_statuses,
-      core.String userProcessFilter_scriptId,
-      core.String pageToken,
-      core.List<core.String> userProcessFilter_userAccessLevels,
-      core.String userProcessFilter_deploymentId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListUserProcessesResponse> list({
+    core.List<core.String> userProcessFilter_types,
+    core.int pageSize,
+    core.String userProcessFilter_startTime,
+    core.String userProcessFilter_functionName,
+    core.String userProcessFilter_projectName,
+    core.String userProcessFilter_endTime,
+    core.List<core.String> userProcessFilter_statuses,
+    core.String userProcessFilter_scriptId,
+    core.String pageToken,
+    core.List<core.String> userProcessFilter_userAccessLevels,
+    core.String userProcessFilter_deploymentId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userProcessFilter_types != null) {
       _queryParams["userProcessFilter.types"] = userProcessFilter_types;
@@ -224,14 +243,16 @@ class ProcessesResourceApi {
 
     _url = 'v1/processes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListUserProcessesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListUserProcessesResponse.fromJson(data));
   }
 
   /// List information about a script's executed processes, such as process type
@@ -282,24 +303,25 @@ class ProcessesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListScriptProcessesResponse> listScriptProcesses(
-      {core.String scriptProcessFilter_startTime,
-      core.String scriptProcessFilter_functionName,
-      core.String scriptId,
-      core.List<core.String> scriptProcessFilter_statuses,
-      core.List<core.String> scriptProcessFilter_types,
-      core.String pageToken,
-      core.String scriptProcessFilter_deploymentId,
-      core.List<core.String> scriptProcessFilter_userAccessLevels,
-      core.int pageSize,
-      core.String scriptProcessFilter_endTime,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListScriptProcessesResponse> listScriptProcesses({
+    core.String scriptProcessFilter_startTime,
+    core.String scriptProcessFilter_functionName,
+    core.String scriptId,
+    core.List<core.String> scriptProcessFilter_statuses,
+    core.List<core.String> scriptProcessFilter_types,
+    core.String pageToken,
+    core.String scriptProcessFilter_deploymentId,
+    core.List<core.String> scriptProcessFilter_userAccessLevels,
+    core.int pageSize,
+    core.String scriptProcessFilter_endTime,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (scriptProcessFilter_startTime != null) {
       _queryParams["scriptProcessFilter.startTime"] = [
@@ -347,14 +369,16 @@ class ProcessesResourceApi {
 
     _url = 'v1/processes:listScriptProcesses';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListScriptProcessesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListScriptProcessesResponse.fromJson(data));
   }
 }
 
@@ -362,9 +386,9 @@ class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsDeploymentsResourceApi get deployments =>
-      new ProjectsDeploymentsResourceApi(_requester);
+      ProjectsDeploymentsResourceApi(_requester);
   ProjectsVersionsResourceApi get versions =>
-      new ProjectsVersionsResourceApi(_requester);
+      ProjectsVersionsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -385,17 +409,19 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Project> create(CreateProjectRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Project> create(
+    CreateProjectRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -403,13 +429,16 @@ class ProjectsResourceApi {
 
     _url = 'v1/projects';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Project.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Project.fromJson(data));
   }
 
   /// Gets a script project's metadata.
@@ -428,16 +457,19 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Project> get(core.String scriptId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Project> get(
+    core.String scriptId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (scriptId == null) {
-      throw new core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError("Parameter scriptId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -445,13 +477,16 @@ class ProjectsResourceApi {
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$scriptId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Project.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Project.fromJson(data));
   }
 
   /// Gets the content of the script project, including the code source and
@@ -474,17 +509,20 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Content> getContent(core.String scriptId,
-      {core.int versionNumber, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Content> getContent(
+    core.String scriptId, {
+    core.int versionNumber,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (scriptId == null) {
-      throw new core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError("Parameter scriptId is required.");
     }
     if (versionNumber != null) {
       _queryParams["versionNumber"] = ["${versionNumber}"];
@@ -497,13 +535,16 @@ class ProjectsResourceApi {
         commons.Escaper.ecapeVariable('$scriptId') +
         '/content';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Content.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Content.fromJson(data));
   }
 
   /// Get metrics data for scripts, such as number of executions and active
@@ -534,19 +575,21 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Metrics> getMetrics(core.String scriptId,
-      {core.String metricsGranularity,
-      core.String metricsFilter_deploymentId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Metrics> getMetrics(
+    core.String scriptId, {
+    core.String metricsGranularity,
+    core.String metricsFilter_deploymentId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (scriptId == null) {
-      throw new core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError("Parameter scriptId is required.");
     }
     if (metricsGranularity != null) {
       _queryParams["metricsGranularity"] = [metricsGranularity];
@@ -562,13 +605,16 @@ class ProjectsResourceApi {
         commons.Escaper.ecapeVariable('$scriptId') +
         '/metrics';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Metrics.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Metrics.fromJson(data));
   }
 
   /// Updates the content of the specified script project. This content is
@@ -593,20 +639,23 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Content> updateContent(Content request, core.String scriptId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Content> updateContent(
+    Content request,
+    core.String scriptId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (scriptId == null) {
-      throw new core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError("Parameter scriptId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -616,13 +665,16 @@ class ProjectsResourceApi {
         commons.Escaper.ecapeVariable('$scriptId') +
         '/content';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Content.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Content.fromJson(data));
   }
 }
 
@@ -651,20 +703,22 @@ class ProjectsDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Deployment> create(
-      DeploymentConfig request, core.String scriptId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    DeploymentConfig request,
+    core.String scriptId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (scriptId == null) {
-      throw new core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError("Parameter scriptId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -674,13 +728,16 @@ class ProjectsDeploymentsResourceApi {
         commons.Escaper.ecapeVariable('$scriptId') +
         '/deployments';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Deployment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Deployment.fromJson(data));
   }
 
   /// Deletes a deployment of an Apps Script project.
@@ -701,20 +758,23 @@ class ProjectsDeploymentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String scriptId, core.String deploymentId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String scriptId,
+    core.String deploymentId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (scriptId == null) {
-      throw new core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError("Parameter scriptId is required.");
     }
     if (deploymentId == null) {
-      throw new core.ArgumentError("Parameter deploymentId is required.");
+      throw core.ArgumentError("Parameter deploymentId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -725,13 +785,16 @@ class ProjectsDeploymentsResourceApi {
         '/deployments/' +
         commons.Escaper.ecapeVariable('$deploymentId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a deployment of an Apps Script project.
@@ -752,20 +815,23 @@ class ProjectsDeploymentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Deployment> get(core.String scriptId, core.String deploymentId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Deployment> get(
+    core.String scriptId,
+    core.String deploymentId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (scriptId == null) {
-      throw new core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError("Parameter scriptId is required.");
     }
     if (deploymentId == null) {
-      throw new core.ArgumentError("Parameter deploymentId is required.");
+      throw core.ArgumentError("Parameter deploymentId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -776,13 +842,16 @@ class ProjectsDeploymentsResourceApi {
         '/deployments/' +
         commons.Escaper.ecapeVariable('$deploymentId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Deployment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Deployment.fromJson(data));
   }
 
   /// Lists the deployments of an Apps Script project.
@@ -808,17 +877,21 @@ class ProjectsDeploymentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListDeploymentsResponse> list(core.String scriptId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListDeploymentsResponse> list(
+    core.String scriptId, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (scriptId == null) {
-      throw new core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError("Parameter scriptId is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -834,13 +907,16 @@ class ProjectsDeploymentsResourceApi {
         commons.Escaper.ecapeVariable('$scriptId') +
         '/deployments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListDeploymentsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListDeploymentsResponse.fromJson(data));
   }
 
   /// Updates a deployment of an Apps Script project.
@@ -863,24 +939,27 @@ class ProjectsDeploymentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Deployment> update(UpdateDeploymentRequest request,
-      core.String scriptId, core.String deploymentId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Deployment> update(
+    UpdateDeploymentRequest request,
+    core.String scriptId,
+    core.String deploymentId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (scriptId == null) {
-      throw new core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError("Parameter scriptId is required.");
     }
     if (deploymentId == null) {
-      throw new core.ArgumentError("Parameter deploymentId is required.");
+      throw core.ArgumentError("Parameter deploymentId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -891,13 +970,16 @@ class ProjectsDeploymentsResourceApi {
         '/deployments/' +
         commons.Escaper.ecapeVariable('$deploymentId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Deployment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Deployment.fromJson(data));
   }
 }
 
@@ -926,20 +1008,23 @@ class ProjectsVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Version> create(Version request, core.String scriptId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Version> create(
+    Version request,
+    core.String scriptId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (scriptId == null) {
-      throw new core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError("Parameter scriptId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -949,13 +1034,16 @@ class ProjectsVersionsResourceApi {
         commons.Escaper.ecapeVariable('$scriptId') +
         '/versions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Version.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Version.fromJson(data));
   }
 
   /// Gets a version of a script project.
@@ -976,20 +1064,23 @@ class ProjectsVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Version> get(core.String scriptId, core.int versionNumber,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Version> get(
+    core.String scriptId,
+    core.int versionNumber, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (scriptId == null) {
-      throw new core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError("Parameter scriptId is required.");
     }
     if (versionNumber == null) {
-      throw new core.ArgumentError("Parameter versionNumber is required.");
+      throw core.ArgumentError("Parameter versionNumber is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1000,13 +1091,16 @@ class ProjectsVersionsResourceApi {
         '/versions/' +
         commons.Escaper.ecapeVariable('$versionNumber');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Version.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Version.fromJson(data));
   }
 
   /// List the versions of a script project.
@@ -1032,17 +1126,21 @@ class ProjectsVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListVersionsResponse> list(core.String scriptId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListVersionsResponse> list(
+    core.String scriptId, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (scriptId == null) {
-      throw new core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError("Parameter scriptId is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1058,13 +1156,16 @@ class ProjectsVersionsResourceApi {
         commons.Escaper.ecapeVariable('$scriptId') +
         '/versions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListVersionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListVersionsResponse.fromJson(data));
   }
 }
 
@@ -1104,20 +1205,23 @@ class ScriptsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> run(ExecutionRequest request, core.String scriptId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> run(
+    ExecutionRequest request,
+    core.String scriptId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (scriptId == null) {
-      throw new core.ArgumentError("Parameter scriptId is required.");
+      throw core.ArgumentError("Parameter scriptId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1125,13 +1229,16 @@ class ScriptsResourceApi {
 
     _url = 'v1/scripts/' + commons.Escaper.ecapeVariable('$scriptId') + ':run';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -1150,7 +1257,7 @@ class Content {
   Content.fromJson(core.Map _json) {
     if (_json.containsKey("files")) {
       files = (_json["files"] as core.List)
-          .map<File>((value) => new File.fromJson(value))
+          .map<File>((value) => File.fromJson(value))
           .toList();
     }
     if (_json.containsKey("scriptId")) {
@@ -1160,9 +1267,9 @@ class Content {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (files != null) {
-      _json["files"] = files.map((value) => (value).toJson()).toList();
+      _json["files"] = files.map((value) => value.toJson()).toList();
     }
     if (scriptId != null) {
       _json["scriptId"] = scriptId;
@@ -1194,7 +1301,7 @@ class CreateProjectRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (parentId != null) {
       _json["parentId"] = parentId;
     }
@@ -1223,15 +1330,14 @@ class Deployment {
 
   Deployment.fromJson(core.Map _json) {
     if (_json.containsKey("deploymentConfig")) {
-      deploymentConfig =
-          new DeploymentConfig.fromJson(_json["deploymentConfig"]);
+      deploymentConfig = DeploymentConfig.fromJson(_json["deploymentConfig"]);
     }
     if (_json.containsKey("deploymentId")) {
       deploymentId = _json["deploymentId"];
     }
     if (_json.containsKey("entryPoints")) {
       entryPoints = (_json["entryPoints"] as core.List)
-          .map<EntryPoint>((value) => new EntryPoint.fromJson(value))
+          .map<EntryPoint>((value) => EntryPoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("updateTime")) {
@@ -1241,16 +1347,16 @@ class Deployment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deploymentConfig != null) {
-      _json["deploymentConfig"] = (deploymentConfig).toJson();
+      _json["deploymentConfig"] = deploymentConfig.toJson();
     }
     if (deploymentId != null) {
       _json["deploymentId"] = deploymentId;
     }
     if (entryPoints != null) {
       _json["entryPoints"] =
-          entryPoints.map((value) => (value).toJson()).toList();
+          entryPoints.map((value) => value.toJson()).toList();
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
@@ -1292,7 +1398,7 @@ class DeploymentConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -1321,7 +1427,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1349,35 +1455,34 @@ class EntryPoint {
 
   EntryPoint.fromJson(core.Map _json) {
     if (_json.containsKey("addOn")) {
-      addOn = new GoogleAppsScriptTypeAddOnEntryPoint.fromJson(_json["addOn"]);
+      addOn = GoogleAppsScriptTypeAddOnEntryPoint.fromJson(_json["addOn"]);
     }
     if (_json.containsKey("entryPointType")) {
       entryPointType = _json["entryPointType"];
     }
     if (_json.containsKey("executionApi")) {
-      executionApi = new GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(
+      executionApi = GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(
           _json["executionApi"]);
     }
     if (_json.containsKey("webApp")) {
-      webApp =
-          new GoogleAppsScriptTypeWebAppEntryPoint.fromJson(_json["webApp"]);
+      webApp = GoogleAppsScriptTypeWebAppEntryPoint.fromJson(_json["webApp"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (addOn != null) {
-      _json["addOn"] = (addOn).toJson();
+      _json["addOn"] = addOn.toJson();
     }
     if (entryPointType != null) {
       _json["entryPointType"] = entryPointType;
     }
     if (executionApi != null) {
-      _json["executionApi"] = (executionApi).toJson();
+      _json["executionApi"] = executionApi.toJson();
     }
     if (webApp != null) {
-      _json["webApp"] = (webApp).toJson();
+      _json["webApp"] = webApp.toJson();
     }
     return _json;
   }
@@ -1393,15 +1498,15 @@ class ExecuteStreamResponse {
 
   ExecuteStreamResponse.fromJson(core.Map _json) {
     if (_json.containsKey("result")) {
-      result = new ScriptExecutionResult.fromJson(_json["result"]);
+      result = ScriptExecutionResult.fromJson(_json["result"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (result != null) {
-      _json["result"] = (result).toJson();
+      _json["result"] = result.toJson();
     }
     return _json;
   }
@@ -1439,14 +1544,14 @@ class ExecutionError {
       scriptStackTraceElements =
           (_json["scriptStackTraceElements"] as core.List)
               .map<ScriptStackTraceElement>(
-                  (value) => new ScriptStackTraceElement.fromJson(value))
+                  (value) => ScriptStackTraceElement.fromJson(value))
               .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errorMessage != null) {
       _json["errorMessage"] = errorMessage;
     }
@@ -1455,7 +1560,7 @@ class ExecutionError {
     }
     if (scriptStackTraceElements != null) {
       _json["scriptStackTraceElements"] =
-          scriptStackTraceElements.map((value) => (value).toJson()).toList();
+          scriptStackTraceElements.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1518,7 +1623,7 @@ class ExecutionRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (devMode != null) {
       _json["devMode"] = devMode;
     }
@@ -1559,7 +1664,7 @@ class ExecutionResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (result != null) {
       _json["result"] = result;
     }
@@ -1612,11 +1717,11 @@ class File {
     }
     if (_json.containsKey("functionSet")) {
       functionSet =
-          new GoogleAppsScriptTypeFunctionSet.fromJson(_json["functionSet"]);
+          GoogleAppsScriptTypeFunctionSet.fromJson(_json["functionSet"]);
     }
     if (_json.containsKey("lastModifyUser")) {
       lastModifyUser =
-          new GoogleAppsScriptTypeUser.fromJson(_json["lastModifyUser"]);
+          GoogleAppsScriptTypeUser.fromJson(_json["lastModifyUser"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1634,15 +1739,15 @@ class File {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
     if (functionSet != null) {
-      _json["functionSet"] = (functionSet).toJson();
+      _json["functionSet"] = functionSet.toJson();
     }
     if (lastModifyUser != null) {
-      _json["lastModifyUser"] = (lastModifyUser).toJson();
+      _json["lastModifyUser"] = lastModifyUser.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -1709,7 +1814,7 @@ class GoogleAppsScriptTypeAddOnEntryPoint {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (addOnType != null) {
       _json["addOnType"] = addOnType;
     }
@@ -1757,7 +1862,7 @@ class GoogleAppsScriptTypeExecutionApiConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (access != null) {
       _json["access"] = access;
     }
@@ -1774,16 +1879,16 @@ class GoogleAppsScriptTypeExecutionApiEntryPoint {
 
   GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(core.Map _json) {
     if (_json.containsKey("entryPointConfig")) {
-      entryPointConfig = new GoogleAppsScriptTypeExecutionApiConfig.fromJson(
+      entryPointConfig = GoogleAppsScriptTypeExecutionApiConfig.fromJson(
           _json["entryPointConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (entryPointConfig != null) {
-      _json["entryPointConfig"] = (entryPointConfig).toJson();
+      _json["entryPointConfig"] = entryPointConfig.toJson();
     }
     return _json;
   }
@@ -1804,7 +1909,7 @@ class GoogleAppsScriptTypeFunction {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -1823,16 +1928,16 @@ class GoogleAppsScriptTypeFunctionSet {
     if (_json.containsKey("values")) {
       values = (_json["values"] as core.List)
           .map<GoogleAppsScriptTypeFunction>(
-              (value) => new GoogleAppsScriptTypeFunction.fromJson(value))
+              (value) => GoogleAppsScriptTypeFunction.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (values != null) {
-      _json["values"] = values.map((value) => (value).toJson()).toList();
+      _json["values"] = values.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1920,7 +2025,7 @@ class GoogleAppsScriptTypeProcess {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (duration != null) {
       _json["duration"] = duration;
     }
@@ -1979,7 +2084,7 @@ class GoogleAppsScriptTypeUser {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (domain != null) {
       _json["domain"] = domain;
     }
@@ -2032,7 +2137,7 @@ class GoogleAppsScriptTypeWebAppConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (access != null) {
       _json["access"] = access;
     }
@@ -2055,8 +2160,8 @@ class GoogleAppsScriptTypeWebAppEntryPoint {
 
   GoogleAppsScriptTypeWebAppEntryPoint.fromJson(core.Map _json) {
     if (_json.containsKey("entryPointConfig")) {
-      entryPointConfig = new GoogleAppsScriptTypeWebAppConfig.fromJson(
-          _json["entryPointConfig"]);
+      entryPointConfig =
+          GoogleAppsScriptTypeWebAppConfig.fromJson(_json["entryPointConfig"]);
     }
     if (_json.containsKey("url")) {
       url = _json["url"];
@@ -2065,9 +2170,9 @@ class GoogleAppsScriptTypeWebAppEntryPoint {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (entryPointConfig != null) {
-      _json["entryPointConfig"] = (entryPointConfig).toJson();
+      _json["entryPointConfig"] = entryPointConfig.toJson();
     }
     if (url != null) {
       _json["url"] = url;
@@ -2090,7 +2195,7 @@ class ListDeploymentsResponse {
   ListDeploymentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deployments")) {
       deployments = (_json["deployments"] as core.List)
-          .map<Deployment>((value) => new Deployment.fromJson(value))
+          .map<Deployment>((value) => Deployment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2100,10 +2205,10 @@ class ListDeploymentsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deployments != null) {
       _json["deployments"] =
-          deployments.map((value) => (value).toJson()).toList();
+          deployments.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -2130,19 +2235,19 @@ class ListScriptProcessesResponse {
     if (_json.containsKey("processes")) {
       processes = (_json["processes"] as core.List)
           .map<GoogleAppsScriptTypeProcess>(
-              (value) => new GoogleAppsScriptTypeProcess.fromJson(value))
+              (value) => GoogleAppsScriptTypeProcess.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (processes != null) {
-      _json["processes"] = processes.map((value) => (value).toJson()).toList();
+      _json["processes"] = processes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2166,19 +2271,19 @@ class ListUserProcessesResponse {
     if (_json.containsKey("processes")) {
       processes = (_json["processes"] as core.List)
           .map<GoogleAppsScriptTypeProcess>(
-              (value) => new GoogleAppsScriptTypeProcess.fromJson(value))
+              (value) => GoogleAppsScriptTypeProcess.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (processes != null) {
-      _json["processes"] = processes.map((value) => (value).toJson()).toList();
+      _json["processes"] = processes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2194,16 +2299,16 @@ class ListValue {
   ListValue.fromJson(core.Map _json) {
     if (_json.containsKey("values")) {
       values = (_json["values"] as core.List)
-          .map<Value>((value) => new Value.fromJson(value))
+          .map<Value>((value) => Value.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (values != null) {
-      _json["values"] = values.map((value) => (value).toJson()).toList();
+      _json["values"] = values.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2226,19 +2331,19 @@ class ListVersionsResponse {
     }
     if (_json.containsKey("versions")) {
       versions = (_json["versions"] as core.List)
-          .map<Version>((value) => new Version.fromJson(value))
+          .map<Version>((value) => Version.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (versions != null) {
-      _json["versions"] = versions.map((value) => (value).toJson()).toList();
+      _json["versions"] = versions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2261,35 +2366,35 @@ class Metrics {
   Metrics.fromJson(core.Map _json) {
     if (_json.containsKey("activeUsers")) {
       activeUsers = (_json["activeUsers"] as core.List)
-          .map<MetricsValue>((value) => new MetricsValue.fromJson(value))
+          .map<MetricsValue>((value) => MetricsValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("failedExecutions")) {
       failedExecutions = (_json["failedExecutions"] as core.List)
-          .map<MetricsValue>((value) => new MetricsValue.fromJson(value))
+          .map<MetricsValue>((value) => MetricsValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("totalExecutions")) {
       totalExecutions = (_json["totalExecutions"] as core.List)
-          .map<MetricsValue>((value) => new MetricsValue.fromJson(value))
+          .map<MetricsValue>((value) => MetricsValue.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activeUsers != null) {
       _json["activeUsers"] =
-          activeUsers.map((value) => (value).toJson()).toList();
+          activeUsers.map((value) => value.toJson()).toList();
     }
     if (failedExecutions != null) {
       _json["failedExecutions"] =
-          failedExecutions.map((value) => (value).toJson()).toList();
+          failedExecutions.map((value) => value.toJson()).toList();
     }
     if (totalExecutions != null) {
       _json["totalExecutions"] =
-          totalExecutions.map((value) => (value).toJson()).toList();
+          totalExecutions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2322,7 +2427,7 @@ class MetricsValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -2379,7 +2484,7 @@ class Operation {
       done = _json["done"];
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("response")) {
       response =
@@ -2389,12 +2494,12 @@ class Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (response != null) {
       _json["response"] = response;
@@ -2435,11 +2540,11 @@ class Project {
       createTime = _json["createTime"];
     }
     if (_json.containsKey("creator")) {
-      creator = new GoogleAppsScriptTypeUser.fromJson(_json["creator"]);
+      creator = GoogleAppsScriptTypeUser.fromJson(_json["creator"]);
     }
     if (_json.containsKey("lastModifyUser")) {
       lastModifyUser =
-          new GoogleAppsScriptTypeUser.fromJson(_json["lastModifyUser"]);
+          GoogleAppsScriptTypeUser.fromJson(_json["lastModifyUser"]);
     }
     if (_json.containsKey("parentId")) {
       parentId = _json["parentId"];
@@ -2457,15 +2562,15 @@ class Project {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
     if (creator != null) {
-      _json["creator"] = (creator).toJson();
+      _json["creator"] = creator.toJson();
     }
     if (lastModifyUser != null) {
-      _json["lastModifyUser"] = (lastModifyUser).toJson();
+      _json["lastModifyUser"] = lastModifyUser.toJson();
     }
     if (parentId != null) {
       _json["parentId"] = parentId;
@@ -2492,15 +2597,15 @@ class ScriptExecutionResult {
 
   ScriptExecutionResult.fromJson(core.Map _json) {
     if (_json.containsKey("returnValue")) {
-      returnValue = new Value.fromJson(_json["returnValue"]);
+      returnValue = Value.fromJson(_json["returnValue"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (returnValue != null) {
-      _json["returnValue"] = (returnValue).toJson();
+      _json["returnValue"] = returnValue.toJson();
     }
     return _json;
   }
@@ -2527,7 +2632,7 @@ class ScriptStackTraceElement {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (function != null) {
       _json["function"] = function;
     }
@@ -2578,7 +2683,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -2604,17 +2709,17 @@ class Struct {
     if (_json.containsKey("fields")) {
       fields = commons.mapMap<core.Map, Value>(
           _json["fields"].cast<core.String, core.Map>(),
-          (core.Map item) => new Value.fromJson(item));
+          (core.Map item) => Value.fromJson(item));
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fields != null) {
       _json["fields"] =
           commons.mapMap<Value, core.Map<core.String, core.Object>>(
-              fields, (Value item) => (item).toJson());
+              fields, (Value item) => item.toJson());
     }
     return _json;
   }
@@ -2629,16 +2734,15 @@ class UpdateDeploymentRequest {
 
   UpdateDeploymentRequest.fromJson(core.Map _json) {
     if (_json.containsKey("deploymentConfig")) {
-      deploymentConfig =
-          new DeploymentConfig.fromJson(_json["deploymentConfig"]);
+      deploymentConfig = DeploymentConfig.fromJson(_json["deploymentConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deploymentConfig != null) {
-      _json["deploymentConfig"] = (deploymentConfig).toJson();
+      _json["deploymentConfig"] = deploymentConfig.toJson();
     }
     return _json;
   }
@@ -2652,9 +2756,8 @@ class Value {
 
   /// Represents raw byte values.
   core.String bytesValue;
-  core.List<core.int> get bytesValueAsBytes {
-    return convert.base64.decode(bytesValue);
-  }
+  core.List<core.int> get bytesValueAsBytes =>
+      convert.base64.decode(bytesValue);
 
   set bytesValueAsBytes(core.List<core.int> _bytes) {
     bytesValue =
@@ -2700,7 +2803,7 @@ class Value {
       dateValue = _json["dateValue"];
     }
     if (_json.containsKey("listValue")) {
-      listValue = new ListValue.fromJson(_json["listValue"]);
+      listValue = ListValue.fromJson(_json["listValue"]);
     }
     if (_json.containsKey("nullValue")) {
       nullValue = _json["nullValue"];
@@ -2716,13 +2819,13 @@ class Value {
       stringValue = _json["stringValue"];
     }
     if (_json.containsKey("structValue")) {
-      structValue = new Struct.fromJson(_json["structValue"]);
+      structValue = Struct.fromJson(_json["structValue"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boolValue != null) {
       _json["boolValue"] = boolValue;
     }
@@ -2733,7 +2836,7 @@ class Value {
       _json["dateValue"] = dateValue;
     }
     if (listValue != null) {
-      _json["listValue"] = (listValue).toJson();
+      _json["listValue"] = listValue.toJson();
     }
     if (nullValue != null) {
       _json["nullValue"] = nullValue;
@@ -2748,7 +2851,7 @@ class Value {
       _json["stringValue"] = stringValue;
     }
     if (structValue != null) {
-      _json["structValue"] = (structValue).toJson();
+      _json["structValue"] = structValue.toJson();
     }
     return _json;
   }
@@ -2790,7 +2893,7 @@ class Version {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }

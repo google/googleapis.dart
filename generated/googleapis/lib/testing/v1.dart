@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.testing.v1;
 
@@ -30,16 +48,16 @@ class TestingApi {
   final commons.ApiRequester _requester;
 
   ApplicationDetailServiceResourceApi get applicationDetailService =>
-      new ApplicationDetailServiceResourceApi(_requester);
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+      ApplicationDetailServiceResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
   TestEnvironmentCatalogResourceApi get testEnvironmentCatalog =>
-      new TestEnvironmentCatalogResourceApi(_requester);
+      TestEnvironmentCatalogResourceApi(_requester);
 
   TestingApi(http.Client client,
       {core.String rootUrl = "https://testing.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ApplicationDetailServiceResourceApi {
@@ -64,17 +82,19 @@ class ApplicationDetailServiceResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GetApkDetailsResponse> getApkDetails(FileReference request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GetApkDetailsResponse> getApkDetails(
+    FileReference request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -82,13 +102,16 @@ class ApplicationDetailServiceResourceApi {
 
     _url = 'v1/applicationDetailService/getApkDetails';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GetApkDetailsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GetApkDetailsResponse.fromJson(data));
   }
 }
 
@@ -96,7 +119,7 @@ class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsTestMatricesResourceApi get testMatrices =>
-      new ProjectsTestMatricesResourceApi(_requester);
+      ProjectsTestMatricesResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -131,20 +154,22 @@ class ProjectsTestMatricesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CancelTestMatrixResponse> cancel(
-      core.String projectId, core.String testMatrixId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String projectId,
+    core.String testMatrixId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (testMatrixId == null) {
-      throw new core.ArgumentError("Parameter testMatrixId is required.");
+      throw core.ArgumentError("Parameter testMatrixId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -156,14 +181,16 @@ class ProjectsTestMatricesResourceApi {
         commons.Escaper.ecapeVariable('$testMatrixId') +
         ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new CancelTestMatrixResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CancelTestMatrixResponse.fromJson(data));
   }
 
   /// Creates and runs a matrix of tests according to the given specifications.
@@ -194,20 +221,24 @@ class ProjectsTestMatricesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TestMatrix> create(TestMatrix request, core.String projectId,
-      {core.String requestId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<TestMatrix> create(
+    TestMatrix request,
+    core.String projectId, {
+    core.String requestId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
@@ -220,13 +251,16 @@ class ProjectsTestMatricesResourceApi {
         commons.Escaper.ecapeVariable('$projectId') +
         '/testMatrices';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TestMatrix.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestMatrix.fromJson(data));
   }
 
   /// Checks the status of a test matrix. May return any of the following
@@ -250,20 +284,23 @@ class ProjectsTestMatricesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TestMatrix> get(core.String projectId, core.String testMatrixId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<TestMatrix> get(
+    core.String projectId,
+    core.String testMatrixId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (testMatrixId == null) {
-      throw new core.ArgumentError("Parameter testMatrixId is required.");
+      throw core.ArgumentError("Parameter testMatrixId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -274,13 +311,16 @@ class ProjectsTestMatricesResourceApi {
         '/testMatrices/' +
         commons.Escaper.ecapeVariable('$testMatrixId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TestMatrix.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestMatrix.fromJson(data));
   }
 }
 
@@ -323,17 +363,20 @@ class TestEnvironmentCatalogResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TestEnvironmentCatalog> get(core.String environmentType,
-      {core.String projectId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<TestEnvironmentCatalog> get(
+    core.String environmentType, {
+    core.String projectId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (environmentType == null) {
-      throw new core.ArgumentError("Parameter environmentType is required.");
+      throw core.ArgumentError("Parameter environmentType is required.");
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
@@ -345,13 +388,16 @@ class TestEnvironmentCatalogResourceApi {
     _url = 'v1/testEnvironmentCatalog/' +
         commons.Escaper.ecapeVariable('$environmentType');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TestEnvironmentCatalog.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestEnvironmentCatalog.fromJson(data));
   }
 }
 
@@ -364,15 +410,15 @@ class Account {
 
   Account.fromJson(core.Map _json) {
     if (_json.containsKey("googleAuto")) {
-      googleAuto = new GoogleAuto.fromJson(_json["googleAuto"]);
+      googleAuto = GoogleAuto.fromJson(_json["googleAuto"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (googleAuto != null) {
-      _json["googleAuto"] = (googleAuto).toJson();
+      _json["googleAuto"] = googleAuto.toJson();
     }
     return _json;
   }
@@ -415,7 +461,7 @@ class AndroidDevice {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (androidModelId != null) {
       _json["androidModelId"] = androidModelId;
     }
@@ -448,31 +494,31 @@ class AndroidDeviceCatalog {
   AndroidDeviceCatalog.fromJson(core.Map _json) {
     if (_json.containsKey("models")) {
       models = (_json["models"] as core.List)
-          .map<AndroidModel>((value) => new AndroidModel.fromJson(value))
+          .map<AndroidModel>((value) => AndroidModel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("runtimeConfiguration")) {
-      runtimeConfiguration = new AndroidRuntimeConfiguration.fromJson(
-          _json["runtimeConfiguration"]);
+      runtimeConfiguration =
+          AndroidRuntimeConfiguration.fromJson(_json["runtimeConfiguration"]);
     }
     if (_json.containsKey("versions")) {
       versions = (_json["versions"] as core.List)
-          .map<AndroidVersion>((value) => new AndroidVersion.fromJson(value))
+          .map<AndroidVersion>((value) => AndroidVersion.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (models != null) {
-      _json["models"] = models.map((value) => (value).toJson()).toList();
+      _json["models"] = models.map((value) => value.toJson()).toList();
     }
     if (runtimeConfiguration != null) {
-      _json["runtimeConfiguration"] = (runtimeConfiguration).toJson();
+      _json["runtimeConfiguration"] = runtimeConfiguration.toJson();
     }
     if (versions != null) {
-      _json["versions"] = versions.map((value) => (value).toJson()).toList();
+      _json["versions"] = versions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -488,17 +534,17 @@ class AndroidDeviceList {
   AndroidDeviceList.fromJson(core.Map _json) {
     if (_json.containsKey("androidDevices")) {
       androidDevices = (_json["androidDevices"] as core.List)
-          .map<AndroidDevice>((value) => new AndroidDevice.fromJson(value))
+          .map<AndroidDevice>((value) => AndroidDevice.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (androidDevices != null) {
       _json["androidDevices"] =
-          androidDevices.map((value) => (value).toJson()).toList();
+          androidDevices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -563,10 +609,10 @@ class AndroidInstrumentationTest {
 
   AndroidInstrumentationTest.fromJson(core.Map _json) {
     if (_json.containsKey("appApk")) {
-      appApk = new FileReference.fromJson(_json["appApk"]);
+      appApk = FileReference.fromJson(_json["appApk"]);
     }
     if (_json.containsKey("appBundle")) {
-      appBundle = new AppBundle.fromJson(_json["appBundle"]);
+      appBundle = AppBundle.fromJson(_json["appBundle"]);
     }
     if (_json.containsKey("appPackageId")) {
       appPackageId = _json["appPackageId"];
@@ -575,10 +621,10 @@ class AndroidInstrumentationTest {
       orchestratorOption = _json["orchestratorOption"];
     }
     if (_json.containsKey("shardingOption")) {
-      shardingOption = new ShardingOption.fromJson(_json["shardingOption"]);
+      shardingOption = ShardingOption.fromJson(_json["shardingOption"]);
     }
     if (_json.containsKey("testApk")) {
-      testApk = new FileReference.fromJson(_json["testApk"]);
+      testApk = FileReference.fromJson(_json["testApk"]);
     }
     if (_json.containsKey("testPackageId")) {
       testPackageId = _json["testPackageId"];
@@ -593,12 +639,12 @@ class AndroidInstrumentationTest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appApk != null) {
-      _json["appApk"] = (appApk).toJson();
+      _json["appApk"] = appApk.toJson();
     }
     if (appBundle != null) {
-      _json["appBundle"] = (appBundle).toJson();
+      _json["appBundle"] = appBundle.toJson();
     }
     if (appPackageId != null) {
       _json["appPackageId"] = appPackageId;
@@ -607,10 +653,10 @@ class AndroidInstrumentationTest {
       _json["orchestratorOption"] = orchestratorOption;
     }
     if (shardingOption != null) {
-      _json["shardingOption"] = (shardingOption).toJson();
+      _json["shardingOption"] = shardingOption.toJson();
     }
     if (testApk != null) {
-      _json["testApk"] = (testApk).toJson();
+      _json["testApk"] = testApk.toJson();
     }
     if (testPackageId != null) {
       _json["testPackageId"] = testPackageId;
@@ -668,7 +714,7 @@ class AndroidMatrix {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (androidModelIds != null) {
       _json["androidModelIds"] = androidModelIds;
     }
@@ -809,7 +855,7 @@ class AndroidModel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (brand != null) {
       _json["brand"] = brand;
     }
@@ -903,10 +949,10 @@ class AndroidRoboTest {
 
   AndroidRoboTest.fromJson(core.Map _json) {
     if (_json.containsKey("appApk")) {
-      appApk = new FileReference.fromJson(_json["appApk"]);
+      appApk = FileReference.fromJson(_json["appApk"]);
     }
     if (_json.containsKey("appBundle")) {
-      appBundle = new AppBundle.fromJson(_json["appBundle"]);
+      appBundle = AppBundle.fromJson(_json["appBundle"]);
     }
     if (_json.containsKey("appInitialActivity")) {
       appInitialActivity = _json["appInitialActivity"];
@@ -922,28 +968,28 @@ class AndroidRoboTest {
     }
     if (_json.containsKey("roboDirectives")) {
       roboDirectives = (_json["roboDirectives"] as core.List)
-          .map<RoboDirective>((value) => new RoboDirective.fromJson(value))
+          .map<RoboDirective>((value) => RoboDirective.fromJson(value))
           .toList();
     }
     if (_json.containsKey("roboScript")) {
-      roboScript = new FileReference.fromJson(_json["roboScript"]);
+      roboScript = FileReference.fromJson(_json["roboScript"]);
     }
     if (_json.containsKey("startingIntents")) {
       startingIntents = (_json["startingIntents"] as core.List)
           .map<RoboStartingIntent>(
-              (value) => new RoboStartingIntent.fromJson(value))
+              (value) => RoboStartingIntent.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appApk != null) {
-      _json["appApk"] = (appApk).toJson();
+      _json["appApk"] = appApk.toJson();
     }
     if (appBundle != null) {
-      _json["appBundle"] = (appBundle).toJson();
+      _json["appBundle"] = appBundle.toJson();
     }
     if (appInitialActivity != null) {
       _json["appInitialActivity"] = appInitialActivity;
@@ -959,14 +1005,14 @@ class AndroidRoboTest {
     }
     if (roboDirectives != null) {
       _json["roboDirectives"] =
-          roboDirectives.map((value) => (value).toJson()).toList();
+          roboDirectives.map((value) => value.toJson()).toList();
     }
     if (roboScript != null) {
-      _json["roboScript"] = (roboScript).toJson();
+      _json["roboScript"] = roboScript.toJson();
     }
     if (startingIntents != null) {
       _json["startingIntents"] =
-          startingIntents.map((value) => (value).toJson()).toList();
+          startingIntents.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -985,25 +1031,25 @@ class AndroidRuntimeConfiguration {
   AndroidRuntimeConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey("locales")) {
       locales = (_json["locales"] as core.List)
-          .map<Locale>((value) => new Locale.fromJson(value))
+          .map<Locale>((value) => Locale.fromJson(value))
           .toList();
     }
     if (_json.containsKey("orientations")) {
       orientations = (_json["orientations"] as core.List)
-          .map<Orientation>((value) => new Orientation.fromJson(value))
+          .map<Orientation>((value) => Orientation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (locales != null) {
-      _json["locales"] = locales.map((value) => (value).toJson()).toList();
+      _json["locales"] = locales.map((value) => value.toJson()).toList();
     }
     if (orientations != null) {
       _json["orientations"] =
-          orientations.map((value) => (value).toJson()).toList();
+          orientations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1039,10 +1085,10 @@ class AndroidTestLoop {
 
   AndroidTestLoop.fromJson(core.Map _json) {
     if (_json.containsKey("appApk")) {
-      appApk = new FileReference.fromJson(_json["appApk"]);
+      appApk = FileReference.fromJson(_json["appApk"]);
     }
     if (_json.containsKey("appBundle")) {
-      appBundle = new AppBundle.fromJson(_json["appBundle"]);
+      appBundle = AppBundle.fromJson(_json["appBundle"]);
     }
     if (_json.containsKey("appPackageId")) {
       appPackageId = _json["appPackageId"];
@@ -1058,12 +1104,12 @@ class AndroidTestLoop {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appApk != null) {
-      _json["appApk"] = (appApk).toJson();
+      _json["appApk"] = appApk.toJson();
     }
     if (appBundle != null) {
-      _json["appBundle"] = (appBundle).toJson();
+      _json["appBundle"] = appBundle.toJson();
     }
     if (appPackageId != null) {
       _json["appPackageId"] = appPackageId;
@@ -1113,13 +1159,13 @@ class AndroidVersion {
       codeName = _json["codeName"];
     }
     if (_json.containsKey("distribution")) {
-      distribution = new Distribution.fromJson(_json["distribution"]);
+      distribution = Distribution.fromJson(_json["distribution"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("releaseDate")) {
-      releaseDate = new Date.fromJson(_json["releaseDate"]);
+      releaseDate = Date.fromJson(_json["releaseDate"]);
     }
     if (_json.containsKey("tags")) {
       tags = (_json["tags"] as core.List).cast<core.String>();
@@ -1131,7 +1177,7 @@ class AndroidVersion {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiLevel != null) {
       _json["apiLevel"] = apiLevel;
     }
@@ -1139,13 +1185,13 @@ class AndroidVersion {
       _json["codeName"] = codeName;
     }
     if (distribution != null) {
-      _json["distribution"] = (distribution).toJson();
+      _json["distribution"] = distribution.toJson();
     }
     if (id != null) {
       _json["id"] = id;
     }
     if (releaseDate != null) {
-      _json["releaseDate"] = (releaseDate).toJson();
+      _json["releaseDate"] = releaseDate.toJson();
     }
     if (tags != null) {
       _json["tags"] = tags;
@@ -1170,7 +1216,7 @@ class Apk {
 
   Apk.fromJson(core.Map _json) {
     if (_json.containsKey("location")) {
-      location = new FileReference.fromJson(_json["location"]);
+      location = FileReference.fromJson(_json["location"]);
     }
     if (_json.containsKey("packageName")) {
       packageName = _json["packageName"];
@@ -1179,9 +1225,9 @@ class Apk {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (location != null) {
-      _json["location"] = (location).toJson();
+      _json["location"] = location.toJson();
     }
     if (packageName != null) {
       _json["packageName"] = packageName;
@@ -1199,15 +1245,15 @@ class ApkDetail {
 
   ApkDetail.fromJson(core.Map _json) {
     if (_json.containsKey("apkManifest")) {
-      apkManifest = new ApkManifest.fromJson(_json["apkManifest"]);
+      apkManifest = ApkManifest.fromJson(_json["apkManifest"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apkManifest != null) {
-      _json["apkManifest"] = (apkManifest).toJson();
+      _json["apkManifest"] = apkManifest.toJson();
     }
     return _json;
   }
@@ -1240,7 +1286,7 @@ class ApkManifest {
     }
     if (_json.containsKey("intentFilters")) {
       intentFilters = (_json["intentFilters"] as core.List)
-          .map<IntentFilter>((value) => new IntentFilter.fromJson(value))
+          .map<IntentFilter>((value) => IntentFilter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("maxSdkVersion")) {
@@ -1259,13 +1305,13 @@ class ApkManifest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (applicationLabel != null) {
       _json["applicationLabel"] = applicationLabel;
     }
     if (intentFilters != null) {
       _json["intentFilters"] =
-          intentFilters.map((value) => (value).toJson()).toList();
+          intentFilters.map((value) => value.toJson()).toList();
     }
     if (maxSdkVersion != null) {
       _json["maxSdkVersion"] = maxSdkVersion;
@@ -1295,15 +1341,15 @@ class AppBundle {
 
   AppBundle.fromJson(core.Map _json) {
     if (_json.containsKey("bundleLocation")) {
-      bundleLocation = new FileReference.fromJson(_json["bundleLocation"]);
+      bundleLocation = FileReference.fromJson(_json["bundleLocation"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bundleLocation != null) {
-      _json["bundleLocation"] = (bundleLocation).toJson();
+      _json["bundleLocation"] = bundleLocation.toJson();
     }
     return _json;
   }
@@ -1352,7 +1398,7 @@ class CancelTestMatrixResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (testState != null) {
       _json["testState"] = testState;
     }
@@ -1373,8 +1419,7 @@ class ClientInfo {
   ClientInfo.fromJson(core.Map _json) {
     if (_json.containsKey("clientInfoDetails")) {
       clientInfoDetails = (_json["clientInfoDetails"] as core.List)
-          .map<ClientInfoDetail>(
-              (value) => new ClientInfoDetail.fromJson(value))
+          .map<ClientInfoDetail>((value) => ClientInfoDetail.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -1384,10 +1429,10 @@ class ClientInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clientInfoDetails != null) {
       _json["clientInfoDetails"] =
-          clientInfoDetails.map((value) => (value).toJson()).toList();
+          clientInfoDetails.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -1418,7 +1463,7 @@ class ClientInfoDetail {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
@@ -1467,7 +1512,7 @@ class Date {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (day != null) {
       _json["day"] = day;
     }
@@ -1493,21 +1538,21 @@ class DeviceFile {
 
   DeviceFile.fromJson(core.Map _json) {
     if (_json.containsKey("obbFile")) {
-      obbFile = new ObbFile.fromJson(_json["obbFile"]);
+      obbFile = ObbFile.fromJson(_json["obbFile"]);
     }
     if (_json.containsKey("regularFile")) {
-      regularFile = new RegularFile.fromJson(_json["regularFile"]);
+      regularFile = RegularFile.fromJson(_json["regularFile"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (obbFile != null) {
-      _json["obbFile"] = (obbFile).toJson();
+      _json["obbFile"] = obbFile.toJson();
     }
     if (regularFile != null) {
-      _json["regularFile"] = (regularFile).toJson();
+      _json["regularFile"] = regularFile.toJson();
     }
     return _json;
   }
@@ -1535,7 +1580,7 @@ class DeviceIpBlock {
 
   DeviceIpBlock.fromJson(core.Map _json) {
     if (_json.containsKey("addedDate")) {
-      addedDate = new Date.fromJson(_json["addedDate"]);
+      addedDate = Date.fromJson(_json["addedDate"]);
     }
     if (_json.containsKey("block")) {
       block = _json["block"];
@@ -1547,9 +1592,9 @@ class DeviceIpBlock {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (addedDate != null) {
-      _json["addedDate"] = (addedDate).toJson();
+      _json["addedDate"] = addedDate.toJson();
     }
     if (block != null) {
       _json["block"] = block;
@@ -1571,16 +1616,16 @@ class DeviceIpBlockCatalog {
   DeviceIpBlockCatalog.fromJson(core.Map _json) {
     if (_json.containsKey("ipBlocks")) {
       ipBlocks = (_json["ipBlocks"] as core.List)
-          .map<DeviceIpBlock>((value) => new DeviceIpBlock.fromJson(value))
+          .map<DeviceIpBlock>((value) => DeviceIpBlock.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ipBlocks != null) {
-      _json["ipBlocks"] = ipBlocks.map((value) => (value).toJson()).toList();
+      _json["ipBlocks"] = ipBlocks.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1609,7 +1654,7 @@ class Distribution {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (marketShare != null) {
       _json["marketShare"] = marketShare;
     }
@@ -1632,21 +1677,21 @@ class Environment {
 
   Environment.fromJson(core.Map _json) {
     if (_json.containsKey("androidDevice")) {
-      androidDevice = new AndroidDevice.fromJson(_json["androidDevice"]);
+      androidDevice = AndroidDevice.fromJson(_json["androidDevice"]);
     }
     if (_json.containsKey("iosDevice")) {
-      iosDevice = new IosDevice.fromJson(_json["iosDevice"]);
+      iosDevice = IosDevice.fromJson(_json["iosDevice"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (androidDevice != null) {
-      _json["androidDevice"] = (androidDevice).toJson();
+      _json["androidDevice"] = androidDevice.toJson();
     }
     if (iosDevice != null) {
-      _json["iosDevice"] = (iosDevice).toJson();
+      _json["iosDevice"] = iosDevice.toJson();
     }
     return _json;
   }
@@ -1669,27 +1714,27 @@ class EnvironmentMatrix {
   EnvironmentMatrix.fromJson(core.Map _json) {
     if (_json.containsKey("androidDeviceList")) {
       androidDeviceList =
-          new AndroidDeviceList.fromJson(_json["androidDeviceList"]);
+          AndroidDeviceList.fromJson(_json["androidDeviceList"]);
     }
     if (_json.containsKey("androidMatrix")) {
-      androidMatrix = new AndroidMatrix.fromJson(_json["androidMatrix"]);
+      androidMatrix = AndroidMatrix.fromJson(_json["androidMatrix"]);
     }
     if (_json.containsKey("iosDeviceList")) {
-      iosDeviceList = new IosDeviceList.fromJson(_json["iosDeviceList"]);
+      iosDeviceList = IosDeviceList.fromJson(_json["iosDeviceList"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (androidDeviceList != null) {
-      _json["androidDeviceList"] = (androidDeviceList).toJson();
+      _json["androidDeviceList"] = androidDeviceList.toJson();
     }
     if (androidMatrix != null) {
-      _json["androidMatrix"] = (androidMatrix).toJson();
+      _json["androidMatrix"] = androidMatrix.toJson();
     }
     if (iosDeviceList != null) {
-      _json["iosDeviceList"] = (iosDeviceList).toJson();
+      _json["iosDeviceList"] = iosDeviceList.toJson();
     }
     return _json;
   }
@@ -1716,7 +1761,7 @@ class EnvironmentVariable {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
@@ -1744,7 +1789,7 @@ class FileReference {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gcsPath != null) {
       _json["gcsPath"] = gcsPath;
     }
@@ -1761,15 +1806,15 @@ class GetApkDetailsResponse {
 
   GetApkDetailsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("apkDetail")) {
-      apkDetail = new ApkDetail.fromJson(_json["apkDetail"]);
+      apkDetail = ApkDetail.fromJson(_json["apkDetail"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apkDetail != null) {
-      _json["apkDetail"] = (apkDetail).toJson();
+      _json["apkDetail"] = apkDetail.toJson();
     }
     return _json;
   }
@@ -1788,7 +1833,7 @@ class GoogleAuto {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1810,7 +1855,7 @@ class GoogleCloudStorage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gcsPath != null) {
       _json["gcsPath"] = gcsPath;
     }
@@ -1846,7 +1891,7 @@ class IntentFilter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (actionNames != null) {
       _json["actionNames"] = actionNames;
     }
@@ -1897,7 +1942,7 @@ class IosDevice {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (iosModelId != null) {
       _json["iosModelId"] = iosModelId;
     }
@@ -1933,40 +1978,40 @@ class IosDeviceCatalog {
   IosDeviceCatalog.fromJson(core.Map _json) {
     if (_json.containsKey("models")) {
       models = (_json["models"] as core.List)
-          .map<IosModel>((value) => new IosModel.fromJson(value))
+          .map<IosModel>((value) => IosModel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("runtimeConfiguration")) {
       runtimeConfiguration =
-          new IosRuntimeConfiguration.fromJson(_json["runtimeConfiguration"]);
+          IosRuntimeConfiguration.fromJson(_json["runtimeConfiguration"]);
     }
     if (_json.containsKey("versions")) {
       versions = (_json["versions"] as core.List)
-          .map<IosVersion>((value) => new IosVersion.fromJson(value))
+          .map<IosVersion>((value) => IosVersion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("xcodeVersions")) {
       xcodeVersions = (_json["xcodeVersions"] as core.List)
-          .map<XcodeVersion>((value) => new XcodeVersion.fromJson(value))
+          .map<XcodeVersion>((value) => XcodeVersion.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (models != null) {
-      _json["models"] = models.map((value) => (value).toJson()).toList();
+      _json["models"] = models.map((value) => value.toJson()).toList();
     }
     if (runtimeConfiguration != null) {
-      _json["runtimeConfiguration"] = (runtimeConfiguration).toJson();
+      _json["runtimeConfiguration"] = runtimeConfiguration.toJson();
     }
     if (versions != null) {
-      _json["versions"] = versions.map((value) => (value).toJson()).toList();
+      _json["versions"] = versions.map((value) => value.toJson()).toList();
     }
     if (xcodeVersions != null) {
       _json["xcodeVersions"] =
-          xcodeVersions.map((value) => (value).toJson()).toList();
+          xcodeVersions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1991,7 +2036,7 @@ class IosDeviceFile {
       bundleId = _json["bundleId"];
     }
     if (_json.containsKey("content")) {
-      content = new FileReference.fromJson(_json["content"]);
+      content = FileReference.fromJson(_json["content"]);
     }
     if (_json.containsKey("devicePath")) {
       devicePath = _json["devicePath"];
@@ -2000,12 +2045,12 @@ class IosDeviceFile {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bundleId != null) {
       _json["bundleId"] = bundleId;
     }
     if (content != null) {
-      _json["content"] = (content).toJson();
+      _json["content"] = content.toJson();
     }
     if (devicePath != null) {
       _json["devicePath"] = devicePath;
@@ -2024,17 +2069,16 @@ class IosDeviceList {
   IosDeviceList.fromJson(core.Map _json) {
     if (_json.containsKey("iosDevices")) {
       iosDevices = (_json["iosDevices"] as core.List)
-          .map<IosDevice>((value) => new IosDevice.fromJson(value))
+          .map<IosDevice>((value) => IosDevice.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (iosDevices != null) {
-      _json["iosDevices"] =
-          iosDevices.map((value) => (value).toJson()).toList();
+      _json["iosDevices"] = iosDevices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2114,7 +2158,7 @@ class IosModel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceCapabilities != null) {
       _json["deviceCapabilities"] = deviceCapabilities;
     }
@@ -2159,25 +2203,25 @@ class IosRuntimeConfiguration {
   IosRuntimeConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey("locales")) {
       locales = (_json["locales"] as core.List)
-          .map<Locale>((value) => new Locale.fromJson(value))
+          .map<Locale>((value) => Locale.fromJson(value))
           .toList();
     }
     if (_json.containsKey("orientations")) {
       orientations = (_json["orientations"] as core.List)
-          .map<Orientation>((value) => new Orientation.fromJson(value))
+          .map<Orientation>((value) => Orientation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (locales != null) {
-      _json["locales"] = locales.map((value) => (value).toJson()).toList();
+      _json["locales"] = locales.map((value) => value.toJson()).toList();
     }
     if (orientations != null) {
       _json["orientations"] =
-          orientations.map((value) => (value).toJson()).toList();
+          orientations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2204,7 +2248,7 @@ class IosTestLoop {
       appBundleId = _json["appBundleId"];
     }
     if (_json.containsKey("appIpa")) {
-      appIpa = new FileReference.fromJson(_json["appIpa"]);
+      appIpa = FileReference.fromJson(_json["appIpa"]);
     }
     if (_json.containsKey("scenarios")) {
       scenarios = (_json["scenarios"] as core.List).cast<core.int>();
@@ -2213,12 +2257,12 @@ class IosTestLoop {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appBundleId != null) {
       _json["appBundleId"] = appBundleId;
     }
     if (appIpa != null) {
-      _json["appIpa"] = (appIpa).toJson();
+      _json["appIpa"] = appIpa.toJson();
     }
     if (scenarios != null) {
       _json["scenarios"] = scenarios;
@@ -2252,7 +2296,7 @@ class IosTestSetup {
   IosTestSetup.fromJson(core.Map _json) {
     if (_json.containsKey("additionalIpas")) {
       additionalIpas = (_json["additionalIpas"] as core.List)
-          .map<FileReference>((value) => new FileReference.fromJson(value))
+          .map<FileReference>((value) => FileReference.fromJson(value))
           .toList();
     }
     if (_json.containsKey("networkProfile")) {
@@ -2260,32 +2304,32 @@ class IosTestSetup {
     }
     if (_json.containsKey("pullDirectories")) {
       pullDirectories = (_json["pullDirectories"] as core.List)
-          .map<IosDeviceFile>((value) => new IosDeviceFile.fromJson(value))
+          .map<IosDeviceFile>((value) => IosDeviceFile.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pushFiles")) {
       pushFiles = (_json["pushFiles"] as core.List)
-          .map<IosDeviceFile>((value) => new IosDeviceFile.fromJson(value))
+          .map<IosDeviceFile>((value) => IosDeviceFile.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (additionalIpas != null) {
       _json["additionalIpas"] =
-          additionalIpas.map((value) => (value).toJson()).toList();
+          additionalIpas.map((value) => value.toJson()).toList();
     }
     if (networkProfile != null) {
       _json["networkProfile"] = networkProfile;
     }
     if (pullDirectories != null) {
       _json["pullDirectories"] =
-          pullDirectories.map((value) => (value).toJson()).toList();
+          pullDirectories.map((value) => value.toJson()).toList();
     }
     if (pushFiles != null) {
-      _json["pushFiles"] = pushFiles.map((value) => (value).toJson()).toList();
+      _json["pushFiles"] = pushFiles.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2332,7 +2376,7 @@ class IosVersion {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -2394,19 +2438,19 @@ class IosXcTest {
       testSpecialEntitlements = _json["testSpecialEntitlements"];
     }
     if (_json.containsKey("testsZip")) {
-      testsZip = new FileReference.fromJson(_json["testsZip"]);
+      testsZip = FileReference.fromJson(_json["testsZip"]);
     }
     if (_json.containsKey("xcodeVersion")) {
       xcodeVersion = _json["xcodeVersion"];
     }
     if (_json.containsKey("xctestrun")) {
-      xctestrun = new FileReference.fromJson(_json["xctestrun"]);
+      xctestrun = FileReference.fromJson(_json["xctestrun"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appBundleId != null) {
       _json["appBundleId"] = appBundleId;
     }
@@ -2414,13 +2458,13 @@ class IosXcTest {
       _json["testSpecialEntitlements"] = testSpecialEntitlements;
     }
     if (testsZip != null) {
-      _json["testsZip"] = (testsZip).toJson();
+      _json["testsZip"] = testsZip.toJson();
     }
     if (xcodeVersion != null) {
       _json["xcodeVersion"] = xcodeVersion;
     }
     if (xctestrun != null) {
-      _json["xctestrun"] = (xctestrun).toJson();
+      _json["xctestrun"] = xctestrun.toJson();
     }
     return _json;
   }
@@ -2434,7 +2478,7 @@ class LauncherActivityIntent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2473,7 +2517,7 @@ class Locale {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -2506,17 +2550,17 @@ class ManualSharding {
     if (_json.containsKey("testTargetsForShard")) {
       testTargetsForShard = (_json["testTargetsForShard"] as core.List)
           .map<TestTargetsForShard>(
-              (value) => new TestTargetsForShard.fromJson(value))
+              (value) => TestTargetsForShard.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (testTargetsForShard != null) {
       _json["testTargetsForShard"] =
-          testTargetsForShard.map((value) => (value).toJson()).toList();
+          testTargetsForShard.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2536,27 +2580,27 @@ class NetworkConfiguration {
 
   NetworkConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey("downRule")) {
-      downRule = new TrafficRule.fromJson(_json["downRule"]);
+      downRule = TrafficRule.fromJson(_json["downRule"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("upRule")) {
-      upRule = new TrafficRule.fromJson(_json["upRule"]);
+      upRule = TrafficRule.fromJson(_json["upRule"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (downRule != null) {
-      _json["downRule"] = (downRule).toJson();
+      _json["downRule"] = downRule.toJson();
     }
     if (id != null) {
       _json["id"] = id;
     }
     if (upRule != null) {
-      _json["upRule"] = (upRule).toJson();
+      _json["upRule"] = upRule.toJson();
     }
     return _json;
   }
@@ -2571,17 +2615,17 @@ class NetworkConfigurationCatalog {
     if (_json.containsKey("configurations")) {
       configurations = (_json["configurations"] as core.List)
           .map<NetworkConfiguration>(
-              (value) => new NetworkConfiguration.fromJson(value))
+              (value) => NetworkConfiguration.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (configurations != null) {
       _json["configurations"] =
-          configurations.map((value) => (value).toJson()).toList();
+          configurations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2601,7 +2645,7 @@ class ObbFile {
 
   ObbFile.fromJson(core.Map _json) {
     if (_json.containsKey("obb")) {
-      obb = new FileReference.fromJson(_json["obb"]);
+      obb = FileReference.fromJson(_json["obb"]);
     }
     if (_json.containsKey("obbFileName")) {
       obbFileName = _json["obbFileName"];
@@ -2610,9 +2654,9 @@ class ObbFile {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (obb != null) {
-      _json["obb"] = (obb).toJson();
+      _json["obb"] = obb.toJson();
     }
     if (obbFileName != null) {
       _json["obbFileName"] = obbFileName;
@@ -2648,7 +2692,7 @@ class Orientation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -2678,7 +2722,7 @@ class ProvidedSoftwareCatalog {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (orchestratorVersion != null) {
       _json["orchestratorVersion"] = orchestratorVersion;
     }
@@ -2708,7 +2752,7 @@ class RegularFile {
 
   RegularFile.fromJson(core.Map _json) {
     if (_json.containsKey("content")) {
-      content = new FileReference.fromJson(_json["content"]);
+      content = FileReference.fromJson(_json["content"]);
     }
     if (_json.containsKey("devicePath")) {
       devicePath = _json["devicePath"];
@@ -2717,9 +2761,9 @@ class RegularFile {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = (content).toJson();
+      _json["content"] = content.toJson();
     }
     if (devicePath != null) {
       _json["devicePath"] = devicePath;
@@ -2749,35 +2793,35 @@ class ResultStorage {
   ResultStorage.fromJson(core.Map _json) {
     if (_json.containsKey("googleCloudStorage")) {
       googleCloudStorage =
-          new GoogleCloudStorage.fromJson(_json["googleCloudStorage"]);
+          GoogleCloudStorage.fromJson(_json["googleCloudStorage"]);
     }
     if (_json.containsKey("resultsUrl")) {
       resultsUrl = _json["resultsUrl"];
     }
     if (_json.containsKey("toolResultsExecution")) {
       toolResultsExecution =
-          new ToolResultsExecution.fromJson(_json["toolResultsExecution"]);
+          ToolResultsExecution.fromJson(_json["toolResultsExecution"]);
     }
     if (_json.containsKey("toolResultsHistory")) {
       toolResultsHistory =
-          new ToolResultsHistory.fromJson(_json["toolResultsHistory"]);
+          ToolResultsHistory.fromJson(_json["toolResultsHistory"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (googleCloudStorage != null) {
-      _json["googleCloudStorage"] = (googleCloudStorage).toJson();
+      _json["googleCloudStorage"] = googleCloudStorage.toJson();
     }
     if (resultsUrl != null) {
       _json["resultsUrl"] = resultsUrl;
     }
     if (toolResultsExecution != null) {
-      _json["toolResultsExecution"] = (toolResultsExecution).toJson();
+      _json["toolResultsExecution"] = toolResultsExecution.toJson();
     }
     if (toolResultsHistory != null) {
-      _json["toolResultsHistory"] = (toolResultsHistory).toJson();
+      _json["toolResultsHistory"] = toolResultsHistory.toJson();
     }
     return _json;
   }
@@ -2823,7 +2867,7 @@ class RoboDirective {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (actionType != null) {
       _json["actionType"] = actionType;
     }
@@ -2853,10 +2897,10 @@ class RoboStartingIntent {
   RoboStartingIntent.fromJson(core.Map _json) {
     if (_json.containsKey("launcherActivity")) {
       launcherActivity =
-          new LauncherActivityIntent.fromJson(_json["launcherActivity"]);
+          LauncherActivityIntent.fromJson(_json["launcherActivity"]);
     }
     if (_json.containsKey("startActivity")) {
-      startActivity = new StartActivityIntent.fromJson(_json["startActivity"]);
+      startActivity = StartActivityIntent.fromJson(_json["startActivity"]);
     }
     if (_json.containsKey("timeout")) {
       timeout = _json["timeout"];
@@ -2865,12 +2909,12 @@ class RoboStartingIntent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (launcherActivity != null) {
-      _json["launcherActivity"] = (launcherActivity).toJson();
+      _json["launcherActivity"] = launcherActivity.toJson();
     }
     if (startActivity != null) {
-      _json["startActivity"] = (startActivity).toJson();
+      _json["startActivity"] = startActivity.toJson();
     }
     if (timeout != null) {
       _json["timeout"] = timeout;
@@ -2901,13 +2945,13 @@ class Shard {
     }
     if (_json.containsKey("testTargetsForShard")) {
       testTargetsForShard =
-          new TestTargetsForShard.fromJson(_json["testTargetsForShard"]);
+          TestTargetsForShard.fromJson(_json["testTargetsForShard"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (numShards != null) {
       _json["numShards"] = numShards;
     }
@@ -2915,7 +2959,7 @@ class Shard {
       _json["shardIndex"] = shardIndex;
     }
     if (testTargetsForShard != null) {
-      _json["testTargetsForShard"] = (testTargetsForShard).toJson();
+      _json["testTargetsForShard"] = testTargetsForShard.toJson();
     }
     return _json;
   }
@@ -2934,21 +2978,21 @@ class ShardingOption {
 
   ShardingOption.fromJson(core.Map _json) {
     if (_json.containsKey("manualSharding")) {
-      manualSharding = new ManualSharding.fromJson(_json["manualSharding"]);
+      manualSharding = ManualSharding.fromJson(_json["manualSharding"]);
     }
     if (_json.containsKey("uniformSharding")) {
-      uniformSharding = new UniformSharding.fromJson(_json["uniformSharding"]);
+      uniformSharding = UniformSharding.fromJson(_json["uniformSharding"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (manualSharding != null) {
-      _json["manualSharding"] = (manualSharding).toJson();
+      _json["manualSharding"] = manualSharding.toJson();
     }
     if (uniformSharding != null) {
-      _json["uniformSharding"] = (uniformSharding).toJson();
+      _json["uniformSharding"] = uniformSharding.toJson();
     }
     return _json;
   }
@@ -2981,7 +3025,7 @@ class StartActivityIntent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (action != null) {
       _json["action"] = action;
     }
@@ -3010,7 +3054,7 @@ class SystraceSetup {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (durationSeconds != null) {
       _json["durationSeconds"] = durationSeconds;
     }
@@ -3043,7 +3087,7 @@ class TestDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errorMessage != null) {
       _json["errorMessage"] = errorMessage;
     }
@@ -3076,44 +3120,43 @@ class TestEnvironmentCatalog {
   TestEnvironmentCatalog.fromJson(core.Map _json) {
     if (_json.containsKey("androidDeviceCatalog")) {
       androidDeviceCatalog =
-          new AndroidDeviceCatalog.fromJson(_json["androidDeviceCatalog"]);
+          AndroidDeviceCatalog.fromJson(_json["androidDeviceCatalog"]);
     }
     if (_json.containsKey("deviceIpBlockCatalog")) {
       deviceIpBlockCatalog =
-          new DeviceIpBlockCatalog.fromJson(_json["deviceIpBlockCatalog"]);
+          DeviceIpBlockCatalog.fromJson(_json["deviceIpBlockCatalog"]);
     }
     if (_json.containsKey("iosDeviceCatalog")) {
-      iosDeviceCatalog =
-          new IosDeviceCatalog.fromJson(_json["iosDeviceCatalog"]);
+      iosDeviceCatalog = IosDeviceCatalog.fromJson(_json["iosDeviceCatalog"]);
     }
     if (_json.containsKey("networkConfigurationCatalog")) {
-      networkConfigurationCatalog = new NetworkConfigurationCatalog.fromJson(
+      networkConfigurationCatalog = NetworkConfigurationCatalog.fromJson(
           _json["networkConfigurationCatalog"]);
     }
     if (_json.containsKey("softwareCatalog")) {
       softwareCatalog =
-          new ProvidedSoftwareCatalog.fromJson(_json["softwareCatalog"]);
+          ProvidedSoftwareCatalog.fromJson(_json["softwareCatalog"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (androidDeviceCatalog != null) {
-      _json["androidDeviceCatalog"] = (androidDeviceCatalog).toJson();
+      _json["androidDeviceCatalog"] = androidDeviceCatalog.toJson();
     }
     if (deviceIpBlockCatalog != null) {
-      _json["deviceIpBlockCatalog"] = (deviceIpBlockCatalog).toJson();
+      _json["deviceIpBlockCatalog"] = deviceIpBlockCatalog.toJson();
     }
     if (iosDeviceCatalog != null) {
-      _json["iosDeviceCatalog"] = (iosDeviceCatalog).toJson();
+      _json["iosDeviceCatalog"] = iosDeviceCatalog.toJson();
     }
     if (networkConfigurationCatalog != null) {
       _json["networkConfigurationCatalog"] =
-          (networkConfigurationCatalog).toJson();
+          networkConfigurationCatalog.toJson();
     }
     if (softwareCatalog != null) {
-      _json["softwareCatalog"] = (softwareCatalog).toJson();
+      _json["softwareCatalog"] = softwareCatalog.toJson();
     }
     return _json;
   }
@@ -3183,7 +3226,7 @@ class TestExecution {
 
   TestExecution.fromJson(core.Map _json) {
     if (_json.containsKey("environment")) {
-      environment = new Environment.fromJson(_json["environment"]);
+      environment = Environment.fromJson(_json["environment"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -3195,31 +3238,31 @@ class TestExecution {
       projectId = _json["projectId"];
     }
     if (_json.containsKey("shard")) {
-      shard = new Shard.fromJson(_json["shard"]);
+      shard = Shard.fromJson(_json["shard"]);
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
     if (_json.containsKey("testDetails")) {
-      testDetails = new TestDetails.fromJson(_json["testDetails"]);
+      testDetails = TestDetails.fromJson(_json["testDetails"]);
     }
     if (_json.containsKey("testSpecification")) {
       testSpecification =
-          new TestSpecification.fromJson(_json["testSpecification"]);
+          TestSpecification.fromJson(_json["testSpecification"]);
     }
     if (_json.containsKey("timestamp")) {
       timestamp = _json["timestamp"];
     }
     if (_json.containsKey("toolResultsStep")) {
-      toolResultsStep = new ToolResultsStep.fromJson(_json["toolResultsStep"]);
+      toolResultsStep = ToolResultsStep.fromJson(_json["toolResultsStep"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (environment != null) {
-      _json["environment"] = (environment).toJson();
+      _json["environment"] = environment.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -3231,22 +3274,22 @@ class TestExecution {
       _json["projectId"] = projectId;
     }
     if (shard != null) {
-      _json["shard"] = (shard).toJson();
+      _json["shard"] = shard.toJson();
     }
     if (state != null) {
       _json["state"] = state;
     }
     if (testDetails != null) {
-      _json["testDetails"] = (testDetails).toJson();
+      _json["testDetails"] = testDetails.toJson();
     }
     if (testSpecification != null) {
-      _json["testSpecification"] = (testSpecification).toJson();
+      _json["testSpecification"] = testSpecification.toJson();
     }
     if (timestamp != null) {
       _json["timestamp"] = timestamp;
     }
     if (toolResultsStep != null) {
-      _json["toolResultsStep"] = (toolResultsStep).toJson();
+      _json["toolResultsStep"] = toolResultsStep.toJson();
     }
     return _json;
   }
@@ -3412,11 +3455,11 @@ class TestMatrix {
 
   TestMatrix.fromJson(core.Map _json) {
     if (_json.containsKey("clientInfo")) {
-      clientInfo = new ClientInfo.fromJson(_json["clientInfo"]);
+      clientInfo = ClientInfo.fromJson(_json["clientInfo"]);
     }
     if (_json.containsKey("environmentMatrix")) {
       environmentMatrix =
-          new EnvironmentMatrix.fromJson(_json["environmentMatrix"]);
+          EnvironmentMatrix.fromJson(_json["environmentMatrix"]);
     }
     if (_json.containsKey("flakyTestAttempts")) {
       flakyTestAttempts = _json["flakyTestAttempts"];
@@ -3431,14 +3474,14 @@ class TestMatrix {
       projectId = _json["projectId"];
     }
     if (_json.containsKey("resultStorage")) {
-      resultStorage = new ResultStorage.fromJson(_json["resultStorage"]);
+      resultStorage = ResultStorage.fromJson(_json["resultStorage"]);
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
     if (_json.containsKey("testExecutions")) {
       testExecutions = (_json["testExecutions"] as core.List)
-          .map<TestExecution>((value) => new TestExecution.fromJson(value))
+          .map<TestExecution>((value) => TestExecution.fromJson(value))
           .toList();
     }
     if (_json.containsKey("testMatrixId")) {
@@ -3446,7 +3489,7 @@ class TestMatrix {
     }
     if (_json.containsKey("testSpecification")) {
       testSpecification =
-          new TestSpecification.fromJson(_json["testSpecification"]);
+          TestSpecification.fromJson(_json["testSpecification"]);
     }
     if (_json.containsKey("timestamp")) {
       timestamp = _json["timestamp"];
@@ -3455,12 +3498,12 @@ class TestMatrix {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clientInfo != null) {
-      _json["clientInfo"] = (clientInfo).toJson();
+      _json["clientInfo"] = clientInfo.toJson();
     }
     if (environmentMatrix != null) {
-      _json["environmentMatrix"] = (environmentMatrix).toJson();
+      _json["environmentMatrix"] = environmentMatrix.toJson();
     }
     if (flakyTestAttempts != null) {
       _json["flakyTestAttempts"] = flakyTestAttempts;
@@ -3475,20 +3518,20 @@ class TestMatrix {
       _json["projectId"] = projectId;
     }
     if (resultStorage != null) {
-      _json["resultStorage"] = (resultStorage).toJson();
+      _json["resultStorage"] = resultStorage.toJson();
     }
     if (state != null) {
       _json["state"] = state;
     }
     if (testExecutions != null) {
       _json["testExecutions"] =
-          testExecutions.map((value) => (value).toJson()).toList();
+          testExecutions.map((value) => value.toJson()).toList();
     }
     if (testMatrixId != null) {
       _json["testMatrixId"] = testMatrixId;
     }
     if (testSpecification != null) {
-      _json["testSpecification"] = (testSpecification).toJson();
+      _json["testSpecification"] = testSpecification.toJson();
     }
     if (timestamp != null) {
       _json["timestamp"] = timestamp;
@@ -3541,11 +3584,11 @@ class TestSetup {
 
   TestSetup.fromJson(core.Map _json) {
     if (_json.containsKey("account")) {
-      account = new Account.fromJson(_json["account"]);
+      account = Account.fromJson(_json["account"]);
     }
     if (_json.containsKey("additionalApks")) {
       additionalApks = (_json["additionalApks"] as core.List)
-          .map<Apk>((value) => new Apk.fromJson(value))
+          .map<Apk>((value) => Apk.fromJson(value))
           .toList();
     }
     if (_json.containsKey("directoriesToPull")) {
@@ -3558,31 +3601,31 @@ class TestSetup {
     if (_json.containsKey("environmentVariables")) {
       environmentVariables = (_json["environmentVariables"] as core.List)
           .map<EnvironmentVariable>(
-              (value) => new EnvironmentVariable.fromJson(value))
+              (value) => EnvironmentVariable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("filesToPush")) {
       filesToPush = (_json["filesToPush"] as core.List)
-          .map<DeviceFile>((value) => new DeviceFile.fromJson(value))
+          .map<DeviceFile>((value) => DeviceFile.fromJson(value))
           .toList();
     }
     if (_json.containsKey("networkProfile")) {
       networkProfile = _json["networkProfile"];
     }
     if (_json.containsKey("systrace")) {
-      systrace = new SystraceSetup.fromJson(_json["systrace"]);
+      systrace = SystraceSetup.fromJson(_json["systrace"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (account != null) {
-      _json["account"] = (account).toJson();
+      _json["account"] = account.toJson();
     }
     if (additionalApks != null) {
       _json["additionalApks"] =
-          additionalApks.map((value) => (value).toJson()).toList();
+          additionalApks.map((value) => value.toJson()).toList();
     }
     if (directoriesToPull != null) {
       _json["directoriesToPull"] = directoriesToPull;
@@ -3592,17 +3635,17 @@ class TestSetup {
     }
     if (environmentVariables != null) {
       _json["environmentVariables"] =
-          environmentVariables.map((value) => (value).toJson()).toList();
+          environmentVariables.map((value) => value.toJson()).toList();
     }
     if (filesToPush != null) {
       _json["filesToPush"] =
-          filesToPush.map((value) => (value).toJson()).toList();
+          filesToPush.map((value) => value.toJson()).toList();
     }
     if (networkProfile != null) {
       _json["networkProfile"] = networkProfile;
     }
     if (systrace != null) {
-      _json["systrace"] = (systrace).toJson();
+      _json["systrace"] = systrace.toJson();
     }
     return _json;
   }
@@ -3646,14 +3689,14 @@ class TestSpecification {
 
   TestSpecification.fromJson(core.Map _json) {
     if (_json.containsKey("androidInstrumentationTest")) {
-      androidInstrumentationTest = new AndroidInstrumentationTest.fromJson(
+      androidInstrumentationTest = AndroidInstrumentationTest.fromJson(
           _json["androidInstrumentationTest"]);
     }
     if (_json.containsKey("androidRoboTest")) {
-      androidRoboTest = new AndroidRoboTest.fromJson(_json["androidRoboTest"]);
+      androidRoboTest = AndroidRoboTest.fromJson(_json["androidRoboTest"]);
     }
     if (_json.containsKey("androidTestLoop")) {
-      androidTestLoop = new AndroidTestLoop.fromJson(_json["androidTestLoop"]);
+      androidTestLoop = AndroidTestLoop.fromJson(_json["androidTestLoop"]);
     }
     if (_json.containsKey("disablePerformanceMetrics")) {
       disablePerformanceMetrics = _json["disablePerformanceMetrics"];
@@ -3662,16 +3705,16 @@ class TestSpecification {
       disableVideoRecording = _json["disableVideoRecording"];
     }
     if (_json.containsKey("iosTestLoop")) {
-      iosTestLoop = new IosTestLoop.fromJson(_json["iosTestLoop"]);
+      iosTestLoop = IosTestLoop.fromJson(_json["iosTestLoop"]);
     }
     if (_json.containsKey("iosTestSetup")) {
-      iosTestSetup = new IosTestSetup.fromJson(_json["iosTestSetup"]);
+      iosTestSetup = IosTestSetup.fromJson(_json["iosTestSetup"]);
     }
     if (_json.containsKey("iosXcTest")) {
-      iosXcTest = new IosXcTest.fromJson(_json["iosXcTest"]);
+      iosXcTest = IosXcTest.fromJson(_json["iosXcTest"]);
     }
     if (_json.containsKey("testSetup")) {
-      testSetup = new TestSetup.fromJson(_json["testSetup"]);
+      testSetup = TestSetup.fromJson(_json["testSetup"]);
     }
     if (_json.containsKey("testTimeout")) {
       testTimeout = _json["testTimeout"];
@@ -3680,16 +3723,15 @@ class TestSpecification {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (androidInstrumentationTest != null) {
-      _json["androidInstrumentationTest"] =
-          (androidInstrumentationTest).toJson();
+      _json["androidInstrumentationTest"] = androidInstrumentationTest.toJson();
     }
     if (androidRoboTest != null) {
-      _json["androidRoboTest"] = (androidRoboTest).toJson();
+      _json["androidRoboTest"] = androidRoboTest.toJson();
     }
     if (androidTestLoop != null) {
-      _json["androidTestLoop"] = (androidTestLoop).toJson();
+      _json["androidTestLoop"] = androidTestLoop.toJson();
     }
     if (disablePerformanceMetrics != null) {
       _json["disablePerformanceMetrics"] = disablePerformanceMetrics;
@@ -3698,16 +3740,16 @@ class TestSpecification {
       _json["disableVideoRecording"] = disableVideoRecording;
     }
     if (iosTestLoop != null) {
-      _json["iosTestLoop"] = (iosTestLoop).toJson();
+      _json["iosTestLoop"] = iosTestLoop.toJson();
     }
     if (iosTestSetup != null) {
-      _json["iosTestSetup"] = (iosTestSetup).toJson();
+      _json["iosTestSetup"] = iosTestSetup.toJson();
     }
     if (iosXcTest != null) {
-      _json["iosXcTest"] = (iosXcTest).toJson();
+      _json["iosXcTest"] = iosXcTest.toJson();
     }
     if (testSetup != null) {
-      _json["testSetup"] = (testSetup).toJson();
+      _json["testSetup"] = testSetup.toJson();
     }
     if (testTimeout != null) {
       _json["testTimeout"] = testTimeout;
@@ -3734,7 +3776,7 @@ class TestTargetsForShard {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (testTargets != null) {
       _json["testTargets"] = testTargets;
     }
@@ -3770,7 +3812,7 @@ class ToolResultsExecution {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (executionId != null) {
       _json["executionId"] = executionId;
     }
@@ -3805,7 +3847,7 @@ class ToolResultsHistory {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (historyId != null) {
       _json["historyId"] = historyId;
     }
@@ -3850,7 +3892,7 @@ class ToolResultsStep {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (executionId != null) {
       _json["executionId"] = executionId;
     }
@@ -3906,7 +3948,7 @@ class TrafficRule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bandwidth != null) {
       _json["bandwidth"] = bandwidth;
     }
@@ -3946,7 +3988,7 @@ class UniformSharding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (numShards != null) {
       _json["numShards"] = numShards;
     }
@@ -3975,7 +4017,7 @@ class XcodeVersion {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (tags != null) {
       _json["tags"] = tags;
     }

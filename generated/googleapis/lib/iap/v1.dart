@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.iap.v1;
 
@@ -24,21 +42,20 @@ class IapApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
-  V1ResourceApi get v1 => new V1ResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  V1ResourceApi get v1 => V1ResourceApi(_requester);
 
   IapApi(http.Client client,
       {core.String rootUrl = "https://iap.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsBrandsResourceApi get brands =>
-      new ProjectsBrandsResourceApi(_requester);
+  ProjectsBrandsResourceApi get brands => ProjectsBrandsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -48,7 +65,7 @@ class ProjectsBrandsResourceApi {
 
   ProjectsBrandsIdentityAwareProxyClientsResourceApi
       get identityAwareProxyClients =>
-          new ProjectsBrandsIdentityAwareProxyClientsResourceApi(_requester);
+          ProjectsBrandsIdentityAwareProxyClientsResourceApi(_requester);
 
   ProjectsBrandsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -78,20 +95,23 @@ class ProjectsBrandsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Brand> create(Brand request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Brand> create(
+    Brand request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -99,13 +119,16 @@ class ProjectsBrandsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/brands';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Brand.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Brand.fromJson(data));
   }
 
   /// Retrieves the OAuth brand of the project.
@@ -126,16 +149,19 @@ class ProjectsBrandsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Brand> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Brand> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -143,13 +169,16 @@ class ProjectsBrandsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Brand.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Brand.fromJson(data));
   }
 
   /// Lists the existing brands for the project.
@@ -170,17 +199,19 @@ class ProjectsBrandsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListBrandsResponse> list(core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListBrandsResponse> list(
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -188,13 +219,16 @@ class ProjectsBrandsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/brands';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListBrandsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListBrandsResponse.fromJson(data));
   }
 }
 
@@ -229,20 +263,22 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<IdentityAwareProxyClient> create(
-      IdentityAwareProxyClient request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentityAwareProxyClient request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -252,14 +288,16 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/identityAwareProxyClients';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new IdentityAwareProxyClient.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => IdentityAwareProxyClient.fromJson(data));
   }
 
   /// Deletes an Identity Aware Proxy (IAP) OAuth client. Useful for removing
@@ -284,16 +322,19 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -301,13 +342,16 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the
@@ -331,17 +375,19 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<IdentityAwareProxyClient> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<IdentityAwareProxyClient> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -349,14 +395,16 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new IdentityAwareProxyClient.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => IdentityAwareProxyClient.fromJson(data));
   }
 
   /// Lists the existing clients for the brand.
@@ -388,17 +436,21 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListIdentityAwareProxyClientsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListIdentityAwareProxyClientsResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -414,14 +466,17 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/identityAwareProxyClients';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new ListIdentityAwareProxyClientsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => ListIdentityAwareProxyClientsResponse.fromJson(data));
   }
 
   /// Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful if the
@@ -448,20 +503,22 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<IdentityAwareProxyClient> resetSecret(
-      ResetIdentityAwareProxyClientSecretRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ResetIdentityAwareProxyClientSecretRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -470,14 +527,16 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':resetSecret';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new IdentityAwareProxyClient.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => IdentityAwareProxyClient.fromJson(data));
   }
 }
 
@@ -510,20 +569,22 @@ class V1ResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
-      GetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -533,13 +594,16 @@ class V1ResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Gets the IAP settings on a particular IAP protected resource.
@@ -561,17 +625,19 @@ class V1ResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<IapSettings> getIapSettings(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<IapSettings> getIapSettings(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -580,13 +646,16 @@ class V1ResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':iapSettings';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new IapSettings.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => IapSettings.fromJson(data));
   }
 
   /// Sets the access control policy for an Identity-Aware Proxy protected
@@ -614,20 +683,22 @@ class V1ResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -637,13 +708,16 @@ class V1ResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns permissions that a caller has on the Identity-Aware Proxy
@@ -671,20 +745,22 @@ class V1ResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -694,14 +770,16 @@ class V1ResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 
   /// Updates the IAP settings on a particular IAP protected resource. It
@@ -729,20 +807,23 @@ class V1ResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<IapSettings> updateIapSettings(
-      IapSettings request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IapSettings request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -754,13 +835,16 @@ class V1ResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':iapSettings';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new IapSettings.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => IapSettings.fromJson(data));
   }
 }
 
@@ -782,7 +866,7 @@ class AccessDeniedPageSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accessDeniedPageUri != null) {
       _json["accessDeniedPageUri"] = accessDeniedPageUri;
     }
@@ -809,34 +893,34 @@ class AccessSettings {
 
   AccessSettings.fromJson(core.Map _json) {
     if (_json.containsKey("corsSettings")) {
-      corsSettings = new CorsSettings.fromJson(_json["corsSettings"]);
+      corsSettings = CorsSettings.fromJson(_json["corsSettings"]);
     }
     if (_json.containsKey("gcipSettings")) {
-      gcipSettings = new GcipSettings.fromJson(_json["gcipSettings"]);
+      gcipSettings = GcipSettings.fromJson(_json["gcipSettings"]);
     }
     if (_json.containsKey("oauthSettings")) {
-      oauthSettings = new OAuthSettings.fromJson(_json["oauthSettings"]);
+      oauthSettings = OAuthSettings.fromJson(_json["oauthSettings"]);
     }
     if (_json.containsKey("policyDelegationSettings")) {
-      policyDelegationSettings = new PolicyDelegationSettings.fromJson(
-          _json["policyDelegationSettings"]);
+      policyDelegationSettings =
+          PolicyDelegationSettings.fromJson(_json["policyDelegationSettings"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (corsSettings != null) {
-      _json["corsSettings"] = (corsSettings).toJson();
+      _json["corsSettings"] = corsSettings.toJson();
     }
     if (gcipSettings != null) {
-      _json["gcipSettings"] = (gcipSettings).toJson();
+      _json["gcipSettings"] = gcipSettings.toJson();
     }
     if (oauthSettings != null) {
-      _json["oauthSettings"] = (oauthSettings).toJson();
+      _json["oauthSettings"] = oauthSettings.toJson();
     }
     if (policyDelegationSettings != null) {
-      _json["policyDelegationSettings"] = (policyDelegationSettings).toJson();
+      _json["policyDelegationSettings"] = policyDelegationSettings.toJson();
     }
     return _json;
   }
@@ -858,28 +942,28 @@ class ApplicationSettings {
 
   ApplicationSettings.fromJson(core.Map _json) {
     if (_json.containsKey("accessDeniedPageSettings")) {
-      accessDeniedPageSettings = new AccessDeniedPageSettings.fromJson(
-          _json["accessDeniedPageSettings"]);
+      accessDeniedPageSettings =
+          AccessDeniedPageSettings.fromJson(_json["accessDeniedPageSettings"]);
     }
     if (_json.containsKey("cookieDomain")) {
       cookieDomain = _json["cookieDomain"];
     }
     if (_json.containsKey("csmSettings")) {
-      csmSettings = new CsmSettings.fromJson(_json["csmSettings"]);
+      csmSettings = CsmSettings.fromJson(_json["csmSettings"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accessDeniedPageSettings != null) {
-      _json["accessDeniedPageSettings"] = (accessDeniedPageSettings).toJson();
+      _json["accessDeniedPageSettings"] = accessDeniedPageSettings.toJson();
     }
     if (cookieDomain != null) {
       _json["cookieDomain"] = cookieDomain;
     }
     if (csmSettings != null) {
-      _json["csmSettings"] = (csmSettings).toJson();
+      _json["csmSettings"] = csmSettings.toJson();
     }
     return _json;
   }
@@ -942,7 +1026,7 @@ class Binding {
       bindingId = _json["bindingId"];
     }
     if (_json.containsKey("condition")) {
-      condition = new Expr.fromJson(_json["condition"]);
+      condition = Expr.fromJson(_json["condition"]);
     }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
@@ -954,12 +1038,12 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bindingId != null) {
       _json["bindingId"] = bindingId;
     }
     if (condition != null) {
-      _json["condition"] = (condition).toJson();
+      _json["condition"] = condition.toJson();
     }
     if (members != null) {
       _json["members"] = members;
@@ -1008,7 +1092,7 @@ class Brand {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (applicationTitle != null) {
       _json["applicationTitle"] = applicationTitle;
     }
@@ -1042,7 +1126,7 @@ class CorsSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allowHttpOptions != null) {
       _json["allowHttpOptions"] = allowHttpOptions;
     }
@@ -1069,7 +1153,7 @@ class CsmSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (rctokenAud != null) {
       _json["rctokenAud"] = rctokenAud;
     }
@@ -1089,7 +1173,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1146,7 +1230,7 @@ class Expr {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -1191,7 +1275,7 @@ class GcipSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (loginPageUri != null) {
       _json["loginPageUri"] = loginPageUri;
     }
@@ -1212,15 +1296,15 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("options")) {
-      options = new GetPolicyOptions.fromJson(_json["options"]);
+      options = GetPolicyOptions.fromJson(_json["options"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (options != null) {
-      _json["options"] = (options).toJson();
+      _json["options"] = options.toJson();
     }
     return _json;
   }
@@ -1247,7 +1331,7 @@ class GetPolicyOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (requestedPolicyVersion != null) {
       _json["requestedPolicyVersion"] = requestedPolicyVersion;
     }
@@ -1270,11 +1354,11 @@ class IapSettings {
 
   IapSettings.fromJson(core.Map _json) {
     if (_json.containsKey("accessSettings")) {
-      accessSettings = new AccessSettings.fromJson(_json["accessSettings"]);
+      accessSettings = AccessSettings.fromJson(_json["accessSettings"]);
     }
     if (_json.containsKey("applicationSettings")) {
       applicationSettings =
-          new ApplicationSettings.fromJson(_json["applicationSettings"]);
+          ApplicationSettings.fromJson(_json["applicationSettings"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1283,12 +1367,12 @@ class IapSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accessSettings != null) {
-      _json["accessSettings"] = (accessSettings).toJson();
+      _json["accessSettings"] = accessSettings.toJson();
     }
     if (applicationSettings != null) {
-      _json["applicationSettings"] = (applicationSettings).toJson();
+      _json["applicationSettings"] = applicationSettings.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -1324,7 +1408,7 @@ class IdentityAwareProxyClient {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -1348,16 +1432,16 @@ class ListBrandsResponse {
   ListBrandsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("brands")) {
       brands = (_json["brands"] as core.List)
-          .map<Brand>((value) => new Brand.fromJson(value))
+          .map<Brand>((value) => Brand.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (brands != null) {
-      _json["brands"] = brands.map((value) => (value).toJson()).toList();
+      _json["brands"] = brands.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1379,7 +1463,7 @@ class ListIdentityAwareProxyClientsResponse {
       identityAwareProxyClients =
           (_json["identityAwareProxyClients"] as core.List)
               .map<IdentityAwareProxyClient>(
-                  (value) => new IdentityAwareProxyClient.fromJson(value))
+                  (value) => IdentityAwareProxyClient.fromJson(value))
               .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -1389,10 +1473,10 @@ class ListIdentityAwareProxyClientsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (identityAwareProxyClients != null) {
       _json["identityAwareProxyClients"] =
-          identityAwareProxyClients.map((value) => (value).toJson()).toList();
+          identityAwareProxyClients.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -1433,7 +1517,7 @@ class OAuthSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clientId != null) {
       _json["clientId"] = clientId;
     }
@@ -1491,9 +1575,7 @@ class Policy {
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.base64.decode(etag);
-  }
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -1522,7 +1604,7 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
       bindings = (_json["bindings"] as core.List)
-          .map<Binding>((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -1535,9 +1617,9 @@ class Policy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -1580,16 +1662,16 @@ class PolicyDelegationSettings {
       iamServiceName = _json["iamServiceName"];
     }
     if (_json.containsKey("policyName")) {
-      policyName = new PolicyName.fromJson(_json["policyName"]);
+      policyName = PolicyName.fromJson(_json["policyName"]);
     }
     if (_json.containsKey("resource")) {
-      resource = new Resource.fromJson(_json["resource"]);
+      resource = Resource.fromJson(_json["resource"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (iamPermission != null) {
       _json["iamPermission"] = iamPermission;
     }
@@ -1597,10 +1679,10 @@ class PolicyDelegationSettings {
       _json["iamServiceName"] = iamServiceName;
     }
     if (policyName != null) {
-      _json["policyName"] = (policyName).toJson();
+      _json["policyName"] = policyName.toJson();
     }
     if (resource != null) {
-      _json["resource"] = (resource).toJson();
+      _json["resource"] = resource.toJson();
     }
     return _json;
   }
@@ -1635,7 +1717,7 @@ class PolicyName {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -1657,7 +1739,7 @@ class ResetIdentityAwareProxyClientSecretRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1724,7 +1806,7 @@ class Resource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -1753,15 +1835,15 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("policy")) {
-      policy = new Policy.fromJson(_json["policy"]);
+      policy = Policy.fromJson(_json["policy"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = (policy).toJson();
+      _json["policy"] = policy.toJson();
     }
     return _json;
   }
@@ -1785,7 +1867,7 @@ class TestIamPermissionsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -1809,7 +1891,7 @@ class TestIamPermissionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }

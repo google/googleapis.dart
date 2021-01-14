@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.safebrowsing.v4;
 
@@ -25,23 +43,22 @@ class SafebrowsingApi {
   final commons.ApiRequester _requester;
 
   EncodedFullHashesResourceApi get encodedFullHashes =>
-      new EncodedFullHashesResourceApi(_requester);
+      EncodedFullHashesResourceApi(_requester);
   EncodedUpdatesResourceApi get encodedUpdates =>
-      new EncodedUpdatesResourceApi(_requester);
-  FullHashesResourceApi get fullHashes => new FullHashesResourceApi(_requester);
-  ThreatHitsResourceApi get threatHits => new ThreatHitsResourceApi(_requester);
+      EncodedUpdatesResourceApi(_requester);
+  FullHashesResourceApi get fullHashes => FullHashesResourceApi(_requester);
+  ThreatHitsResourceApi get threatHits => ThreatHitsResourceApi(_requester);
   ThreatListUpdatesResourceApi get threatListUpdates =>
-      new ThreatListUpdatesResourceApi(_requester);
-  ThreatListsResourceApi get threatLists =>
-      new ThreatListsResourceApi(_requester);
+      ThreatListUpdatesResourceApi(_requester);
+  ThreatListsResourceApi get threatLists => ThreatListsResourceApi(_requester);
   ThreatMatchesResourceApi get threatMatches =>
-      new ThreatMatchesResourceApi(_requester);
+      ThreatMatchesResourceApi(_requester);
 
   SafebrowsingApi(http.Client client,
       {core.String rootUrl = "https://safebrowsing.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class EncodedFullHashesResourceApi {
@@ -69,17 +86,21 @@ class EncodedFullHashesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FindFullHashesResponse> get(core.String encodedRequest,
-      {core.String clientVersion, core.String clientId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FindFullHashesResponse> get(
+    core.String encodedRequest, {
+    core.String clientVersion,
+    core.String clientId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (encodedRequest == null) {
-      throw new core.ArgumentError("Parameter encodedRequest is required.");
+      throw core.ArgumentError("Parameter encodedRequest is required.");
     }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
@@ -94,13 +115,16 @@ class EncodedFullHashesResourceApi {
     _url = 'v4/encodedFullHashes/' +
         commons.Escaper.ecapeVariable('$encodedRequest');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FindFullHashesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FindFullHashesResponse.fromJson(data));
   }
 }
 
@@ -128,17 +152,21 @@ class EncodedUpdatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FetchThreatListUpdatesResponse> get(core.String encodedRequest,
-      {core.String clientId, core.String clientVersion, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FetchThreatListUpdatesResponse> get(
+    core.String encodedRequest, {
+    core.String clientId,
+    core.String clientVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (encodedRequest == null) {
-      throw new core.ArgumentError("Parameter encodedRequest is required.");
+      throw core.ArgumentError("Parameter encodedRequest is required.");
     }
     if (clientId != null) {
       _queryParams["clientId"] = [clientId];
@@ -153,14 +181,17 @@ class EncodedUpdatesResourceApi {
     _url =
         'v4/encodedUpdates/' + commons.Escaper.ecapeVariable('$encodedRequest');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new FetchThreatListUpdatesResponse.fromJson(data));
+        .then((data) => FetchThreatListUpdatesResponse.fromJson(data));
   }
 }
 
@@ -185,17 +216,19 @@ class FullHashesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FindFullHashesResponse> find(FindFullHashesRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FindFullHashesResponse> find(
+    FindFullHashesRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -203,13 +236,16 @@ class FullHashesResourceApi {
 
     _url = 'v4/fullHashes:find';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FindFullHashesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FindFullHashesResponse.fromJson(data));
   }
 }
 
@@ -235,16 +271,19 @@ class ThreatHitsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> create(ThreatHit request, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> create(
+    ThreatHit request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -252,13 +291,16 @@ class ThreatHitsResourceApi {
 
     _url = 'v4/threatHits';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 }
 
@@ -286,17 +328,18 @@ class ThreatListUpdatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FetchThreatListUpdatesResponse> fetch(
-      FetchThreatListUpdatesRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    FetchThreatListUpdatesRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -304,14 +347,17 @@ class ThreatListUpdatesResourceApi {
 
     _url = 'v4/threatListUpdates:fetch';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new FetchThreatListUpdatesResponse.fromJson(data));
+        .then((data) => FetchThreatListUpdatesResponse.fromJson(data));
   }
 }
 
@@ -334,13 +380,15 @@ class ThreatListsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListThreatListsResponse> list({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListThreatListsResponse> list({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -348,13 +396,16 @@ class ThreatListsResourceApi {
 
     _url = 'v4/threatLists';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListThreatListsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListThreatListsResponse.fromJson(data));
   }
 }
 
@@ -379,17 +430,19 @@ class ThreatMatchesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FindThreatMatchesResponse> find(FindThreatMatchesRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FindThreatMatchesResponse> find(
+    FindThreatMatchesRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -397,14 +450,16 @@ class ThreatMatchesResourceApi {
 
     _url = 'v4/threatMatches:find';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new FindThreatMatchesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FindThreatMatchesResponse.fromJson(data));
   }
 }
 
@@ -413,9 +468,7 @@ class Checksum {
   /// The SHA256 hash of the client state; that is, of the sorted list of all
   /// hashes present in the database.
   core.String sha256;
-  core.List<core.int> get sha256AsBytes {
-    return convert.base64.decode(sha256);
-  }
+  core.List<core.int> get sha256AsBytes => convert.base64.decode(sha256);
 
   set sha256AsBytes(core.List<core.int> _bytes) {
     sha256 =
@@ -432,7 +485,7 @@ class Checksum {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sha256 != null) {
       _json["sha256"] = sha256;
     }
@@ -462,7 +515,7 @@ class ClientInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clientId != null) {
       _json["clientId"] = clientId;
     }
@@ -527,7 +580,7 @@ class Constraints {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceLocation != null) {
       _json["deviceLocation"] = deviceLocation;
     }
@@ -562,7 +615,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -581,25 +634,24 @@ class FetchThreatListUpdatesRequest {
 
   FetchThreatListUpdatesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("client")) {
-      client = new ClientInfo.fromJson(_json["client"]);
+      client = ClientInfo.fromJson(_json["client"]);
     }
     if (_json.containsKey("listUpdateRequests")) {
       listUpdateRequests = (_json["listUpdateRequests"] as core.List)
-          .map<ListUpdateRequest>(
-              (value) => new ListUpdateRequest.fromJson(value))
+          .map<ListUpdateRequest>((value) => ListUpdateRequest.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (client != null) {
-      _json["client"] = (client).toJson();
+      _json["client"] = client.toJson();
     }
     if (listUpdateRequests != null) {
       _json["listUpdateRequests"] =
-          listUpdateRequests.map((value) => (value).toJson()).toList();
+          listUpdateRequests.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -619,7 +671,7 @@ class FetchThreatListUpdatesResponse {
     if (_json.containsKey("listUpdateResponses")) {
       listUpdateResponses = (_json["listUpdateResponses"] as core.List)
           .map<ListUpdateResponse>(
-              (value) => new ListUpdateResponse.fromJson(value))
+              (value) => ListUpdateResponse.fromJson(value))
           .toList();
     }
     if (_json.containsKey("minimumWaitDuration")) {
@@ -629,10 +681,10 @@ class FetchThreatListUpdatesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (listUpdateResponses != null) {
       _json["listUpdateResponses"] =
-          listUpdateResponses.map((value) => (value).toJson()).toList();
+          listUpdateResponses.map((value) => value.toJson()).toList();
     }
     if (minimumWaitDuration != null) {
       _json["minimumWaitDuration"] = minimumWaitDuration;
@@ -660,33 +712,33 @@ class FindFullHashesRequest {
 
   FindFullHashesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("apiClient")) {
-      apiClient = new ClientInfo.fromJson(_json["apiClient"]);
+      apiClient = ClientInfo.fromJson(_json["apiClient"]);
     }
     if (_json.containsKey("client")) {
-      client = new ClientInfo.fromJson(_json["client"]);
+      client = ClientInfo.fromJson(_json["client"]);
     }
     if (_json.containsKey("clientStates")) {
       clientStates = (_json["clientStates"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("threatInfo")) {
-      threatInfo = new ThreatInfo.fromJson(_json["threatInfo"]);
+      threatInfo = ThreatInfo.fromJson(_json["threatInfo"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiClient != null) {
-      _json["apiClient"] = (apiClient).toJson();
+      _json["apiClient"] = apiClient.toJson();
     }
     if (client != null) {
-      _json["client"] = (client).toJson();
+      _json["client"] = client.toJson();
     }
     if (clientStates != null) {
       _json["clientStates"] = clientStates;
     }
     if (threatInfo != null) {
-      _json["threatInfo"] = (threatInfo).toJson();
+      _json["threatInfo"] = threatInfo.toJson();
     }
     return _json;
   }
@@ -710,7 +762,7 @@ class FindFullHashesResponse {
   FindFullHashesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("matches")) {
       matches = (_json["matches"] as core.List)
-          .map<ThreatMatch>((value) => new ThreatMatch.fromJson(value))
+          .map<ThreatMatch>((value) => ThreatMatch.fromJson(value))
           .toList();
     }
     if (_json.containsKey("minimumWaitDuration")) {
@@ -723,9 +775,9 @@ class FindFullHashesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (matches != null) {
-      _json["matches"] = matches.map((value) => (value).toJson()).toList();
+      _json["matches"] = matches.map((value) => value.toJson()).toList();
     }
     if (minimumWaitDuration != null) {
       _json["minimumWaitDuration"] = minimumWaitDuration;
@@ -749,21 +801,21 @@ class FindThreatMatchesRequest {
 
   FindThreatMatchesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("client")) {
-      client = new ClientInfo.fromJson(_json["client"]);
+      client = ClientInfo.fromJson(_json["client"]);
     }
     if (_json.containsKey("threatInfo")) {
-      threatInfo = new ThreatInfo.fromJson(_json["threatInfo"]);
+      threatInfo = ThreatInfo.fromJson(_json["threatInfo"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (client != null) {
-      _json["client"] = (client).toJson();
+      _json["client"] = client.toJson();
     }
     if (threatInfo != null) {
-      _json["threatInfo"] = (threatInfo).toJson();
+      _json["threatInfo"] = threatInfo.toJson();
     }
     return _json;
   }
@@ -778,16 +830,16 @@ class FindThreatMatchesResponse {
   FindThreatMatchesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("matches")) {
       matches = (_json["matches"] as core.List)
-          .map<ThreatMatch>((value) => new ThreatMatch.fromJson(value))
+          .map<ThreatMatch>((value) => ThreatMatch.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (matches != null) {
-      _json["matches"] = matches.map((value) => (value).toJson()).toList();
+      _json["matches"] = matches.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -803,17 +855,17 @@ class ListThreatListsResponse {
     if (_json.containsKey("threatLists")) {
       threatLists = (_json["threatLists"] as core.List)
           .map<ThreatListDescriptor>(
-              (value) => new ThreatListDescriptor.fromJson(value))
+              (value) => ThreatListDescriptor.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (threatLists != null) {
       _json["threatLists"] =
-          threatLists.map((value) => (value).toJson()).toList();
+          threatLists.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -840,9 +892,7 @@ class ListUpdateRequest {
   /// The current state of the client for the requested list (the encrypted
   /// client state that was received from the last successful list update).
   core.String state;
-  core.List<core.int> get stateAsBytes {
-    return convert.base64.decode(state);
-  }
+  core.List<core.int> get stateAsBytes => convert.base64.decode(state);
 
   set stateAsBytes(core.List<core.int> _bytes) {
     state =
@@ -893,7 +943,7 @@ class ListUpdateRequest {
 
   ListUpdateRequest.fromJson(core.Map _json) {
     if (_json.containsKey("constraints")) {
-      constraints = new Constraints.fromJson(_json["constraints"]);
+      constraints = Constraints.fromJson(_json["constraints"]);
     }
     if (_json.containsKey("platformType")) {
       platformType = _json["platformType"];
@@ -911,9 +961,9 @@ class ListUpdateRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (constraints != null) {
-      _json["constraints"] = (constraints).toJson();
+      _json["constraints"] = constraints.toJson();
     }
     if (platformType != null) {
       _json["platformType"] = platformType;
@@ -946,9 +996,8 @@ class ListUpdateResponse {
 
   /// The new client state, in encrypted format. Opaque to clients.
   core.String newClientState;
-  core.List<core.int> get newClientStateAsBytes {
-    return convert.base64.decode(newClientState);
-  }
+  core.List<core.int> get newClientStateAsBytes =>
+      convert.base64.decode(newClientState);
 
   set newClientStateAsBytes(core.List<core.int> _bytes) {
     newClientState =
@@ -1028,11 +1077,11 @@ class ListUpdateResponse {
   ListUpdateResponse.fromJson(core.Map _json) {
     if (_json.containsKey("additions")) {
       additions = (_json["additions"] as core.List)
-          .map<ThreatEntrySet>((value) => new ThreatEntrySet.fromJson(value))
+          .map<ThreatEntrySet>((value) => ThreatEntrySet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("checksum")) {
-      checksum = new Checksum.fromJson(_json["checksum"]);
+      checksum = Checksum.fromJson(_json["checksum"]);
     }
     if (_json.containsKey("newClientState")) {
       newClientState = _json["newClientState"];
@@ -1042,7 +1091,7 @@ class ListUpdateResponse {
     }
     if (_json.containsKey("removals")) {
       removals = (_json["removals"] as core.List)
-          .map<ThreatEntrySet>((value) => new ThreatEntrySet.fromJson(value))
+          .map<ThreatEntrySet>((value) => ThreatEntrySet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("responseType")) {
@@ -1058,12 +1107,12 @@ class ListUpdateResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (additions != null) {
-      _json["additions"] = additions.map((value) => (value).toJson()).toList();
+      _json["additions"] = additions.map((value) => value.toJson()).toList();
     }
     if (checksum != null) {
-      _json["checksum"] = (checksum).toJson();
+      _json["checksum"] = checksum.toJson();
     }
     if (newClientState != null) {
       _json["newClientState"] = newClientState;
@@ -1072,7 +1121,7 @@ class ListUpdateResponse {
       _json["platformType"] = platformType;
     }
     if (removals != null) {
-      _json["removals"] = removals.map((value) => (value).toJson()).toList();
+      _json["removals"] = removals.map((value) => value.toJson()).toList();
     }
     if (responseType != null) {
       _json["responseType"] = responseType;
@@ -1091,9 +1140,7 @@ class ListUpdateResponse {
 class MetadataEntry {
   /// The metadata entry key. For JSON requests, the key is base64-encoded.
   core.String key;
-  core.List<core.int> get keyAsBytes {
-    return convert.base64.decode(key);
-  }
+  core.List<core.int> get keyAsBytes => convert.base64.decode(key);
 
   set keyAsBytes(core.List<core.int> _bytes) {
     key =
@@ -1102,9 +1149,7 @@ class MetadataEntry {
 
   /// The metadata entry value. For JSON requests, the value is base64-encoded.
   core.String value;
-  core.List<core.int> get valueAsBytes {
-    return convert.base64.decode(value);
-  }
+  core.List<core.int> get valueAsBytes => convert.base64.decode(value);
 
   set valueAsBytes(core.List<core.int> _bytes) {
     value =
@@ -1124,7 +1169,7 @@ class MetadataEntry {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
@@ -1150,9 +1195,7 @@ class RawHashes {
   /// are sorted in lexicographic order. For JSON API users, hashes are
   /// base64-encoded.
   core.String rawHashes;
-  core.List<core.int> get rawHashesAsBytes {
-    return convert.base64.decode(rawHashes);
-  }
+  core.List<core.int> get rawHashesAsBytes => convert.base64.decode(rawHashes);
 
   set rawHashesAsBytes(core.List<core.int> _bytes) {
     rawHashes =
@@ -1172,7 +1215,7 @@ class RawHashes {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (prefixSize != null) {
       _json["prefixSize"] = prefixSize;
     }
@@ -1198,7 +1241,7 @@ class RawIndices {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (indices != null) {
       _json["indices"] = indices;
     }
@@ -1211,9 +1254,8 @@ class RawIndices {
 class RiceDeltaEncoding {
   /// The encoded deltas that are encoded using the Golomb-Rice coder.
   core.String encodedData;
-  core.List<core.int> get encodedDataAsBytes {
-    return convert.base64.decode(encodedData);
-  }
+  core.List<core.int> get encodedDataAsBytes =>
+      convert.base64.decode(encodedData);
 
   set encodedDataAsBytes(core.List<core.int> _bytes) {
     encodedData =
@@ -1253,7 +1295,7 @@ class RiceDeltaEncoding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (encodedData != null) {
       _json["encodedData"] = encodedData;
     }
@@ -1276,9 +1318,7 @@ class ThreatEntry {
   /// The digest of an executable in SHA256 format. The API supports both binary
   /// and hex digests. For JSON requests, digests are base64-encoded.
   core.String digest;
-  core.List<core.int> get digestAsBytes {
-    return convert.base64.decode(digest);
-  }
+  core.List<core.int> get digestAsBytes => convert.base64.decode(digest);
 
   set digestAsBytes(core.List<core.int> _bytes) {
     digest =
@@ -1289,9 +1329,7 @@ class ThreatEntry {
   /// hash. This field is in binary format. For JSON requests, hashes are
   /// base64-encoded.
   core.String hash;
-  core.List<core.int> get hashAsBytes {
-    return convert.base64.decode(hash);
-  }
+  core.List<core.int> get hashAsBytes => convert.base64.decode(hash);
 
   set hashAsBytes(core.List<core.int> _bytes) {
     hash =
@@ -1317,7 +1355,7 @@ class ThreatEntry {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (digest != null) {
       _json["digest"] = digest;
     }
@@ -1342,16 +1380,16 @@ class ThreatEntryMetadata {
   ThreatEntryMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("entries")) {
       entries = (_json["entries"] as core.List)
-          .map<MetadataEntry>((value) => new MetadataEntry.fromJson(value))
+          .map<MetadataEntry>((value) => MetadataEntry.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (entries != null) {
-      _json["entries"] = entries.map((value) => (value).toJson()).toList();
+      _json["entries"] = entries.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1391,36 +1429,36 @@ class ThreatEntrySet {
       compressionType = _json["compressionType"];
     }
     if (_json.containsKey("rawHashes")) {
-      rawHashes = new RawHashes.fromJson(_json["rawHashes"]);
+      rawHashes = RawHashes.fromJson(_json["rawHashes"]);
     }
     if (_json.containsKey("rawIndices")) {
-      rawIndices = new RawIndices.fromJson(_json["rawIndices"]);
+      rawIndices = RawIndices.fromJson(_json["rawIndices"]);
     }
     if (_json.containsKey("riceHashes")) {
-      riceHashes = new RiceDeltaEncoding.fromJson(_json["riceHashes"]);
+      riceHashes = RiceDeltaEncoding.fromJson(_json["riceHashes"]);
     }
     if (_json.containsKey("riceIndices")) {
-      riceIndices = new RiceDeltaEncoding.fromJson(_json["riceIndices"]);
+      riceIndices = RiceDeltaEncoding.fromJson(_json["riceIndices"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (compressionType != null) {
       _json["compressionType"] = compressionType;
     }
     if (rawHashes != null) {
-      _json["rawHashes"] = (rawHashes).toJson();
+      _json["rawHashes"] = rawHashes.toJson();
     }
     if (rawIndices != null) {
-      _json["rawIndices"] = (rawIndices).toJson();
+      _json["rawIndices"] = rawIndices.toJson();
     }
     if (riceHashes != null) {
-      _json["riceHashes"] = (riceHashes).toJson();
+      _json["riceHashes"] = riceHashes.toJson();
     }
     if (riceIndices != null) {
-      _json["riceIndices"] = (riceIndices).toJson();
+      _json["riceIndices"] = riceIndices.toJson();
     }
     return _json;
   }
@@ -1486,47 +1524,47 @@ class ThreatHit {
 
   ThreatHit.fromJson(core.Map _json) {
     if (_json.containsKey("clientInfo")) {
-      clientInfo = new ClientInfo.fromJson(_json["clientInfo"]);
+      clientInfo = ClientInfo.fromJson(_json["clientInfo"]);
     }
     if (_json.containsKey("entry")) {
-      entry = new ThreatEntry.fromJson(_json["entry"]);
+      entry = ThreatEntry.fromJson(_json["entry"]);
     }
     if (_json.containsKey("platformType")) {
       platformType = _json["platformType"];
     }
     if (_json.containsKey("resources")) {
       resources = (_json["resources"] as core.List)
-          .map<ThreatSource>((value) => new ThreatSource.fromJson(value))
+          .map<ThreatSource>((value) => ThreatSource.fromJson(value))
           .toList();
     }
     if (_json.containsKey("threatType")) {
       threatType = _json["threatType"];
     }
     if (_json.containsKey("userInfo")) {
-      userInfo = new UserInfo.fromJson(_json["userInfo"]);
+      userInfo = UserInfo.fromJson(_json["userInfo"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clientInfo != null) {
-      _json["clientInfo"] = (clientInfo).toJson();
+      _json["clientInfo"] = clientInfo.toJson();
     }
     if (entry != null) {
-      _json["entry"] = (entry).toJson();
+      _json["entry"] = entry.toJson();
     }
     if (platformType != null) {
       _json["platformType"] = platformType;
     }
     if (resources != null) {
-      _json["resources"] = resources.map((value) => (value).toJson()).toList();
+      _json["resources"] = resources.map((value) => value.toJson()).toList();
     }
     if (threatType != null) {
       _json["threatType"] = threatType;
     }
     if (userInfo != null) {
-      _json["userInfo"] = (userInfo).toJson();
+      _json["userInfo"] = userInfo.toJson();
     }
     return _json;
   }
@@ -1555,7 +1593,7 @@ class ThreatInfo {
     }
     if (_json.containsKey("threatEntries")) {
       threatEntries = (_json["threatEntries"] as core.List)
-          .map<ThreatEntry>((value) => new ThreatEntry.fromJson(value))
+          .map<ThreatEntry>((value) => ThreatEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("threatEntryTypes")) {
@@ -1569,13 +1607,13 @@ class ThreatInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (platformTypes != null) {
       _json["platformTypes"] = platformTypes;
     }
     if (threatEntries != null) {
       _json["threatEntries"] =
-          threatEntries.map((value) => (value).toJson()).toList();
+          threatEntries.map((value) => value.toJson()).toList();
     }
     if (threatEntryTypes != null) {
       _json["threatEntryTypes"] = threatEntryTypes;
@@ -1660,7 +1698,7 @@ class ThreatListDescriptor {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (platformType != null) {
       _json["platformType"] = platformType;
     }
@@ -1749,11 +1787,11 @@ class ThreatMatch {
       platformType = _json["platformType"];
     }
     if (_json.containsKey("threat")) {
-      threat = new ThreatEntry.fromJson(_json["threat"]);
+      threat = ThreatEntry.fromJson(_json["threat"]);
     }
     if (_json.containsKey("threatEntryMetadata")) {
       threatEntryMetadata =
-          new ThreatEntryMetadata.fromJson(_json["threatEntryMetadata"]);
+          ThreatEntryMetadata.fromJson(_json["threatEntryMetadata"]);
     }
     if (_json.containsKey("threatEntryType")) {
       threatEntryType = _json["threatEntryType"];
@@ -1765,7 +1803,7 @@ class ThreatMatch {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cacheDuration != null) {
       _json["cacheDuration"] = cacheDuration;
     }
@@ -1773,10 +1811,10 @@ class ThreatMatch {
       _json["platformType"] = platformType;
     }
     if (threat != null) {
-      _json["threat"] = (threat).toJson();
+      _json["threat"] = threat.toJson();
     }
     if (threatEntryMetadata != null) {
-      _json["threatEntryMetadata"] = (threatEntryMetadata).toJson();
+      _json["threatEntryMetadata"] = threatEntryMetadata.toJson();
     }
     if (threatEntryType != null) {
       _json["threatEntryType"] = threatEntryType;
@@ -1830,7 +1868,7 @@ class ThreatSource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (referrer != null) {
       _json["referrer"] = referrer;
     }
@@ -1854,9 +1892,7 @@ class UserInfo {
 
   /// Unique user identifier defined by the client.
   core.String userId;
-  core.List<core.int> get userIdAsBytes {
-    return convert.base64.decode(userId);
-  }
+  core.List<core.int> get userIdAsBytes => convert.base64.decode(userId);
 
   set userIdAsBytes(core.List<core.int> _bytes) {
     userId =
@@ -1876,7 +1912,7 @@ class UserInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (regionCode != null) {
       _json["regionCode"] = regionCode;
     }

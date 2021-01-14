@@ -1,3 +1,27 @@
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
+// ignore_for_file: avoid_returning_null
+// ignore_for_file: cascade_invocations
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unused_local_variable
+
 library googleapis_beta.billingbudgets.v1beta1.test;
 
 import "dart:core" as core;
@@ -18,27 +42,23 @@ class HttpServerMock extends http.BaseClient {
     _expectJson = expectJson;
   }
 
-  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+  @core.override
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) async {
     if (_expectJson) {
-      return request
-          .finalize()
-          .transform(convert.utf8.decoder)
-          .join('')
-          .then((core.String jsonString) {
-        if (jsonString.isEmpty) {
-          return _callback(request, null);
-        } else {
-          return _callback(request, convert.json.decode(jsonString));
-        }
-      });
+      final jsonString =
+          await request.finalize().transform(convert.utf8.decoder).join('');
+      if (jsonString.isEmpty) {
+        return _callback(request, null);
+      } else {
+        return _callback(request, convert.json.decode(jsonString));
+      }
     } else {
       var stream = request.finalize();
       if (stream == null) {
         return _callback(request, []);
       } else {
-        return stream.toBytes().then((data) {
-          return _callback(request, data);
-        });
+        final data = await stream.toBytes();
+        return _callback(request, data);
       }
     }
   }
@@ -46,30 +66,31 @@ class HttpServerMock extends http.BaseClient {
 
 http.StreamedResponse stringResponse(core.int status,
     core.Map<core.String, core.String> headers, core.String body) {
-  var stream = new async.Stream.fromIterable([convert.utf8.encode(body)]);
-  return new http.StreamedResponse(stream, status, headers: headers);
+  var stream = async.Stream.fromIterable([convert.utf8.encode(body)]);
+  return http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed5908() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed6798() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5908(core.List<core.String> o) {
+void checkUnnamed6798(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudBillingBudgetsV1beta1AllUpdatesRule = 0;
-buildGoogleCloudBillingBudgetsV1beta1AllUpdatesRule() {
-  var o = new api.GoogleCloudBillingBudgetsV1beta1AllUpdatesRule();
+api.GoogleCloudBillingBudgetsV1beta1AllUpdatesRule
+    buildGoogleCloudBillingBudgetsV1beta1AllUpdatesRule() {
+  var o = api.GoogleCloudBillingBudgetsV1beta1AllUpdatesRule();
   buildCounterGoogleCloudBillingBudgetsV1beta1AllUpdatesRule++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1AllUpdatesRule < 3) {
     o.disableDefaultIamRecipients = true;
-    o.monitoringNotificationChannels = buildUnnamed5908();
+    o.monitoringNotificationChannels = buildUnnamed6798();
     o.pubsubTopic = "foo";
     o.schemaVersion = "foo";
   }
@@ -77,26 +98,27 @@ buildGoogleCloudBillingBudgetsV1beta1AllUpdatesRule() {
   return o;
 }
 
-checkGoogleCloudBillingBudgetsV1beta1AllUpdatesRule(
+void checkGoogleCloudBillingBudgetsV1beta1AllUpdatesRule(
     api.GoogleCloudBillingBudgetsV1beta1AllUpdatesRule o) {
   buildCounterGoogleCloudBillingBudgetsV1beta1AllUpdatesRule++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1AllUpdatesRule < 3) {
     unittest.expect(o.disableDefaultIamRecipients, unittest.isTrue);
-    checkUnnamed5908(o.monitoringNotificationChannels);
+    checkUnnamed6798(o.monitoringNotificationChannels);
     unittest.expect(o.pubsubTopic, unittest.equals('foo'));
     unittest.expect(o.schemaVersion, unittest.equals('foo'));
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1AllUpdatesRule--;
 }
 
-buildUnnamed5909() {
-  var o = new core.List<api.GoogleCloudBillingBudgetsV1beta1ThresholdRule>();
+core.List<api.GoogleCloudBillingBudgetsV1beta1ThresholdRule>
+    buildUnnamed6799() {
+  var o = <api.GoogleCloudBillingBudgetsV1beta1ThresholdRule>[];
   o.add(buildGoogleCloudBillingBudgetsV1beta1ThresholdRule());
   o.add(buildGoogleCloudBillingBudgetsV1beta1ThresholdRule());
   return o;
 }
 
-checkUnnamed5909(
+void checkUnnamed6799(
     core.List<api.GoogleCloudBillingBudgetsV1beta1ThresholdRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudBillingBudgetsV1beta1ThresholdRule(o[0]);
@@ -104,8 +126,9 @@ checkUnnamed5909(
 }
 
 core.int buildCounterGoogleCloudBillingBudgetsV1beta1Budget = 0;
-buildGoogleCloudBillingBudgetsV1beta1Budget() {
-  var o = new api.GoogleCloudBillingBudgetsV1beta1Budget();
+api.GoogleCloudBillingBudgetsV1beta1Budget
+    buildGoogleCloudBillingBudgetsV1beta1Budget() {
+  var o = api.GoogleCloudBillingBudgetsV1beta1Budget();
   buildCounterGoogleCloudBillingBudgetsV1beta1Budget++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1Budget < 3) {
     o.allUpdatesRule = buildGoogleCloudBillingBudgetsV1beta1AllUpdatesRule();
@@ -114,13 +137,13 @@ buildGoogleCloudBillingBudgetsV1beta1Budget() {
     o.displayName = "foo";
     o.etag = "foo";
     o.name = "foo";
-    o.thresholdRules = buildUnnamed5909();
+    o.thresholdRules = buildUnnamed6799();
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1Budget--;
   return o;
 }
 
-checkGoogleCloudBillingBudgetsV1beta1Budget(
+void checkGoogleCloudBillingBudgetsV1beta1Budget(
     api.GoogleCloudBillingBudgetsV1beta1Budget o) {
   buildCounterGoogleCloudBillingBudgetsV1beta1Budget++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1Budget < 3) {
@@ -130,14 +153,15 @@ checkGoogleCloudBillingBudgetsV1beta1Budget(
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed5909(o.thresholdRules);
+    checkUnnamed6799(o.thresholdRules);
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1Budget--;
 }
 
 core.int buildCounterGoogleCloudBillingBudgetsV1beta1BudgetAmount = 0;
-buildGoogleCloudBillingBudgetsV1beta1BudgetAmount() {
-  var o = new api.GoogleCloudBillingBudgetsV1beta1BudgetAmount();
+api.GoogleCloudBillingBudgetsV1beta1BudgetAmount
+    buildGoogleCloudBillingBudgetsV1beta1BudgetAmount() {
+  var o = api.GoogleCloudBillingBudgetsV1beta1BudgetAmount();
   buildCounterGoogleCloudBillingBudgetsV1beta1BudgetAmount++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1BudgetAmount < 3) {
     o.lastPeriodAmount =
@@ -148,7 +172,7 @@ buildGoogleCloudBillingBudgetsV1beta1BudgetAmount() {
   return o;
 }
 
-checkGoogleCloudBillingBudgetsV1beta1BudgetAmount(
+void checkGoogleCloudBillingBudgetsV1beta1BudgetAmount(
     api.GoogleCloudBillingBudgetsV1beta1BudgetAmount o) {
   buildCounterGoogleCloudBillingBudgetsV1beta1BudgetAmount++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1BudgetAmount < 3) {
@@ -159,8 +183,9 @@ checkGoogleCloudBillingBudgetsV1beta1BudgetAmount(
 }
 
 core.int buildCounterGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest = 0;
-buildGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest() {
-  var o = new api.GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest();
+api.GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest
+    buildGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest() {
+  var o = api.GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest();
   buildCounterGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest < 3) {
     o.budget = buildGoogleCloudBillingBudgetsV1beta1Budget();
@@ -169,7 +194,7 @@ buildGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest() {
   return o;
 }
 
-checkGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest(
+void checkGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest(
     api.GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest o) {
   buildCounterGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest < 3) {
@@ -178,8 +203,8 @@ checkGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest(
   buildCounterGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest--;
 }
 
-buildUnnamed5910() {
-  var o = new core.List<core.Object>();
+core.List<core.Object> buildUnnamed6800() {
+  var o = <core.Object>[];
   o.add({
     'list': [1, 2, 3],
     'bool': true,
@@ -193,7 +218,7 @@ buildUnnamed5910() {
   return o;
 }
 
-checkUnnamed5910(core.List<core.Object> o) {
+void checkUnnamed6800(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -207,140 +232,144 @@ checkUnnamed5910(core.List<core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed5911() {
-  var o = new core.Map<core.String, core.List<core.Object>>();
-  o["x"] = buildUnnamed5910();
-  o["y"] = buildUnnamed5910();
+core.Map<core.String, core.List<core.Object>> buildUnnamed6801() {
+  var o = <core.String, core.List<core.Object>>{};
+  o["x"] = buildUnnamed6800();
+  o["y"] = buildUnnamed6800();
   return o;
 }
 
-checkUnnamed5911(core.Map<core.String, core.List<core.Object>> o) {
+void checkUnnamed6801(core.Map<core.String, core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed5910(o["x"]);
-  checkUnnamed5910(o["y"]);
+  checkUnnamed6800(o["x"]);
+  checkUnnamed6800(o["y"]);
 }
 
-buildUnnamed5912() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed6802() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5912(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed5913() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed5913(core.List<core.String> o) {
+void checkUnnamed6802(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed5914() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed6803() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5914(core.List<core.String> o) {
+void checkUnnamed6803(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed6804() {
+  var o = <core.String>[];
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+void checkUnnamed6804(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudBillingBudgetsV1beta1Filter = 0;
-buildGoogleCloudBillingBudgetsV1beta1Filter() {
-  var o = new api.GoogleCloudBillingBudgetsV1beta1Filter();
+api.GoogleCloudBillingBudgetsV1beta1Filter
+    buildGoogleCloudBillingBudgetsV1beta1Filter() {
+  var o = api.GoogleCloudBillingBudgetsV1beta1Filter();
   buildCounterGoogleCloudBillingBudgetsV1beta1Filter++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1Filter < 3) {
     o.creditTypesTreatment = "foo";
-    o.labels = buildUnnamed5911();
-    o.projects = buildUnnamed5912();
-    o.services = buildUnnamed5913();
-    o.subaccounts = buildUnnamed5914();
+    o.labels = buildUnnamed6801();
+    o.projects = buildUnnamed6802();
+    o.services = buildUnnamed6803();
+    o.subaccounts = buildUnnamed6804();
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1Filter--;
   return o;
 }
 
-checkGoogleCloudBillingBudgetsV1beta1Filter(
+void checkGoogleCloudBillingBudgetsV1beta1Filter(
     api.GoogleCloudBillingBudgetsV1beta1Filter o) {
   buildCounterGoogleCloudBillingBudgetsV1beta1Filter++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1Filter < 3) {
     unittest.expect(o.creditTypesTreatment, unittest.equals('foo'));
-    checkUnnamed5911(o.labels);
-    checkUnnamed5912(o.projects);
-    checkUnnamed5913(o.services);
-    checkUnnamed5914(o.subaccounts);
+    checkUnnamed6801(o.labels);
+    checkUnnamed6802(o.projects);
+    checkUnnamed6803(o.services);
+    checkUnnamed6804(o.subaccounts);
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1Filter--;
 }
 
 core.int buildCounterGoogleCloudBillingBudgetsV1beta1LastPeriodAmount = 0;
-buildGoogleCloudBillingBudgetsV1beta1LastPeriodAmount() {
-  var o = new api.GoogleCloudBillingBudgetsV1beta1LastPeriodAmount();
+api.GoogleCloudBillingBudgetsV1beta1LastPeriodAmount
+    buildGoogleCloudBillingBudgetsV1beta1LastPeriodAmount() {
+  var o = api.GoogleCloudBillingBudgetsV1beta1LastPeriodAmount();
   buildCounterGoogleCloudBillingBudgetsV1beta1LastPeriodAmount++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1LastPeriodAmount < 3) {}
   buildCounterGoogleCloudBillingBudgetsV1beta1LastPeriodAmount--;
   return o;
 }
 
-checkGoogleCloudBillingBudgetsV1beta1LastPeriodAmount(
+void checkGoogleCloudBillingBudgetsV1beta1LastPeriodAmount(
     api.GoogleCloudBillingBudgetsV1beta1LastPeriodAmount o) {
   buildCounterGoogleCloudBillingBudgetsV1beta1LastPeriodAmount++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1LastPeriodAmount < 3) {}
   buildCounterGoogleCloudBillingBudgetsV1beta1LastPeriodAmount--;
 }
 
-buildUnnamed5915() {
-  var o = new core.List<api.GoogleCloudBillingBudgetsV1beta1Budget>();
+core.List<api.GoogleCloudBillingBudgetsV1beta1Budget> buildUnnamed6805() {
+  var o = <api.GoogleCloudBillingBudgetsV1beta1Budget>[];
   o.add(buildGoogleCloudBillingBudgetsV1beta1Budget());
   o.add(buildGoogleCloudBillingBudgetsV1beta1Budget());
   return o;
 }
 
-checkUnnamed5915(core.List<api.GoogleCloudBillingBudgetsV1beta1Budget> o) {
+void checkUnnamed6805(core.List<api.GoogleCloudBillingBudgetsV1beta1Budget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudBillingBudgetsV1beta1Budget(o[0]);
   checkGoogleCloudBillingBudgetsV1beta1Budget(o[1]);
 }
 
 core.int buildCounterGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse = 0;
-buildGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse() {
-  var o = new api.GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse();
+api.GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse
+    buildGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse() {
+  var o = api.GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse();
   buildCounterGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse < 3) {
-    o.budgets = buildUnnamed5915();
+    o.budgets = buildUnnamed6805();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse--;
   return o;
 }
 
-checkGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse(
+void checkGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse(
     api.GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse o) {
   buildCounterGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse < 3) {
-    checkUnnamed5915(o.budgets);
+    checkUnnamed6805(o.budgets);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse--;
 }
 
 core.int buildCounterGoogleCloudBillingBudgetsV1beta1ThresholdRule = 0;
-buildGoogleCloudBillingBudgetsV1beta1ThresholdRule() {
-  var o = new api.GoogleCloudBillingBudgetsV1beta1ThresholdRule();
+api.GoogleCloudBillingBudgetsV1beta1ThresholdRule
+    buildGoogleCloudBillingBudgetsV1beta1ThresholdRule() {
+  var o = api.GoogleCloudBillingBudgetsV1beta1ThresholdRule();
   buildCounterGoogleCloudBillingBudgetsV1beta1ThresholdRule++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1ThresholdRule < 3) {
     o.spendBasis = "foo";
@@ -350,7 +379,7 @@ buildGoogleCloudBillingBudgetsV1beta1ThresholdRule() {
   return o;
 }
 
-checkGoogleCloudBillingBudgetsV1beta1ThresholdRule(
+void checkGoogleCloudBillingBudgetsV1beta1ThresholdRule(
     api.GoogleCloudBillingBudgetsV1beta1ThresholdRule o) {
   buildCounterGoogleCloudBillingBudgetsV1beta1ThresholdRule++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1ThresholdRule < 3) {
@@ -361,8 +390,9 @@ checkGoogleCloudBillingBudgetsV1beta1ThresholdRule(
 }
 
 core.int buildCounterGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest = 0;
-buildGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest() {
-  var o = new api.GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest();
+api.GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest
+    buildGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest() {
+  var o = api.GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest();
   buildCounterGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest < 3) {
     o.budget = buildGoogleCloudBillingBudgetsV1beta1Budget();
@@ -372,7 +402,7 @@ buildGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest() {
   return o;
 }
 
-checkGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest(
+void checkGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest(
     api.GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest o) {
   buildCounterGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest < 3) {
@@ -383,23 +413,23 @@ checkGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest(
 }
 
 core.int buildCounterGoogleProtobufEmpty = 0;
-buildGoogleProtobufEmpty() {
-  var o = new api.GoogleProtobufEmpty();
+api.GoogleProtobufEmpty buildGoogleProtobufEmpty() {
+  var o = api.GoogleProtobufEmpty();
   buildCounterGoogleProtobufEmpty++;
   if (buildCounterGoogleProtobufEmpty < 3) {}
   buildCounterGoogleProtobufEmpty--;
   return o;
 }
 
-checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
+void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty++;
   if (buildCounterGoogleProtobufEmpty < 3) {}
   buildCounterGoogleProtobufEmpty--;
 }
 
 core.int buildCounterGoogleTypeMoney = 0;
-buildGoogleTypeMoney() {
-  var o = new api.GoogleTypeMoney();
+api.GoogleTypeMoney buildGoogleTypeMoney() {
+  var o = api.GoogleTypeMoney();
   buildCounterGoogleTypeMoney++;
   if (buildCounterGoogleTypeMoney < 3) {
     o.currencyCode = "foo";
@@ -410,7 +440,7 @@ buildGoogleTypeMoney() {
   return o;
 }
 
-checkGoogleTypeMoney(api.GoogleTypeMoney o) {
+void checkGoogleTypeMoney(api.GoogleTypeMoney o) {
   buildCounterGoogleTypeMoney++;
   if (buildCounterGoogleTypeMoney < 3) {
     unittest.expect(o.currencyCode, unittest.equals('foo'));
@@ -420,12 +450,12 @@ checkGoogleTypeMoney(api.GoogleTypeMoney o) {
   buildCounterGoogleTypeMoney--;
 }
 
-main() {
+void main() {
   unittest.group("obj-schema-GoogleCloudBillingBudgetsV1beta1AllUpdatesRule",
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudBillingBudgetsV1beta1AllUpdatesRule();
-      var od = new api.GoogleCloudBillingBudgetsV1beta1AllUpdatesRule.fromJson(
+      var od = api.GoogleCloudBillingBudgetsV1beta1AllUpdatesRule.fromJson(
           o.toJson());
       checkGoogleCloudBillingBudgetsV1beta1AllUpdatesRule(od);
     });
@@ -434,8 +464,7 @@ main() {
   unittest.group("obj-schema-GoogleCloudBillingBudgetsV1beta1Budget", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudBillingBudgetsV1beta1Budget();
-      var od =
-          new api.GoogleCloudBillingBudgetsV1beta1Budget.fromJson(o.toJson());
+      var od = api.GoogleCloudBillingBudgetsV1beta1Budget.fromJson(o.toJson());
       checkGoogleCloudBillingBudgetsV1beta1Budget(od);
     });
   });
@@ -443,8 +472,8 @@ main() {
   unittest.group("obj-schema-GoogleCloudBillingBudgetsV1beta1BudgetAmount", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudBillingBudgetsV1beta1BudgetAmount();
-      var od = new api.GoogleCloudBillingBudgetsV1beta1BudgetAmount.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleCloudBillingBudgetsV1beta1BudgetAmount.fromJson(o.toJson());
       checkGoogleCloudBillingBudgetsV1beta1BudgetAmount(od);
     });
   });
@@ -453,9 +482,8 @@ main() {
       "obj-schema-GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest();
-      var od =
-          new api.GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest.fromJson(
-              o.toJson());
+      var od = api.GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest.fromJson(
+          o.toJson());
       checkGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest(od);
     });
   });
@@ -463,8 +491,7 @@ main() {
   unittest.group("obj-schema-GoogleCloudBillingBudgetsV1beta1Filter", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudBillingBudgetsV1beta1Filter();
-      var od =
-          new api.GoogleCloudBillingBudgetsV1beta1Filter.fromJson(o.toJson());
+      var od = api.GoogleCloudBillingBudgetsV1beta1Filter.fromJson(o.toJson());
       checkGoogleCloudBillingBudgetsV1beta1Filter(od);
     });
   });
@@ -473,9 +500,8 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudBillingBudgetsV1beta1LastPeriodAmount();
-      var od =
-          new api.GoogleCloudBillingBudgetsV1beta1LastPeriodAmount.fromJson(
-              o.toJson());
+      var od = api.GoogleCloudBillingBudgetsV1beta1LastPeriodAmount.fromJson(
+          o.toJson());
       checkGoogleCloudBillingBudgetsV1beta1LastPeriodAmount(od);
     });
   });
@@ -484,9 +510,8 @@ main() {
       "obj-schema-GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse();
-      var od =
-          new api.GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse.fromJson(
-              o.toJson());
+      var od = api.GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse.fromJson(
+          o.toJson());
       checkGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse(od);
     });
   });
@@ -495,7 +520,7 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudBillingBudgetsV1beta1ThresholdRule();
-      var od = new api.GoogleCloudBillingBudgetsV1beta1ThresholdRule.fromJson(
+      var od = api.GoogleCloudBillingBudgetsV1beta1ThresholdRule.fromJson(
           o.toJson());
       checkGoogleCloudBillingBudgetsV1beta1ThresholdRule(od);
     });
@@ -505,9 +530,8 @@ main() {
       "obj-schema-GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest();
-      var od =
-          new api.GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest.fromJson(
-              o.toJson());
+      var od = api.GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest.fromJson(
+          o.toJson());
       checkGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest(od);
     });
   });
@@ -515,7 +539,7 @@ main() {
   unittest.group("obj-schema-GoogleProtobufEmpty", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleProtobufEmpty();
-      var od = new api.GoogleProtobufEmpty.fromJson(o.toJson());
+      var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od);
     });
   });
@@ -523,29 +547,30 @@ main() {
   unittest.group("obj-schema-GoogleTypeMoney", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleTypeMoney();
-      var od = new api.GoogleTypeMoney.fromJson(o.toJson());
+      var od = api.GoogleTypeMoney.fromJson(o.toJson());
       checkGoogleTypeMoney(od);
     });
   });
 
   unittest.group("resource-BillingAccountsBudgetsResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.BillingAccountsBudgetsResourceApi res =
-          new api.BillingbudgetsApi(mock).billingAccounts.budgets;
+          api.BillingbudgetsApi(mock).billingAccounts.budgets;
       var arg_request =
           buildGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest();
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api
-            .GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest.fromJson(json);
+        var obj =
+            api.GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest.fromJson(
+                json);
         checkGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -557,19 +582,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -579,7 +600,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudBillingBudgetsV1beta1Budget());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
@@ -589,16 +610,16 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.BillingAccountsBudgetsResourceApi res =
-          new api.BillingbudgetsApi(mock).billingAccounts.budgets;
+          api.BillingbudgetsApi(mock).billingAccounts.budgets;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -610,19 +631,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -631,7 +648,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
@@ -641,16 +658,16 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.BillingAccountsBudgetsResourceApi res =
-          new api.BillingbudgetsApi(mock).billingAccounts.budgets;
+          api.BillingbudgetsApi(mock).billingAccounts.budgets;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -662,19 +679,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -684,7 +697,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudBillingBudgetsV1beta1Budget());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
@@ -694,9 +707,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.BillingAccountsBudgetsResourceApi res =
-          new api.BillingbudgetsApi(mock).billingAccounts.budgets;
+          api.BillingbudgetsApi(mock).billingAccounts.budgets;
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
@@ -704,8 +717,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -717,19 +730,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -743,7 +752,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_parent,
@@ -756,22 +765,23 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.BillingAccountsBudgetsResourceApi res =
-          new api.BillingbudgetsApi(mock).billingAccounts.budgets;
+          api.BillingbudgetsApi(mock).billingAccounts.budgets;
       var arg_request =
           buildGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest();
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api
-            .GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest.fromJson(json);
+        var obj =
+            api.GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest.fromJson(
+                json);
         checkGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -783,19 +793,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -805,7 +811,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudBillingBudgetsV1beta1Budget());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_name, $fields: arg_$fields)

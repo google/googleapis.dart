@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.homegraph.v1;
 
@@ -22,14 +40,14 @@ class HomegraphApi {
 
   final commons.ApiRequester _requester;
 
-  AgentUsersResourceApi get agentUsers => new AgentUsersResourceApi(_requester);
-  DevicesResourceApi get devices => new DevicesResourceApi(_requester);
+  AgentUsersResourceApi get agentUsers => AgentUsersResourceApi(_requester);
+  DevicesResourceApi get devices => DevicesResourceApi(_requester);
 
   HomegraphApi(http.Client client,
       {core.String rootUrl = "https://homegraph.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AgentUsersResourceApi {
@@ -62,17 +80,20 @@ class AgentUsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async_1.Future<Empty> delete(core.String agentUserId,
-      {core.String requestId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async_1.Future<Empty> delete(
+    core.String agentUserId, {
+    core.String requestId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (agentUserId == null) {
-      throw new core.ArgumentError("Parameter agentUserId is required.");
+      throw core.ArgumentError("Parameter agentUserId is required.");
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
@@ -83,13 +104,16 @@ class AgentUsersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$agentUserId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 }
 
@@ -117,17 +141,19 @@ class DevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async_1.Future<QueryResponse> query(QueryRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async_1.Future<QueryResponse> query(
+    QueryRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -135,13 +161,16 @@ class DevicesResourceApi {
 
     _url = 'v1/devices:query';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new QueryResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => QueryResponse.fromJson(data));
   }
 
   /// Reports device state and optionally sends device notifications. Called by
@@ -172,17 +201,18 @@ class DevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async_1.Future<ReportStateAndNotificationResponse> reportStateAndNotification(
-      ReportStateAndNotificationRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ReportStateAndNotificationRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -190,14 +220,17 @@ class DevicesResourceApi {
 
     _url = 'v1/devices:reportStateAndNotification';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ReportStateAndNotificationResponse.fromJson(data));
+        .then((data) => ReportStateAndNotificationResponse.fromJson(data));
   }
 
   /// Requests Google to send an `action.devices.SYNC`
@@ -222,17 +255,18 @@ class DevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async_1.Future<RequestSyncDevicesResponse> requestSync(
-      RequestSyncDevicesRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RequestSyncDevicesRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -240,14 +274,16 @@ class DevicesResourceApi {
 
     _url = 'v1/devices:requestSync';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new RequestSyncDevicesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RequestSyncDevicesResponse.fromJson(data));
   }
 
   /// Gets all the devices associated with the given third-party user. The
@@ -269,17 +305,19 @@ class DevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async_1.Future<SyncResponse> sync(SyncRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async_1.Future<SyncResponse> sync(
+    SyncRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -287,13 +325,16 @@ class DevicesResourceApi {
 
     _url = 'v1/devices:sync';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SyncResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SyncResponse.fromJson(data));
   }
 }
 
@@ -312,7 +353,7 @@ class AgentDeviceId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -341,7 +382,7 @@ class AgentOtherDeviceId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (agentId != null) {
       _json["agentId"] = agentId;
     }
@@ -423,13 +464,13 @@ class Device {
           (_json["customData"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("deviceInfo")) {
-      deviceInfo = new DeviceInfo.fromJson(_json["deviceInfo"]);
+      deviceInfo = DeviceInfo.fromJson(_json["deviceInfo"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("name")) {
-      name = new DeviceNames.fromJson(_json["name"]);
+      name = DeviceNames.fromJson(_json["name"]);
     }
     if (_json.containsKey("notificationSupportedByAgent")) {
       notificationSupportedByAgent = _json["notificationSupportedByAgent"];
@@ -437,7 +478,7 @@ class Device {
     if (_json.containsKey("otherDeviceIds")) {
       otherDeviceIds = (_json["otherDeviceIds"] as core.List)
           .map<AgentOtherDeviceId>(
-              (value) => new AgentOtherDeviceId.fromJson(value))
+              (value) => AgentOtherDeviceId.fromJson(value))
           .toList();
     }
     if (_json.containsKey("roomHint")) {
@@ -459,7 +500,7 @@ class Device {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attributes != null) {
       _json["attributes"] = attributes;
     }
@@ -467,20 +508,20 @@ class Device {
       _json["customData"] = customData;
     }
     if (deviceInfo != null) {
-      _json["deviceInfo"] = (deviceInfo).toJson();
+      _json["deviceInfo"] = deviceInfo.toJson();
     }
     if (id != null) {
       _json["id"] = id;
     }
     if (name != null) {
-      _json["name"] = (name).toJson();
+      _json["name"] = name.toJson();
     }
     if (notificationSupportedByAgent != null) {
       _json["notificationSupportedByAgent"] = notificationSupportedByAgent;
     }
     if (otherDeviceIds != null) {
       _json["otherDeviceIds"] =
-          otherDeviceIds.map((value) => (value).toJson()).toList();
+          otherDeviceIds.map((value) => value.toJson()).toList();
     }
     if (roomHint != null) {
       _json["roomHint"] = roomHint;
@@ -534,7 +575,7 @@ class DeviceInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hwVersion != null) {
       _json["hwVersion"] = hwVersion;
     }
@@ -579,7 +620,7 @@ class DeviceNames {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (defaultNames != null) {
       _json["defaultNames"] = defaultNames;
     }
@@ -605,7 +646,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -631,8 +672,7 @@ class QueryRequest {
     }
     if (_json.containsKey("inputs")) {
       inputs = (_json["inputs"] as core.List)
-          .map<QueryRequestInput>(
-              (value) => new QueryRequestInput.fromJson(value))
+          .map<QueryRequestInput>((value) => QueryRequestInput.fromJson(value))
           .toList();
     }
     if (_json.containsKey("requestId")) {
@@ -642,12 +682,12 @@ class QueryRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (agentUserId != null) {
       _json["agentUserId"] = agentUserId;
     }
     if (inputs != null) {
-      _json["inputs"] = inputs.map((value) => (value).toJson()).toList();
+      _json["inputs"] = inputs.map((value) => value.toJson()).toList();
     }
     if (requestId != null) {
       _json["requestId"] = requestId;
@@ -665,15 +705,15 @@ class QueryRequestInput {
 
   QueryRequestInput.fromJson(core.Map _json) {
     if (_json.containsKey("payload")) {
-      payload = new QueryRequestPayload.fromJson(_json["payload"]);
+      payload = QueryRequestPayload.fromJson(_json["payload"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (payload != null) {
-      _json["payload"] = (payload).toJson();
+      _json["payload"] = payload.toJson();
     }
     return _json;
   }
@@ -689,16 +729,16 @@ class QueryRequestPayload {
   QueryRequestPayload.fromJson(core.Map _json) {
     if (_json.containsKey("devices")) {
       devices = (_json["devices"] as core.List)
-          .map<AgentDeviceId>((value) => new AgentDeviceId.fromJson(value))
+          .map<AgentDeviceId>((value) => AgentDeviceId.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (devices != null) {
-      _json["devices"] = devices.map((value) => (value).toJson()).toList();
+      _json["devices"] = devices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -723,7 +763,7 @@ class QueryResponse {
 
   QueryResponse.fromJson(core.Map _json) {
     if (_json.containsKey("payload")) {
-      payload = new QueryResponsePayload.fromJson(_json["payload"]);
+      payload = QueryResponsePayload.fromJson(_json["payload"]);
     }
     if (_json.containsKey("requestId")) {
       requestId = _json["requestId"];
@@ -732,9 +772,9 @@ class QueryResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (payload != null) {
-      _json["payload"] = (payload).toJson();
+      _json["payload"] = payload.toJson();
     }
     if (requestId != null) {
       _json["requestId"] = requestId;
@@ -765,7 +805,7 @@ class QueryResponsePayload {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (devices != null) {
       _json["devices"] = devices;
     }
@@ -805,7 +845,7 @@ class ReportStateAndNotificationDevice {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (notifications != null) {
       _json["notifications"] = notifications;
     }
@@ -857,7 +897,7 @@ class ReportStateAndNotificationRequest {
       followUpToken = _json["followUpToken"];
     }
     if (_json.containsKey("payload")) {
-      payload = new StateAndNotificationPayload.fromJson(_json["payload"]);
+      payload = StateAndNotificationPayload.fromJson(_json["payload"]);
     }
     if (_json.containsKey("requestId")) {
       requestId = _json["requestId"];
@@ -866,7 +906,7 @@ class ReportStateAndNotificationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (agentUserId != null) {
       _json["agentUserId"] = agentUserId;
     }
@@ -877,7 +917,7 @@ class ReportStateAndNotificationRequest {
       _json["followUpToken"] = followUpToken;
     }
     if (payload != null) {
-      _json["payload"] = (payload).toJson();
+      _json["payload"] = payload.toJson();
     }
     if (requestId != null) {
       _json["requestId"] = requestId;
@@ -903,7 +943,7 @@ class ReportStateAndNotificationResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (requestId != null) {
       _json["requestId"] = requestId;
     }
@@ -936,7 +976,7 @@ class RequestSyncDevicesRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (agentUserId != null) {
       _json["agentUserId"] = agentUserId;
     }
@@ -958,7 +998,7 @@ class RequestSyncDevicesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -972,15 +1012,15 @@ class StateAndNotificationPayload {
 
   StateAndNotificationPayload.fromJson(core.Map _json) {
     if (_json.containsKey("devices")) {
-      devices = new ReportStateAndNotificationDevice.fromJson(_json["devices"]);
+      devices = ReportStateAndNotificationDevice.fromJson(_json["devices"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (devices != null) {
-      _json["devices"] = (devices).toJson();
+      _json["devices"] = devices.toJson();
     }
     return _json;
   }
@@ -1008,7 +1048,7 @@ class SyncRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (agentUserId != null) {
       _json["agentUserId"] = agentUserId;
     }
@@ -1042,7 +1082,7 @@ class SyncResponse {
 
   SyncResponse.fromJson(core.Map _json) {
     if (_json.containsKey("payload")) {
-      payload = new SyncResponsePayload.fromJson(_json["payload"]);
+      payload = SyncResponsePayload.fromJson(_json["payload"]);
     }
     if (_json.containsKey("requestId")) {
       requestId = _json["requestId"];
@@ -1051,9 +1091,9 @@ class SyncResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (payload != null) {
-      _json["payload"] = (payload).toJson();
+      _json["payload"] = payload.toJson();
     }
     if (requestId != null) {
       _json["requestId"] = requestId;
@@ -1078,19 +1118,19 @@ class SyncResponsePayload {
     }
     if (_json.containsKey("devices")) {
       devices = (_json["devices"] as core.List)
-          .map<Device>((value) => new Device.fromJson(value))
+          .map<Device>((value) => Device.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (agentUserId != null) {
       _json["agentUserId"] = agentUserId;
     }
     if (devices != null) {
-      _json["devices"] = devices.map((value) => (value).toJson()).toList();
+      _json["devices"] = devices.map((value) => value.toJson()).toList();
     }
     return _json;
   }

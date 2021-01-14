@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.gamesManagement.v1management;
 
@@ -25,18 +43,18 @@ class GamesManagementApi {
   final commons.ApiRequester _requester;
 
   AchievementsResourceApi get achievements =>
-      new AchievementsResourceApi(_requester);
+      AchievementsResourceApi(_requester);
   ApplicationsResourceApi get applications =>
-      new ApplicationsResourceApi(_requester);
-  EventsResourceApi get events => new EventsResourceApi(_requester);
-  PlayersResourceApi get players => new PlayersResourceApi(_requester);
-  ScoresResourceApi get scores => new ScoresResourceApi(_requester);
+      ApplicationsResourceApi(_requester);
+  EventsResourceApi get events => EventsResourceApi(_requester);
+  PlayersResourceApi get players => PlayersResourceApi(_requester);
+  ScoresResourceApi get scores => ScoresResourceApi(_requester);
 
   GamesManagementApi(http.Client client,
       {core.String rootUrl = "https://gamesmanagement.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AchievementsResourceApi {
@@ -62,17 +80,19 @@ class AchievementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AchievementResetResponse> reset(core.String achievementId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AchievementResetResponse> reset(
+    core.String achievementId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (achievementId == null) {
-      throw new core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError("Parameter achievementId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -82,14 +102,16 @@ class AchievementsResourceApi {
         commons.Escaper.ecapeVariable('$achievementId') +
         '/reset';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new AchievementResetResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AchievementResetResponse.fromJson(data));
   }
 
   /// Resets all achievements for the currently authenticated player for your
@@ -108,13 +130,15 @@ class AchievementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AchievementResetAllResponse> resetAll({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AchievementResetAllResponse> resetAll({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -122,14 +146,16 @@ class AchievementsResourceApi {
 
     _url = 'games/v1management/achievements/reset';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new AchievementResetAllResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AchievementResetAllResponse.fromJson(data));
   }
 
   /// Resets all draft achievements for all players. This method is only
@@ -145,13 +171,15 @@ class AchievementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetAllForAllPlayers({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future resetAllForAllPlayers({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -161,12 +189,15 @@ class AchievementsResourceApi {
 
     _url = 'games/v1management/achievements/resetAllForAllPlayers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -186,17 +217,19 @@ class AchievementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetForAllPlayers(core.String achievementId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future resetForAllPlayers(
+    core.String achievementId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (achievementId == null) {
-      throw new core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError("Parameter achievementId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -208,12 +241,15 @@ class AchievementsResourceApi {
         commons.Escaper.ecapeVariable('$achievementId') +
         '/resetForAllPlayers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -234,17 +270,18 @@ class AchievementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future resetMultipleForAllPlayers(
-      AchievementResetMultipleForAllRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AchievementResetMultipleForAllRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -254,12 +291,15 @@ class AchievementsResourceApi {
 
     _url = 'games/v1management/achievements/resetMultipleForAllPlayers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 }
@@ -293,17 +333,21 @@ class ApplicationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HiddenPlayerList> listHidden(core.String applicationId,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<HiddenPlayerList> listHidden(
+    core.String applicationId, {
+    core.String pageToken,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (applicationId == null) {
-      throw new core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError("Parameter applicationId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -319,13 +363,16 @@ class ApplicationsResourceApi {
         commons.Escaper.ecapeVariable('$applicationId') +
         '/players/hidden';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HiddenPlayerList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HiddenPlayerList.fromJson(data));
   }
 }
 
@@ -350,16 +397,19 @@ class EventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future reset(core.String eventId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future reset(
+    core.String eventId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (eventId == null) {
-      throw new core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError("Parameter eventId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -371,12 +421,15 @@ class EventsResourceApi {
         commons.Escaper.ecapeVariable('$eventId') +
         '/reset';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -394,13 +447,15 @@ class EventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetAll({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future resetAll({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -410,12 +465,15 @@ class EventsResourceApi {
 
     _url = 'games/v1management/events/reset';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -432,13 +490,15 @@ class EventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetAllForAllPlayers({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future resetAllForAllPlayers({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -448,12 +508,15 @@ class EventsResourceApi {
 
     _url = 'games/v1management/events/resetAllForAllPlayers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -473,16 +536,19 @@ class EventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetForAllPlayers(core.String eventId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future resetForAllPlayers(
+    core.String eventId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (eventId == null) {
-      throw new core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError("Parameter eventId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -494,12 +560,15 @@ class EventsResourceApi {
         commons.Escaper.ecapeVariable('$eventId') +
         '/resetForAllPlayers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -520,17 +589,18 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future resetMultipleForAllPlayers(
-      EventsResetMultipleForAllRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    EventsResetMultipleForAllRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -540,12 +610,15 @@ class EventsResourceApi {
 
     _url = 'games/v1management/events/resetMultipleForAllPlayers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 }
@@ -574,20 +647,23 @@ class PlayersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future hide(core.String applicationId, core.String playerId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future hide(
+    core.String applicationId,
+    core.String playerId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (applicationId == null) {
-      throw new core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError("Parameter applicationId is required.");
     }
     if (playerId == null) {
-      throw new core.ArgumentError("Parameter playerId is required.");
+      throw core.ArgumentError("Parameter playerId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -600,12 +676,15 @@ class PlayersResourceApi {
         '/players/hidden/' +
         commons.Escaper.ecapeVariable('$playerId');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -628,20 +707,23 @@ class PlayersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future unhide(core.String applicationId, core.String playerId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future unhide(
+    core.String applicationId,
+    core.String playerId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (applicationId == null) {
-      throw new core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError("Parameter applicationId is required.");
     }
     if (playerId == null) {
-      throw new core.ArgumentError("Parameter playerId is required.");
+      throw core.ArgumentError("Parameter playerId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -654,12 +736,15 @@ class PlayersResourceApi {
         '/players/hidden/' +
         commons.Escaper.ecapeVariable('$playerId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 }
@@ -687,17 +772,19 @@ class ScoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlayerScoreResetResponse> reset(core.String leaderboardId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PlayerScoreResetResponse> reset(
+    core.String leaderboardId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (leaderboardId == null) {
-      throw new core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError("Parameter leaderboardId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -707,14 +794,16 @@ class ScoresResourceApi {
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/scores/reset';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new PlayerScoreResetResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlayerScoreResetResponse.fromJson(data));
   }
 
   /// Resets all scores for all leaderboards for the currently authenticated
@@ -733,13 +822,15 @@ class ScoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlayerScoreResetAllResponse> resetAll({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PlayerScoreResetAllResponse> resetAll({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -747,14 +838,16 @@ class ScoresResourceApi {
 
     _url = 'games/v1management/scores/reset';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new PlayerScoreResetAllResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlayerScoreResetAllResponse.fromJson(data));
   }
 
   /// Resets scores for all draft leaderboards for all players. This method is
@@ -770,13 +863,15 @@ class ScoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetAllForAllPlayers({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future resetAllForAllPlayers({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -786,12 +881,15 @@ class ScoresResourceApi {
 
     _url = 'games/v1management/scores/resetAllForAllPlayers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -811,17 +909,19 @@ class ScoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetForAllPlayers(core.String leaderboardId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future resetForAllPlayers(
+    core.String leaderboardId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (leaderboardId == null) {
-      throw new core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError("Parameter leaderboardId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -833,12 +933,15 @@ class ScoresResourceApi {
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/scores/resetForAllPlayers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -859,17 +962,18 @@ class ScoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future resetMultipleForAllPlayers(
-      ScoresResetMultipleForAllRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ScoresResetMultipleForAllRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -879,12 +983,15 @@ class ScoresResourceApi {
 
     _url = 'games/v1management/scores/resetMultipleForAllPlayers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 }
@@ -907,19 +1014,19 @@ class AchievementResetAllResponse {
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
           .map<AchievementResetResponse>(
-              (value) => new AchievementResetResponse.fromJson(value))
+              (value) => AchievementResetResponse.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -947,7 +1054,7 @@ class AchievementResetMultipleForAllRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (achievementIds != null) {
       _json["achievement_ids"] = achievementIds;
     }
@@ -995,7 +1102,7 @@ class AchievementResetResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currentState != null) {
       _json["currentState"] = currentState;
     }
@@ -1034,7 +1141,7 @@ class EventsResetMultipleForAllRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (eventIds != null) {
       _json["event_ids"] = eventIds;
     }
@@ -1068,31 +1175,30 @@ class GamesPlayerExperienceInfoResource {
       currentExperiencePoints = _json["currentExperiencePoints"];
     }
     if (_json.containsKey("currentLevel")) {
-      currentLevel =
-          new GamesPlayerLevelResource.fromJson(_json["currentLevel"]);
+      currentLevel = GamesPlayerLevelResource.fromJson(_json["currentLevel"]);
     }
     if (_json.containsKey("lastLevelUpTimestampMillis")) {
       lastLevelUpTimestampMillis = _json["lastLevelUpTimestampMillis"];
     }
     if (_json.containsKey("nextLevel")) {
-      nextLevel = new GamesPlayerLevelResource.fromJson(_json["nextLevel"]);
+      nextLevel = GamesPlayerLevelResource.fromJson(_json["nextLevel"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currentExperiencePoints != null) {
       _json["currentExperiencePoints"] = currentExperiencePoints;
     }
     if (currentLevel != null) {
-      _json["currentLevel"] = (currentLevel).toJson();
+      _json["currentLevel"] = currentLevel.toJson();
     }
     if (lastLevelUpTimestampMillis != null) {
       _json["lastLevelUpTimestampMillis"] = lastLevelUpTimestampMillis;
     }
     if (nextLevel != null) {
-      _json["nextLevel"] = (nextLevel).toJson();
+      _json["nextLevel"] = nextLevel.toJson();
     }
     return _json;
   }
@@ -1125,7 +1231,7 @@ class GamesPlayerLevelResource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (level != null) {
       _json["level"] = level;
     }
@@ -1161,13 +1267,13 @@ class HiddenPlayer {
       kind = _json["kind"];
     }
     if (_json.containsKey("player")) {
-      player = new Player.fromJson(_json["player"]);
+      player = Player.fromJson(_json["player"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hiddenTimeMillis != null) {
       _json["hiddenTimeMillis"] = hiddenTimeMillis;
     }
@@ -1175,7 +1281,7 @@ class HiddenPlayer {
       _json["kind"] = kind;
     }
     if (player != null) {
-      _json["player"] = (player).toJson();
+      _json["player"] = player.toJson();
     }
     return _json;
   }
@@ -1198,7 +1304,7 @@ class HiddenPlayerList {
   HiddenPlayerList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<HiddenPlayer>((value) => new HiddenPlayer.fromJson(value))
+          .map<HiddenPlayer>((value) => HiddenPlayer.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1211,9 +1317,9 @@ class HiddenPlayerList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1249,7 +1355,7 @@ class PlayerName {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (familyName != null) {
       _json["familyName"] = familyName;
     }
@@ -1317,14 +1423,14 @@ class Player {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("experienceInfo")) {
-      experienceInfo = new GamesPlayerExperienceInfoResource.fromJson(
-          _json["experienceInfo"]);
+      experienceInfo =
+          GamesPlayerExperienceInfoResource.fromJson(_json["experienceInfo"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("name")) {
-      name = new PlayerName.fromJson(_json["name"]);
+      name = PlayerName.fromJson(_json["name"]);
     }
     if (_json.containsKey("originalPlayerId")) {
       originalPlayerId = _json["originalPlayerId"];
@@ -1333,7 +1439,7 @@ class Player {
       playerId = _json["playerId"];
     }
     if (_json.containsKey("profileSettings")) {
-      profileSettings = new ProfileSettings.fromJson(_json["profileSettings"]);
+      profileSettings = ProfileSettings.fromJson(_json["profileSettings"]);
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -1342,7 +1448,7 @@ class Player {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (avatarImageUrl != null) {
       _json["avatarImageUrl"] = avatarImageUrl;
     }
@@ -1356,13 +1462,13 @@ class Player {
       _json["displayName"] = displayName;
     }
     if (experienceInfo != null) {
-      _json["experienceInfo"] = (experienceInfo).toJson();
+      _json["experienceInfo"] = experienceInfo.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (name != null) {
-      _json["name"] = (name).toJson();
+      _json["name"] = name.toJson();
     }
     if (originalPlayerId != null) {
       _json["originalPlayerId"] = originalPlayerId;
@@ -1371,7 +1477,7 @@ class Player {
       _json["playerId"] = playerId;
     }
     if (profileSettings != null) {
-      _json["profileSettings"] = (profileSettings).toJson();
+      _json["profileSettings"] = profileSettings.toJson();
     }
     if (title != null) {
       _json["title"] = title;
@@ -1398,19 +1504,19 @@ class PlayerScoreResetAllResponse {
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
           .map<PlayerScoreResetResponse>(
-              (value) => new PlayerScoreResetResponse.fromJson(value))
+              (value) => PlayerScoreResetResponse.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1447,7 +1553,7 @@ class PlayerScoreResetResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (definitionId != null) {
       _json["definitionId"] = definitionId;
     }
@@ -1481,7 +1587,7 @@ class ProfileSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1514,7 +1620,7 @@ class ScoresResetMultipleForAllRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }

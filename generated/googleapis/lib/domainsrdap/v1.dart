@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.domainsrdap.v1;
 
@@ -21,18 +39,18 @@ const core.String USER_AGENT = 'dart-api-client domainsrdap/v1';
 class DomainsrdapApi {
   final commons.ApiRequester _requester;
 
-  AutnumResourceApi get autnum => new AutnumResourceApi(_requester);
-  DomainResourceApi get domain => new DomainResourceApi(_requester);
-  EntityResourceApi get entity => new EntityResourceApi(_requester);
-  IpResourceApi get ip => new IpResourceApi(_requester);
-  NameserverResourceApi get nameserver => new NameserverResourceApi(_requester);
-  V1ResourceApi get v1 => new V1ResourceApi(_requester);
+  AutnumResourceApi get autnum => AutnumResourceApi(_requester);
+  DomainResourceApi get domain => DomainResourceApi(_requester);
+  EntityResourceApi get entity => EntityResourceApi(_requester);
+  IpResourceApi get ip => IpResourceApi(_requester);
+  NameserverResourceApi get nameserver => NameserverResourceApi(_requester);
+  V1ResourceApi get v1 => V1ResourceApi(_requester);
 
   DomainsrdapApi(http.Client client,
       {core.String rootUrl = "https://domainsrdap.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AutnumResourceApi {
@@ -57,16 +75,19 @@ class AutnumResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RdapResponse> get(core.String autnumId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RdapResponse> get(
+    core.String autnumId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (autnumId == null) {
-      throw new core.ArgumentError("Parameter autnumId is required.");
+      throw core.ArgumentError("Parameter autnumId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -74,13 +95,16 @@ class AutnumResourceApi {
 
     _url = 'v1/autnum/' + commons.Escaper.ecapeVariable('$autnumId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RdapResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RdapResponse.fromJson(data));
   }
 }
 
@@ -106,16 +130,19 @@ class DomainResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> get(core.String domainName, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<HttpBody> get(
+    core.String domainName, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (domainName == null) {
-      throw new core.ArgumentError("Parameter domainName is required.");
+      throw core.ArgumentError("Parameter domainName is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -123,13 +150,16 @@ class DomainResourceApi {
 
     _url = 'v1/domain/' + commons.Escaper.ecapeVariableReserved('$domainName');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 }
 
@@ -155,16 +185,19 @@ class EntityResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RdapResponse> get(core.String entityId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RdapResponse> get(
+    core.String entityId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (entityId == null) {
-      throw new core.ArgumentError("Parameter entityId is required.");
+      throw core.ArgumentError("Parameter entityId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -172,13 +205,16 @@ class EntityResourceApi {
 
     _url = 'v1/entity/' + commons.Escaper.ecapeVariable('$entityId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RdapResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RdapResponse.fromJson(data));
   }
 }
 
@@ -206,20 +242,23 @@ class IpResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RdapResponse> get(core.String ipId, core.String ipId1,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RdapResponse> get(
+    core.String ipId,
+    core.String ipId1, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (ipId == null) {
-      throw new core.ArgumentError("Parameter ipId is required.");
+      throw core.ArgumentError("Parameter ipId is required.");
     }
     if (ipId1 == null) {
-      throw new core.ArgumentError("Parameter ipId1 is required.");
+      throw core.ArgumentError("Parameter ipId1 is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -230,13 +269,16 @@ class IpResourceApi {
         '/' +
         commons.Escaper.ecapeVariable('$ipId1');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RdapResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RdapResponse.fromJson(data));
   }
 }
 
@@ -262,17 +304,19 @@ class NameserverResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RdapResponse> get(core.String nameserverId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RdapResponse> get(
+    core.String nameserverId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (nameserverId == null) {
-      throw new core.ArgumentError("Parameter nameserverId is required.");
+      throw core.ArgumentError("Parameter nameserverId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -280,13 +324,16 @@ class NameserverResourceApi {
 
     _url = 'v1/nameserver/' + commons.Escaper.ecapeVariable('$nameserverId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RdapResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RdapResponse.fromJson(data));
   }
 }
 
@@ -310,13 +357,15 @@ class V1ResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RdapResponse> getDomains({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RdapResponse> getDomains({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -324,13 +373,16 @@ class V1ResourceApi {
 
     _url = 'v1/domains';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RdapResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RdapResponse.fromJson(data));
   }
 
   /// The RDAP API recognizes this command from the RDAP specification but does
@@ -348,13 +400,15 @@ class V1ResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RdapResponse> getEntities({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RdapResponse> getEntities({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -362,13 +416,16 @@ class V1ResourceApi {
 
     _url = 'v1/entities';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RdapResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RdapResponse.fromJson(data));
   }
 
   /// Get help information for the RDAP API, including links to documentation.
@@ -385,13 +442,15 @@ class V1ResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> getHelp({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<HttpBody> getHelp({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -399,13 +458,16 @@ class V1ResourceApi {
 
     _url = 'v1/help';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// The RDAP API recognizes this command from the RDAP specification but does
@@ -423,13 +485,15 @@ class V1ResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> getIp({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<HttpBody> getIp({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -437,13 +501,16 @@ class V1ResourceApi {
 
     _url = 'v1/ip';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// The RDAP API recognizes this command from the RDAP specification but does
@@ -461,13 +528,15 @@ class V1ResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RdapResponse> getNameservers({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RdapResponse> getNameservers({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -475,13 +544,16 @@ class V1ResourceApi {
 
     _url = 'v1/nameservers';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RdapResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RdapResponse.fromJson(data));
   }
 }
 
@@ -509,9 +581,7 @@ class HttpBody {
 
   /// The HTTP request/response body as raw binary.
   core.String data;
-  core.List<core.int> get dataAsBytes {
-    return convert.base64.decode(data);
-  }
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -544,7 +614,7 @@ class HttpBody {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentType != null) {
       _json["contentType"] = contentType;
     }
@@ -610,7 +680,7 @@ class Link {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (href != null) {
       _json["href"] = href;
     }
@@ -663,7 +733,7 @@ class Notice {
     }
     if (_json.containsKey("links")) {
       links = (_json["links"] as core.List)
-          .map<Link>((value) => new Link.fromJson(value))
+          .map<Link>((value) => Link.fromJson(value))
           .toList();
     }
     if (_json.containsKey("title")) {
@@ -676,12 +746,12 @@ class Notice {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
     if (links != null) {
-      _json["links"] = links.map((value) => (value).toJson()).toList();
+      _json["links"] = links.map((value) => value.toJson()).toList();
     }
     if (title != null) {
       _json["title"] = title;
@@ -727,14 +797,14 @@ class RdapResponse {
       errorCode = _json["errorCode"];
     }
     if (_json.containsKey("jsonResponse")) {
-      jsonResponse = new HttpBody.fromJson(_json["jsonResponse"]);
+      jsonResponse = HttpBody.fromJson(_json["jsonResponse"]);
     }
     if (_json.containsKey("lang")) {
       lang = _json["lang"];
     }
     if (_json.containsKey("notices")) {
       notices = (_json["notices"] as core.List)
-          .map<Notice>((value) => new Notice.fromJson(value))
+          .map<Notice>((value) => Notice.fromJson(value))
           .toList();
     }
     if (_json.containsKey("rdapConformance")) {
@@ -748,7 +818,7 @@ class RdapResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -756,13 +826,13 @@ class RdapResponse {
       _json["errorCode"] = errorCode;
     }
     if (jsonResponse != null) {
-      _json["jsonResponse"] = (jsonResponse).toJson();
+      _json["jsonResponse"] = jsonResponse.toJson();
     }
     if (lang != null) {
       _json["lang"] = lang;
     }
     if (notices != null) {
-      _json["notices"] = notices.map((value) => (value).toJson()).toList();
+      _json["notices"] = notices.map((value) => value.toJson()).toList();
     }
     if (rdapConformance != null) {
       _json["rdapConformance"] = rdapConformance;

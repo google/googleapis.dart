@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.firebaserules.v1;
 
@@ -32,22 +50,22 @@ class FirebaserulesApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   FirebaserulesApi(http.Client client,
       {core.String rootUrl = "https://firebaserules.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsReleasesResourceApi get releases =>
-      new ProjectsReleasesResourceApi(_requester);
+      ProjectsReleasesResourceApi(_requester);
   ProjectsRulesetsResourceApi get rulesets =>
-      new ProjectsRulesetsResourceApi(_requester);
+      ProjectsRulesetsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -86,20 +104,22 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestRulesetResponse> test(
-      TestRulesetRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestRulesetRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -107,13 +127,16 @@ class ProjectsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':test';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TestRulesetResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestRulesetResponse.fromJson(data));
   }
 }
 
@@ -157,20 +180,23 @@ class ProjectsReleasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Release> create(Release request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Release> create(
+    Release request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -178,13 +204,16 @@ class ProjectsReleasesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/releases';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Release.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Release.fromJson(data));
   }
 
   /// Delete a `Release` by resource name.
@@ -205,16 +234,19 @@ class ProjectsReleasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -222,13 +254,16 @@ class ProjectsReleasesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Get a `Release` by name.
@@ -249,16 +284,19 @@ class ProjectsReleasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Release> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Release> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -266,13 +304,16 @@ class ProjectsReleasesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Release.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Release.fromJson(data));
   }
 
   /// Get the `Release` executable to use when enforcing rules.
@@ -303,17 +344,20 @@ class ProjectsReleasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GetReleaseExecutableResponse> getExecutable(core.String name,
-      {core.String executableVersion, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GetReleaseExecutableResponse> getExecutable(
+    core.String name, {
+    core.String executableVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (executableVersion != null) {
       _queryParams["executableVersion"] = [executableVersion];
@@ -326,14 +370,17 @@ class ProjectsReleasesResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':getExecutable';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GetReleaseExecutableResponse.fromJson(data));
+        .then((data) => GetReleaseExecutableResponse.fromJson(data));
   }
 
   /// List the `Release` values for a project. This list may optionally be
@@ -380,20 +427,22 @@ class ProjectsReleasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListReleasesResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListReleasesResponse> list(
+    core.String name, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -410,13 +459,16 @@ class ProjectsReleasesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/releases';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListReleasesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListReleasesResponse.fromJson(data));
   }
 
   /// Update a `Release` via PATCH. Only updates to the `ruleset_name` and
@@ -441,20 +493,23 @@ class ProjectsReleasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Release> patch(UpdateReleaseRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Release> patch(
+    UpdateReleaseRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -462,13 +517,16 @@ class ProjectsReleasesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Release.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Release.fromJson(data));
   }
 }
 
@@ -502,20 +560,23 @@ class ProjectsRulesetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Ruleset> create(Ruleset request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Ruleset> create(
+    Ruleset request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -523,13 +584,16 @@ class ProjectsRulesetsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rulesets';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Ruleset.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Ruleset.fromJson(data));
   }
 
   /// Delete a `Ruleset` by resource name. If the `Ruleset` is referenced by a
@@ -551,16 +615,19 @@ class ProjectsRulesetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -568,13 +635,16 @@ class ProjectsRulesetsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Get a `Ruleset` by name including the full `Source` contents.
@@ -595,16 +665,19 @@ class ProjectsRulesetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Ruleset> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Ruleset> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -612,13 +685,16 @@ class ProjectsRulesetsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Ruleset.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Ruleset.fromJson(data));
   }
 
   /// List `Ruleset` metadata only and optionally filter the results by
@@ -654,20 +730,22 @@ class ProjectsRulesetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListRulesetsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListRulesetsResponse> list(
+    core.String name, {
+    core.String filter,
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -684,13 +762,16 @@ class ProjectsRulesetsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rulesets';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListRulesetsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListRulesetsResponse.fromJson(data));
   }
 }
 
@@ -709,7 +790,7 @@ class Arg {
 
   Arg.fromJson(core.Map _json) {
     if (_json.containsKey("anyValue")) {
-      anyValue = new Empty.fromJson(_json["anyValue"]);
+      anyValue = Empty.fromJson(_json["anyValue"]);
     }
     if (_json.containsKey("exactValue")) {
       exactValue = _json["exactValue"];
@@ -718,9 +799,9 @@ class Arg {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (anyValue != null) {
-      _json["anyValue"] = (anyValue).toJson();
+      _json["anyValue"] = anyValue.toJson();
     }
     if (exactValue != null) {
       _json["exactValue"] = exactValue;
@@ -741,7 +822,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -763,31 +844,30 @@ class ExpressionReport {
   ExpressionReport.fromJson(core.Map _json) {
     if (_json.containsKey("children")) {
       children = (_json["children"] as core.List)
-          .map<ExpressionReport>(
-              (value) => new ExpressionReport.fromJson(value))
+          .map<ExpressionReport>((value) => ExpressionReport.fromJson(value))
           .toList();
     }
     if (_json.containsKey("sourcePosition")) {
-      sourcePosition = new SourcePosition.fromJson(_json["sourcePosition"]);
+      sourcePosition = SourcePosition.fromJson(_json["sourcePosition"]);
     }
     if (_json.containsKey("values")) {
       values = (_json["values"] as core.List)
-          .map<ValueCount>((value) => new ValueCount.fromJson(value))
+          .map<ValueCount>((value) => ValueCount.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (children != null) {
-      _json["children"] = children.map((value) => (value).toJson()).toList();
+      _json["children"] = children.map((value) => value.toJson()).toList();
     }
     if (sourcePosition != null) {
-      _json["sourcePosition"] = (sourcePosition).toJson();
+      _json["sourcePosition"] = sourcePosition.toJson();
     }
     if (values != null) {
-      _json["values"] = values.map((value) => (value).toJson()).toList();
+      _json["values"] = values.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -800,9 +880,8 @@ class File {
 
   /// Fingerprint (e.g. github sha) associated with the `File`.
   core.String fingerprint;
-  core.List<core.int> get fingerprintAsBytes {
-    return convert.base64.decode(fingerprint);
-  }
+  core.List<core.int> get fingerprintAsBytes =>
+      convert.base64.decode(fingerprint);
 
   set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
@@ -828,7 +907,7 @@ class File {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (content != null) {
       _json["content"] = content;
     }
@@ -867,7 +946,7 @@ class FunctionCall {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (args != null) {
       _json["args"] = args;
     }
@@ -903,28 +982,28 @@ class FunctionMock {
   FunctionMock.fromJson(core.Map _json) {
     if (_json.containsKey("args")) {
       args = (_json["args"] as core.List)
-          .map<Arg>((value) => new Arg.fromJson(value))
+          .map<Arg>((value) => Arg.fromJson(value))
           .toList();
     }
     if (_json.containsKey("function")) {
       function = _json["function"];
     }
     if (_json.containsKey("result")) {
-      result = new Result.fromJson(_json["result"]);
+      result = Result.fromJson(_json["result"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (args != null) {
-      _json["args"] = args.map((value) => (value).toJson()).toList();
+      _json["args"] = args.map((value) => value.toJson()).toList();
     }
     if (function != null) {
       _json["function"] = function;
     }
     if (result != null) {
-      _json["result"] = (result).toJson();
+      _json["result"] = result.toJson();
     }
     return _json;
   }
@@ -934,9 +1013,8 @@ class FunctionMock {
 class GetReleaseExecutableResponse {
   /// Executable view of the `Ruleset` referenced by the `Release`.
   core.String executable;
-  core.List<core.int> get executableAsBytes {
-    return convert.base64.decode(executable);
-  }
+  core.List<core.int> get executableAsBytes =>
+      convert.base64.decode(executable);
 
   set executableAsBytes(core.List<core.int> _bytes) {
     executable =
@@ -997,7 +1075,7 @@ class GetReleaseExecutableResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (executable != null) {
       _json["executable"] = executable;
     }
@@ -1048,13 +1126,13 @@ class Issue {
       severity = _json["severity"];
     }
     if (_json.containsKey("sourcePosition")) {
-      sourcePosition = new SourcePosition.fromJson(_json["sourcePosition"]);
+      sourcePosition = SourcePosition.fromJson(_json["sourcePosition"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -1062,7 +1140,7 @@ class Issue {
       _json["severity"] = severity;
     }
     if (sourcePosition != null) {
-      _json["sourcePosition"] = (sourcePosition).toJson();
+      _json["sourcePosition"] = sourcePosition.toJson();
     }
     return _json;
   }
@@ -1085,19 +1163,19 @@ class ListReleasesResponse {
     }
     if (_json.containsKey("releases")) {
       releases = (_json["releases"] as core.List)
-          .map<Release>((value) => new Release.fromJson(value))
+          .map<Release>((value) => Release.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (releases != null) {
-      _json["releases"] = releases.map((value) => (value).toJson()).toList();
+      _json["releases"] = releases.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1120,19 +1198,19 @@ class ListRulesetsResponse {
     }
     if (_json.containsKey("rulesets")) {
       rulesets = (_json["rulesets"] as core.List)
-          .map<Ruleset>((value) => new Ruleset.fromJson(value))
+          .map<Ruleset>((value) => Ruleset.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (rulesets != null) {
-      _json["rulesets"] = rulesets.map((value) => (value).toJson()).toList();
+      _json["rulesets"] = rulesets.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1154,7 +1232,7 @@ class Metadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (services != null) {
       _json["services"] = services;
     }
@@ -1212,7 +1290,7 @@ class Release {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -1245,7 +1323,7 @@ class Result {
 
   Result.fromJson(core.Map _json) {
     if (_json.containsKey("undefined")) {
-      undefined = new Empty.fromJson(_json["undefined"]);
+      undefined = Empty.fromJson(_json["undefined"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -1254,9 +1332,9 @@ class Result {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (undefined != null) {
-      _json["undefined"] = (undefined).toJson();
+      _json["undefined"] = undefined.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -1288,30 +1366,30 @@ class Ruleset {
       createTime = _json["createTime"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new Metadata.fromJson(_json["metadata"]);
+      metadata = Metadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("source")) {
-      source = new Source.fromJson(_json["source"]);
+      source = Source.fromJson(_json["source"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (source != null) {
-      _json["source"] = (source).toJson();
+      _json["source"] = source.toJson();
     }
     return _json;
   }
@@ -1327,16 +1405,16 @@ class Source {
   Source.fromJson(core.Map _json) {
     if (_json.containsKey("files")) {
       files = (_json["files"] as core.List)
-          .map<File>((value) => new File.fromJson(value))
+          .map<File>((value) => File.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (files != null) {
-      _json["files"] = files.map((value) => (value).toJson()).toList();
+      _json["files"] = files.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1382,7 +1460,7 @@ class SourcePosition {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (column != null) {
       _json["column"] = column;
     }
@@ -1473,7 +1551,7 @@ class TestCase {
     }
     if (_json.containsKey("functionMocks")) {
       functionMocks = (_json["functionMocks"] as core.List)
-          .map<FunctionMock>((value) => new FunctionMock.fromJson(value))
+          .map<FunctionMock>((value) => FunctionMock.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pathEncoding")) {
@@ -1489,7 +1567,7 @@ class TestCase {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (expectation != null) {
       _json["expectation"] = expectation;
     }
@@ -1498,7 +1576,7 @@ class TestCase {
     }
     if (functionMocks != null) {
       _json["functionMocks"] =
-          functionMocks.map((value) => (value).toJson()).toList();
+          functionMocks.map((value) => value.toJson()).toList();
     }
     if (pathEncoding != null) {
       _json["pathEncoding"] = pathEncoding;
@@ -1563,17 +1641,16 @@ class TestResult {
       debugMessages = (_json["debugMessages"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("errorPosition")) {
-      errorPosition = new SourcePosition.fromJson(_json["errorPosition"]);
+      errorPosition = SourcePosition.fromJson(_json["errorPosition"]);
     }
     if (_json.containsKey("expressionReports")) {
       expressionReports = (_json["expressionReports"] as core.List)
-          .map<ExpressionReport>(
-              (value) => new ExpressionReport.fromJson(value))
+          .map<ExpressionReport>((value) => ExpressionReport.fromJson(value))
           .toList();
     }
     if (_json.containsKey("functionCalls")) {
       functionCalls = (_json["functionCalls"] as core.List)
-          .map<FunctionCall>((value) => new FunctionCall.fromJson(value))
+          .map<FunctionCall>((value) => FunctionCall.fromJson(value))
           .toList();
     }
     if (_json.containsKey("state")) {
@@ -1581,35 +1658,34 @@ class TestResult {
     }
     if (_json.containsKey("visitedExpressions")) {
       visitedExpressions = (_json["visitedExpressions"] as core.List)
-          .map<VisitedExpression>(
-              (value) => new VisitedExpression.fromJson(value))
+          .map<VisitedExpression>((value) => VisitedExpression.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (debugMessages != null) {
       _json["debugMessages"] = debugMessages;
     }
     if (errorPosition != null) {
-      _json["errorPosition"] = (errorPosition).toJson();
+      _json["errorPosition"] = errorPosition.toJson();
     }
     if (expressionReports != null) {
       _json["expressionReports"] =
-          expressionReports.map((value) => (value).toJson()).toList();
+          expressionReports.map((value) => value.toJson()).toList();
     }
     if (functionCalls != null) {
       _json["functionCalls"] =
-          functionCalls.map((value) => (value).toJson()).toList();
+          functionCalls.map((value) => value.toJson()).toList();
     }
     if (state != null) {
       _json["state"] = state;
     }
     if (visitedExpressions != null) {
       _json["visitedExpressions"] =
-          visitedExpressions.map((value) => (value).toJson()).toList();
+          visitedExpressions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1628,21 +1704,21 @@ class TestRulesetRequest {
 
   TestRulesetRequest.fromJson(core.Map _json) {
     if (_json.containsKey("source")) {
-      source = new Source.fromJson(_json["source"]);
+      source = Source.fromJson(_json["source"]);
     }
     if (_json.containsKey("testSuite")) {
-      testSuite = new TestSuite.fromJson(_json["testSuite"]);
+      testSuite = TestSuite.fromJson(_json["testSuite"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (source != null) {
-      _json["source"] = (source).toJson();
+      _json["source"] = source.toJson();
     }
     if (testSuite != null) {
-      _json["testSuite"] = (testSuite).toJson();
+      _json["testSuite"] = testSuite.toJson();
     }
     return _json;
   }
@@ -1664,25 +1740,25 @@ class TestRulesetResponse {
   TestRulesetResponse.fromJson(core.Map _json) {
     if (_json.containsKey("issues")) {
       issues = (_json["issues"] as core.List)
-          .map<Issue>((value) => new Issue.fromJson(value))
+          .map<Issue>((value) => Issue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("testResults")) {
       testResults = (_json["testResults"] as core.List)
-          .map<TestResult>((value) => new TestResult.fromJson(value))
+          .map<TestResult>((value) => TestResult.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (issues != null) {
-      _json["issues"] = issues.map((value) => (value).toJson()).toList();
+      _json["issues"] = issues.map((value) => value.toJson()).toList();
     }
     if (testResults != null) {
       _json["testResults"] =
-          testResults.map((value) => (value).toJson()).toList();
+          testResults.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1701,16 +1777,16 @@ class TestSuite {
   TestSuite.fromJson(core.Map _json) {
     if (_json.containsKey("testCases")) {
       testCases = (_json["testCases"] as core.List)
-          .map<TestCase>((value) => new TestCase.fromJson(value))
+          .map<TestCase>((value) => TestCase.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (testCases != null) {
-      _json["testCases"] = testCases.map((value) => (value).toJson()).toList();
+      _json["testCases"] = testCases.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1728,7 +1804,7 @@ class UpdateReleaseRequest {
 
   UpdateReleaseRequest.fromJson(core.Map _json) {
     if (_json.containsKey("release")) {
-      release = new Release.fromJson(_json["release"]);
+      release = Release.fromJson(_json["release"]);
     }
     if (_json.containsKey("updateMask")) {
       updateMask = _json["updateMask"];
@@ -1737,9 +1813,9 @@ class UpdateReleaseRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (release != null) {
-      _json["release"] = (release).toJson();
+      _json["release"] = release.toJson();
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;
@@ -1773,7 +1849,7 @@ class ValueCount {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (count != null) {
       _json["count"] = count;
     }
@@ -1799,7 +1875,7 @@ class VisitedExpression {
 
   VisitedExpression.fromJson(core.Map _json) {
     if (_json.containsKey("sourcePosition")) {
-      sourcePosition = new SourcePosition.fromJson(_json["sourcePosition"]);
+      sourcePosition = SourcePosition.fromJson(_json["sourcePosition"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -1808,9 +1884,9 @@ class VisitedExpression {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sourcePosition != null) {
-      _json["sourcePosition"] = (sourcePosition).toJson();
+      _json["sourcePosition"] = sourcePosition.toJson();
     }
     if (value != null) {
       _json["value"] = value;

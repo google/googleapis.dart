@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.cloudprofiler.v2;
 
@@ -32,20 +50,20 @@ class CloudprofilerApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   CloudprofilerApi(http.Client client,
       {core.String rootUrl = "https://cloudprofiler.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsProfilesResourceApi get profiles =>
-      new ProjectsProfilesResourceApi(_requester);
+      ProjectsProfilesResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -84,20 +102,23 @@ class ProjectsProfilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Profile> create(CreateProfileRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Profile> create(
+    CreateProfileRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -106,13 +127,16 @@ class ProjectsProfilesResourceApi {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/profiles';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Profile.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Profile.fromJson(data));
   }
 
   /// CreateOfflineProfile creates a new profile resource in the offline mode.
@@ -136,20 +160,23 @@ class ProjectsProfilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Profile> createOffline(Profile request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Profile> createOffline(
+    Profile request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -159,13 +186,16 @@ class ProjectsProfilesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/profiles:createOffline';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Profile.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Profile.fromJson(data));
   }
 
   /// UpdateProfile updates the profile bytes and labels on the profile resource
@@ -195,20 +225,24 @@ class ProjectsProfilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Profile> patch(Profile request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Profile> patch(
+    Profile request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -219,13 +253,16 @@ class ProjectsProfilesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Profile.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Profile.fromJson(data));
   }
 }
 
@@ -244,7 +281,7 @@ class CreateProfileRequest {
 
   CreateProfileRequest.fromJson(core.Map _json) {
     if (_json.containsKey("deployment")) {
-      deployment = new Deployment.fromJson(_json["deployment"]);
+      deployment = Deployment.fromJson(_json["deployment"]);
     }
     if (_json.containsKey("profileType")) {
       profileType = (_json["profileType"] as core.List).cast<core.String>();
@@ -253,9 +290,9 @@ class CreateProfileRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deployment != null) {
-      _json["deployment"] = (deployment).toJson();
+      _json["deployment"] = deployment.toJson();
     }
     if (profileType != null) {
       _json["profileType"] = profileType;
@@ -304,7 +341,7 @@ class Deployment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -342,9 +379,8 @@ class Profile {
   /// Input only. Profile bytes, as a gzip compressed serialized proto, the
   /// format is https://github.com/google/pprof/blob/master/proto/profile.proto.
   core.String profileBytes;
-  core.List<core.int> get profileBytesAsBytes {
-    return convert.base64.decode(profileBytes);
-  }
+  core.List<core.int> get profileBytesAsBytes =>
+      convert.base64.decode(profileBytes);
 
   set profileBytesAsBytes(core.List<core.int> _bytes) {
     profileBytes =
@@ -374,7 +410,7 @@ class Profile {
 
   Profile.fromJson(core.Map _json) {
     if (_json.containsKey("deployment")) {
-      deployment = new Deployment.fromJson(_json["deployment"]);
+      deployment = Deployment.fromJson(_json["deployment"]);
     }
     if (_json.containsKey("duration")) {
       duration = _json["duration"];
@@ -395,9 +431,9 @@ class Profile {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deployment != null) {
-      _json["deployment"] = (deployment).toJson();
+      _json["deployment"] = deployment.toJson();
     }
     if (duration != null) {
       _json["duration"] = duration;

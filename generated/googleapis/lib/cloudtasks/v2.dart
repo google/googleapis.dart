@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.cloudtasks.v2;
 
@@ -24,20 +42,20 @@ class CloudtasksApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   CloudtasksApi(http.Client client,
       {core.String rootUrl = "https://cloudtasks.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsResourceApi get locations =>
-      new ProjectsLocationsResourceApi(_requester);
+      ProjectsLocationsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -46,7 +64,7 @@ class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsQueuesResourceApi get queues =>
-      new ProjectsLocationsQueuesResourceApi(_requester);
+      ProjectsLocationsQueuesResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -68,16 +86,19 @@ class ProjectsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Location> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -85,13 +106,16 @@ class ProjectsLocationsResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Location.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Location.fromJson(data));
   }
 
   /// Lists information about the supported locations for this service.
@@ -117,20 +141,22 @@ class ProjectsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListLocationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListLocationsResponse> list(
+    core.String name, {
+    core.int pageSize,
+    core.String filter,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -148,13 +174,16 @@ class ProjectsLocationsResourceApi {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListLocationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListLocationsResponse.fromJson(data));
   }
 }
 
@@ -162,7 +191,7 @@ class ProjectsLocationsQueuesResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsQueuesTasksResourceApi get tasks =>
-      new ProjectsLocationsQueuesTasksResourceApi(_requester);
+      ProjectsLocationsQueuesTasksResourceApi(_requester);
 
   ProjectsLocationsQueuesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -196,20 +225,23 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Queue> create(Queue request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Queue> create(
+    Queue request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -217,13 +249,16 @@ class ProjectsLocationsQueuesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/queues';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Queue.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Queue.fromJson(data));
   }
 
   /// Deletes a queue. This command will delete the queue even if it has tasks
@@ -250,16 +285,19 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -267,13 +305,16 @@ class ProjectsLocationsQueuesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a queue.
@@ -294,16 +335,19 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Queue> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Queue> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -311,13 +355,16 @@ class ProjectsLocationsQueuesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Queue.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Queue.fromJson(data));
   }
 
   /// Gets the access control policy for a Queue. Returns an empty policy if the
@@ -345,20 +392,22 @@ class ProjectsLocationsQueuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
-      GetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -368,13 +417,16 @@ class ProjectsLocationsQueuesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Lists queues. Queues are returned in lexicographical order.
@@ -414,20 +466,22 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListQueuesResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListQueuesResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -444,13 +498,16 @@ class ProjectsLocationsQueuesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/queues';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListQueuesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListQueuesResponse.fromJson(data));
   }
 
   /// Updates a queue. This method creates the queue if it does not exist and
@@ -494,20 +551,24 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Queue> patch(Queue request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Queue> patch(
+    Queue request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -518,13 +579,16 @@ class ProjectsLocationsQueuesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Queue.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Queue.fromJson(data));
   }
 
   /// Pauses the queue. If a queue is paused then the system will stop
@@ -550,20 +614,23 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Queue> pause(PauseQueueRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Queue> pause(
+    PauseQueueRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -571,13 +638,16 @@ class ProjectsLocationsQueuesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':pause';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Queue.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Queue.fromJson(data));
   }
 
   /// Purges a queue by deleting all of its tasks. All tasks created before this
@@ -603,20 +673,23 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Queue> purge(PurgeQueueRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Queue> purge(
+    PurgeQueueRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -624,13 +697,16 @@ class ProjectsLocationsQueuesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':purge';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Queue.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Queue.fromJson(data));
   }
 
   /// Resume a queue. This method resumes a queue after it has been PAUSED or
@@ -659,20 +735,23 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Queue> resume(ResumeQueueRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Queue> resume(
+    ResumeQueueRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -680,13 +759,16 @@ class ProjectsLocationsQueuesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':resume';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Queue.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Queue.fromJson(data));
   }
 
   /// Sets the access control policy for a Queue. Replaces any existing policy.
@@ -716,20 +798,22 @@ class ProjectsLocationsQueuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -739,13 +823,16 @@ class ProjectsLocationsQueuesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns permissions that a caller has on a Queue. If the resource does not
@@ -774,20 +861,22 @@ class ProjectsLocationsQueuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -797,14 +886,16 @@ class ProjectsLocationsQueuesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -837,20 +928,23 @@ class ProjectsLocationsQueuesTasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Task> create(CreateTaskRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Task> create(
+    CreateTaskRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -858,13 +952,16 @@ class ProjectsLocationsQueuesTasksResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/tasks';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Task.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Task.fromJson(data));
   }
 
   /// Deletes a task. A task can be deleted if it is scheduled or dispatched. A
@@ -888,16 +985,19 @@ class ProjectsLocationsQueuesTasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -905,13 +1005,16 @@ class ProjectsLocationsQueuesTasksResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a task.
@@ -951,17 +1054,20 @@ class ProjectsLocationsQueuesTasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Task> get(core.String name,
-      {core.String responseView, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Task> get(
+    core.String name, {
+    core.String responseView,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (responseView != null) {
       _queryParams["responseView"] = [responseView];
@@ -972,13 +1078,16 @@ class ProjectsLocationsQueuesTasksResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Task.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Task.fromJson(data));
   }
 
   /// Lists the tasks in a queue. By default, only the BASIC view is retrieved
@@ -1031,20 +1140,22 @@ class ProjectsLocationsQueuesTasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListTasksResponse> list(core.String parent,
-      {core.String responseView,
-      core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListTasksResponse> list(
+    core.String parent, {
+    core.String responseView,
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (responseView != null) {
       _queryParams["responseView"] = [responseView];
@@ -1061,13 +1172,16 @@ class ProjectsLocationsQueuesTasksResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/tasks';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListTasksResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListTasksResponse.fromJson(data));
   }
 
   /// Forces a task to run now. When this method is called, Cloud Tasks will
@@ -1103,20 +1217,23 @@ class ProjectsLocationsQueuesTasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Task> run(RunTaskRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Task> run(
+    RunTaskRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1124,13 +1241,16 @@ class ProjectsLocationsQueuesTasksResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':run';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Task.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Task.fromJson(data));
   }
 }
 
@@ -1181,9 +1301,7 @@ class AppEngineHttpRequest {
   /// POST or PUT. It is an error to set a body on a task with an incompatible
   /// HttpMethod.
   core.String body;
-  core.List<core.int> get bodyAsBytes {
-    return convert.base64.decode(body);
-  }
+  core.List<core.int> get bodyAsBytes => convert.base64.decode(body);
 
   set bodyAsBytes(core.List<core.int> _bytes) {
     body =
@@ -1243,8 +1361,7 @@ class AppEngineHttpRequest {
 
   AppEngineHttpRequest.fromJson(core.Map _json) {
     if (_json.containsKey("appEngineRouting")) {
-      appEngineRouting =
-          new AppEngineRouting.fromJson(_json["appEngineRouting"]);
+      appEngineRouting = AppEngineRouting.fromJson(_json["appEngineRouting"]);
     }
     if (_json.containsKey("body")) {
       body = _json["body"];
@@ -1262,9 +1379,9 @@ class AppEngineHttpRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appEngineRouting != null) {
-      _json["appEngineRouting"] = (appEngineRouting).toJson();
+      _json["appEngineRouting"] = appEngineRouting.toJson();
     }
     if (body != null) {
       _json["body"] = body;
@@ -1353,7 +1470,7 @@ class AppEngineRouting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (host != null) {
       _json["host"] = host;
     }
@@ -1396,7 +1513,7 @@ class Attempt {
       dispatchTime = _json["dispatchTime"];
     }
     if (_json.containsKey("responseStatus")) {
-      responseStatus = new Status.fromJson(_json["responseStatus"]);
+      responseStatus = Status.fromJson(_json["responseStatus"]);
     }
     if (_json.containsKey("responseTime")) {
       responseTime = _json["responseTime"];
@@ -1408,12 +1525,12 @@ class Attempt {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dispatchTime != null) {
       _json["dispatchTime"] = dispatchTime;
     }
     if (responseStatus != null) {
-      _json["responseStatus"] = (responseStatus).toJson();
+      _json["responseStatus"] = responseStatus.toJson();
     }
     if (responseTime != null) {
       _json["responseTime"] = responseTime;
@@ -1482,7 +1599,7 @@ class Binding {
       bindingId = _json["bindingId"];
     }
     if (_json.containsKey("condition")) {
-      condition = new Expr.fromJson(_json["condition"]);
+      condition = Expr.fromJson(_json["condition"]);
     }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
@@ -1494,12 +1611,12 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bindingId != null) {
       _json["bindingId"] = bindingId;
     }
     if (condition != null) {
-      _json["condition"] = (condition).toJson();
+      _json["condition"] = condition.toJson();
     }
     if (members != null) {
       _json["members"] = members;
@@ -1562,18 +1679,18 @@ class CreateTaskRequest {
       responseView = _json["responseView"];
     }
     if (_json.containsKey("task")) {
-      task = new Task.fromJson(_json["task"]);
+      task = Task.fromJson(_json["task"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (responseView != null) {
       _json["responseView"] = responseView;
     }
     if (task != null) {
-      _json["task"] = (task).toJson();
+      _json["task"] = task.toJson();
     }
     return _json;
   }
@@ -1591,7 +1708,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1648,7 +1765,7 @@ class Expr {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -1675,15 +1792,15 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("options")) {
-      options = new GetPolicyOptions.fromJson(_json["options"]);
+      options = GetPolicyOptions.fromJson(_json["options"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (options != null) {
-      _json["options"] = (options).toJson();
+      _json["options"] = options.toJson();
     }
     return _json;
   }
@@ -1710,7 +1827,7 @@ class GetPolicyOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (requestedPolicyVersion != null) {
       _json["requestedPolicyVersion"] = requestedPolicyVersion;
     }
@@ -1741,9 +1858,7 @@ class HttpRequest {
   /// POST, PUT, or PATCH. It is an error to set body on a task with an
   /// incompatible HttpMethod.
   core.String body;
-  core.List<core.int> get bodyAsBytes {
-    return convert.base64.decode(body);
-  }
+  core.List<core.int> get bodyAsBytes => convert.base64.decode(body);
 
   set bodyAsBytes(core.List<core.int> _bytes) {
     body =
@@ -1815,10 +1930,10 @@ class HttpRequest {
       httpMethod = _json["httpMethod"];
     }
     if (_json.containsKey("oauthToken")) {
-      oauthToken = new OAuthToken.fromJson(_json["oauthToken"]);
+      oauthToken = OAuthToken.fromJson(_json["oauthToken"]);
     }
     if (_json.containsKey("oidcToken")) {
-      oidcToken = new OidcToken.fromJson(_json["oidcToken"]);
+      oidcToken = OidcToken.fromJson(_json["oidcToken"]);
     }
     if (_json.containsKey("url")) {
       url = _json["url"];
@@ -1827,7 +1942,7 @@ class HttpRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (body != null) {
       _json["body"] = body;
     }
@@ -1838,10 +1953,10 @@ class HttpRequest {
       _json["httpMethod"] = httpMethod;
     }
     if (oauthToken != null) {
-      _json["oauthToken"] = (oauthToken).toJson();
+      _json["oauthToken"] = oauthToken.toJson();
     }
     if (oidcToken != null) {
-      _json["oidcToken"] = (oidcToken).toJson();
+      _json["oidcToken"] = oidcToken.toJson();
     }
     if (url != null) {
       _json["url"] = url;
@@ -1863,7 +1978,7 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
       locations = (_json["locations"] as core.List)
-          .map<Location>((value) => new Location.fromJson(value))
+          .map<Location>((value) => Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -1873,9 +1988,9 @@ class ListLocationsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (locations != null) {
-      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+      _json["locations"] = locations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -1903,19 +2018,19 @@ class ListQueuesResponse {
     }
     if (_json.containsKey("queues")) {
       queues = (_json["queues"] as core.List)
-          .map<Queue>((value) => new Queue.fromJson(value))
+          .map<Queue>((value) => Queue.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (queues != null) {
-      _json["queues"] = queues.map((value) => (value).toJson()).toList();
+      _json["queues"] = queues.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1939,19 +2054,19 @@ class ListTasksResponse {
     }
     if (_json.containsKey("tasks")) {
       tasks = (_json["tasks"] as core.List)
-          .map<Task>((value) => new Task.fromJson(value))
+          .map<Task>((value) => Task.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (tasks != null) {
-      _json["tasks"] = tasks.map((value) => (value).toJson()).toList();
+      _json["tasks"] = tasks.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2004,7 +2119,7 @@ class Location {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -2053,7 +2168,7 @@ class OAuthToken {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (scope != null) {
       _json["scope"] = scope;
     }
@@ -2093,7 +2208,7 @@ class OidcToken {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audience != null) {
       _json["audience"] = audience;
     }
@@ -2112,7 +2227,7 @@ class PauseQueueRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2164,9 +2279,7 @@ class Policy {
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.base64.decode(etag);
-  }
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -2195,7 +2308,7 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
       bindings = (_json["bindings"] as core.List)
-          .map<Binding>((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -2208,9 +2321,9 @@ class Policy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -2230,7 +2343,7 @@ class PurgeQueueRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2325,7 +2438,7 @@ class Queue {
   Queue.fromJson(core.Map _json) {
     if (_json.containsKey("appEngineRoutingOverride")) {
       appEngineRoutingOverride =
-          new AppEngineRouting.fromJson(_json["appEngineRoutingOverride"]);
+          AppEngineRouting.fromJson(_json["appEngineRoutingOverride"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -2334,14 +2447,14 @@ class Queue {
       purgeTime = _json["purgeTime"];
     }
     if (_json.containsKey("rateLimits")) {
-      rateLimits = new RateLimits.fromJson(_json["rateLimits"]);
+      rateLimits = RateLimits.fromJson(_json["rateLimits"]);
     }
     if (_json.containsKey("retryConfig")) {
-      retryConfig = new RetryConfig.fromJson(_json["retryConfig"]);
+      retryConfig = RetryConfig.fromJson(_json["retryConfig"]);
     }
     if (_json.containsKey("stackdriverLoggingConfig")) {
-      stackdriverLoggingConfig = new StackdriverLoggingConfig.fromJson(
-          _json["stackdriverLoggingConfig"]);
+      stackdriverLoggingConfig =
+          StackdriverLoggingConfig.fromJson(_json["stackdriverLoggingConfig"]);
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
@@ -2350,9 +2463,9 @@ class Queue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appEngineRoutingOverride != null) {
-      _json["appEngineRoutingOverride"] = (appEngineRoutingOverride).toJson();
+      _json["appEngineRoutingOverride"] = appEngineRoutingOverride.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -2361,13 +2474,13 @@ class Queue {
       _json["purgeTime"] = purgeTime;
     }
     if (rateLimits != null) {
-      _json["rateLimits"] = (rateLimits).toJson();
+      _json["rateLimits"] = rateLimits.toJson();
     }
     if (retryConfig != null) {
-      _json["retryConfig"] = (retryConfig).toJson();
+      _json["retryConfig"] = retryConfig.toJson();
     }
     if (stackdriverLoggingConfig != null) {
-      _json["stackdriverLoggingConfig"] = (stackdriverLoggingConfig).toJson();
+      _json["stackdriverLoggingConfig"] = stackdriverLoggingConfig.toJson();
     }
     if (state != null) {
       _json["state"] = state;
@@ -2434,7 +2547,7 @@ class RateLimits {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maxBurstSize != null) {
       _json["maxBurstSize"] = maxBurstSize;
     }
@@ -2456,7 +2569,7 @@ class ResumeQueueRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2536,7 +2649,7 @@ class RetryConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maxAttempts != null) {
       _json["maxAttempts"] = maxAttempts;
     }
@@ -2587,7 +2700,7 @@ class RunTaskRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (responseView != null) {
       _json["responseView"] = responseView;
     }
@@ -2607,15 +2720,15 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("policy")) {
-      policy = new Policy.fromJson(_json["policy"]);
+      policy = Policy.fromJson(_json["policy"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = (policy).toJson();
+      _json["policy"] = policy.toJson();
     }
     return _json;
   }
@@ -2640,7 +2753,7 @@ class StackdriverLoggingConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (samplingRatio != null) {
       _json["samplingRatio"] = samplingRatio;
     }
@@ -2689,7 +2802,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -2794,7 +2907,7 @@ class Task {
   Task.fromJson(core.Map _json) {
     if (_json.containsKey("appEngineHttpRequest")) {
       appEngineHttpRequest =
-          new AppEngineHttpRequest.fromJson(_json["appEngineHttpRequest"]);
+          AppEngineHttpRequest.fromJson(_json["appEngineHttpRequest"]);
     }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
@@ -2806,13 +2919,13 @@ class Task {
       dispatchDeadline = _json["dispatchDeadline"];
     }
     if (_json.containsKey("firstAttempt")) {
-      firstAttempt = new Attempt.fromJson(_json["firstAttempt"]);
+      firstAttempt = Attempt.fromJson(_json["firstAttempt"]);
     }
     if (_json.containsKey("httpRequest")) {
-      httpRequest = new HttpRequest.fromJson(_json["httpRequest"]);
+      httpRequest = HttpRequest.fromJson(_json["httpRequest"]);
     }
     if (_json.containsKey("lastAttempt")) {
-      lastAttempt = new Attempt.fromJson(_json["lastAttempt"]);
+      lastAttempt = Attempt.fromJson(_json["lastAttempt"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -2830,9 +2943,9 @@ class Task {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appEngineHttpRequest != null) {
-      _json["appEngineHttpRequest"] = (appEngineHttpRequest).toJson();
+      _json["appEngineHttpRequest"] = appEngineHttpRequest.toJson();
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
@@ -2844,13 +2957,13 @@ class Task {
       _json["dispatchDeadline"] = dispatchDeadline;
     }
     if (firstAttempt != null) {
-      _json["firstAttempt"] = (firstAttempt).toJson();
+      _json["firstAttempt"] = firstAttempt.toJson();
     }
     if (httpRequest != null) {
-      _json["httpRequest"] = (httpRequest).toJson();
+      _json["httpRequest"] = httpRequest.toJson();
     }
     if (lastAttempt != null) {
-      _json["lastAttempt"] = (lastAttempt).toJson();
+      _json["lastAttempt"] = lastAttempt.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -2886,7 +2999,7 @@ class TestIamPermissionsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -2910,7 +3023,7 @@ class TestIamPermissionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }

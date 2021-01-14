@@ -1,3 +1,27 @@
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
+// ignore_for_file: avoid_returning_null
+// ignore_for_file: cascade_invocations
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unused_local_variable
+
 library googleapis.texttospeech.v1.test;
 
 import "dart:core" as core;
@@ -18,27 +42,23 @@ class HttpServerMock extends http.BaseClient {
     _expectJson = expectJson;
   }
 
-  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+  @core.override
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) async {
     if (_expectJson) {
-      return request
-          .finalize()
-          .transform(convert.utf8.decoder)
-          .join('')
-          .then((core.String jsonString) {
-        if (jsonString.isEmpty) {
-          return _callback(request, null);
-        } else {
-          return _callback(request, convert.json.decode(jsonString));
-        }
-      });
+      final jsonString =
+          await request.finalize().transform(convert.utf8.decoder).join('');
+      if (jsonString.isEmpty) {
+        return _callback(request, null);
+      } else {
+        return _callback(request, convert.json.decode(jsonString));
+      }
     } else {
       var stream = request.finalize();
       if (stream == null) {
         return _callback(request, []);
       } else {
-        return stream.toBytes().then((data) {
-          return _callback(request, data);
-        });
+        final data = await stream.toBytes();
+        return _callback(request, data);
       }
     }
   }
@@ -46,30 +66,30 @@ class HttpServerMock extends http.BaseClient {
 
 http.StreamedResponse stringResponse(core.int status,
     core.Map<core.String, core.String> headers, core.String body) {
-  var stream = new async.Stream.fromIterable([convert.utf8.encode(body)]);
-  return new http.StreamedResponse(stream, status, headers: headers);
+  var stream = async.Stream.fromIterable([convert.utf8.encode(body)]);
+  return http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed4165() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed4542() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4165(core.List<core.String> o) {
+void checkUnnamed4542(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterAudioConfig = 0;
-buildAudioConfig() {
-  var o = new api.AudioConfig();
+api.AudioConfig buildAudioConfig() {
+  var o = api.AudioConfig();
   buildCounterAudioConfig++;
   if (buildCounterAudioConfig < 3) {
     o.audioEncoding = "foo";
-    o.effectsProfileId = buildUnnamed4165();
+    o.effectsProfileId = buildUnnamed4542();
     o.pitch = 42.0;
     o.sampleRateHertz = 42;
     o.speakingRate = 42.0;
@@ -79,11 +99,11 @@ buildAudioConfig() {
   return o;
 }
 
-checkAudioConfig(api.AudioConfig o) {
+void checkAudioConfig(api.AudioConfig o) {
   buildCounterAudioConfig++;
   if (buildCounterAudioConfig < 3) {
     unittest.expect(o.audioEncoding, unittest.equals('foo'));
-    checkUnnamed4165(o.effectsProfileId);
+    checkUnnamed4542(o.effectsProfileId);
     unittest.expect(o.pitch, unittest.equals(42.0));
     unittest.expect(o.sampleRateHertz, unittest.equals(42));
     unittest.expect(o.speakingRate, unittest.equals(42.0));
@@ -92,41 +112,41 @@ checkAudioConfig(api.AudioConfig o) {
   buildCounterAudioConfig--;
 }
 
-buildUnnamed4166() {
-  var o = new core.List<api.Voice>();
+core.List<api.Voice> buildUnnamed4543() {
+  var o = <api.Voice>[];
   o.add(buildVoice());
   o.add(buildVoice());
   return o;
 }
 
-checkUnnamed4166(core.List<api.Voice> o) {
+void checkUnnamed4543(core.List<api.Voice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVoice(o[0]);
   checkVoice(o[1]);
 }
 
 core.int buildCounterListVoicesResponse = 0;
-buildListVoicesResponse() {
-  var o = new api.ListVoicesResponse();
+api.ListVoicesResponse buildListVoicesResponse() {
+  var o = api.ListVoicesResponse();
   buildCounterListVoicesResponse++;
   if (buildCounterListVoicesResponse < 3) {
-    o.voices = buildUnnamed4166();
+    o.voices = buildUnnamed4543();
   }
   buildCounterListVoicesResponse--;
   return o;
 }
 
-checkListVoicesResponse(api.ListVoicesResponse o) {
+void checkListVoicesResponse(api.ListVoicesResponse o) {
   buildCounterListVoicesResponse++;
   if (buildCounterListVoicesResponse < 3) {
-    checkUnnamed4166(o.voices);
+    checkUnnamed4543(o.voices);
   }
   buildCounterListVoicesResponse--;
 }
 
 core.int buildCounterSynthesisInput = 0;
-buildSynthesisInput() {
-  var o = new api.SynthesisInput();
+api.SynthesisInput buildSynthesisInput() {
+  var o = api.SynthesisInput();
   buildCounterSynthesisInput++;
   if (buildCounterSynthesisInput < 3) {
     o.ssml = "foo";
@@ -136,7 +156,7 @@ buildSynthesisInput() {
   return o;
 }
 
-checkSynthesisInput(api.SynthesisInput o) {
+void checkSynthesisInput(api.SynthesisInput o) {
   buildCounterSynthesisInput++;
   if (buildCounterSynthesisInput < 3) {
     unittest.expect(o.ssml, unittest.equals('foo'));
@@ -146,8 +166,8 @@ checkSynthesisInput(api.SynthesisInput o) {
 }
 
 core.int buildCounterSynthesizeSpeechRequest = 0;
-buildSynthesizeSpeechRequest() {
-  var o = new api.SynthesizeSpeechRequest();
+api.SynthesizeSpeechRequest buildSynthesizeSpeechRequest() {
+  var o = api.SynthesizeSpeechRequest();
   buildCounterSynthesizeSpeechRequest++;
   if (buildCounterSynthesizeSpeechRequest < 3) {
     o.audioConfig = buildAudioConfig();
@@ -158,7 +178,7 @@ buildSynthesizeSpeechRequest() {
   return o;
 }
 
-checkSynthesizeSpeechRequest(api.SynthesizeSpeechRequest o) {
+void checkSynthesizeSpeechRequest(api.SynthesizeSpeechRequest o) {
   buildCounterSynthesizeSpeechRequest++;
   if (buildCounterSynthesizeSpeechRequest < 3) {
     checkAudioConfig(o.audioConfig);
@@ -169,8 +189,8 @@ checkSynthesizeSpeechRequest(api.SynthesizeSpeechRequest o) {
 }
 
 core.int buildCounterSynthesizeSpeechResponse = 0;
-buildSynthesizeSpeechResponse() {
-  var o = new api.SynthesizeSpeechResponse();
+api.SynthesizeSpeechResponse buildSynthesizeSpeechResponse() {
+  var o = api.SynthesizeSpeechResponse();
   buildCounterSynthesizeSpeechResponse++;
   if (buildCounterSynthesizeSpeechResponse < 3) {
     o.audioContent = "foo";
@@ -179,7 +199,7 @@ buildSynthesizeSpeechResponse() {
   return o;
 }
 
-checkSynthesizeSpeechResponse(api.SynthesizeSpeechResponse o) {
+void checkSynthesizeSpeechResponse(api.SynthesizeSpeechResponse o) {
   buildCounterSynthesizeSpeechResponse++;
   if (buildCounterSynthesizeSpeechResponse < 3) {
     unittest.expect(o.audioContent, unittest.equals('foo'));
@@ -187,25 +207,25 @@ checkSynthesizeSpeechResponse(api.SynthesizeSpeechResponse o) {
   buildCounterSynthesizeSpeechResponse--;
 }
 
-buildUnnamed4167() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed4544() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4167(core.List<core.String> o) {
+void checkUnnamed4544(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterVoice = 0;
-buildVoice() {
-  var o = new api.Voice();
+api.Voice buildVoice() {
+  var o = api.Voice();
   buildCounterVoice++;
   if (buildCounterVoice < 3) {
-    o.languageCodes = buildUnnamed4167();
+    o.languageCodes = buildUnnamed4544();
     o.name = "foo";
     o.naturalSampleRateHertz = 42;
     o.ssmlGender = "foo";
@@ -214,10 +234,10 @@ buildVoice() {
   return o;
 }
 
-checkVoice(api.Voice o) {
+void checkVoice(api.Voice o) {
   buildCounterVoice++;
   if (buildCounterVoice < 3) {
-    checkUnnamed4167(o.languageCodes);
+    checkUnnamed4544(o.languageCodes);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.naturalSampleRateHertz, unittest.equals(42));
     unittest.expect(o.ssmlGender, unittest.equals('foo'));
@@ -226,8 +246,8 @@ checkVoice(api.Voice o) {
 }
 
 core.int buildCounterVoiceSelectionParams = 0;
-buildVoiceSelectionParams() {
-  var o = new api.VoiceSelectionParams();
+api.VoiceSelectionParams buildVoiceSelectionParams() {
+  var o = api.VoiceSelectionParams();
   buildCounterVoiceSelectionParams++;
   if (buildCounterVoiceSelectionParams < 3) {
     o.languageCode = "foo";
@@ -238,7 +258,7 @@ buildVoiceSelectionParams() {
   return o;
 }
 
-checkVoiceSelectionParams(api.VoiceSelectionParams o) {
+void checkVoiceSelectionParams(api.VoiceSelectionParams o) {
   buildCounterVoiceSelectionParams++;
   if (buildCounterVoiceSelectionParams < 3) {
     unittest.expect(o.languageCode, unittest.equals('foo'));
@@ -248,11 +268,11 @@ checkVoiceSelectionParams(api.VoiceSelectionParams o) {
   buildCounterVoiceSelectionParams--;
 }
 
-main() {
+void main() {
   unittest.group("obj-schema-AudioConfig", () {
     unittest.test("to-json--from-json", () {
       var o = buildAudioConfig();
-      var od = new api.AudioConfig.fromJson(o.toJson());
+      var od = api.AudioConfig.fromJson(o.toJson());
       checkAudioConfig(od);
     });
   });
@@ -260,7 +280,7 @@ main() {
   unittest.group("obj-schema-ListVoicesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListVoicesResponse();
-      var od = new api.ListVoicesResponse.fromJson(o.toJson());
+      var od = api.ListVoicesResponse.fromJson(o.toJson());
       checkListVoicesResponse(od);
     });
   });
@@ -268,7 +288,7 @@ main() {
   unittest.group("obj-schema-SynthesisInput", () {
     unittest.test("to-json--from-json", () {
       var o = buildSynthesisInput();
-      var od = new api.SynthesisInput.fromJson(o.toJson());
+      var od = api.SynthesisInput.fromJson(o.toJson());
       checkSynthesisInput(od);
     });
   });
@@ -276,7 +296,7 @@ main() {
   unittest.group("obj-schema-SynthesizeSpeechRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildSynthesizeSpeechRequest();
-      var od = new api.SynthesizeSpeechRequest.fromJson(o.toJson());
+      var od = api.SynthesizeSpeechRequest.fromJson(o.toJson());
       checkSynthesizeSpeechRequest(od);
     });
   });
@@ -284,7 +304,7 @@ main() {
   unittest.group("obj-schema-SynthesizeSpeechResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildSynthesizeSpeechResponse();
-      var od = new api.SynthesizeSpeechResponse.fromJson(o.toJson());
+      var od = api.SynthesizeSpeechResponse.fromJson(o.toJson());
       checkSynthesizeSpeechResponse(od);
     });
   });
@@ -292,7 +312,7 @@ main() {
   unittest.group("obj-schema-Voice", () {
     unittest.test("to-json--from-json", () {
       var o = buildVoice();
-      var od = new api.Voice.fromJson(o.toJson());
+      var od = api.Voice.fromJson(o.toJson());
       checkVoice(od);
     });
   });
@@ -300,25 +320,25 @@ main() {
   unittest.group("obj-schema-VoiceSelectionParams", () {
     unittest.test("to-json--from-json", () {
       var o = buildVoiceSelectionParams();
-      var od = new api.VoiceSelectionParams.fromJson(o.toJson());
+      var od = api.VoiceSelectionParams.fromJson(o.toJson());
       checkVoiceSelectionParams(od);
     });
   });
 
   unittest.group("resource-TextResourceApi", () {
     unittest.test("method--synthesize", () {
-      var mock = new HttpServerMock();
-      api.TextResourceApi res = new api.TexttospeechApi(mock).text;
+      var mock = HttpServerMock();
+      api.TextResourceApi res = api.TexttospeechApi(mock).text;
       var arg_request = buildSynthesizeSpeechRequest();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.SynthesizeSpeechRequest.fromJson(json);
+        var obj = api.SynthesizeSpeechRequest.fromJson(json);
         checkSynthesizeSpeechRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -329,19 +349,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -350,7 +366,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildSynthesizeSpeechResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .synthesize(arg_request, $fields: arg_$fields)
@@ -362,15 +378,15 @@ main() {
 
   unittest.group("resource-VoicesResourceApi", () {
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
-      api.VoicesResourceApi res = new api.TexttospeechApi(mock).voices;
+      var mock = HttpServerMock();
+      api.VoicesResourceApi res = api.TexttospeechApi(mock).voices;
       var arg_languageCode = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -381,19 +397,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -404,7 +416,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListVoicesResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(languageCode: arg_languageCode, $fields: arg_$fields)

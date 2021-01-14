@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.servicecontrol.v1;
 
@@ -29,13 +47,13 @@ class ServicecontrolApi {
 
   final commons.ApiRequester _requester;
 
-  ServicesResourceApi get services => new ServicesResourceApi(_requester);
+  ServicesResourceApi get services => ServicesResourceApi(_requester);
 
   ServicecontrolApi(http.Client client,
       {core.String rootUrl = "https://servicecontrol.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ServicesResourceApi {
@@ -71,20 +89,22 @@ class ServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AllocateQuotaResponse> allocateQuota(
-      AllocateQuotaRequest request, core.String serviceName,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AllocateQuotaRequest request,
+    core.String serviceName, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (serviceName == null) {
-      throw new core.ArgumentError("Parameter serviceName is required.");
+      throw core.ArgumentError("Parameter serviceName is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -94,13 +114,16 @@ class ServicesResourceApi {
         commons.Escaper.ecapeVariable('$serviceName') +
         ':allocateQuota';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AllocateQuotaResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AllocateQuotaResponse.fromJson(data));
   }
 
   /// Checks whether an operation on a service should be allowed to proceed
@@ -135,20 +158,22 @@ class ServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CheckResponse> check(
-      CheckRequest request, core.String serviceName,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CheckRequest request,
+    core.String serviceName, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (serviceName == null) {
-      throw new core.ArgumentError("Parameter serviceName is required.");
+      throw core.ArgumentError("Parameter serviceName is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -158,13 +183,16 @@ class ServicesResourceApi {
         commons.Escaper.ecapeVariable('$serviceName') +
         ':check';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CheckResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CheckResponse.fromJson(data));
   }
 
   /// Reports operation results to Google Service Control, such as logs and
@@ -199,20 +227,22 @@ class ServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ReportResponse> report(
-      ReportRequest request, core.String serviceName,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ReportRequest request,
+    core.String serviceName, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (serviceName == null) {
-      throw new core.ArgumentError("Parameter serviceName is required.");
+      throw core.ArgumentError("Parameter serviceName is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -222,13 +252,16 @@ class ServicesResourceApi {
         commons.Escaper.ecapeVariable('$serviceName') +
         ':report';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ReportResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ReportResponse.fromJson(data));
   }
 }
 
@@ -251,7 +284,7 @@ class AllocateInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (unusedArguments != null) {
       _json["unusedArguments"] = unusedArguments;
     }
@@ -273,8 +306,7 @@ class AllocateQuotaRequest {
 
   AllocateQuotaRequest.fromJson(core.Map _json) {
     if (_json.containsKey("allocateOperation")) {
-      allocateOperation =
-          new QuotaOperation.fromJson(_json["allocateOperation"]);
+      allocateOperation = QuotaOperation.fromJson(_json["allocateOperation"]);
     }
     if (_json.containsKey("serviceConfigId")) {
       serviceConfigId = _json["serviceConfigId"];
@@ -283,9 +315,9 @@ class AllocateQuotaRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allocateOperation != null) {
-      _json["allocateOperation"] = (allocateOperation).toJson();
+      _json["allocateOperation"] = allocateOperation.toJson();
     }
     if (serviceConfigId != null) {
       _json["serviceConfigId"] = serviceConfigId;
@@ -323,18 +355,18 @@ class AllocateQuotaResponse {
   AllocateQuotaResponse.fromJson(core.Map _json) {
     if (_json.containsKey("allocateErrors")) {
       allocateErrors = (_json["allocateErrors"] as core.List)
-          .map<QuotaError>((value) => new QuotaError.fromJson(value))
+          .map<QuotaError>((value) => QuotaError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("allocateInfo")) {
-      allocateInfo = new AllocateInfo.fromJson(_json["allocateInfo"]);
+      allocateInfo = AllocateInfo.fromJson(_json["allocateInfo"]);
     }
     if (_json.containsKey("operationId")) {
       operationId = _json["operationId"];
     }
     if (_json.containsKey("quotaMetrics")) {
       quotaMetrics = (_json["quotaMetrics"] as core.List)
-          .map<MetricValueSet>((value) => new MetricValueSet.fromJson(value))
+          .map<MetricValueSet>((value) => MetricValueSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("serviceConfigId")) {
@@ -344,20 +376,20 @@ class AllocateQuotaResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allocateErrors != null) {
       _json["allocateErrors"] =
-          allocateErrors.map((value) => (value).toJson()).toList();
+          allocateErrors.map((value) => value.toJson()).toList();
     }
     if (allocateInfo != null) {
-      _json["allocateInfo"] = (allocateInfo).toJson();
+      _json["allocateInfo"] = allocateInfo.toJson();
     }
     if (operationId != null) {
       _json["operationId"] = operationId;
     }
     if (quotaMetrics != null) {
       _json["quotaMetrics"] =
-          quotaMetrics.map((value) => (value).toJson()).toList();
+          quotaMetrics.map((value) => value.toJson()).toList();
     }
     if (serviceConfigId != null) {
       _json["serviceConfigId"] = serviceConfigId;
@@ -387,13 +419,13 @@ class AttributeValue {
       intValue = _json["intValue"];
     }
     if (_json.containsKey("stringValue")) {
-      stringValue = new TruncatableString.fromJson(_json["stringValue"]);
+      stringValue = TruncatableString.fromJson(_json["stringValue"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boolValue != null) {
       _json["boolValue"] = boolValue;
     }
@@ -401,7 +433,7 @@ class AttributeValue {
       _json["intValue"] = intValue;
     }
     if (stringValue != null) {
-      _json["stringValue"] = (stringValue).toJson();
+      _json["stringValue"] = stringValue.toJson();
     }
     return _json;
   }
@@ -427,7 +459,7 @@ class Attributes {
     if (_json.containsKey("attributeMap")) {
       attributeMap = commons.mapMap<core.Map, AttributeValue>(
           _json["attributeMap"].cast<core.String, core.Map>(),
-          (core.Map item) => new AttributeValue.fromJson(item));
+          (core.Map item) => AttributeValue.fromJson(item));
     }
     if (_json.containsKey("droppedAttributesCount")) {
       droppedAttributesCount = _json["droppedAttributesCount"];
@@ -436,11 +468,11 @@ class Attributes {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attributeMap != null) {
       _json["attributeMap"] =
           commons.mapMap<AttributeValue, core.Map<core.String, core.Object>>(
-              attributeMap, (AttributeValue item) => (item).toJson());
+              attributeMap, (AttributeValue item) => item.toJson());
     }
     if (droppedAttributesCount != null) {
       _json["droppedAttributesCount"] = droppedAttributesCount;
@@ -538,12 +570,11 @@ class AuditLog {
   AuditLog.fromJson(core.Map _json) {
     if (_json.containsKey("authenticationInfo")) {
       authenticationInfo =
-          new AuthenticationInfo.fromJson(_json["authenticationInfo"]);
+          AuthenticationInfo.fromJson(_json["authenticationInfo"]);
     }
     if (_json.containsKey("authorizationInfo")) {
       authorizationInfo = (_json["authorizationInfo"] as core.List)
-          .map<AuthorizationInfo>(
-              (value) => new AuthorizationInfo.fromJson(value))
+          .map<AuthorizationInfo>((value) => AuthorizationInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("metadata")) {
@@ -560,11 +591,10 @@ class AuditLog {
       request = (_json["request"] as core.Map).cast<core.String, core.Object>();
     }
     if (_json.containsKey("requestMetadata")) {
-      requestMetadata = new RequestMetadata.fromJson(_json["requestMetadata"]);
+      requestMetadata = RequestMetadata.fromJson(_json["requestMetadata"]);
     }
     if (_json.containsKey("resourceLocation")) {
-      resourceLocation =
-          new ResourceLocation.fromJson(_json["resourceLocation"]);
+      resourceLocation = ResourceLocation.fromJson(_json["resourceLocation"]);
     }
     if (_json.containsKey("resourceName")) {
       resourceName = _json["resourceName"];
@@ -585,19 +615,19 @@ class AuditLog {
       serviceName = _json["serviceName"];
     }
     if (_json.containsKey("status")) {
-      status = new Status.fromJson(_json["status"]);
+      status = Status.fromJson(_json["status"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (authenticationInfo != null) {
-      _json["authenticationInfo"] = (authenticationInfo).toJson();
+      _json["authenticationInfo"] = authenticationInfo.toJson();
     }
     if (authorizationInfo != null) {
       _json["authorizationInfo"] =
-          authorizationInfo.map((value) => (value).toJson()).toList();
+          authorizationInfo.map((value) => value.toJson()).toList();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -612,10 +642,10 @@ class AuditLog {
       _json["request"] = request;
     }
     if (requestMetadata != null) {
-      _json["requestMetadata"] = (requestMetadata).toJson();
+      _json["requestMetadata"] = requestMetadata.toJson();
     }
     if (resourceLocation != null) {
-      _json["resourceLocation"] = (resourceLocation).toJson();
+      _json["resourceLocation"] = resourceLocation.toJson();
     }
     if (resourceName != null) {
       _json["resourceName"] = resourceName;
@@ -633,7 +663,7 @@ class AuditLog {
       _json["serviceName"] = serviceName;
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     return _json;
   }
@@ -712,7 +742,7 @@ class Auth {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accessLevels != null) {
       _json["accessLevels"] = accessLevels;
     }
@@ -787,7 +817,7 @@ class AuthenticationInfo {
       serviceAccountDelegationInfo =
           (_json["serviceAccountDelegationInfo"] as core.List)
               .map<ServiceAccountDelegationInfo>(
-                  (value) => new ServiceAccountDelegationInfo.fromJson(value))
+                  (value) => ServiceAccountDelegationInfo.fromJson(value))
               .toList();
     }
     if (_json.containsKey("serviceAccountKeyName")) {
@@ -801,7 +831,7 @@ class AuthenticationInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (authoritySelector != null) {
       _json["authoritySelector"] = authoritySelector;
     }
@@ -812,9 +842,8 @@ class AuthenticationInfo {
       _json["principalSubject"] = principalSubject;
     }
     if (serviceAccountDelegationInfo != null) {
-      _json["serviceAccountDelegationInfo"] = serviceAccountDelegationInfo
-          .map((value) => (value).toJson())
-          .toList();
+      _json["serviceAccountDelegationInfo"] =
+          serviceAccountDelegationInfo.map((value) => value.toJson()).toList();
     }
     if (serviceAccountKeyName != null) {
       _json["serviceAccountKeyName"] = serviceAccountKeyName;
@@ -857,13 +886,13 @@ class AuthorizationInfo {
       resource = _json["resource"];
     }
     if (_json.containsKey("resourceAttributes")) {
-      resourceAttributes = new Resource.fromJson(_json["resourceAttributes"]);
+      resourceAttributes = Resource.fromJson(_json["resourceAttributes"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (granted != null) {
       _json["granted"] = granted;
     }
@@ -874,7 +903,7 @@ class AuthorizationInfo {
       _json["resource"] = resource;
     }
     if (resourceAttributes != null) {
-      _json["resourceAttributes"] = (resourceAttributes).toJson();
+      _json["resourceAttributes"] = resourceAttributes.toJson();
     }
     return _json;
   }
@@ -976,7 +1005,7 @@ class CheckError {
       detail = _json["detail"];
     }
     if (_json.containsKey("status")) {
-      status = new Status.fromJson(_json["status"]);
+      status = Status.fromJson(_json["status"]);
     }
     if (_json.containsKey("subject")) {
       subject = _json["subject"];
@@ -985,7 +1014,7 @@ class CheckError {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -993,7 +1022,7 @@ class CheckError {
       _json["detail"] = detail;
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     if (subject != null) {
       _json["subject"] = subject;
@@ -1016,7 +1045,7 @@ class CheckInfo {
 
   CheckInfo.fromJson(core.Map _json) {
     if (_json.containsKey("consumerInfo")) {
-      consumerInfo = new ConsumerInfo.fromJson(_json["consumerInfo"]);
+      consumerInfo = ConsumerInfo.fromJson(_json["consumerInfo"]);
     }
     if (_json.containsKey("unusedArguments")) {
       unusedArguments =
@@ -1026,9 +1055,9 @@ class CheckInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (consumerInfo != null) {
-      _json["consumerInfo"] = (consumerInfo).toJson();
+      _json["consumerInfo"] = consumerInfo.toJson();
     }
     if (unusedArguments != null) {
       _json["unusedArguments"] = unusedArguments;
@@ -1060,7 +1089,7 @@ class CheckRequest {
 
   CheckRequest.fromJson(core.Map _json) {
     if (_json.containsKey("operation")) {
-      operation = new Operation.fromJson(_json["operation"]);
+      operation = Operation.fromJson(_json["operation"]);
     }
     if (_json.containsKey("requestProjectSettings")) {
       requestProjectSettings = _json["requestProjectSettings"];
@@ -1075,9 +1104,9 @@ class CheckRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (operation != null) {
-      _json["operation"] = (operation).toJson();
+      _json["operation"] = operation.toJson();
     }
     if (requestProjectSettings != null) {
       _json["requestProjectSettings"] = requestProjectSettings;
@@ -1120,17 +1149,17 @@ class CheckResponse {
   CheckResponse.fromJson(core.Map _json) {
     if (_json.containsKey("checkErrors")) {
       checkErrors = (_json["checkErrors"] as core.List)
-          .map<CheckError>((value) => new CheckError.fromJson(value))
+          .map<CheckError>((value) => CheckError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("checkInfo")) {
-      checkInfo = new CheckInfo.fromJson(_json["checkInfo"]);
+      checkInfo = CheckInfo.fromJson(_json["checkInfo"]);
     }
     if (_json.containsKey("operationId")) {
       operationId = _json["operationId"];
     }
     if (_json.containsKey("quotaInfo")) {
-      quotaInfo = new QuotaInfo.fromJson(_json["quotaInfo"]);
+      quotaInfo = QuotaInfo.fromJson(_json["quotaInfo"]);
     }
     if (_json.containsKey("serviceConfigId")) {
       serviceConfigId = _json["serviceConfigId"];
@@ -1142,19 +1171,19 @@ class CheckResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (checkErrors != null) {
       _json["checkErrors"] =
-          checkErrors.map((value) => (value).toJson()).toList();
+          checkErrors.map((value) => value.toJson()).toList();
     }
     if (checkInfo != null) {
-      _json["checkInfo"] = (checkInfo).toJson();
+      _json["checkInfo"] = checkInfo.toJson();
     }
     if (operationId != null) {
       _json["operationId"] = operationId;
     }
     if (quotaInfo != null) {
-      _json["quotaInfo"] = (quotaInfo).toJson();
+      _json["quotaInfo"] = quotaInfo.toJson();
     }
     if (serviceConfigId != null) {
       _json["serviceConfigId"] = serviceConfigId;
@@ -1208,7 +1237,7 @@ class ConsumerInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (consumerNumber != null) {
       _json["consumerNumber"] = consumerNumber;
     }
@@ -1280,18 +1309,18 @@ class Distribution {
     }
     if (_json.containsKey("exemplars")) {
       exemplars = (_json["exemplars"] as core.List)
-          .map<Exemplar>((value) => new Exemplar.fromJson(value))
+          .map<Exemplar>((value) => Exemplar.fromJson(value))
           .toList();
     }
     if (_json.containsKey("explicitBuckets")) {
-      explicitBuckets = new ExplicitBuckets.fromJson(_json["explicitBuckets"]);
+      explicitBuckets = ExplicitBuckets.fromJson(_json["explicitBuckets"]);
     }
     if (_json.containsKey("exponentialBuckets")) {
       exponentialBuckets =
-          new ExponentialBuckets.fromJson(_json["exponentialBuckets"]);
+          ExponentialBuckets.fromJson(_json["exponentialBuckets"]);
     }
     if (_json.containsKey("linearBuckets")) {
-      linearBuckets = new LinearBuckets.fromJson(_json["linearBuckets"]);
+      linearBuckets = LinearBuckets.fromJson(_json["linearBuckets"]);
     }
     if (_json.containsKey("maximum")) {
       maximum = _json["maximum"].toDouble();
@@ -1309,7 +1338,7 @@ class Distribution {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucketCounts != null) {
       _json["bucketCounts"] = bucketCounts;
     }
@@ -1317,16 +1346,16 @@ class Distribution {
       _json["count"] = count;
     }
     if (exemplars != null) {
-      _json["exemplars"] = exemplars.map((value) => (value).toJson()).toList();
+      _json["exemplars"] = exemplars.map((value) => value.toJson()).toList();
     }
     if (explicitBuckets != null) {
-      _json["explicitBuckets"] = (explicitBuckets).toJson();
+      _json["explicitBuckets"] = explicitBuckets.toJson();
     }
     if (exponentialBuckets != null) {
-      _json["exponentialBuckets"] = (exponentialBuckets).toJson();
+      _json["exponentialBuckets"] = exponentialBuckets.toJson();
     }
     if (linearBuckets != null) {
-      _json["linearBuckets"] = (linearBuckets).toJson();
+      _json["linearBuckets"] = linearBuckets.toJson();
     }
     if (maximum != null) {
       _json["maximum"] = maximum;
@@ -1387,7 +1416,7 @@ class Exemplar {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attachments != null) {
       _json["attachments"] = attachments;
     }
@@ -1426,7 +1455,7 @@ class ExplicitBuckets {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bounds != null) {
       _json["bounds"] = bounds;
     }
@@ -1467,7 +1496,7 @@ class ExponentialBuckets {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (growthFactor != null) {
       _json["growthFactor"] = growthFactor;
     }
@@ -1506,7 +1535,7 @@ class FirstPartyPrincipal {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (principalEmail != null) {
       _json["principalEmail"] = principalEmail;
     }
@@ -1632,7 +1661,7 @@ class HttpRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cacheFillBytes != null) {
       _json["cacheFillBytes"] = cacheFillBytes;
     }
@@ -1714,7 +1743,7 @@ class LinearBuckets {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (numFiniteBuckets != null) {
       _json["numFiniteBuckets"] = numFiniteBuckets;
     }
@@ -1801,7 +1830,7 @@ class LogEntry {
 
   LogEntry.fromJson(core.Map _json) {
     if (_json.containsKey("httpRequest")) {
-      httpRequest = new HttpRequest.fromJson(_json["httpRequest"]);
+      httpRequest = HttpRequest.fromJson(_json["httpRequest"]);
     }
     if (_json.containsKey("insertId")) {
       insertId = _json["insertId"];
@@ -1813,7 +1842,7 @@ class LogEntry {
       name = _json["name"];
     }
     if (_json.containsKey("operation")) {
-      operation = new LogEntryOperation.fromJson(_json["operation"]);
+      operation = LogEntryOperation.fromJson(_json["operation"]);
     }
     if (_json.containsKey("protoPayload")) {
       protoPayload =
@@ -1823,8 +1852,7 @@ class LogEntry {
       severity = _json["severity"];
     }
     if (_json.containsKey("sourceLocation")) {
-      sourceLocation =
-          new LogEntrySourceLocation.fromJson(_json["sourceLocation"]);
+      sourceLocation = LogEntrySourceLocation.fromJson(_json["sourceLocation"]);
     }
     if (_json.containsKey("structPayload")) {
       structPayload =
@@ -1843,9 +1871,9 @@ class LogEntry {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (httpRequest != null) {
-      _json["httpRequest"] = (httpRequest).toJson();
+      _json["httpRequest"] = httpRequest.toJson();
     }
     if (insertId != null) {
       _json["insertId"] = insertId;
@@ -1857,7 +1885,7 @@ class LogEntry {
       _json["name"] = name;
     }
     if (operation != null) {
-      _json["operation"] = (operation).toJson();
+      _json["operation"] = operation.toJson();
     }
     if (protoPayload != null) {
       _json["protoPayload"] = protoPayload;
@@ -1866,7 +1894,7 @@ class LogEntry {
       _json["severity"] = severity;
     }
     if (sourceLocation != null) {
-      _json["sourceLocation"] = (sourceLocation).toJson();
+      _json["sourceLocation"] = sourceLocation.toJson();
     }
     if (structPayload != null) {
       _json["structPayload"] = structPayload;
@@ -1922,7 +1950,7 @@ class LogEntryOperation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (first != null) {
       _json["first"] = first;
     }
@@ -1974,7 +2002,7 @@ class LogEntrySourceLocation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (file != null) {
       _json["file"] = file;
     }
@@ -2031,7 +2059,7 @@ class MetricValue {
       boolValue = _json["boolValue"];
     }
     if (_json.containsKey("distributionValue")) {
-      distributionValue = new Distribution.fromJson(_json["distributionValue"]);
+      distributionValue = Distribution.fromJson(_json["distributionValue"]);
     }
     if (_json.containsKey("doubleValue")) {
       doubleValue = _json["doubleValue"].toDouble();
@@ -2046,7 +2074,7 @@ class MetricValue {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("moneyValue")) {
-      moneyValue = new Money.fromJson(_json["moneyValue"]);
+      moneyValue = Money.fromJson(_json["moneyValue"]);
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -2058,12 +2086,12 @@ class MetricValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boolValue != null) {
       _json["boolValue"] = boolValue;
     }
     if (distributionValue != null) {
-      _json["distributionValue"] = (distributionValue).toJson();
+      _json["distributionValue"] = distributionValue.toJson();
     }
     if (doubleValue != null) {
       _json["doubleValue"] = doubleValue;
@@ -2078,7 +2106,7 @@ class MetricValue {
       _json["labels"] = labels;
     }
     if (moneyValue != null) {
-      _json["moneyValue"] = (moneyValue).toJson();
+      _json["moneyValue"] = moneyValue.toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -2108,20 +2136,20 @@ class MetricValueSet {
     }
     if (_json.containsKey("metricValues")) {
       metricValues = (_json["metricValues"] as core.List)
-          .map<MetricValue>((value) => new MetricValue.fromJson(value))
+          .map<MetricValue>((value) => MetricValue.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (metricName != null) {
       _json["metricName"] = metricName;
     }
     if (metricValues != null) {
       _json["metricValues"] =
-          metricValues.map((value) => (value).toJson()).toList();
+          metricValues.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2160,7 +2188,7 @@ class Money {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currencyCode != null) {
       _json["currencyCode"] = currencyCode;
     }
@@ -2293,12 +2321,12 @@ class Operation {
     }
     if (_json.containsKey("logEntries")) {
       logEntries = (_json["logEntries"] as core.List)
-          .map<LogEntry>((value) => new LogEntry.fromJson(value))
+          .map<LogEntry>((value) => LogEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("metricValueSets")) {
       metricValueSets = (_json["metricValueSets"] as core.List)
-          .map<MetricValueSet>((value) => new MetricValueSet.fromJson(value))
+          .map<MetricValueSet>((value) => MetricValueSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("operationId")) {
@@ -2308,11 +2336,11 @@ class Operation {
       operationName = _json["operationName"];
     }
     if (_json.containsKey("quotaProperties")) {
-      quotaProperties = new QuotaProperties.fromJson(_json["quotaProperties"]);
+      quotaProperties = QuotaProperties.fromJson(_json["quotaProperties"]);
     }
     if (_json.containsKey("resources")) {
       resources = (_json["resources"] as core.List)
-          .map<ResourceInfo>((value) => new ResourceInfo.fromJson(value))
+          .map<ResourceInfo>((value) => ResourceInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("startTime")) {
@@ -2320,7 +2348,7 @@ class Operation {
     }
     if (_json.containsKey("traceSpans")) {
       traceSpans = (_json["traceSpans"] as core.List)
-          .map<TraceSpan>((value) => new TraceSpan.fromJson(value))
+          .map<TraceSpan>((value) => TraceSpan.fromJson(value))
           .toList();
     }
     if (_json.containsKey("userLabels")) {
@@ -2331,7 +2359,7 @@ class Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (consumerId != null) {
       _json["consumerId"] = consumerId;
     }
@@ -2348,12 +2376,11 @@ class Operation {
       _json["labels"] = labels;
     }
     if (logEntries != null) {
-      _json["logEntries"] =
-          logEntries.map((value) => (value).toJson()).toList();
+      _json["logEntries"] = logEntries.map((value) => value.toJson()).toList();
     }
     if (metricValueSets != null) {
       _json["metricValueSets"] =
-          metricValueSets.map((value) => (value).toJson()).toList();
+          metricValueSets.map((value) => value.toJson()).toList();
     }
     if (operationId != null) {
       _json["operationId"] = operationId;
@@ -2362,17 +2389,16 @@ class Operation {
       _json["operationName"] = operationName;
     }
     if (quotaProperties != null) {
-      _json["quotaProperties"] = (quotaProperties).toJson();
+      _json["quotaProperties"] = quotaProperties.toJson();
     }
     if (resources != null) {
-      _json["resources"] = resources.map((value) => (value).toJson()).toList();
+      _json["resources"] = resources.map((value) => value.toJson()).toList();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
     }
     if (traceSpans != null) {
-      _json["traceSpans"] =
-          traceSpans.map((value) => (value).toJson()).toList();
+      _json["traceSpans"] = traceSpans.map((value) => value.toJson()).toList();
     }
     if (userLabels != null) {
       _json["userLabels"] = userLabels;
@@ -2427,7 +2453,7 @@ class Peer {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ip != null) {
       _json["ip"] = ip;
     }
@@ -2503,7 +2529,7 @@ class QuotaError {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -2559,14 +2585,14 @@ class QuotaInfo {
     }
     if (_json.containsKey("quotaMetrics")) {
       quotaMetrics = (_json["quotaMetrics"] as core.List)
-          .map<MetricValueSet>((value) => new MetricValueSet.fromJson(value))
+          .map<MetricValueSet>((value) => MetricValueSet.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (limitExceeded != null) {
       _json["limitExceeded"] = limitExceeded;
     }
@@ -2575,7 +2601,7 @@ class QuotaInfo {
     }
     if (quotaMetrics != null) {
       _json["quotaMetrics"] =
-          quotaMetrics.map((value) => (value).toJson()).toList();
+          quotaMetrics.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2667,7 +2693,7 @@ class QuotaOperation {
     }
     if (_json.containsKey("quotaMetrics")) {
       quotaMetrics = (_json["quotaMetrics"] as core.List)
-          .map<MetricValueSet>((value) => new MetricValueSet.fromJson(value))
+          .map<MetricValueSet>((value) => MetricValueSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("quotaMode")) {
@@ -2677,7 +2703,7 @@ class QuotaOperation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (consumerId != null) {
       _json["consumerId"] = consumerId;
     }
@@ -2692,7 +2718,7 @@ class QuotaOperation {
     }
     if (quotaMetrics != null) {
       _json["quotaMetrics"] =
-          quotaMetrics.map((value) => (value).toJson()).toList();
+          quotaMetrics.map((value) => value.toJson()).toList();
     }
     if (quotaMode != null) {
       _json["quotaMode"] = quotaMode;
@@ -2727,7 +2753,7 @@ class QuotaProperties {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (quotaMode != null) {
       _json["quotaMode"] = quotaMode;
     }
@@ -2750,18 +2776,18 @@ class ReportError {
       operationId = _json["operationId"];
     }
     if (_json.containsKey("status")) {
-      status = new Status.fromJson(_json["status"]);
+      status = Status.fromJson(_json["status"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (operationId != null) {
       _json["operationId"] = operationId;
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     return _json;
   }
@@ -2782,18 +2808,18 @@ class ReportInfo {
       operationId = _json["operationId"];
     }
     if (_json.containsKey("quotaInfo")) {
-      quotaInfo = new QuotaInfo.fromJson(_json["quotaInfo"]);
+      quotaInfo = QuotaInfo.fromJson(_json["quotaInfo"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (operationId != null) {
       _json["operationId"] = operationId;
     }
     if (quotaInfo != null) {
-      _json["quotaInfo"] = (quotaInfo).toJson();
+      _json["quotaInfo"] = quotaInfo.toJson();
     }
     return _json;
   }
@@ -2820,7 +2846,7 @@ class ReportRequest {
   ReportRequest.fromJson(core.Map _json) {
     if (_json.containsKey("operations")) {
       operations = (_json["operations"] as core.List)
-          .map<Operation>((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("serviceConfigId")) {
@@ -2830,10 +2856,9 @@ class ReportRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
+      _json["operations"] = operations.map((value) => value.toJson()).toList();
     }
     if (serviceConfigId != null) {
       _json["serviceConfigId"] = serviceConfigId;
@@ -2876,12 +2901,12 @@ class ReportResponse {
   ReportResponse.fromJson(core.Map _json) {
     if (_json.containsKey("reportErrors")) {
       reportErrors = (_json["reportErrors"] as core.List)
-          .map<ReportError>((value) => new ReportError.fromJson(value))
+          .map<ReportError>((value) => ReportError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("reportInfos")) {
       reportInfos = (_json["reportInfos"] as core.List)
-          .map<ReportInfo>((value) => new ReportInfo.fromJson(value))
+          .map<ReportInfo>((value) => ReportInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("serviceConfigId")) {
@@ -2894,14 +2919,14 @@ class ReportResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (reportErrors != null) {
       _json["reportErrors"] =
-          reportErrors.map((value) => (value).toJson()).toList();
+          reportErrors.map((value) => value.toJson()).toList();
     }
     if (reportInfos != null) {
       _json["reportInfos"] =
-          reportInfos.map((value) => (value).toJson()).toList();
+          reportInfos.map((value) => value.toJson()).toList();
     }
     if (serviceConfigId != null) {
       _json["serviceConfigId"] = serviceConfigId;
@@ -2968,7 +2993,7 @@ class Request {
 
   Request.fromJson(core.Map _json) {
     if (_json.containsKey("auth")) {
-      auth = new Auth.fromJson(_json["auth"]);
+      auth = Auth.fromJson(_json["auth"]);
     }
     if (_json.containsKey("headers")) {
       headers = (_json["headers"] as core.Map).cast<core.String, core.String>();
@@ -3007,9 +3032,9 @@ class Request {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (auth != null) {
-      _json["auth"] = (auth).toJson();
+      _json["auth"] = auth.toJson();
     }
     if (headers != null) {
       _json["headers"] = headers;
@@ -3104,16 +3129,16 @@ class RequestMetadata {
       callerSuppliedUserAgent = _json["callerSuppliedUserAgent"];
     }
     if (_json.containsKey("destinationAttributes")) {
-      destinationAttributes = new Peer.fromJson(_json["destinationAttributes"]);
+      destinationAttributes = Peer.fromJson(_json["destinationAttributes"]);
     }
     if (_json.containsKey("requestAttributes")) {
-      requestAttributes = new Request.fromJson(_json["requestAttributes"]);
+      requestAttributes = Request.fromJson(_json["requestAttributes"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (callerIp != null) {
       _json["callerIp"] = callerIp;
     }
@@ -3124,10 +3149,10 @@ class RequestMetadata {
       _json["callerSuppliedUserAgent"] = callerSuppliedUserAgent;
     }
     if (destinationAttributes != null) {
-      _json["destinationAttributes"] = (destinationAttributes).toJson();
+      _json["destinationAttributes"] = destinationAttributes.toJson();
     }
     if (requestAttributes != null) {
-      _json["requestAttributes"] = (requestAttributes).toJson();
+      _json["requestAttributes"] = requestAttributes.toJson();
     }
     return _json;
   }
@@ -3181,7 +3206,7 @@ class Resource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -3228,7 +3253,7 @@ class ResourceInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceContainer != null) {
       _json["resourceContainer"] = resourceContainer;
     }
@@ -3271,7 +3296,7 @@ class ResourceLocation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currentLocations != null) {
       _json["currentLocations"] = currentLocations;
     }
@@ -3295,22 +3320,22 @@ class ServiceAccountDelegationInfo {
   ServiceAccountDelegationInfo.fromJson(core.Map _json) {
     if (_json.containsKey("firstPartyPrincipal")) {
       firstPartyPrincipal =
-          new FirstPartyPrincipal.fromJson(_json["firstPartyPrincipal"]);
+          FirstPartyPrincipal.fromJson(_json["firstPartyPrincipal"]);
     }
     if (_json.containsKey("thirdPartyPrincipal")) {
       thirdPartyPrincipal =
-          new ThirdPartyPrincipal.fromJson(_json["thirdPartyPrincipal"]);
+          ThirdPartyPrincipal.fromJson(_json["thirdPartyPrincipal"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (firstPartyPrincipal != null) {
-      _json["firstPartyPrincipal"] = (firstPartyPrincipal).toJson();
+      _json["firstPartyPrincipal"] = firstPartyPrincipal.toJson();
     }
     if (thirdPartyPrincipal != null) {
-      _json["thirdPartyPrincipal"] = (thirdPartyPrincipal).toJson();
+      _json["thirdPartyPrincipal"] = thirdPartyPrincipal.toJson();
     }
     return _json;
   }
@@ -3338,7 +3363,7 @@ class SpanContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (spanName != null) {
       _json["spanName"] = spanName;
     }
@@ -3387,7 +3412,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -3420,7 +3445,7 @@ class ThirdPartyPrincipal {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (thirdPartyClaims != null) {
       _json["thirdPartyClaims"] = thirdPartyClaims;
     }
@@ -3508,13 +3533,13 @@ class TraceSpan {
 
   TraceSpan.fromJson(core.Map _json) {
     if (_json.containsKey("attributes")) {
-      attributes = new Attributes.fromJson(_json["attributes"]);
+      attributes = Attributes.fromJson(_json["attributes"]);
     }
     if (_json.containsKey("childSpanCount")) {
       childSpanCount = _json["childSpanCount"];
     }
     if (_json.containsKey("displayName")) {
-      displayName = new TruncatableString.fromJson(_json["displayName"]);
+      displayName = TruncatableString.fromJson(_json["displayName"]);
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
@@ -3538,21 +3563,21 @@ class TraceSpan {
       startTime = _json["startTime"];
     }
     if (_json.containsKey("status")) {
-      status = new Status.fromJson(_json["status"]);
+      status = Status.fromJson(_json["status"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = (attributes).toJson();
+      _json["attributes"] = attributes.toJson();
     }
     if (childSpanCount != null) {
       _json["childSpanCount"] = childSpanCount;
     }
     if (displayName != null) {
-      _json["displayName"] = (displayName).toJson();
+      _json["displayName"] = displayName.toJson();
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
@@ -3576,7 +3601,7 @@ class TraceSpan {
       _json["startTime"] = startTime;
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     return _json;
   }
@@ -3608,7 +3633,7 @@ class TruncatableString {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (truncatedByteCount != null) {
       _json["truncatedByteCount"] = truncatedByteCount;
     }

@@ -1,3 +1,27 @@
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
+// ignore_for_file: avoid_returning_null
+// ignore_for_file: cascade_invocations
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unused_local_variable
+
 library googleapis.admin.datatransfer_v1.test;
 
 import "dart:core" as core;
@@ -18,27 +42,23 @@ class HttpServerMock extends http.BaseClient {
     _expectJson = expectJson;
   }
 
-  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+  @core.override
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) async {
     if (_expectJson) {
-      return request
-          .finalize()
-          .transform(convert.utf8.decoder)
-          .join('')
-          .then((core.String jsonString) {
-        if (jsonString.isEmpty) {
-          return _callback(request, null);
-        } else {
-          return _callback(request, convert.json.decode(jsonString));
-        }
-      });
+      final jsonString =
+          await request.finalize().transform(convert.utf8.decoder).join('');
+      if (jsonString.isEmpty) {
+        return _callback(request, null);
+      } else {
+        return _callback(request, convert.json.decode(jsonString));
+      }
     } else {
       var stream = request.finalize();
       if (stream == null) {
         return _callback(request, []);
       } else {
-        return stream.toBytes().then((data) {
-          return _callback(request, data);
-        });
+        final data = await stream.toBytes();
+        return _callback(request, data);
       }
     }
   }
@@ -46,139 +66,139 @@ class HttpServerMock extends http.BaseClient {
 
 http.StreamedResponse stringResponse(core.int status,
     core.Map<core.String, core.String> headers, core.String body) {
-  var stream = new async.Stream.fromIterable([convert.utf8.encode(body)]);
-  return new http.StreamedResponse(stream, status, headers: headers);
+  var stream = async.Stream.fromIterable([convert.utf8.encode(body)]);
+  return http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed5249() {
-  var o = new core.List<api.ApplicationTransferParam>();
+core.List<api.ApplicationTransferParam> buildUnnamed4811() {
+  var o = <api.ApplicationTransferParam>[];
   o.add(buildApplicationTransferParam());
   o.add(buildApplicationTransferParam());
   return o;
 }
 
-checkUnnamed5249(core.List<api.ApplicationTransferParam> o) {
+void checkUnnamed4811(core.List<api.ApplicationTransferParam> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplicationTransferParam(o[0]);
   checkApplicationTransferParam(o[1]);
 }
 
 core.int buildCounterApplication = 0;
-buildApplication() {
-  var o = new api.Application();
+api.Application buildApplication() {
+  var o = api.Application();
   buildCounterApplication++;
   if (buildCounterApplication < 3) {
     o.etag = "foo";
     o.id = "foo";
     o.kind = "foo";
     o.name = "foo";
-    o.transferParams = buildUnnamed5249();
+    o.transferParams = buildUnnamed4811();
   }
   buildCounterApplication--;
   return o;
 }
 
-checkApplication(api.Application o) {
+void checkApplication(api.Application o) {
   buildCounterApplication++;
   if (buildCounterApplication < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed5249(o.transferParams);
+    checkUnnamed4811(o.transferParams);
   }
   buildCounterApplication--;
 }
 
-buildUnnamed5250() {
-  var o = new core.List<api.ApplicationTransferParam>();
+core.List<api.ApplicationTransferParam> buildUnnamed4812() {
+  var o = <api.ApplicationTransferParam>[];
   o.add(buildApplicationTransferParam());
   o.add(buildApplicationTransferParam());
   return o;
 }
 
-checkUnnamed5250(core.List<api.ApplicationTransferParam> o) {
+void checkUnnamed4812(core.List<api.ApplicationTransferParam> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplicationTransferParam(o[0]);
   checkApplicationTransferParam(o[1]);
 }
 
 core.int buildCounterApplicationDataTransfer = 0;
-buildApplicationDataTransfer() {
-  var o = new api.ApplicationDataTransfer();
+api.ApplicationDataTransfer buildApplicationDataTransfer() {
+  var o = api.ApplicationDataTransfer();
   buildCounterApplicationDataTransfer++;
   if (buildCounterApplicationDataTransfer < 3) {
     o.applicationId = "foo";
-    o.applicationTransferParams = buildUnnamed5250();
+    o.applicationTransferParams = buildUnnamed4812();
     o.applicationTransferStatus = "foo";
   }
   buildCounterApplicationDataTransfer--;
   return o;
 }
 
-checkApplicationDataTransfer(api.ApplicationDataTransfer o) {
+void checkApplicationDataTransfer(api.ApplicationDataTransfer o) {
   buildCounterApplicationDataTransfer++;
   if (buildCounterApplicationDataTransfer < 3) {
     unittest.expect(o.applicationId, unittest.equals('foo'));
-    checkUnnamed5250(o.applicationTransferParams);
+    checkUnnamed4812(o.applicationTransferParams);
     unittest.expect(o.applicationTransferStatus, unittest.equals('foo'));
   }
   buildCounterApplicationDataTransfer--;
 }
 
-buildUnnamed5251() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed4813() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5251(core.List<core.String> o) {
+void checkUnnamed4813(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterApplicationTransferParam = 0;
-buildApplicationTransferParam() {
-  var o = new api.ApplicationTransferParam();
+api.ApplicationTransferParam buildApplicationTransferParam() {
+  var o = api.ApplicationTransferParam();
   buildCounterApplicationTransferParam++;
   if (buildCounterApplicationTransferParam < 3) {
     o.key = "foo";
-    o.value = buildUnnamed5251();
+    o.value = buildUnnamed4813();
   }
   buildCounterApplicationTransferParam--;
   return o;
 }
 
-checkApplicationTransferParam(api.ApplicationTransferParam o) {
+void checkApplicationTransferParam(api.ApplicationTransferParam o) {
   buildCounterApplicationTransferParam++;
   if (buildCounterApplicationTransferParam < 3) {
     unittest.expect(o.key, unittest.equals('foo'));
-    checkUnnamed5251(o.value);
+    checkUnnamed4813(o.value);
   }
   buildCounterApplicationTransferParam--;
 }
 
-buildUnnamed5252() {
-  var o = new core.List<api.Application>();
+core.List<api.Application> buildUnnamed4814() {
+  var o = <api.Application>[];
   o.add(buildApplication());
   o.add(buildApplication());
   return o;
 }
 
-checkUnnamed5252(core.List<api.Application> o) {
+void checkUnnamed4814(core.List<api.Application> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplication(o[0]);
   checkApplication(o[1]);
 }
 
 core.int buildCounterApplicationsListResponse = 0;
-buildApplicationsListResponse() {
-  var o = new api.ApplicationsListResponse();
+api.ApplicationsListResponse buildApplicationsListResponse() {
+  var o = api.ApplicationsListResponse();
   buildCounterApplicationsListResponse++;
   if (buildCounterApplicationsListResponse < 3) {
-    o.applications = buildUnnamed5252();
+    o.applications = buildUnnamed4814();
     o.etag = "foo";
     o.kind = "foo";
     o.nextPageToken = "foo";
@@ -187,10 +207,10 @@ buildApplicationsListResponse() {
   return o;
 }
 
-checkApplicationsListResponse(api.ApplicationsListResponse o) {
+void checkApplicationsListResponse(api.ApplicationsListResponse o) {
   buildCounterApplicationsListResponse++;
   if (buildCounterApplicationsListResponse < 3) {
-    checkUnnamed5252(o.applications);
+    checkUnnamed4814(o.applications);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -198,25 +218,25 @@ checkApplicationsListResponse(api.ApplicationsListResponse o) {
   buildCounterApplicationsListResponse--;
 }
 
-buildUnnamed5253() {
-  var o = new core.List<api.ApplicationDataTransfer>();
+core.List<api.ApplicationDataTransfer> buildUnnamed4815() {
+  var o = <api.ApplicationDataTransfer>[];
   o.add(buildApplicationDataTransfer());
   o.add(buildApplicationDataTransfer());
   return o;
 }
 
-checkUnnamed5253(core.List<api.ApplicationDataTransfer> o) {
+void checkUnnamed4815(core.List<api.ApplicationDataTransfer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApplicationDataTransfer(o[0]);
   checkApplicationDataTransfer(o[1]);
 }
 
 core.int buildCounterDataTransfer = 0;
-buildDataTransfer() {
-  var o = new api.DataTransfer();
+api.DataTransfer buildDataTransfer() {
+  var o = api.DataTransfer();
   buildCounterDataTransfer++;
   if (buildCounterDataTransfer < 3) {
-    o.applicationDataTransfers = buildUnnamed5253();
+    o.applicationDataTransfers = buildUnnamed4815();
     o.etag = "foo";
     o.id = "foo";
     o.kind = "foo";
@@ -229,10 +249,10 @@ buildDataTransfer() {
   return o;
 }
 
-checkDataTransfer(api.DataTransfer o) {
+void checkDataTransfer(api.DataTransfer o) {
   buildCounterDataTransfer++;
   if (buildCounterDataTransfer < 3) {
-    checkUnnamed5253(o.applicationDataTransfers);
+    checkUnnamed4815(o.applicationDataTransfers);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -245,25 +265,25 @@ checkDataTransfer(api.DataTransfer o) {
   buildCounterDataTransfer--;
 }
 
-buildUnnamed5254() {
-  var o = new core.List<api.DataTransfer>();
+core.List<api.DataTransfer> buildUnnamed4816() {
+  var o = <api.DataTransfer>[];
   o.add(buildDataTransfer());
   o.add(buildDataTransfer());
   return o;
 }
 
-checkUnnamed5254(core.List<api.DataTransfer> o) {
+void checkUnnamed4816(core.List<api.DataTransfer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataTransfer(o[0]);
   checkDataTransfer(o[1]);
 }
 
 core.int buildCounterDataTransfersListResponse = 0;
-buildDataTransfersListResponse() {
-  var o = new api.DataTransfersListResponse();
+api.DataTransfersListResponse buildDataTransfersListResponse() {
+  var o = api.DataTransfersListResponse();
   buildCounterDataTransfersListResponse++;
   if (buildCounterDataTransfersListResponse < 3) {
-    o.dataTransfers = buildUnnamed5254();
+    o.dataTransfers = buildUnnamed4816();
     o.etag = "foo";
     o.kind = "foo";
     o.nextPageToken = "foo";
@@ -272,10 +292,10 @@ buildDataTransfersListResponse() {
   return o;
 }
 
-checkDataTransfersListResponse(api.DataTransfersListResponse o) {
+void checkDataTransfersListResponse(api.DataTransfersListResponse o) {
   buildCounterDataTransfersListResponse++;
   if (buildCounterDataTransfersListResponse < 3) {
-    checkUnnamed5254(o.dataTransfers);
+    checkUnnamed4816(o.dataTransfers);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -283,11 +303,11 @@ checkDataTransfersListResponse(api.DataTransfersListResponse o) {
   buildCounterDataTransfersListResponse--;
 }
 
-main() {
+void main() {
   unittest.group("obj-schema-Application", () {
     unittest.test("to-json--from-json", () {
       var o = buildApplication();
-      var od = new api.Application.fromJson(o.toJson());
+      var od = api.Application.fromJson(o.toJson());
       checkApplication(od);
     });
   });
@@ -295,7 +315,7 @@ main() {
   unittest.group("obj-schema-ApplicationDataTransfer", () {
     unittest.test("to-json--from-json", () {
       var o = buildApplicationDataTransfer();
-      var od = new api.ApplicationDataTransfer.fromJson(o.toJson());
+      var od = api.ApplicationDataTransfer.fromJson(o.toJson());
       checkApplicationDataTransfer(od);
     });
   });
@@ -303,7 +323,7 @@ main() {
   unittest.group("obj-schema-ApplicationTransferParam", () {
     unittest.test("to-json--from-json", () {
       var o = buildApplicationTransferParam();
-      var od = new api.ApplicationTransferParam.fromJson(o.toJson());
+      var od = api.ApplicationTransferParam.fromJson(o.toJson());
       checkApplicationTransferParam(od);
     });
   });
@@ -311,7 +331,7 @@ main() {
   unittest.group("obj-schema-ApplicationsListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildApplicationsListResponse();
-      var od = new api.ApplicationsListResponse.fromJson(o.toJson());
+      var od = api.ApplicationsListResponse.fromJson(o.toJson());
       checkApplicationsListResponse(od);
     });
   });
@@ -319,7 +339,7 @@ main() {
   unittest.group("obj-schema-DataTransfer", () {
     unittest.test("to-json--from-json", () {
       var o = buildDataTransfer();
-      var od = new api.DataTransfer.fromJson(o.toJson());
+      var od = api.DataTransfer.fromJson(o.toJson());
       checkDataTransfer(od);
     });
   });
@@ -327,22 +347,22 @@ main() {
   unittest.group("obj-schema-DataTransfersListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildDataTransfersListResponse();
-      var od = new api.DataTransfersListResponse.fromJson(o.toJson());
+      var od = api.DataTransfersListResponse.fromJson(o.toJson());
       checkDataTransfersListResponse(od);
     });
   });
 
   unittest.group("resource-ApplicationsResourceApi", () {
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
-      api.ApplicationsResourceApi res = new api.AdminApi(mock).applications;
+      var mock = HttpServerMock();
+      api.ApplicationsResourceApi res = api.AdminApi(mock).applications;
       var arg_applicationId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -356,19 +376,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -377,7 +393,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildApplication());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_applicationId, $fields: arg_$fields)
@@ -387,8 +403,8 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
-      api.ApplicationsResourceApi res = new api.AdminApi(mock).applications;
+      var mock = HttpServerMock();
+      api.ApplicationsResourceApi res = api.AdminApi(mock).applications;
       var arg_pageToken = "foo";
       var arg_customerId = "foo";
       var arg_maxResults = 42;
@@ -396,8 +412,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -408,19 +424,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -435,7 +447,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildApplicationsListResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(
@@ -451,15 +463,15 @@ main() {
 
   unittest.group("resource-TransfersResourceApi", () {
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
-      api.TransfersResourceApi res = new api.AdminApi(mock).transfers;
+      var mock = HttpServerMock();
+      api.TransfersResourceApi res = api.AdminApi(mock).transfers;
       var arg_dataTransferId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -473,19 +485,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -494,7 +502,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildDataTransfer());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_dataTransferId, $fields: arg_$fields)
@@ -504,18 +512,18 @@ main() {
     });
 
     unittest.test("method--insert", () {
-      var mock = new HttpServerMock();
-      api.TransfersResourceApi res = new api.AdminApi(mock).transfers;
+      var mock = HttpServerMock();
+      api.TransfersResourceApi res = api.AdminApi(mock).transfers;
       var arg_request = buildDataTransfer();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.DataTransfer.fromJson(json);
+        var obj = api.DataTransfer.fromJson(json);
         checkDataTransfer(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -526,19 +534,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -547,7 +551,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildDataTransfer());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .insert(arg_request, $fields: arg_$fields)
@@ -557,8 +561,8 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
-      api.TransfersResourceApi res = new api.AdminApi(mock).transfers;
+      var mock = HttpServerMock();
+      api.TransfersResourceApi res = api.AdminApi(mock).transfers;
       var arg_customerId = "foo";
       var arg_pageToken = "foo";
       var arg_newOwnerUserId = "foo";
@@ -569,8 +573,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -581,19 +585,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -613,7 +613,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildDataTransfersListResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(

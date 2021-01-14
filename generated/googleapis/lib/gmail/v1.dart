@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.gmail.v1;
 
@@ -84,28 +102,24 @@ class GmailApi {
 
   final commons.ApiRequester _requester;
 
-  UsersResourceApi get users => new UsersResourceApi(_requester);
+  UsersResourceApi get users => UsersResourceApi(_requester);
 
   GmailApi(http.Client client,
       {core.String rootUrl = "https://gmail.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class UsersResourceApi {
   final commons.ApiRequester _requester;
 
-  UsersDraftsResourceApi get drafts => new UsersDraftsResourceApi(_requester);
-  UsersHistoryResourceApi get history =>
-      new UsersHistoryResourceApi(_requester);
-  UsersLabelsResourceApi get labels => new UsersLabelsResourceApi(_requester);
-  UsersMessagesResourceApi get messages =>
-      new UsersMessagesResourceApi(_requester);
-  UsersSettingsResourceApi get settings =>
-      new UsersSettingsResourceApi(_requester);
-  UsersThreadsResourceApi get threads =>
-      new UsersThreadsResourceApi(_requester);
+  UsersDraftsResourceApi get drafts => UsersDraftsResourceApi(_requester);
+  UsersHistoryResourceApi get history => UsersHistoryResourceApi(_requester);
+  UsersLabelsResourceApi get labels => UsersLabelsResourceApi(_requester);
+  UsersMessagesResourceApi get messages => UsersMessagesResourceApi(_requester);
+  UsersSettingsResourceApi get settings => UsersSettingsResourceApi(_requester);
+  UsersThreadsResourceApi get threads => UsersThreadsResourceApi(_requester);
 
   UsersResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -126,16 +140,19 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Profile> getProfile(core.String userId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Profile> getProfile(
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -145,13 +162,16 @@ class UsersResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/profile';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Profile.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Profile.fromJson(data));
   }
 
   /// Stop receiving push notifications for the given user mailbox.
@@ -169,16 +189,19 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future stop(core.String userId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future stop(
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -189,12 +212,15 @@ class UsersResourceApi {
     _url =
         'gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/stop';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -217,20 +243,23 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WatchResponse> watch(WatchRequest request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<WatchResponse> watch(
+    WatchRequest request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -239,13 +268,16 @@ class UsersResourceApi {
     _url =
         'gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/watch';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new WatchResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => WatchResponse.fromJson(data));
   }
 }
 
@@ -279,22 +311,25 @@ class UsersDraftsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Draft> create(Draft request, core.String userId,
-      {core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Draft> create(
+    Draft request,
+    core.String userId, {
+    core.String $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.Media uploadMedia,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -317,13 +352,16 @@ class UsersDraftsResourceApi {
           '/drafts';
     }
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Draft.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Draft.fromJson(data));
   }
 
   /// Immediately and permanently deletes the specified draft. Does not simply
@@ -344,20 +382,23 @@ class UsersDraftsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String userId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -370,12 +411,15 @@ class UsersDraftsResourceApi {
         '/drafts/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -411,20 +455,24 @@ class UsersDraftsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Draft> get(core.String userId, core.String id,
-      {core.String format, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Draft> get(
+    core.String userId,
+    core.String id, {
+    core.String format,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if (format != null) {
       _queryParams["format"] = [format];
@@ -438,13 +486,16 @@ class UsersDraftsResourceApi {
         '/drafts/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Draft.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Draft.fromJson(data));
   }
 
   /// Lists the drafts in the user's mailbox.
@@ -476,21 +527,23 @@ class UsersDraftsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListDraftsResponse> list(core.String userId,
-      {core.bool includeSpamTrash,
-      core.String pageToken,
-      core.int maxResults,
-      core.String q,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListDraftsResponse> list(
+    core.String userId, {
+    core.bool includeSpamTrash,
+    core.String pageToken,
+    core.int maxResults,
+    core.String q,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (includeSpamTrash != null) {
       _queryParams["includeSpamTrash"] = ["${includeSpamTrash}"];
@@ -512,13 +565,16 @@ class UsersDraftsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/drafts';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListDraftsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListDraftsResponse.fromJson(data));
   }
 
   /// Sends the specified, existing draft to the recipients in the `To`, `Cc`,
@@ -547,22 +603,25 @@ class UsersDraftsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Message> send(Draft request, core.String userId,
-      {core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Message> send(
+    Draft request,
+    core.String userId, {
+    core.String $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.Media uploadMedia,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -585,13 +644,16 @@ class UsersDraftsResourceApi {
           '/drafts/send';
     }
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Message.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Message.fromJson(data));
   }
 
   /// Replaces a draft's content.
@@ -621,25 +683,29 @@ class UsersDraftsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Draft> update(Draft request, core.String userId, core.String id,
-      {core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Draft> update(
+    Draft request,
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.Media uploadMedia,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -665,13 +731,16 @@ class UsersDraftsResourceApi {
           commons.Escaper.ecapeVariable('$id');
     }
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Draft.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Draft.fromJson(data));
   }
 }
 
@@ -719,22 +788,24 @@ class UsersHistoryResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListHistoryResponse> list(core.String userId,
-      {core.List<core.String> historyTypes,
-      core.String labelId,
-      core.String pageToken,
-      core.int maxResults,
-      core.String startHistoryId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListHistoryResponse> list(
+    core.String userId, {
+    core.List<core.String> historyTypes,
+    core.String labelId,
+    core.String pageToken,
+    core.int maxResults,
+    core.String startHistoryId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (historyTypes != null) {
       _queryParams["historyTypes"] = historyTypes;
@@ -759,13 +830,16 @@ class UsersHistoryResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/history';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListHistoryResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListHistoryResponse.fromJson(data));
   }
 }
 
@@ -793,20 +867,23 @@ class UsersLabelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Label> create(Label request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Label> create(
+    Label request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -816,13 +893,16 @@ class UsersLabelsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/labels';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Label.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Label.fromJson(data));
   }
 
   /// Immediately and permanently deletes the specified label and removes it
@@ -843,20 +923,23 @@ class UsersLabelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String userId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -869,12 +952,15 @@ class UsersLabelsResourceApi {
         '/labels/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -897,20 +983,23 @@ class UsersLabelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Label> get(core.String userId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Label> get(
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -921,13 +1010,16 @@ class UsersLabelsResourceApi {
         '/labels/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Label.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Label.fromJson(data));
   }
 
   /// Lists all labels in the user's mailbox.
@@ -947,17 +1039,19 @@ class UsersLabelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListLabelsResponse> list(core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListLabelsResponse> list(
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -967,13 +1061,16 @@ class UsersLabelsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/labels';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListLabelsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListLabelsResponse.fromJson(data));
   }
 
   /// Patch the specified label.
@@ -997,23 +1094,27 @@ class UsersLabelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Label> patch(Label request, core.String userId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Label> patch(
+    Label request,
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1024,13 +1125,16 @@ class UsersLabelsResourceApi {
         '/labels/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Label.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Label.fromJson(data));
   }
 
   /// Updates the specified label.
@@ -1054,23 +1158,27 @@ class UsersLabelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Label> update(Label request, core.String userId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Label> update(
+    Label request,
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1081,13 +1189,16 @@ class UsersLabelsResourceApi {
         '/labels/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Label.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Label.fromJson(data));
   }
 }
 
@@ -1095,7 +1206,7 @@ class UsersMessagesResourceApi {
   final commons.ApiRequester _requester;
 
   UsersMessagesAttachmentsResourceApi get attachments =>
-      new UsersMessagesAttachmentsResourceApi(_requester);
+      UsersMessagesAttachmentsResourceApi(_requester);
 
   UsersMessagesResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -1118,20 +1229,22 @@ class UsersMessagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future batchDelete(
-      BatchDeleteMessagesRequest request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchDeleteMessagesRequest request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1143,12 +1256,15 @@ class UsersMessagesResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/messages/batchDelete';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -1170,20 +1286,22 @@ class UsersMessagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future batchModify(
-      BatchModifyMessagesRequest request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchModifyMessagesRequest request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1195,12 +1313,15 @@ class UsersMessagesResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/messages/batchModify';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -1222,20 +1343,23 @@ class UsersMessagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String userId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1248,12 +1372,15 @@ class UsersMessagesResourceApi {
         '/messages/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -1292,22 +1419,25 @@ class UsersMessagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Message> get(core.String userId, core.String id,
-      {core.List<core.String> metadataHeaders,
-      core.String format,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Message> get(
+    core.String userId,
+    core.String id, {
+    core.List<core.String> metadataHeaders,
+    core.String format,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if (metadataHeaders != null) {
       _queryParams["metadataHeaders"] = metadataHeaders;
@@ -1324,13 +1454,16 @@ class UsersMessagesResourceApi {
         '/messages/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Message.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Message.fromJson(data));
   }
 
   /// Imports a message into only this user's mailbox, with standard email
@@ -1378,26 +1511,29 @@ class UsersMessagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Message> import(Message request, core.String userId,
-      {core.bool processForCalendar,
-      core.String internalDateSource,
-      core.bool neverMarkSpam,
-      core.bool deleted,
-      core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Message> import(
+    Message request,
+    core.String userId, {
+    core.bool processForCalendar,
+    core.String internalDateSource,
+    core.bool neverMarkSpam,
+    core.bool deleted,
+    core.String $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.Media uploadMedia,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (processForCalendar != null) {
       _queryParams["processForCalendar"] = ["${processForCalendar}"];
@@ -1432,13 +1568,16 @@ class UsersMessagesResourceApi {
           '/messages/import';
     }
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Message.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Message.fromJson(data));
   }
 
   /// Directly inserts a message into only this user's mailbox similar to `IMAP
@@ -1479,24 +1618,27 @@ class UsersMessagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Message> insert(Message request, core.String userId,
-      {core.bool deleted,
-      core.String internalDateSource,
-      core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Message> insert(
+    Message request,
+    core.String userId, {
+    core.bool deleted,
+    core.String internalDateSource,
+    core.String $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.Media uploadMedia,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (deleted != null) {
       _queryParams["deleted"] = ["${deleted}"];
@@ -1525,13 +1667,16 @@ class UsersMessagesResourceApi {
           '/messages';
     }
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Message.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Message.fromJson(data));
   }
 
   /// Lists the messages in the user's mailbox.
@@ -1567,22 +1712,24 @@ class UsersMessagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListMessagesResponse> list(core.String userId,
-      {core.String pageToken,
-      core.String q,
-      core.bool includeSpamTrash,
-      core.List<core.String> labelIds,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListMessagesResponse> list(
+    core.String userId, {
+    core.String pageToken,
+    core.String q,
+    core.bool includeSpamTrash,
+    core.List<core.String> labelIds,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1607,13 +1754,16 @@ class UsersMessagesResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/messages';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListMessagesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListMessagesResponse.fromJson(data));
   }
 
   /// Modifies the labels on the specified message.
@@ -1638,23 +1788,26 @@ class UsersMessagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Message> modify(
-      ModifyMessageRequest request, core.String userId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ModifyMessageRequest request,
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1666,13 +1819,16 @@ class UsersMessagesResourceApi {
         commons.Escaper.ecapeVariable('$id') +
         '/modify';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Message.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Message.fromJson(data));
   }
 
   /// Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc`
@@ -1701,22 +1857,25 @@ class UsersMessagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Message> send(Message request, core.String userId,
-      {core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Message> send(
+    Message request,
+    core.String userId, {
+    core.String $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.Media uploadMedia,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1739,13 +1898,16 @@ class UsersMessagesResourceApi {
           '/messages/send';
     }
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Message.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Message.fromJson(data));
   }
 
   /// Moves the specified message to the trash.
@@ -1767,20 +1929,23 @@ class UsersMessagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Message> trash(core.String userId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Message> trash(
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1792,13 +1957,16 @@ class UsersMessagesResourceApi {
         commons.Escaper.ecapeVariable('$id') +
         '/trash';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Message.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Message.fromJson(data));
   }
 
   /// Removes the specified message from the trash.
@@ -1820,20 +1988,23 @@ class UsersMessagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Message> untrash(core.String userId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Message> untrash(
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1845,13 +2016,16 @@ class UsersMessagesResourceApi {
         commons.Escaper.ecapeVariable('$id') +
         '/untrash';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Message.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Message.fromJson(data));
   }
 }
 
@@ -1883,23 +2057,26 @@ class UsersMessagesAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<MessagePartBody> get(
-      core.String userId, core.String messageId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String userId,
+    core.String messageId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (messageId == null) {
-      throw new core.ArgumentError("Parameter messageId is required.");
+      throw core.ArgumentError("Parameter messageId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1912,13 +2089,16 @@ class UsersMessagesAttachmentsResourceApi {
         '/attachments/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new MessagePartBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => MessagePartBody.fromJson(data));
   }
 }
 
@@ -1926,13 +2106,13 @@ class UsersSettingsResourceApi {
   final commons.ApiRequester _requester;
 
   UsersSettingsDelegatesResourceApi get delegates =>
-      new UsersSettingsDelegatesResourceApi(_requester);
+      UsersSettingsDelegatesResourceApi(_requester);
   UsersSettingsFiltersResourceApi get filters =>
-      new UsersSettingsFiltersResourceApi(_requester);
+      UsersSettingsFiltersResourceApi(_requester);
   UsersSettingsForwardingAddressesResourceApi get forwardingAddresses =>
-      new UsersSettingsForwardingAddressesResourceApi(_requester);
+      UsersSettingsForwardingAddressesResourceApi(_requester);
   UsersSettingsSendAsResourceApi get sendAs =>
-      new UsersSettingsSendAsResourceApi(_requester);
+      UsersSettingsSendAsResourceApi(_requester);
 
   UsersSettingsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -1953,17 +2133,19 @@ class UsersSettingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AutoForwarding> getAutoForwarding(core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AutoForwarding> getAutoForwarding(
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1973,13 +2155,16 @@ class UsersSettingsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/autoForwarding';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AutoForwarding.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AutoForwarding.fromJson(data));
   }
 
   /// Gets IMAP settings.
@@ -1999,17 +2184,19 @@ class UsersSettingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ImapSettings> getImap(core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ImapSettings> getImap(
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2019,13 +2206,16 @@ class UsersSettingsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/imap';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ImapSettings.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ImapSettings.fromJson(data));
   }
 
   /// Gets language settings.
@@ -2045,17 +2235,19 @@ class UsersSettingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LanguageSettings> getLanguage(core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LanguageSettings> getLanguage(
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2065,13 +2257,16 @@ class UsersSettingsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/language';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LanguageSettings.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LanguageSettings.fromJson(data));
   }
 
   /// Gets POP settings.
@@ -2091,16 +2286,19 @@ class UsersSettingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PopSettings> getPop(core.String userId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PopSettings> getPop(
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2110,13 +2308,16 @@ class UsersSettingsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/pop';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PopSettings.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PopSettings.fromJson(data));
   }
 
   /// Gets vacation responder settings.
@@ -2136,17 +2337,19 @@ class UsersSettingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VacationSettings> getVacation(core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<VacationSettings> getVacation(
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2156,13 +2359,16 @@ class UsersSettingsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/vacation';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new VacationSettings.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => VacationSettings.fromJson(data));
   }
 
   /// Updates the auto-forwarding setting for the specified account. A verified
@@ -2188,20 +2394,22 @@ class UsersSettingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AutoForwarding> updateAutoForwarding(
-      AutoForwarding request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AutoForwarding request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2211,13 +2419,16 @@ class UsersSettingsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/autoForwarding';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AutoForwarding.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AutoForwarding.fromJson(data));
   }
 
   /// Updates IMAP settings.
@@ -2240,20 +2451,22 @@ class UsersSettingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ImapSettings> updateImap(
-      ImapSettings request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ImapSettings request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2263,13 +2476,16 @@ class UsersSettingsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/imap';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ImapSettings.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ImapSettings.fromJson(data));
   }
 
   /// Updates language settings. If successful, the return object contains the
@@ -2296,20 +2512,22 @@ class UsersSettingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LanguageSettings> updateLanguage(
-      LanguageSettings request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    LanguageSettings request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2319,13 +2537,16 @@ class UsersSettingsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/language';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LanguageSettings.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LanguageSettings.fromJson(data));
   }
 
   /// Updates POP settings.
@@ -2347,20 +2568,23 @@ class UsersSettingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PopSettings> updatePop(PopSettings request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PopSettings> updatePop(
+    PopSettings request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2370,13 +2594,16 @@ class UsersSettingsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/pop';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PopSettings.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PopSettings.fromJson(data));
   }
 
   /// Updates vacation responder settings.
@@ -2399,20 +2626,22 @@ class UsersSettingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VacationSettings> updateVacation(
-      VacationSettings request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    VacationSettings request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2422,13 +2651,16 @@ class UsersSettingsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/vacation';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new VacationSettings.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => VacationSettings.fromJson(data));
   }
 }
 
@@ -2467,20 +2699,23 @@ class UsersSettingsDelegatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Delegate> create(Delegate request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Delegate> create(
+    Delegate request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2490,13 +2725,16 @@ class UsersSettingsDelegatesResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/delegates';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Delegate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Delegate.fromJson(data));
   }
 
   /// Removes the specified delegate (which can be of any verification status),
@@ -2521,20 +2759,23 @@ class UsersSettingsDelegatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String userId, core.String delegateEmail,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String userId,
+    core.String delegateEmail, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (delegateEmail == null) {
-      throw new core.ArgumentError("Parameter delegateEmail is required.");
+      throw core.ArgumentError("Parameter delegateEmail is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2547,12 +2788,15 @@ class UsersSettingsDelegatesResourceApi {
         '/settings/delegates/' +
         commons.Escaper.ecapeVariable('$delegateEmail');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -2579,20 +2823,23 @@ class UsersSettingsDelegatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Delegate> get(core.String userId, core.String delegateEmail,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Delegate> get(
+    core.String userId,
+    core.String delegateEmail, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (delegateEmail == null) {
-      throw new core.ArgumentError("Parameter delegateEmail is required.");
+      throw core.ArgumentError("Parameter delegateEmail is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2603,13 +2850,16 @@ class UsersSettingsDelegatesResourceApi {
         '/settings/delegates/' +
         commons.Escaper.ecapeVariable('$delegateEmail');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Delegate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Delegate.fromJson(data));
   }
 
   /// Lists the delegates for the specified account. This method is only
@@ -2631,17 +2881,19 @@ class UsersSettingsDelegatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListDelegatesResponse> list(core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListDelegatesResponse> list(
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2651,13 +2903,16 @@ class UsersSettingsDelegatesResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/delegates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListDelegatesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListDelegatesResponse.fromJson(data));
   }
 }
 
@@ -2686,20 +2941,23 @@ class UsersSettingsFiltersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Filter> create(Filter request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Filter> create(
+    Filter request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2709,13 +2967,16 @@ class UsersSettingsFiltersResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/filters';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Filter.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Filter.fromJson(data));
   }
 
   /// Deletes a filter.
@@ -2735,20 +2996,23 @@ class UsersSettingsFiltersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String userId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2761,12 +3025,15 @@ class UsersSettingsFiltersResourceApi {
         '/settings/filters/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -2789,20 +3056,23 @@ class UsersSettingsFiltersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Filter> get(core.String userId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Filter> get(
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2813,13 +3083,16 @@ class UsersSettingsFiltersResourceApi {
         '/settings/filters/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Filter.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Filter.fromJson(data));
   }
 
   /// Lists the message filters of a Gmail user.
@@ -2839,17 +3112,19 @@ class UsersSettingsFiltersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListFiltersResponse> list(core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListFiltersResponse> list(
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2859,13 +3134,16 @@ class UsersSettingsFiltersResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/filters';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListFiltersResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListFiltersResponse.fromJson(data));
   }
 }
 
@@ -2899,20 +3177,22 @@ class UsersSettingsForwardingAddressesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ForwardingAddress> create(
-      ForwardingAddress request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ForwardingAddress request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2922,13 +3202,16 @@ class UsersSettingsForwardingAddressesResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/forwardingAddresses';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ForwardingAddress.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ForwardingAddress.fromJson(data));
   }
 
   /// Deletes the specified forwarding address and revokes any verification that
@@ -2950,20 +3233,23 @@ class UsersSettingsForwardingAddressesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String userId, core.String forwardingEmail,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String userId,
+    core.String forwardingEmail, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (forwardingEmail == null) {
-      throw new core.ArgumentError("Parameter forwardingEmail is required.");
+      throw core.ArgumentError("Parameter forwardingEmail is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2976,12 +3262,15 @@ class UsersSettingsForwardingAddressesResourceApi {
         '/settings/forwardingAddresses/' +
         commons.Escaper.ecapeVariable('$forwardingEmail');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -3005,20 +3294,22 @@ class UsersSettingsForwardingAddressesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ForwardingAddress> get(
-      core.String userId, core.String forwardingEmail,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String userId,
+    core.String forwardingEmail, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (forwardingEmail == null) {
-      throw new core.ArgumentError("Parameter forwardingEmail is required.");
+      throw core.ArgumentError("Parameter forwardingEmail is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3029,13 +3320,16 @@ class UsersSettingsForwardingAddressesResourceApi {
         '/settings/forwardingAddresses/' +
         commons.Escaper.ecapeVariable('$forwardingEmail');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ForwardingAddress.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ForwardingAddress.fromJson(data));
   }
 
   /// Lists the forwarding addresses for the specified account.
@@ -3055,17 +3349,19 @@ class UsersSettingsForwardingAddressesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListForwardingAddressesResponse> list(core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListForwardingAddressesResponse> list(
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3075,14 +3371,17 @@ class UsersSettingsForwardingAddressesResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/forwardingAddresses';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListForwardingAddressesResponse.fromJson(data));
+        .then((data) => ListForwardingAddressesResponse.fromJson(data));
   }
 }
 
@@ -3090,7 +3389,7 @@ class UsersSettingsSendAsResourceApi {
   final commons.ApiRequester _requester;
 
   UsersSettingsSendAsSmimeInfoResourceApi get smimeInfo =>
-      new UsersSettingsSendAsSmimeInfoResourceApi(_requester);
+      UsersSettingsSendAsSmimeInfoResourceApi(_requester);
 
   UsersSettingsSendAsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -3122,20 +3421,23 @@ class UsersSettingsSendAsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SendAs> create(SendAs request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SendAs> create(
+    SendAs request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3145,13 +3447,16 @@ class UsersSettingsSendAsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/sendAs';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SendAs.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SendAs.fromJson(data));
   }
 
   /// Deletes the specified send-as alias. Revokes any verification that may
@@ -3173,20 +3478,23 @@ class UsersSettingsSendAsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String userId, core.String sendAsEmail,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String userId,
+    core.String sendAsEmail, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (sendAsEmail == null) {
-      throw new core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError("Parameter sendAsEmail is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3199,12 +3507,15 @@ class UsersSettingsSendAsResourceApi {
         '/settings/sendAs/' +
         commons.Escaper.ecapeVariable('$sendAsEmail');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -3228,20 +3539,23 @@ class UsersSettingsSendAsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SendAs> get(core.String userId, core.String sendAsEmail,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SendAs> get(
+    core.String userId,
+    core.String sendAsEmail, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (sendAsEmail == null) {
-      throw new core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError("Parameter sendAsEmail is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3252,13 +3566,16 @@ class UsersSettingsSendAsResourceApi {
         '/settings/sendAs/' +
         commons.Escaper.ecapeVariable('$sendAsEmail');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SendAs.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SendAs.fromJson(data));
   }
 
   /// Lists the send-as aliases for the specified account. The result includes
@@ -3280,17 +3597,19 @@ class UsersSettingsSendAsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListSendAsResponse> list(core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListSendAsResponse> list(
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3300,13 +3619,16 @@ class UsersSettingsSendAsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/sendAs';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListSendAsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListSendAsResponse.fromJson(data));
   }
 
   /// Patch the specified send-as alias.
@@ -3331,23 +3653,26 @@ class UsersSettingsSendAsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SendAs> patch(
-      SendAs request, core.String userId, core.String sendAsEmail,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SendAs request,
+    core.String userId,
+    core.String sendAsEmail, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (sendAsEmail == null) {
-      throw new core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError("Parameter sendAsEmail is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3358,13 +3683,16 @@ class UsersSettingsSendAsResourceApi {
         '/settings/sendAs/' +
         commons.Escaper.ecapeVariable('$sendAsEmail');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SendAs.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SendAs.fromJson(data));
   }
 
   /// Updates a send-as alias. If a signature is provided, Gmail will sanitize
@@ -3392,23 +3720,26 @@ class UsersSettingsSendAsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SendAs> update(
-      SendAs request, core.String userId, core.String sendAsEmail,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SendAs request,
+    core.String userId,
+    core.String sendAsEmail, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (sendAsEmail == null) {
-      throw new core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError("Parameter sendAsEmail is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3419,13 +3750,16 @@ class UsersSettingsSendAsResourceApi {
         '/settings/sendAs/' +
         commons.Escaper.ecapeVariable('$sendAsEmail');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SendAs.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SendAs.fromJson(data));
   }
 
   /// Sends a verification email to the specified send-as alias address. The
@@ -3447,20 +3781,23 @@ class UsersSettingsSendAsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future verify(core.String userId, core.String sendAsEmail,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future verify(
+    core.String userId,
+    core.String sendAsEmail, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (sendAsEmail == null) {
-      throw new core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError("Parameter sendAsEmail is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3474,12 +3811,15 @@ class UsersSettingsSendAsResourceApi {
         commons.Escaper.ecapeVariable('$sendAsEmail') +
         '/verify';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 }
@@ -3511,23 +3851,26 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String userId, core.String sendAsEmail, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String userId,
+    core.String sendAsEmail,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (sendAsEmail == null) {
-      throw new core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError("Parameter sendAsEmail is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3542,12 +3885,15 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
         '/smimeInfo/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -3574,23 +3920,26 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SmimeInfo> get(
-      core.String userId, core.String sendAsEmail, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String userId,
+    core.String sendAsEmail,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (sendAsEmail == null) {
-      throw new core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError("Parameter sendAsEmail is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3603,13 +3952,16 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
         '/smimeInfo/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SmimeInfo.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SmimeInfo.fromJson(data));
   }
 
   /// Insert (upload) the given S/MIME config for the specified send-as alias.
@@ -3636,23 +3988,26 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SmimeInfo> insert(
-      SmimeInfo request, core.String userId, core.String sendAsEmail,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SmimeInfo request,
+    core.String userId,
+    core.String sendAsEmail, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (sendAsEmail == null) {
-      throw new core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError("Parameter sendAsEmail is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3664,13 +4019,16 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
         commons.Escaper.ecapeVariable('$sendAsEmail') +
         '/smimeInfo';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SmimeInfo.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SmimeInfo.fromJson(data));
   }
 
   /// Lists S/MIME configs for the specified send-as alias.
@@ -3694,20 +4052,22 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSmimeInfoResponse> list(
-      core.String userId, core.String sendAsEmail,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String userId,
+    core.String sendAsEmail, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (sendAsEmail == null) {
-      throw new core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError("Parameter sendAsEmail is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3719,13 +4079,16 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
         commons.Escaper.ecapeVariable('$sendAsEmail') +
         '/smimeInfo';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListSmimeInfoResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListSmimeInfoResponse.fromJson(data));
   }
 
   /// Sets the default S/MIME config for the specified send-as alias.
@@ -3749,23 +4112,26 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future setDefault(
-      core.String userId, core.String sendAsEmail, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String userId,
+    core.String sendAsEmail,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (sendAsEmail == null) {
-      throw new core.ArgumentError("Parameter sendAsEmail is required.");
+      throw core.ArgumentError("Parameter sendAsEmail is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3781,12 +4147,15 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
         commons.Escaper.ecapeVariable('$id') +
         '/setDefault';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 }
@@ -3814,20 +4183,23 @@ class UsersThreadsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String userId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3840,12 +4212,15 @@ class UsersThreadsResourceApi {
         '/threads/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -3880,22 +4255,25 @@ class UsersThreadsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Thread> get(core.String userId, core.String id,
-      {core.List<core.String> metadataHeaders,
-      core.String format,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Thread> get(
+    core.String userId,
+    core.String id, {
+    core.List<core.String> metadataHeaders,
+    core.String format,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if (metadataHeaders != null) {
       _queryParams["metadataHeaders"] = metadataHeaders;
@@ -3912,13 +4290,16 @@ class UsersThreadsResourceApi {
         '/threads/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Thread.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Thread.fromJson(data));
   }
 
   /// Lists the threads in the user's mailbox.
@@ -3954,22 +4335,24 @@ class UsersThreadsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListThreadsResponse> list(core.String userId,
-      {core.List<core.String> labelIds,
-      core.String q,
-      core.String pageToken,
-      core.bool includeSpamTrash,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListThreadsResponse> list(
+    core.String userId, {
+    core.List<core.String> labelIds,
+    core.String q,
+    core.String pageToken,
+    core.bool includeSpamTrash,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (labelIds != null) {
       _queryParams["labelIds"] = labelIds;
@@ -3994,13 +4377,16 @@ class UsersThreadsResourceApi {
         commons.Escaper.ecapeVariable('$userId') +
         '/threads';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListThreadsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListThreadsResponse.fromJson(data));
   }
 
   /// Modifies the labels applied to the thread. This applies to all messages in
@@ -4026,23 +4412,26 @@ class UsersThreadsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Thread> modify(
-      ModifyThreadRequest request, core.String userId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ModifyThreadRequest request,
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4054,13 +4443,16 @@ class UsersThreadsResourceApi {
         commons.Escaper.ecapeVariable('$id') +
         '/modify';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Thread.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Thread.fromJson(data));
   }
 
   /// Moves the specified thread to the trash.
@@ -4082,20 +4474,23 @@ class UsersThreadsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Thread> trash(core.String userId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Thread> trash(
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4107,13 +4502,16 @@ class UsersThreadsResourceApi {
         commons.Escaper.ecapeVariable('$id') +
         '/trash';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Thread.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Thread.fromJson(data));
   }
 
   /// Removes the specified thread from the trash.
@@ -4135,20 +4533,23 @@ class UsersThreadsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Thread> untrash(core.String userId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Thread> untrash(
+    core.String userId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4160,13 +4561,16 @@ class UsersThreadsResourceApi {
         commons.Escaper.ecapeVariable('$id') +
         '/untrash';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Thread.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Thread.fromJson(data));
   }
 }
 
@@ -4204,7 +4608,7 @@ class AutoForwarding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (disposition != null) {
       _json["disposition"] = disposition;
     }
@@ -4232,7 +4636,7 @@ class BatchDeleteMessagesRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ids != null) {
       _json["ids"] = ids;
     }
@@ -4268,7 +4672,7 @@ class BatchModifyMessagesRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (addLabelIds != null) {
       _json["addLabelIds"] = addLabelIds;
     }
@@ -4315,7 +4719,7 @@ class Delegate {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (delegateEmail != null) {
       _json["delegateEmail"] = delegateEmail;
     }
@@ -4341,18 +4745,18 @@ class Draft {
       id = _json["id"];
     }
     if (_json.containsKey("message")) {
-      message = new Message.fromJson(_json["message"]);
+      message = Message.fromJson(_json["message"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
     if (message != null) {
-      _json["message"] = (message).toJson();
+      _json["message"] = message.toJson();
     }
     return _json;
   }
@@ -4374,10 +4778,10 @@ class Filter {
 
   Filter.fromJson(core.Map _json) {
     if (_json.containsKey("action")) {
-      action = new FilterAction.fromJson(_json["action"]);
+      action = FilterAction.fromJson(_json["action"]);
     }
     if (_json.containsKey("criteria")) {
-      criteria = new FilterCriteria.fromJson(_json["criteria"]);
+      criteria = FilterCriteria.fromJson(_json["criteria"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -4386,12 +4790,12 @@ class Filter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (action != null) {
-      _json["action"] = (action).toJson();
+      _json["action"] = action.toJson();
     }
     if (criteria != null) {
-      _json["criteria"] = (criteria).toJson();
+      _json["criteria"] = criteria.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -4428,7 +4832,7 @@ class FilterAction {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (addLabelIds != null) {
       _json["addLabelIds"] = addLabelIds;
     }
@@ -4518,7 +4922,7 @@ class FilterCriteria {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (excludeChats != null) {
       _json["excludeChats"] = excludeChats;
     }
@@ -4576,7 +4980,7 @@ class ForwardingAddress {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (forwardingEmail != null) {
       _json["forwardingEmail"] = forwardingEmail;
     }
@@ -4618,59 +5022,58 @@ class History {
     }
     if (_json.containsKey("labelsAdded")) {
       labelsAdded = (_json["labelsAdded"] as core.List)
-          .map<HistoryLabelAdded>(
-              (value) => new HistoryLabelAdded.fromJson(value))
+          .map<HistoryLabelAdded>((value) => HistoryLabelAdded.fromJson(value))
           .toList();
     }
     if (_json.containsKey("labelsRemoved")) {
       labelsRemoved = (_json["labelsRemoved"] as core.List)
           .map<HistoryLabelRemoved>(
-              (value) => new HistoryLabelRemoved.fromJson(value))
+              (value) => HistoryLabelRemoved.fromJson(value))
           .toList();
     }
     if (_json.containsKey("messages")) {
       messages = (_json["messages"] as core.List)
-          .map<Message>((value) => new Message.fromJson(value))
+          .map<Message>((value) => Message.fromJson(value))
           .toList();
     }
     if (_json.containsKey("messagesAdded")) {
       messagesAdded = (_json["messagesAdded"] as core.List)
           .map<HistoryMessageAdded>(
-              (value) => new HistoryMessageAdded.fromJson(value))
+              (value) => HistoryMessageAdded.fromJson(value))
           .toList();
     }
     if (_json.containsKey("messagesDeleted")) {
       messagesDeleted = (_json["messagesDeleted"] as core.List)
           .map<HistoryMessageDeleted>(
-              (value) => new HistoryMessageDeleted.fromJson(value))
+              (value) => HistoryMessageDeleted.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
     if (labelsAdded != null) {
       _json["labelsAdded"] =
-          labelsAdded.map((value) => (value).toJson()).toList();
+          labelsAdded.map((value) => value.toJson()).toList();
     }
     if (labelsRemoved != null) {
       _json["labelsRemoved"] =
-          labelsRemoved.map((value) => (value).toJson()).toList();
+          labelsRemoved.map((value) => value.toJson()).toList();
     }
     if (messages != null) {
-      _json["messages"] = messages.map((value) => (value).toJson()).toList();
+      _json["messages"] = messages.map((value) => value.toJson()).toList();
     }
     if (messagesAdded != null) {
       _json["messagesAdded"] =
-          messagesAdded.map((value) => (value).toJson()).toList();
+          messagesAdded.map((value) => value.toJson()).toList();
     }
     if (messagesDeleted != null) {
       _json["messagesDeleted"] =
-          messagesDeleted.map((value) => (value).toJson()).toList();
+          messagesDeleted.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4688,18 +5091,18 @@ class HistoryLabelAdded {
       labelIds = (_json["labelIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("message")) {
-      message = new Message.fromJson(_json["message"]);
+      message = Message.fromJson(_json["message"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (labelIds != null) {
       _json["labelIds"] = labelIds;
     }
     if (message != null) {
-      _json["message"] = (message).toJson();
+      _json["message"] = message.toJson();
     }
     return _json;
   }
@@ -4717,18 +5120,18 @@ class HistoryLabelRemoved {
       labelIds = (_json["labelIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("message")) {
-      message = new Message.fromJson(_json["message"]);
+      message = Message.fromJson(_json["message"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (labelIds != null) {
       _json["labelIds"] = labelIds;
     }
     if (message != null) {
-      _json["message"] = (message).toJson();
+      _json["message"] = message.toJson();
     }
     return _json;
   }
@@ -4741,15 +5144,15 @@ class HistoryMessageAdded {
 
   HistoryMessageAdded.fromJson(core.Map _json) {
     if (_json.containsKey("message")) {
-      message = new Message.fromJson(_json["message"]);
+      message = Message.fromJson(_json["message"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (message != null) {
-      _json["message"] = (message).toJson();
+      _json["message"] = message.toJson();
     }
     return _json;
   }
@@ -4762,15 +5165,15 @@ class HistoryMessageDeleted {
 
   HistoryMessageDeleted.fromJson(core.Map _json) {
     if (_json.containsKey("message")) {
-      message = new Message.fromJson(_json["message"]);
+      message = Message.fromJson(_json["message"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (message != null) {
-      _json["message"] = (message).toJson();
+      _json["message"] = message.toJson();
     }
     return _json;
   }
@@ -4820,7 +5223,7 @@ class ImapSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (autoExpunge != null) {
       _json["autoExpunge"] = autoExpunge;
     }
@@ -4894,7 +5297,7 @@ class Label {
 
   Label.fromJson(core.Map _json) {
     if (_json.containsKey("color")) {
-      color = new LabelColor.fromJson(_json["color"]);
+      color = LabelColor.fromJson(_json["color"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -4927,9 +5330,9 @@ class Label {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (color != null) {
-      _json["color"] = (color).toJson();
+      _json["color"] = color.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -5012,7 +5415,7 @@ class LabelColor {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (backgroundColor != null) {
       _json["backgroundColor"] = backgroundColor;
     }
@@ -5048,7 +5451,7 @@ class LanguageSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayLanguage != null) {
       _json["displayLanguage"] = displayLanguage;
     }
@@ -5067,16 +5470,16 @@ class ListDelegatesResponse {
   ListDelegatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("delegates")) {
       delegates = (_json["delegates"] as core.List)
-          .map<Delegate>((value) => new Delegate.fromJson(value))
+          .map<Delegate>((value) => Delegate.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (delegates != null) {
-      _json["delegates"] = delegates.map((value) => (value).toJson()).toList();
+      _json["delegates"] = delegates.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5099,7 +5502,7 @@ class ListDraftsResponse {
   ListDraftsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("drafts")) {
       drafts = (_json["drafts"] as core.List)
-          .map<Draft>((value) => new Draft.fromJson(value))
+          .map<Draft>((value) => Draft.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -5112,9 +5515,9 @@ class ListDraftsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (drafts != null) {
-      _json["drafts"] = drafts.map((value) => (value).toJson()).toList();
+      _json["drafts"] = drafts.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -5136,16 +5539,16 @@ class ListFiltersResponse {
   ListFiltersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("filter")) {
       filter = (_json["filter"] as core.List)
-          .map<Filter>((value) => new Filter.fromJson(value))
+          .map<Filter>((value) => Filter.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (filter != null) {
-      _json["filter"] = filter.map((value) => (value).toJson()).toList();
+      _json["filter"] = filter.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5161,18 +5564,17 @@ class ListForwardingAddressesResponse {
   ListForwardingAddressesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("forwardingAddresses")) {
       forwardingAddresses = (_json["forwardingAddresses"] as core.List)
-          .map<ForwardingAddress>(
-              (value) => new ForwardingAddress.fromJson(value))
+          .map<ForwardingAddress>((value) => ForwardingAddress.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (forwardingAddresses != null) {
       _json["forwardingAddresses"] =
-          forwardingAddresses.map((value) => (value).toJson()).toList();
+          forwardingAddresses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5194,7 +5596,7 @@ class ListHistoryResponse {
   ListHistoryResponse.fromJson(core.Map _json) {
     if (_json.containsKey("history")) {
       history = (_json["history"] as core.List)
-          .map<History>((value) => new History.fromJson(value))
+          .map<History>((value) => History.fromJson(value))
           .toList();
     }
     if (_json.containsKey("historyId")) {
@@ -5207,9 +5609,9 @@ class ListHistoryResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (history != null) {
-      _json["history"] = history.map((value) => (value).toJson()).toList();
+      _json["history"] = history.map((value) => value.toJson()).toList();
     }
     if (historyId != null) {
       _json["historyId"] = historyId;
@@ -5232,16 +5634,16 @@ class ListLabelsResponse {
   ListLabelsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.List)
-          .map<Label>((value) => new Label.fromJson(value))
+          .map<Label>((value) => Label.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (labels != null) {
-      _json["labels"] = labels.map((value) => (value).toJson()).toList();
+      _json["labels"] = labels.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5264,7 +5666,7 @@ class ListMessagesResponse {
   ListMessagesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("messages")) {
       messages = (_json["messages"] as core.List)
-          .map<Message>((value) => new Message.fromJson(value))
+          .map<Message>((value) => Message.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -5277,9 +5679,9 @@ class ListMessagesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (messages != null) {
-      _json["messages"] = messages.map((value) => (value).toJson()).toList();
+      _json["messages"] = messages.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -5301,16 +5703,16 @@ class ListSendAsResponse {
   ListSendAsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("sendAs")) {
       sendAs = (_json["sendAs"] as core.List)
-          .map<SendAs>((value) => new SendAs.fromJson(value))
+          .map<SendAs>((value) => SendAs.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sendAs != null) {
-      _json["sendAs"] = sendAs.map((value) => (value).toJson()).toList();
+      _json["sendAs"] = sendAs.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5325,16 +5727,16 @@ class ListSmimeInfoResponse {
   ListSmimeInfoResponse.fromJson(core.Map _json) {
     if (_json.containsKey("smimeInfo")) {
       smimeInfo = (_json["smimeInfo"] as core.List)
-          .map<SmimeInfo>((value) => new SmimeInfo.fromJson(value))
+          .map<SmimeInfo>((value) => SmimeInfo.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (smimeInfo != null) {
-      _json["smimeInfo"] = smimeInfo.map((value) => (value).toJson()).toList();
+      _json["smimeInfo"] = smimeInfo.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5363,14 +5765,14 @@ class ListThreadsResponse {
     }
     if (_json.containsKey("threads")) {
       threads = (_json["threads"] as core.List)
-          .map<Thread>((value) => new Thread.fromJson(value))
+          .map<Thread>((value) => Thread.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -5378,7 +5780,7 @@ class ListThreadsResponse {
       _json["resultSizeEstimate"] = resultSizeEstimate;
     }
     if (threads != null) {
-      _json["threads"] = threads.map((value) => (value).toJson()).toList();
+      _json["threads"] = threads.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5409,9 +5811,7 @@ class Message {
   /// string. Returned in `messages.get` and `drafts.get` responses when the
   /// `format=RAW` parameter is supplied.
   core.String raw;
-  core.List<core.int> get rawAsBytes {
-    return convert.base64.decode(raw);
-  }
+  core.List<core.int> get rawAsBytes => convert.base64.decode(raw);
 
   set rawAsBytes(core.List<core.int> _bytes) {
     raw =
@@ -5448,7 +5848,7 @@ class Message {
       labelIds = (_json["labelIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("payload")) {
-      payload = new MessagePart.fromJson(_json["payload"]);
+      payload = MessagePart.fromJson(_json["payload"]);
     }
     if (_json.containsKey("raw")) {
       raw = _json["raw"];
@@ -5466,7 +5866,7 @@ class Message {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (historyId != null) {
       _json["historyId"] = historyId;
     }
@@ -5480,7 +5880,7 @@ class Message {
       _json["labelIds"] = labelIds;
     }
     if (payload != null) {
-      _json["payload"] = (payload).toJson();
+      _json["payload"] = payload.toJson();
     }
     if (raw != null) {
       _json["raw"] = raw;
@@ -5529,15 +5929,14 @@ class MessagePart {
 
   MessagePart.fromJson(core.Map _json) {
     if (_json.containsKey("body")) {
-      body = new MessagePartBody.fromJson(_json["body"]);
+      body = MessagePartBody.fromJson(_json["body"]);
     }
     if (_json.containsKey("filename")) {
       filename = _json["filename"];
     }
     if (_json.containsKey("headers")) {
       headers = (_json["headers"] as core.List)
-          .map<MessagePartHeader>(
-              (value) => new MessagePartHeader.fromJson(value))
+          .map<MessagePartHeader>((value) => MessagePartHeader.fromJson(value))
           .toList();
     }
     if (_json.containsKey("mimeType")) {
@@ -5548,22 +5947,22 @@ class MessagePart {
     }
     if (_json.containsKey("parts")) {
       parts = (_json["parts"] as core.List)
-          .map<MessagePart>((value) => new MessagePart.fromJson(value))
+          .map<MessagePart>((value) => MessagePart.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (body != null) {
-      _json["body"] = (body).toJson();
+      _json["body"] = body.toJson();
     }
     if (filename != null) {
       _json["filename"] = filename;
     }
     if (headers != null) {
-      _json["headers"] = headers.map((value) => (value).toJson()).toList();
+      _json["headers"] = headers.map((value) => value.toJson()).toList();
     }
     if (mimeType != null) {
       _json["mimeType"] = mimeType;
@@ -5572,7 +5971,7 @@ class MessagePart {
       _json["partId"] = partId;
     }
     if (parts != null) {
-      _json["parts"] = parts.map((value) => (value).toJson()).toList();
+      _json["parts"] = parts.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5591,9 +5990,7 @@ class MessagePartBody {
   /// data is sent as a separate attachment. An attachment ID is present if the
   /// body data is contained in a separate attachment.
   core.String data;
-  core.List<core.int> get dataAsBytes {
-    return convert.base64.decode(data);
-  }
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -5619,7 +6016,7 @@ class MessagePartBody {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attachmentId != null) {
       _json["attachmentId"] = attachmentId;
     }
@@ -5654,7 +6051,7 @@ class MessagePartHeader {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -5686,7 +6083,7 @@ class ModifyMessageRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (addLabelIds != null) {
       _json["addLabelIds"] = addLabelIds;
     }
@@ -5718,7 +6115,7 @@ class ModifyThreadRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (addLabelIds != null) {
       _json["addLabelIds"] = addLabelIds;
     }
@@ -5764,7 +6161,7 @@ class PopSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accessWindow != null) {
       _json["accessWindow"] = accessWindow;
     }
@@ -5808,7 +6205,7 @@ class Profile {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (emailAddress != null) {
       _json["emailAddress"] = emailAddress;
     }
@@ -5904,7 +6301,7 @@ class SendAs {
       signature = _json["signature"];
     }
     if (_json.containsKey("smtpMsa")) {
-      smtpMsa = new SmtpMsa.fromJson(_json["smtpMsa"]);
+      smtpMsa = SmtpMsa.fromJson(_json["smtpMsa"]);
     }
     if (_json.containsKey("treatAsAlias")) {
       treatAsAlias = _json["treatAsAlias"];
@@ -5916,7 +6313,7 @@ class SendAs {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -5936,7 +6333,7 @@ class SendAs {
       _json["signature"] = signature;
     }
     if (smtpMsa != null) {
-      _json["smtpMsa"] = (smtpMsa).toJson();
+      _json["smtpMsa"] = smtpMsa.toJson();
     }
     if (treatAsAlias != null) {
       _json["treatAsAlias"] = treatAsAlias;
@@ -5976,9 +6373,7 @@ class SmimeInfo {
   /// to be exported. PKCS#12 may be encrypted, in which case
   /// encryptedKeyPassword should be set appropriately.
   core.String pkcs12;
-  core.List<core.int> get pkcs12AsBytes {
-    return convert.base64.decode(pkcs12);
-  }
+  core.List<core.int> get pkcs12AsBytes => convert.base64.decode(pkcs12);
 
   set pkcs12AsBytes(core.List<core.int> _bytes) {
     pkcs12 =
@@ -6013,7 +6408,7 @@ class SmimeInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (encryptedKeyPassword != null) {
       _json["encryptedKeyPassword"] = encryptedKeyPassword;
     }
@@ -6090,7 +6485,7 @@ class SmtpMsa {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (host != null) {
       _json["host"] = host;
     }
@@ -6135,7 +6530,7 @@ class Thread {
     }
     if (_json.containsKey("messages")) {
       messages = (_json["messages"] as core.List)
-          .map<Message>((value) => new Message.fromJson(value))
+          .map<Message>((value) => Message.fromJson(value))
           .toList();
     }
     if (_json.containsKey("snippet")) {
@@ -6145,7 +6540,7 @@ class Thread {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (historyId != null) {
       _json["historyId"] = historyId;
     }
@@ -6153,7 +6548,7 @@ class Thread {
       _json["id"] = id;
     }
     if (messages != null) {
-      _json["messages"] = messages.map((value) => (value).toJson()).toList();
+      _json["messages"] = messages.map((value) => value.toJson()).toList();
     }
     if (snippet != null) {
       _json["snippet"] = snippet;
@@ -6234,7 +6629,7 @@ class VacationSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enableAutoReply != null) {
       _json["enableAutoReply"] = enableAutoReply;
     }
@@ -6303,7 +6698,7 @@ class WatchRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (labelFilterAction != null) {
       _json["labelFilterAction"] = labelFilterAction;
     }
@@ -6339,7 +6734,7 @@ class WatchResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (expiration != null) {
       _json["expiration"] = expiration;
     }

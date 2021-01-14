@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.libraryagent.v1;
 
@@ -23,19 +41,19 @@ class LibraryagentApi {
 
   final commons.ApiRequester _requester;
 
-  ShelvesResourceApi get shelves => new ShelvesResourceApi(_requester);
+  ShelvesResourceApi get shelves => ShelvesResourceApi(_requester);
 
   LibraryagentApi(http.Client client,
       {core.String rootUrl = "https://libraryagent.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ShelvesResourceApi {
   final commons.ApiRequester _requester;
 
-  ShelvesBooksResourceApi get books => new ShelvesBooksResourceApi(_requester);
+  ShelvesBooksResourceApi get books => ShelvesBooksResourceApi(_requester);
 
   ShelvesResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -56,17 +74,19 @@ class ShelvesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleExampleLibraryagentV1Shelf> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleExampleLibraryagentV1Shelf> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -74,14 +94,17 @@ class ShelvesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleExampleLibraryagentV1Shelf.fromJson(data));
+        .then((data) => GoogleExampleLibraryagentV1Shelf.fromJson(data));
   }
 
   /// Lists shelves. The order is unspecified but deterministic. Newly created
@@ -107,14 +130,17 @@ class ShelvesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleExampleLibraryagentV1ListShelvesResponse> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleExampleLibraryagentV1ListShelvesResponse> list({
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -128,14 +154,17 @@ class ShelvesResourceApi {
 
     _url = 'v1/shelves';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(data));
+        GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(data));
   }
 }
 
@@ -164,17 +193,19 @@ class ShelvesBooksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleExampleLibraryagentV1Book> borrow(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleExampleLibraryagentV1Book> borrow(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -182,14 +213,17 @@ class ShelvesBooksResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':borrow';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleExampleLibraryagentV1Book.fromJson(data));
+        .then((data) => GoogleExampleLibraryagentV1Book.fromJson(data));
   }
 
   /// Gets a book. Returns NOT_FOUND if the book does not exist.
@@ -209,17 +243,19 @@ class ShelvesBooksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleExampleLibraryagentV1Book> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleExampleLibraryagentV1Book> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -227,14 +263,17 @@ class ShelvesBooksResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleExampleLibraryagentV1Book.fromJson(data));
+        .then((data) => GoogleExampleLibraryagentV1Book.fromJson(data));
   }
 
   /// Lists books in a shelf. The order is unspecified but deterministic. Newly
@@ -264,19 +303,20 @@ class ShelvesBooksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleExampleLibraryagentV1ListBooksResponse> list(
-      core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -290,14 +330,17 @@ class ShelvesBooksResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/books';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleExampleLibraryagentV1ListBooksResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleExampleLibraryagentV1ListBooksResponse.fromJson(data));
   }
 
   /// Return a book to the library. Returns the book if it is returned to the
@@ -319,17 +362,19 @@ class ShelvesBooksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleExampleLibraryagentV1Book> return_(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleExampleLibraryagentV1Book> return_(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -337,14 +382,17 @@ class ShelvesBooksResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':return';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleExampleLibraryagentV1Book.fromJson(data));
+        .then((data) => GoogleExampleLibraryagentV1Book.fromJson(data));
   }
 }
 
@@ -383,7 +431,7 @@ class GoogleExampleLibraryagentV1Book {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (author != null) {
       _json["author"] = author;
     }
@@ -416,7 +464,7 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
     if (_json.containsKey("books")) {
       books = (_json["books"] as core.List)
           .map<GoogleExampleLibraryagentV1Book>(
-              (value) => new GoogleExampleLibraryagentV1Book.fromJson(value))
+              (value) => GoogleExampleLibraryagentV1Book.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -426,9 +474,9 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (books != null) {
-      _json["books"] = books.map((value) => (value).toJson()).toList();
+      _json["books"] = books.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -456,19 +504,19 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
     if (_json.containsKey("shelves")) {
       shelves = (_json["shelves"] as core.List)
           .map<GoogleExampleLibraryagentV1Shelf>(
-              (value) => new GoogleExampleLibraryagentV1Shelf.fromJson(value))
+              (value) => GoogleExampleLibraryagentV1Shelf.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (shelves != null) {
-      _json["shelves"] = shelves.map((value) => (value).toJson()).toList();
+      _json["shelves"] = shelves.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -496,7 +544,7 @@ class GoogleExampleLibraryagentV1Shelf {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }

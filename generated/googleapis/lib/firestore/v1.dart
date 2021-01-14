@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.firestore.v1;
 
@@ -28,22 +46,22 @@ class FirestoreApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   FirestoreApi(http.Client client,
       {core.String rootUrl = "https://firestore.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsDatabasesResourceApi get databases =>
-      new ProjectsDatabasesResourceApi(_requester);
+      ProjectsDatabasesResourceApi(_requester);
   ProjectsLocationsResourceApi get locations =>
-      new ProjectsLocationsResourceApi(_requester);
+      ProjectsLocationsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -52,11 +70,11 @@ class ProjectsDatabasesResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsDatabasesCollectionGroupsResourceApi get collectionGroups =>
-      new ProjectsDatabasesCollectionGroupsResourceApi(_requester);
+      ProjectsDatabasesCollectionGroupsResourceApi(_requester);
   ProjectsDatabasesDocumentsResourceApi get documents =>
-      new ProjectsDatabasesDocumentsResourceApi(_requester);
+      ProjectsDatabasesDocumentsResourceApi(_requester);
   ProjectsDatabasesOperationsResourceApi get operations =>
-      new ProjectsDatabasesOperationsResourceApi(_requester);
+      ProjectsDatabasesOperationsResourceApi(_requester);
 
   ProjectsDatabasesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -89,20 +107,22 @@ class ProjectsDatabasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> exportDocuments(
-      GoogleFirestoreAdminV1ExportDocumentsRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleFirestoreAdminV1ExportDocumentsRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -112,14 +132,16 @@ class ProjectsDatabasesResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':exportDocuments';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Imports documents into Google Cloud Firestore. Existing documents with the
@@ -147,20 +169,22 @@ class ProjectsDatabasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> importDocuments(
-      GoogleFirestoreAdminV1ImportDocumentsRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleFirestoreAdminV1ImportDocumentsRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -170,14 +194,16 @@ class ProjectsDatabasesResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':importDocuments';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 }
 
@@ -185,9 +211,9 @@ class ProjectsDatabasesCollectionGroupsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsDatabasesCollectionGroupsFieldsResourceApi get fields =>
-      new ProjectsDatabasesCollectionGroupsFieldsResourceApi(_requester);
+      ProjectsDatabasesCollectionGroupsFieldsResourceApi(_requester);
   ProjectsDatabasesCollectionGroupsIndexesResourceApi get indexes =>
-      new ProjectsDatabasesCollectionGroupsIndexesResourceApi(_requester);
+      ProjectsDatabasesCollectionGroupsIndexesResourceApi(_requester);
 
   ProjectsDatabasesCollectionGroupsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -219,17 +245,19 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleFirestoreAdminV1Field> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleFirestoreAdminV1Field> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -237,14 +265,16 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleFirestoreAdminV1Field.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleFirestoreAdminV1Field.fromJson(data));
   }
 
   /// Lists the field configuration and metadata for this database. Currently,
@@ -281,20 +311,21 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleFirestoreAdminV1ListFieldsResponse> list(
-      core.String parent,
-      {core.String filter,
-      core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String filter,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -311,14 +342,17 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/fields';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new GoogleFirestoreAdminV1ListFieldsResponse.fromJson(data));
+        (data) => GoogleFirestoreAdminV1ListFieldsResponse.fromJson(data));
   }
 
   /// Updates a field configuration. Currently, field updates apply only to
@@ -372,20 +406,23 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> patch(
-      GoogleFirestoreAdminV1Field request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleFirestoreAdminV1Field request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -396,14 +433,16 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 }
 
@@ -438,20 +477,22 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> create(
-      GoogleFirestoreAdminV1Index request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleFirestoreAdminV1Index request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -460,14 +501,16 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/indexes';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Deletes a composite index.
@@ -489,16 +532,19 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -506,13 +552,16 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a composite index.
@@ -534,17 +583,19 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleFirestoreAdminV1Index> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleFirestoreAdminV1Index> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -552,14 +603,16 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleFirestoreAdminV1Index.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleFirestoreAdminV1Index.fromJson(data));
   }
 
   /// Lists composite indexes.
@@ -590,20 +643,21 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleFirestoreAdminV1ListIndexesResponse> list(
-      core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -621,14 +675,17 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/indexes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new GoogleFirestoreAdminV1ListIndexesResponse.fromJson(data));
+        (data) => GoogleFirestoreAdminV1ListIndexesResponse.fromJson(data));
   }
 }
 
@@ -660,20 +717,22 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetDocumentsResponse> batchGet(
-      BatchGetDocumentsRequest request, core.String database,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchGetDocumentsRequest request,
+    core.String database, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (database == null) {
-      throw new core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError("Parameter database is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -683,14 +742,16 @@ class ProjectsDatabasesDocumentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$database') +
         '/documents:batchGet';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new BatchGetDocumentsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BatchGetDocumentsResponse.fromJson(data));
   }
 
   /// Applies a batch of write operations. The BatchWrite method does not apply
@@ -719,20 +780,22 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchWriteResponse> batchWrite(
-      BatchWriteRequest request, core.String database,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchWriteRequest request,
+    core.String database, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (database == null) {
-      throw new core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError("Parameter database is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -742,13 +805,16 @@ class ProjectsDatabasesDocumentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$database') +
         '/documents:batchWrite';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new BatchWriteResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BatchWriteResponse.fromJson(data));
   }
 
   /// Starts a new transaction.
@@ -772,20 +838,22 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BeginTransactionResponse> beginTransaction(
-      BeginTransactionRequest request, core.String database,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BeginTransactionRequest request,
+    core.String database, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (database == null) {
-      throw new core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError("Parameter database is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -795,14 +863,16 @@ class ProjectsDatabasesDocumentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$database') +
         '/documents:beginTransaction';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new BeginTransactionResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BeginTransactionResponse.fromJson(data));
   }
 
   /// Commits a transaction, while optionally updating documents.
@@ -826,20 +896,22 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CommitResponse> commit(
-      CommitRequest request, core.String database,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CommitRequest request,
+    core.String database, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (database == null) {
-      throw new core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError("Parameter database is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -849,13 +921,16 @@ class ProjectsDatabasesDocumentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$database') +
         '/documents:commit';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CommitResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CommitResponse.fromJson(data));
   }
 
   /// Creates a new document.
@@ -889,25 +964,28 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Document> createDocument(
-      Document request, core.String parent, core.String collectionId,
-      {core.String documentId,
-      core.List<core.String> mask_fieldPaths,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Document request,
+    core.String parent,
+    core.String collectionId, {
+    core.String documentId,
+    core.List<core.String> mask_fieldPaths,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (collectionId == null) {
-      throw new core.ArgumentError("Parameter collectionId is required.");
+      throw core.ArgumentError("Parameter collectionId is required.");
     }
     if (documentId != null) {
       _queryParams["documentId"] = [documentId];
@@ -924,13 +1002,16 @@ class ProjectsDatabasesDocumentsResourceApi {
         '/' +
         commons.Escaper.ecapeVariable('$collectionId');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Document.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Document.fromJson(data));
   }
 
   /// Deletes a document.
@@ -959,19 +1040,21 @@ class ProjectsDatabasesDocumentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name,
-      {core.bool currentDocument_exists,
-      core.String currentDocument_updateTime,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.bool currentDocument_exists,
+    core.String currentDocument_updateTime,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (currentDocument_exists != null) {
       _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
@@ -985,13 +1068,16 @@ class ProjectsDatabasesDocumentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a single document.
@@ -1022,20 +1108,22 @@ class ProjectsDatabasesDocumentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Document> get(core.String name,
-      {core.List<core.String> mask_fieldPaths,
-      core.String transaction,
-      core.String readTime,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Document> get(
+    core.String name, {
+    core.List<core.String> mask_fieldPaths,
+    core.String transaction,
+    core.String readTime,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (mask_fieldPaths != null) {
       _queryParams["mask.fieldPaths"] = mask_fieldPaths;
@@ -1052,13 +1140,16 @@ class ProjectsDatabasesDocumentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Document.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Document.fromJson(data));
   }
 
   /// Lists documents.
@@ -1109,27 +1200,29 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDocumentsResponse> list(
-      core.String parent, core.String collectionId,
-      {core.List<core.String> mask_fieldPaths,
-      core.String pageToken,
-      core.String orderBy,
-      core.String readTime,
-      core.bool showMissing,
-      core.String transaction,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String collectionId, {
+    core.List<core.String> mask_fieldPaths,
+    core.String pageToken,
+    core.String orderBy,
+    core.String readTime,
+    core.bool showMissing,
+    core.String transaction,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (collectionId == null) {
-      throw new core.ArgumentError("Parameter collectionId is required.");
+      throw core.ArgumentError("Parameter collectionId is required.");
     }
     if (mask_fieldPaths != null) {
       _queryParams["mask.fieldPaths"] = mask_fieldPaths;
@@ -1161,13 +1254,16 @@ class ProjectsDatabasesDocumentsResourceApi {
         '/' +
         commons.Escaper.ecapeVariable('$collectionId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListDocumentsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListDocumentsResponse.fromJson(data));
   }
 
   /// Lists all the collection IDs underneath a document.
@@ -1194,20 +1290,22 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCollectionIdsResponse> listCollectionIds(
-      ListCollectionIdsRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ListCollectionIdsRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1217,14 +1315,16 @@ class ProjectsDatabasesDocumentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':listCollectionIds';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListCollectionIdsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListCollectionIdsResponse.fromJson(data));
   }
 
   /// Listens to changes.
@@ -1248,20 +1348,22 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListenResponse> listen(
-      ListenRequest request, core.String database,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ListenRequest request,
+    core.String database, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (database == null) {
-      throw new core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError("Parameter database is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1271,13 +1373,16 @@ class ProjectsDatabasesDocumentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$database') +
         '/documents:listen';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListenResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListenResponse.fromJson(data));
   }
 
   /// Partitions a query by returning partition cursors that can be used to run
@@ -1306,20 +1411,22 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PartitionQueryResponse> partitionQuery(
-      PartitionQueryRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    PartitionQueryRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1329,13 +1436,16 @@ class ProjectsDatabasesDocumentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':partitionQuery';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PartitionQueryResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PartitionQueryResponse.fromJson(data));
   }
 
   /// Updates or inserts a document.
@@ -1371,24 +1481,27 @@ class ProjectsDatabasesDocumentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Document> patch(Document request, core.String name,
-      {core.bool currentDocument_exists,
-      core.List<core.String> updateMask_fieldPaths,
-      core.List<core.String> mask_fieldPaths,
-      core.String currentDocument_updateTime,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Document> patch(
+    Document request,
+    core.String name, {
+    core.bool currentDocument_exists,
+    core.List<core.String> updateMask_fieldPaths,
+    core.List<core.String> mask_fieldPaths,
+    core.String currentDocument_updateTime,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (currentDocument_exists != null) {
       _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
@@ -1408,13 +1521,16 @@ class ProjectsDatabasesDocumentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Document.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Document.fromJson(data));
   }
 
   /// Rolls back a transaction.
@@ -1437,20 +1553,23 @@ class ProjectsDatabasesDocumentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> rollback(RollbackRequest request, core.String database,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> rollback(
+    RollbackRequest request,
+    core.String database, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (database == null) {
-      throw new core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError("Parameter database is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1460,13 +1579,16 @@ class ProjectsDatabasesDocumentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$database') +
         '/documents:rollback';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Runs a query.
@@ -1494,20 +1616,22 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RunQueryResponse> runQuery(
-      RunQueryRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RunQueryRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1516,13 +1640,16 @@ class ProjectsDatabasesDocumentsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + ':runQuery';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RunQueryResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RunQueryResponse.fromJson(data));
   }
 
   /// Streams batches of document updates and deletes, in order.
@@ -1546,20 +1673,23 @@ class ProjectsDatabasesDocumentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WriteResponse> write(WriteRequest request, core.String database,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<WriteResponse> write(
+    WriteRequest request,
+    core.String database, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (database == null) {
-      throw new core.ArgumentError("Parameter database is required.");
+      throw core.ArgumentError("Parameter database is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1569,13 +1699,16 @@ class ProjectsDatabasesDocumentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$database') +
         '/documents:write';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new WriteResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => WriteResponse.fromJson(data));
   }
 }
 
@@ -1614,20 +1747,22 @@ class ProjectsDatabasesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> cancel(
-      GoogleLongrunningCancelOperationRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleLongrunningCancelOperationRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1635,13 +1770,16 @@ class ProjectsDatabasesOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -1665,16 +1803,19 @@ class ProjectsDatabasesOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1682,13 +1823,16 @@ class ProjectsDatabasesOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -1711,17 +1855,19 @@ class ProjectsDatabasesOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1729,14 +1875,16 @@ class ProjectsDatabasesOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -1770,20 +1918,22 @@ class ProjectsDatabasesOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleLongrunningListOperationsResponse> list(
+    core.String name, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1801,14 +1951,17 @@ class ProjectsDatabasesOperationsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleLongrunningListOperationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleLongrunningListOperationsResponse.fromJson(data));
   }
 }
 
@@ -1835,16 +1988,19 @@ class ProjectsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Location> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1852,13 +2008,16 @@ class ProjectsLocationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Location.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Location.fromJson(data));
   }
 
   /// Lists information about the supported locations for this service.
@@ -1884,20 +2043,22 @@ class ProjectsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListLocationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListLocationsResponse> list(
+    core.String name, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1915,13 +2076,16 @@ class ProjectsLocationsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListLocationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListLocationsResponse.fromJson(data));
   }
 }
 
@@ -1935,16 +2099,16 @@ class ArrayValue {
   ArrayValue.fromJson(core.Map _json) {
     if (_json.containsKey("values")) {
       values = (_json["values"] as core.List)
-          .map<Value>((value) => new Value.fromJson(value))
+          .map<Value>((value) => Value.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (values != null) {
-      _json["values"] = values.map((value) => (value).toJson()).toList();
+      _json["values"] = values.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1974,9 +2138,8 @@ class BatchGetDocumentsRequest {
 
   /// Reads documents in a transaction.
   core.String transaction;
-  core.List<core.int> get transactionAsBytes {
-    return convert.base64.decode(transaction);
-  }
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -1990,10 +2153,10 @@ class BatchGetDocumentsRequest {
       documents = (_json["documents"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("mask")) {
-      mask = new DocumentMask.fromJson(_json["mask"]);
+      mask = DocumentMask.fromJson(_json["mask"]);
     }
     if (_json.containsKey("newTransaction")) {
-      newTransaction = new TransactionOptions.fromJson(_json["newTransaction"]);
+      newTransaction = TransactionOptions.fromJson(_json["newTransaction"]);
     }
     if (_json.containsKey("readTime")) {
       readTime = _json["readTime"];
@@ -2005,15 +2168,15 @@ class BatchGetDocumentsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (documents != null) {
       _json["documents"] = documents;
     }
     if (mask != null) {
-      _json["mask"] = (mask).toJson();
+      _json["mask"] = mask.toJson();
     }
     if (newTransaction != null) {
-      _json["newTransaction"] = (newTransaction).toJson();
+      _json["newTransaction"] = newTransaction.toJson();
     }
     if (readTime != null) {
       _json["readTime"] = readTime;
@@ -2043,9 +2206,8 @@ class BatchGetDocumentsResponse {
   /// in the first response, and only if
   /// BatchGetDocumentsRequest.new_transaction was set in the request.
   core.String transaction;
-  core.List<core.int> get transactionAsBytes {
-    return convert.base64.decode(transaction);
-  }
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -2056,7 +2218,7 @@ class BatchGetDocumentsResponse {
 
   BatchGetDocumentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("found")) {
-      found = new Document.fromJson(_json["found"]);
+      found = Document.fromJson(_json["found"]);
     }
     if (_json.containsKey("missing")) {
       missing = _json["missing"];
@@ -2071,9 +2233,9 @@ class BatchGetDocumentsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (found != null) {
-      _json["found"] = (found).toJson();
+      _json["found"] = found.toJson();
     }
     if (missing != null) {
       _json["missing"] = missing;
@@ -2106,19 +2268,19 @@ class BatchWriteRequest {
     }
     if (_json.containsKey("writes")) {
       writes = (_json["writes"] as core.List)
-          .map<Write>((value) => new Write.fromJson(value))
+          .map<Write>((value) => Write.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (labels != null) {
       _json["labels"] = labels;
     }
     if (writes != null) {
-      _json["writes"] = writes.map((value) => (value).toJson()).toList();
+      _json["writes"] = writes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2139,25 +2301,25 @@ class BatchWriteResponse {
   BatchWriteResponse.fromJson(core.Map _json) {
     if (_json.containsKey("status")) {
       status = (_json["status"] as core.List)
-          .map<Status>((value) => new Status.fromJson(value))
+          .map<Status>((value) => Status.fromJson(value))
           .toList();
     }
     if (_json.containsKey("writeResults")) {
       writeResults = (_json["writeResults"] as core.List)
-          .map<WriteResult>((value) => new WriteResult.fromJson(value))
+          .map<WriteResult>((value) => WriteResult.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (status != null) {
-      _json["status"] = status.map((value) => (value).toJson()).toList();
+      _json["status"] = status.map((value) => value.toJson()).toList();
     }
     if (writeResults != null) {
       _json["writeResults"] =
-          writeResults.map((value) => (value).toJson()).toList();
+          writeResults.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2172,15 +2334,15 @@ class BeginTransactionRequest {
 
   BeginTransactionRequest.fromJson(core.Map _json) {
     if (_json.containsKey("options")) {
-      options = new TransactionOptions.fromJson(_json["options"]);
+      options = TransactionOptions.fromJson(_json["options"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (options != null) {
-      _json["options"] = (options).toJson();
+      _json["options"] = options.toJson();
     }
     return _json;
   }
@@ -2190,9 +2352,8 @@ class BeginTransactionRequest {
 class BeginTransactionResponse {
   /// The transaction that was started.
   core.String transaction;
-  core.List<core.int> get transactionAsBytes {
-    return convert.base64.decode(transaction);
-  }
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -2209,7 +2370,7 @@ class BeginTransactionResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (transaction != null) {
       _json["transaction"] = transaction;
     }
@@ -2240,7 +2401,7 @@ class CollectionSelector {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allDescendants != null) {
       _json["allDescendants"] = allDescendants;
     }
@@ -2255,9 +2416,8 @@ class CollectionSelector {
 class CommitRequest {
   /// If set, applies all writes in this transaction, and commits it.
   core.String transaction;
-  core.List<core.int> get transactionAsBytes {
-    return convert.base64.decode(transaction);
-  }
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -2275,19 +2435,19 @@ class CommitRequest {
     }
     if (_json.containsKey("writes")) {
       writes = (_json["writes"] as core.List)
-          .map<Write>((value) => new Write.fromJson(value))
+          .map<Write>((value) => Write.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (transaction != null) {
       _json["transaction"] = transaction;
     }
     if (writes != null) {
-      _json["writes"] = writes.map((value) => (value).toJson()).toList();
+      _json["writes"] = writes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2311,20 +2471,20 @@ class CommitResponse {
     }
     if (_json.containsKey("writeResults")) {
       writeResults = (_json["writeResults"] as core.List)
-          .map<WriteResult>((value) => new WriteResult.fromJson(value))
+          .map<WriteResult>((value) => WriteResult.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (commitTime != null) {
       _json["commitTime"] = commitTime;
     }
     if (writeResults != null) {
       _json["writeResults"] =
-          writeResults.map((value) => (value).toJson()).toList();
+          writeResults.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2347,7 +2507,7 @@ class CompositeFilter {
   CompositeFilter.fromJson(core.Map _json) {
     if (_json.containsKey("filters")) {
       filters = (_json["filters"] as core.List)
-          .map<Filter>((value) => new Filter.fromJson(value))
+          .map<Filter>((value) => Filter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("op")) {
@@ -2357,9 +2517,9 @@ class CompositeFilter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (filters != null) {
-      _json["filters"] = filters.map((value) => (value).toJson()).toList();
+      _json["filters"] = filters.map((value) => value.toJson()).toList();
     }
     if (op != null) {
       _json["op"] = op;
@@ -2387,19 +2547,19 @@ class Cursor {
     }
     if (_json.containsKey("values")) {
       values = (_json["values"] as core.List)
-          .map<Value>((value) => new Value.fromJson(value))
+          .map<Value>((value) => Value.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (before != null) {
       _json["before"] = before;
     }
     if (values != null) {
-      _json["values"] = values.map((value) => (value).toJson()).toList();
+      _json["values"] = values.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2449,7 +2609,7 @@ class Document {
     if (_json.containsKey("fields")) {
       fields = commons.mapMap<core.Map, Value>(
           _json["fields"].cast<core.String, core.Map>(),
-          (core.Map item) => new Value.fromJson(item));
+          (core.Map item) => Value.fromJson(item));
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -2461,14 +2621,14 @@ class Document {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
     if (fields != null) {
       _json["fields"] =
           commons.mapMap<Value, core.Map<core.String, core.Object>>(
-              fields, (Value item) => (item).toJson());
+              fields, (Value item) => item.toJson());
     }
     if (name != null) {
       _json["name"] = name;
@@ -2499,7 +2659,7 @@ class DocumentChange {
 
   DocumentChange.fromJson(core.Map _json) {
     if (_json.containsKey("document")) {
-      document = new Document.fromJson(_json["document"]);
+      document = Document.fromJson(_json["document"]);
     }
     if (_json.containsKey("removedTargetIds")) {
       removedTargetIds =
@@ -2512,9 +2672,9 @@ class DocumentChange {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (document != null) {
-      _json["document"] = (document).toJson();
+      _json["document"] = document.toJson();
     }
     if (removedTargetIds != null) {
       _json["removedTargetIds"] = removedTargetIds;
@@ -2558,7 +2718,7 @@ class DocumentDelete {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (document != null) {
       _json["document"] = document;
     }
@@ -2591,7 +2751,7 @@ class DocumentMask {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fieldPaths != null) {
       _json["fieldPaths"] = fieldPaths;
     }
@@ -2633,7 +2793,7 @@ class DocumentRemove {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (document != null) {
       _json["document"] = document;
     }
@@ -2664,20 +2824,20 @@ class DocumentTransform {
     }
     if (_json.containsKey("fieldTransforms")) {
       fieldTransforms = (_json["fieldTransforms"] as core.List)
-          .map<FieldTransform>((value) => new FieldTransform.fromJson(value))
+          .map<FieldTransform>((value) => FieldTransform.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (document != null) {
       _json["document"] = document;
     }
     if (fieldTransforms != null) {
       _json["fieldTransforms"] =
-          fieldTransforms.map((value) => (value).toJson()).toList();
+          fieldTransforms.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2701,7 +2861,7 @@ class DocumentsTarget {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (documents != null) {
       _json["documents"] = documents;
     }
@@ -2721,7 +2881,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2749,7 +2909,7 @@ class ExistenceFilter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (count != null) {
       _json["count"] = count;
     }
@@ -2802,27 +2962,27 @@ class FieldFilter {
 
   FieldFilter.fromJson(core.Map _json) {
     if (_json.containsKey("field")) {
-      field = new FieldReference.fromJson(_json["field"]);
+      field = FieldReference.fromJson(_json["field"]);
     }
     if (_json.containsKey("op")) {
       op = _json["op"];
     }
     if (_json.containsKey("value")) {
-      value = new Value.fromJson(_json["value"]);
+      value = Value.fromJson(_json["value"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = (field).toJson();
+      _json["field"] = field.toJson();
     }
     if (op != null) {
       _json["op"] = op;
     }
     if (value != null) {
-      _json["value"] = (value).toJson();
+      _json["value"] = value.toJson();
     }
     return _json;
   }
@@ -2842,7 +3002,7 @@ class FieldReference {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fieldPath != null) {
       _json["fieldPath"] = fieldPath;
     }
@@ -2922,22 +3082,22 @@ class FieldTransform {
   FieldTransform.fromJson(core.Map _json) {
     if (_json.containsKey("appendMissingElements")) {
       appendMissingElements =
-          new ArrayValue.fromJson(_json["appendMissingElements"]);
+          ArrayValue.fromJson(_json["appendMissingElements"]);
     }
     if (_json.containsKey("fieldPath")) {
       fieldPath = _json["fieldPath"];
     }
     if (_json.containsKey("increment")) {
-      increment = new Value.fromJson(_json["increment"]);
+      increment = Value.fromJson(_json["increment"]);
     }
     if (_json.containsKey("maximum")) {
-      maximum = new Value.fromJson(_json["maximum"]);
+      maximum = Value.fromJson(_json["maximum"]);
     }
     if (_json.containsKey("minimum")) {
-      minimum = new Value.fromJson(_json["minimum"]);
+      minimum = Value.fromJson(_json["minimum"]);
     }
     if (_json.containsKey("removeAllFromArray")) {
-      removeAllFromArray = new ArrayValue.fromJson(_json["removeAllFromArray"]);
+      removeAllFromArray = ArrayValue.fromJson(_json["removeAllFromArray"]);
     }
     if (_json.containsKey("setToServerValue")) {
       setToServerValue = _json["setToServerValue"];
@@ -2946,24 +3106,24 @@ class FieldTransform {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appendMissingElements != null) {
-      _json["appendMissingElements"] = (appendMissingElements).toJson();
+      _json["appendMissingElements"] = appendMissingElements.toJson();
     }
     if (fieldPath != null) {
       _json["fieldPath"] = fieldPath;
     }
     if (increment != null) {
-      _json["increment"] = (increment).toJson();
+      _json["increment"] = increment.toJson();
     }
     if (maximum != null) {
-      _json["maximum"] = (maximum).toJson();
+      _json["maximum"] = maximum.toJson();
     }
     if (minimum != null) {
-      _json["minimum"] = (minimum).toJson();
+      _json["minimum"] = minimum.toJson();
     }
     if (removeAllFromArray != null) {
-      _json["removeAllFromArray"] = (removeAllFromArray).toJson();
+      _json["removeAllFromArray"] = removeAllFromArray.toJson();
     }
     if (setToServerValue != null) {
       _json["setToServerValue"] = setToServerValue;
@@ -2987,27 +3147,27 @@ class Filter {
 
   Filter.fromJson(core.Map _json) {
     if (_json.containsKey("compositeFilter")) {
-      compositeFilter = new CompositeFilter.fromJson(_json["compositeFilter"]);
+      compositeFilter = CompositeFilter.fromJson(_json["compositeFilter"]);
     }
     if (_json.containsKey("fieldFilter")) {
-      fieldFilter = new FieldFilter.fromJson(_json["fieldFilter"]);
+      fieldFilter = FieldFilter.fromJson(_json["fieldFilter"]);
     }
     if (_json.containsKey("unaryFilter")) {
-      unaryFilter = new UnaryFilter.fromJson(_json["unaryFilter"]);
+      unaryFilter = UnaryFilter.fromJson(_json["unaryFilter"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (compositeFilter != null) {
-      _json["compositeFilter"] = (compositeFilter).toJson();
+      _json["compositeFilter"] = compositeFilter.toJson();
     }
     if (fieldFilter != null) {
-      _json["fieldFilter"] = (fieldFilter).toJson();
+      _json["fieldFilter"] = fieldFilter.toJson();
     }
     if (unaryFilter != null) {
-      _json["unaryFilter"] = (unaryFilter).toJson();
+      _json["unaryFilter"] = unaryFilter.toJson();
     }
     return _json;
   }
@@ -3068,11 +3228,11 @@ class GoogleFirestoreAdminV1ExportDocumentsMetadata {
     }
     if (_json.containsKey("progressBytes")) {
       progressBytes =
-          new GoogleFirestoreAdminV1Progress.fromJson(_json["progressBytes"]);
+          GoogleFirestoreAdminV1Progress.fromJson(_json["progressBytes"]);
     }
     if (_json.containsKey("progressDocuments")) {
-      progressDocuments = new GoogleFirestoreAdminV1Progress.fromJson(
-          _json["progressDocuments"]);
+      progressDocuments =
+          GoogleFirestoreAdminV1Progress.fromJson(_json["progressDocuments"]);
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -3081,7 +3241,7 @@ class GoogleFirestoreAdminV1ExportDocumentsMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (collectionIds != null) {
       _json["collectionIds"] = collectionIds;
     }
@@ -3095,10 +3255,10 @@ class GoogleFirestoreAdminV1ExportDocumentsMetadata {
       _json["outputUriPrefix"] = outputUriPrefix;
     }
     if (progressBytes != null) {
-      _json["progressBytes"] = (progressBytes).toJson();
+      _json["progressBytes"] = progressBytes.toJson();
     }
     if (progressDocuments != null) {
-      _json["progressDocuments"] = (progressDocuments).toJson();
+      _json["progressDocuments"] = progressDocuments.toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -3135,7 +3295,7 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (collectionIds != null) {
       _json["collectionIds"] = collectionIds;
     }
@@ -3163,7 +3323,7 @@ class GoogleFirestoreAdminV1ExportDocumentsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (outputUriPrefix != null) {
       _json["outputUriPrefix"] = outputUriPrefix;
     }
@@ -3206,7 +3366,7 @@ class GoogleFirestoreAdminV1Field {
   GoogleFirestoreAdminV1Field.fromJson(core.Map _json) {
     if (_json.containsKey("indexConfig")) {
       indexConfig =
-          new GoogleFirestoreAdminV1IndexConfig.fromJson(_json["indexConfig"]);
+          GoogleFirestoreAdminV1IndexConfig.fromJson(_json["indexConfig"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -3215,9 +3375,9 @@ class GoogleFirestoreAdminV1Field {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (indexConfig != null) {
-      _json["indexConfig"] = (indexConfig).toJson();
+      _json["indexConfig"] = indexConfig.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -3276,17 +3436,17 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
     }
     if (_json.containsKey("indexConfigDeltas")) {
       indexConfigDeltas = (_json["indexConfigDeltas"] as core.List)
-          .map<GoogleFirestoreAdminV1IndexConfigDelta>((value) =>
-              new GoogleFirestoreAdminV1IndexConfigDelta.fromJson(value))
+          .map<GoogleFirestoreAdminV1IndexConfigDelta>(
+              (value) => GoogleFirestoreAdminV1IndexConfigDelta.fromJson(value))
           .toList();
     }
     if (_json.containsKey("progressBytes")) {
       progressBytes =
-          new GoogleFirestoreAdminV1Progress.fromJson(_json["progressBytes"]);
+          GoogleFirestoreAdminV1Progress.fromJson(_json["progressBytes"]);
     }
     if (_json.containsKey("progressDocuments")) {
-      progressDocuments = new GoogleFirestoreAdminV1Progress.fromJson(
-          _json["progressDocuments"]);
+      progressDocuments =
+          GoogleFirestoreAdminV1Progress.fromJson(_json["progressDocuments"]);
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -3298,7 +3458,7 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -3307,13 +3467,13 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
     }
     if (indexConfigDeltas != null) {
       _json["indexConfigDeltas"] =
-          indexConfigDeltas.map((value) => (value).toJson()).toList();
+          indexConfigDeltas.map((value) => value.toJson()).toList();
     }
     if (progressBytes != null) {
-      _json["progressBytes"] = (progressBytes).toJson();
+      _json["progressBytes"] = progressBytes.toJson();
     }
     if (progressDocuments != null) {
-      _json["progressDocuments"] = (progressDocuments).toJson();
+      _json["progressDocuments"] = progressDocuments.toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -3380,11 +3540,11 @@ class GoogleFirestoreAdminV1ImportDocumentsMetadata {
     }
     if (_json.containsKey("progressBytes")) {
       progressBytes =
-          new GoogleFirestoreAdminV1Progress.fromJson(_json["progressBytes"]);
+          GoogleFirestoreAdminV1Progress.fromJson(_json["progressBytes"]);
     }
     if (_json.containsKey("progressDocuments")) {
-      progressDocuments = new GoogleFirestoreAdminV1Progress.fromJson(
-          _json["progressDocuments"]);
+      progressDocuments =
+          GoogleFirestoreAdminV1Progress.fromJson(_json["progressDocuments"]);
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -3393,7 +3553,7 @@ class GoogleFirestoreAdminV1ImportDocumentsMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (collectionIds != null) {
       _json["collectionIds"] = collectionIds;
     }
@@ -3407,10 +3567,10 @@ class GoogleFirestoreAdminV1ImportDocumentsMetadata {
       _json["operationState"] = operationState;
     }
     if (progressBytes != null) {
-      _json["progressBytes"] = (progressBytes).toJson();
+      _json["progressBytes"] = progressBytes.toJson();
     }
     if (progressDocuments != null) {
-      _json["progressDocuments"] = (progressDocuments).toJson();
+      _json["progressDocuments"] = progressDocuments.toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -3443,7 +3603,7 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (collectionIds != null) {
       _json["collectionIds"] = collectionIds;
     }
@@ -3514,7 +3674,7 @@ class GoogleFirestoreAdminV1Index {
     if (_json.containsKey("fields")) {
       fields = (_json["fields"] as core.List)
           .map<GoogleFirestoreAdminV1IndexField>(
-              (value) => new GoogleFirestoreAdminV1IndexField.fromJson(value))
+              (value) => GoogleFirestoreAdminV1IndexField.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -3530,9 +3690,9 @@ class GoogleFirestoreAdminV1Index {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fields != null) {
-      _json["fields"] = fields.map((value) => (value).toJson()).toList();
+      _json["fields"] = fields.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -3578,7 +3738,7 @@ class GoogleFirestoreAdminV1IndexConfig {
     if (_json.containsKey("indexes")) {
       indexes = (_json["indexes"] as core.List)
           .map<GoogleFirestoreAdminV1Index>(
-              (value) => new GoogleFirestoreAdminV1Index.fromJson(value))
+              (value) => GoogleFirestoreAdminV1Index.fromJson(value))
           .toList();
     }
     if (_json.containsKey("reverting")) {
@@ -3591,12 +3751,12 @@ class GoogleFirestoreAdminV1IndexConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ancestorField != null) {
       _json["ancestorField"] = ancestorField;
     }
     if (indexes != null) {
-      _json["indexes"] = indexes.map((value) => (value).toJson()).toList();
+      _json["indexes"] = indexes.map((value) => value.toJson()).toList();
     }
     if (reverting != null) {
       _json["reverting"] = reverting;
@@ -3628,18 +3788,18 @@ class GoogleFirestoreAdminV1IndexConfigDelta {
       changeType = _json["changeType"];
     }
     if (_json.containsKey("index")) {
-      index = new GoogleFirestoreAdminV1Index.fromJson(_json["index"]);
+      index = GoogleFirestoreAdminV1Index.fromJson(_json["index"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (changeType != null) {
       _json["changeType"] = changeType;
     }
     if (index != null) {
-      _json["index"] = (index).toJson();
+      _json["index"] = index.toJson();
     }
     return _json;
   }
@@ -3683,7 +3843,7 @@ class GoogleFirestoreAdminV1IndexField {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (arrayConfig != null) {
       _json["arrayConfig"] = arrayConfig;
     }
@@ -3744,11 +3904,11 @@ class GoogleFirestoreAdminV1IndexOperationMetadata {
     }
     if (_json.containsKey("progressBytes")) {
       progressBytes =
-          new GoogleFirestoreAdminV1Progress.fromJson(_json["progressBytes"]);
+          GoogleFirestoreAdminV1Progress.fromJson(_json["progressBytes"]);
     }
     if (_json.containsKey("progressDocuments")) {
-      progressDocuments = new GoogleFirestoreAdminV1Progress.fromJson(
-          _json["progressDocuments"]);
+      progressDocuments =
+          GoogleFirestoreAdminV1Progress.fromJson(_json["progressDocuments"]);
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -3760,7 +3920,7 @@ class GoogleFirestoreAdminV1IndexOperationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -3768,10 +3928,10 @@ class GoogleFirestoreAdminV1IndexOperationMetadata {
       _json["index"] = index;
     }
     if (progressBytes != null) {
-      _json["progressBytes"] = (progressBytes).toJson();
+      _json["progressBytes"] = progressBytes.toJson();
     }
     if (progressDocuments != null) {
-      _json["progressDocuments"] = (progressDocuments).toJson();
+      _json["progressDocuments"] = progressDocuments.toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -3798,7 +3958,7 @@ class GoogleFirestoreAdminV1ListFieldsResponse {
     if (_json.containsKey("fields")) {
       fields = (_json["fields"] as core.List)
           .map<GoogleFirestoreAdminV1Field>(
-              (value) => new GoogleFirestoreAdminV1Field.fromJson(value))
+              (value) => GoogleFirestoreAdminV1Field.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3808,9 +3968,9 @@ class GoogleFirestoreAdminV1ListFieldsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fields != null) {
-      _json["fields"] = fields.map((value) => (value).toJson()).toList();
+      _json["fields"] = fields.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -3834,7 +3994,7 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
     if (_json.containsKey("indexes")) {
       indexes = (_json["indexes"] as core.List)
           .map<GoogleFirestoreAdminV1Index>(
-              (value) => new GoogleFirestoreAdminV1Index.fromJson(value))
+              (value) => GoogleFirestoreAdminV1Index.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3844,9 +4004,9 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (indexes != null) {
-      _json["indexes"] = indexes.map((value) => (value).toJson()).toList();
+      _json["indexes"] = indexes.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -3863,7 +4023,7 @@ class GoogleFirestoreAdminV1LocationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3890,7 +4050,7 @@ class GoogleFirestoreAdminV1Progress {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (completedWork != null) {
       _json["completedWork"] = completedWork;
     }
@@ -3909,7 +4069,7 @@ class GoogleLongrunningCancelOperationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3931,20 +4091,19 @@ class GoogleLongrunningListOperationsResponse {
     if (_json.containsKey("operations")) {
       operations = (_json["operations"] as core.List)
           .map<GoogleLongrunningOperation>(
-              (value) => new GoogleLongrunningOperation.fromJson(value))
+              (value) => GoogleLongrunningOperation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
+      _json["operations"] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3994,7 +4153,7 @@ class GoogleLongrunningOperation {
       done = _json["done"];
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
       metadata =
@@ -4011,12 +4170,12 @@ class GoogleLongrunningOperation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -4055,7 +4214,7 @@ class LatLng {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (latitude != null) {
       _json["latitude"] = latitude;
     }
@@ -4087,7 +4246,7 @@ class ListCollectionIdsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pageSize != null) {
       _json["pageSize"] = pageSize;
     }
@@ -4119,7 +4278,7 @@ class ListCollectionIdsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (collectionIds != null) {
       _json["collectionIds"] = collectionIds;
     }
@@ -4143,7 +4302,7 @@ class ListDocumentsResponse {
   ListDocumentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("documents")) {
       documents = (_json["documents"] as core.List)
-          .map<Document>((value) => new Document.fromJson(value))
+          .map<Document>((value) => Document.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4153,9 +4312,9 @@ class ListDocumentsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (documents != null) {
-      _json["documents"] = documents.map((value) => (value).toJson()).toList();
+      _json["documents"] = documents.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -4177,7 +4336,7 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
       locations = (_json["locations"] as core.List)
-          .map<Location>((value) => new Location.fromJson(value))
+          .map<Location>((value) => Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4187,9 +4346,9 @@ class ListLocationsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (locations != null) {
-      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+      _json["locations"] = locations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -4213,7 +4372,7 @@ class ListenRequest {
 
   ListenRequest.fromJson(core.Map _json) {
     if (_json.containsKey("addTarget")) {
-      addTarget = new Target.fromJson(_json["addTarget"]);
+      addTarget = Target.fromJson(_json["addTarget"]);
     }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
@@ -4225,9 +4384,9 @@ class ListenRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (addTarget != null) {
-      _json["addTarget"] = (addTarget).toJson();
+      _json["addTarget"] = addTarget.toJson();
     }
     if (labels != null) {
       _json["labels"] = labels;
@@ -4263,39 +4422,39 @@ class ListenResponse {
 
   ListenResponse.fromJson(core.Map _json) {
     if (_json.containsKey("documentChange")) {
-      documentChange = new DocumentChange.fromJson(_json["documentChange"]);
+      documentChange = DocumentChange.fromJson(_json["documentChange"]);
     }
     if (_json.containsKey("documentDelete")) {
-      documentDelete = new DocumentDelete.fromJson(_json["documentDelete"]);
+      documentDelete = DocumentDelete.fromJson(_json["documentDelete"]);
     }
     if (_json.containsKey("documentRemove")) {
-      documentRemove = new DocumentRemove.fromJson(_json["documentRemove"]);
+      documentRemove = DocumentRemove.fromJson(_json["documentRemove"]);
     }
     if (_json.containsKey("filter")) {
-      filter = new ExistenceFilter.fromJson(_json["filter"]);
+      filter = ExistenceFilter.fromJson(_json["filter"]);
     }
     if (_json.containsKey("targetChange")) {
-      targetChange = new TargetChange.fromJson(_json["targetChange"]);
+      targetChange = TargetChange.fromJson(_json["targetChange"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (documentChange != null) {
-      _json["documentChange"] = (documentChange).toJson();
+      _json["documentChange"] = documentChange.toJson();
     }
     if (documentDelete != null) {
-      _json["documentDelete"] = (documentDelete).toJson();
+      _json["documentDelete"] = documentDelete.toJson();
     }
     if (documentRemove != null) {
-      _json["documentRemove"] = (documentRemove).toJson();
+      _json["documentRemove"] = documentRemove.toJson();
     }
     if (filter != null) {
-      _json["filter"] = (filter).toJson();
+      _json["filter"] = filter.toJson();
     }
     if (targetChange != null) {
-      _json["targetChange"] = (targetChange).toJson();
+      _json["targetChange"] = targetChange.toJson();
     }
     return _json;
   }
@@ -4348,7 +4507,7 @@ class Location {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -4382,17 +4541,17 @@ class MapValue {
     if (_json.containsKey("fields")) {
       fields = commons.mapMap<core.Map, Value>(
           _json["fields"].cast<core.String, core.Map>(),
-          (core.Map item) => new Value.fromJson(item));
+          (core.Map item) => Value.fromJson(item));
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fields != null) {
       _json["fields"] =
           commons.mapMap<Value, core.Map<core.String, core.Object>>(
-              fields, (Value item) => (item).toJson());
+              fields, (Value item) => item.toJson());
     }
     return _json;
   }
@@ -4417,18 +4576,18 @@ class Order {
       direction = _json["direction"];
     }
     if (_json.containsKey("field")) {
-      field = new FieldReference.fromJson(_json["field"]);
+      field = FieldReference.fromJson(_json["field"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (direction != null) {
       _json["direction"] = direction;
     }
     if (field != null) {
-      _json["field"] = (field).toJson();
+      _json["field"] = field.toJson();
     }
     return _json;
   }
@@ -4481,13 +4640,13 @@ class PartitionQueryRequest {
       partitionCount = _json["partitionCount"];
     }
     if (_json.containsKey("structuredQuery")) {
-      structuredQuery = new StructuredQuery.fromJson(_json["structuredQuery"]);
+      structuredQuery = StructuredQuery.fromJson(_json["structuredQuery"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pageSize != null) {
       _json["pageSize"] = pageSize;
     }
@@ -4498,7 +4657,7 @@ class PartitionQueryRequest {
       _json["partitionCount"] = partitionCount;
     }
     if (structuredQuery != null) {
-      _json["structuredQuery"] = (structuredQuery).toJson();
+      _json["structuredQuery"] = structuredQuery.toJson();
     }
     return _json;
   }
@@ -4531,20 +4690,19 @@ class PartitionQueryResponse {
     }
     if (_json.containsKey("partitions")) {
       partitions = (_json["partitions"] as core.List)
-          .map<Cursor>((value) => new Cursor.fromJson(value))
+          .map<Cursor>((value) => Cursor.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (partitions != null) {
-      _json["partitions"] =
-          partitions.map((value) => (value).toJson()).toList();
+      _json["partitions"] = partitions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4573,7 +4731,7 @@ class Precondition {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exists != null) {
       _json["exists"] = exists;
     }
@@ -4595,16 +4753,16 @@ class Projection {
   Projection.fromJson(core.Map _json) {
     if (_json.containsKey("fields")) {
       fields = (_json["fields"] as core.List)
-          .map<FieldReference>((value) => new FieldReference.fromJson(value))
+          .map<FieldReference>((value) => FieldReference.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fields != null) {
-      _json["fields"] = fields.map((value) => (value).toJson()).toList();
+      _json["fields"] = fields.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4629,18 +4787,18 @@ class QueryTarget {
       parent = _json["parent"];
     }
     if (_json.containsKey("structuredQuery")) {
-      structuredQuery = new StructuredQuery.fromJson(_json["structuredQuery"]);
+      structuredQuery = StructuredQuery.fromJson(_json["structuredQuery"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (parent != null) {
       _json["parent"] = parent;
     }
     if (structuredQuery != null) {
-      _json["structuredQuery"] = (structuredQuery).toJson();
+      _json["structuredQuery"] = structuredQuery.toJson();
     }
     return _json;
   }
@@ -4661,7 +4819,7 @@ class ReadOnly {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (readTime != null) {
       _json["readTime"] = readTime;
     }
@@ -4673,9 +4831,8 @@ class ReadOnly {
 class ReadWrite {
   /// An optional transaction to retry.
   core.String retryTransaction;
-  core.List<core.int> get retryTransactionAsBytes {
-    return convert.base64.decode(retryTransaction);
-  }
+  core.List<core.int> get retryTransactionAsBytes =>
+      convert.base64.decode(retryTransaction);
 
   set retryTransactionAsBytes(core.List<core.int> _bytes) {
     retryTransaction =
@@ -4692,7 +4849,7 @@ class ReadWrite {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (retryTransaction != null) {
       _json["retryTransaction"] = retryTransaction;
     }
@@ -4704,9 +4861,8 @@ class ReadWrite {
 class RollbackRequest {
   /// Required. The transaction to roll back.
   core.String transaction;
-  core.List<core.int> get transactionAsBytes {
-    return convert.base64.decode(transaction);
-  }
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -4723,7 +4879,7 @@ class RollbackRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (transaction != null) {
       _json["transaction"] = transaction;
     }
@@ -4747,9 +4903,8 @@ class RunQueryRequest {
 
   /// Reads documents in a transaction.
   core.String transaction;
-  core.List<core.int> get transactionAsBytes {
-    return convert.base64.decode(transaction);
-  }
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -4760,13 +4915,13 @@ class RunQueryRequest {
 
   RunQueryRequest.fromJson(core.Map _json) {
     if (_json.containsKey("newTransaction")) {
-      newTransaction = new TransactionOptions.fromJson(_json["newTransaction"]);
+      newTransaction = TransactionOptions.fromJson(_json["newTransaction"]);
     }
     if (_json.containsKey("readTime")) {
       readTime = _json["readTime"];
     }
     if (_json.containsKey("structuredQuery")) {
-      structuredQuery = new StructuredQuery.fromJson(_json["structuredQuery"]);
+      structuredQuery = StructuredQuery.fromJson(_json["structuredQuery"]);
     }
     if (_json.containsKey("transaction")) {
       transaction = _json["transaction"];
@@ -4775,15 +4930,15 @@ class RunQueryRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (newTransaction != null) {
-      _json["newTransaction"] = (newTransaction).toJson();
+      _json["newTransaction"] = newTransaction.toJson();
     }
     if (readTime != null) {
       _json["readTime"] = readTime;
     }
     if (structuredQuery != null) {
-      _json["structuredQuery"] = (structuredQuery).toJson();
+      _json["structuredQuery"] = structuredQuery.toJson();
     }
     if (transaction != null) {
       _json["transaction"] = transaction;
@@ -4813,9 +4968,8 @@ class RunQueryResponse {
   /// in the first response, and only if RunQueryRequest.new_transaction was set
   /// in the request. If set, no other fields will be set in this response.
   core.String transaction;
-  core.List<core.int> get transactionAsBytes {
-    return convert.base64.decode(transaction);
-  }
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -4826,7 +4980,7 @@ class RunQueryResponse {
 
   RunQueryResponse.fromJson(core.Map _json) {
     if (_json.containsKey("document")) {
-      document = new Document.fromJson(_json["document"]);
+      document = Document.fromJson(_json["document"]);
     }
     if (_json.containsKey("readTime")) {
       readTime = _json["readTime"];
@@ -4841,9 +4995,9 @@ class RunQueryResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (document != null) {
-      _json["document"] = (document).toJson();
+      _json["document"] = document.toJson();
     }
     if (readTime != null) {
       _json["readTime"] = readTime;
@@ -4899,7 +5053,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -4955,12 +5109,12 @@ class StructuredQuery {
 
   StructuredQuery.fromJson(core.Map _json) {
     if (_json.containsKey("endAt")) {
-      endAt = new Cursor.fromJson(_json["endAt"]);
+      endAt = Cursor.fromJson(_json["endAt"]);
     }
     if (_json.containsKey("from")) {
       from = (_json["from"] as core.List)
           .map<CollectionSelector>(
-              (value) => new CollectionSelector.fromJson(value))
+              (value) => CollectionSelector.fromJson(value))
           .toList();
     }
     if (_json.containsKey("limit")) {
@@ -4971,28 +5125,28 @@ class StructuredQuery {
     }
     if (_json.containsKey("orderBy")) {
       orderBy = (_json["orderBy"] as core.List)
-          .map<Order>((value) => new Order.fromJson(value))
+          .map<Order>((value) => Order.fromJson(value))
           .toList();
     }
     if (_json.containsKey("select")) {
-      select = new Projection.fromJson(_json["select"]);
+      select = Projection.fromJson(_json["select"]);
     }
     if (_json.containsKey("startAt")) {
-      startAt = new Cursor.fromJson(_json["startAt"]);
+      startAt = Cursor.fromJson(_json["startAt"]);
     }
     if (_json.containsKey("where")) {
-      where = new Filter.fromJson(_json["where"]);
+      where = Filter.fromJson(_json["where"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endAt != null) {
-      _json["endAt"] = (endAt).toJson();
+      _json["endAt"] = endAt.toJson();
     }
     if (from != null) {
-      _json["from"] = from.map((value) => (value).toJson()).toList();
+      _json["from"] = from.map((value) => value.toJson()).toList();
     }
     if (limit != null) {
       _json["limit"] = limit;
@@ -5001,16 +5155,16 @@ class StructuredQuery {
       _json["offset"] = offset;
     }
     if (orderBy != null) {
-      _json["orderBy"] = orderBy.map((value) => (value).toJson()).toList();
+      _json["orderBy"] = orderBy.map((value) => value.toJson()).toList();
     }
     if (select != null) {
-      _json["select"] = (select).toJson();
+      _json["select"] = select.toJson();
     }
     if (startAt != null) {
-      _json["startAt"] = (startAt).toJson();
+      _json["startAt"] = startAt.toJson();
     }
     if (where != null) {
-      _json["where"] = (where).toJson();
+      _json["where"] = where.toJson();
     }
     return _json;
   }
@@ -5034,9 +5188,8 @@ class Target {
   /// A resume token from a prior TargetChange for an identical target. Using a
   /// resume token with a different target is unsupported and may fail.
   core.String resumeToken;
-  core.List<core.int> get resumeTokenAsBytes {
-    return convert.base64.decode(resumeToken);
-  }
+  core.List<core.int> get resumeTokenAsBytes =>
+      convert.base64.decode(resumeToken);
 
   set resumeTokenAsBytes(core.List<core.int> _bytes) {
     resumeToken =
@@ -5051,13 +5204,13 @@ class Target {
 
   Target.fromJson(core.Map _json) {
     if (_json.containsKey("documents")) {
-      documents = new DocumentsTarget.fromJson(_json["documents"]);
+      documents = DocumentsTarget.fromJson(_json["documents"]);
     }
     if (_json.containsKey("once")) {
       once = _json["once"];
     }
     if (_json.containsKey("query")) {
-      query = new QueryTarget.fromJson(_json["query"]);
+      query = QueryTarget.fromJson(_json["query"]);
     }
     if (_json.containsKey("readTime")) {
       readTime = _json["readTime"];
@@ -5072,15 +5225,15 @@ class Target {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (documents != null) {
-      _json["documents"] = (documents).toJson();
+      _json["documents"] = documents.toJson();
     }
     if (once != null) {
       _json["once"] = once;
     }
     if (query != null) {
-      _json["query"] = (query).toJson();
+      _json["query"] = query.toJson();
     }
     if (readTime != null) {
       _json["readTime"] = readTime;
@@ -5112,9 +5265,8 @@ class TargetChange {
   /// A token that can be used to resume the stream for the given `target_ids`,
   /// or all targets if `target_ids` is empty. Not set on every target change.
   core.String resumeToken;
-  core.List<core.int> get resumeTokenAsBytes {
-    return convert.base64.decode(resumeToken);
-  }
+  core.List<core.int> get resumeTokenAsBytes =>
+      convert.base64.decode(resumeToken);
 
   set resumeTokenAsBytes(core.List<core.int> _bytes) {
     resumeToken =
@@ -5146,7 +5298,7 @@ class TargetChange {
 
   TargetChange.fromJson(core.Map _json) {
     if (_json.containsKey("cause")) {
-      cause = new Status.fromJson(_json["cause"]);
+      cause = Status.fromJson(_json["cause"]);
     }
     if (_json.containsKey("readTime")) {
       readTime = _json["readTime"];
@@ -5164,9 +5316,9 @@ class TargetChange {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cause != null) {
-      _json["cause"] = (cause).toJson();
+      _json["cause"] = cause.toJson();
     }
     if (readTime != null) {
       _json["readTime"] = readTime;
@@ -5196,21 +5348,21 @@ class TransactionOptions {
 
   TransactionOptions.fromJson(core.Map _json) {
     if (_json.containsKey("readOnly")) {
-      readOnly = new ReadOnly.fromJson(_json["readOnly"]);
+      readOnly = ReadOnly.fromJson(_json["readOnly"]);
     }
     if (_json.containsKey("readWrite")) {
-      readWrite = new ReadWrite.fromJson(_json["readWrite"]);
+      readWrite = ReadWrite.fromJson(_json["readWrite"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (readOnly != null) {
-      _json["readOnly"] = (readOnly).toJson();
+      _json["readOnly"] = readOnly.toJson();
     }
     if (readWrite != null) {
-      _json["readWrite"] = (readWrite).toJson();
+      _json["readWrite"] = readWrite.toJson();
     }
     return _json;
   }
@@ -5238,7 +5390,7 @@ class UnaryFilter {
 
   UnaryFilter.fromJson(core.Map _json) {
     if (_json.containsKey("field")) {
-      field = new FieldReference.fromJson(_json["field"]);
+      field = FieldReference.fromJson(_json["field"]);
     }
     if (_json.containsKey("op")) {
       op = _json["op"];
@@ -5247,9 +5399,9 @@ class UnaryFilter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = (field).toJson();
+      _json["field"] = field.toJson();
     }
     if (op != null) {
       _json["op"] = op;
@@ -5270,9 +5422,8 @@ class Value {
   /// A bytes value. Must not exceed 1 MiB - 89 bytes. Only the first 1,500
   /// bytes are considered by queries.
   core.String bytesValue;
-  core.List<core.int> get bytesValueAsBytes {
-    return convert.base64.decode(bytesValue);
-  }
+  core.List<core.int> get bytesValueAsBytes =>
+      convert.base64.decode(bytesValue);
 
   set bytesValueAsBytes(core.List<core.int> _bytes) {
     bytesValue =
@@ -5313,7 +5464,7 @@ class Value {
 
   Value.fromJson(core.Map _json) {
     if (_json.containsKey("arrayValue")) {
-      arrayValue = new ArrayValue.fromJson(_json["arrayValue"]);
+      arrayValue = ArrayValue.fromJson(_json["arrayValue"]);
     }
     if (_json.containsKey("booleanValue")) {
       booleanValue = _json["booleanValue"];
@@ -5325,13 +5476,13 @@ class Value {
       doubleValue = _json["doubleValue"].toDouble();
     }
     if (_json.containsKey("geoPointValue")) {
-      geoPointValue = new LatLng.fromJson(_json["geoPointValue"]);
+      geoPointValue = LatLng.fromJson(_json["geoPointValue"]);
     }
     if (_json.containsKey("integerValue")) {
       integerValue = _json["integerValue"];
     }
     if (_json.containsKey("mapValue")) {
-      mapValue = new MapValue.fromJson(_json["mapValue"]);
+      mapValue = MapValue.fromJson(_json["mapValue"]);
     }
     if (_json.containsKey("nullValue")) {
       nullValue = _json["nullValue"];
@@ -5349,9 +5500,9 @@ class Value {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (arrayValue != null) {
-      _json["arrayValue"] = (arrayValue).toJson();
+      _json["arrayValue"] = arrayValue.toJson();
     }
     if (booleanValue != null) {
       _json["booleanValue"] = booleanValue;
@@ -5363,13 +5514,13 @@ class Value {
       _json["doubleValue"] = doubleValue;
     }
     if (geoPointValue != null) {
-      _json["geoPointValue"] = (geoPointValue).toJson();
+      _json["geoPointValue"] = geoPointValue.toJson();
     }
     if (integerValue != null) {
       _json["integerValue"] = integerValue;
     }
     if (mapValue != null) {
-      _json["mapValue"] = (mapValue).toJson();
+      _json["mapValue"] = mapValue.toJson();
     }
     if (nullValue != null) {
       _json["nullValue"] = nullValue;
@@ -5422,48 +5573,48 @@ class Write {
 
   Write.fromJson(core.Map _json) {
     if (_json.containsKey("currentDocument")) {
-      currentDocument = new Precondition.fromJson(_json["currentDocument"]);
+      currentDocument = Precondition.fromJson(_json["currentDocument"]);
     }
     if (_json.containsKey("delete")) {
       delete = _json["delete"];
     }
     if (_json.containsKey("transform")) {
-      transform = new DocumentTransform.fromJson(_json["transform"]);
+      transform = DocumentTransform.fromJson(_json["transform"]);
     }
     if (_json.containsKey("update")) {
-      update = new Document.fromJson(_json["update"]);
+      update = Document.fromJson(_json["update"]);
     }
     if (_json.containsKey("updateMask")) {
-      updateMask = new DocumentMask.fromJson(_json["updateMask"]);
+      updateMask = DocumentMask.fromJson(_json["updateMask"]);
     }
     if (_json.containsKey("updateTransforms")) {
       updateTransforms = (_json["updateTransforms"] as core.List)
-          .map<FieldTransform>((value) => new FieldTransform.fromJson(value))
+          .map<FieldTransform>((value) => FieldTransform.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currentDocument != null) {
-      _json["currentDocument"] = (currentDocument).toJson();
+      _json["currentDocument"] = currentDocument.toJson();
     }
     if (delete != null) {
       _json["delete"] = delete;
     }
     if (transform != null) {
-      _json["transform"] = (transform).toJson();
+      _json["transform"] = transform.toJson();
     }
     if (update != null) {
-      _json["update"] = (update).toJson();
+      _json["update"] = update.toJson();
     }
     if (updateMask != null) {
-      _json["updateMask"] = (updateMask).toJson();
+      _json["updateMask"] = updateMask.toJson();
     }
     if (updateTransforms != null) {
       _json["updateTransforms"] =
-          updateTransforms.map((value) => (value).toJson()).toList();
+          updateTransforms.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5492,9 +5643,8 @@ class WriteRequest {
   /// stream. To resume a stream at a specific point, set this field and the
   /// `stream_id` field. Leave this field unset when creating a new stream.
   core.String streamToken;
-  core.List<core.int> get streamTokenAsBytes {
-    return convert.base64.decode(streamToken);
-  }
+  core.List<core.int> get streamTokenAsBytes =>
+      convert.base64.decode(streamToken);
 
   set streamTokenAsBytes(core.List<core.int> _bytes) {
     streamToken =
@@ -5520,14 +5670,14 @@ class WriteRequest {
     }
     if (_json.containsKey("writes")) {
       writes = (_json["writes"] as core.List)
-          .map<Write>((value) => new Write.fromJson(value))
+          .map<Write>((value) => Write.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -5538,7 +5688,7 @@ class WriteRequest {
       _json["streamToken"] = streamToken;
     }
     if (writes != null) {
-      _json["writes"] = writes.map((value) => (value).toJson()).toList();
+      _json["writes"] = writes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5558,9 +5708,8 @@ class WriteResponse {
   /// can be used by a client to resume the stream at this point. This field is
   /// always set.
   core.String streamToken;
-  core.List<core.int> get streamTokenAsBytes {
-    return convert.base64.decode(streamToken);
-  }
+  core.List<core.int> get streamTokenAsBytes =>
+      convert.base64.decode(streamToken);
 
   set streamTokenAsBytes(core.List<core.int> _bytes) {
     streamToken =
@@ -5585,14 +5734,14 @@ class WriteResponse {
     }
     if (_json.containsKey("writeResults")) {
       writeResults = (_json["writeResults"] as core.List)
-          .map<WriteResult>((value) => new WriteResult.fromJson(value))
+          .map<WriteResult>((value) => WriteResult.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (commitTime != null) {
       _json["commitTime"] = commitTime;
     }
@@ -5604,7 +5753,7 @@ class WriteResponse {
     }
     if (writeResults != null) {
       _json["writeResults"] =
-          writeResults.map((value) => (value).toJson()).toList();
+          writeResults.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5626,7 +5775,7 @@ class WriteResult {
   WriteResult.fromJson(core.Map _json) {
     if (_json.containsKey("transformResults")) {
       transformResults = (_json["transformResults"] as core.List)
-          .map<Value>((value) => new Value.fromJson(value))
+          .map<Value>((value) => Value.fromJson(value))
           .toList();
     }
     if (_json.containsKey("updateTime")) {
@@ -5636,10 +5785,10 @@ class WriteResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (transformResults != null) {
       _json["transformResults"] =
-          transformResults.map((value) => (value).toJson()).toList();
+          transformResults.map((value) => value.toJson()).toList();
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;

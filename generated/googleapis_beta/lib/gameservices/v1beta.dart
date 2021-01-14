@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis_beta.gameservices.v1beta;
 
@@ -24,20 +42,20 @@ class GameservicesApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   GameservicesApi(http.Client client,
       {core.String rootUrl = "https://gameservices.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsResourceApi get locations =>
-      new ProjectsLocationsResourceApi(_requester);
+      ProjectsLocationsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -46,11 +64,11 @@ class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGameServerDeploymentsResourceApi get gameServerDeployments =>
-      new ProjectsLocationsGameServerDeploymentsResourceApi(_requester);
+      ProjectsLocationsGameServerDeploymentsResourceApi(_requester);
   ProjectsLocationsOperationsResourceApi get operations =>
-      new ProjectsLocationsOperationsResourceApi(_requester);
+      ProjectsLocationsOperationsResourceApi(_requester);
   ProjectsLocationsRealmsResourceApi get realms =>
-      new ProjectsLocationsRealmsResourceApi(_requester);
+      ProjectsLocationsRealmsResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -72,16 +90,19 @@ class ProjectsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Location> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -89,13 +110,16 @@ class ProjectsLocationsResourceApi {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Location.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Location.fromJson(data));
   }
 
   /// Lists information about the supported locations for this service.
@@ -124,21 +148,23 @@ class ProjectsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListLocationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
-      core.bool includeUnrevealedLocations,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListLocationsResponse> list(
+    core.String name, {
+    core.int pageSize,
+    core.String filter,
+    core.bool includeUnrevealedLocations,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -162,13 +188,16 @@ class ProjectsLocationsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/locations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListLocationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListLocationsResponse.fromJson(data));
   }
 }
 
@@ -176,7 +205,7 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGameServerDeploymentsConfigsResourceApi get configs =>
-      new ProjectsLocationsGameServerDeploymentsConfigsResourceApi(_requester);
+      ProjectsLocationsGameServerDeploymentsConfigsResourceApi(_requester);
 
   ProjectsLocationsGameServerDeploymentsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -205,20 +234,23 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> create(
-      GameServerDeployment request, core.String parent,
-      {core.String deploymentId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GameServerDeployment request,
+    core.String parent, {
+    core.String deploymentId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (deploymentId != null) {
       _queryParams["deploymentId"] = [deploymentId];
@@ -231,13 +263,16 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/gameServerDeployments';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes a single game server deployment.
@@ -260,16 +295,19 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -277,13 +315,16 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Retrieves information about the current state of the game server
@@ -310,20 +351,22 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FetchDeploymentStateResponse> fetchDeploymentState(
-      FetchDeploymentStateRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    FetchDeploymentStateRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -333,14 +376,17 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':fetchDeploymentState';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new FetchDeploymentStateResponse.fromJson(data));
+        .then((data) => FetchDeploymentStateResponse.fromJson(data));
   }
 
   /// Gets details of a single game server deployment.
@@ -363,17 +409,19 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GameServerDeployment> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GameServerDeployment> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -381,13 +429,16 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GameServerDeployment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GameServerDeployment.fromJson(data));
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -419,17 +470,20 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(core.String resource,
-      {core.int options_requestedPolicyVersion, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int options_requestedPolicyVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if (options_requestedPolicyVersion != null) {
       _queryParams["options.requestedPolicyVersion"] = [
@@ -444,13 +498,16 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Gets details a single game server deployment rollout.
@@ -473,17 +530,19 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GameServerDeploymentRollout> getRollout(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GameServerDeploymentRollout> getRollout(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -492,14 +551,16 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
     _url =
         'v1beta/' + commons.Escaper.ecapeVariableReserved('$name') + '/rollout';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GameServerDeploymentRollout.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GameServerDeploymentRollout.fromJson(data));
   }
 
   /// Lists game server deployments in a given project and location.
@@ -534,21 +595,23 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListGameServerDeploymentsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String filter,
-      core.String orderBy,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListGameServerDeploymentsResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String filter,
+    core.String orderBy,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -570,14 +633,17 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/gameServerDeployments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListGameServerDeploymentsResponse.fromJson(data));
+        .then((data) => ListGameServerDeploymentsResponse.fromJson(data));
   }
 
   /// Patches a game server deployment.
@@ -608,20 +674,24 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> patch(GameServerDeployment request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> patch(
+    GameServerDeployment request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -632,13 +702,16 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Previews the game server deployment rollout. This API does not mutate the
@@ -675,20 +748,24 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PreviewGameServerDeploymentRolloutResponse> previewRollout(
-      GameServerDeploymentRollout request, core.String name,
-      {core.String previewTime, core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GameServerDeploymentRollout request,
+    core.String name, {
+    core.String previewTime,
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (previewTime != null) {
       _queryParams["previewTime"] = [previewTime];
@@ -704,14 +781,17 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/rollout:preview';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new PreviewGameServerDeploymentRolloutResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => PreviewGameServerDeploymentRolloutResponse.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -739,20 +819,22 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -762,13 +844,16 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -798,20 +883,22 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -821,14 +908,16 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 
   /// Patches a single game server deployment rollout. The method will not
@@ -866,20 +955,23 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> updateRollout(
-      GameServerDeploymentRollout request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GameServerDeploymentRollout request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -891,13 +983,16 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
     _url =
         'v1beta/' + commons.Escaper.ecapeVariableReserved('$name') + '/rollout';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -934,20 +1029,24 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(GameServerConfig request, core.String parent,
-      {core.String configId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> create(
+    GameServerConfig request,
+    core.String parent, {
+    core.String configId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (configId != null) {
       _queryParams["configId"] = [configId];
@@ -960,13 +1059,16 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/configs';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes a single game server config. The deletion will fail if the game
@@ -990,16 +1092,19 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1007,13 +1112,16 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Gets details of a single game server config.
@@ -1036,16 +1144,19 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GameServerConfig> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GameServerConfig> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1053,13 +1164,16 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GameServerConfig.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GameServerConfig.fromJson(data));
   }
 
   /// Lists game server configs in a given project, location, and game server
@@ -1097,21 +1211,23 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListGameServerConfigsResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String orderBy,
-      core.String filter,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListGameServerConfigsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String orderBy,
+    core.String filter,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1133,14 +1249,17 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/configs';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListGameServerConfigsResponse.fromJson(data));
+        .then((data) => ListGameServerConfigsResponse.fromJson(data));
   }
 }
 
@@ -1178,20 +1297,23 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1200,13 +1322,16 @@ class ProjectsLocationsOperationsResourceApi {
     _url =
         'v1beta/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -1230,16 +1355,19 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1247,13 +1375,16 @@ class ProjectsLocationsOperationsResourceApi {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -1276,16 +1407,19 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1293,13 +1427,16 @@ class ProjectsLocationsOperationsResourceApi {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -1333,20 +1470,22 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1365,13 +1504,16 @@ class ProjectsLocationsOperationsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/operations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListOperationsResponse.fromJson(data));
   }
 }
 
@@ -1379,7 +1521,7 @@ class ProjectsLocationsRealmsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRealmsGameServerClustersResourceApi get gameServerClusters =>
-      new ProjectsLocationsRealmsGameServerClustersResourceApi(_requester);
+      ProjectsLocationsRealmsGameServerClustersResourceApi(_requester);
 
   ProjectsLocationsRealmsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -1406,20 +1548,24 @@ class ProjectsLocationsRealmsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(Realm request, core.String parent,
-      {core.String realmId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> create(
+    Realm request,
+    core.String parent, {
+    core.String realmId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (realmId != null) {
       _queryParams["realmId"] = [realmId];
@@ -1432,13 +1578,16 @@ class ProjectsLocationsRealmsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/realms';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes a single realm.
@@ -1459,16 +1608,19 @@ class ProjectsLocationsRealmsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1476,13 +1628,16 @@ class ProjectsLocationsRealmsResourceApi {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Gets details of a single realm.
@@ -1503,16 +1658,19 @@ class ProjectsLocationsRealmsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Realm> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Realm> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1520,13 +1678,16 @@ class ProjectsLocationsRealmsResourceApi {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Realm.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Realm.fromJson(data));
   }
 
   /// Lists realms in a given project and location.
@@ -1560,21 +1721,23 @@ class ProjectsLocationsRealmsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListRealmsResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String filter,
-      core.String orderBy,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListRealmsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String filter,
+    core.String orderBy,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1596,13 +1759,16 @@ class ProjectsLocationsRealmsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/realms';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListRealmsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListRealmsResponse.fromJson(data));
   }
 
   /// Patches a single realm.
@@ -1631,20 +1797,24 @@ class ProjectsLocationsRealmsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> patch(Realm request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> patch(
+    Realm request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1655,13 +1825,16 @@ class ProjectsLocationsRealmsResourceApi {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Previews patches to a single realm.
@@ -1693,20 +1866,24 @@ class ProjectsLocationsRealmsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PreviewRealmUpdateResponse> previewUpdate(
-      Realm request, core.String name,
-      {core.String updateMask, core.String previewTime, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Realm request,
+    core.String name, {
+    core.String updateMask,
+    core.String previewTime,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1722,14 +1899,16 @@ class ProjectsLocationsRealmsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':previewUpdate';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new PreviewRealmUpdateResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PreviewRealmUpdateResponse.fromJson(data));
   }
 }
 
@@ -1763,20 +1942,24 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(GameServerCluster request, core.String parent,
-      {core.String gameServerClusterId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> create(
+    GameServerCluster request,
+    core.String parent, {
+    core.String gameServerClusterId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (gameServerClusterId != null) {
       _queryParams["gameServerClusterId"] = [gameServerClusterId];
@@ -1789,13 +1972,16 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/gameServerClusters';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes a single game server cluster.
@@ -1818,16 +2004,19 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1835,13 +2024,16 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Gets details of a single game server cluster.
@@ -1864,16 +2056,19 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GameServerCluster> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GameServerCluster> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1881,13 +2076,16 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GameServerCluster.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GameServerCluster.fromJson(data));
   }
 
   /// Lists game server clusters in a given project and location.
@@ -1922,21 +2120,23 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListGameServerClustersResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String orderBy,
-      core.String filter,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListGameServerClustersResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String orderBy,
+    core.String filter,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1958,14 +2158,17 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/gameServerClusters';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListGameServerClustersResponse.fromJson(data));
+        .then((data) => ListGameServerClustersResponse.fromJson(data));
   }
 
   /// Patches a single game server cluster.
@@ -1997,20 +2200,24 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> patch(GameServerCluster request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> patch(
+    GameServerCluster request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -2021,13 +2228,16 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Previews creation of a new game server cluster in a given project and
@@ -2057,22 +2267,24 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PreviewCreateGameServerClusterResponse> previewCreate(
-      GameServerCluster request, core.String parent,
-      {core.String previewTime,
-      core.String gameServerClusterId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GameServerCluster request,
+    core.String parent, {
+    core.String previewTime,
+    core.String gameServerClusterId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (previewTime != null) {
       _queryParams["previewTime"] = [previewTime];
@@ -2088,14 +2300,17 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/gameServerClusters:previewCreate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new PreviewCreateGameServerClusterResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => PreviewCreateGameServerClusterResponse.fromJson(data));
   }
 
   /// Previews deletion of a single game server cluster.
@@ -2121,18 +2336,19 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PreviewDeleteGameServerClusterResponse> previewDelete(
-      core.String name,
-      {core.String previewTime,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String name, {
+    core.String previewTime,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (previewTime != null) {
       _queryParams["previewTime"] = [previewTime];
@@ -2145,14 +2361,17 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':previewDelete';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new PreviewDeleteGameServerClusterResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => PreviewDeleteGameServerClusterResponse.fromJson(data));
   }
 
   /// Previews updating a GameServerCluster.
@@ -2187,20 +2406,24 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PreviewUpdateGameServerClusterResponse> previewUpdate(
-      GameServerCluster request, core.String name,
-      {core.String previewTime, core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GameServerCluster request,
+    core.String name, {
+    core.String previewTime,
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (previewTime != null) {
       _queryParams["previewTime"] = [previewTime];
@@ -2216,14 +2439,17 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':previewUpdate';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new PreviewUpdateGameServerClusterResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => PreviewUpdateGameServerClusterResponse.fromJson(data));
   }
 }
 
@@ -2258,7 +2484,7 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey("auditLogConfigs")) {
       auditLogConfigs = (_json["auditLogConfigs"] as core.List)
-          .map<AuditLogConfig>((value) => new AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("exemptedMembers")) {
@@ -2272,10 +2498,10 @@ class AuditConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (auditLogConfigs != null) {
       _json["auditLogConfigs"] =
-          auditLogConfigs.map((value) => (value).toJson()).toList();
+          auditLogConfigs.map((value) => value.toJson()).toList();
     }
     if (exemptedMembers != null) {
       _json["exemptedMembers"] = exemptedMembers;
@@ -2323,7 +2549,7 @@ class AuditLogConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exemptedMembers != null) {
       _json["exemptedMembers"] = exemptedMembers;
     }
@@ -2358,7 +2584,7 @@ class AuthorizationLoggingOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissionType != null) {
       _json["permissionType"] = permissionType;
     }
@@ -2423,7 +2649,7 @@ class Binding {
       bindingId = _json["bindingId"];
     }
     if (_json.containsKey("condition")) {
-      condition = new Expr.fromJson(_json["condition"]);
+      condition = Expr.fromJson(_json["condition"]);
     }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
@@ -2435,12 +2661,12 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bindingId != null) {
       _json["bindingId"] = bindingId;
     }
     if (condition != null) {
-      _json["condition"] = (condition).toJson();
+      _json["condition"] = condition.toJson();
     }
     if (members != null) {
       _json["members"] = members;
@@ -2460,7 +2686,7 @@ class CancelOperationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2481,7 +2707,7 @@ class CloudAuditOptions {
 
   CloudAuditOptions.fromJson(core.Map _json) {
     if (_json.containsKey("authorizationLoggingOptions")) {
-      authorizationLoggingOptions = new AuthorizationLoggingOptions.fromJson(
+      authorizationLoggingOptions = AuthorizationLoggingOptions.fromJson(
           _json["authorizationLoggingOptions"]);
     }
     if (_json.containsKey("logName")) {
@@ -2491,10 +2717,10 @@ class CloudAuditOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (authorizationLoggingOptions != null) {
       _json["authorizationLoggingOptions"] =
-          (authorizationLoggingOptions).toJson();
+          authorizationLoggingOptions.toJson();
     }
     if (logName != null) {
       _json["logName"] = logName;
@@ -2598,7 +2824,7 @@ class Condition {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (iam != null) {
       _json["iam"] = iam;
     }
@@ -2647,7 +2873,7 @@ class CounterOptions {
   CounterOptions.fromJson(core.Map _json) {
     if (_json.containsKey("customFields")) {
       customFields = (_json["customFields"] as core.List)
-          .map<CustomField>((value) => new CustomField.fromJson(value))
+          .map<CustomField>((value) => CustomField.fromJson(value))
           .toList();
     }
     if (_json.containsKey("field")) {
@@ -2660,10 +2886,10 @@ class CounterOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customFields != null) {
       _json["customFields"] =
-          customFields.map((value) => (value).toJson()).toList();
+          customFields.map((value) => value.toJson()).toList();
     }
     if (field != null) {
       _json["field"] = field;
@@ -2699,7 +2925,7 @@ class CustomField {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -2738,7 +2964,7 @@ class DataAccessOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (logMode != null) {
       _json["logMode"] = logMode;
     }
@@ -2764,20 +2990,20 @@ class DeployedClusterState {
     if (_json.containsKey("fleetDetails")) {
       fleetDetails = (_json["fleetDetails"] as core.List)
           .map<DeployedFleetDetails>(
-              (value) => new DeployedFleetDetails.fromJson(value))
+              (value) => DeployedFleetDetails.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cluster != null) {
       _json["cluster"] = cluster;
     }
     if (fleetDetails != null) {
       _json["fleetDetails"] =
-          fleetDetails.map((value) => (value).toJson()).toList();
+          fleetDetails.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2809,16 +3035,16 @@ class DeployedFleet {
       fleetSpec = _json["fleetSpec"];
     }
     if (_json.containsKey("specSource")) {
-      specSource = new SpecSource.fromJson(_json["specSource"]);
+      specSource = SpecSource.fromJson(_json["specSource"]);
     }
     if (_json.containsKey("status")) {
-      status = new DeployedFleetStatus.fromJson(_json["status"]);
+      status = DeployedFleetStatus.fromJson(_json["status"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fleet != null) {
       _json["fleet"] = fleet;
     }
@@ -2826,10 +3052,10 @@ class DeployedFleet {
       _json["fleetSpec"] = fleetSpec;
     }
     if (specSource != null) {
-      _json["specSource"] = (specSource).toJson();
+      _json["specSource"] = specSource.toJson();
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     return _json;
   }
@@ -2857,13 +3083,13 @@ class DeployedFleetAutoscaler {
       fleetAutoscalerSpec = _json["fleetAutoscalerSpec"];
     }
     if (_json.containsKey("specSource")) {
-      specSource = new SpecSource.fromJson(_json["specSource"]);
+      specSource = SpecSource.fromJson(_json["specSource"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (autoscaler != null) {
       _json["autoscaler"] = autoscaler;
     }
@@ -2871,7 +3097,7 @@ class DeployedFleetAutoscaler {
       _json["fleetAutoscalerSpec"] = fleetAutoscalerSpec;
     }
     if (specSource != null) {
-      _json["specSource"] = (specSource).toJson();
+      _json["specSource"] = specSource.toJson();
     }
     return _json;
   }
@@ -2890,21 +3116,21 @@ class DeployedFleetDetails {
   DeployedFleetDetails.fromJson(core.Map _json) {
     if (_json.containsKey("deployedAutoscaler")) {
       deployedAutoscaler =
-          new DeployedFleetAutoscaler.fromJson(_json["deployedAutoscaler"]);
+          DeployedFleetAutoscaler.fromJson(_json["deployedAutoscaler"]);
     }
     if (_json.containsKey("deployedFleet")) {
-      deployedFleet = new DeployedFleet.fromJson(_json["deployedFleet"]);
+      deployedFleet = DeployedFleet.fromJson(_json["deployedFleet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deployedAutoscaler != null) {
-      _json["deployedAutoscaler"] = (deployedAutoscaler).toJson();
+      _json["deployedAutoscaler"] = deployedAutoscaler.toJson();
     }
     if (deployedFleet != null) {
-      _json["deployedFleet"] = (deployedFleet).toJson();
+      _json["deployedFleet"] = deployedFleet.toJson();
     }
     return _json;
   }
@@ -2946,7 +3172,7 @@ class DeployedFleetStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allocatedReplicas != null) {
       _json["allocatedReplicas"] = allocatedReplicas;
     }
@@ -2975,7 +3201,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3032,7 +3258,7 @@ class Expr {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -3057,7 +3283,7 @@ class FetchDeploymentStateRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3076,7 +3302,7 @@ class FetchDeploymentStateResponse {
     if (_json.containsKey("clusterState")) {
       clusterState = (_json["clusterState"] as core.List)
           .map<DeployedClusterState>(
-              (value) => new DeployedClusterState.fromJson(value))
+              (value) => DeployedClusterState.fromJson(value))
           .toList();
     }
     if (_json.containsKey("unavailable")) {
@@ -3086,10 +3312,10 @@ class FetchDeploymentStateResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterState != null) {
       _json["clusterState"] =
-          clusterState.map((value) => (value).toJson()).toList();
+          clusterState.map((value) => value.toJson()).toList();
     }
     if (unavailable != null) {
       _json["unavailable"] = unavailable;
@@ -3120,7 +3346,7 @@ class FleetConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fleetSpec != null) {
       _json["fleetSpec"] = fleetSpec;
     }
@@ -3164,7 +3390,7 @@ class GameServerCluster {
   GameServerCluster.fromJson(core.Map _json) {
     if (_json.containsKey("connectionInfo")) {
       connectionInfo =
-          new GameServerClusterConnectionInfo.fromJson(_json["connectionInfo"]);
+          GameServerClusterConnectionInfo.fromJson(_json["connectionInfo"]);
     }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
@@ -3188,9 +3414,9 @@ class GameServerCluster {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (connectionInfo != null) {
-      _json["connectionInfo"] = (connectionInfo).toJson();
+      _json["connectionInfo"] = connectionInfo.toJson();
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
@@ -3229,7 +3455,7 @@ class GameServerClusterConnectionInfo {
   GameServerClusterConnectionInfo.fromJson(core.Map _json) {
     if (_json.containsKey("gkeClusterReference")) {
       gkeClusterReference =
-          new GkeClusterReference.fromJson(_json["gkeClusterReference"]);
+          GkeClusterReference.fromJson(_json["gkeClusterReference"]);
     }
     if (_json.containsKey("namespace")) {
       namespace = _json["namespace"];
@@ -3238,9 +3464,9 @@ class GameServerClusterConnectionInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gkeClusterReference != null) {
-      _json["gkeClusterReference"] = (gkeClusterReference).toJson();
+      _json["gkeClusterReference"] = gkeClusterReference.toJson();
     }
     if (namespace != null) {
       _json["namespace"] = namespace;
@@ -3288,7 +3514,7 @@ class GameServerConfig {
     }
     if (_json.containsKey("fleetConfigs")) {
       fleetConfigs = (_json["fleetConfigs"] as core.List)
-          .map<FleetConfig>((value) => new FleetConfig.fromJson(value))
+          .map<FleetConfig>((value) => FleetConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("labels")) {
@@ -3299,7 +3525,7 @@ class GameServerConfig {
     }
     if (_json.containsKey("scalingConfigs")) {
       scalingConfigs = (_json["scalingConfigs"] as core.List)
-          .map<ScalingConfig>((value) => new ScalingConfig.fromJson(value))
+          .map<ScalingConfig>((value) => ScalingConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("updateTime")) {
@@ -3309,7 +3535,7 @@ class GameServerConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -3318,7 +3544,7 @@ class GameServerConfig {
     }
     if (fleetConfigs != null) {
       _json["fleetConfigs"] =
-          fleetConfigs.map((value) => (value).toJson()).toList();
+          fleetConfigs.map((value) => value.toJson()).toList();
     }
     if (labels != null) {
       _json["labels"] = labels;
@@ -3328,7 +3554,7 @@ class GameServerConfig {
     }
     if (scalingConfigs != null) {
       _json["scalingConfigs"] =
-          scalingConfigs.map((value) => (value).toJson()).toList();
+          scalingConfigs.map((value) => value.toJson()).toList();
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
@@ -3352,18 +3578,18 @@ class GameServerConfigOverride {
       configVersion = _json["configVersion"];
     }
     if (_json.containsKey("realmsSelector")) {
-      realmsSelector = new RealmSelector.fromJson(_json["realmsSelector"]);
+      realmsSelector = RealmSelector.fromJson(_json["realmsSelector"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (configVersion != null) {
       _json["configVersion"] = configVersion;
     }
     if (realmsSelector != null) {
-      _json["realmsSelector"] = (realmsSelector).toJson();
+      _json["realmsSelector"] = realmsSelector.toJson();
     }
     return _json;
   }
@@ -3418,7 +3644,7 @@ class GameServerDeployment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -3485,7 +3711,7 @@ class GameServerDeploymentRollout {
       gameServerConfigOverrides =
           (_json["gameServerConfigOverrides"] as core.List)
               .map<GameServerConfigOverride>(
-                  (value) => new GameServerConfigOverride.fromJson(value))
+                  (value) => GameServerConfigOverride.fromJson(value))
               .toList();
     }
     if (_json.containsKey("name")) {
@@ -3498,7 +3724,7 @@ class GameServerDeploymentRollout {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -3510,7 +3736,7 @@ class GameServerDeploymentRollout {
     }
     if (gameServerConfigOverrides != null) {
       _json["gameServerConfigOverrides"] =
-          gameServerConfigOverrides.map((value) => (value).toJson()).toList();
+          gameServerConfigOverrides.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -3542,7 +3768,7 @@ class GkeClusterReference {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cluster != null) {
       _json["cluster"] = cluster;
     }
@@ -3565,7 +3791,7 @@ class LabelSelector {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -3590,8 +3816,7 @@ class ListGameServerClustersResponse {
   ListGameServerClustersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("gameServerClusters")) {
       gameServerClusters = (_json["gameServerClusters"] as core.List)
-          .map<GameServerCluster>(
-              (value) => new GameServerCluster.fromJson(value))
+          .map<GameServerCluster>((value) => GameServerCluster.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3604,10 +3829,10 @@ class ListGameServerClustersResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gameServerClusters != null) {
       _json["gameServerClusters"] =
-          gameServerClusters.map((value) => (value).toJson()).toList();
+          gameServerClusters.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -3636,8 +3861,7 @@ class ListGameServerConfigsResponse {
   ListGameServerConfigsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("gameServerConfigs")) {
       gameServerConfigs = (_json["gameServerConfigs"] as core.List)
-          .map<GameServerConfig>(
-              (value) => new GameServerConfig.fromJson(value))
+          .map<GameServerConfig>((value) => GameServerConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3650,10 +3874,10 @@ class ListGameServerConfigsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gameServerConfigs != null) {
       _json["gameServerConfigs"] =
-          gameServerConfigs.map((value) => (value).toJson()).toList();
+          gameServerConfigs.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -3683,7 +3907,7 @@ class ListGameServerDeploymentsResponse {
     if (_json.containsKey("gameServerDeployments")) {
       gameServerDeployments = (_json["gameServerDeployments"] as core.List)
           .map<GameServerDeployment>(
-              (value) => new GameServerDeployment.fromJson(value))
+              (value) => GameServerDeployment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3696,10 +3920,10 @@ class ListGameServerDeploymentsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gameServerDeployments != null) {
       _json["gameServerDeployments"] =
-          gameServerDeployments.map((value) => (value).toJson()).toList();
+          gameServerDeployments.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -3724,7 +3948,7 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
       locations = (_json["locations"] as core.List)
-          .map<Location>((value) => new Location.fromJson(value))
+          .map<Location>((value) => Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3734,9 +3958,9 @@ class ListLocationsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (locations != null) {
-      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+      _json["locations"] = locations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -3761,20 +3985,19 @@ class ListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = (_json["operations"] as core.List)
-          .map<Operation>((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
+      _json["operations"] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3800,7 +4023,7 @@ class ListRealmsResponse {
     }
     if (_json.containsKey("realms")) {
       realms = (_json["realms"] as core.List)
-          .map<Realm>((value) => new Realm.fromJson(value))
+          .map<Realm>((value) => Realm.fromJson(value))
           .toList();
     }
     if (_json.containsKey("unreachable")) {
@@ -3810,12 +4033,12 @@ class ListRealmsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (realms != null) {
-      _json["realms"] = realms.map((value) => (value).toJson()).toList();
+      _json["realms"] = realms.map((value) => value.toJson()).toList();
     }
     if (unreachable != null) {
       _json["unreachable"] = unreachable;
@@ -3871,7 +4094,7 @@ class Location {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -3906,27 +4129,27 @@ class LogConfig {
 
   LogConfig.fromJson(core.Map _json) {
     if (_json.containsKey("cloudAudit")) {
-      cloudAudit = new CloudAuditOptions.fromJson(_json["cloudAudit"]);
+      cloudAudit = CloudAuditOptions.fromJson(_json["cloudAudit"]);
     }
     if (_json.containsKey("counter")) {
-      counter = new CounterOptions.fromJson(_json["counter"]);
+      counter = CounterOptions.fromJson(_json["counter"]);
     }
     if (_json.containsKey("dataAccess")) {
-      dataAccess = new DataAccessOptions.fromJson(_json["dataAccess"]);
+      dataAccess = DataAccessOptions.fromJson(_json["dataAccess"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cloudAudit != null) {
-      _json["cloudAudit"] = (cloudAudit).toJson();
+      _json["cloudAudit"] = cloudAudit.toJson();
     }
     if (counter != null) {
-      _json["counter"] = (counter).toJson();
+      _json["counter"] = counter.toJson();
     }
     if (dataAccess != null) {
-      _json["dataAccess"] = (dataAccess).toJson();
+      _json["dataAccess"] = dataAccess.toJson();
     }
     return _json;
   }
@@ -3976,7 +4199,7 @@ class Operation {
       done = _json["done"];
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
       metadata =
@@ -3993,12 +4216,12 @@ class Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -4063,7 +4286,7 @@ class OperationMetadata {
     if (_json.containsKey("operationStatus")) {
       operationStatus = commons.mapMap<core.Map, OperationStatus>(
           _json["operationStatus"].cast<core.String, core.Map>(),
-          (core.Map item) => new OperationStatus.fromJson(item));
+          (core.Map item) => OperationStatus.fromJson(item));
     }
     if (_json.containsKey("requestedCancellation")) {
       requestedCancellation = _json["requestedCancellation"];
@@ -4084,7 +4307,7 @@ class OperationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiVersion != null) {
       _json["apiVersion"] = apiVersion;
     }
@@ -4097,7 +4320,7 @@ class OperationMetadata {
     if (operationStatus != null) {
       _json["operationStatus"] =
           commons.mapMap<OperationStatus, core.Map<core.String, core.Object>>(
-              operationStatus, (OperationStatus item) => (item).toJson());
+              operationStatus, (OperationStatus item) => item.toJson());
     }
     if (requestedCancellation != null) {
       _json["requestedCancellation"] = requestedCancellation;
@@ -4149,7 +4372,7 @@ class OperationStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
@@ -4213,9 +4436,7 @@ class Policy {
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.base64.decode(etag);
-  }
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -4255,12 +4476,12 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("auditConfigs")) {
       auditConfigs = (_json["auditConfigs"] as core.List)
-          .map<AuditConfig>((value) => new AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => AuditConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bindings")) {
       bindings = (_json["bindings"] as core.List)
-          .map<Binding>((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -4271,7 +4492,7 @@ class Policy {
     }
     if (_json.containsKey("rules")) {
       rules = (_json["rules"] as core.List)
-          .map<Rule>((value) => new Rule.fromJson(value))
+          .map<Rule>((value) => Rule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("version")) {
@@ -4281,13 +4502,13 @@ class Policy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (auditConfigs != null) {
       _json["auditConfigs"] =
-          auditConfigs.map((value) => (value).toJson()).toList();
+          auditConfigs.map((value) => value.toJson()).toList();
     }
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -4296,7 +4517,7 @@ class Policy {
       _json["iamOwned"] = iamOwned;
     }
     if (rules != null) {
-      _json["rules"] = rules.map((value) => (value).toJson()).toList();
+      _json["rules"] = rules.map((value) => value.toJson()).toList();
     }
     if (version != null) {
       _json["version"] = version;
@@ -4321,18 +4542,18 @@ class PreviewCreateGameServerClusterResponse {
       etag = _json["etag"];
     }
     if (_json.containsKey("targetState")) {
-      targetState = new TargetState.fromJson(_json["targetState"]);
+      targetState = TargetState.fromJson(_json["targetState"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (targetState != null) {
-      _json["targetState"] = (targetState).toJson();
+      _json["targetState"] = targetState.toJson();
     }
     return _json;
   }
@@ -4354,18 +4575,18 @@ class PreviewDeleteGameServerClusterResponse {
       etag = _json["etag"];
     }
     if (_json.containsKey("targetState")) {
-      targetState = new TargetState.fromJson(_json["targetState"]);
+      targetState = TargetState.fromJson(_json["targetState"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (targetState != null) {
-      _json["targetState"] = (targetState).toJson();
+      _json["targetState"] = targetState.toJson();
     }
     return _json;
   }
@@ -4390,7 +4611,7 @@ class PreviewGameServerDeploymentRolloutResponse {
       etag = _json["etag"];
     }
     if (_json.containsKey("targetState")) {
-      targetState = new TargetState.fromJson(_json["targetState"]);
+      targetState = TargetState.fromJson(_json["targetState"]);
     }
     if (_json.containsKey("unavailable")) {
       unavailable = (_json["unavailable"] as core.List).cast<core.String>();
@@ -4399,12 +4620,12 @@ class PreviewGameServerDeploymentRolloutResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (targetState != null) {
-      _json["targetState"] = (targetState).toJson();
+      _json["targetState"] = targetState.toJson();
     }
     if (unavailable != null) {
       _json["unavailable"] = unavailable;
@@ -4428,18 +4649,18 @@ class PreviewRealmUpdateResponse {
       etag = _json["etag"];
     }
     if (_json.containsKey("targetState")) {
-      targetState = new TargetState.fromJson(_json["targetState"]);
+      targetState = TargetState.fromJson(_json["targetState"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (targetState != null) {
-      _json["targetState"] = (targetState).toJson();
+      _json["targetState"] = targetState.toJson();
     }
     return _json;
   }
@@ -4461,18 +4682,18 @@ class PreviewUpdateGameServerClusterResponse {
       etag = _json["etag"];
     }
     if (_json.containsKey("targetState")) {
-      targetState = new TargetState.fromJson(_json["targetState"]);
+      targetState = TargetState.fromJson(_json["targetState"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (targetState != null) {
-      _json["targetState"] = (targetState).toJson();
+      _json["targetState"] = targetState.toJson();
     }
     return _json;
   }
@@ -4533,7 +4754,7 @@ class Realm {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -4574,7 +4795,7 @@ class RealmSelector {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (realms != null) {
       _json["realms"] = realms;
     }
@@ -4630,7 +4851,7 @@ class Rule {
     }
     if (_json.containsKey("conditions")) {
       conditions = (_json["conditions"] as core.List)
-          .map<Condition>((value) => new Condition.fromJson(value))
+          .map<Condition>((value) => Condition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("description")) {
@@ -4641,7 +4862,7 @@ class Rule {
     }
     if (_json.containsKey("logConfig")) {
       logConfig = (_json["logConfig"] as core.List)
-          .map<LogConfig>((value) => new LogConfig.fromJson(value))
+          .map<LogConfig>((value) => LogConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("notIn")) {
@@ -4654,13 +4875,12 @@ class Rule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (action != null) {
       _json["action"] = action;
     }
     if (conditions != null) {
-      _json["conditions"] =
-          conditions.map((value) => (value).toJson()).toList();
+      _json["conditions"] = conditions.map((value) => value.toJson()).toList();
     }
     if (description != null) {
       _json["description"] = description;
@@ -4669,7 +4889,7 @@ class Rule {
       _json["in"] = in_;
     }
     if (logConfig != null) {
-      _json["logConfig"] = logConfig.map((value) => (value).toJson()).toList();
+      _json["logConfig"] = logConfig.map((value) => value.toJson()).toList();
     }
     if (notIn != null) {
       _json["notIn"] = notIn;
@@ -4709,19 +4929,19 @@ class ScalingConfig {
     }
     if (_json.containsKey("schedules")) {
       schedules = (_json["schedules"] as core.List)
-          .map<Schedule>((value) => new Schedule.fromJson(value))
+          .map<Schedule>((value) => Schedule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("selectors")) {
       selectors = (_json["selectors"] as core.List)
-          .map<LabelSelector>((value) => new LabelSelector.fromJson(value))
+          .map<LabelSelector>((value) => LabelSelector.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fleetAutoscalerSpec != null) {
       _json["fleetAutoscalerSpec"] = fleetAutoscalerSpec;
     }
@@ -4729,10 +4949,10 @@ class ScalingConfig {
       _json["name"] = name;
     }
     if (schedules != null) {
-      _json["schedules"] = schedules.map((value) => (value).toJson()).toList();
+      _json["schedules"] = schedules.map((value) => value.toJson()).toList();
     }
     if (selectors != null) {
-      _json["selectors"] = selectors.map((value) => (value).toJson()).toList();
+      _json["selectors"] = selectors.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4780,7 +5000,7 @@ class Schedule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cronJobDuration != null) {
       _json["cronJobDuration"] = cronJobDuration;
     }
@@ -4814,7 +5034,7 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("policy")) {
-      policy = new Policy.fromJson(_json["policy"]);
+      policy = Policy.fromJson(_json["policy"]);
     }
     if (_json.containsKey("updateMask")) {
       updateMask = _json["updateMask"];
@@ -4823,9 +5043,9 @@ class SetIamPolicyRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = (policy).toJson();
+      _json["policy"] = policy.toJson();
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;
@@ -4857,7 +5077,7 @@ class SpecSource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gameServerConfigName != null) {
       _json["gameServerConfigName"] = gameServerConfigName;
     }
@@ -4909,7 +5129,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -4942,7 +5162,7 @@ class TargetDetails {
     if (_json.containsKey("fleetDetails")) {
       fleetDetails = (_json["fleetDetails"] as core.List)
           .map<TargetFleetDetails>(
-              (value) => new TargetFleetDetails.fromJson(value))
+              (value) => TargetFleetDetails.fromJson(value))
           .toList();
     }
     if (_json.containsKey("gameServerClusterName")) {
@@ -4955,10 +5175,10 @@ class TargetDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fleetDetails != null) {
       _json["fleetDetails"] =
-          fleetDetails.map((value) => (value).toJson()).toList();
+          fleetDetails.map((value) => value.toJson()).toList();
     }
     if (gameServerClusterName != null) {
       _json["gameServerClusterName"] = gameServerClusterName;
@@ -4986,18 +5206,18 @@ class TargetFleet {
       name = _json["name"];
     }
     if (_json.containsKey("specSource")) {
-      specSource = new SpecSource.fromJson(_json["specSource"]);
+      specSource = SpecSource.fromJson(_json["specSource"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
     if (specSource != null) {
-      _json["specSource"] = (specSource).toJson();
+      _json["specSource"] = specSource.toJson();
     }
     return _json;
   }
@@ -5019,18 +5239,18 @@ class TargetFleetAutoscaler {
       name = _json["name"];
     }
     if (_json.containsKey("specSource")) {
-      specSource = new SpecSource.fromJson(_json["specSource"]);
+      specSource = SpecSource.fromJson(_json["specSource"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
     if (specSource != null) {
-      _json["specSource"] = (specSource).toJson();
+      _json["specSource"] = specSource.toJson();
     }
     return _json;
   }
@@ -5048,21 +5268,21 @@ class TargetFleetDetails {
 
   TargetFleetDetails.fromJson(core.Map _json) {
     if (_json.containsKey("autoscaler")) {
-      autoscaler = new TargetFleetAutoscaler.fromJson(_json["autoscaler"]);
+      autoscaler = TargetFleetAutoscaler.fromJson(_json["autoscaler"]);
     }
     if (_json.containsKey("fleet")) {
-      fleet = new TargetFleet.fromJson(_json["fleet"]);
+      fleet = TargetFleet.fromJson(_json["fleet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (autoscaler != null) {
-      _json["autoscaler"] = (autoscaler).toJson();
+      _json["autoscaler"] = autoscaler.toJson();
     }
     if (fleet != null) {
-      _json["fleet"] = (fleet).toJson();
+      _json["fleet"] = fleet.toJson();
     }
     return _json;
   }
@@ -5078,16 +5298,16 @@ class TargetState {
   TargetState.fromJson(core.Map _json) {
     if (_json.containsKey("details")) {
       details = (_json["details"] as core.List)
-          .map<TargetDetails>((value) => new TargetDetails.fromJson(value))
+          .map<TargetDetails>((value) => TargetDetails.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (details != null) {
-      _json["details"] = details.map((value) => (value).toJson()).toList();
+      _json["details"] = details.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5111,7 +5331,7 @@ class TestIamPermissionsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -5135,7 +5355,7 @@ class TestIamPermissionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }

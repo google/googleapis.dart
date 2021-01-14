@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.adsensehost.v4_1;
 
@@ -24,32 +42,31 @@ class AdsensehostApi {
 
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
-  AdclientsResourceApi get adclients => new AdclientsResourceApi(_requester);
+  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
+  AdclientsResourceApi get adclients => AdclientsResourceApi(_requester);
   AssociationsessionsResourceApi get associationsessions =>
-      new AssociationsessionsResourceApi(_requester);
+      AssociationsessionsResourceApi(_requester);
   CustomchannelsResourceApi get customchannels =>
-      new CustomchannelsResourceApi(_requester);
-  ReportsResourceApi get reports => new ReportsResourceApi(_requester);
-  UrlchannelsResourceApi get urlchannels =>
-      new UrlchannelsResourceApi(_requester);
+      CustomchannelsResourceApi(_requester);
+  ReportsResourceApi get reports => ReportsResourceApi(_requester);
+  UrlchannelsResourceApi get urlchannels => UrlchannelsResourceApi(_requester);
 
   AdsensehostApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
       core.String servicePath = "adsensehost/v4.1/"})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AccountsResourceApi {
   final commons.ApiRequester _requester;
 
   AccountsAdclientsResourceApi get adclients =>
-      new AccountsAdclientsResourceApi(_requester);
+      AccountsAdclientsResourceApi(_requester);
   AccountsAdunitsResourceApi get adunits =>
-      new AccountsAdunitsResourceApi(_requester);
+      AccountsAdunitsResourceApi(_requester);
   AccountsReportsResourceApi get reports =>
-      new AccountsReportsResourceApi(_requester);
+      AccountsReportsResourceApi(_requester);
 
   AccountsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -69,16 +86,19 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> get(core.String accountId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Account> get(
+    core.String accountId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError("Parameter accountId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -86,13 +106,16 @@ class AccountsResourceApi {
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Account.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Account.fromJson(data));
   }
 
   /// List hosted accounts associated with this AdSense account by ad client id.
@@ -111,17 +134,19 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Accounts> list(core.List<core.String> filterAdClientId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Accounts> list(
+    core.List<core.String> filterAdClientId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (filterAdClientId == null || filterAdClientId.isEmpty) {
-      throw new core.ArgumentError("Parameter filterAdClientId is required.");
+      throw core.ArgumentError("Parameter filterAdClientId is required.");
     }
     _queryParams["filterAdClientId"] = filterAdClientId;
     if ($fields != null) {
@@ -130,13 +155,16 @@ class AccountsResourceApi {
 
     _url = 'accounts';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Accounts.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Accounts.fromJson(data));
   }
 }
 
@@ -165,20 +193,23 @@ class AccountsAdclientsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AdClient> get(core.String accountId, core.String adClientId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AdClient> get(
+    core.String accountId,
+    core.String adClientId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError("Parameter accountId is required.");
     }
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -189,13 +220,16 @@ class AccountsAdclientsResourceApi {
         '/adclients/' +
         commons.Escaper.ecapeVariable('$adClientId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdClient.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdClient.fromJson(data));
   }
 
   /// List all hosted ad clients in the specified hosted account.
@@ -222,17 +256,21 @@ class AccountsAdclientsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AdClients> list(core.String accountId,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AdClients> list(
+    core.String accountId, {
+    core.int maxResults,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError("Parameter accountId is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -248,13 +286,16 @@ class AccountsAdclientsResourceApi {
         commons.Escaper.ecapeVariable('$accountId') +
         '/adclients';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdClients.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdClients.fromJson(data));
   }
 }
 
@@ -284,23 +325,26 @@ class AccountsAdunitsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdUnit> delete(
-      core.String accountId, core.String adClientId, core.String adUnitId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String accountId,
+    core.String adClientId,
+    core.String adUnitId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError("Parameter accountId is required.");
     }
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if (adUnitId == null) {
-      throw new core.ArgumentError("Parameter adUnitId is required.");
+      throw core.ArgumentError("Parameter adUnitId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -313,13 +357,16 @@ class AccountsAdunitsResourceApi {
         '/adunits/' +
         commons.Escaper.ecapeVariable('$adUnitId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdUnit.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdUnit.fromJson(data));
   }
 
   /// Get the specified host ad unit in this AdSense account.
@@ -343,23 +390,26 @@ class AccountsAdunitsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdUnit> get(
-      core.String accountId, core.String adClientId, core.String adUnitId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String accountId,
+    core.String adClientId,
+    core.String adUnitId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError("Parameter accountId is required.");
     }
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if (adUnitId == null) {
-      throw new core.ArgumentError("Parameter adUnitId is required.");
+      throw core.ArgumentError("Parameter adUnitId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -372,13 +422,16 @@ class AccountsAdunitsResourceApi {
         '/adunits/' +
         commons.Escaper.ecapeVariable('$adUnitId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdUnit.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdUnit.fromJson(data));
   }
 
   /// Get ad code for the specified ad unit, attaching the specified host custom
@@ -405,23 +458,27 @@ class AccountsAdunitsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdCode> getAdCode(
-      core.String accountId, core.String adClientId, core.String adUnitId,
-      {core.List<core.String> hostCustomChannelId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String accountId,
+    core.String adClientId,
+    core.String adUnitId, {
+    core.List<core.String> hostCustomChannelId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError("Parameter accountId is required.");
     }
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if (adUnitId == null) {
-      throw new core.ArgumentError("Parameter adUnitId is required.");
+      throw core.ArgumentError("Parameter adUnitId is required.");
     }
     if (hostCustomChannelId != null) {
       _queryParams["hostCustomChannelId"] = hostCustomChannelId;
@@ -438,13 +495,16 @@ class AccountsAdunitsResourceApi {
         commons.Escaper.ecapeVariable('$adUnitId') +
         '/adcode';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdCode.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdCode.fromJson(data));
   }
 
   /// Insert the supplied ad unit into the specified publisher AdSense account.
@@ -468,23 +528,26 @@ class AccountsAdunitsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdUnit> insert(
-      AdUnit request, core.String accountId, core.String adClientId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AdUnit request,
+    core.String accountId,
+    core.String adClientId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError("Parameter accountId is required.");
     }
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -496,13 +559,16 @@ class AccountsAdunitsResourceApi {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/adunits';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdUnit.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdUnit.fromJson(data));
   }
 
   /// List all ad units in the specified publisher's AdSense account.
@@ -533,23 +599,26 @@ class AccountsAdunitsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AdUnits> list(core.String accountId, core.String adClientId,
-      {core.bool includeInactive,
-      core.String pageToken,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AdUnits> list(
+    core.String accountId,
+    core.String adClientId, {
+    core.bool includeInactive,
+    core.String pageToken,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError("Parameter accountId is required.");
     }
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
@@ -570,13 +639,16 @@ class AccountsAdunitsResourceApi {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/adunits';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdUnits.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdUnits.fromJson(data));
   }
 
   /// Update the supplied ad unit in the specified publisher AdSense account.
@@ -602,27 +674,31 @@ class AccountsAdunitsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AdUnit> patch(AdUnit request, core.String accountId,
-      core.String adClientId, core.String adUnitId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AdUnit> patch(
+    AdUnit request,
+    core.String accountId,
+    core.String adClientId,
+    core.String adUnitId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError("Parameter accountId is required.");
     }
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if (adUnitId == null) {
-      throw new core.ArgumentError("Parameter adUnitId is required.");
+      throw core.ArgumentError("Parameter adUnitId is required.");
     }
     _queryParams["adUnitId"] = [adUnitId];
     if ($fields != null) {
@@ -635,13 +711,16 @@ class AccountsAdunitsResourceApi {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/adunits';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdUnit.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdUnit.fromJson(data));
   }
 
   /// Update the supplied ad unit in the specified publisher AdSense account.
@@ -665,23 +744,26 @@ class AccountsAdunitsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdUnit> update(
-      AdUnit request, core.String accountId, core.String adClientId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AdUnit request,
+    core.String accountId,
+    core.String adClientId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError("Parameter accountId is required.");
     }
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -693,13 +775,16 @@ class AccountsAdunitsResourceApi {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/adunits';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdUnit.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdUnit.fromJson(data));
   }
 }
 
@@ -761,31 +846,34 @@ class AccountsReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Report> generate(
-      core.String accountId, core.String startDate, core.String endDate,
-      {core.List<core.String> filter,
-      core.int startIndex,
-      core.String locale,
-      core.List<core.String> metric,
-      core.List<core.String> sort,
-      core.int maxResults,
-      core.List<core.String> dimension,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String accountId,
+    core.String startDate,
+    core.String endDate, {
+    core.List<core.String> filter,
+    core.int startIndex,
+    core.String locale,
+    core.List<core.String> metric,
+    core.List<core.String> sort,
+    core.int maxResults,
+    core.List<core.String> dimension,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError("Parameter accountId is required.");
     }
     if (startDate == null) {
-      throw new core.ArgumentError("Parameter startDate is required.");
+      throw core.ArgumentError("Parameter startDate is required.");
     }
     _queryParams["startDate"] = [startDate];
     if (endDate == null) {
-      throw new core.ArgumentError("Parameter endDate is required.");
+      throw core.ArgumentError("Parameter endDate is required.");
     }
     _queryParams["endDate"] = [endDate];
     if (filter != null) {
@@ -816,13 +904,16 @@ class AccountsReportsResourceApi {
     _url =
         'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/reports';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Report.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Report.fromJson(data));
   }
 }
 
@@ -847,16 +938,19 @@ class AdclientsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AdClient> get(core.String adClientId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AdClient> get(
+    core.String adClientId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -864,13 +958,16 @@ class AdclientsResourceApi {
 
     _url = 'adclients/' + commons.Escaper.ecapeVariable('$adClientId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdClient.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdClient.fromJson(data));
   }
 
   /// List all host ad clients in this AdSense account.
@@ -895,14 +992,17 @@ class AdclientsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AdClients> list(
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AdClients> list({
+    core.String pageToken,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -916,13 +1016,16 @@ class AdclientsResourceApi {
 
     _url = 'adclients';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdClients.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdClients.fromJson(data));
   }
 }
 
@@ -960,24 +1063,26 @@ class AssociationsessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AssociationSession> start(
-      core.List<core.String> productCode, core.String websiteUrl,
-      {core.String userLocale,
-      core.String websiteLocale,
-      core.String callbackUrl,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.List<core.String> productCode,
+    core.String websiteUrl, {
+    core.String userLocale,
+    core.String websiteLocale,
+    core.String callbackUrl,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (productCode == null || productCode.isEmpty) {
-      throw new core.ArgumentError("Parameter productCode is required.");
+      throw core.ArgumentError("Parameter productCode is required.");
     }
     _queryParams["productCode"] = productCode;
     if (websiteUrl == null) {
-      throw new core.ArgumentError("Parameter websiteUrl is required.");
+      throw core.ArgumentError("Parameter websiteUrl is required.");
     }
     _queryParams["websiteUrl"] = [websiteUrl];
     if (userLocale != null) {
@@ -995,13 +1100,16 @@ class AssociationsessionsResourceApi {
 
     _url = 'associationsessions/start';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AssociationSession.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AssociationSession.fromJson(data));
   }
 
   /// Verify an association session after the association callback returns from
@@ -1021,17 +1129,19 @@ class AssociationsessionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AssociationSession> verify(core.String token,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AssociationSession> verify(
+    core.String token, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (token == null) {
-      throw new core.ArgumentError("Parameter token is required.");
+      throw core.ArgumentError("Parameter token is required.");
     }
     _queryParams["token"] = [token];
     if ($fields != null) {
@@ -1040,13 +1150,16 @@ class AssociationsessionsResourceApi {
 
     _url = 'associationsessions/verify';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AssociationSession.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AssociationSession.fromJson(data));
   }
 }
 
@@ -1074,20 +1187,22 @@ class CustomchannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomChannel> delete(
-      core.String adClientId, core.String customChannelId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String adClientId,
+    core.String customChannelId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if (customChannelId == null) {
-      throw new core.ArgumentError("Parameter customChannelId is required.");
+      throw core.ArgumentError("Parameter customChannelId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1098,13 +1213,16 @@ class CustomchannelsResourceApi {
         '/customchannels/' +
         commons.Escaper.ecapeVariable('$customChannelId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CustomChannel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CustomChannel.fromJson(data));
   }
 
   /// Get a specific custom channel from the host AdSense account.
@@ -1126,20 +1244,22 @@ class CustomchannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomChannel> get(
-      core.String adClientId, core.String customChannelId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String adClientId,
+    core.String customChannelId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if (customChannelId == null) {
-      throw new core.ArgumentError("Parameter customChannelId is required.");
+      throw core.ArgumentError("Parameter customChannelId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1150,13 +1270,16 @@ class CustomchannelsResourceApi {
         '/customchannels/' +
         commons.Escaper.ecapeVariable('$customChannelId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CustomChannel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CustomChannel.fromJson(data));
   }
 
   /// Add a new custom channel to the host AdSense account.
@@ -1178,20 +1301,22 @@ class CustomchannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomChannel> insert(
-      CustomChannel request, core.String adClientId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CustomChannel request,
+    core.String adClientId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1201,13 +1326,16 @@ class CustomchannelsResourceApi {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/customchannels';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CustomChannel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CustomChannel.fromJson(data));
   }
 
   /// List all host custom channels in this AdSense account.
@@ -1234,17 +1362,21 @@ class CustomchannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CustomChannels> list(core.String adClientId,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CustomChannels> list(
+    core.String adClientId, {
+    core.String pageToken,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1260,13 +1392,16 @@ class CustomchannelsResourceApi {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/customchannels';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CustomChannels.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CustomChannels.fromJson(data));
   }
 
   /// Update a custom channel in the host AdSense account. This method supports
@@ -1290,24 +1425,27 @@ class CustomchannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CustomChannel> patch(CustomChannel request,
-      core.String adClientId, core.String customChannelId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CustomChannel> patch(
+    CustomChannel request,
+    core.String adClientId,
+    core.String customChannelId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if (customChannelId == null) {
-      throw new core.ArgumentError("Parameter customChannelId is required.");
+      throw core.ArgumentError("Parameter customChannelId is required.");
     }
     _queryParams["customChannelId"] = [customChannelId];
     if ($fields != null) {
@@ -1318,13 +1456,16 @@ class CustomchannelsResourceApi {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/customchannels';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CustomChannel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CustomChannel.fromJson(data));
   }
 
   /// Update a custom channel in the host AdSense account.
@@ -1346,20 +1487,22 @@ class CustomchannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomChannel> update(
-      CustomChannel request, core.String adClientId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CustomChannel request,
+    core.String adClientId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1369,13 +1512,16 @@ class CustomchannelsResourceApi {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/customchannels';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CustomChannel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CustomChannel.fromJson(data));
   }
 }
 
@@ -1434,28 +1580,31 @@ class ReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Report> generate(core.String startDate, core.String endDate,
-      {core.List<core.String> dimension,
-      core.List<core.String> metric,
-      core.List<core.String> filter,
-      core.int maxResults,
-      core.List<core.String> sort,
-      core.String locale,
-      core.int startIndex,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Report> generate(
+    core.String startDate,
+    core.String endDate, {
+    core.List<core.String> dimension,
+    core.List<core.String> metric,
+    core.List<core.String> filter,
+    core.int maxResults,
+    core.List<core.String> sort,
+    core.String locale,
+    core.int startIndex,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (startDate == null) {
-      throw new core.ArgumentError("Parameter startDate is required.");
+      throw core.ArgumentError("Parameter startDate is required.");
     }
     _queryParams["startDate"] = [startDate];
     if (endDate == null) {
-      throw new core.ArgumentError("Parameter endDate is required.");
+      throw core.ArgumentError("Parameter endDate is required.");
     }
     _queryParams["endDate"] = [endDate];
     if (dimension != null) {
@@ -1485,13 +1634,16 @@ class ReportsResourceApi {
 
     _url = 'reports';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Report.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Report.fromJson(data));
   }
 }
 
@@ -1519,20 +1671,22 @@ class UrlchannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UrlChannel> delete(
-      core.String adClientId, core.String urlChannelId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String adClientId,
+    core.String urlChannelId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if (urlChannelId == null) {
-      throw new core.ArgumentError("Parameter urlChannelId is required.");
+      throw core.ArgumentError("Parameter urlChannelId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1543,13 +1697,16 @@ class UrlchannelsResourceApi {
         '/urlchannels/' +
         commons.Escaper.ecapeVariable('$urlChannelId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UrlChannel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UrlChannel.fromJson(data));
   }
 
   /// Add a new URL channel to the host AdSense account.
@@ -1570,20 +1727,23 @@ class UrlchannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UrlChannel> insert(UrlChannel request, core.String adClientId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UrlChannel> insert(
+    UrlChannel request,
+    core.String adClientId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1593,13 +1753,16 @@ class UrlchannelsResourceApi {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/urlchannels';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UrlChannel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UrlChannel.fromJson(data));
   }
 
   /// List all host URL channels in the host AdSense account.
@@ -1626,17 +1789,21 @@ class UrlchannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UrlChannels> list(core.String adClientId,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UrlChannels> list(
+    core.String adClientId, {
+    core.String pageToken,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (adClientId == null) {
-      throw new core.ArgumentError("Parameter adClientId is required.");
+      throw core.ArgumentError("Parameter adClientId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1652,13 +1819,16 @@ class UrlchannelsResourceApi {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/urlchannels';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UrlChannels.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UrlChannels.fromJson(data));
   }
 }
 
@@ -1694,7 +1864,7 @@ class Account {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -1729,7 +1899,7 @@ class Accounts {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Account>((value) => new Account.fromJson(value))
+          .map<Account>((value) => Account.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1739,12 +1909,12 @@ class Accounts {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1792,7 +1962,7 @@ class AdClient {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (arcOptIn != null) {
       _json["arcOptIn"] = arcOptIn;
     }
@@ -1834,7 +2004,7 @@ class AdClients {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<AdClient>((value) => new AdClient.fromJson(value))
+          .map<AdClient>((value) => AdClient.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1847,12 +2017,12 @@ class AdClients {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1884,7 +2054,7 @@ class AdCode {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adCode != null) {
       _json["adCode"] = adCode;
     }
@@ -1935,7 +2105,7 @@ class AdStyleColors {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (background != null) {
       _json["background"] = background;
     }
@@ -1978,7 +2148,7 @@ class AdStyleFont {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (family != null) {
       _json["family"] = family;
     }
@@ -2007,13 +2177,13 @@ class AdStyle {
 
   AdStyle.fromJson(core.Map _json) {
     if (_json.containsKey("colors")) {
-      colors = new AdStyleColors.fromJson(_json["colors"]);
+      colors = AdStyleColors.fromJson(_json["colors"]);
     }
     if (_json.containsKey("corners")) {
       corners = _json["corners"];
     }
     if (_json.containsKey("font")) {
-      font = new AdStyleFont.fromJson(_json["font"]);
+      font = AdStyleFont.fromJson(_json["font"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2022,15 +2192,15 @@ class AdStyle {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (colors != null) {
-      _json["colors"] = (colors).toJson();
+      _json["colors"] = colors.toJson();
     }
     if (corners != null) {
       _json["corners"] = corners;
     }
     if (font != null) {
-      _json["font"] = (font).toJson();
+      _json["font"] = font.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2068,7 +2238,7 @@ class AdUnitContentAdsSettingsBackupOption {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (color != null) {
       _json["color"] = color;
     }
@@ -2099,8 +2269,8 @@ class AdUnitContentAdsSettings {
 
   AdUnitContentAdsSettings.fromJson(core.Map _json) {
     if (_json.containsKey("backupOption")) {
-      backupOption = new AdUnitContentAdsSettingsBackupOption.fromJson(
-          _json["backupOption"]);
+      backupOption =
+          AdUnitContentAdsSettingsBackupOption.fromJson(_json["backupOption"]);
     }
     if (_json.containsKey("size")) {
       size = _json["size"];
@@ -2112,9 +2282,9 @@ class AdUnitContentAdsSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (backupOption != null) {
-      _json["backupOption"] = (backupOption).toJson();
+      _json["backupOption"] = backupOption.toJson();
     }
     if (size != null) {
       _json["size"] = size;
@@ -2159,7 +2329,7 @@ class AdUnitMobileContentAdsSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (markupLanguage != null) {
       _json["markupLanguage"] = markupLanguage;
     }
@@ -2219,10 +2389,10 @@ class AdUnit {
     }
     if (_json.containsKey("contentAdsSettings")) {
       contentAdsSettings =
-          new AdUnitContentAdsSettings.fromJson(_json["contentAdsSettings"]);
+          AdUnitContentAdsSettings.fromJson(_json["contentAdsSettings"]);
     }
     if (_json.containsKey("customStyle")) {
-      customStyle = new AdStyle.fromJson(_json["customStyle"]);
+      customStyle = AdStyle.fromJson(_json["customStyle"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -2231,7 +2401,7 @@ class AdUnit {
       kind = _json["kind"];
     }
     if (_json.containsKey("mobileContentAdsSettings")) {
-      mobileContentAdsSettings = new AdUnitMobileContentAdsSettings.fromJson(
+      mobileContentAdsSettings = AdUnitMobileContentAdsSettings.fromJson(
           _json["mobileContentAdsSettings"]);
     }
     if (_json.containsKey("name")) {
@@ -2244,15 +2414,15 @@ class AdUnit {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
     if (contentAdsSettings != null) {
-      _json["contentAdsSettings"] = (contentAdsSettings).toJson();
+      _json["contentAdsSettings"] = contentAdsSettings.toJson();
     }
     if (customStyle != null) {
-      _json["customStyle"] = (customStyle).toJson();
+      _json["customStyle"] = customStyle.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -2261,7 +2431,7 @@ class AdUnit {
       _json["kind"] = kind;
     }
     if (mobileContentAdsSettings != null) {
-      _json["mobileContentAdsSettings"] = (mobileContentAdsSettings).toJson();
+      _json["mobileContentAdsSettings"] = mobileContentAdsSettings.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -2295,7 +2465,7 @@ class AdUnits {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<AdUnit>((value) => new AdUnit.fromJson(value))
+          .map<AdUnit>((value) => AdUnit.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -2308,12 +2478,12 @@ class AdUnits {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2392,7 +2562,7 @@ class AssociationSession {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -2458,7 +2628,7 @@ class CustomChannel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -2497,7 +2667,7 @@ class CustomChannels {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<CustomChannel>((value) => new CustomChannel.fromJson(value))
+          .map<CustomChannel>((value) => CustomChannel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -2510,12 +2680,12 @@ class CustomChannels {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2555,7 +2725,7 @@ class ReportHeaders {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currency != null) {
       _json["currency"] = currency;
     }
@@ -2607,7 +2777,7 @@ class Report {
     }
     if (_json.containsKey("headers")) {
       headers = (_json["headers"] as core.List)
-          .map<ReportHeaders>((value) => new ReportHeaders.fromJson(value))
+          .map<ReportHeaders>((value) => ReportHeaders.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -2632,12 +2802,12 @@ class Report {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (averages != null) {
       _json["averages"] = averages;
     }
     if (headers != null) {
-      _json["headers"] = headers.map((value) => (value).toJson()).toList();
+      _json["headers"] = headers.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2686,7 +2856,7 @@ class UrlChannel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -2722,7 +2892,7 @@ class UrlChannels {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<UrlChannel>((value) => new UrlChannel.fromJson(value))
+          .map<UrlChannel>((value) => UrlChannel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -2735,12 +2905,12 @@ class UrlChannels {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;

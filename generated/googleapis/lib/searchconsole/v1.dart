@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.searchconsole.v1;
 
@@ -29,17 +47,17 @@ class SearchconsoleApi {
   final commons.ApiRequester _requester;
 
   SearchanalyticsResourceApi get searchanalytics =>
-      new SearchanalyticsResourceApi(_requester);
-  SitemapsResourceApi get sitemaps => new SitemapsResourceApi(_requester);
-  SitesResourceApi get sites => new SitesResourceApi(_requester);
+      SearchanalyticsResourceApi(_requester);
+  SitemapsResourceApi get sitemaps => SitemapsResourceApi(_requester);
+  SitesResourceApi get sites => SitesResourceApi(_requester);
   UrlTestingToolsResourceApi get urlTestingTools =>
-      new UrlTestingToolsResourceApi(_requester);
+      UrlTestingToolsResourceApi(_requester);
 
   SearchconsoleApi(http.Client client,
       {core.String rootUrl = "https://searchconsole.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class SearchanalyticsResourceApi {
@@ -72,20 +90,22 @@ class SearchanalyticsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchAnalyticsQueryResponse> query(
-      SearchAnalyticsQueryRequest request, core.String siteUrl,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SearchAnalyticsQueryRequest request,
+    core.String siteUrl, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (siteUrl == null) {
-      throw new core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError("Parameter siteUrl is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -95,14 +115,17 @@ class SearchanalyticsResourceApi {
         commons.Escaper.ecapeVariable('$siteUrl') +
         '/searchAnalytics/query';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new SearchAnalyticsQueryResponse.fromJson(data));
+        .then((data) => SearchAnalyticsQueryResponse.fromJson(data));
   }
 }
 
@@ -129,20 +152,23 @@ class SitemapsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String siteUrl, core.String feedpath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String siteUrl,
+    core.String feedpath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (siteUrl == null) {
-      throw new core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError("Parameter siteUrl is required.");
     }
     if (feedpath == null) {
-      throw new core.ArgumentError("Parameter feedpath is required.");
+      throw core.ArgumentError("Parameter feedpath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -155,12 +181,15 @@ class SitemapsResourceApi {
         '/sitemaps/' +
         commons.Escaper.ecapeVariable('$feedpath');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -184,20 +213,23 @@ class SitemapsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WmxSitemap> get(core.String siteUrl, core.String feedpath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<WmxSitemap> get(
+    core.String siteUrl,
+    core.String feedpath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (siteUrl == null) {
-      throw new core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError("Parameter siteUrl is required.");
     }
     if (feedpath == null) {
-      throw new core.ArgumentError("Parameter feedpath is required.");
+      throw core.ArgumentError("Parameter feedpath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -208,13 +240,16 @@ class SitemapsResourceApi {
         '/sitemaps/' +
         commons.Escaper.ecapeVariable('$feedpath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new WmxSitemap.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => WmxSitemap.fromJson(data));
   }
 
   /// Lists the [sitemaps-entries](/webmaster-tools/v3/sitemaps) submitted for
@@ -239,17 +274,20 @@ class SitemapsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SitemapsListResponse> list(core.String siteUrl,
-      {core.String sitemapIndex, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SitemapsListResponse> list(
+    core.String siteUrl, {
+    core.String sitemapIndex,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (siteUrl == null) {
-      throw new core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError("Parameter siteUrl is required.");
     }
     if (sitemapIndex != null) {
       _queryParams["sitemapIndex"] = [sitemapIndex];
@@ -262,13 +300,16 @@ class SitemapsResourceApi {
         commons.Escaper.ecapeVariable('$siteUrl') +
         '/sitemaps';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SitemapsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SitemapsListResponse.fromJson(data));
   }
 
   /// Submits a sitemap for a site.
@@ -289,20 +330,23 @@ class SitemapsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future submit(core.String siteUrl, core.String feedpath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future submit(
+    core.String siteUrl,
+    core.String feedpath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (siteUrl == null) {
-      throw new core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError("Parameter siteUrl is required.");
     }
     if (feedpath == null) {
-      throw new core.ArgumentError("Parameter feedpath is required.");
+      throw core.ArgumentError("Parameter feedpath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -315,12 +359,15 @@ class SitemapsResourceApi {
         '/sitemaps/' +
         commons.Escaper.ecapeVariable('$feedpath');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 }
@@ -344,16 +391,19 @@ class SitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future add(core.String siteUrl, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future add(
+    core.String siteUrl, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (siteUrl == null) {
-      throw new core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError("Parameter siteUrl is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -363,12 +413,15 @@ class SitesResourceApi {
 
     _url = 'webmasters/v3/sites/' + commons.Escaper.ecapeVariable('$siteUrl');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -387,16 +440,19 @@ class SitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String siteUrl, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String siteUrl, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (siteUrl == null) {
-      throw new core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError("Parameter siteUrl is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -406,12 +462,15 @@ class SitesResourceApi {
 
     _url = 'webmasters/v3/sites/' + commons.Escaper.ecapeVariable('$siteUrl');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -432,16 +491,19 @@ class SitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WmxSite> get(core.String siteUrl, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<WmxSite> get(
+    core.String siteUrl, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (siteUrl == null) {
-      throw new core.ArgumentError("Parameter siteUrl is required.");
+      throw core.ArgumentError("Parameter siteUrl is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -449,13 +511,16 @@ class SitesResourceApi {
 
     _url = 'webmasters/v3/sites/' + commons.Escaper.ecapeVariable('$siteUrl');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new WmxSite.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => WmxSite.fromJson(data));
   }
 
   ///  Lists the user's Search Console sites.
@@ -472,13 +537,15 @@ class SitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SitesListResponse> list({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SitesListResponse> list({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -486,13 +553,16 @@ class SitesResourceApi {
 
     _url = 'webmasters/v3/sites';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SitesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SitesListResponse.fromJson(data));
   }
 }
 
@@ -500,7 +570,7 @@ class UrlTestingToolsResourceApi {
   final commons.ApiRequester _requester;
 
   UrlTestingToolsMobileFriendlyTestResourceApi get mobileFriendlyTest =>
-      new UrlTestingToolsMobileFriendlyTestResourceApi(_requester);
+      UrlTestingToolsMobileFriendlyTestResourceApi(_requester);
 
   UrlTestingToolsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -528,17 +598,18 @@ class UrlTestingToolsMobileFriendlyTestResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RunMobileFriendlyTestResponse> run(
-      RunMobileFriendlyTestRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RunMobileFriendlyTestRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -546,14 +617,17 @@ class UrlTestingToolsMobileFriendlyTestResourceApi {
 
     _url = 'v1/urlTestingTools/mobileFriendlyTest:run';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new RunMobileFriendlyTestResponse.fromJson(data));
+        .then((data) => RunMobileFriendlyTestResponse.fromJson(data));
   }
 }
 
@@ -586,7 +660,7 @@ class ApiDataRow {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clicks != null) {
       _json["clicks"] = clicks;
     }
@@ -646,7 +720,7 @@ class ApiDimensionFilter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimension != null) {
       _json["dimension"] = dimension;
     }
@@ -678,7 +752,7 @@ class ApiDimensionFilterGroup {
     if (_json.containsKey("filters")) {
       filters = (_json["filters"] as core.List)
           .map<ApiDimensionFilter>(
-              (value) => new ApiDimensionFilter.fromJson(value))
+              (value) => ApiDimensionFilter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("groupType")) {
@@ -688,9 +762,9 @@ class ApiDimensionFilterGroup {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (filters != null) {
-      _json["filters"] = filters.map((value) => (value).toJson()).toList();
+      _json["filters"] = filters.map((value) => value.toJson()).toList();
     }
     if (groupType != null) {
       _json["groupType"] = groupType;
@@ -714,7 +788,7 @@ class BlockedResource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (url != null) {
       _json["url"] = url;
     }
@@ -727,9 +801,7 @@ class Image {
   /// Image data in format determined by the mime type. Currently, the format
   /// will always be "image/png", but this might change in the future.
   core.String data;
-  core.List<core.int> get dataAsBytes {
-    return convert.base64.decode(data);
-  }
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -752,7 +824,7 @@ class Image {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (data != null) {
       _json["data"] = data;
     }
@@ -797,7 +869,7 @@ class MobileFriendlyIssue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (rule != null) {
       _json["rule"] = rule;
     }
@@ -814,15 +886,15 @@ class ResourceIssue {
 
   ResourceIssue.fromJson(core.Map _json) {
     if (_json.containsKey("blockedResource")) {
-      blockedResource = new BlockedResource.fromJson(_json["blockedResource"]);
+      blockedResource = BlockedResource.fromJson(_json["blockedResource"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blockedResource != null) {
-      _json["blockedResource"] = (blockedResource).toJson();
+      _json["blockedResource"] = blockedResource.toJson();
     }
     return _json;
   }
@@ -849,7 +921,7 @@ class RunMobileFriendlyTestRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (requestScreenshot != null) {
       _json["requestScreenshot"] = requestScreenshot;
     }
@@ -892,41 +964,41 @@ class RunMobileFriendlyTestResponse {
     if (_json.containsKey("mobileFriendlyIssues")) {
       mobileFriendlyIssues = (_json["mobileFriendlyIssues"] as core.List)
           .map<MobileFriendlyIssue>(
-              (value) => new MobileFriendlyIssue.fromJson(value))
+              (value) => MobileFriendlyIssue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("resourceIssues")) {
       resourceIssues = (_json["resourceIssues"] as core.List)
-          .map<ResourceIssue>((value) => new ResourceIssue.fromJson(value))
+          .map<ResourceIssue>((value) => ResourceIssue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("screenshot")) {
-      screenshot = new Image.fromJson(_json["screenshot"]);
+      screenshot = Image.fromJson(_json["screenshot"]);
     }
     if (_json.containsKey("testStatus")) {
-      testStatus = new TestStatus.fromJson(_json["testStatus"]);
+      testStatus = TestStatus.fromJson(_json["testStatus"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (mobileFriendliness != null) {
       _json["mobileFriendliness"] = mobileFriendliness;
     }
     if (mobileFriendlyIssues != null) {
       _json["mobileFriendlyIssues"] =
-          mobileFriendlyIssues.map((value) => (value).toJson()).toList();
+          mobileFriendlyIssues.map((value) => value.toJson()).toList();
     }
     if (resourceIssues != null) {
       _json["resourceIssues"] =
-          resourceIssues.map((value) => (value).toJson()).toList();
+          resourceIssues.map((value) => value.toJson()).toList();
     }
     if (screenshot != null) {
-      _json["screenshot"] = (screenshot).toJson();
+      _json["screenshot"] = screenshot.toJson();
     }
     if (testStatus != null) {
-      _json["testStatus"] = (testStatus).toJson();
+      _json["testStatus"] = testStatus.toJson();
     }
     return _json;
   }
@@ -996,7 +1068,7 @@ class SearchAnalyticsQueryRequest {
     if (_json.containsKey("dimensionFilterGroups")) {
       dimensionFilterGroups = (_json["dimensionFilterGroups"] as core.List)
           .map<ApiDimensionFilterGroup>(
-              (value) => new ApiDimensionFilterGroup.fromJson(value))
+              (value) => ApiDimensionFilterGroup.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dimensions")) {
@@ -1021,13 +1093,13 @@ class SearchAnalyticsQueryRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (aggregationType != null) {
       _json["aggregationType"] = aggregationType;
     }
     if (dimensionFilterGroups != null) {
       _json["dimensionFilterGroups"] =
-          dimensionFilterGroups.map((value) => (value).toJson()).toList();
+          dimensionFilterGroups.map((value) => value.toJson()).toList();
     }
     if (dimensions != null) {
       _json["dimensions"] = dimensions;
@@ -1073,19 +1145,19 @@ class SearchAnalyticsQueryResponse {
     }
     if (_json.containsKey("rows")) {
       rows = (_json["rows"] as core.List)
-          .map<ApiDataRow>((value) => new ApiDataRow.fromJson(value))
+          .map<ApiDataRow>((value) => ApiDataRow.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (responseAggregationType != null) {
       _json["responseAggregationType"] = responseAggregationType;
     }
     if (rows != null) {
-      _json["rows"] = rows.map((value) => (value).toJson()).toList();
+      _json["rows"] = rows.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1102,16 +1174,16 @@ class SitemapsListResponse {
   SitemapsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("sitemap")) {
       sitemap = (_json["sitemap"] as core.List)
-          .map<WmxSitemap>((value) => new WmxSitemap.fromJson(value))
+          .map<WmxSitemap>((value) => WmxSitemap.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sitemap != null) {
-      _json["sitemap"] = sitemap.map((value) => (value).toJson()).toList();
+      _json["sitemap"] = sitemap.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1129,16 +1201,16 @@ class SitesListResponse {
   SitesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("siteEntry")) {
       siteEntry = (_json["siteEntry"] as core.List)
-          .map<WmxSite>((value) => new WmxSite.fromJson(value))
+          .map<WmxSite>((value) => WmxSite.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (siteEntry != null) {
-      _json["siteEntry"] = siteEntry.map((value) => (value).toJson()).toList();
+      _json["siteEntry"] = siteEntry.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1176,7 +1248,7 @@ class TestStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (details != null) {
       _json["details"] = details;
     }
@@ -1218,7 +1290,7 @@ class WmxSite {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissionLevel != null) {
       _json["permissionLevel"] = permissionLevel;
     }
@@ -1276,8 +1348,7 @@ class WmxSitemap {
   WmxSitemap.fromJson(core.Map _json) {
     if (_json.containsKey("contents")) {
       contents = (_json["contents"] as core.List)
-          .map<WmxSitemapContent>(
-              (value) => new WmxSitemapContent.fromJson(value))
+          .map<WmxSitemapContent>((value) => WmxSitemapContent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("errors")) {
@@ -1308,9 +1379,9 @@ class WmxSitemap {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contents != null) {
-      _json["contents"] = contents.map((value) => (value).toJson()).toList();
+      _json["contents"] = contents.map((value) => value.toJson()).toList();
     }
     if (errors != null) {
       _json["errors"] = errors;
@@ -1378,7 +1449,7 @@ class WmxSitemapContent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (indexed != null) {
       _json["indexed"] = indexed;
     }

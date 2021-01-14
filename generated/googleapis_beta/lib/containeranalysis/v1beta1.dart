@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis_beta.containeranalysis.v1beta1;
 
@@ -25,24 +43,23 @@ class ContaineranalysisApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   ContaineranalysisApi(http.Client client,
       {core.String rootUrl = "https://containeranalysis.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsNotesResourceApi get notes =>
-      new ProjectsNotesResourceApi(_requester);
+  ProjectsNotesResourceApi get notes => ProjectsNotesResourceApi(_requester);
   ProjectsOccurrencesResourceApi get occurrences =>
-      new ProjectsOccurrencesResourceApi(_requester);
+      ProjectsOccurrencesResourceApi(_requester);
   ProjectsScanConfigsResourceApi get scanConfigs =>
-      new ProjectsScanConfigsResourceApi(_requester);
+      ProjectsScanConfigsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -51,7 +68,7 @@ class ProjectsNotesResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsNotesOccurrencesResourceApi get occurrences =>
-      new ProjectsNotesOccurrencesResourceApi(_requester);
+      ProjectsNotesOccurrencesResourceApi(_requester);
 
   ProjectsNotesResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -76,20 +93,22 @@ class ProjectsNotesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchCreateNotesResponse> batchCreate(
-      BatchCreateNotesRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchCreateNotesRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -99,14 +118,16 @@ class ProjectsNotesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/notes:batchCreate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new BatchCreateNotesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BatchCreateNotesResponse.fromJson(data));
   }
 
   /// Creates a new note.
@@ -131,20 +152,24 @@ class ProjectsNotesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Note> create(Note request, core.String parent,
-      {core.String noteId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Note> create(
+    Note request,
+    core.String parent, {
+    core.String noteId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (noteId != null) {
       _queryParams["noteId"] = [noteId];
@@ -157,13 +182,16 @@ class ProjectsNotesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/notes';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Note.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Note.fromJson(data));
   }
 
   /// Deletes the specified note.
@@ -184,16 +212,19 @@ class ProjectsNotesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -201,13 +232,16 @@ class ProjectsNotesResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the specified note.
@@ -228,16 +262,19 @@ class ProjectsNotesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Note> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Note> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -245,13 +282,16 @@ class ProjectsNotesResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Note.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Note.fromJson(data));
   }
 
   /// Gets the access control policy for a note or an occurrence resource.
@@ -281,20 +321,22 @@ class ProjectsNotesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
-      GetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -304,13 +346,16 @@ class ProjectsNotesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Lists notes for the specified project.
@@ -338,20 +383,22 @@ class ProjectsNotesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListNotesResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListNotesResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -370,13 +417,16 @@ class ProjectsNotesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/notes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListNotesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListNotesResponse.fromJson(data));
   }
 
   /// Updates the specified note.
@@ -401,20 +451,24 @@ class ProjectsNotesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Note> patch(Note request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Note> patch(
+    Note request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -425,13 +479,16 @@ class ProjectsNotesResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Note.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Note.fromJson(data));
   }
 
   /// Sets the access control policy on the specified note or occurrence.
@@ -461,20 +518,22 @@ class ProjectsNotesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -484,13 +543,16 @@ class ProjectsNotesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns the permissions that a caller has on the specified note or
@@ -519,20 +581,22 @@ class ProjectsNotesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -542,14 +606,16 @@ class ProjectsNotesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -585,20 +651,22 @@ class ProjectsNotesOccurrencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListNoteOccurrencesResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListNoteOccurrencesResponse> list(
+    core.String name, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -617,14 +685,16 @@ class ProjectsNotesOccurrencesResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/occurrences';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListNoteOccurrencesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListNoteOccurrencesResponse.fromJson(data));
   }
 }
 
@@ -655,20 +725,22 @@ class ProjectsOccurrencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchCreateOccurrencesResponse> batchCreate(
-      BatchCreateOccurrencesRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchCreateOccurrencesRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -678,14 +750,17 @@ class ProjectsOccurrencesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/occurrences:batchCreate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new BatchCreateOccurrencesResponse.fromJson(data));
+        .then((data) => BatchCreateOccurrencesResponse.fromJson(data));
   }
 
   /// Creates a new occurrence.
@@ -708,20 +783,23 @@ class ProjectsOccurrencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Occurrence> create(Occurrence request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Occurrence> create(
+    Occurrence request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -731,13 +809,16 @@ class ProjectsOccurrencesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/occurrences';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Occurrence.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Occurrence.fromJson(data));
   }
 
   /// Deletes the specified occurrence. For example, use this method to delete
@@ -760,16 +841,19 @@ class ProjectsOccurrencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -777,13 +861,16 @@ class ProjectsOccurrencesResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the specified occurrence.
@@ -804,16 +891,19 @@ class ProjectsOccurrencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Occurrence> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Occurrence> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -821,13 +911,16 @@ class ProjectsOccurrencesResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Occurrence.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Occurrence.fromJson(data));
   }
 
   /// Gets the access control policy for a note or an occurrence resource.
@@ -857,20 +950,22 @@ class ProjectsOccurrencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
-      GetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -880,13 +975,16 @@ class ProjectsOccurrencesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Gets the note attached to the specified occurrence. Consumer projects can
@@ -908,16 +1006,19 @@ class ProjectsOccurrencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Note> getNotes(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Note> getNotes(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -926,13 +1027,16 @@ class ProjectsOccurrencesResourceApi {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + '/notes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Note.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Note.fromJson(data));
   }
 
   /// Gets a summary of the number and severity of occurrences.
@@ -956,18 +1060,19 @@ class ProjectsOccurrencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VulnerabilityOccurrencesSummary> getVulnerabilitySummary(
-      core.String parent,
-      {core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -980,14 +1085,17 @@ class ProjectsOccurrencesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/occurrences:vulnerabilitySummary';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new VulnerabilityOccurrencesSummary.fromJson(data));
+        .then((data) => VulnerabilityOccurrencesSummary.fromJson(data));
   }
 
   /// Lists occurrences for the specified project.
@@ -1016,20 +1124,22 @@ class ProjectsOccurrencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListOccurrencesResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListOccurrencesResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1048,13 +1158,16 @@ class ProjectsOccurrencesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/occurrences';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListOccurrencesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListOccurrencesResponse.fromJson(data));
   }
 
   /// Updates the specified occurrence.
@@ -1079,20 +1192,24 @@ class ProjectsOccurrencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Occurrence> patch(Occurrence request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Occurrence> patch(
+    Occurrence request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1103,13 +1220,16 @@ class ProjectsOccurrencesResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Occurrence.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Occurrence.fromJson(data));
   }
 
   /// Sets the access control policy on the specified note or occurrence.
@@ -1139,20 +1259,22 @@ class ProjectsOccurrencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1162,13 +1284,16 @@ class ProjectsOccurrencesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns the permissions that a caller has on the specified note or
@@ -1197,20 +1322,22 @@ class ProjectsOccurrencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1220,14 +1347,16 @@ class ProjectsOccurrencesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -1255,16 +1384,19 @@ class ProjectsScanConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ScanConfig> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ScanConfig> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1272,13 +1404,16 @@ class ProjectsScanConfigsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ScanConfig.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ScanConfig.fromJson(data));
   }
 
   /// Lists scan configurations for the specified project.
@@ -1305,20 +1440,22 @@ class ProjectsScanConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListScanConfigsResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListScanConfigsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1337,13 +1474,16 @@ class ProjectsScanConfigsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/scanConfigs';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListScanConfigsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListScanConfigsResponse.fromJson(data));
   }
 
   /// Updates the specified scan configuration.
@@ -1366,20 +1506,23 @@ class ProjectsScanConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ScanConfig> update(ScanConfig request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ScanConfig> update(
+    ScanConfig request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1387,13 +1530,16 @@ class ProjectsScanConfigsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ScanConfig.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ScanConfig.fromJson(data));
   }
 }
 
@@ -1424,7 +1570,7 @@ class AliasContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1468,7 +1614,7 @@ class Artifact {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (checksum != null) {
       _json["checksum"] = checksum;
     }
@@ -1496,7 +1642,7 @@ class ArtifactHashes {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sha256 != null) {
       _json["sha256"] = sha256;
     }
@@ -1518,7 +1664,7 @@ class ArtifactRule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (artifactRule != null) {
       _json["artifactRule"] = artifactRule;
     }
@@ -1544,23 +1690,23 @@ class Attestation {
 
   Attestation.fromJson(core.Map _json) {
     if (_json.containsKey("genericSignedAttestation")) {
-      genericSignedAttestation = new GenericSignedAttestation.fromJson(
-          _json["genericSignedAttestation"]);
+      genericSignedAttestation =
+          GenericSignedAttestation.fromJson(_json["genericSignedAttestation"]);
     }
     if (_json.containsKey("pgpSignedAttestation")) {
       pgpSignedAttestation =
-          new PgpSignedAttestation.fromJson(_json["pgpSignedAttestation"]);
+          PgpSignedAttestation.fromJson(_json["pgpSignedAttestation"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (genericSignedAttestation != null) {
-      _json["genericSignedAttestation"] = (genericSignedAttestation).toJson();
+      _json["genericSignedAttestation"] = genericSignedAttestation.toJson();
     }
     if (pgpSignedAttestation != null) {
-      _json["pgpSignedAttestation"] = (pgpSignedAttestation).toJson();
+      _json["pgpSignedAttestation"] = pgpSignedAttestation.toJson();
     }
     return _json;
   }
@@ -1582,15 +1728,15 @@ class Authority {
 
   Authority.fromJson(core.Map _json) {
     if (_json.containsKey("hint")) {
-      hint = new Hint.fromJson(_json["hint"]);
+      hint = Hint.fromJson(_json["hint"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hint != null) {
-      _json["hint"] = (hint).toJson();
+      _json["hint"] = hint.toJson();
     }
     return _json;
   }
@@ -1611,7 +1757,7 @@ class Basis {
 
   Basis.fromJson(core.Map _json) {
     if (_json.containsKey("fingerprint")) {
-      fingerprint = new Fingerprint.fromJson(_json["fingerprint"]);
+      fingerprint = Fingerprint.fromJson(_json["fingerprint"]);
     }
     if (_json.containsKey("resourceUrl")) {
       resourceUrl = _json["resourceUrl"];
@@ -1620,9 +1766,9 @@ class Basis {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fingerprint != null) {
-      _json["fingerprint"] = (fingerprint).toJson();
+      _json["fingerprint"] = fingerprint.toJson();
     }
     if (resourceUrl != null) {
       _json["resourceUrl"] = resourceUrl;
@@ -1642,16 +1788,16 @@ class BatchCreateNotesRequest {
     if (_json.containsKey("notes")) {
       notes = commons.mapMap<core.Map, Note>(
           _json["notes"].cast<core.String, core.Map>(),
-          (core.Map item) => new Note.fromJson(item));
+          (core.Map item) => Note.fromJson(item));
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (notes != null) {
       _json["notes"] = commons.mapMap<Note, core.Map<core.String, core.Object>>(
-          notes, (Note item) => (item).toJson());
+          notes, (Note item) => item.toJson());
     }
     return _json;
   }
@@ -1667,16 +1813,16 @@ class BatchCreateNotesResponse {
   BatchCreateNotesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("notes")) {
       notes = (_json["notes"] as core.List)
-          .map<Note>((value) => new Note.fromJson(value))
+          .map<Note>((value) => Note.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (notes != null) {
-      _json["notes"] = notes.map((value) => (value).toJson()).toList();
+      _json["notes"] = notes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1692,17 +1838,17 @@ class BatchCreateOccurrencesRequest {
   BatchCreateOccurrencesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("occurrences")) {
       occurrences = (_json["occurrences"] as core.List)
-          .map<Occurrence>((value) => new Occurrence.fromJson(value))
+          .map<Occurrence>((value) => Occurrence.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (occurrences != null) {
       _json["occurrences"] =
-          occurrences.map((value) => (value).toJson()).toList();
+          occurrences.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1718,17 +1864,17 @@ class BatchCreateOccurrencesResponse {
   BatchCreateOccurrencesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("occurrences")) {
       occurrences = (_json["occurrences"] as core.List)
-          .map<Occurrence>((value) => new Occurrence.fromJson(value))
+          .map<Occurrence>((value) => Occurrence.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (occurrences != null) {
       _json["occurrences"] =
-          occurrences.map((value) => (value).toJson()).toList();
+          occurrences.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1791,7 +1937,7 @@ class Binding {
       bindingId = _json["bindingId"];
     }
     if (_json.containsKey("condition")) {
-      condition = new Expr.fromJson(_json["condition"]);
+      condition = Expr.fromJson(_json["condition"]);
     }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
@@ -1803,12 +1949,12 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bindingId != null) {
       _json["bindingId"] = bindingId;
     }
     if (condition != null) {
-      _json["condition"] = (condition).toJson();
+      _json["condition"] = condition.toJson();
     }
     if (members != null) {
       _json["members"] = members;
@@ -1837,18 +1983,18 @@ class Build {
       builderVersion = _json["builderVersion"];
     }
     if (_json.containsKey("signature")) {
-      signature = new BuildSignature.fromJson(_json["signature"]);
+      signature = BuildSignature.fromJson(_json["signature"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (builderVersion != null) {
       _json["builderVersion"] = builderVersion;
     }
     if (signature != null) {
-      _json["signature"] = (signature).toJson();
+      _json["signature"] = signature.toJson();
     }
     return _json;
   }
@@ -1911,12 +2057,12 @@ class BuildProvenance {
     }
     if (_json.containsKey("builtArtifacts")) {
       builtArtifacts = (_json["builtArtifacts"] as core.List)
-          .map<Artifact>((value) => new Artifact.fromJson(value))
+          .map<Artifact>((value) => Artifact.fromJson(value))
           .toList();
     }
     if (_json.containsKey("commands")) {
       commands = (_json["commands"] as core.List)
-          .map<Command>((value) => new Command.fromJson(value))
+          .map<Command>((value) => Command.fromJson(value))
           .toList();
     }
     if (_json.containsKey("createTime")) {
@@ -1938,7 +2084,7 @@ class BuildProvenance {
       projectId = _json["projectId"];
     }
     if (_json.containsKey("sourceProvenance")) {
-      sourceProvenance = new Source.fromJson(_json["sourceProvenance"]);
+      sourceProvenance = Source.fromJson(_json["sourceProvenance"]);
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -1950,7 +2096,7 @@ class BuildProvenance {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (buildOptions != null) {
       _json["buildOptions"] = buildOptions;
     }
@@ -1959,10 +2105,10 @@ class BuildProvenance {
     }
     if (builtArtifacts != null) {
       _json["builtArtifacts"] =
-          builtArtifacts.map((value) => (value).toJson()).toList();
+          builtArtifacts.map((value) => value.toJson()).toList();
     }
     if (commands != null) {
-      _json["commands"] = commands.map((value) => (value).toJson()).toList();
+      _json["commands"] = commands.map((value) => value.toJson()).toList();
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
@@ -1983,7 +2129,7 @@ class BuildProvenance {
       _json["projectId"] = projectId;
     }
     if (sourceProvenance != null) {
-      _json["sourceProvenance"] = (sourceProvenance).toJson();
+      _json["sourceProvenance"] = sourceProvenance.toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -2026,9 +2172,7 @@ class BuildSignature {
   /// Required. Signature of the related `BuildProvenance`. In JSON, this is
   /// base-64 encoded.
   core.String signature;
-  core.List<core.int> get signatureAsBytes {
-    return convert.base64.decode(signature);
-  }
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature);
 
   set signatureAsBytes(core.List<core.int> _bytes) {
     signature =
@@ -2054,7 +2198,7 @@ class BuildSignature {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (keyId != null) {
       _json["keyId"] = keyId;
     }
@@ -2087,7 +2231,7 @@ class ByProducts {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customValues != null) {
       _json["customValues"] = customValues;
     }
@@ -2206,7 +2350,7 @@ class CVSSv3 {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attackComplexity != null) {
       _json["attackComplexity"] = attackComplexity;
     }
@@ -2260,10 +2404,10 @@ class CloudRepoSourceContext {
 
   CloudRepoSourceContext.fromJson(core.Map _json) {
     if (_json.containsKey("aliasContext")) {
-      aliasContext = new AliasContext.fromJson(_json["aliasContext"]);
+      aliasContext = AliasContext.fromJson(_json["aliasContext"]);
     }
     if (_json.containsKey("repoId")) {
-      repoId = new RepoId.fromJson(_json["repoId"]);
+      repoId = RepoId.fromJson(_json["repoId"]);
     }
     if (_json.containsKey("revisionId")) {
       revisionId = _json["revisionId"];
@@ -2272,12 +2416,12 @@ class CloudRepoSourceContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (aliasContext != null) {
-      _json["aliasContext"] = (aliasContext).toJson();
+      _json["aliasContext"] = aliasContext.toJson();
     }
     if (repoId != null) {
-      _json["repoId"] = (repoId).toJson();
+      _json["repoId"] = repoId.toJson();
     }
     if (revisionId != null) {
       _json["revisionId"] = revisionId;
@@ -2334,7 +2478,7 @@ class Command {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (args != null) {
       _json["args"] = args;
     }
@@ -2372,7 +2516,7 @@ class Deployable {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceUri != null) {
       _json["resourceUri"] = resourceUri;
     }
@@ -2437,7 +2581,7 @@ class Deployment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (address != null) {
       _json["address"] = address;
     }
@@ -2492,18 +2636,18 @@ class Derived {
       distance = _json["distance"];
     }
     if (_json.containsKey("fingerprint")) {
-      fingerprint = new Fingerprint.fromJson(_json["fingerprint"]);
+      fingerprint = Fingerprint.fromJson(_json["fingerprint"]);
     }
     if (_json.containsKey("layerInfo")) {
       layerInfo = (_json["layerInfo"] as core.List)
-          .map<Layer>((value) => new Layer.fromJson(value))
+          .map<Layer>((value) => Layer.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (baseResourceUrl != null) {
       _json["baseResourceUrl"] = baseResourceUrl;
     }
@@ -2511,10 +2655,10 @@ class Derived {
       _json["distance"] = distance;
     }
     if (fingerprint != null) {
-      _json["fingerprint"] = (fingerprint).toJson();
+      _json["fingerprint"] = fingerprint.toJson();
     }
     if (layerInfo != null) {
-      _json["layerInfo"] = layerInfo.map((value) => (value).toJson()).toList();
+      _json["layerInfo"] = layerInfo.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2570,17 +2714,16 @@ class Detail {
       description = _json["description"];
     }
     if (_json.containsKey("fixedLocation")) {
-      fixedLocation =
-          new VulnerabilityLocation.fromJson(_json["fixedLocation"]);
+      fixedLocation = VulnerabilityLocation.fromJson(_json["fixedLocation"]);
     }
     if (_json.containsKey("isObsolete")) {
       isObsolete = _json["isObsolete"];
     }
     if (_json.containsKey("maxAffectedVersion")) {
-      maxAffectedVersion = new Version.fromJson(_json["maxAffectedVersion"]);
+      maxAffectedVersion = Version.fromJson(_json["maxAffectedVersion"]);
     }
     if (_json.containsKey("minAffectedVersion")) {
-      minAffectedVersion = new Version.fromJson(_json["minAffectedVersion"]);
+      minAffectedVersion = Version.fromJson(_json["minAffectedVersion"]);
     }
     if (_json.containsKey("package")) {
       package = _json["package"];
@@ -2598,7 +2741,7 @@ class Detail {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cpeUri != null) {
       _json["cpeUri"] = cpeUri;
     }
@@ -2606,16 +2749,16 @@ class Detail {
       _json["description"] = description;
     }
     if (fixedLocation != null) {
-      _json["fixedLocation"] = (fixedLocation).toJson();
+      _json["fixedLocation"] = fixedLocation.toJson();
     }
     if (isObsolete != null) {
       _json["isObsolete"] = isObsolete;
     }
     if (maxAffectedVersion != null) {
-      _json["maxAffectedVersion"] = (maxAffectedVersion).toJson();
+      _json["maxAffectedVersion"] = maxAffectedVersion.toJson();
     }
     if (minAffectedVersion != null) {
-      _json["minAffectedVersion"] = (minAffectedVersion).toJson();
+      _json["minAffectedVersion"] = minAffectedVersion.toJson();
     }
     if (package != null) {
       _json["package"] = package;
@@ -2642,15 +2785,15 @@ class Details {
 
   Details.fromJson(core.Map _json) {
     if (_json.containsKey("attestation")) {
-      attestation = new Attestation.fromJson(_json["attestation"]);
+      attestation = Attestation.fromJson(_json["attestation"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attestation != null) {
-      _json["attestation"] = (attestation).toJson();
+      _json["attestation"] = attestation.toJson();
     }
     return _json;
   }
@@ -2692,7 +2835,7 @@ class Discovered {
       analysisStatus = _json["analysisStatus"];
     }
     if (_json.containsKey("analysisStatusError")) {
-      analysisStatusError = new Status.fromJson(_json["analysisStatusError"]);
+      analysisStatusError = Status.fromJson(_json["analysisStatusError"]);
     }
     if (_json.containsKey("continuousAnalysis")) {
       continuousAnalysis = _json["continuousAnalysis"];
@@ -2704,12 +2847,12 @@ class Discovered {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (analysisStatus != null) {
       _json["analysisStatus"] = analysisStatus;
     }
     if (analysisStatusError != null) {
-      _json["analysisStatusError"] = (analysisStatusError).toJson();
+      _json["analysisStatusError"] = analysisStatusError.toJson();
     }
     if (continuousAnalysis != null) {
       _json["continuousAnalysis"] = continuousAnalysis;
@@ -2752,7 +2895,7 @@ class Discovery {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (analysisKind != null) {
       _json["analysisKind"] = analysisKind;
     }
@@ -2801,7 +2944,7 @@ class Distribution {
       description = _json["description"];
     }
     if (_json.containsKey("latestVersion")) {
-      latestVersion = new Version.fromJson(_json["latestVersion"]);
+      latestVersion = Version.fromJson(_json["latestVersion"]);
     }
     if (_json.containsKey("maintainer")) {
       maintainer = _json["maintainer"];
@@ -2813,7 +2956,7 @@ class Distribution {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (architecture != null) {
       _json["architecture"] = architecture;
     }
@@ -2824,7 +2967,7 @@ class Distribution {
       _json["description"] = description;
     }
     if (latestVersion != null) {
-      _json["latestVersion"] = (latestVersion).toJson();
+      _json["latestVersion"] = latestVersion.toJson();
     }
     if (maintainer != null) {
       _json["maintainer"] = maintainer;
@@ -2848,7 +2991,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2869,7 +3012,7 @@ class Environment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customValues != null) {
       _json["customValues"] = customValues;
     }
@@ -2929,7 +3072,7 @@ class Expr {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -2957,16 +3100,16 @@ class FileHashes {
   FileHashes.fromJson(core.Map _json) {
     if (_json.containsKey("fileHash")) {
       fileHash = (_json["fileHash"] as core.List)
-          .map<Hash>((value) => new Hash.fromJson(value))
+          .map<Hash>((value) => Hash.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fileHash != null) {
-      _json["fileHash"] = fileHash.map((value) => (value).toJson()).toList();
+      _json["fileHash"] = fileHash.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3002,7 +3145,7 @@ class Fingerprint {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (v1Name != null) {
       _json["v1Name"] = v1Name;
     }
@@ -3045,7 +3188,7 @@ class FixableTotalByDigest {
       fixableCount = _json["fixableCount"];
     }
     if (_json.containsKey("resource")) {
-      resource = new Resource.fromJson(_json["resource"]);
+      resource = Resource.fromJson(_json["resource"]);
     }
     if (_json.containsKey("severity")) {
       severity = _json["severity"];
@@ -3057,12 +3200,12 @@ class FixableTotalByDigest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fixableCount != null) {
       _json["fixableCount"] = fixableCount;
     }
     if (resource != null) {
-      _json["resource"] = (resource).toJson();
+      _json["resource"] = resource.toJson();
     }
     if (severity != null) {
       _json["severity"] = severity;
@@ -3095,9 +3238,8 @@ class GenericSignedAttestation {
   /// encoding and semantic meaning of this payload must match what is set in
   /// `content_type`.
   core.String serializedPayload;
-  core.List<core.int> get serializedPayloadAsBytes {
-    return convert.base64.decode(serializedPayload);
-  }
+  core.List<core.int> get serializedPayloadAsBytes =>
+      convert.base64.decode(serializedPayload);
 
   set serializedPayloadAsBytes(core.List<core.int> _bytes) {
     serializedPayload =
@@ -3121,14 +3263,14 @@ class GenericSignedAttestation {
     }
     if (_json.containsKey("signatures")) {
       signatures = (_json["signatures"] as core.List)
-          .map<Signature>((value) => new Signature.fromJson(value))
+          .map<Signature>((value) => Signature.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentType != null) {
       _json["contentType"] = contentType;
     }
@@ -3136,8 +3278,7 @@ class GenericSignedAttestation {
       _json["serializedPayload"] = serializedPayload;
     }
     if (signatures != null) {
-      _json["signatures"] =
-          signatures.map((value) => (value).toJson()).toList();
+      _json["signatures"] = signatures.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3163,7 +3304,7 @@ class GerritSourceContext {
 
   GerritSourceContext.fromJson(core.Map _json) {
     if (_json.containsKey("aliasContext")) {
-      aliasContext = new AliasContext.fromJson(_json["aliasContext"]);
+      aliasContext = AliasContext.fromJson(_json["aliasContext"]);
     }
     if (_json.containsKey("gerritProject")) {
       gerritProject = _json["gerritProject"];
@@ -3178,9 +3319,9 @@ class GerritSourceContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (aliasContext != null) {
-      _json["aliasContext"] = (aliasContext).toJson();
+      _json["aliasContext"] = aliasContext.toJson();
     }
     if (gerritProject != null) {
       _json["gerritProject"] = gerritProject;
@@ -3205,15 +3346,15 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("options")) {
-      options = new GetPolicyOptions.fromJson(_json["options"]);
+      options = GetPolicyOptions.fromJson(_json["options"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (options != null) {
-      _json["options"] = (options).toJson();
+      _json["options"] = options.toJson();
     }
     return _json;
   }
@@ -3240,7 +3381,7 @@ class GetPolicyOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (requestedPolicyVersion != null) {
       _json["requestedPolicyVersion"] = requestedPolicyVersion;
     }
@@ -3270,7 +3411,7 @@ class GitSourceContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (revisionId != null) {
       _json["revisionId"] = revisionId;
     }
@@ -3304,7 +3445,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1OperationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -3335,7 +3476,7 @@ class GrafeasV1beta1BuildDetails {
 
   GrafeasV1beta1BuildDetails.fromJson(core.Map _json) {
     if (_json.containsKey("provenance")) {
-      provenance = new BuildProvenance.fromJson(_json["provenance"]);
+      provenance = BuildProvenance.fromJson(_json["provenance"]);
     }
     if (_json.containsKey("provenanceBytes")) {
       provenanceBytes = _json["provenanceBytes"];
@@ -3344,9 +3485,9 @@ class GrafeasV1beta1BuildDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (provenance != null) {
-      _json["provenance"] = (provenance).toJson();
+      _json["provenance"] = provenance.toJson();
     }
     if (provenanceBytes != null) {
       _json["provenanceBytes"] = provenanceBytes;
@@ -3364,15 +3505,15 @@ class GrafeasV1beta1DeploymentDetails {
 
   GrafeasV1beta1DeploymentDetails.fromJson(core.Map _json) {
     if (_json.containsKey("deployment")) {
-      deployment = new Deployment.fromJson(_json["deployment"]);
+      deployment = Deployment.fromJson(_json["deployment"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deployment != null) {
-      _json["deployment"] = (deployment).toJson();
+      _json["deployment"] = deployment.toJson();
     }
     return _json;
   }
@@ -3387,15 +3528,15 @@ class GrafeasV1beta1DiscoveryDetails {
 
   GrafeasV1beta1DiscoveryDetails.fromJson(core.Map _json) {
     if (_json.containsKey("discovered")) {
-      discovered = new Discovered.fromJson(_json["discovered"]);
+      discovered = Discovered.fromJson(_json["discovered"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (discovered != null) {
-      _json["discovered"] = (discovered).toJson();
+      _json["discovered"] = discovered.toJson();
     }
     return _json;
   }
@@ -3410,15 +3551,15 @@ class GrafeasV1beta1ImageDetails {
 
   GrafeasV1beta1ImageDetails.fromJson(core.Map _json) {
     if (_json.containsKey("derivedImage")) {
-      derivedImage = new Derived.fromJson(_json["derivedImage"]);
+      derivedImage = Derived.fromJson(_json["derivedImage"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (derivedImage != null) {
-      _json["derivedImage"] = (derivedImage).toJson();
+      _json["derivedImage"] = derivedImage.toJson();
     }
     return _json;
   }
@@ -3432,7 +3573,7 @@ class GrafeasV1beta1IntotoArtifact {
 
   GrafeasV1beta1IntotoArtifact.fromJson(core.Map _json) {
     if (_json.containsKey("hashes")) {
-      hashes = new ArtifactHashes.fromJson(_json["hashes"]);
+      hashes = ArtifactHashes.fromJson(_json["hashes"]);
     }
     if (_json.containsKey("resourceUri")) {
       resourceUri = _json["resourceUri"];
@@ -3441,9 +3582,9 @@ class GrafeasV1beta1IntotoArtifact {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hashes != null) {
-      _json["hashes"] = (hashes).toJson();
+      _json["hashes"] = hashes.toJson();
     }
     if (resourceUri != null) {
       _json["resourceUri"] = resourceUri;
@@ -3465,23 +3606,22 @@ class GrafeasV1beta1IntotoDetails {
     if (_json.containsKey("signatures")) {
       signatures = (_json["signatures"] as core.List)
           .map<GrafeasV1beta1IntotoSignature>(
-              (value) => new GrafeasV1beta1IntotoSignature.fromJson(value))
+              (value) => GrafeasV1beta1IntotoSignature.fromJson(value))
           .toList();
     }
     if (_json.containsKey("signed")) {
-      signed = new Link.fromJson(_json["signed"]);
+      signed = Link.fromJson(_json["signed"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (signatures != null) {
-      _json["signatures"] =
-          signatures.map((value) => (value).toJson()).toList();
+      _json["signatures"] = signatures.map((value) => value.toJson()).toList();
     }
     if (signed != null) {
-      _json["signed"] = (signed).toJson();
+      _json["signed"] = signed.toJson();
     }
     return _json;
   }
@@ -3505,7 +3645,7 @@ class GrafeasV1beta1IntotoSignature {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (keyid != null) {
       _json["keyid"] = keyid;
     }
@@ -3525,15 +3665,15 @@ class GrafeasV1beta1PackageDetails {
 
   GrafeasV1beta1PackageDetails.fromJson(core.Map _json) {
     if (_json.containsKey("installation")) {
-      installation = new Installation.fromJson(_json["installation"]);
+      installation = Installation.fromJson(_json["installation"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (installation != null) {
-      _json["installation"] = (installation).toJson();
+      _json["installation"] = installation.toJson();
     }
     return _json;
   }
@@ -3599,12 +3739,12 @@ class GrafeasV1beta1VulnerabilityDetails {
     }
     if (_json.containsKey("packageIssue")) {
       packageIssue = (_json["packageIssue"] as core.List)
-          .map<PackageIssue>((value) => new PackageIssue.fromJson(value))
+          .map<PackageIssue>((value) => PackageIssue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("relatedUrls")) {
       relatedUrls = (_json["relatedUrls"] as core.List)
-          .map<RelatedUrl>((value) => new RelatedUrl.fromJson(value))
+          .map<RelatedUrl>((value) => RelatedUrl.fromJson(value))
           .toList();
     }
     if (_json.containsKey("severity")) {
@@ -3620,7 +3760,7 @@ class GrafeasV1beta1VulnerabilityDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cvssScore != null) {
       _json["cvssScore"] = cvssScore;
     }
@@ -3632,11 +3772,11 @@ class GrafeasV1beta1VulnerabilityDetails {
     }
     if (packageIssue != null) {
       _json["packageIssue"] =
-          packageIssue.map((value) => (value).toJson()).toList();
+          packageIssue.map((value) => value.toJson()).toList();
     }
     if (relatedUrls != null) {
       _json["relatedUrls"] =
-          relatedUrls.map((value) => (value).toJson()).toList();
+          relatedUrls.map((value) => value.toJson()).toList();
     }
     if (severity != null) {
       _json["severity"] = severity;
@@ -3661,9 +3801,7 @@ class Hash {
 
   /// Required. The hash value.
   core.String value;
-  core.List<core.int> get valueAsBytes {
-    return convert.base64.decode(value);
-  }
+  core.List<core.int> get valueAsBytes => convert.base64.decode(value);
 
   set valueAsBytes(core.List<core.int> _bytes) {
     value =
@@ -3683,7 +3821,7 @@ class Hash {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (type != null) {
       _json["type"] = type;
     }
@@ -3715,7 +3853,7 @@ class Hint {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (humanReadableName != null) {
       _json["humanReadableName"] = humanReadableName;
     }
@@ -3756,17 +3894,17 @@ class InToto {
     }
     if (_json.containsKey("expectedMaterials")) {
       expectedMaterials = (_json["expectedMaterials"] as core.List)
-          .map<ArtifactRule>((value) => new ArtifactRule.fromJson(value))
+          .map<ArtifactRule>((value) => ArtifactRule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("expectedProducts")) {
       expectedProducts = (_json["expectedProducts"] as core.List)
-          .map<ArtifactRule>((value) => new ArtifactRule.fromJson(value))
+          .map<ArtifactRule>((value) => ArtifactRule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("signingKeys")) {
       signingKeys = (_json["signingKeys"] as core.List)
-          .map<SigningKey>((value) => new SigningKey.fromJson(value))
+          .map<SigningKey>((value) => SigningKey.fromJson(value))
           .toList();
     }
     if (_json.containsKey("stepName")) {
@@ -3779,21 +3917,21 @@ class InToto {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (expectedCommand != null) {
       _json["expectedCommand"] = expectedCommand;
     }
     if (expectedMaterials != null) {
       _json["expectedMaterials"] =
-          expectedMaterials.map((value) => (value).toJson()).toList();
+          expectedMaterials.map((value) => value.toJson()).toList();
     }
     if (expectedProducts != null) {
       _json["expectedProducts"] =
-          expectedProducts.map((value) => (value).toJson()).toList();
+          expectedProducts.map((value) => value.toJson()).toList();
     }
     if (signingKeys != null) {
       _json["signingKeys"] =
-          signingKeys.map((value) => (value).toJson()).toList();
+          signingKeys.map((value) => value.toJson()).toList();
     }
     if (stepName != null) {
       _json["stepName"] = stepName;
@@ -3820,7 +3958,7 @@ class Installation {
   Installation.fromJson(core.Map _json) {
     if (_json.containsKey("location")) {
       location = (_json["location"] as core.List)
-          .map<Location>((value) => new Location.fromJson(value))
+          .map<Location>((value) => Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -3830,9 +3968,9 @@ class Installation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (location != null) {
-      _json["location"] = location.map((value) => (value).toJson()).toList();
+      _json["location"] = location.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -3862,7 +4000,7 @@ class KnowledgeBase {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -3914,7 +4052,7 @@ class Layer {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (arguments != null) {
       _json["arguments"] = arguments;
     }
@@ -3961,45 +4099,45 @@ class Link {
 
   Link.fromJson(core.Map _json) {
     if (_json.containsKey("byproducts")) {
-      byproducts = new ByProducts.fromJson(_json["byproducts"]);
+      byproducts = ByProducts.fromJson(_json["byproducts"]);
     }
     if (_json.containsKey("command")) {
       command = (_json["command"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("environment")) {
-      environment = new Environment.fromJson(_json["environment"]);
+      environment = Environment.fromJson(_json["environment"]);
     }
     if (_json.containsKey("materials")) {
       materials = (_json["materials"] as core.List)
           .map<GrafeasV1beta1IntotoArtifact>(
-              (value) => new GrafeasV1beta1IntotoArtifact.fromJson(value))
+              (value) => GrafeasV1beta1IntotoArtifact.fromJson(value))
           .toList();
     }
     if (_json.containsKey("products")) {
       products = (_json["products"] as core.List)
           .map<GrafeasV1beta1IntotoArtifact>(
-              (value) => new GrafeasV1beta1IntotoArtifact.fromJson(value))
+              (value) => GrafeasV1beta1IntotoArtifact.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (byproducts != null) {
-      _json["byproducts"] = (byproducts).toJson();
+      _json["byproducts"] = byproducts.toJson();
     }
     if (command != null) {
       _json["command"] = command;
     }
     if (environment != null) {
-      _json["environment"] = (environment).toJson();
+      _json["environment"] = environment.toJson();
     }
     if (materials != null) {
-      _json["materials"] = materials.map((value) => (value).toJson()).toList();
+      _json["materials"] = materials.map((value) => value.toJson()).toList();
     }
     if (products != null) {
-      _json["products"] = products.map((value) => (value).toJson()).toList();
+      _json["products"] = products.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4021,20 +4159,20 @@ class ListNoteOccurrencesResponse {
     }
     if (_json.containsKey("occurrences")) {
       occurrences = (_json["occurrences"] as core.List)
-          .map<Occurrence>((value) => new Occurrence.fromJson(value))
+          .map<Occurrence>((value) => Occurrence.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (occurrences != null) {
       _json["occurrences"] =
-          occurrences.map((value) => (value).toJson()).toList();
+          occurrences.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4058,19 +4196,19 @@ class ListNotesResponse {
     }
     if (_json.containsKey("notes")) {
       notes = (_json["notes"] as core.List)
-          .map<Note>((value) => new Note.fromJson(value))
+          .map<Note>((value) => Note.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (notes != null) {
-      _json["notes"] = notes.map((value) => (value).toJson()).toList();
+      _json["notes"] = notes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4094,20 +4232,20 @@ class ListOccurrencesResponse {
     }
     if (_json.containsKey("occurrences")) {
       occurrences = (_json["occurrences"] as core.List)
-          .map<Occurrence>((value) => new Occurrence.fromJson(value))
+          .map<Occurrence>((value) => Occurrence.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (occurrences != null) {
       _json["occurrences"] =
-          occurrences.map((value) => (value).toJson()).toList();
+          occurrences.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4131,20 +4269,20 @@ class ListScanConfigsResponse {
     }
     if (_json.containsKey("scanConfigs")) {
       scanConfigs = (_json["scanConfigs"] as core.List)
-          .map<ScanConfig>((value) => new ScanConfig.fromJson(value))
+          .map<ScanConfig>((value) => ScanConfig.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (scanConfigs != null) {
       _json["scanConfigs"] =
-          scanConfigs.map((value) => (value).toJson()).toList();
+          scanConfigs.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4174,13 +4312,13 @@ class Location {
       path = _json["path"];
     }
     if (_json.containsKey("version")) {
-      version = new Version.fromJson(_json["version"]);
+      version = Version.fromJson(_json["version"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cpeUri != null) {
       _json["cpeUri"] = cpeUri;
     }
@@ -4188,7 +4326,7 @@ class Location {
       _json["path"] = path;
     }
     if (version != null) {
-      _json["version"] = (version).toJson();
+      _json["version"] = version.toJson();
     }
     return _json;
   }
@@ -4268,29 +4406,28 @@ class Note {
 
   Note.fromJson(core.Map _json) {
     if (_json.containsKey("attestationAuthority")) {
-      attestationAuthority =
-          new Authority.fromJson(_json["attestationAuthority"]);
+      attestationAuthority = Authority.fromJson(_json["attestationAuthority"]);
     }
     if (_json.containsKey("baseImage")) {
-      baseImage = new Basis.fromJson(_json["baseImage"]);
+      baseImage = Basis.fromJson(_json["baseImage"]);
     }
     if (_json.containsKey("build")) {
-      build = new Build.fromJson(_json["build"]);
+      build = Build.fromJson(_json["build"]);
     }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
     if (_json.containsKey("deployable")) {
-      deployable = new Deployable.fromJson(_json["deployable"]);
+      deployable = Deployable.fromJson(_json["deployable"]);
     }
     if (_json.containsKey("discovery")) {
-      discovery = new Discovery.fromJson(_json["discovery"]);
+      discovery = Discovery.fromJson(_json["discovery"]);
     }
     if (_json.containsKey("expirationTime")) {
       expirationTime = _json["expirationTime"];
     }
     if (_json.containsKey("intoto")) {
-      intoto = new InToto.fromJson(_json["intoto"]);
+      intoto = InToto.fromJson(_json["intoto"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4302,7 +4439,7 @@ class Note {
       name = _json["name"];
     }
     if (_json.containsKey("package")) {
-      package = new Package.fromJson(_json["package"]);
+      package = Package.fromJson(_json["package"]);
     }
     if (_json.containsKey("relatedNoteNames")) {
       relatedNoteNames =
@@ -4310,7 +4447,7 @@ class Note {
     }
     if (_json.containsKey("relatedUrl")) {
       relatedUrl = (_json["relatedUrl"] as core.List)
-          .map<RelatedUrl>((value) => new RelatedUrl.fromJson(value))
+          .map<RelatedUrl>((value) => RelatedUrl.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shortDescription")) {
@@ -4320,36 +4457,36 @@ class Note {
       updateTime = _json["updateTime"];
     }
     if (_json.containsKey("vulnerability")) {
-      vulnerability = new Vulnerability.fromJson(_json["vulnerability"]);
+      vulnerability = Vulnerability.fromJson(_json["vulnerability"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attestationAuthority != null) {
-      _json["attestationAuthority"] = (attestationAuthority).toJson();
+      _json["attestationAuthority"] = attestationAuthority.toJson();
     }
     if (baseImage != null) {
-      _json["baseImage"] = (baseImage).toJson();
+      _json["baseImage"] = baseImage.toJson();
     }
     if (build != null) {
-      _json["build"] = (build).toJson();
+      _json["build"] = build.toJson();
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
     if (deployable != null) {
-      _json["deployable"] = (deployable).toJson();
+      _json["deployable"] = deployable.toJson();
     }
     if (discovery != null) {
-      _json["discovery"] = (discovery).toJson();
+      _json["discovery"] = discovery.toJson();
     }
     if (expirationTime != null) {
       _json["expirationTime"] = expirationTime;
     }
     if (intoto != null) {
-      _json["intoto"] = (intoto).toJson();
+      _json["intoto"] = intoto.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4361,14 +4498,13 @@ class Note {
       _json["name"] = name;
     }
     if (package != null) {
-      _json["package"] = (package).toJson();
+      _json["package"] = package.toJson();
     }
     if (relatedNoteNames != null) {
       _json["relatedNoteNames"] = relatedNoteNames;
     }
     if (relatedUrl != null) {
-      _json["relatedUrl"] =
-          relatedUrl.map((value) => (value).toJson()).toList();
+      _json["relatedUrl"] = relatedUrl.map((value) => value.toJson()).toList();
     }
     if (shortDescription != null) {
       _json["shortDescription"] = shortDescription;
@@ -4377,7 +4513,7 @@ class Note {
       _json["updateTime"] = updateTime;
     }
     if (vulnerability != null) {
-      _json["vulnerability"] = (vulnerability).toJson();
+      _json["vulnerability"] = vulnerability.toJson();
     }
     return _json;
   }
@@ -4451,32 +4587,30 @@ class Occurrence {
 
   Occurrence.fromJson(core.Map _json) {
     if (_json.containsKey("attestation")) {
-      attestation = new Details.fromJson(_json["attestation"]);
+      attestation = Details.fromJson(_json["attestation"]);
     }
     if (_json.containsKey("build")) {
-      build = new GrafeasV1beta1BuildDetails.fromJson(_json["build"]);
+      build = GrafeasV1beta1BuildDetails.fromJson(_json["build"]);
     }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
     if (_json.containsKey("deployment")) {
       deployment =
-          new GrafeasV1beta1DeploymentDetails.fromJson(_json["deployment"]);
+          GrafeasV1beta1DeploymentDetails.fromJson(_json["deployment"]);
     }
     if (_json.containsKey("derivedImage")) {
-      derivedImage =
-          new GrafeasV1beta1ImageDetails.fromJson(_json["derivedImage"]);
+      derivedImage = GrafeasV1beta1ImageDetails.fromJson(_json["derivedImage"]);
     }
     if (_json.containsKey("discovered")) {
-      discovered =
-          new GrafeasV1beta1DiscoveryDetails.fromJson(_json["discovered"]);
+      discovered = GrafeasV1beta1DiscoveryDetails.fromJson(_json["discovered"]);
     }
     if (_json.containsKey("installation")) {
       installation =
-          new GrafeasV1beta1PackageDetails.fromJson(_json["installation"]);
+          GrafeasV1beta1PackageDetails.fromJson(_json["installation"]);
     }
     if (_json.containsKey("intoto")) {
-      intoto = new GrafeasV1beta1IntotoDetails.fromJson(_json["intoto"]);
+      intoto = GrafeasV1beta1IntotoDetails.fromJson(_json["intoto"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4491,43 +4625,43 @@ class Occurrence {
       remediation = _json["remediation"];
     }
     if (_json.containsKey("resource")) {
-      resource = new Resource.fromJson(_json["resource"]);
+      resource = Resource.fromJson(_json["resource"]);
     }
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
     }
     if (_json.containsKey("vulnerability")) {
-      vulnerability = new GrafeasV1beta1VulnerabilityDetails.fromJson(
-          _json["vulnerability"]);
+      vulnerability =
+          GrafeasV1beta1VulnerabilityDetails.fromJson(_json["vulnerability"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attestation != null) {
-      _json["attestation"] = (attestation).toJson();
+      _json["attestation"] = attestation.toJson();
     }
     if (build != null) {
-      _json["build"] = (build).toJson();
+      _json["build"] = build.toJson();
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
     if (deployment != null) {
-      _json["deployment"] = (deployment).toJson();
+      _json["deployment"] = deployment.toJson();
     }
     if (derivedImage != null) {
-      _json["derivedImage"] = (derivedImage).toJson();
+      _json["derivedImage"] = derivedImage.toJson();
     }
     if (discovered != null) {
-      _json["discovered"] = (discovered).toJson();
+      _json["discovered"] = discovered.toJson();
     }
     if (installation != null) {
-      _json["installation"] = (installation).toJson();
+      _json["installation"] = installation.toJson();
     }
     if (intoto != null) {
-      _json["intoto"] = (intoto).toJson();
+      _json["intoto"] = intoto.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4542,13 +4676,13 @@ class Occurrence {
       _json["remediation"] = remediation;
     }
     if (resource != null) {
-      _json["resource"] = (resource).toJson();
+      _json["resource"] = resource.toJson();
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
     }
     if (vulnerability != null) {
-      _json["vulnerability"] = (vulnerability).toJson();
+      _json["vulnerability"] = vulnerability.toJson();
     }
     return _json;
   }
@@ -4569,7 +4703,7 @@ class Package {
   Package.fromJson(core.Map _json) {
     if (_json.containsKey("distribution")) {
       distribution = (_json["distribution"] as core.List)
-          .map<Distribution>((value) => new Distribution.fromJson(value))
+          .map<Distribution>((value) => Distribution.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -4579,10 +4713,10 @@ class Package {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (distribution != null) {
       _json["distribution"] =
-          distribution.map((value) => (value).toJson()).toList();
+          distribution.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -4609,11 +4743,10 @@ class PackageIssue {
   PackageIssue.fromJson(core.Map _json) {
     if (_json.containsKey("affectedLocation")) {
       affectedLocation =
-          new VulnerabilityLocation.fromJson(_json["affectedLocation"]);
+          VulnerabilityLocation.fromJson(_json["affectedLocation"]);
     }
     if (_json.containsKey("fixedLocation")) {
-      fixedLocation =
-          new VulnerabilityLocation.fromJson(_json["fixedLocation"]);
+      fixedLocation = VulnerabilityLocation.fromJson(_json["fixedLocation"]);
     }
     if (_json.containsKey("severityName")) {
       severityName = _json["severityName"];
@@ -4622,12 +4755,12 @@ class PackageIssue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (affectedLocation != null) {
-      _json["affectedLocation"] = (affectedLocation).toJson();
+      _json["affectedLocation"] = affectedLocation.toJson();
     }
     if (fixedLocation != null) {
-      _json["fixedLocation"] = (fixedLocation).toJson();
+      _json["fixedLocation"] = fixedLocation.toJson();
     }
     if (severityName != null) {
       _json["severityName"] = severityName;
@@ -4693,7 +4826,7 @@ class PgpSignedAttestation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentType != null) {
       _json["contentType"] = contentType;
     }
@@ -4754,9 +4887,7 @@ class Policy {
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.base64.decode(etag);
-  }
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -4785,7 +4916,7 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
       bindings = (_json["bindings"] as core.List)
-          .map<Binding>((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -4798,9 +4929,9 @@ class Policy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -4834,7 +4965,7 @@ class ProjectRepoId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (projectId != null) {
       _json["projectId"] = projectId;
     }
@@ -4866,7 +4997,7 @@ class RelatedUrl {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (label != null) {
       _json["label"] = label;
     }
@@ -4889,7 +5020,7 @@ class RepoId {
 
   RepoId.fromJson(core.Map _json) {
     if (_json.containsKey("projectRepoId")) {
-      projectRepoId = new ProjectRepoId.fromJson(_json["projectRepoId"]);
+      projectRepoId = ProjectRepoId.fromJson(_json["projectRepoId"]);
     }
     if (_json.containsKey("uid")) {
       uid = _json["uid"];
@@ -4898,9 +5029,9 @@ class RepoId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (projectRepoId != null) {
-      _json["projectRepoId"] = (projectRepoId).toJson();
+      _json["projectRepoId"] = projectRepoId.toJson();
     }
     if (uid != null) {
       _json["uid"] = uid;
@@ -4927,7 +5058,7 @@ class Resource {
 
   Resource.fromJson(core.Map _json) {
     if (_json.containsKey("contentHash")) {
-      contentHash = new Hash.fromJson(_json["contentHash"]);
+      contentHash = Hash.fromJson(_json["contentHash"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -4939,9 +5070,9 @@ class Resource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentHash != null) {
-      _json["contentHash"] = (contentHash).toJson();
+      _json["contentHash"] = contentHash.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -4996,7 +5127,7 @@ class ScanConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -5028,15 +5159,15 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("policy")) {
-      policy = new Policy.fromJson(_json["policy"]);
+      policy = Policy.fromJson(_json["policy"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = (policy).toJson();
+      _json["policy"] = policy.toJson();
     }
     return _json;
   }
@@ -5080,9 +5211,7 @@ class Signature {
   /// explicitly. Alternatively, a message might have a canonical serialization
   /// that can always be unambiguously computed to derive the payload.
   core.String signature;
-  core.List<core.int> get signatureAsBytes {
-    return convert.base64.decode(signature);
-  }
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature);
 
   set signatureAsBytes(core.List<core.int> _bytes) {
     signature =
@@ -5102,7 +5231,7 @@ class Signature {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (publicKeyId != null) {
       _json["publicKeyId"] = publicKeyId;
     }
@@ -5155,7 +5284,7 @@ class SigningKey {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (keyId != null) {
       _json["keyId"] = keyId;
     }
@@ -5200,39 +5329,39 @@ class Source {
   Source.fromJson(core.Map _json) {
     if (_json.containsKey("additionalContexts")) {
       additionalContexts = (_json["additionalContexts"] as core.List)
-          .map<SourceContext>((value) => new SourceContext.fromJson(value))
+          .map<SourceContext>((value) => SourceContext.fromJson(value))
           .toList();
     }
     if (_json.containsKey("artifactStorageSourceUri")) {
       artifactStorageSourceUri = _json["artifactStorageSourceUri"];
     }
     if (_json.containsKey("context")) {
-      context = new SourceContext.fromJson(_json["context"]);
+      context = SourceContext.fromJson(_json["context"]);
     }
     if (_json.containsKey("fileHashes")) {
       fileHashes = commons.mapMap<core.Map, FileHashes>(
           _json["fileHashes"].cast<core.String, core.Map>(),
-          (core.Map item) => new FileHashes.fromJson(item));
+          (core.Map item) => FileHashes.fromJson(item));
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (additionalContexts != null) {
       _json["additionalContexts"] =
-          additionalContexts.map((value) => (value).toJson()).toList();
+          additionalContexts.map((value) => value.toJson()).toList();
     }
     if (artifactStorageSourceUri != null) {
       _json["artifactStorageSourceUri"] = artifactStorageSourceUri;
     }
     if (context != null) {
-      _json["context"] = (context).toJson();
+      _json["context"] = context.toJson();
     }
     if (fileHashes != null) {
       _json["fileHashes"] =
           commons.mapMap<FileHashes, core.Map<core.String, core.Object>>(
-              fileHashes, (FileHashes item) => (item).toJson());
+              fileHashes, (FileHashes item) => item.toJson());
     }
     return _json;
   }
@@ -5257,13 +5386,13 @@ class SourceContext {
 
   SourceContext.fromJson(core.Map _json) {
     if (_json.containsKey("cloudRepo")) {
-      cloudRepo = new CloudRepoSourceContext.fromJson(_json["cloudRepo"]);
+      cloudRepo = CloudRepoSourceContext.fromJson(_json["cloudRepo"]);
     }
     if (_json.containsKey("gerrit")) {
-      gerrit = new GerritSourceContext.fromJson(_json["gerrit"]);
+      gerrit = GerritSourceContext.fromJson(_json["gerrit"]);
     }
     if (_json.containsKey("git")) {
-      git = new GitSourceContext.fromJson(_json["git"]);
+      git = GitSourceContext.fromJson(_json["git"]);
     }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
@@ -5272,15 +5401,15 @@ class SourceContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cloudRepo != null) {
-      _json["cloudRepo"] = (cloudRepo).toJson();
+      _json["cloudRepo"] = cloudRepo.toJson();
     }
     if (gerrit != null) {
-      _json["gerrit"] = (gerrit).toJson();
+      _json["gerrit"] = gerrit.toJson();
     }
     if (git != null) {
-      _json["git"] = (git).toJson();
+      _json["git"] = git.toJson();
     }
     if (labels != null) {
       _json["labels"] = labels;
@@ -5330,7 +5459,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -5362,7 +5491,7 @@ class TestIamPermissionsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -5386,7 +5515,7 @@ class TestIamPermissionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -5434,7 +5563,7 @@ class Version {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (epoch != null) {
       _json["epoch"] = epoch;
     }
@@ -5492,11 +5621,11 @@ class Vulnerability {
       cvssScore = _json["cvssScore"].toDouble();
     }
     if (_json.containsKey("cvssV3")) {
-      cvssV3 = new CVSSv3.fromJson(_json["cvssV3"]);
+      cvssV3 = CVSSv3.fromJson(_json["cvssV3"]);
     }
     if (_json.containsKey("details")) {
       details = (_json["details"] as core.List)
-          .map<Detail>((value) => new Detail.fromJson(value))
+          .map<Detail>((value) => Detail.fromJson(value))
           .toList();
     }
     if (_json.containsKey("severity")) {
@@ -5507,22 +5636,22 @@ class Vulnerability {
     }
     if (_json.containsKey("windowsDetails")) {
       windowsDetails = (_json["windowsDetails"] as core.List)
-          .map<WindowsDetail>((value) => new WindowsDetail.fromJson(value))
+          .map<WindowsDetail>((value) => WindowsDetail.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cvssScore != null) {
       _json["cvssScore"] = cvssScore;
     }
     if (cvssV3 != null) {
-      _json["cvssV3"] = (cvssV3).toJson();
+      _json["cvssV3"] = cvssV3.toJson();
     }
     if (details != null) {
-      _json["details"] = details.map((value) => (value).toJson()).toList();
+      _json["details"] = details.map((value) => value.toJson()).toList();
     }
     if (severity != null) {
       _json["severity"] = severity;
@@ -5532,7 +5661,7 @@ class Vulnerability {
     }
     if (windowsDetails != null) {
       _json["windowsDetails"] =
-          windowsDetails.map((value) => (value).toJson()).toList();
+          windowsDetails.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5561,13 +5690,13 @@ class VulnerabilityLocation {
       package = _json["package"];
     }
     if (_json.containsKey("version")) {
-      version = new Version.fromJson(_json["version"]);
+      version = Version.fromJson(_json["version"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cpeUri != null) {
       _json["cpeUri"] = cpeUri;
     }
@@ -5575,7 +5704,7 @@ class VulnerabilityLocation {
       _json["package"] = package;
     }
     if (version != null) {
-      _json["version"] = (version).toJson();
+      _json["version"] = version.toJson();
     }
     return _json;
   }
@@ -5593,16 +5722,16 @@ class VulnerabilityOccurrencesSummary {
     if (_json.containsKey("counts")) {
       counts = (_json["counts"] as core.List)
           .map<FixableTotalByDigest>(
-              (value) => new FixableTotalByDigest.fromJson(value))
+              (value) => FixableTotalByDigest.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (counts != null) {
-      _json["counts"] = counts.map((value) => (value).toJson()).toList();
+      _json["counts"] = counts.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5637,7 +5766,7 @@ class WindowsDetail {
     }
     if (_json.containsKey("fixingKbs")) {
       fixingKbs = (_json["fixingKbs"] as core.List)
-          .map<KnowledgeBase>((value) => new KnowledgeBase.fromJson(value))
+          .map<KnowledgeBase>((value) => KnowledgeBase.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -5647,7 +5776,7 @@ class WindowsDetail {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cpeUri != null) {
       _json["cpeUri"] = cpeUri;
     }
@@ -5655,7 +5784,7 @@ class WindowsDetail {
       _json["description"] = description;
     }
     if (fixingKbs != null) {
-      _json["fixingKbs"] = fixingKbs.map((value) => (value).toJson()).toList();
+      _json["fixingKbs"] = fixingKbs.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;

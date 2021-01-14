@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.cloudscheduler.v1;
 
@@ -24,20 +42,20 @@ class CloudschedulerApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   CloudschedulerApi(http.Client client,
       {core.String rootUrl = "https://cloudscheduler.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsResourceApi get locations =>
-      new ProjectsLocationsResourceApi(_requester);
+      ProjectsLocationsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -46,7 +64,7 @@ class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsJobsResourceApi get jobs =>
-      new ProjectsLocationsJobsResourceApi(_requester);
+      ProjectsLocationsJobsResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -68,16 +86,19 @@ class ProjectsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Location> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -85,13 +106,16 @@ class ProjectsLocationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Location.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Location.fromJson(data));
   }
 
   /// Lists information about the supported locations for this service.
@@ -117,20 +141,22 @@ class ProjectsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.String filter,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListLocationsResponse> list(
+    core.String name, {
+    core.String pageToken,
+    core.String filter,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -148,13 +174,16 @@ class ProjectsLocationsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListLocationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListLocationsResponse.fromJson(data));
   }
 }
 
@@ -184,20 +213,23 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Job> create(Job request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Job> create(
+    Job request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -205,13 +237,16 @@ class ProjectsLocationsJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Job.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Job.fromJson(data));
   }
 
   /// Deletes a job.
@@ -232,16 +267,19 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -249,13 +287,16 @@ class ProjectsLocationsJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a job.
@@ -276,16 +317,19 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Job> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Job> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -293,13 +337,16 @@ class ProjectsLocationsJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Job.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Job.fromJson(data));
   }
 
   /// Lists jobs.
@@ -332,17 +379,21 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListJobsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListJobsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -356,13 +407,16 @@ class ProjectsLocationsJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListJobsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListJobsResponse.fromJson(data));
   }
 
   /// Updates a job. If successful, the updated Job is returned. If the job does
@@ -401,20 +455,24 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Job> patch(Job request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Job> patch(
+    Job request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -425,13 +483,16 @@ class ProjectsLocationsJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Job.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Job.fromJson(data));
   }
 
   /// Pauses a job. If a job is paused then the system will stop executing the
@@ -457,20 +518,23 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Job> pause(PauseJobRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Job> pause(
+    PauseJobRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -478,13 +542,16 @@ class ProjectsLocationsJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':pause';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Job.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Job.fromJson(data));
   }
 
   /// Resume a job. This method reenables a job after it has been
@@ -510,20 +577,23 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Job> resume(ResumeJobRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Job> resume(
+    ResumeJobRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -531,13 +601,16 @@ class ProjectsLocationsJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':resume';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Job.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Job.fromJson(data));
   }
 
   /// Forces a job to run now. When this method is called, Cloud Scheduler will
@@ -561,20 +634,23 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Job> run(RunJobRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Job> run(
+    RunJobRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -582,13 +658,16 @@ class ProjectsLocationsJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':run';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Job.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Job.fromJson(data));
   }
 }
 
@@ -608,9 +687,7 @@ class AppEngineHttpTarget {
   /// is POST or PUT. It will result in invalid argument error to set a body on
   /// a job with an incompatible HttpMethod.
   core.String body;
-  core.List<core.int> get bodyAsBytes {
-    return convert.base64.decode(body);
-  }
+  core.List<core.int> get bodyAsBytes => convert.base64.decode(body);
 
   set bodyAsBytes(core.List<core.int> _bytes) {
     body =
@@ -660,8 +737,7 @@ class AppEngineHttpTarget {
 
   AppEngineHttpTarget.fromJson(core.Map _json) {
     if (_json.containsKey("appEngineRouting")) {
-      appEngineRouting =
-          new AppEngineRouting.fromJson(_json["appEngineRouting"]);
+      appEngineRouting = AppEngineRouting.fromJson(_json["appEngineRouting"]);
     }
     if (_json.containsKey("body")) {
       body = _json["body"];
@@ -679,9 +755,9 @@ class AppEngineHttpTarget {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appEngineRouting != null) {
-      _json["appEngineRouting"] = (appEngineRouting).toJson();
+      _json["appEngineRouting"] = appEngineRouting.toJson();
     }
     if (body != null) {
       _json["body"] = body;
@@ -773,7 +849,7 @@ class AppEngineRouting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (host != null) {
       _json["host"] = host;
     }
@@ -802,7 +878,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -818,9 +894,7 @@ class HttpTarget {
   /// POST, PUT, or PATCH. It is an error to set body on a job with an
   /// incompatible HttpMethod.
   core.String body;
-  core.List<core.int> get bodyAsBytes {
-    return convert.base64.decode(body);
-  }
+  core.List<core.int> get bodyAsBytes => convert.base64.decode(body);
 
   set bodyAsBytes(core.List<core.int> _bytes) {
     body =
@@ -887,10 +961,10 @@ class HttpTarget {
       httpMethod = _json["httpMethod"];
     }
     if (_json.containsKey("oauthToken")) {
-      oauthToken = new OAuthToken.fromJson(_json["oauthToken"]);
+      oauthToken = OAuthToken.fromJson(_json["oauthToken"]);
     }
     if (_json.containsKey("oidcToken")) {
-      oidcToken = new OidcToken.fromJson(_json["oidcToken"]);
+      oidcToken = OidcToken.fromJson(_json["oidcToken"]);
     }
     if (_json.containsKey("uri")) {
       uri = _json["uri"];
@@ -899,7 +973,7 @@ class HttpTarget {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (body != null) {
       _json["body"] = body;
     }
@@ -910,10 +984,10 @@ class HttpTarget {
       _json["httpMethod"] = httpMethod;
     }
     if (oauthToken != null) {
-      _json["oauthToken"] = (oauthToken).toJson();
+      _json["oauthToken"] = oauthToken.toJson();
     }
     if (oidcToken != null) {
-      _json["oidcToken"] = (oidcToken).toJson();
+      _json["oidcToken"] = oidcToken.toJson();
     }
     if (uri != null) {
       _json["uri"] = uri;
@@ -1021,7 +1095,7 @@ class Job {
   Job.fromJson(core.Map _json) {
     if (_json.containsKey("appEngineHttpTarget")) {
       appEngineHttpTarget =
-          new AppEngineHttpTarget.fromJson(_json["appEngineHttpTarget"]);
+          AppEngineHttpTarget.fromJson(_json["appEngineHttpTarget"]);
     }
     if (_json.containsKey("attemptDeadline")) {
       attemptDeadline = _json["attemptDeadline"];
@@ -1030,7 +1104,7 @@ class Job {
       description = _json["description"];
     }
     if (_json.containsKey("httpTarget")) {
-      httpTarget = new HttpTarget.fromJson(_json["httpTarget"]);
+      httpTarget = HttpTarget.fromJson(_json["httpTarget"]);
     }
     if (_json.containsKey("lastAttemptTime")) {
       lastAttemptTime = _json["lastAttemptTime"];
@@ -1039,10 +1113,10 @@ class Job {
       name = _json["name"];
     }
     if (_json.containsKey("pubsubTarget")) {
-      pubsubTarget = new PubsubTarget.fromJson(_json["pubsubTarget"]);
+      pubsubTarget = PubsubTarget.fromJson(_json["pubsubTarget"]);
     }
     if (_json.containsKey("retryConfig")) {
-      retryConfig = new RetryConfig.fromJson(_json["retryConfig"]);
+      retryConfig = RetryConfig.fromJson(_json["retryConfig"]);
     }
     if (_json.containsKey("schedule")) {
       schedule = _json["schedule"];
@@ -1054,7 +1128,7 @@ class Job {
       state = _json["state"];
     }
     if (_json.containsKey("status")) {
-      status = new Status.fromJson(_json["status"]);
+      status = Status.fromJson(_json["status"]);
     }
     if (_json.containsKey("timeZone")) {
       timeZone = _json["timeZone"];
@@ -1066,9 +1140,9 @@ class Job {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appEngineHttpTarget != null) {
-      _json["appEngineHttpTarget"] = (appEngineHttpTarget).toJson();
+      _json["appEngineHttpTarget"] = appEngineHttpTarget.toJson();
     }
     if (attemptDeadline != null) {
       _json["attemptDeadline"] = attemptDeadline;
@@ -1077,7 +1151,7 @@ class Job {
       _json["description"] = description;
     }
     if (httpTarget != null) {
-      _json["httpTarget"] = (httpTarget).toJson();
+      _json["httpTarget"] = httpTarget.toJson();
     }
     if (lastAttemptTime != null) {
       _json["lastAttemptTime"] = lastAttemptTime;
@@ -1086,10 +1160,10 @@ class Job {
       _json["name"] = name;
     }
     if (pubsubTarget != null) {
-      _json["pubsubTarget"] = (pubsubTarget).toJson();
+      _json["pubsubTarget"] = pubsubTarget.toJson();
     }
     if (retryConfig != null) {
-      _json["retryConfig"] = (retryConfig).toJson();
+      _json["retryConfig"] = retryConfig.toJson();
     }
     if (schedule != null) {
       _json["schedule"] = schedule;
@@ -1101,7 +1175,7 @@ class Job {
       _json["state"] = state;
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     if (timeZone != null) {
       _json["timeZone"] = timeZone;
@@ -1130,7 +1204,7 @@ class ListJobsResponse {
   ListJobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("jobs")) {
       jobs = (_json["jobs"] as core.List)
-          .map<Job>((value) => new Job.fromJson(value))
+          .map<Job>((value) => Job.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -1140,9 +1214,9 @@ class ListJobsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (jobs != null) {
-      _json["jobs"] = jobs.map((value) => (value).toJson()).toList();
+      _json["jobs"] = jobs.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -1164,7 +1238,7 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
       locations = (_json["locations"] as core.List)
-          .map<Location>((value) => new Location.fromJson(value))
+          .map<Location>((value) => Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -1174,9 +1248,9 @@ class ListLocationsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (locations != null) {
-      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+      _json["locations"] = locations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -1232,7 +1306,7 @@ class Location {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -1281,7 +1355,7 @@ class OAuthToken {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (scope != null) {
       _json["scope"] = scope;
     }
@@ -1321,7 +1395,7 @@ class OidcToken {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audience != null) {
       _json["audience"] = audience;
     }
@@ -1340,7 +1414,7 @@ class PauseJobRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1362,9 +1436,7 @@ class PubsubMessage {
   /// The message data field. If this field is empty, the message must contain
   /// at least one attribute.
   core.String data;
-  core.List<core.int> get dataAsBytes {
-    return convert.base64.decode(data);
-  }
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -1413,7 +1485,7 @@ class PubsubMessage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attributes != null) {
       _json["attributes"] = attributes;
     }
@@ -1443,9 +1515,7 @@ class PubsubTarget {
   /// The message payload for PubsubMessage. Pubsub message must contain either
   /// non-empty data, or at least one attribute.
   core.String data;
-  core.List<core.int> get dataAsBytes {
-    return convert.base64.decode(data);
-  }
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -1477,7 +1547,7 @@ class PubsubTarget {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attributes != null) {
       _json["attributes"] = attributes;
     }
@@ -1499,7 +1569,7 @@ class ResumeJobRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1569,7 +1639,7 @@ class RetryConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maxBackoffDuration != null) {
       _json["maxBackoffDuration"] = maxBackoffDuration;
     }
@@ -1597,7 +1667,7 @@ class RunJobRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1643,7 +1713,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }

@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.discovery.v1;
 
@@ -20,13 +38,13 @@ const core.String USER_AGENT = 'dart-api-client discovery/v1';
 class DiscoveryApi {
   final commons.ApiRequester _requester;
 
-  ApisResourceApi get apis => new ApisResourceApi(_requester);
+  ApisResourceApi get apis => ApisResourceApi(_requester);
 
   DiscoveryApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
       core.String servicePath = "discovery/v1/"})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ApisResourceApi {
@@ -52,20 +70,23 @@ class ApisResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RestDescription> getRest(core.String api, core.String version,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RestDescription> getRest(
+    core.String api,
+    core.String version, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (api == null) {
-      throw new core.ArgumentError("Parameter api is required.");
+      throw core.ArgumentError("Parameter api is required.");
     }
     if (version == null) {
-      throw new core.ArgumentError("Parameter version is required.");
+      throw core.ArgumentError("Parameter version is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -77,13 +98,16 @@ class ApisResourceApi {
         commons.Escaper.ecapeVariable('$version') +
         '/rest';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RestDescription.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RestDescription.fromJson(data));
   }
 
   /// Retrieve the list of APIs supported at this endpoint.
@@ -104,14 +128,17 @@ class ApisResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DirectoryList> list(
-      {core.String name, core.bool preferred, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DirectoryList> list({
+    core.String name,
+    core.bool preferred,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name != null) {
       _queryParams["name"] = [name];
@@ -125,13 +152,16 @@ class ApisResourceApi {
 
     _url = 'apis';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DirectoryList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DirectoryList.fromJson(data));
   }
 }
 
@@ -156,7 +186,7 @@ class DirectoryListItemsIcons {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x16 != null) {
       _json["x16"] = x16;
     }
@@ -220,7 +250,7 @@ class DirectoryListItems {
       documentationLink = _json["documentationLink"];
     }
     if (_json.containsKey("icons")) {
-      icons = new DirectoryListItemsIcons.fromJson(_json["icons"]);
+      icons = DirectoryListItemsIcons.fromJson(_json["icons"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -247,7 +277,7 @@ class DirectoryListItems {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -261,7 +291,7 @@ class DirectoryListItems {
       _json["documentationLink"] = documentationLink;
     }
     if (icons != null) {
-      _json["icons"] = (icons).toJson();
+      _json["icons"] = icons.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -307,7 +337,7 @@ class DirectoryList {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
           .map<DirectoryListItems>(
-              (value) => new DirectoryListItems.fromJson(value))
+              (value) => DirectoryListItems.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -317,12 +347,12 @@ class DirectoryList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (discoveryVersion != null) {
       _json["discoveryVersion"] = discoveryVersion;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -346,7 +376,7 @@ class JsonSchemaAnnotations {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (required != null) {
       _json["required"] = required;
     }
@@ -371,7 +401,7 @@ class JsonSchemaVariantMap {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (P_ref != null) {
       _json["\$ref"] = P_ref;
     }
@@ -401,19 +431,19 @@ class JsonSchemaVariant {
     if (_json.containsKey("map")) {
       map = (_json["map"] as core.List)
           .map<JsonSchemaVariantMap>(
-              (value) => new JsonSchemaVariantMap.fromJson(value))
+              (value) => JsonSchemaVariantMap.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (discriminant != null) {
       _json["discriminant"] = discriminant;
     }
     if (map != null) {
-      _json["map"] = map.map((value) => (value).toJson()).toList();
+      _json["map"] = map.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -501,11 +531,10 @@ class JsonSchema {
       P_ref = _json["\$ref"];
     }
     if (_json.containsKey("additionalProperties")) {
-      additionalProperties =
-          new JsonSchema.fromJson(_json["additionalProperties"]);
+      additionalProperties = JsonSchema.fromJson(_json["additionalProperties"]);
     }
     if (_json.containsKey("annotations")) {
-      annotations = new JsonSchemaAnnotations.fromJson(_json["annotations"]);
+      annotations = JsonSchemaAnnotations.fromJson(_json["annotations"]);
     }
     if (_json.containsKey("default")) {
       default_ = _json["default"];
@@ -527,7 +556,7 @@ class JsonSchema {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = new JsonSchema.fromJson(_json["items"]);
+      items = JsonSchema.fromJson(_json["items"]);
     }
     if (_json.containsKey("location")) {
       location = _json["location"];
@@ -544,7 +573,7 @@ class JsonSchema {
     if (_json.containsKey("properties")) {
       properties = commons.mapMap<core.Map, JsonSchema>(
           _json["properties"].cast<core.String, core.Map>(),
-          (core.Map item) => new JsonSchema.fromJson(item));
+          (core.Map item) => JsonSchema.fromJson(item));
     }
     if (_json.containsKey("readOnly")) {
       readOnly = _json["readOnly"];
@@ -559,21 +588,21 @@ class JsonSchema {
       type = _json["type"];
     }
     if (_json.containsKey("variant")) {
-      variant = new JsonSchemaVariant.fromJson(_json["variant"]);
+      variant = JsonSchemaVariant.fromJson(_json["variant"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (P_ref != null) {
       _json["\$ref"] = P_ref;
     }
     if (additionalProperties != null) {
-      _json["additionalProperties"] = (additionalProperties).toJson();
+      _json["additionalProperties"] = additionalProperties.toJson();
     }
     if (annotations != null) {
-      _json["annotations"] = (annotations).toJson();
+      _json["annotations"] = annotations.toJson();
     }
     if (default_ != null) {
       _json["default"] = default_;
@@ -594,7 +623,7 @@ class JsonSchema {
       _json["id"] = id;
     }
     if (items != null) {
-      _json["items"] = (items).toJson();
+      _json["items"] = items.toJson();
     }
     if (location != null) {
       _json["location"] = location;
@@ -611,7 +640,7 @@ class JsonSchema {
     if (properties != null) {
       _json["properties"] =
           commons.mapMap<JsonSchema, core.Map<core.String, core.Object>>(
-              properties, (JsonSchema item) => (item).toJson());
+              properties, (JsonSchema item) => item.toJson());
     }
     if (readOnly != null) {
       _json["readOnly"] = readOnly;
@@ -626,7 +655,7 @@ class JsonSchema {
       _json["type"] = type;
     }
     if (variant != null) {
-      _json["variant"] = (variant).toJson();
+      _json["variant"] = variant.toJson();
     }
     return _json;
   }
@@ -647,7 +676,7 @@ class RestDescriptionAuthOauth2ScopesValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -667,17 +696,17 @@ class RestDescriptionAuthOauth2 {
       scopes = commons.mapMap<core.Map, RestDescriptionAuthOauth2ScopesValue>(
           _json["scopes"].cast<core.String, core.Map>(),
           (core.Map item) =>
-              new RestDescriptionAuthOauth2ScopesValue.fromJson(item));
+              RestDescriptionAuthOauth2ScopesValue.fromJson(item));
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (scopes != null) {
       _json["scopes"] = commons.mapMap<RestDescriptionAuthOauth2ScopesValue,
-              core.Map<core.String, core.Object>>(scopes,
-          (RestDescriptionAuthOauth2ScopesValue item) => (item).toJson());
+              core.Map<core.String, core.Object>>(
+          scopes, (RestDescriptionAuthOauth2ScopesValue item) => item.toJson());
     }
     return _json;
   }
@@ -692,15 +721,15 @@ class RestDescriptionAuth {
 
   RestDescriptionAuth.fromJson(core.Map _json) {
     if (_json.containsKey("oauth2")) {
-      oauth2 = new RestDescriptionAuthOauth2.fromJson(_json["oauth2"]);
+      oauth2 = RestDescriptionAuthOauth2.fromJson(_json["oauth2"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (oauth2 != null) {
-      _json["oauth2"] = (oauth2).toJson();
+      _json["oauth2"] = oauth2.toJson();
     }
     return _json;
   }
@@ -727,7 +756,7 @@ class RestDescriptionIcons {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x16 != null) {
       _json["x16"] = x16;
     }
@@ -834,7 +863,7 @@ class RestDescription {
 
   RestDescription.fromJson(core.Map _json) {
     if (_json.containsKey("auth")) {
-      auth = new RestDescriptionAuth.fromJson(_json["auth"]);
+      auth = RestDescriptionAuth.fromJson(_json["auth"]);
     }
     if (_json.containsKey("basePath")) {
       basePath = _json["basePath"];
@@ -867,7 +896,7 @@ class RestDescription {
       features = (_json["features"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("icons")) {
-      icons = new RestDescriptionIcons.fromJson(_json["icons"]);
+      icons = RestDescriptionIcons.fromJson(_json["icons"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -881,7 +910,7 @@ class RestDescription {
     if (_json.containsKey("methods")) {
       methods = commons.mapMap<core.Map, RestMethod>(
           _json["methods"].cast<core.String, core.Map>(),
-          (core.Map item) => new RestMethod.fromJson(item));
+          (core.Map item) => RestMethod.fromJson(item));
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -898,7 +927,7 @@ class RestDescription {
     if (_json.containsKey("parameters")) {
       parameters = commons.mapMap<core.Map, JsonSchema>(
           _json["parameters"].cast<core.String, core.Map>(),
-          (core.Map item) => new JsonSchema.fromJson(item));
+          (core.Map item) => JsonSchema.fromJson(item));
     }
     if (_json.containsKey("protocol")) {
       protocol = _json["protocol"];
@@ -906,7 +935,7 @@ class RestDescription {
     if (_json.containsKey("resources")) {
       resources = commons.mapMap<core.Map, RestResource>(
           _json["resources"].cast<core.String, core.Map>(),
-          (core.Map item) => new RestResource.fromJson(item));
+          (core.Map item) => RestResource.fromJson(item));
     }
     if (_json.containsKey("revision")) {
       revision = _json["revision"];
@@ -917,7 +946,7 @@ class RestDescription {
     if (_json.containsKey("schemas")) {
       schemas = commons.mapMap<core.Map, JsonSchema>(
           _json["schemas"].cast<core.String, core.Map>(),
-          (core.Map item) => new JsonSchema.fromJson(item));
+          (core.Map item) => JsonSchema.fromJson(item));
     }
     if (_json.containsKey("servicePath")) {
       servicePath = _json["servicePath"];
@@ -935,9 +964,9 @@ class RestDescription {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (auth != null) {
-      _json["auth"] = (auth).toJson();
+      _json["auth"] = auth.toJson();
     }
     if (basePath != null) {
       _json["basePath"] = basePath;
@@ -970,7 +999,7 @@ class RestDescription {
       _json["features"] = features;
     }
     if (icons != null) {
-      _json["icons"] = (icons).toJson();
+      _json["icons"] = icons.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -984,7 +1013,7 @@ class RestDescription {
     if (methods != null) {
       _json["methods"] =
           commons.mapMap<RestMethod, core.Map<core.String, core.Object>>(
-              methods, (RestMethod item) => (item).toJson());
+              methods, (RestMethod item) => item.toJson());
     }
     if (name != null) {
       _json["name"] = name;
@@ -1001,7 +1030,7 @@ class RestDescription {
     if (parameters != null) {
       _json["parameters"] =
           commons.mapMap<JsonSchema, core.Map<core.String, core.Object>>(
-              parameters, (JsonSchema item) => (item).toJson());
+              parameters, (JsonSchema item) => item.toJson());
     }
     if (protocol != null) {
       _json["protocol"] = protocol;
@@ -1009,7 +1038,7 @@ class RestDescription {
     if (resources != null) {
       _json["resources"] =
           commons.mapMap<RestResource, core.Map<core.String, core.Object>>(
-              resources, (RestResource item) => (item).toJson());
+              resources, (RestResource item) => item.toJson());
     }
     if (revision != null) {
       _json["revision"] = revision;
@@ -1020,7 +1049,7 @@ class RestDescription {
     if (schemas != null) {
       _json["schemas"] =
           commons.mapMap<JsonSchema, core.Map<core.String, core.Object>>(
-              schemas, (JsonSchema item) => (item).toJson());
+              schemas, (JsonSchema item) => item.toJson());
     }
     if (servicePath != null) {
       _json["servicePath"] = servicePath;
@@ -1060,7 +1089,7 @@ class RestMethodMediaUploadProtocolsResumable {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (multipart != null) {
       _json["multipart"] = multipart;
     }
@@ -1093,7 +1122,7 @@ class RestMethodMediaUploadProtocolsSimple {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (multipart != null) {
       _json["multipart"] = multipart;
     }
@@ -1116,23 +1145,22 @@ class RestMethodMediaUploadProtocols {
 
   RestMethodMediaUploadProtocols.fromJson(core.Map _json) {
     if (_json.containsKey("resumable")) {
-      resumable = new RestMethodMediaUploadProtocolsResumable.fromJson(
-          _json["resumable"]);
+      resumable =
+          RestMethodMediaUploadProtocolsResumable.fromJson(_json["resumable"]);
     }
     if (_json.containsKey("simple")) {
-      simple =
-          new RestMethodMediaUploadProtocolsSimple.fromJson(_json["simple"]);
+      simple = RestMethodMediaUploadProtocolsSimple.fromJson(_json["simple"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resumable != null) {
-      _json["resumable"] = (resumable).toJson();
+      _json["resumable"] = resumable.toJson();
     }
     if (simple != null) {
-      _json["simple"] = (simple).toJson();
+      _json["simple"] = simple.toJson();
     }
     return _json;
   }
@@ -1159,14 +1187,13 @@ class RestMethodMediaUpload {
       maxSize = _json["maxSize"];
     }
     if (_json.containsKey("protocols")) {
-      protocols =
-          new RestMethodMediaUploadProtocols.fromJson(_json["protocols"]);
+      protocols = RestMethodMediaUploadProtocols.fromJson(_json["protocols"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accept != null) {
       _json["accept"] = accept;
     }
@@ -1174,7 +1201,7 @@ class RestMethodMediaUpload {
       _json["maxSize"] = maxSize;
     }
     if (protocols != null) {
-      _json["protocols"] = (protocols).toJson();
+      _json["protocols"] = protocols.toJson();
     }
     return _json;
   }
@@ -1201,7 +1228,7 @@ class RestMethodRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (P_ref != null) {
       _json["\$ref"] = P_ref;
     }
@@ -1227,7 +1254,7 @@ class RestMethodResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (P_ref != null) {
       _json["\$ref"] = P_ref;
     }
@@ -1304,7 +1331,7 @@ class RestMethod {
       id = _json["id"];
     }
     if (_json.containsKey("mediaUpload")) {
-      mediaUpload = new RestMethodMediaUpload.fromJson(_json["mediaUpload"]);
+      mediaUpload = RestMethodMediaUpload.fromJson(_json["mediaUpload"]);
     }
     if (_json.containsKey("parameterOrder")) {
       parameterOrder =
@@ -1313,16 +1340,16 @@ class RestMethod {
     if (_json.containsKey("parameters")) {
       parameters = commons.mapMap<core.Map, JsonSchema>(
           _json["parameters"].cast<core.String, core.Map>(),
-          (core.Map item) => new JsonSchema.fromJson(item));
+          (core.Map item) => JsonSchema.fromJson(item));
     }
     if (_json.containsKey("path")) {
       path = _json["path"];
     }
     if (_json.containsKey("request")) {
-      request = new RestMethodRequest.fromJson(_json["request"]);
+      request = RestMethodRequest.fromJson(_json["request"]);
     }
     if (_json.containsKey("response")) {
-      response = new RestMethodResponse.fromJson(_json["response"]);
+      response = RestMethodResponse.fromJson(_json["response"]);
     }
     if (_json.containsKey("scopes")) {
       scopes = (_json["scopes"] as core.List).cast<core.String>();
@@ -1343,7 +1370,7 @@ class RestMethod {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -1357,7 +1384,7 @@ class RestMethod {
       _json["id"] = id;
     }
     if (mediaUpload != null) {
-      _json["mediaUpload"] = (mediaUpload).toJson();
+      _json["mediaUpload"] = mediaUpload.toJson();
     }
     if (parameterOrder != null) {
       _json["parameterOrder"] = parameterOrder;
@@ -1365,16 +1392,16 @@ class RestMethod {
     if (parameters != null) {
       _json["parameters"] =
           commons.mapMap<JsonSchema, core.Map<core.String, core.Object>>(
-              parameters, (JsonSchema item) => (item).toJson());
+              parameters, (JsonSchema item) => item.toJson());
     }
     if (path != null) {
       _json["path"] = path;
     }
     if (request != null) {
-      _json["request"] = (request).toJson();
+      _json["request"] = request.toJson();
     }
     if (response != null) {
-      _json["response"] = (response).toJson();
+      _json["response"] = response.toJson();
     }
     if (scopes != null) {
       _json["scopes"] = scopes;
@@ -1408,27 +1435,27 @@ class RestResource {
     if (_json.containsKey("methods")) {
       methods = commons.mapMap<core.Map, RestMethod>(
           _json["methods"].cast<core.String, core.Map>(),
-          (core.Map item) => new RestMethod.fromJson(item));
+          (core.Map item) => RestMethod.fromJson(item));
     }
     if (_json.containsKey("resources")) {
       resources = commons.mapMap<core.Map, RestResource>(
           _json["resources"].cast<core.String, core.Map>(),
-          (core.Map item) => new RestResource.fromJson(item));
+          (core.Map item) => RestResource.fromJson(item));
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (methods != null) {
       _json["methods"] =
           commons.mapMap<RestMethod, core.Map<core.String, core.Object>>(
-              methods, (RestMethod item) => (item).toJson());
+              methods, (RestMethod item) => item.toJson());
     }
     if (resources != null) {
       _json["resources"] =
           commons.mapMap<RestResource, core.Map<core.String, core.Object>>(
-              resources, (RestResource item) => (item).toJson());
+              resources, (RestResource item) => item.toJson());
     }
     return _json;
   }

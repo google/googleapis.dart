@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.dlp.v2;
 
@@ -26,17 +44,17 @@ class DlpApi {
 
   final commons.ApiRequester _requester;
 
-  InfoTypesResourceApi get infoTypes => new InfoTypesResourceApi(_requester);
-  LocationsResourceApi get locations => new LocationsResourceApi(_requester);
+  InfoTypesResourceApi get infoTypes => InfoTypesResourceApi(_requester);
+  LocationsResourceApi get locations => LocationsResourceApi(_requester);
   OrganizationsResourceApi get organizations =>
-      new OrganizationsResourceApi(_requester);
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+      OrganizationsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   DlpApi(http.Client client,
       {core.String rootUrl = "https://dlp.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class InfoTypesResourceApi {
@@ -72,18 +90,19 @@ class InfoTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2ListInfoTypesResponse> list(
-      {core.String locationId,
-      core.String languageCode,
-      core.String filter,
-      core.String parent,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2ListInfoTypesResponse> list({
+    core.String locationId,
+    core.String languageCode,
+    core.String filter,
+    core.String parent,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (locationId != null) {
       _queryParams["locationId"] = [locationId];
@@ -103,14 +122,17 @@ class InfoTypesResourceApi {
 
     _url = 'v2/infoTypes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(data));
   }
 }
 
@@ -118,7 +140,7 @@ class LocationsResourceApi {
   final commons.ApiRequester _requester;
 
   LocationsInfoTypesResourceApi get infoTypes =>
-      new LocationsInfoTypesResourceApi(_requester);
+      LocationsInfoTypesResourceApi(_requester);
 
   LocationsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -158,20 +180,22 @@ class LocationsInfoTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2ListInfoTypesResponse> list(core.String parent,
-      {core.String filter,
-      core.String locationId,
-      core.String languageCode,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2ListInfoTypesResponse> list(
+    core.String parent, {
+    core.String filter,
+    core.String locationId,
+    core.String languageCode,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -189,14 +213,17 @@ class LocationsInfoTypesResourceApi {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/infoTypes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(data));
   }
 }
 
@@ -204,13 +231,13 @@ class OrganizationsResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsDeidentifyTemplatesResourceApi get deidentifyTemplates =>
-      new OrganizationsDeidentifyTemplatesResourceApi(_requester);
+      OrganizationsDeidentifyTemplatesResourceApi(_requester);
   OrganizationsInspectTemplatesResourceApi get inspectTemplates =>
-      new OrganizationsInspectTemplatesResourceApi(_requester);
+      OrganizationsInspectTemplatesResourceApi(_requester);
   OrganizationsLocationsResourceApi get locations =>
-      new OrganizationsLocationsResourceApi(_requester);
+      OrganizationsLocationsResourceApi(_requester);
   OrganizationsStoredInfoTypesResourceApi get storedInfoTypes =>
-      new OrganizationsStoredInfoTypesResourceApi(_requester);
+      OrganizationsStoredInfoTypesResourceApi(_requester);
 
   OrganizationsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -256,21 +283,22 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2DeidentifyTemplate> create(
-      GooglePrivacyDlpV2CreateDeidentifyTemplateRequest request,
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateDeidentifyTemplateRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -280,14 +308,17 @@ class OrganizationsDeidentifyTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
   }
 
   /// Deletes a DeidentifyTemplate. See
@@ -311,17 +342,19 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -329,13 +362,16 @@ class OrganizationsDeidentifyTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets a DeidentifyTemplate. See
@@ -359,17 +395,19 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2DeidentifyTemplate> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2DeidentifyTemplate> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -377,14 +415,17 @@ class OrganizationsDeidentifyTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
   }
 
   /// Lists DeidentifyTemplates. See
@@ -435,21 +476,22 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse> list(
-      core.String parent,
-      {core.String orderBy,
-      core.String locationId,
-      core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String orderBy,
+    core.String locationId,
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -471,14 +513,17 @@ class OrganizationsDeidentifyTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(data));
+        GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(data));
   }
 
   /// Updates the DeidentifyTemplate. See
@@ -505,21 +550,22 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2DeidentifyTemplate> patch(
-      GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest request,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -527,14 +573,17 @@ class OrganizationsDeidentifyTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
   }
 }
 
@@ -579,21 +628,22 @@ class OrganizationsInspectTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2InspectTemplate> create(
-      GooglePrivacyDlpV2CreateInspectTemplateRequest request,
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateInspectTemplateRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -603,14 +653,17 @@ class OrganizationsInspectTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
   }
 
   /// Deletes an InspectTemplate. See
@@ -634,17 +687,19 @@ class OrganizationsInspectTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -652,13 +707,16 @@ class OrganizationsInspectTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets an InspectTemplate. See
@@ -682,17 +740,19 @@ class OrganizationsInspectTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2InspectTemplate> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2InspectTemplate> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -700,14 +760,17 @@ class OrganizationsInspectTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
   }
 
   /// Lists InspectTemplates. See
@@ -758,21 +821,22 @@ class OrganizationsInspectTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListInspectTemplatesResponse> list(
-      core.String parent,
-      {core.String locationId,
-      core.String orderBy,
-      core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String locationId,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (locationId != null) {
       _queryParams["locationId"] = [locationId];
@@ -794,14 +858,17 @@ class OrganizationsInspectTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(data));
+        GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(data));
   }
 
   /// Updates the InspectTemplate. See
@@ -827,20 +894,22 @@ class OrganizationsInspectTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2InspectTemplate> patch(
-      GooglePrivacyDlpV2UpdateInspectTemplateRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2UpdateInspectTemplateRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -848,14 +917,17 @@ class OrganizationsInspectTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
   }
 }
 
@@ -864,11 +936,11 @@ class OrganizationsLocationsResourceApi {
 
   OrganizationsLocationsDeidentifyTemplatesResourceApi
       get deidentifyTemplates =>
-          new OrganizationsLocationsDeidentifyTemplatesResourceApi(_requester);
+          OrganizationsLocationsDeidentifyTemplatesResourceApi(_requester);
   OrganizationsLocationsInspectTemplatesResourceApi get inspectTemplates =>
-      new OrganizationsLocationsInspectTemplatesResourceApi(_requester);
+      OrganizationsLocationsInspectTemplatesResourceApi(_requester);
   OrganizationsLocationsStoredInfoTypesResourceApi get storedInfoTypes =>
-      new OrganizationsLocationsStoredInfoTypesResourceApi(_requester);
+      OrganizationsLocationsStoredInfoTypesResourceApi(_requester);
 
   OrganizationsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -916,21 +988,22 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2DeidentifyTemplate> create(
-      GooglePrivacyDlpV2CreateDeidentifyTemplateRequest request,
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateDeidentifyTemplateRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -940,14 +1013,17 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
   }
 
   /// Deletes a DeidentifyTemplate. See
@@ -972,17 +1048,19 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -990,13 +1068,16 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets a DeidentifyTemplate. See
@@ -1021,17 +1102,19 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2DeidentifyTemplate> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2DeidentifyTemplate> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1039,14 +1122,17 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
   }
 
   /// Lists DeidentifyTemplates. See
@@ -1097,21 +1183,22 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse> list(
-      core.String parent,
-      {core.String pageToken,
-      core.String orderBy,
-      core.String locationId,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String pageToken,
+    core.String orderBy,
+    core.String locationId,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1133,14 +1220,17 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(data));
+        GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(data));
   }
 
   /// Updates the DeidentifyTemplate. See
@@ -1168,21 +1258,22 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2DeidentifyTemplate> patch(
-      GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest request,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1190,14 +1281,17 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
   }
 }
 
@@ -1242,21 +1336,22 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2InspectTemplate> create(
-      GooglePrivacyDlpV2CreateInspectTemplateRequest request,
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateInspectTemplateRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1266,14 +1361,17 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
   }
 
   /// Deletes an InspectTemplate. See
@@ -1298,17 +1396,19 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1316,13 +1416,16 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets an InspectTemplate. See
@@ -1347,17 +1450,19 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2InspectTemplate> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2InspectTemplate> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1365,14 +1470,17 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
   }
 
   /// Lists InspectTemplates. See
@@ -1423,21 +1531,22 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListInspectTemplatesResponse> list(
-      core.String parent,
-      {core.String orderBy,
-      core.String locationId,
-      core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String orderBy,
+    core.String locationId,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -1459,14 +1568,17 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(data));
+        GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(data));
   }
 
   /// Updates the InspectTemplate. See
@@ -1493,20 +1605,22 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2InspectTemplate> patch(
-      GooglePrivacyDlpV2UpdateInspectTemplateRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2UpdateInspectTemplateRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1514,14 +1628,17 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
   }
 }
 
@@ -1565,20 +1682,22 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2StoredInfoType> create(
-      GooglePrivacyDlpV2CreateStoredInfoTypeRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateStoredInfoTypeRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1588,14 +1707,17 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
   }
 
   /// Deletes a stored infoType. See
@@ -1620,17 +1742,19 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1638,13 +1762,16 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets a stored infoType. See
@@ -1668,17 +1795,19 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2StoredInfoType> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2StoredInfoType> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1686,14 +1815,17 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
   }
 
   /// Lists stored infoTypes. See
@@ -1745,21 +1877,22 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListStoredInfoTypesResponse> list(
-      core.String parent,
-      {core.String orderBy,
-      core.int pageSize,
-      core.String locationId,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String orderBy,
+    core.int pageSize,
+    core.String locationId,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -1781,14 +1914,17 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(data));
   }
 
   /// Updates the stored infoType by creating a new version. The existing
@@ -1816,20 +1952,22 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2StoredInfoType> patch(
-      GooglePrivacyDlpV2UpdateStoredInfoTypeRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2UpdateStoredInfoTypeRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1837,14 +1975,17 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
   }
 }
 
@@ -1888,20 +2029,22 @@ class OrganizationsStoredInfoTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2StoredInfoType> create(
-      GooglePrivacyDlpV2CreateStoredInfoTypeRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateStoredInfoTypeRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1911,14 +2054,17 @@ class OrganizationsStoredInfoTypesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
   }
 
   /// Deletes a stored infoType. See
@@ -1942,17 +2088,19 @@ class OrganizationsStoredInfoTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1960,13 +2108,16 @@ class OrganizationsStoredInfoTypesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets a stored infoType. See
@@ -1989,17 +2140,19 @@ class OrganizationsStoredInfoTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2StoredInfoType> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2StoredInfoType> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2007,14 +2160,17 @@ class OrganizationsStoredInfoTypesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
   }
 
   /// Lists stored infoTypes. See
@@ -2066,21 +2222,22 @@ class OrganizationsStoredInfoTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListStoredInfoTypesResponse> list(
-      core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String locationId,
-      core.String orderBy,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String locationId,
+    core.String orderBy,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -2102,14 +2259,17 @@ class OrganizationsStoredInfoTypesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(data));
   }
 
   /// Updates the stored infoType by creating a new version. The existing
@@ -2136,20 +2296,22 @@ class OrganizationsStoredInfoTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2StoredInfoType> patch(
-      GooglePrivacyDlpV2UpdateStoredInfoTypeRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2UpdateStoredInfoTypeRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2157,14 +2319,17 @@ class OrganizationsStoredInfoTypesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
   }
 }
 
@@ -2172,21 +2337,20 @@ class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsContentResourceApi get content =>
-      new ProjectsContentResourceApi(_requester);
+      ProjectsContentResourceApi(_requester);
   ProjectsDeidentifyTemplatesResourceApi get deidentifyTemplates =>
-      new ProjectsDeidentifyTemplatesResourceApi(_requester);
+      ProjectsDeidentifyTemplatesResourceApi(_requester);
   ProjectsDlpJobsResourceApi get dlpJobs =>
-      new ProjectsDlpJobsResourceApi(_requester);
-  ProjectsImageResourceApi get image =>
-      new ProjectsImageResourceApi(_requester);
+      ProjectsDlpJobsResourceApi(_requester);
+  ProjectsImageResourceApi get image => ProjectsImageResourceApi(_requester);
   ProjectsInspectTemplatesResourceApi get inspectTemplates =>
-      new ProjectsInspectTemplatesResourceApi(_requester);
+      ProjectsInspectTemplatesResourceApi(_requester);
   ProjectsJobTriggersResourceApi get jobTriggers =>
-      new ProjectsJobTriggersResourceApi(_requester);
+      ProjectsJobTriggersResourceApi(_requester);
   ProjectsLocationsResourceApi get locations =>
-      new ProjectsLocationsResourceApi(_requester);
+      ProjectsLocationsResourceApi(_requester);
   ProjectsStoredInfoTypesResourceApi get storedInfoTypes =>
-      new ProjectsStoredInfoTypesResourceApi(_requester);
+      ProjectsStoredInfoTypesResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -2230,20 +2394,22 @@ class ProjectsContentResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2DeidentifyContentResponse> deidentify(
-      GooglePrivacyDlpV2DeidentifyContentRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2DeidentifyContentRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2253,14 +2419,17 @@ class ProjectsContentResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/content:deidentify';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(data));
   }
 
   /// Finds potentially sensitive info in content. This method has limits on
@@ -2298,20 +2467,22 @@ class ProjectsContentResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2InspectContentResponse> inspect(
-      GooglePrivacyDlpV2InspectContentRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2InspectContentRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2321,14 +2492,17 @@ class ProjectsContentResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/content:inspect';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new GooglePrivacyDlpV2InspectContentResponse.fromJson(data));
+        (data) => GooglePrivacyDlpV2InspectContentResponse.fromJson(data));
   }
 
   /// Re-identifies content that has been de-identified. See
@@ -2362,20 +2536,22 @@ class ProjectsContentResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ReidentifyContentResponse> reidentify(
-      GooglePrivacyDlpV2ReidentifyContentRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2ReidentifyContentRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2385,14 +2561,17 @@ class ProjectsContentResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/content:reidentify';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(data));
   }
 }
 
@@ -2437,21 +2616,22 @@ class ProjectsDeidentifyTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2DeidentifyTemplate> create(
-      GooglePrivacyDlpV2CreateDeidentifyTemplateRequest request,
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateDeidentifyTemplateRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2461,14 +2641,17 @@ class ProjectsDeidentifyTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
   }
 
   /// Deletes a DeidentifyTemplate. See
@@ -2492,17 +2675,19 @@ class ProjectsDeidentifyTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2510,13 +2695,16 @@ class ProjectsDeidentifyTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets a DeidentifyTemplate. See
@@ -2540,17 +2728,19 @@ class ProjectsDeidentifyTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2DeidentifyTemplate> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2DeidentifyTemplate> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2558,14 +2748,17 @@ class ProjectsDeidentifyTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
   }
 
   /// Lists DeidentifyTemplates. See
@@ -2616,21 +2809,22 @@ class ProjectsDeidentifyTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse> list(
-      core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String locationId,
-      core.String orderBy,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String locationId,
+    core.String orderBy,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2652,14 +2846,17 @@ class ProjectsDeidentifyTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(data));
+        GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(data));
   }
 
   /// Updates the DeidentifyTemplate. See
@@ -2686,21 +2883,22 @@ class ProjectsDeidentifyTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2DeidentifyTemplate> patch(
-      GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest request,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2708,14 +2906,17 @@ class ProjectsDeidentifyTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
   }
 }
 
@@ -2747,20 +2948,22 @@ class ProjectsDlpJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> cancel(
-      GooglePrivacyDlpV2CancelDlpJobRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CancelDlpJobRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2768,13 +2971,16 @@ class ProjectsDlpJobsResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Creates a new job to inspect storage or calculate risk metrics. See
@@ -2811,20 +3017,22 @@ class ProjectsDlpJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2DlpJob> create(
-      GooglePrivacyDlpV2CreateDlpJobRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateDlpJobRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2833,14 +3041,16 @@ class ProjectsDlpJobsResourceApi {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dlpJobs';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GooglePrivacyDlpV2DlpJob.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GooglePrivacyDlpV2DlpJob.fromJson(data));
   }
 
   /// Deletes a long-running DlpJob. This method indicates that the client is no
@@ -2863,17 +3073,19 @@ class ProjectsDlpJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2881,13 +3093,16 @@ class ProjectsDlpJobsResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets the latest state of a long-running DlpJob. See
@@ -2909,17 +3124,19 @@ class ProjectsDlpJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2DlpJob> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2DlpJob> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2927,14 +3144,16 @@ class ProjectsDlpJobsResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GooglePrivacyDlpV2DlpJob.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GooglePrivacyDlpV2DlpJob.fromJson(data));
   }
 
   /// Lists DlpJobs that match the specified filter in the request. See
@@ -3004,23 +3223,25 @@ class ProjectsDlpJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2ListDlpJobsResponse> list(core.String parent,
-      {core.String locationId,
-      core.String orderBy,
-      core.String type,
-      core.String filter,
-      core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2ListDlpJobsResponse> list(
+    core.String parent, {
+    core.String locationId,
+    core.String orderBy,
+    core.String type,
+    core.String filter,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (locationId != null) {
       _queryParams["locationId"] = [locationId];
@@ -3047,14 +3268,17 @@ class ProjectsDlpJobsResourceApi {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dlpJobs';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(data));
   }
 }
 
@@ -3097,20 +3321,22 @@ class ProjectsImageResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2RedactImageResponse> redact(
-      GooglePrivacyDlpV2RedactImageRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2RedactImageRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3120,14 +3346,17 @@ class ProjectsImageResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/image:redact';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2RedactImageResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2RedactImageResponse.fromJson(data));
   }
 }
 
@@ -3172,21 +3401,22 @@ class ProjectsInspectTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2InspectTemplate> create(
-      GooglePrivacyDlpV2CreateInspectTemplateRequest request,
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateInspectTemplateRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3196,14 +3426,17 @@ class ProjectsInspectTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
   }
 
   /// Deletes an InspectTemplate. See
@@ -3227,17 +3460,19 @@ class ProjectsInspectTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3245,13 +3480,16 @@ class ProjectsInspectTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets an InspectTemplate. See
@@ -3275,17 +3513,19 @@ class ProjectsInspectTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2InspectTemplate> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2InspectTemplate> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3293,14 +3533,17 @@ class ProjectsInspectTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
   }
 
   /// Lists InspectTemplates. See
@@ -3351,21 +3594,22 @@ class ProjectsInspectTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListInspectTemplatesResponse> list(
-      core.String parent,
-      {core.String locationId,
-      core.String orderBy,
-      core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String locationId,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (locationId != null) {
       _queryParams["locationId"] = [locationId];
@@ -3387,14 +3631,17 @@ class ProjectsInspectTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(data));
+        GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(data));
   }
 
   /// Updates the InspectTemplate. See
@@ -3420,20 +3667,22 @@ class ProjectsInspectTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2InspectTemplate> patch(
-      GooglePrivacyDlpV2UpdateInspectTemplateRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2UpdateInspectTemplateRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3441,14 +3690,17 @@ class ProjectsInspectTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
   }
 }
 
@@ -3480,20 +3732,22 @@ class ProjectsJobTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2DlpJob> activate(
-      GooglePrivacyDlpV2ActivateJobTriggerRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2ActivateJobTriggerRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3501,14 +3755,16 @@ class ProjectsJobTriggersResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':activate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GooglePrivacyDlpV2DlpJob.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GooglePrivacyDlpV2DlpJob.fromJson(data));
   }
 
   /// Creates a job trigger to run DLP actions such as scanning storage for
@@ -3542,20 +3798,22 @@ class ProjectsJobTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2JobTrigger> create(
-      GooglePrivacyDlpV2CreateJobTriggerRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateJobTriggerRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3565,14 +3823,17 @@ class ProjectsJobTriggersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/jobTriggers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2JobTrigger.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2JobTrigger.fromJson(data));
   }
 
   /// Deletes a job trigger. See
@@ -3594,17 +3855,19 @@ class ProjectsJobTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3612,13 +3875,16 @@ class ProjectsJobTriggersResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets a job trigger. See
@@ -3640,17 +3906,19 @@ class ProjectsJobTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2JobTrigger> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2JobTrigger> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3658,14 +3926,17 @@ class ProjectsJobTriggersResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2JobTrigger.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2JobTrigger.fromJson(data));
   }
 
   /// Lists job triggers. See
@@ -3730,22 +4001,23 @@ class ProjectsJobTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListJobTriggersResponse> list(
-      core.String parent,
-      {core.String orderBy,
-      core.String pageToken,
-      core.String locationId,
-      core.String filter,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String orderBy,
+    core.String pageToken,
+    core.String locationId,
+    core.String filter,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -3770,14 +4042,17 @@ class ProjectsJobTriggersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/jobTriggers';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(data));
+        (data) => GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(data));
   }
 
   /// Updates a job trigger. See
@@ -3802,20 +4077,22 @@ class ProjectsJobTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2JobTrigger> patch(
-      GooglePrivacyDlpV2UpdateJobTriggerRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2UpdateJobTriggerRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3823,14 +4100,17 @@ class ProjectsJobTriggersResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2JobTrigger.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2JobTrigger.fromJson(data));
   }
 }
 
@@ -3838,19 +4118,19 @@ class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsContentResourceApi get content =>
-      new ProjectsLocationsContentResourceApi(_requester);
+      ProjectsLocationsContentResourceApi(_requester);
   ProjectsLocationsDeidentifyTemplatesResourceApi get deidentifyTemplates =>
-      new ProjectsLocationsDeidentifyTemplatesResourceApi(_requester);
+      ProjectsLocationsDeidentifyTemplatesResourceApi(_requester);
   ProjectsLocationsDlpJobsResourceApi get dlpJobs =>
-      new ProjectsLocationsDlpJobsResourceApi(_requester);
+      ProjectsLocationsDlpJobsResourceApi(_requester);
   ProjectsLocationsImageResourceApi get image =>
-      new ProjectsLocationsImageResourceApi(_requester);
+      ProjectsLocationsImageResourceApi(_requester);
   ProjectsLocationsInspectTemplatesResourceApi get inspectTemplates =>
-      new ProjectsLocationsInspectTemplatesResourceApi(_requester);
+      ProjectsLocationsInspectTemplatesResourceApi(_requester);
   ProjectsLocationsJobTriggersResourceApi get jobTriggers =>
-      new ProjectsLocationsJobTriggersResourceApi(_requester);
+      ProjectsLocationsJobTriggersResourceApi(_requester);
   ProjectsLocationsStoredInfoTypesResourceApi get storedInfoTypes =>
-      new ProjectsLocationsStoredInfoTypesResourceApi(_requester);
+      ProjectsLocationsStoredInfoTypesResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -3896,20 +4176,22 @@ class ProjectsLocationsContentResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2DeidentifyContentResponse> deidentify(
-      GooglePrivacyDlpV2DeidentifyContentRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2DeidentifyContentRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3919,14 +4201,17 @@ class ProjectsLocationsContentResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/content:deidentify';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(data));
   }
 
   /// Finds potentially sensitive info in content. This method has limits on
@@ -3964,20 +4249,22 @@ class ProjectsLocationsContentResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2InspectContentResponse> inspect(
-      GooglePrivacyDlpV2InspectContentRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2InspectContentRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3987,14 +4274,17 @@ class ProjectsLocationsContentResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/content:inspect';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new GooglePrivacyDlpV2InspectContentResponse.fromJson(data));
+        (data) => GooglePrivacyDlpV2InspectContentResponse.fromJson(data));
   }
 
   /// Re-identifies content that has been de-identified. See
@@ -4028,20 +4318,22 @@ class ProjectsLocationsContentResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ReidentifyContentResponse> reidentify(
-      GooglePrivacyDlpV2ReidentifyContentRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2ReidentifyContentRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4051,14 +4343,17 @@ class ProjectsLocationsContentResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/content:reidentify';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(data));
   }
 }
 
@@ -4103,21 +4398,22 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2DeidentifyTemplate> create(
-      GooglePrivacyDlpV2CreateDeidentifyTemplateRequest request,
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateDeidentifyTemplateRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4127,14 +4423,17 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
   }
 
   /// Deletes a DeidentifyTemplate. See
@@ -4159,17 +4458,19 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4177,13 +4478,16 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets a DeidentifyTemplate. See
@@ -4208,17 +4512,19 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2DeidentifyTemplate> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2DeidentifyTemplate> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4226,14 +4532,17 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
   }
 
   /// Lists DeidentifyTemplates. See
@@ -4284,21 +4593,22 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse> list(
-      core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String orderBy,
-      core.String locationId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String orderBy,
+    core.String locationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -4320,14 +4630,17 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(data));
+        GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(data));
   }
 
   /// Updates the DeidentifyTemplate. See
@@ -4355,21 +4668,22 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2DeidentifyTemplate> patch(
-      GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest request,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4377,14 +4691,17 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
   }
 }
 
@@ -4417,20 +4734,22 @@ class ProjectsLocationsDlpJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> cancel(
-      GooglePrivacyDlpV2CancelDlpJobRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CancelDlpJobRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4438,13 +4757,16 @@ class ProjectsLocationsDlpJobsResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Creates a new job to inspect storage or calculate risk metrics. See
@@ -4481,20 +4803,22 @@ class ProjectsLocationsDlpJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2DlpJob> create(
-      GooglePrivacyDlpV2CreateDlpJobRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateDlpJobRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4503,14 +4827,16 @@ class ProjectsLocationsDlpJobsResourceApi {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dlpJobs';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GooglePrivacyDlpV2DlpJob.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GooglePrivacyDlpV2DlpJob.fromJson(data));
   }
 
   /// Deletes a long-running DlpJob. This method indicates that the client is no
@@ -4533,17 +4859,19 @@ class ProjectsLocationsDlpJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4551,13 +4879,16 @@ class ProjectsLocationsDlpJobsResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Finish a running hybrid DlpJob. Triggers the finalization steps and
@@ -4584,20 +4915,22 @@ class ProjectsLocationsDlpJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> finish(
-      GooglePrivacyDlpV2FinishDlpJobRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2FinishDlpJobRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4605,13 +4938,16 @@ class ProjectsLocationsDlpJobsResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':finish';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets the latest state of a long-running DlpJob. See
@@ -4633,17 +4969,19 @@ class ProjectsLocationsDlpJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2DlpJob> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2DlpJob> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4651,14 +4989,16 @@ class ProjectsLocationsDlpJobsResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GooglePrivacyDlpV2DlpJob.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GooglePrivacyDlpV2DlpJob.fromJson(data));
   }
 
   /// Inspect hybrid content and store findings to a job. To review the findings
@@ -4686,20 +5026,22 @@ class ProjectsLocationsDlpJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2HybridInspectResponse> hybridInspect(
-      GooglePrivacyDlpV2HybridInspectDlpJobRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2HybridInspectDlpJobRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4709,14 +5051,17 @@ class ProjectsLocationsDlpJobsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':hybridInspect';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2HybridInspectResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2HybridInspectResponse.fromJson(data));
   }
 
   /// Lists DlpJobs that match the specified filter in the request. See
@@ -4786,23 +5131,25 @@ class ProjectsLocationsDlpJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2ListDlpJobsResponse> list(core.String parent,
-      {core.String orderBy,
-      core.String pageToken,
-      core.String filter,
-      core.String locationId,
-      core.int pageSize,
-      core.String type,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2ListDlpJobsResponse> list(
+    core.String parent, {
+    core.String orderBy,
+    core.String pageToken,
+    core.String filter,
+    core.String locationId,
+    core.int pageSize,
+    core.String type,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -4829,14 +5176,17 @@ class ProjectsLocationsDlpJobsResourceApi {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dlpJobs';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(data));
   }
 }
 
@@ -4880,20 +5230,22 @@ class ProjectsLocationsImageResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2RedactImageResponse> redact(
-      GooglePrivacyDlpV2RedactImageRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2RedactImageRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4903,14 +5255,17 @@ class ProjectsLocationsImageResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/image:redact';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2RedactImageResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2RedactImageResponse.fromJson(data));
   }
 }
 
@@ -4955,21 +5310,22 @@ class ProjectsLocationsInspectTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2InspectTemplate> create(
-      GooglePrivacyDlpV2CreateInspectTemplateRequest request,
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateInspectTemplateRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4979,14 +5335,17 @@ class ProjectsLocationsInspectTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
   }
 
   /// Deletes an InspectTemplate. See
@@ -5011,17 +5370,19 @@ class ProjectsLocationsInspectTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5029,13 +5390,16 @@ class ProjectsLocationsInspectTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets an InspectTemplate. See
@@ -5060,17 +5424,19 @@ class ProjectsLocationsInspectTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2InspectTemplate> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2InspectTemplate> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5078,14 +5444,17 @@ class ProjectsLocationsInspectTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
   }
 
   /// Lists InspectTemplates. See
@@ -5136,21 +5505,22 @@ class ProjectsLocationsInspectTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListInspectTemplatesResponse> list(
-      core.String parent,
-      {core.String pageToken,
-      core.String orderBy,
-      core.String locationId,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String pageToken,
+    core.String orderBy,
+    core.String locationId,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -5172,14 +5542,17 @@ class ProjectsLocationsInspectTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(data));
+        GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(data));
   }
 
   /// Updates the InspectTemplate. See
@@ -5206,20 +5579,22 @@ class ProjectsLocationsInspectTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2InspectTemplate> patch(
-      GooglePrivacyDlpV2UpdateInspectTemplateRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2UpdateInspectTemplateRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5227,14 +5602,17 @@ class ProjectsLocationsInspectTemplatesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
   }
 }
 
@@ -5267,20 +5645,22 @@ class ProjectsLocationsJobTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2DlpJob> activate(
-      GooglePrivacyDlpV2ActivateJobTriggerRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2ActivateJobTriggerRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5288,14 +5668,16 @@ class ProjectsLocationsJobTriggersResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':activate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GooglePrivacyDlpV2DlpJob.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GooglePrivacyDlpV2DlpJob.fromJson(data));
   }
 
   /// Creates a job trigger to run DLP actions such as scanning storage for
@@ -5329,20 +5711,22 @@ class ProjectsLocationsJobTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2JobTrigger> create(
-      GooglePrivacyDlpV2CreateJobTriggerRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateJobTriggerRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5352,14 +5736,17 @@ class ProjectsLocationsJobTriggersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/jobTriggers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2JobTrigger.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2JobTrigger.fromJson(data));
   }
 
   /// Deletes a job trigger. See
@@ -5382,17 +5769,19 @@ class ProjectsLocationsJobTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5400,13 +5789,16 @@ class ProjectsLocationsJobTriggersResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets a job trigger. See
@@ -5429,17 +5821,19 @@ class ProjectsLocationsJobTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2JobTrigger> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2JobTrigger> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5447,14 +5841,17 @@ class ProjectsLocationsJobTriggersResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2JobTrigger.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2JobTrigger.fromJson(data));
   }
 
   /// Inspect hybrid content and store findings to a trigger. The inspection
@@ -5483,21 +5880,22 @@ class ProjectsLocationsJobTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2HybridInspectResponse> hybridInspect(
-      GooglePrivacyDlpV2HybridInspectJobTriggerRequest request,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2HybridInspectJobTriggerRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5507,14 +5905,17 @@ class ProjectsLocationsJobTriggersResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':hybridInspect';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GooglePrivacyDlpV2HybridInspectResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GooglePrivacyDlpV2HybridInspectResponse.fromJson(data));
   }
 
   /// Lists job triggers. See
@@ -5579,22 +5980,23 @@ class ProjectsLocationsJobTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListJobTriggersResponse> list(
-      core.String parent,
-      {core.int pageSize,
-      core.String orderBy,
-      core.String locationId,
-      core.String pageToken,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.int pageSize,
+    core.String orderBy,
+    core.String locationId,
+    core.String pageToken,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -5619,14 +6021,17 @@ class ProjectsLocationsJobTriggersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/jobTriggers';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(data));
+        (data) => GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(data));
   }
 
   /// Updates a job trigger. See
@@ -5652,20 +6057,22 @@ class ProjectsLocationsJobTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2JobTrigger> patch(
-      GooglePrivacyDlpV2UpdateJobTriggerRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2UpdateJobTriggerRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5673,14 +6080,17 @@ class ProjectsLocationsJobTriggersResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2JobTrigger.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2JobTrigger.fromJson(data));
   }
 }
 
@@ -5724,20 +6134,22 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2StoredInfoType> create(
-      GooglePrivacyDlpV2CreateStoredInfoTypeRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateStoredInfoTypeRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5747,14 +6159,17 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
   }
 
   /// Deletes a stored infoType. See
@@ -5779,17 +6194,19 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5797,13 +6214,16 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets a stored infoType. See
@@ -5827,17 +6247,19 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2StoredInfoType> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2StoredInfoType> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5845,14 +6267,17 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
   }
 
   /// Lists stored infoTypes. See
@@ -5904,21 +6329,22 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListStoredInfoTypesResponse> list(
-      core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String locationId,
-      core.String orderBy,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String locationId,
+    core.String orderBy,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -5940,14 +6366,17 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(data));
   }
 
   /// Updates the stored infoType by creating a new version. The existing
@@ -5975,20 +6404,22 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2StoredInfoType> patch(
-      GooglePrivacyDlpV2UpdateStoredInfoTypeRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2UpdateStoredInfoTypeRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5996,14 +6427,17 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
   }
 }
 
@@ -6047,20 +6481,22 @@ class ProjectsStoredInfoTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2StoredInfoType> create(
-      GooglePrivacyDlpV2CreateStoredInfoTypeRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2CreateStoredInfoTypeRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6070,14 +6506,17 @@ class ProjectsStoredInfoTypesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
   }
 
   /// Deletes a stored infoType. See
@@ -6101,17 +6540,19 @@ class ProjectsStoredInfoTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6119,13 +6560,16 @@ class ProjectsStoredInfoTypesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets a stored infoType. See
@@ -6148,17 +6592,19 @@ class ProjectsStoredInfoTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GooglePrivacyDlpV2StoredInfoType> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GooglePrivacyDlpV2StoredInfoType> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6166,14 +6612,17 @@ class ProjectsStoredInfoTypesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
   }
 
   /// Lists stored infoTypes. See
@@ -6225,21 +6674,22 @@ class ProjectsStoredInfoTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListStoredInfoTypesResponse> list(
-      core.String parent,
-      {core.String pageToken,
-      core.String locationId,
-      core.String orderBy,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String pageToken,
+    core.String locationId,
+    core.String orderBy,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -6261,14 +6711,17 @@ class ProjectsStoredInfoTypesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(data));
   }
 
   /// Updates the stored infoType by creating a new version. The existing
@@ -6295,20 +6748,22 @@ class ProjectsStoredInfoTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2StoredInfoType> patch(
-      GooglePrivacyDlpV2UpdateStoredInfoTypeRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GooglePrivacyDlpV2UpdateStoredInfoTypeRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6316,14 +6771,17 @@ class ProjectsStoredInfoTypesResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
   }
 }
 
@@ -6354,55 +6812,52 @@ class GooglePrivacyDlpV2Action {
 
   GooglePrivacyDlpV2Action.fromJson(core.Map _json) {
     if (_json.containsKey("jobNotificationEmails")) {
-      jobNotificationEmails =
-          new GooglePrivacyDlpV2JobNotificationEmails.fromJson(
-              _json["jobNotificationEmails"]);
+      jobNotificationEmails = GooglePrivacyDlpV2JobNotificationEmails.fromJson(
+          _json["jobNotificationEmails"]);
     }
     if (_json.containsKey("pubSub")) {
-      pubSub = new GooglePrivacyDlpV2PublishToPubSub.fromJson(_json["pubSub"]);
+      pubSub = GooglePrivacyDlpV2PublishToPubSub.fromJson(_json["pubSub"]);
     }
     if (_json.containsKey("publishFindingsToCloudDataCatalog")) {
       publishFindingsToCloudDataCatalog =
-          new GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog.fromJson(
+          GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog.fromJson(
               _json["publishFindingsToCloudDataCatalog"]);
     }
     if (_json.containsKey("publishSummaryToCscc")) {
-      publishSummaryToCscc =
-          new GooglePrivacyDlpV2PublishSummaryToCscc.fromJson(
-              _json["publishSummaryToCscc"]);
+      publishSummaryToCscc = GooglePrivacyDlpV2PublishSummaryToCscc.fromJson(
+          _json["publishSummaryToCscc"]);
     }
     if (_json.containsKey("publishToStackdriver")) {
-      publishToStackdriver =
-          new GooglePrivacyDlpV2PublishToStackdriver.fromJson(
-              _json["publishToStackdriver"]);
+      publishToStackdriver = GooglePrivacyDlpV2PublishToStackdriver.fromJson(
+          _json["publishToStackdriver"]);
     }
     if (_json.containsKey("saveFindings")) {
       saveFindings =
-          new GooglePrivacyDlpV2SaveFindings.fromJson(_json["saveFindings"]);
+          GooglePrivacyDlpV2SaveFindings.fromJson(_json["saveFindings"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (jobNotificationEmails != null) {
-      _json["jobNotificationEmails"] = (jobNotificationEmails).toJson();
+      _json["jobNotificationEmails"] = jobNotificationEmails.toJson();
     }
     if (pubSub != null) {
-      _json["pubSub"] = (pubSub).toJson();
+      _json["pubSub"] = pubSub.toJson();
     }
     if (publishFindingsToCloudDataCatalog != null) {
       _json["publishFindingsToCloudDataCatalog"] =
-          (publishFindingsToCloudDataCatalog).toJson();
+          publishFindingsToCloudDataCatalog.toJson();
     }
     if (publishSummaryToCscc != null) {
-      _json["publishSummaryToCscc"] = (publishSummaryToCscc).toJson();
+      _json["publishSummaryToCscc"] = publishSummaryToCscc.toJson();
     }
     if (publishToStackdriver != null) {
-      _json["publishToStackdriver"] = (publishToStackdriver).toJson();
+      _json["publishToStackdriver"] = publishToStackdriver.toJson();
     }
     if (saveFindings != null) {
-      _json["saveFindings"] = (saveFindings).toJson();
+      _json["saveFindings"] = saveFindings.toJson();
     }
     return _json;
   }
@@ -6416,7 +6871,7 @@ class GooglePrivacyDlpV2ActivateJobTriggerRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -6455,77 +6910,75 @@ class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails {
   GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails.fromJson(core.Map _json) {
     if (_json.containsKey("categoricalStatsResult")) {
       categoricalStatsResult =
-          new GooglePrivacyDlpV2CategoricalStatsResult.fromJson(
+          GooglePrivacyDlpV2CategoricalStatsResult.fromJson(
               _json["categoricalStatsResult"]);
     }
     if (_json.containsKey("deltaPresenceEstimationResult")) {
       deltaPresenceEstimationResult =
-          new GooglePrivacyDlpV2DeltaPresenceEstimationResult.fromJson(
+          GooglePrivacyDlpV2DeltaPresenceEstimationResult.fromJson(
               _json["deltaPresenceEstimationResult"]);
     }
     if (_json.containsKey("kAnonymityResult")) {
-      kAnonymityResult = new GooglePrivacyDlpV2KAnonymityResult.fromJson(
+      kAnonymityResult = GooglePrivacyDlpV2KAnonymityResult.fromJson(
           _json["kAnonymityResult"]);
     }
     if (_json.containsKey("kMapEstimationResult")) {
-      kMapEstimationResult =
-          new GooglePrivacyDlpV2KMapEstimationResult.fromJson(
-              _json["kMapEstimationResult"]);
+      kMapEstimationResult = GooglePrivacyDlpV2KMapEstimationResult.fromJson(
+          _json["kMapEstimationResult"]);
     }
     if (_json.containsKey("lDiversityResult")) {
-      lDiversityResult = new GooglePrivacyDlpV2LDiversityResult.fromJson(
+      lDiversityResult = GooglePrivacyDlpV2LDiversityResult.fromJson(
           _json["lDiversityResult"]);
     }
     if (_json.containsKey("numericalStatsResult")) {
-      numericalStatsResult =
-          new GooglePrivacyDlpV2NumericalStatsResult.fromJson(
-              _json["numericalStatsResult"]);
+      numericalStatsResult = GooglePrivacyDlpV2NumericalStatsResult.fromJson(
+          _json["numericalStatsResult"]);
     }
     if (_json.containsKey("requestedOptions")) {
       requestedOptions =
-          new GooglePrivacyDlpV2RequestedRiskAnalysisOptions.fromJson(
+          GooglePrivacyDlpV2RequestedRiskAnalysisOptions.fromJson(
               _json["requestedOptions"]);
     }
     if (_json.containsKey("requestedPrivacyMetric")) {
-      requestedPrivacyMetric = new GooglePrivacyDlpV2PrivacyMetric.fromJson(
+      requestedPrivacyMetric = GooglePrivacyDlpV2PrivacyMetric.fromJson(
           _json["requestedPrivacyMetric"]);
     }
     if (_json.containsKey("requestedSourceTable")) {
-      requestedSourceTable = new GooglePrivacyDlpV2BigQueryTable.fromJson(
+      requestedSourceTable = GooglePrivacyDlpV2BigQueryTable.fromJson(
           _json["requestedSourceTable"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (categoricalStatsResult != null) {
-      _json["categoricalStatsResult"] = (categoricalStatsResult).toJson();
+      _json["categoricalStatsResult"] = categoricalStatsResult.toJson();
     }
     if (deltaPresenceEstimationResult != null) {
       _json["deltaPresenceEstimationResult"] =
-          (deltaPresenceEstimationResult).toJson();
+          deltaPresenceEstimationResult.toJson();
     }
     if (kAnonymityResult != null) {
-      _json["kAnonymityResult"] = (kAnonymityResult).toJson();
+      _json["kAnonymityResult"] = kAnonymityResult.toJson();
     }
     if (kMapEstimationResult != null) {
-      _json["kMapEstimationResult"] = (kMapEstimationResult).toJson();
+      _json["kMapEstimationResult"] = kMapEstimationResult.toJson();
     }
     if (lDiversityResult != null) {
-      _json["lDiversityResult"] = (lDiversityResult).toJson();
+      _json["lDiversityResult"] = lDiversityResult.toJson();
     }
     if (numericalStatsResult != null) {
-      _json["numericalStatsResult"] = (numericalStatsResult).toJson();
+      _json["numericalStatsResult"] = numericalStatsResult.toJson();
     }
     if (requestedOptions != null) {
-      _json["requestedOptions"] = (requestedOptions).toJson();
+      _json["requestedOptions"] = requestedOptions.toJson();
     }
     if (requestedPrivacyMetric != null) {
-      _json["requestedPrivacyMetric"] = (requestedPrivacyMetric).toJson();
+      _json["requestedPrivacyMetric"] = requestedPrivacyMetric.toJson();
     }
     if (requestedSourceTable != null) {
-      _json["requestedSourceTable"] = (requestedSourceTable).toJson();
+      _json["requestedSourceTable"] = requestedSourceTable.toJson();
     }
     return _json;
   }
@@ -6554,29 +7007,29 @@ class GooglePrivacyDlpV2AuxiliaryTable {
     if (_json.containsKey("quasiIds")) {
       quasiIds = (_json["quasiIds"] as core.List)
           .map<GooglePrivacyDlpV2QuasiIdField>(
-              (value) => new GooglePrivacyDlpV2QuasiIdField.fromJson(value))
+              (value) => GooglePrivacyDlpV2QuasiIdField.fromJson(value))
           .toList();
     }
     if (_json.containsKey("relativeFrequency")) {
       relativeFrequency =
-          new GooglePrivacyDlpV2FieldId.fromJson(_json["relativeFrequency"]);
+          GooglePrivacyDlpV2FieldId.fromJson(_json["relativeFrequency"]);
     }
     if (_json.containsKey("table")) {
-      table = new GooglePrivacyDlpV2BigQueryTable.fromJson(_json["table"]);
+      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json["table"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (quasiIds != null) {
-      _json["quasiIds"] = quasiIds.map((value) => (value).toJson()).toList();
+      _json["quasiIds"] = quasiIds.map((value) => value.toJson()).toList();
     }
     if (relativeFrequency != null) {
-      _json["relativeFrequency"] = (relativeFrequency).toJson();
+      _json["relativeFrequency"] = relativeFrequency.toJson();
     }
     if (table != null) {
-      _json["table"] = (table).toJson();
+      _json["table"] = table.toJson();
     }
     return _json;
   }
@@ -6594,21 +7047,21 @@ class GooglePrivacyDlpV2BigQueryField {
 
   GooglePrivacyDlpV2BigQueryField.fromJson(core.Map _json) {
     if (_json.containsKey("field")) {
-      field = new GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
     }
     if (_json.containsKey("table")) {
-      table = new GooglePrivacyDlpV2BigQueryTable.fromJson(_json["table"]);
+      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json["table"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = (field).toJson();
+      _json["field"] = field.toJson();
     }
     if (table != null) {
-      _json["table"] = (table).toJson();
+      _json["table"] = table.toJson();
     }
     return _json;
   }
@@ -6634,18 +7087,18 @@ class GooglePrivacyDlpV2BigQueryKey {
     }
     if (_json.containsKey("tableReference")) {
       tableReference =
-          new GooglePrivacyDlpV2BigQueryTable.fromJson(_json["tableReference"]);
+          GooglePrivacyDlpV2BigQueryTable.fromJson(_json["tableReference"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (rowNumber != null) {
       _json["rowNumber"] = rowNumber;
     }
     if (tableReference != null) {
-      _json["tableReference"] = (tableReference).toJson();
+      _json["tableReference"] = tableReference.toJson();
     }
     return _json;
   }
@@ -6695,13 +7148,13 @@ class GooglePrivacyDlpV2BigQueryOptions {
     if (_json.containsKey("excludedFields")) {
       excludedFields = (_json["excludedFields"] as core.List)
           .map<GooglePrivacyDlpV2FieldId>(
-              (value) => new GooglePrivacyDlpV2FieldId.fromJson(value))
+              (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
           .toList();
     }
     if (_json.containsKey("identifyingFields")) {
       identifyingFields = (_json["identifyingFields"] as core.List)
           .map<GooglePrivacyDlpV2FieldId>(
-              (value) => new GooglePrivacyDlpV2FieldId.fromJson(value))
+              (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
           .toList();
     }
     if (_json.containsKey("rowsLimit")) {
@@ -6715,20 +7168,20 @@ class GooglePrivacyDlpV2BigQueryOptions {
     }
     if (_json.containsKey("tableReference")) {
       tableReference =
-          new GooglePrivacyDlpV2BigQueryTable.fromJson(_json["tableReference"]);
+          GooglePrivacyDlpV2BigQueryTable.fromJson(_json["tableReference"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (excludedFields != null) {
       _json["excludedFields"] =
-          excludedFields.map((value) => (value).toJson()).toList();
+          excludedFields.map((value) => value.toJson()).toList();
     }
     if (identifyingFields != null) {
       _json["identifyingFields"] =
-          identifyingFields.map((value) => (value).toJson()).toList();
+          identifyingFields.map((value) => value.toJson()).toList();
     }
     if (rowsLimit != null) {
       _json["rowsLimit"] = rowsLimit;
@@ -6740,7 +7193,7 @@ class GooglePrivacyDlpV2BigQueryOptions {
       _json["sampleMethod"] = sampleMethod;
     }
     if (tableReference != null) {
-      _json["tableReference"] = (tableReference).toJson();
+      _json["tableReference"] = tableReference.toJson();
     }
     return _json;
   }
@@ -6776,7 +7229,7 @@ class GooglePrivacyDlpV2BigQueryTable {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (datasetId != null) {
       _json["datasetId"] = datasetId;
     }
@@ -6823,7 +7276,7 @@ class GooglePrivacyDlpV2BoundingBox {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (height != null) {
       _json["height"] = height;
     }
@@ -6856,28 +7309,28 @@ class GooglePrivacyDlpV2Bucket {
 
   GooglePrivacyDlpV2Bucket.fromJson(core.Map _json) {
     if (_json.containsKey("max")) {
-      max = new GooglePrivacyDlpV2Value.fromJson(_json["max"]);
+      max = GooglePrivacyDlpV2Value.fromJson(_json["max"]);
     }
     if (_json.containsKey("min")) {
-      min = new GooglePrivacyDlpV2Value.fromJson(_json["min"]);
+      min = GooglePrivacyDlpV2Value.fromJson(_json["min"]);
     }
     if (_json.containsKey("replacementValue")) {
       replacementValue =
-          new GooglePrivacyDlpV2Value.fromJson(_json["replacementValue"]);
+          GooglePrivacyDlpV2Value.fromJson(_json["replacementValue"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (max != null) {
-      _json["max"] = (max).toJson();
+      _json["max"] = max.toJson();
     }
     if (min != null) {
-      _json["min"] = (min).toJson();
+      _json["min"] = min.toJson();
     }
     if (replacementValue != null) {
-      _json["replacementValue"] = (replacementValue).toJson();
+      _json["replacementValue"] = replacementValue.toJson();
     }
     return _json;
   }
@@ -6901,16 +7354,16 @@ class GooglePrivacyDlpV2BucketingConfig {
     if (_json.containsKey("buckets")) {
       buckets = (_json["buckets"] as core.List)
           .map<GooglePrivacyDlpV2Bucket>(
-              (value) => new GooglePrivacyDlpV2Bucket.fromJson(value))
+              (value) => GooglePrivacyDlpV2Bucket.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (buckets != null) {
-      _json["buckets"] = buckets.map((value) => (value).toJson()).toList();
+      _json["buckets"] = buckets.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6920,9 +7373,7 @@ class GooglePrivacyDlpV2BucketingConfig {
 class GooglePrivacyDlpV2ByteContentItem {
   /// Content data to inspect or redact.
   core.String data;
-  core.List<core.int> get dataAsBytes {
-    return convert.base64.decode(data);
-  }
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -6958,7 +7409,7 @@ class GooglePrivacyDlpV2ByteContentItem {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (data != null) {
       _json["data"] = data;
     }
@@ -6977,7 +7428,7 @@ class GooglePrivacyDlpV2CancelDlpJobRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -6994,15 +7445,15 @@ class GooglePrivacyDlpV2CategoricalStatsConfig {
 
   GooglePrivacyDlpV2CategoricalStatsConfig.fromJson(core.Map _json) {
     if (_json.containsKey("field")) {
-      field = new GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = (field).toJson();
+      _json["field"] = field.toJson();
     }
     return _json;
   }
@@ -7038,7 +7489,7 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucket {
     if (_json.containsKey("bucketValues")) {
       bucketValues = (_json["bucketValues"] as core.List)
           .map<GooglePrivacyDlpV2ValueFrequency>(
-              (value) => new GooglePrivacyDlpV2ValueFrequency.fromJson(value))
+              (value) => GooglePrivacyDlpV2ValueFrequency.fromJson(value))
           .toList();
     }
     if (_json.containsKey("valueFrequencyLowerBound")) {
@@ -7051,7 +7502,7 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucket {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucketSize != null) {
       _json["bucketSize"] = bucketSize;
     }
@@ -7060,7 +7511,7 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucket {
     }
     if (bucketValues != null) {
       _json["bucketValues"] =
-          bucketValues.map((value) => (value).toJson()).toList();
+          bucketValues.map((value) => value.toJson()).toList();
     }
     if (valueFrequencyLowerBound != null) {
       _json["valueFrequencyLowerBound"] = valueFrequencyLowerBound;
@@ -7085,18 +7536,17 @@ class GooglePrivacyDlpV2CategoricalStatsResult {
       valueFrequencyHistogramBuckets = (_json["valueFrequencyHistogramBuckets"]
               as core.List)
           .map<GooglePrivacyDlpV2CategoricalStatsHistogramBucket>((value) =>
-              new GooglePrivacyDlpV2CategoricalStatsHistogramBucket.fromJson(
-                  value))
+              GooglePrivacyDlpV2CategoricalStatsHistogramBucket.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (valueFrequencyHistogramBuckets != null) {
       _json["valueFrequencyHistogramBuckets"] = valueFrequencyHistogramBuckets
-          .map((value) => (value).toJson())
+          .map((value) => value.toJson())
           .toList();
     }
     return _json;
@@ -7139,7 +7589,7 @@ class GooglePrivacyDlpV2CharacterMaskConfig {
     if (_json.containsKey("charactersToIgnore")) {
       charactersToIgnore = (_json["charactersToIgnore"] as core.List)
           .map<GooglePrivacyDlpV2CharsToIgnore>(
-              (value) => new GooglePrivacyDlpV2CharsToIgnore.fromJson(value))
+              (value) => GooglePrivacyDlpV2CharsToIgnore.fromJson(value))
           .toList();
     }
     if (_json.containsKey("maskingCharacter")) {
@@ -7155,10 +7605,10 @@ class GooglePrivacyDlpV2CharacterMaskConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (charactersToIgnore != null) {
       _json["charactersToIgnore"] =
-          charactersToIgnore.map((value) => (value).toJson()).toList();
+          charactersToIgnore.map((value) => value.toJson()).toList();
     }
     if (maskingCharacter != null) {
       _json["maskingCharacter"] = maskingCharacter;
@@ -7203,7 +7653,7 @@ class GooglePrivacyDlpV2CharsToIgnore {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (charactersToSkip != null) {
       _json["charactersToSkip"] = charactersToSkip;
     }
@@ -7229,7 +7679,7 @@ class GooglePrivacyDlpV2CloudStorageFileSet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (url != null) {
       _json["url"] = url;
     }
@@ -7286,7 +7736,7 @@ class GooglePrivacyDlpV2CloudStorageOptions {
       bytesLimitPerFilePercent = _json["bytesLimitPerFilePercent"];
     }
     if (_json.containsKey("fileSet")) {
-      fileSet = new GooglePrivacyDlpV2FileSet.fromJson(_json["fileSet"]);
+      fileSet = GooglePrivacyDlpV2FileSet.fromJson(_json["fileSet"]);
     }
     if (_json.containsKey("fileTypes")) {
       fileTypes = (_json["fileTypes"] as core.List).cast<core.String>();
@@ -7301,7 +7751,7 @@ class GooglePrivacyDlpV2CloudStorageOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bytesLimitPerFile != null) {
       _json["bytesLimitPerFile"] = bytesLimitPerFile;
     }
@@ -7309,7 +7759,7 @@ class GooglePrivacyDlpV2CloudStorageOptions {
       _json["bytesLimitPerFilePercent"] = bytesLimitPerFilePercent;
     }
     if (fileSet != null) {
-      _json["fileSet"] = (fileSet).toJson();
+      _json["fileSet"] = fileSet.toJson();
     }
     if (fileTypes != null) {
       _json["fileTypes"] = fileTypes;
@@ -7340,7 +7790,7 @@ class GooglePrivacyDlpV2CloudStoragePath {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (path != null) {
       _json["path"] = path;
     }
@@ -7404,7 +7854,7 @@ class GooglePrivacyDlpV2CloudStorageRegexFileSet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucketName != null) {
       _json["bucketName"] = bucketName;
     }
@@ -7445,7 +7895,7 @@ class GooglePrivacyDlpV2Color {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blue != null) {
       _json["blue"] = blue;
     }
@@ -7495,27 +7945,27 @@ class GooglePrivacyDlpV2Condition {
 
   GooglePrivacyDlpV2Condition.fromJson(core.Map _json) {
     if (_json.containsKey("field")) {
-      field = new GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
     }
     if (_json.containsKey("operator")) {
       operator = _json["operator"];
     }
     if (_json.containsKey("value")) {
-      value = new GooglePrivacyDlpV2Value.fromJson(_json["value"]);
+      value = GooglePrivacyDlpV2Value.fromJson(_json["value"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = (field).toJson();
+      _json["field"] = field.toJson();
     }
     if (operator != null) {
       _json["operator"] = operator;
     }
     if (value != null) {
-      _json["value"] = (value).toJson();
+      _json["value"] = value.toJson();
     }
     return _json;
   }
@@ -7532,17 +7982,16 @@ class GooglePrivacyDlpV2Conditions {
     if (_json.containsKey("conditions")) {
       conditions = (_json["conditions"] as core.List)
           .map<GooglePrivacyDlpV2Condition>(
-              (value) => new GooglePrivacyDlpV2Condition.fromJson(value))
+              (value) => GooglePrivacyDlpV2Condition.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (conditions != null) {
-      _json["conditions"] =
-          conditions.map((value) => (value).toJson()).toList();
+      _json["conditions"] = conditions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7612,7 +8061,7 @@ class GooglePrivacyDlpV2Container {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fullPath != null) {
       _json["fullPath"] = fullPath;
     }
@@ -7655,11 +8104,10 @@ class GooglePrivacyDlpV2ContentItem {
 
   GooglePrivacyDlpV2ContentItem.fromJson(core.Map _json) {
     if (_json.containsKey("byteItem")) {
-      byteItem =
-          new GooglePrivacyDlpV2ByteContentItem.fromJson(_json["byteItem"]);
+      byteItem = GooglePrivacyDlpV2ByteContentItem.fromJson(_json["byteItem"]);
     }
     if (_json.containsKey("table")) {
-      table = new GooglePrivacyDlpV2Table.fromJson(_json["table"]);
+      table = GooglePrivacyDlpV2Table.fromJson(_json["table"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -7668,12 +8116,12 @@ class GooglePrivacyDlpV2ContentItem {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (byteItem != null) {
-      _json["byteItem"] = (byteItem).toJson();
+      _json["byteItem"] = byteItem.toJson();
     }
     if (table != null) {
-      _json["table"] = (table).toJson();
+      _json["table"] = table.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -7728,26 +8176,26 @@ class GooglePrivacyDlpV2ContentLocation {
       containerVersion = _json["containerVersion"];
     }
     if (_json.containsKey("documentLocation")) {
-      documentLocation = new GooglePrivacyDlpV2DocumentLocation.fromJson(
+      documentLocation = GooglePrivacyDlpV2DocumentLocation.fromJson(
           _json["documentLocation"]);
     }
     if (_json.containsKey("imageLocation")) {
       imageLocation =
-          new GooglePrivacyDlpV2ImageLocation.fromJson(_json["imageLocation"]);
+          GooglePrivacyDlpV2ImageLocation.fromJson(_json["imageLocation"]);
     }
     if (_json.containsKey("metadataLocation")) {
-      metadataLocation = new GooglePrivacyDlpV2MetadataLocation.fromJson(
+      metadataLocation = GooglePrivacyDlpV2MetadataLocation.fromJson(
           _json["metadataLocation"]);
     }
     if (_json.containsKey("recordLocation")) {
-      recordLocation = new GooglePrivacyDlpV2RecordLocation.fromJson(
-          _json["recordLocation"]);
+      recordLocation =
+          GooglePrivacyDlpV2RecordLocation.fromJson(_json["recordLocation"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (containerName != null) {
       _json["containerName"] = containerName;
     }
@@ -7758,16 +8206,16 @@ class GooglePrivacyDlpV2ContentLocation {
       _json["containerVersion"] = containerVersion;
     }
     if (documentLocation != null) {
-      _json["documentLocation"] = (documentLocation).toJson();
+      _json["documentLocation"] = documentLocation.toJson();
     }
     if (imageLocation != null) {
-      _json["imageLocation"] = (imageLocation).toJson();
+      _json["imageLocation"] = imageLocation.toJson();
     }
     if (metadataLocation != null) {
-      _json["metadataLocation"] = (metadataLocation).toJson();
+      _json["metadataLocation"] = metadataLocation.toJson();
     }
     if (recordLocation != null) {
-      _json["recordLocation"] = (recordLocation).toJson();
+      _json["recordLocation"] = recordLocation.toJson();
     }
     return _json;
   }
@@ -7791,7 +8239,7 @@ class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
 
   GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(core.Map _json) {
     if (_json.containsKey("deidentifyTemplate")) {
-      deidentifyTemplate = new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+      deidentifyTemplate = GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
           _json["deidentifyTemplate"]);
     }
     if (_json.containsKey("locationId")) {
@@ -7804,9 +8252,9 @@ class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deidentifyTemplate != null) {
-      _json["deidentifyTemplate"] = (deidentifyTemplate).toJson();
+      _json["deidentifyTemplate"] = deidentifyTemplate.toJson();
     }
     if (locationId != null) {
       _json["locationId"] = locationId;
@@ -7841,7 +8289,7 @@ class GooglePrivacyDlpV2CreateDlpJobRequest {
   GooglePrivacyDlpV2CreateDlpJobRequest.fromJson(core.Map _json) {
     if (_json.containsKey("inspectJob")) {
       inspectJob =
-          new GooglePrivacyDlpV2InspectJobConfig.fromJson(_json["inspectJob"]);
+          GooglePrivacyDlpV2InspectJobConfig.fromJson(_json["inspectJob"]);
     }
     if (_json.containsKey("jobId")) {
       jobId = _json["jobId"];
@@ -7850,16 +8298,16 @@ class GooglePrivacyDlpV2CreateDlpJobRequest {
       locationId = _json["locationId"];
     }
     if (_json.containsKey("riskJob")) {
-      riskJob = new GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(
-          _json["riskJob"]);
+      riskJob =
+          GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(_json["riskJob"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inspectJob != null) {
-      _json["inspectJob"] = (inspectJob).toJson();
+      _json["inspectJob"] = inspectJob.toJson();
     }
     if (jobId != null) {
       _json["jobId"] = jobId;
@@ -7868,7 +8316,7 @@ class GooglePrivacyDlpV2CreateDlpJobRequest {
       _json["locationId"] = locationId;
     }
     if (riskJob != null) {
-      _json["riskJob"] = (riskJob).toJson();
+      _json["riskJob"] = riskJob.toJson();
     }
     return _json;
   }
@@ -7892,8 +8340,8 @@ class GooglePrivacyDlpV2CreateInspectTemplateRequest {
 
   GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(core.Map _json) {
     if (_json.containsKey("inspectTemplate")) {
-      inspectTemplate = new GooglePrivacyDlpV2InspectTemplate.fromJson(
-          _json["inspectTemplate"]);
+      inspectTemplate =
+          GooglePrivacyDlpV2InspectTemplate.fromJson(_json["inspectTemplate"]);
     }
     if (_json.containsKey("locationId")) {
       locationId = _json["locationId"];
@@ -7905,9 +8353,9 @@ class GooglePrivacyDlpV2CreateInspectTemplateRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inspectTemplate != null) {
-      _json["inspectTemplate"] = (inspectTemplate).toJson();
+      _json["inspectTemplate"] = inspectTemplate.toJson();
     }
     if (locationId != null) {
       _json["locationId"] = locationId;
@@ -7937,8 +8385,7 @@ class GooglePrivacyDlpV2CreateJobTriggerRequest {
 
   GooglePrivacyDlpV2CreateJobTriggerRequest.fromJson(core.Map _json) {
     if (_json.containsKey("jobTrigger")) {
-      jobTrigger =
-          new GooglePrivacyDlpV2JobTrigger.fromJson(_json["jobTrigger"]);
+      jobTrigger = GooglePrivacyDlpV2JobTrigger.fromJson(_json["jobTrigger"]);
     }
     if (_json.containsKey("locationId")) {
       locationId = _json["locationId"];
@@ -7950,9 +8397,9 @@ class GooglePrivacyDlpV2CreateJobTriggerRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (jobTrigger != null) {
-      _json["jobTrigger"] = (jobTrigger).toJson();
+      _json["jobTrigger"] = jobTrigger.toJson();
     }
     if (locationId != null) {
       _json["locationId"] = locationId;
@@ -7982,8 +8429,7 @@ class GooglePrivacyDlpV2CreateStoredInfoTypeRequest {
 
   GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(core.Map _json) {
     if (_json.containsKey("config")) {
-      config =
-          new GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json["config"]);
+      config = GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json["config"]);
     }
     if (_json.containsKey("locationId")) {
       locationId = _json["locationId"];
@@ -7995,9 +8441,9 @@ class GooglePrivacyDlpV2CreateStoredInfoTypeRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (config != null) {
-      _json["config"] = (config).toJson();
+      _json["config"] = config.toJson();
     }
     if (locationId != null) {
       _json["locationId"] = locationId;
@@ -8058,28 +8504,28 @@ class GooglePrivacyDlpV2CryptoDeterministicConfig {
 
   GooglePrivacyDlpV2CryptoDeterministicConfig.fromJson(core.Map _json) {
     if (_json.containsKey("context")) {
-      context = new GooglePrivacyDlpV2FieldId.fromJson(_json["context"]);
+      context = GooglePrivacyDlpV2FieldId.fromJson(_json["context"]);
     }
     if (_json.containsKey("cryptoKey")) {
-      cryptoKey = new GooglePrivacyDlpV2CryptoKey.fromJson(_json["cryptoKey"]);
+      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json["cryptoKey"]);
     }
     if (_json.containsKey("surrogateInfoType")) {
       surrogateInfoType =
-          new GooglePrivacyDlpV2InfoType.fromJson(_json["surrogateInfoType"]);
+          GooglePrivacyDlpV2InfoType.fromJson(_json["surrogateInfoType"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = (context).toJson();
+      _json["context"] = context.toJson();
     }
     if (cryptoKey != null) {
-      _json["cryptoKey"] = (cryptoKey).toJson();
+      _json["cryptoKey"] = cryptoKey.toJson();
     }
     if (surrogateInfoType != null) {
-      _json["surrogateInfoType"] = (surrogateInfoType).toJson();
+      _json["surrogateInfoType"] = surrogateInfoType.toJson();
     }
     return _json;
   }
@@ -8099,15 +8545,15 @@ class GooglePrivacyDlpV2CryptoHashConfig {
 
   GooglePrivacyDlpV2CryptoHashConfig.fromJson(core.Map _json) {
     if (_json.containsKey("cryptoKey")) {
-      cryptoKey = new GooglePrivacyDlpV2CryptoKey.fromJson(_json["cryptoKey"]);
+      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json["cryptoKey"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cryptoKey != null) {
-      _json["cryptoKey"] = (cryptoKey).toJson();
+      _json["cryptoKey"] = cryptoKey.toJson();
     }
     return _json;
   }
@@ -8131,30 +8577,30 @@ class GooglePrivacyDlpV2CryptoKey {
 
   GooglePrivacyDlpV2CryptoKey.fromJson(core.Map _json) {
     if (_json.containsKey("kmsWrapped")) {
-      kmsWrapped = new GooglePrivacyDlpV2KmsWrappedCryptoKey.fromJson(
-          _json["kmsWrapped"]);
+      kmsWrapped =
+          GooglePrivacyDlpV2KmsWrappedCryptoKey.fromJson(_json["kmsWrapped"]);
     }
     if (_json.containsKey("transient")) {
       transient =
-          new GooglePrivacyDlpV2TransientCryptoKey.fromJson(_json["transient"]);
+          GooglePrivacyDlpV2TransientCryptoKey.fromJson(_json["transient"]);
     }
     if (_json.containsKey("unwrapped")) {
       unwrapped =
-          new GooglePrivacyDlpV2UnwrappedCryptoKey.fromJson(_json["unwrapped"]);
+          GooglePrivacyDlpV2UnwrappedCryptoKey.fromJson(_json["unwrapped"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kmsWrapped != null) {
-      _json["kmsWrapped"] = (kmsWrapped).toJson();
+      _json["kmsWrapped"] = kmsWrapped.toJson();
     }
     if (transient != null) {
-      _json["transient"] = (transient).toJson();
+      _json["transient"] = transient.toJson();
     }
     if (unwrapped != null) {
-      _json["unwrapped"] = (unwrapped).toJson();
+      _json["unwrapped"] = unwrapped.toJson();
     }
     return _json;
   }
@@ -8240,10 +8686,10 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
       commonAlphabet = _json["commonAlphabet"];
     }
     if (_json.containsKey("context")) {
-      context = new GooglePrivacyDlpV2FieldId.fromJson(_json["context"]);
+      context = GooglePrivacyDlpV2FieldId.fromJson(_json["context"]);
     }
     if (_json.containsKey("cryptoKey")) {
-      cryptoKey = new GooglePrivacyDlpV2CryptoKey.fromJson(_json["cryptoKey"]);
+      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json["cryptoKey"]);
     }
     if (_json.containsKey("customAlphabet")) {
       customAlphabet = _json["customAlphabet"];
@@ -8253,21 +8699,21 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
     }
     if (_json.containsKey("surrogateInfoType")) {
       surrogateInfoType =
-          new GooglePrivacyDlpV2InfoType.fromJson(_json["surrogateInfoType"]);
+          GooglePrivacyDlpV2InfoType.fromJson(_json["surrogateInfoType"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (commonAlphabet != null) {
       _json["commonAlphabet"] = commonAlphabet;
     }
     if (context != null) {
-      _json["context"] = (context).toJson();
+      _json["context"] = context.toJson();
     }
     if (cryptoKey != null) {
-      _json["cryptoKey"] = (cryptoKey).toJson();
+      _json["cryptoKey"] = cryptoKey.toJson();
     }
     if (customAlphabet != null) {
       _json["customAlphabet"] = customAlphabet;
@@ -8276,7 +8722,7 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
       _json["radix"] = radix;
     }
     if (surrogateInfoType != null) {
-      _json["surrogateInfoType"] = (surrogateInfoType).toJson();
+      _json["surrogateInfoType"] = surrogateInfoType.toJson();
     }
     return _json;
   }
@@ -8339,62 +8785,60 @@ class GooglePrivacyDlpV2CustomInfoType {
     if (_json.containsKey("detectionRules")) {
       detectionRules = (_json["detectionRules"] as core.List)
           .map<GooglePrivacyDlpV2DetectionRule>(
-              (value) => new GooglePrivacyDlpV2DetectionRule.fromJson(value))
+              (value) => GooglePrivacyDlpV2DetectionRule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dictionary")) {
-      dictionary =
-          new GooglePrivacyDlpV2Dictionary.fromJson(_json["dictionary"]);
+      dictionary = GooglePrivacyDlpV2Dictionary.fromJson(_json["dictionary"]);
     }
     if (_json.containsKey("exclusionType")) {
       exclusionType = _json["exclusionType"];
     }
     if (_json.containsKey("infoType")) {
-      infoType = new GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
     }
     if (_json.containsKey("likelihood")) {
       likelihood = _json["likelihood"];
     }
     if (_json.containsKey("regex")) {
-      regex = new GooglePrivacyDlpV2Regex.fromJson(_json["regex"]);
+      regex = GooglePrivacyDlpV2Regex.fromJson(_json["regex"]);
     }
     if (_json.containsKey("storedType")) {
-      storedType =
-          new GooglePrivacyDlpV2StoredType.fromJson(_json["storedType"]);
+      storedType = GooglePrivacyDlpV2StoredType.fromJson(_json["storedType"]);
     }
     if (_json.containsKey("surrogateType")) {
       surrogateType =
-          new GooglePrivacyDlpV2SurrogateType.fromJson(_json["surrogateType"]);
+          GooglePrivacyDlpV2SurrogateType.fromJson(_json["surrogateType"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (detectionRules != null) {
       _json["detectionRules"] =
-          detectionRules.map((value) => (value).toJson()).toList();
+          detectionRules.map((value) => value.toJson()).toList();
     }
     if (dictionary != null) {
-      _json["dictionary"] = (dictionary).toJson();
+      _json["dictionary"] = dictionary.toJson();
     }
     if (exclusionType != null) {
       _json["exclusionType"] = exclusionType;
     }
     if (infoType != null) {
-      _json["infoType"] = (infoType).toJson();
+      _json["infoType"] = infoType.toJson();
     }
     if (likelihood != null) {
       _json["likelihood"] = likelihood;
     }
     if (regex != null) {
-      _json["regex"] = (regex).toJson();
+      _json["regex"] = regex.toJson();
     }
     if (storedType != null) {
-      _json["storedType"] = (storedType).toJson();
+      _json["storedType"] = storedType.toJson();
     }
     if (surrogateType != null) {
-      _json["surrogateType"] = (surrogateType).toJson();
+      _json["surrogateType"] = surrogateType.toJson();
     }
     return _json;
   }
@@ -8409,15 +8853,15 @@ class GooglePrivacyDlpV2DatastoreKey {
 
   GooglePrivacyDlpV2DatastoreKey.fromJson(core.Map _json) {
     if (_json.containsKey("entityKey")) {
-      entityKey = new GooglePrivacyDlpV2Key.fromJson(_json["entityKey"]);
+      entityKey = GooglePrivacyDlpV2Key.fromJson(_json["entityKey"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (entityKey != null) {
-      _json["entityKey"] = (entityKey).toJson();
+      _json["entityKey"] = entityKey.toJson();
     }
     return _json;
   }
@@ -8436,22 +8880,22 @@ class GooglePrivacyDlpV2DatastoreOptions {
 
   GooglePrivacyDlpV2DatastoreOptions.fromJson(core.Map _json) {
     if (_json.containsKey("kind")) {
-      kind = new GooglePrivacyDlpV2KindExpression.fromJson(_json["kind"]);
+      kind = GooglePrivacyDlpV2KindExpression.fromJson(_json["kind"]);
     }
     if (_json.containsKey("partitionId")) {
       partitionId =
-          new GooglePrivacyDlpV2PartitionId.fromJson(_json["partitionId"]);
+          GooglePrivacyDlpV2PartitionId.fromJson(_json["partitionId"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
-      _json["kind"] = (kind).toJson();
+      _json["kind"] = kind.toJson();
     }
     if (partitionId != null) {
-      _json["partitionId"] = (partitionId).toJson();
+      _json["partitionId"] = partitionId.toJson();
     }
     return _json;
   }
@@ -8485,10 +8929,10 @@ class GooglePrivacyDlpV2DateShiftConfig {
 
   GooglePrivacyDlpV2DateShiftConfig.fromJson(core.Map _json) {
     if (_json.containsKey("context")) {
-      context = new GooglePrivacyDlpV2FieldId.fromJson(_json["context"]);
+      context = GooglePrivacyDlpV2FieldId.fromJson(_json["context"]);
     }
     if (_json.containsKey("cryptoKey")) {
-      cryptoKey = new GooglePrivacyDlpV2CryptoKey.fromJson(_json["cryptoKey"]);
+      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json["cryptoKey"]);
     }
     if (_json.containsKey("lowerBoundDays")) {
       lowerBoundDays = _json["lowerBoundDays"];
@@ -8500,12 +8944,12 @@ class GooglePrivacyDlpV2DateShiftConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = (context).toJson();
+      _json["context"] = context.toJson();
     }
     if (cryptoKey != null) {
-      _json["cryptoKey"] = (cryptoKey).toJson();
+      _json["cryptoKey"] = cryptoKey.toJson();
     }
     if (lowerBoundDays != null) {
       _json["lowerBoundDays"] = lowerBoundDays;
@@ -8545,33 +8989,33 @@ class GooglePrivacyDlpV2DateTime {
 
   GooglePrivacyDlpV2DateTime.fromJson(core.Map _json) {
     if (_json.containsKey("date")) {
-      date = new GoogleTypeDate.fromJson(_json["date"]);
+      date = GoogleTypeDate.fromJson(_json["date"]);
     }
     if (_json.containsKey("dayOfWeek")) {
       dayOfWeek = _json["dayOfWeek"];
     }
     if (_json.containsKey("time")) {
-      time = new GoogleTypeTimeOfDay.fromJson(_json["time"]);
+      time = GoogleTypeTimeOfDay.fromJson(_json["time"]);
     }
     if (_json.containsKey("timeZone")) {
-      timeZone = new GooglePrivacyDlpV2TimeZone.fromJson(_json["timeZone"]);
+      timeZone = GooglePrivacyDlpV2TimeZone.fromJson(_json["timeZone"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (date != null) {
-      _json["date"] = (date).toJson();
+      _json["date"] = date.toJson();
     }
     if (dayOfWeek != null) {
       _json["dayOfWeek"] = dayOfWeek;
     }
     if (time != null) {
-      _json["time"] = (time).toJson();
+      _json["time"] = time.toJson();
     }
     if (timeZone != null) {
-      _json["timeZone"] = (timeZone).toJson();
+      _json["timeZone"] = timeZone.toJson();
     }
     return _json;
   }
@@ -8597,33 +9041,32 @@ class GooglePrivacyDlpV2DeidentifyConfig {
   GooglePrivacyDlpV2DeidentifyConfig.fromJson(core.Map _json) {
     if (_json.containsKey("infoTypeTransformations")) {
       infoTypeTransformations =
-          new GooglePrivacyDlpV2InfoTypeTransformations.fromJson(
+          GooglePrivacyDlpV2InfoTypeTransformations.fromJson(
               _json["infoTypeTransformations"]);
     }
     if (_json.containsKey("recordTransformations")) {
-      recordTransformations =
-          new GooglePrivacyDlpV2RecordTransformations.fromJson(
-              _json["recordTransformations"]);
+      recordTransformations = GooglePrivacyDlpV2RecordTransformations.fromJson(
+          _json["recordTransformations"]);
     }
     if (_json.containsKey("transformationErrorHandling")) {
       transformationErrorHandling =
-          new GooglePrivacyDlpV2TransformationErrorHandling.fromJson(
+          GooglePrivacyDlpV2TransformationErrorHandling.fromJson(
               _json["transformationErrorHandling"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (infoTypeTransformations != null) {
-      _json["infoTypeTransformations"] = (infoTypeTransformations).toJson();
+      _json["infoTypeTransformations"] = infoTypeTransformations.toJson();
     }
     if (recordTransformations != null) {
-      _json["recordTransformations"] = (recordTransformations).toJson();
+      _json["recordTransformations"] = recordTransformations.toJson();
     }
     if (transformationErrorHandling != null) {
       _json["transformationErrorHandling"] =
-          (transformationErrorHandling).toJson();
+          transformationErrorHandling.toJson();
     }
     return _json;
   }
@@ -8664,7 +9107,7 @@ class GooglePrivacyDlpV2DeidentifyContentRequest {
 
   GooglePrivacyDlpV2DeidentifyContentRequest.fromJson(core.Map _json) {
     if (_json.containsKey("deidentifyConfig")) {
-      deidentifyConfig = new GooglePrivacyDlpV2DeidentifyConfig.fromJson(
+      deidentifyConfig = GooglePrivacyDlpV2DeidentifyConfig.fromJson(
           _json["deidentifyConfig"]);
     }
     if (_json.containsKey("deidentifyTemplateName")) {
@@ -8672,13 +9115,13 @@ class GooglePrivacyDlpV2DeidentifyContentRequest {
     }
     if (_json.containsKey("inspectConfig")) {
       inspectConfig =
-          new GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
+          GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
     }
     if (_json.containsKey("inspectTemplateName")) {
       inspectTemplateName = _json["inspectTemplateName"];
     }
     if (_json.containsKey("item")) {
-      item = new GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
+      item = GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
     }
     if (_json.containsKey("locationId")) {
       locationId = _json["locationId"];
@@ -8687,21 +9130,21 @@ class GooglePrivacyDlpV2DeidentifyContentRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deidentifyConfig != null) {
-      _json["deidentifyConfig"] = (deidentifyConfig).toJson();
+      _json["deidentifyConfig"] = deidentifyConfig.toJson();
     }
     if (deidentifyTemplateName != null) {
       _json["deidentifyTemplateName"] = deidentifyTemplateName;
     }
     if (inspectConfig != null) {
-      _json["inspectConfig"] = (inspectConfig).toJson();
+      _json["inspectConfig"] = inspectConfig.toJson();
     }
     if (inspectTemplateName != null) {
       _json["inspectTemplateName"] = inspectTemplateName;
     }
     if (item != null) {
-      _json["item"] = (item).toJson();
+      _json["item"] = item.toJson();
     }
     if (locationId != null) {
       _json["locationId"] = locationId;
@@ -8722,22 +9165,22 @@ class GooglePrivacyDlpV2DeidentifyContentResponse {
 
   GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(core.Map _json) {
     if (_json.containsKey("item")) {
-      item = new GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
+      item = GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
     }
     if (_json.containsKey("overview")) {
-      overview = new GooglePrivacyDlpV2TransformationOverview.fromJson(
-          _json["overview"]);
+      overview =
+          GooglePrivacyDlpV2TransformationOverview.fromJson(_json["overview"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (item != null) {
-      _json["item"] = (item).toJson();
+      _json["item"] = item.toJson();
     }
     if (overview != null) {
-      _json["overview"] = (overview).toJson();
+      _json["overview"] = overview.toJson();
     }
     return _json;
   }
@@ -8773,7 +9216,7 @@ class GooglePrivacyDlpV2DeidentifyTemplate {
       createTime = _json["createTime"];
     }
     if (_json.containsKey("deidentifyConfig")) {
-      deidentifyConfig = new GooglePrivacyDlpV2DeidentifyConfig.fromJson(
+      deidentifyConfig = GooglePrivacyDlpV2DeidentifyConfig.fromJson(
           _json["deidentifyConfig"]);
     }
     if (_json.containsKey("description")) {
@@ -8792,12 +9235,12 @@ class GooglePrivacyDlpV2DeidentifyTemplate {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
     if (deidentifyConfig != null) {
-      _json["deidentifyConfig"] = (deidentifyConfig).toJson();
+      _json["deidentifyConfig"] = deidentifyConfig.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -8840,13 +9283,13 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
     if (_json.containsKey("auxiliaryTables")) {
       auxiliaryTables = (_json["auxiliaryTables"] as core.List)
           .map<GooglePrivacyDlpV2StatisticalTable>(
-              (value) => new GooglePrivacyDlpV2StatisticalTable.fromJson(value))
+              (value) => GooglePrivacyDlpV2StatisticalTable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("quasiIds")) {
       quasiIds = (_json["quasiIds"] as core.List)
           .map<GooglePrivacyDlpV2QuasiId>(
-              (value) => new GooglePrivacyDlpV2QuasiId.fromJson(value))
+              (value) => GooglePrivacyDlpV2QuasiId.fromJson(value))
           .toList();
     }
     if (_json.containsKey("regionCode")) {
@@ -8856,13 +9299,13 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (auxiliaryTables != null) {
       _json["auxiliaryTables"] =
-          auxiliaryTables.map((value) => (value).toJson()).toList();
+          auxiliaryTables.map((value) => value.toJson()).toList();
     }
     if (quasiIds != null) {
-      _json["quasiIds"] = quasiIds.map((value) => (value).toJson()).toList();
+      _json["quasiIds"] = quasiIds.map((value) => value.toJson()).toList();
     }
     if (regionCode != null) {
       _json["regionCode"] = regionCode;
@@ -8907,9 +9350,8 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket {
     if (_json.containsKey("bucketValues")) {
       bucketValues = (_json["bucketValues"] as core.List)
           .map<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues>(
-              (value) =>
-                  new GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues
-                      .fromJson(value))
+              (value) => GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues
+                  .fromJson(value))
           .toList();
     }
     if (_json.containsKey("maxProbability")) {
@@ -8922,7 +9364,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucketSize != null) {
       _json["bucketSize"] = bucketSize;
     }
@@ -8931,7 +9373,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket {
     }
     if (bucketValues != null) {
       _json["bucketValues"] =
-          bucketValues.map((value) => (value).toJson()).toList();
+          bucketValues.map((value) => value.toJson()).toList();
     }
     if (maxProbability != null) {
       _json["maxProbability"] = maxProbability;
@@ -8968,20 +9410,20 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues {
     if (_json.containsKey("quasiIdsValues")) {
       quasiIdsValues = (_json["quasiIdsValues"] as core.List)
           .map<GooglePrivacyDlpV2Value>(
-              (value) => new GooglePrivacyDlpV2Value.fromJson(value))
+              (value) => GooglePrivacyDlpV2Value.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (estimatedProbability != null) {
       _json["estimatedProbability"] = estimatedProbability;
     }
     if (quasiIdsValues != null) {
       _json["quasiIdsValues"] =
-          quasiIdsValues.map((value) => (value).toJson()).toList();
+          quasiIdsValues.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -9004,23 +9446,23 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationResult {
 
   GooglePrivacyDlpV2DeltaPresenceEstimationResult.fromJson(core.Map _json) {
     if (_json.containsKey("deltaPresenceEstimationHistogram")) {
-      deltaPresenceEstimationHistogram = (_json[
-              "deltaPresenceEstimationHistogram"] as core.List)
-          .map<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>(
-              (value) =>
-                  new GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket
-                      .fromJson(value))
-          .toList();
+      deltaPresenceEstimationHistogram =
+          (_json["deltaPresenceEstimationHistogram"] as core.List)
+              .map<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>(
+                  (value) =>
+                      GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket
+                          .fromJson(value))
+              .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deltaPresenceEstimationHistogram != null) {
       _json["deltaPresenceEstimationHistogram"] =
           deltaPresenceEstimationHistogram
-              .map((value) => (value).toJson())
+              .map((value) => value.toJson())
               .toList();
     }
     return _json;
@@ -9040,15 +9482,15 @@ class GooglePrivacyDlpV2DetectionRule {
   GooglePrivacyDlpV2DetectionRule.fromJson(core.Map _json) {
     if (_json.containsKey("hotwordRule")) {
       hotwordRule =
-          new GooglePrivacyDlpV2HotwordRule.fromJson(_json["hotwordRule"]);
+          GooglePrivacyDlpV2HotwordRule.fromJson(_json["hotwordRule"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hotwordRule != null) {
-      _json["hotwordRule"] = (hotwordRule).toJson();
+      _json["hotwordRule"] = hotwordRule.toJson();
     }
     return _json;
   }
@@ -9085,22 +9527,22 @@ class GooglePrivacyDlpV2Dictionary {
 
   GooglePrivacyDlpV2Dictionary.fromJson(core.Map _json) {
     if (_json.containsKey("cloudStoragePath")) {
-      cloudStoragePath = new GooglePrivacyDlpV2CloudStoragePath.fromJson(
+      cloudStoragePath = GooglePrivacyDlpV2CloudStoragePath.fromJson(
           _json["cloudStoragePath"]);
     }
     if (_json.containsKey("wordList")) {
-      wordList = new GooglePrivacyDlpV2WordList.fromJson(_json["wordList"]);
+      wordList = GooglePrivacyDlpV2WordList.fromJson(_json["wordList"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cloudStoragePath != null) {
-      _json["cloudStoragePath"] = (cloudStoragePath).toJson();
+      _json["cloudStoragePath"] = cloudStoragePath.toJson();
     }
     if (wordList != null) {
-      _json["wordList"] = (wordList).toJson();
+      _json["wordList"] = wordList.toJson();
     }
     return _json;
   }
@@ -9167,11 +9609,11 @@ class GooglePrivacyDlpV2DlpJob {
     if (_json.containsKey("errors")) {
       errors = (_json["errors"] as core.List)
           .map<GooglePrivacyDlpV2Error>(
-              (value) => new GooglePrivacyDlpV2Error.fromJson(value))
+              (value) => GooglePrivacyDlpV2Error.fromJson(value))
           .toList();
     }
     if (_json.containsKey("inspectDetails")) {
-      inspectDetails = new GooglePrivacyDlpV2InspectDataSourceDetails.fromJson(
+      inspectDetails = GooglePrivacyDlpV2InspectDataSourceDetails.fromJson(
           _json["inspectDetails"]);
     }
     if (_json.containsKey("jobTriggerName")) {
@@ -9181,7 +9623,7 @@ class GooglePrivacyDlpV2DlpJob {
       name = _json["name"];
     }
     if (_json.containsKey("riskDetails")) {
-      riskDetails = new GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails.fromJson(
+      riskDetails = GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails.fromJson(
           _json["riskDetails"]);
     }
     if (_json.containsKey("startTime")) {
@@ -9197,7 +9639,7 @@ class GooglePrivacyDlpV2DlpJob {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -9205,10 +9647,10 @@ class GooglePrivacyDlpV2DlpJob {
       _json["endTime"] = endTime;
     }
     if (errors != null) {
-      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+      _json["errors"] = errors.map((value) => value.toJson()).toList();
     }
     if (inspectDetails != null) {
-      _json["inspectDetails"] = (inspectDetails).toJson();
+      _json["inspectDetails"] = inspectDetails.toJson();
     }
     if (jobTriggerName != null) {
       _json["jobTriggerName"] = jobTriggerName;
@@ -9217,7 +9659,7 @@ class GooglePrivacyDlpV2DlpJob {
       _json["name"] = name;
     }
     if (riskDetails != null) {
-      _json["riskDetails"] = (riskDetails).toJson();
+      _json["riskDetails"] = riskDetails.toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -9248,7 +9690,7 @@ class GooglePrivacyDlpV2DocumentLocation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fileOffset != null) {
       _json["fileOffset"] = fileOffset;
     }
@@ -9269,15 +9711,15 @@ class GooglePrivacyDlpV2EntityId {
 
   GooglePrivacyDlpV2EntityId.fromJson(core.Map _json) {
     if (_json.containsKey("field")) {
-      field = new GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = (field).toJson();
+      _json["field"] = field.toJson();
     }
     return _json;
   }
@@ -9296,7 +9738,7 @@ class GooglePrivacyDlpV2Error {
 
   GooglePrivacyDlpV2Error.fromJson(core.Map _json) {
     if (_json.containsKey("details")) {
-      details = new GoogleRpcStatus.fromJson(_json["details"]);
+      details = GoogleRpcStatus.fromJson(_json["details"]);
     }
     if (_json.containsKey("timestamps")) {
       timestamps = (_json["timestamps"] as core.List).cast<core.String>();
@@ -9305,9 +9747,9 @@ class GooglePrivacyDlpV2Error {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (details != null) {
-      _json["details"] = (details).toJson();
+      _json["details"] = details.toJson();
     }
     if (timestamps != null) {
       _json["timestamps"] = timestamps;
@@ -9333,16 +9775,16 @@ class GooglePrivacyDlpV2ExcludeInfoTypes {
     if (_json.containsKey("infoTypes")) {
       infoTypes = (_json["infoTypes"] as core.List)
           .map<GooglePrivacyDlpV2InfoType>(
-              (value) => new GooglePrivacyDlpV2InfoType.fromJson(value))
+              (value) => GooglePrivacyDlpV2InfoType.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (infoTypes != null) {
-      _json["infoTypes"] = infoTypes.map((value) => (value).toJson()).toList();
+      _json["infoTypes"] = infoTypes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -9380,35 +9822,34 @@ class GooglePrivacyDlpV2ExclusionRule {
 
   GooglePrivacyDlpV2ExclusionRule.fromJson(core.Map _json) {
     if (_json.containsKey("dictionary")) {
-      dictionary =
-          new GooglePrivacyDlpV2Dictionary.fromJson(_json["dictionary"]);
+      dictionary = GooglePrivacyDlpV2Dictionary.fromJson(_json["dictionary"]);
     }
     if (_json.containsKey("excludeInfoTypes")) {
-      excludeInfoTypes = new GooglePrivacyDlpV2ExcludeInfoTypes.fromJson(
+      excludeInfoTypes = GooglePrivacyDlpV2ExcludeInfoTypes.fromJson(
           _json["excludeInfoTypes"]);
     }
     if (_json.containsKey("matchingType")) {
       matchingType = _json["matchingType"];
     }
     if (_json.containsKey("regex")) {
-      regex = new GooglePrivacyDlpV2Regex.fromJson(_json["regex"]);
+      regex = GooglePrivacyDlpV2Regex.fromJson(_json["regex"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dictionary != null) {
-      _json["dictionary"] = (dictionary).toJson();
+      _json["dictionary"] = dictionary.toJson();
     }
     if (excludeInfoTypes != null) {
-      _json["excludeInfoTypes"] = (excludeInfoTypes).toJson();
+      _json["excludeInfoTypes"] = excludeInfoTypes.toJson();
     }
     if (matchingType != null) {
       _json["matchingType"] = matchingType;
     }
     if (regex != null) {
-      _json["regex"] = (regex).toJson();
+      _json["regex"] = regex.toJson();
     }
     return _json;
   }
@@ -9430,8 +9871,7 @@ class GooglePrivacyDlpV2Expressions {
 
   GooglePrivacyDlpV2Expressions.fromJson(core.Map _json) {
     if (_json.containsKey("conditions")) {
-      conditions =
-          new GooglePrivacyDlpV2Conditions.fromJson(_json["conditions"]);
+      conditions = GooglePrivacyDlpV2Conditions.fromJson(_json["conditions"]);
     }
     if (_json.containsKey("logicalOperator")) {
       logicalOperator = _json["logicalOperator"];
@@ -9440,9 +9880,9 @@ class GooglePrivacyDlpV2Expressions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (conditions != null) {
-      _json["conditions"] = (conditions).toJson();
+      _json["conditions"] = conditions.toJson();
     }
     if (logicalOperator != null) {
       _json["logicalOperator"] = logicalOperator;
@@ -9466,7 +9906,7 @@ class GooglePrivacyDlpV2FieldId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -9499,40 +9939,40 @@ class GooglePrivacyDlpV2FieldTransformation {
   GooglePrivacyDlpV2FieldTransformation.fromJson(core.Map _json) {
     if (_json.containsKey("condition")) {
       condition =
-          new GooglePrivacyDlpV2RecordCondition.fromJson(_json["condition"]);
+          GooglePrivacyDlpV2RecordCondition.fromJson(_json["condition"]);
     }
     if (_json.containsKey("fields")) {
       fields = (_json["fields"] as core.List)
           .map<GooglePrivacyDlpV2FieldId>(
-              (value) => new GooglePrivacyDlpV2FieldId.fromJson(value))
+              (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
           .toList();
     }
     if (_json.containsKey("infoTypeTransformations")) {
       infoTypeTransformations =
-          new GooglePrivacyDlpV2InfoTypeTransformations.fromJson(
+          GooglePrivacyDlpV2InfoTypeTransformations.fromJson(
               _json["infoTypeTransformations"]);
     }
     if (_json.containsKey("primitiveTransformation")) {
       primitiveTransformation =
-          new GooglePrivacyDlpV2PrimitiveTransformation.fromJson(
+          GooglePrivacyDlpV2PrimitiveTransformation.fromJson(
               _json["primitiveTransformation"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (condition != null) {
-      _json["condition"] = (condition).toJson();
+      _json["condition"] = condition.toJson();
     }
     if (fields != null) {
-      _json["fields"] = fields.map((value) => (value).toJson()).toList();
+      _json["fields"] = fields.map((value) => value.toJson()).toList();
     }
     if (infoTypeTransformations != null) {
-      _json["infoTypeTransformations"] = (infoTypeTransformations).toJson();
+      _json["infoTypeTransformations"] = infoTypeTransformations.toJson();
     }
     if (primitiveTransformation != null) {
-      _json["primitiveTransformation"] = (primitiveTransformation).toJson();
+      _json["primitiveTransformation"] = primitiveTransformation.toJson();
     }
     return _json;
   }
@@ -9557,7 +9997,7 @@ class GooglePrivacyDlpV2FileSet {
 
   GooglePrivacyDlpV2FileSet.fromJson(core.Map _json) {
     if (_json.containsKey("regexFileSet")) {
-      regexFileSet = new GooglePrivacyDlpV2CloudStorageRegexFileSet.fromJson(
+      regexFileSet = GooglePrivacyDlpV2CloudStorageRegexFileSet.fromJson(
           _json["regexFileSet"]);
     }
     if (_json.containsKey("url")) {
@@ -9567,9 +10007,9 @@ class GooglePrivacyDlpV2FileSet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (regexFileSet != null) {
-      _json["regexFileSet"] = (regexFileSet).toJson();
+      _json["regexFileSet"] = regexFileSet.toJson();
     }
     if (url != null) {
       _json["url"] = url;
@@ -9644,7 +10084,7 @@ class GooglePrivacyDlpV2Finding {
       createTime = _json["createTime"];
     }
     if (_json.containsKey("infoType")) {
-      infoType = new GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
     }
     if (_json.containsKey("jobCreateTime")) {
       jobCreateTime = _json["jobCreateTime"];
@@ -9659,7 +10099,7 @@ class GooglePrivacyDlpV2Finding {
       likelihood = _json["likelihood"];
     }
     if (_json.containsKey("location")) {
-      location = new GooglePrivacyDlpV2Location.fromJson(_json["location"]);
+      location = GooglePrivacyDlpV2Location.fromJson(_json["location"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -9668,7 +10108,7 @@ class GooglePrivacyDlpV2Finding {
       quote = _json["quote"];
     }
     if (_json.containsKey("quoteInfo")) {
-      quoteInfo = new GooglePrivacyDlpV2QuoteInfo.fromJson(_json["quoteInfo"]);
+      quoteInfo = GooglePrivacyDlpV2QuoteInfo.fromJson(_json["quoteInfo"]);
     }
     if (_json.containsKey("resourceName")) {
       resourceName = _json["resourceName"];
@@ -9680,12 +10120,12 @@ class GooglePrivacyDlpV2Finding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
     if (infoType != null) {
-      _json["infoType"] = (infoType).toJson();
+      _json["infoType"] = infoType.toJson();
     }
     if (jobCreateTime != null) {
       _json["jobCreateTime"] = jobCreateTime;
@@ -9700,7 +10140,7 @@ class GooglePrivacyDlpV2Finding {
       _json["likelihood"] = likelihood;
     }
     if (location != null) {
-      _json["location"] = (location).toJson();
+      _json["location"] = location.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -9709,7 +10149,7 @@ class GooglePrivacyDlpV2Finding {
       _json["quote"] = quote;
     }
     if (quoteInfo != null) {
-      _json["quoteInfo"] = (quoteInfo).toJson();
+      _json["quoteInfo"] = quoteInfo.toJson();
     }
     if (resourceName != null) {
       _json["resourceName"] = resourceName;
@@ -9743,7 +10183,7 @@ class GooglePrivacyDlpV2FindingLimits {
     if (_json.containsKey("maxFindingsPerInfoType")) {
       maxFindingsPerInfoType = (_json["maxFindingsPerInfoType"] as core.List)
           .map<GooglePrivacyDlpV2InfoTypeLimit>(
-              (value) => new GooglePrivacyDlpV2InfoTypeLimit.fromJson(value))
+              (value) => GooglePrivacyDlpV2InfoTypeLimit.fromJson(value))
           .toList();
     }
     if (_json.containsKey("maxFindingsPerItem")) {
@@ -9756,10 +10196,10 @@ class GooglePrivacyDlpV2FindingLimits {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maxFindingsPerInfoType != null) {
       _json["maxFindingsPerInfoType"] =
-          maxFindingsPerInfoType.map((value) => (value).toJson()).toList();
+          maxFindingsPerInfoType.map((value) => value.toJson()).toList();
     }
     if (maxFindingsPerItem != null) {
       _json["maxFindingsPerItem"] = maxFindingsPerItem;
@@ -9779,7 +10219,7 @@ class GooglePrivacyDlpV2FinishDlpJobRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -9820,24 +10260,24 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfig {
       bucketSize = _json["bucketSize"].toDouble();
     }
     if (_json.containsKey("lowerBound")) {
-      lowerBound = new GooglePrivacyDlpV2Value.fromJson(_json["lowerBound"]);
+      lowerBound = GooglePrivacyDlpV2Value.fromJson(_json["lowerBound"]);
     }
     if (_json.containsKey("upperBound")) {
-      upperBound = new GooglePrivacyDlpV2Value.fromJson(_json["upperBound"]);
+      upperBound = GooglePrivacyDlpV2Value.fromJson(_json["upperBound"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucketSize != null) {
       _json["bucketSize"] = bucketSize;
     }
     if (lowerBound != null) {
-      _json["lowerBound"] = (lowerBound).toJson();
+      _json["lowerBound"] = lowerBound.toJson();
     }
     if (upperBound != null) {
-      _json["upperBound"] = (upperBound).toJson();
+      _json["upperBound"] = upperBound.toJson();
     }
     return _json;
   }
@@ -9866,30 +10306,28 @@ class GooglePrivacyDlpV2HotwordRule {
 
   GooglePrivacyDlpV2HotwordRule.fromJson(core.Map _json) {
     if (_json.containsKey("hotwordRegex")) {
-      hotwordRegex =
-          new GooglePrivacyDlpV2Regex.fromJson(_json["hotwordRegex"]);
+      hotwordRegex = GooglePrivacyDlpV2Regex.fromJson(_json["hotwordRegex"]);
     }
     if (_json.containsKey("likelihoodAdjustment")) {
-      likelihoodAdjustment =
-          new GooglePrivacyDlpV2LikelihoodAdjustment.fromJson(
-              _json["likelihoodAdjustment"]);
+      likelihoodAdjustment = GooglePrivacyDlpV2LikelihoodAdjustment.fromJson(
+          _json["likelihoodAdjustment"]);
     }
     if (_json.containsKey("proximity")) {
-      proximity = new GooglePrivacyDlpV2Proximity.fromJson(_json["proximity"]);
+      proximity = GooglePrivacyDlpV2Proximity.fromJson(_json["proximity"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hotwordRegex != null) {
-      _json["hotwordRegex"] = (hotwordRegex).toJson();
+      _json["hotwordRegex"] = hotwordRegex.toJson();
     }
     if (likelihoodAdjustment != null) {
-      _json["likelihoodAdjustment"] = (likelihoodAdjustment).toJson();
+      _json["likelihoodAdjustment"] = likelihoodAdjustment.toJson();
     }
     if (proximity != null) {
-      _json["proximity"] = (proximity).toJson();
+      _json["proximity"] = proximity.toJson();
     }
     return _json;
   }
@@ -9908,22 +10346,22 @@ class GooglePrivacyDlpV2HybridContentItem {
 
   GooglePrivacyDlpV2HybridContentItem.fromJson(core.Map _json) {
     if (_json.containsKey("findingDetails")) {
-      findingDetails = new GooglePrivacyDlpV2HybridFindingDetails.fromJson(
+      findingDetails = GooglePrivacyDlpV2HybridFindingDetails.fromJson(
           _json["findingDetails"]);
     }
     if (_json.containsKey("item")) {
-      item = new GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
+      item = GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (findingDetails != null) {
-      _json["findingDetails"] = (findingDetails).toJson();
+      _json["findingDetails"] = findingDetails.toJson();
     }
     if (item != null) {
-      _json["item"] = (item).toJson();
+      _json["item"] = item.toJson();
     }
     return _json;
   }
@@ -9968,7 +10406,7 @@ class GooglePrivacyDlpV2HybridFindingDetails {
   GooglePrivacyDlpV2HybridFindingDetails.fromJson(core.Map _json) {
     if (_json.containsKey("containerDetails")) {
       containerDetails =
-          new GooglePrivacyDlpV2Container.fromJson(_json["containerDetails"]);
+          GooglePrivacyDlpV2Container.fromJson(_json["containerDetails"]);
     }
     if (_json.containsKey("fileOffset")) {
       fileOffset = _json["fileOffset"];
@@ -9981,15 +10419,15 @@ class GooglePrivacyDlpV2HybridFindingDetails {
     }
     if (_json.containsKey("tableOptions")) {
       tableOptions =
-          new GooglePrivacyDlpV2TableOptions.fromJson(_json["tableOptions"]);
+          GooglePrivacyDlpV2TableOptions.fromJson(_json["tableOptions"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (containerDetails != null) {
-      _json["containerDetails"] = (containerDetails).toJson();
+      _json["containerDetails"] = containerDetails.toJson();
     }
     if (fileOffset != null) {
       _json["fileOffset"] = fileOffset;
@@ -10001,7 +10439,7 @@ class GooglePrivacyDlpV2HybridFindingDetails {
       _json["rowOffset"] = rowOffset;
     }
     if (tableOptions != null) {
-      _json["tableOptions"] = (tableOptions).toJson();
+      _json["tableOptions"] = tableOptions.toJson();
     }
     return _json;
   }
@@ -10017,15 +10455,15 @@ class GooglePrivacyDlpV2HybridInspectDlpJobRequest {
   GooglePrivacyDlpV2HybridInspectDlpJobRequest.fromJson(core.Map _json) {
     if (_json.containsKey("hybridItem")) {
       hybridItem =
-          new GooglePrivacyDlpV2HybridContentItem.fromJson(_json["hybridItem"]);
+          GooglePrivacyDlpV2HybridContentItem.fromJson(_json["hybridItem"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hybridItem != null) {
-      _json["hybridItem"] = (hybridItem).toJson();
+      _json["hybridItem"] = hybridItem.toJson();
     }
     return _json;
   }
@@ -10041,15 +10479,15 @@ class GooglePrivacyDlpV2HybridInspectJobTriggerRequest {
   GooglePrivacyDlpV2HybridInspectJobTriggerRequest.fromJson(core.Map _json) {
     if (_json.containsKey("hybridItem")) {
       hybridItem =
-          new GooglePrivacyDlpV2HybridContentItem.fromJson(_json["hybridItem"]);
+          GooglePrivacyDlpV2HybridContentItem.fromJson(_json["hybridItem"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hybridItem != null) {
-      _json["hybridItem"] = (hybridItem).toJson();
+      _json["hybridItem"] = hybridItem.toJson();
     }
     return _json;
   }
@@ -10063,7 +10501,7 @@ class GooglePrivacyDlpV2HybridInspectResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -10100,7 +10538,7 @@ class GooglePrivacyDlpV2HybridInspectStatistics {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (abortedCount != null) {
       _json["abortedCount"] = abortedCount;
     }
@@ -10156,13 +10594,13 @@ class GooglePrivacyDlpV2HybridOptions {
     }
     if (_json.containsKey("tableOptions")) {
       tableOptions =
-          new GooglePrivacyDlpV2TableOptions.fromJson(_json["tableOptions"]);
+          GooglePrivacyDlpV2TableOptions.fromJson(_json["tableOptions"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -10173,7 +10611,7 @@ class GooglePrivacyDlpV2HybridOptions {
       _json["requiredFindingLabelKeys"] = requiredFindingLabelKeys;
     }
     if (tableOptions != null) {
-      _json["tableOptions"] = (tableOptions).toJson();
+      _json["tableOptions"] = tableOptions.toJson();
     }
     return _json;
   }
@@ -10191,17 +10629,17 @@ class GooglePrivacyDlpV2ImageLocation {
     if (_json.containsKey("boundingBoxes")) {
       boundingBoxes = (_json["boundingBoxes"] as core.List)
           .map<GooglePrivacyDlpV2BoundingBox>(
-              (value) => new GooglePrivacyDlpV2BoundingBox.fromJson(value))
+              (value) => GooglePrivacyDlpV2BoundingBox.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBoxes != null) {
       _json["boundingBoxes"] =
-          boundingBoxes.map((value) => (value).toJson()).toList();
+          boundingBoxes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -10227,28 +10665,28 @@ class GooglePrivacyDlpV2ImageRedactionConfig {
 
   GooglePrivacyDlpV2ImageRedactionConfig.fromJson(core.Map _json) {
     if (_json.containsKey("infoType")) {
-      infoType = new GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
     }
     if (_json.containsKey("redactAllText")) {
       redactAllText = _json["redactAllText"];
     }
     if (_json.containsKey("redactionColor")) {
       redactionColor =
-          new GooglePrivacyDlpV2Color.fromJson(_json["redactionColor"]);
+          GooglePrivacyDlpV2Color.fromJson(_json["redactionColor"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (infoType != null) {
-      _json["infoType"] = (infoType).toJson();
+      _json["infoType"] = infoType.toJson();
     }
     if (redactAllText != null) {
       _json["redactAllText"] = redactAllText;
     }
     if (redactionColor != null) {
-      _json["redactionColor"] = (redactionColor).toJson();
+      _json["redactionColor"] = redactionColor.toJson();
     }
     return _json;
   }
@@ -10273,7 +10711,7 @@ class GooglePrivacyDlpV2InfoType {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -10315,7 +10753,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -10348,7 +10786,7 @@ class GooglePrivacyDlpV2InfoTypeLimit {
 
   GooglePrivacyDlpV2InfoTypeLimit.fromJson(core.Map _json) {
     if (_json.containsKey("infoType")) {
-      infoType = new GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
     }
     if (_json.containsKey("maxFindings")) {
       maxFindings = _json["maxFindings"];
@@ -10357,9 +10795,9 @@ class GooglePrivacyDlpV2InfoTypeLimit {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (infoType != null) {
-      _json["infoType"] = (infoType).toJson();
+      _json["infoType"] = infoType.toJson();
     }
     if (maxFindings != null) {
       _json["maxFindings"] = maxFindings;
@@ -10383,18 +10821,18 @@ class GooglePrivacyDlpV2InfoTypeStats {
       count = _json["count"];
     }
     if (_json.containsKey("infoType")) {
-      infoType = new GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (count != null) {
       _json["count"] = count;
     }
     if (infoType != null) {
-      _json["infoType"] = (infoType).toJson();
+      _json["infoType"] = infoType.toJson();
     }
     return _json;
   }
@@ -10417,24 +10855,24 @@ class GooglePrivacyDlpV2InfoTypeTransformation {
     if (_json.containsKey("infoTypes")) {
       infoTypes = (_json["infoTypes"] as core.List)
           .map<GooglePrivacyDlpV2InfoType>(
-              (value) => new GooglePrivacyDlpV2InfoType.fromJson(value))
+              (value) => GooglePrivacyDlpV2InfoType.fromJson(value))
           .toList();
     }
     if (_json.containsKey("primitiveTransformation")) {
       primitiveTransformation =
-          new GooglePrivacyDlpV2PrimitiveTransformation.fromJson(
+          GooglePrivacyDlpV2PrimitiveTransformation.fromJson(
               _json["primitiveTransformation"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (infoTypes != null) {
-      _json["infoTypes"] = infoTypes.map((value) => (value).toJson()).toList();
+      _json["infoTypes"] = infoTypes.map((value) => value.toJson()).toList();
     }
     if (primitiveTransformation != null) {
-      _json["primitiveTransformation"] = (primitiveTransformation).toJson();
+      _json["primitiveTransformation"] = primitiveTransformation.toJson();
     }
     return _json;
   }
@@ -10454,17 +10892,17 @@ class GooglePrivacyDlpV2InfoTypeTransformations {
     if (_json.containsKey("transformations")) {
       transformations = (_json["transformations"] as core.List)
           .map<GooglePrivacyDlpV2InfoTypeTransformation>((value) =>
-              new GooglePrivacyDlpV2InfoTypeTransformation.fromJson(value))
+              GooglePrivacyDlpV2InfoTypeTransformation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (transformations != null) {
       _json["transformations"] =
-          transformations.map((value) => (value).toJson()).toList();
+          transformations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -10528,7 +10966,7 @@ class GooglePrivacyDlpV2InspectConfig {
     if (_json.containsKey("customInfoTypes")) {
       customInfoTypes = (_json["customInfoTypes"] as core.List)
           .map<GooglePrivacyDlpV2CustomInfoType>(
-              (value) => new GooglePrivacyDlpV2CustomInfoType.fromJson(value))
+              (value) => GooglePrivacyDlpV2CustomInfoType.fromJson(value))
           .toList();
     }
     if (_json.containsKey("excludeInfoTypes")) {
@@ -10540,32 +10978,32 @@ class GooglePrivacyDlpV2InspectConfig {
     if (_json.containsKey("infoTypes")) {
       infoTypes = (_json["infoTypes"] as core.List)
           .map<GooglePrivacyDlpV2InfoType>(
-              (value) => new GooglePrivacyDlpV2InfoType.fromJson(value))
+              (value) => GooglePrivacyDlpV2InfoType.fromJson(value))
           .toList();
     }
     if (_json.containsKey("limits")) {
-      limits = new GooglePrivacyDlpV2FindingLimits.fromJson(_json["limits"]);
+      limits = GooglePrivacyDlpV2FindingLimits.fromJson(_json["limits"]);
     }
     if (_json.containsKey("minLikelihood")) {
       minLikelihood = _json["minLikelihood"];
     }
     if (_json.containsKey("ruleSet")) {
       ruleSet = (_json["ruleSet"] as core.List)
-          .map<GooglePrivacyDlpV2InspectionRuleSet>((value) =>
-              new GooglePrivacyDlpV2InspectionRuleSet.fromJson(value))
+          .map<GooglePrivacyDlpV2InspectionRuleSet>(
+              (value) => GooglePrivacyDlpV2InspectionRuleSet.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentOptions != null) {
       _json["contentOptions"] = contentOptions;
     }
     if (customInfoTypes != null) {
       _json["customInfoTypes"] =
-          customInfoTypes.map((value) => (value).toJson()).toList();
+          customInfoTypes.map((value) => value.toJson()).toList();
     }
     if (excludeInfoTypes != null) {
       _json["excludeInfoTypes"] = excludeInfoTypes;
@@ -10574,16 +11012,16 @@ class GooglePrivacyDlpV2InspectConfig {
       _json["includeQuote"] = includeQuote;
     }
     if (infoTypes != null) {
-      _json["infoTypes"] = infoTypes.map((value) => (value).toJson()).toList();
+      _json["infoTypes"] = infoTypes.map((value) => value.toJson()).toList();
     }
     if (limits != null) {
-      _json["limits"] = (limits).toJson();
+      _json["limits"] = limits.toJson();
     }
     if (minLikelihood != null) {
       _json["minLikelihood"] = minLikelihood;
     }
     if (ruleSet != null) {
-      _json["ruleSet"] = ruleSet.map((value) => (value).toJson()).toList();
+      _json["ruleSet"] = ruleSet.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -10613,13 +11051,13 @@ class GooglePrivacyDlpV2InspectContentRequest {
   GooglePrivacyDlpV2InspectContentRequest.fromJson(core.Map _json) {
     if (_json.containsKey("inspectConfig")) {
       inspectConfig =
-          new GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
+          GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
     }
     if (_json.containsKey("inspectTemplateName")) {
       inspectTemplateName = _json["inspectTemplateName"];
     }
     if (_json.containsKey("item")) {
-      item = new GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
+      item = GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
     }
     if (_json.containsKey("locationId")) {
       locationId = _json["locationId"];
@@ -10628,15 +11066,15 @@ class GooglePrivacyDlpV2InspectContentRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inspectConfig != null) {
-      _json["inspectConfig"] = (inspectConfig).toJson();
+      _json["inspectConfig"] = inspectConfig.toJson();
     }
     if (inspectTemplateName != null) {
       _json["inspectTemplateName"] = inspectTemplateName;
     }
     if (item != null) {
-      _json["item"] = (item).toJson();
+      _json["item"] = item.toJson();
     }
     if (locationId != null) {
       _json["locationId"] = locationId;
@@ -10654,15 +11092,15 @@ class GooglePrivacyDlpV2InspectContentResponse {
 
   GooglePrivacyDlpV2InspectContentResponse.fromJson(core.Map _json) {
     if (_json.containsKey("result")) {
-      result = new GooglePrivacyDlpV2InspectResult.fromJson(_json["result"]);
+      result = GooglePrivacyDlpV2InspectResult.fromJson(_json["result"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (result != null) {
-      _json["result"] = (result).toJson();
+      _json["result"] = result.toJson();
     }
     return _json;
   }
@@ -10680,22 +11118,22 @@ class GooglePrivacyDlpV2InspectDataSourceDetails {
 
   GooglePrivacyDlpV2InspectDataSourceDetails.fromJson(core.Map _json) {
     if (_json.containsKey("requestedOptions")) {
-      requestedOptions = new GooglePrivacyDlpV2RequestedOptions.fromJson(
+      requestedOptions = GooglePrivacyDlpV2RequestedOptions.fromJson(
           _json["requestedOptions"]);
     }
     if (_json.containsKey("result")) {
-      result = new GooglePrivacyDlpV2Result.fromJson(_json["result"]);
+      result = GooglePrivacyDlpV2Result.fromJson(_json["result"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (requestedOptions != null) {
-      _json["requestedOptions"] = (requestedOptions).toJson();
+      _json["requestedOptions"] = requestedOptions.toJson();
     }
     if (result != null) {
-      _json["result"] = (result).toJson();
+      _json["result"] = result.toJson();
     }
     return _json;
   }
@@ -10723,36 +11161,36 @@ class GooglePrivacyDlpV2InspectJobConfig {
     if (_json.containsKey("actions")) {
       actions = (_json["actions"] as core.List)
           .map<GooglePrivacyDlpV2Action>(
-              (value) => new GooglePrivacyDlpV2Action.fromJson(value))
+              (value) => GooglePrivacyDlpV2Action.fromJson(value))
           .toList();
     }
     if (_json.containsKey("inspectConfig")) {
       inspectConfig =
-          new GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
+          GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
     }
     if (_json.containsKey("inspectTemplateName")) {
       inspectTemplateName = _json["inspectTemplateName"];
     }
     if (_json.containsKey("storageConfig")) {
       storageConfig =
-          new GooglePrivacyDlpV2StorageConfig.fromJson(_json["storageConfig"]);
+          GooglePrivacyDlpV2StorageConfig.fromJson(_json["storageConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (actions != null) {
-      _json["actions"] = actions.map((value) => (value).toJson()).toList();
+      _json["actions"] = actions.map((value) => value.toJson()).toList();
     }
     if (inspectConfig != null) {
-      _json["inspectConfig"] = (inspectConfig).toJson();
+      _json["inspectConfig"] = inspectConfig.toJson();
     }
     if (inspectTemplateName != null) {
       _json["inspectTemplateName"] = inspectTemplateName;
     }
     if (storageConfig != null) {
-      _json["storageConfig"] = (storageConfig).toJson();
+      _json["storageConfig"] = storageConfig.toJson();
     }
     return _json;
   }
@@ -10777,7 +11215,7 @@ class GooglePrivacyDlpV2InspectResult {
     if (_json.containsKey("findings")) {
       findings = (_json["findings"] as core.List)
           .map<GooglePrivacyDlpV2Finding>(
-              (value) => new GooglePrivacyDlpV2Finding.fromJson(value))
+              (value) => GooglePrivacyDlpV2Finding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("findingsTruncated")) {
@@ -10787,9 +11225,9 @@ class GooglePrivacyDlpV2InspectResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (findings != null) {
-      _json["findings"] = findings.map((value) => (value).toJson()).toList();
+      _json["findings"] = findings.map((value) => value.toJson()).toList();
     }
     if (findingsTruncated != null) {
       _json["findingsTruncated"] = findingsTruncated;
@@ -10837,7 +11275,7 @@ class GooglePrivacyDlpV2InspectTemplate {
     }
     if (_json.containsKey("inspectConfig")) {
       inspectConfig =
-          new GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
+          GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -10849,7 +11287,7 @@ class GooglePrivacyDlpV2InspectTemplate {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -10860,7 +11298,7 @@ class GooglePrivacyDlpV2InspectTemplate {
       _json["displayName"] = displayName;
     }
     if (inspectConfig != null) {
-      _json["inspectConfig"] = (inspectConfig).toJson();
+      _json["inspectConfig"] = inspectConfig.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -10886,22 +11324,22 @@ class GooglePrivacyDlpV2InspectionRule {
   GooglePrivacyDlpV2InspectionRule.fromJson(core.Map _json) {
     if (_json.containsKey("exclusionRule")) {
       exclusionRule =
-          new GooglePrivacyDlpV2ExclusionRule.fromJson(_json["exclusionRule"]);
+          GooglePrivacyDlpV2ExclusionRule.fromJson(_json["exclusionRule"]);
     }
     if (_json.containsKey("hotwordRule")) {
       hotwordRule =
-          new GooglePrivacyDlpV2HotwordRule.fromJson(_json["hotwordRule"]);
+          GooglePrivacyDlpV2HotwordRule.fromJson(_json["hotwordRule"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exclusionRule != null) {
-      _json["exclusionRule"] = (exclusionRule).toJson();
+      _json["exclusionRule"] = exclusionRule.toJson();
     }
     if (hotwordRule != null) {
-      _json["hotwordRule"] = (hotwordRule).toJson();
+      _json["hotwordRule"] = hotwordRule.toJson();
     }
     return _json;
   }
@@ -10923,25 +11361,25 @@ class GooglePrivacyDlpV2InspectionRuleSet {
     if (_json.containsKey("infoTypes")) {
       infoTypes = (_json["infoTypes"] as core.List)
           .map<GooglePrivacyDlpV2InfoType>(
-              (value) => new GooglePrivacyDlpV2InfoType.fromJson(value))
+              (value) => GooglePrivacyDlpV2InfoType.fromJson(value))
           .toList();
     }
     if (_json.containsKey("rules")) {
       rules = (_json["rules"] as core.List)
           .map<GooglePrivacyDlpV2InspectionRule>(
-              (value) => new GooglePrivacyDlpV2InspectionRule.fromJson(value))
+              (value) => GooglePrivacyDlpV2InspectionRule.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (infoTypes != null) {
-      _json["infoTypes"] = infoTypes.map((value) => (value).toJson()).toList();
+      _json["infoTypes"] = infoTypes.map((value) => value.toJson()).toList();
     }
     if (rules != null) {
-      _json["rules"] = rules.map((value) => (value).toJson()).toList();
+      _json["rules"] = rules.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -10956,7 +11394,7 @@ class GooglePrivacyDlpV2JobNotificationEmails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -11021,12 +11459,12 @@ class GooglePrivacyDlpV2JobTrigger {
     if (_json.containsKey("errors")) {
       errors = (_json["errors"] as core.List)
           .map<GooglePrivacyDlpV2Error>(
-              (value) => new GooglePrivacyDlpV2Error.fromJson(value))
+              (value) => GooglePrivacyDlpV2Error.fromJson(value))
           .toList();
     }
     if (_json.containsKey("inspectJob")) {
       inspectJob =
-          new GooglePrivacyDlpV2InspectJobConfig.fromJson(_json["inspectJob"]);
+          GooglePrivacyDlpV2InspectJobConfig.fromJson(_json["inspectJob"]);
     }
     if (_json.containsKey("lastRunTime")) {
       lastRunTime = _json["lastRunTime"];
@@ -11040,7 +11478,7 @@ class GooglePrivacyDlpV2JobTrigger {
     if (_json.containsKey("triggers")) {
       triggers = (_json["triggers"] as core.List)
           .map<GooglePrivacyDlpV2Trigger>(
-              (value) => new GooglePrivacyDlpV2Trigger.fromJson(value))
+              (value) => GooglePrivacyDlpV2Trigger.fromJson(value))
           .toList();
     }
     if (_json.containsKey("updateTime")) {
@@ -11050,7 +11488,7 @@ class GooglePrivacyDlpV2JobTrigger {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -11061,10 +11499,10 @@ class GooglePrivacyDlpV2JobTrigger {
       _json["displayName"] = displayName;
     }
     if (errors != null) {
-      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+      _json["errors"] = errors.map((value) => value.toJson()).toList();
     }
     if (inspectJob != null) {
-      _json["inspectJob"] = (inspectJob).toJson();
+      _json["inspectJob"] = inspectJob.toJson();
     }
     if (lastRunTime != null) {
       _json["lastRunTime"] = lastRunTime;
@@ -11076,7 +11514,7 @@ class GooglePrivacyDlpV2JobTrigger {
       _json["status"] = status;
     }
     if (triggers != null) {
-      _json["triggers"] = triggers.map((value) => (value).toJson()).toList();
+      _json["triggers"] = triggers.map((value) => value.toJson()).toList();
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
@@ -11108,24 +11546,24 @@ class GooglePrivacyDlpV2KAnonymityConfig {
 
   GooglePrivacyDlpV2KAnonymityConfig.fromJson(core.Map _json) {
     if (_json.containsKey("entityId")) {
-      entityId = new GooglePrivacyDlpV2EntityId.fromJson(_json["entityId"]);
+      entityId = GooglePrivacyDlpV2EntityId.fromJson(_json["entityId"]);
     }
     if (_json.containsKey("quasiIds")) {
       quasiIds = (_json["quasiIds"] as core.List)
           .map<GooglePrivacyDlpV2FieldId>(
-              (value) => new GooglePrivacyDlpV2FieldId.fromJson(value))
+              (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (entityId != null) {
-      _json["entityId"] = (entityId).toJson();
+      _json["entityId"] = entityId.toJson();
     }
     if (quasiIds != null) {
-      _json["quasiIds"] = quasiIds.map((value) => (value).toJson()).toList();
+      _json["quasiIds"] = quasiIds.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11151,20 +11589,20 @@ class GooglePrivacyDlpV2KAnonymityEquivalenceClass {
     if (_json.containsKey("quasiIdsValues")) {
       quasiIdsValues = (_json["quasiIdsValues"] as core.List)
           .map<GooglePrivacyDlpV2Value>(
-              (value) => new GooglePrivacyDlpV2Value.fromJson(value))
+              (value) => GooglePrivacyDlpV2Value.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (equivalenceClassSize != null) {
       _json["equivalenceClassSize"] = equivalenceClassSize;
     }
     if (quasiIdsValues != null) {
       _json["quasiIdsValues"] =
-          quasiIdsValues.map((value) => (value).toJson()).toList();
+          quasiIdsValues.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11200,7 +11638,7 @@ class GooglePrivacyDlpV2KAnonymityHistogramBucket {
     if (_json.containsKey("bucketValues")) {
       bucketValues = (_json["bucketValues"] as core.List)
           .map<GooglePrivacyDlpV2KAnonymityEquivalenceClass>((value) =>
-              new GooglePrivacyDlpV2KAnonymityEquivalenceClass.fromJson(value))
+              GooglePrivacyDlpV2KAnonymityEquivalenceClass.fromJson(value))
           .toList();
     }
     if (_json.containsKey("equivalenceClassSizeLowerBound")) {
@@ -11213,7 +11651,7 @@ class GooglePrivacyDlpV2KAnonymityHistogramBucket {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucketSize != null) {
       _json["bucketSize"] = bucketSize;
     }
@@ -11222,7 +11660,7 @@ class GooglePrivacyDlpV2KAnonymityHistogramBucket {
     }
     if (bucketValues != null) {
       _json["bucketValues"] =
-          bucketValues.map((value) => (value).toJson()).toList();
+          bucketValues.map((value) => value.toJson()).toList();
     }
     if (equivalenceClassSizeLowerBound != null) {
       _json["equivalenceClassSizeLowerBound"] = equivalenceClassSizeLowerBound;
@@ -11244,21 +11682,21 @@ class GooglePrivacyDlpV2KAnonymityResult {
 
   GooglePrivacyDlpV2KAnonymityResult.fromJson(core.Map _json) {
     if (_json.containsKey("equivalenceClassHistogramBuckets")) {
-      equivalenceClassHistogramBuckets = (_json[
-              "equivalenceClassHistogramBuckets"] as core.List)
-          .map<GooglePrivacyDlpV2KAnonymityHistogramBucket>((value) =>
-              new GooglePrivacyDlpV2KAnonymityHistogramBucket.fromJson(value))
-          .toList();
+      equivalenceClassHistogramBuckets =
+          (_json["equivalenceClassHistogramBuckets"] as core.List)
+              .map<GooglePrivacyDlpV2KAnonymityHistogramBucket>((value) =>
+                  GooglePrivacyDlpV2KAnonymityHistogramBucket.fromJson(value))
+              .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (equivalenceClassHistogramBuckets != null) {
       _json["equivalenceClassHistogramBuckets"] =
           equivalenceClassHistogramBuckets
-              .map((value) => (value).toJson())
+              .map((value) => value.toJson())
               .toList();
     }
     return _json;
@@ -11292,13 +11730,13 @@ class GooglePrivacyDlpV2KMapEstimationConfig {
     if (_json.containsKey("auxiliaryTables")) {
       auxiliaryTables = (_json["auxiliaryTables"] as core.List)
           .map<GooglePrivacyDlpV2AuxiliaryTable>(
-              (value) => new GooglePrivacyDlpV2AuxiliaryTable.fromJson(value))
+              (value) => GooglePrivacyDlpV2AuxiliaryTable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("quasiIds")) {
       quasiIds = (_json["quasiIds"] as core.List)
           .map<GooglePrivacyDlpV2TaggedField>(
-              (value) => new GooglePrivacyDlpV2TaggedField.fromJson(value))
+              (value) => GooglePrivacyDlpV2TaggedField.fromJson(value))
           .toList();
     }
     if (_json.containsKey("regionCode")) {
@@ -11308,13 +11746,13 @@ class GooglePrivacyDlpV2KMapEstimationConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (auxiliaryTables != null) {
       _json["auxiliaryTables"] =
-          auxiliaryTables.map((value) => (value).toJson()).toList();
+          auxiliaryTables.map((value) => value.toJson()).toList();
     }
     if (quasiIds != null) {
-      _json["quasiIds"] = quasiIds.map((value) => (value).toJson()).toList();
+      _json["quasiIds"] = quasiIds.map((value) => value.toJson()).toList();
     }
     if (regionCode != null) {
       _json["regionCode"] = regionCode;
@@ -11358,7 +11796,7 @@ class GooglePrivacyDlpV2KMapEstimationHistogramBucket {
     if (_json.containsKey("bucketValues")) {
       bucketValues = (_json["bucketValues"] as core.List)
           .map<GooglePrivacyDlpV2KMapEstimationQuasiIdValues>((value) =>
-              new GooglePrivacyDlpV2KMapEstimationQuasiIdValues.fromJson(value))
+              GooglePrivacyDlpV2KMapEstimationQuasiIdValues.fromJson(value))
           .toList();
     }
     if (_json.containsKey("maxAnonymity")) {
@@ -11371,7 +11809,7 @@ class GooglePrivacyDlpV2KMapEstimationHistogramBucket {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucketSize != null) {
       _json["bucketSize"] = bucketSize;
     }
@@ -11380,7 +11818,7 @@ class GooglePrivacyDlpV2KMapEstimationHistogramBucket {
     }
     if (bucketValues != null) {
       _json["bucketValues"] =
-          bucketValues.map((value) => (value).toJson()).toList();
+          bucketValues.map((value) => value.toJson()).toList();
     }
     if (maxAnonymity != null) {
       _json["maxAnonymity"] = maxAnonymity;
@@ -11409,20 +11847,20 @@ class GooglePrivacyDlpV2KMapEstimationQuasiIdValues {
     if (_json.containsKey("quasiIdsValues")) {
       quasiIdsValues = (_json["quasiIdsValues"] as core.List)
           .map<GooglePrivacyDlpV2Value>(
-              (value) => new GooglePrivacyDlpV2Value.fromJson(value))
+              (value) => GooglePrivacyDlpV2Value.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (estimatedAnonymity != null) {
       _json["estimatedAnonymity"] = estimatedAnonymity;
     }
     if (quasiIdsValues != null) {
       _json["quasiIdsValues"] =
-          quasiIdsValues.map((value) => (value).toJson()).toList();
+          quasiIdsValues.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11446,18 +11884,17 @@ class GooglePrivacyDlpV2KMapEstimationResult {
     if (_json.containsKey("kMapEstimationHistogram")) {
       kMapEstimationHistogram = (_json["kMapEstimationHistogram"] as core.List)
           .map<GooglePrivacyDlpV2KMapEstimationHistogramBucket>((value) =>
-              new GooglePrivacyDlpV2KMapEstimationHistogramBucket.fromJson(
-                  value))
+              GooglePrivacyDlpV2KMapEstimationHistogramBucket.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kMapEstimationHistogram != null) {
       _json["kMapEstimationHistogram"] =
-          kMapEstimationHistogram.map((value) => (value).toJson()).toList();
+          kMapEstimationHistogram.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11486,24 +11923,24 @@ class GooglePrivacyDlpV2Key {
   GooglePrivacyDlpV2Key.fromJson(core.Map _json) {
     if (_json.containsKey("partitionId")) {
       partitionId =
-          new GooglePrivacyDlpV2PartitionId.fromJson(_json["partitionId"]);
+          GooglePrivacyDlpV2PartitionId.fromJson(_json["partitionId"]);
     }
     if (_json.containsKey("path")) {
       path = (_json["path"] as core.List)
           .map<GooglePrivacyDlpV2PathElement>(
-              (value) => new GooglePrivacyDlpV2PathElement.fromJson(value))
+              (value) => GooglePrivacyDlpV2PathElement.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (partitionId != null) {
-      _json["partitionId"] = (partitionId).toJson();
+      _json["partitionId"] = partitionId.toJson();
     }
     if (path != null) {
-      _json["path"] = path.map((value) => (value).toJson()).toList();
+      _json["path"] = path.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11524,7 +11961,7 @@ class GooglePrivacyDlpV2KindExpression {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -11542,9 +11979,8 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKey {
 
   /// Required. The wrapped data crypto key.
   core.String wrappedKey;
-  core.List<core.int> get wrappedKeyAsBytes {
-    return convert.base64.decode(wrappedKey);
-  }
+  core.List<core.int> get wrappedKeyAsBytes =>
+      convert.base64.decode(wrappedKey);
 
   set wrappedKeyAsBytes(core.List<core.int> _bytes) {
     wrappedKey =
@@ -11564,7 +12000,7 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKey {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cryptoKeyName != null) {
       _json["cryptoKeyName"] = cryptoKeyName;
     }
@@ -11591,23 +12027,23 @@ class GooglePrivacyDlpV2LDiversityConfig {
     if (_json.containsKey("quasiIds")) {
       quasiIds = (_json["quasiIds"] as core.List)
           .map<GooglePrivacyDlpV2FieldId>(
-              (value) => new GooglePrivacyDlpV2FieldId.fromJson(value))
+              (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
           .toList();
     }
     if (_json.containsKey("sensitiveAttribute")) {
       sensitiveAttribute =
-          new GooglePrivacyDlpV2FieldId.fromJson(_json["sensitiveAttribute"]);
+          GooglePrivacyDlpV2FieldId.fromJson(_json["sensitiveAttribute"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (quasiIds != null) {
-      _json["quasiIds"] = quasiIds.map((value) => (value).toJson()).toList();
+      _json["quasiIds"] = quasiIds.map((value) => value.toJson()).toList();
     }
     if (sensitiveAttribute != null) {
-      _json["sensitiveAttribute"] = (sensitiveAttribute).toJson();
+      _json["sensitiveAttribute"] = sensitiveAttribute.toJson();
     }
     return _json;
   }
@@ -11640,20 +12076,20 @@ class GooglePrivacyDlpV2LDiversityEquivalenceClass {
     if (_json.containsKey("quasiIdsValues")) {
       quasiIdsValues = (_json["quasiIdsValues"] as core.List)
           .map<GooglePrivacyDlpV2Value>(
-              (value) => new GooglePrivacyDlpV2Value.fromJson(value))
+              (value) => GooglePrivacyDlpV2Value.fromJson(value))
           .toList();
     }
     if (_json.containsKey("topSensitiveValues")) {
       topSensitiveValues = (_json["topSensitiveValues"] as core.List)
           .map<GooglePrivacyDlpV2ValueFrequency>(
-              (value) => new GooglePrivacyDlpV2ValueFrequency.fromJson(value))
+              (value) => GooglePrivacyDlpV2ValueFrequency.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (equivalenceClassSize != null) {
       _json["equivalenceClassSize"] = equivalenceClassSize;
     }
@@ -11662,11 +12098,11 @@ class GooglePrivacyDlpV2LDiversityEquivalenceClass {
     }
     if (quasiIdsValues != null) {
       _json["quasiIdsValues"] =
-          quasiIdsValues.map((value) => (value).toJson()).toList();
+          quasiIdsValues.map((value) => value.toJson()).toList();
     }
     if (topSensitiveValues != null) {
       _json["topSensitiveValues"] =
-          topSensitiveValues.map((value) => (value).toJson()).toList();
+          topSensitiveValues.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11704,7 +12140,7 @@ class GooglePrivacyDlpV2LDiversityHistogramBucket {
     if (_json.containsKey("bucketValues")) {
       bucketValues = (_json["bucketValues"] as core.List)
           .map<GooglePrivacyDlpV2LDiversityEquivalenceClass>((value) =>
-              new GooglePrivacyDlpV2LDiversityEquivalenceClass.fromJson(value))
+              GooglePrivacyDlpV2LDiversityEquivalenceClass.fromJson(value))
           .toList();
     }
     if (_json.containsKey("sensitiveValueFrequencyLowerBound")) {
@@ -11719,7 +12155,7 @@ class GooglePrivacyDlpV2LDiversityHistogramBucket {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucketSize != null) {
       _json["bucketSize"] = bucketSize;
     }
@@ -11728,7 +12164,7 @@ class GooglePrivacyDlpV2LDiversityHistogramBucket {
     }
     if (bucketValues != null) {
       _json["bucketValues"] =
-          bucketValues.map((value) => (value).toJson()).toList();
+          bucketValues.map((value) => value.toJson()).toList();
     }
     if (sensitiveValueFrequencyLowerBound != null) {
       _json["sensitiveValueFrequencyLowerBound"] =
@@ -11752,21 +12188,21 @@ class GooglePrivacyDlpV2LDiversityResult {
 
   GooglePrivacyDlpV2LDiversityResult.fromJson(core.Map _json) {
     if (_json.containsKey("sensitiveValueFrequencyHistogramBuckets")) {
-      sensitiveValueFrequencyHistogramBuckets = (_json[
-              "sensitiveValueFrequencyHistogramBuckets"] as core.List)
-          .map<GooglePrivacyDlpV2LDiversityHistogramBucket>((value) =>
-              new GooglePrivacyDlpV2LDiversityHistogramBucket.fromJson(value))
-          .toList();
+      sensitiveValueFrequencyHistogramBuckets =
+          (_json["sensitiveValueFrequencyHistogramBuckets"] as core.List)
+              .map<GooglePrivacyDlpV2LDiversityHistogramBucket>((value) =>
+                  GooglePrivacyDlpV2LDiversityHistogramBucket.fromJson(value))
+              .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sensitiveValueFrequencyHistogramBuckets != null) {
       _json["sensitiveValueFrequencyHistogramBuckets"] =
           sensitiveValueFrequencyHistogramBuckets
-              .map((value) => (value).toJson())
+              .map((value) => value.toJson())
               .toList();
     }
     return _json;
@@ -11797,29 +12233,29 @@ class GooglePrivacyDlpV2LargeCustomDictionaryConfig {
   GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromJson(core.Map _json) {
     if (_json.containsKey("bigQueryField")) {
       bigQueryField =
-          new GooglePrivacyDlpV2BigQueryField.fromJson(_json["bigQueryField"]);
+          GooglePrivacyDlpV2BigQueryField.fromJson(_json["bigQueryField"]);
     }
     if (_json.containsKey("cloudStorageFileSet")) {
-      cloudStorageFileSet = new GooglePrivacyDlpV2CloudStorageFileSet.fromJson(
+      cloudStorageFileSet = GooglePrivacyDlpV2CloudStorageFileSet.fromJson(
           _json["cloudStorageFileSet"]);
     }
     if (_json.containsKey("outputPath")) {
       outputPath =
-          new GooglePrivacyDlpV2CloudStoragePath.fromJson(_json["outputPath"]);
+          GooglePrivacyDlpV2CloudStoragePath.fromJson(_json["outputPath"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bigQueryField != null) {
-      _json["bigQueryField"] = (bigQueryField).toJson();
+      _json["bigQueryField"] = bigQueryField.toJson();
     }
     if (cloudStorageFileSet != null) {
-      _json["cloudStorageFileSet"] = (cloudStorageFileSet).toJson();
+      _json["cloudStorageFileSet"] = cloudStorageFileSet.toJson();
     }
     if (outputPath != null) {
-      _json["outputPath"] = (outputPath).toJson();
+      _json["outputPath"] = outputPath.toJson();
     }
     return _json;
   }
@@ -11840,7 +12276,7 @@ class GooglePrivacyDlpV2LargeCustomDictionaryStats {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (approxNumPhrases != null) {
       _json["approxNumPhrases"] = approxNumPhrases;
     }
@@ -11859,7 +12295,7 @@ class GooglePrivacyDlpV2LeaveUntransformed {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -11899,7 +12335,7 @@ class GooglePrivacyDlpV2LikelihoodAdjustment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fixedLikelihood != null) {
       _json["fixedLikelihood"] = fixedLikelihood;
     }
@@ -11925,8 +12361,8 @@ class GooglePrivacyDlpV2ListDeidentifyTemplatesResponse {
   GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deidentifyTemplates")) {
       deidentifyTemplates = (_json["deidentifyTemplates"] as core.List)
-          .map<GooglePrivacyDlpV2DeidentifyTemplate>((value) =>
-              new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(value))
+          .map<GooglePrivacyDlpV2DeidentifyTemplate>(
+              (value) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -11936,10 +12372,10 @@ class GooglePrivacyDlpV2ListDeidentifyTemplatesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deidentifyTemplates != null) {
       _json["deidentifyTemplates"] =
-          deidentifyTemplates.map((value) => (value).toJson()).toList();
+          deidentifyTemplates.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -11962,7 +12398,7 @@ class GooglePrivacyDlpV2ListDlpJobsResponse {
     if (_json.containsKey("jobs")) {
       jobs = (_json["jobs"] as core.List)
           .map<GooglePrivacyDlpV2DlpJob>(
-              (value) => new GooglePrivacyDlpV2DlpJob.fromJson(value))
+              (value) => GooglePrivacyDlpV2DlpJob.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -11972,9 +12408,9 @@ class GooglePrivacyDlpV2ListDlpJobsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (jobs != null) {
-      _json["jobs"] = jobs.map((value) => (value).toJson()).toList();
+      _json["jobs"] = jobs.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -11993,17 +12429,17 @@ class GooglePrivacyDlpV2ListInfoTypesResponse {
   GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("infoTypes")) {
       infoTypes = (_json["infoTypes"] as core.List)
-          .map<GooglePrivacyDlpV2InfoTypeDescription>((value) =>
-              new GooglePrivacyDlpV2InfoTypeDescription.fromJson(value))
+          .map<GooglePrivacyDlpV2InfoTypeDescription>(
+              (value) => GooglePrivacyDlpV2InfoTypeDescription.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (infoTypes != null) {
-      _json["infoTypes"] = infoTypes.map((value) => (value).toJson()).toList();
+      _json["infoTypes"] = infoTypes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12024,7 +12460,7 @@ class GooglePrivacyDlpV2ListInspectTemplatesResponse {
     if (_json.containsKey("inspectTemplates")) {
       inspectTemplates = (_json["inspectTemplates"] as core.List)
           .map<GooglePrivacyDlpV2InspectTemplate>(
-              (value) => new GooglePrivacyDlpV2InspectTemplate.fromJson(value))
+              (value) => GooglePrivacyDlpV2InspectTemplate.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -12034,10 +12470,10 @@ class GooglePrivacyDlpV2ListInspectTemplatesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inspectTemplates != null) {
       _json["inspectTemplates"] =
-          inspectTemplates.map((value) => (value).toJson()).toList();
+          inspectTemplates.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -12061,7 +12497,7 @@ class GooglePrivacyDlpV2ListJobTriggersResponse {
     if (_json.containsKey("jobTriggers")) {
       jobTriggers = (_json["jobTriggers"] as core.List)
           .map<GooglePrivacyDlpV2JobTrigger>(
-              (value) => new GooglePrivacyDlpV2JobTrigger.fromJson(value))
+              (value) => GooglePrivacyDlpV2JobTrigger.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -12071,10 +12507,10 @@ class GooglePrivacyDlpV2ListJobTriggersResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (jobTriggers != null) {
       _json["jobTriggers"] =
-          jobTriggers.map((value) => (value).toJson()).toList();
+          jobTriggers.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -12101,20 +12537,20 @@ class GooglePrivacyDlpV2ListStoredInfoTypesResponse {
     if (_json.containsKey("storedInfoTypes")) {
       storedInfoTypes = (_json["storedInfoTypes"] as core.List)
           .map<GooglePrivacyDlpV2StoredInfoType>(
-              (value) => new GooglePrivacyDlpV2StoredInfoType.fromJson(value))
+              (value) => GooglePrivacyDlpV2StoredInfoType.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (storedInfoTypes != null) {
       _json["storedInfoTypes"] =
-          storedInfoTypes.map((value) => (value).toJson()).toList();
+          storedInfoTypes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12143,38 +12579,38 @@ class GooglePrivacyDlpV2Location {
 
   GooglePrivacyDlpV2Location.fromJson(core.Map _json) {
     if (_json.containsKey("byteRange")) {
-      byteRange = new GooglePrivacyDlpV2Range.fromJson(_json["byteRange"]);
+      byteRange = GooglePrivacyDlpV2Range.fromJson(_json["byteRange"]);
     }
     if (_json.containsKey("codepointRange")) {
       codepointRange =
-          new GooglePrivacyDlpV2Range.fromJson(_json["codepointRange"]);
+          GooglePrivacyDlpV2Range.fromJson(_json["codepointRange"]);
     }
     if (_json.containsKey("container")) {
-      container = new GooglePrivacyDlpV2Container.fromJson(_json["container"]);
+      container = GooglePrivacyDlpV2Container.fromJson(_json["container"]);
     }
     if (_json.containsKey("contentLocations")) {
       contentLocations = (_json["contentLocations"] as core.List)
           .map<GooglePrivacyDlpV2ContentLocation>(
-              (value) => new GooglePrivacyDlpV2ContentLocation.fromJson(value))
+              (value) => GooglePrivacyDlpV2ContentLocation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (byteRange != null) {
-      _json["byteRange"] = (byteRange).toJson();
+      _json["byteRange"] = byteRange.toJson();
     }
     if (codepointRange != null) {
-      _json["codepointRange"] = (codepointRange).toJson();
+      _json["codepointRange"] = codepointRange.toJson();
     }
     if (container != null) {
-      _json["container"] = (container).toJson();
+      _json["container"] = container.toJson();
     }
     if (contentLocations != null) {
       _json["contentLocations"] =
-          contentLocations.map((value) => (value).toJson()).toList();
+          contentLocations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12189,7 +12625,7 @@ class GooglePrivacyDlpV2Manual {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -12209,7 +12645,7 @@ class GooglePrivacyDlpV2MetadataLocation {
 
   GooglePrivacyDlpV2MetadataLocation.fromJson(core.Map _json) {
     if (_json.containsKey("storageLabel")) {
-      storageLabel = new GooglePrivacyDlpV2StorageMetadataLabel.fromJson(
+      storageLabel = GooglePrivacyDlpV2StorageMetadataLabel.fromJson(
           _json["storageLabel"]);
     }
     if (_json.containsKey("type")) {
@@ -12219,9 +12655,9 @@ class GooglePrivacyDlpV2MetadataLocation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (storageLabel != null) {
-      _json["storageLabel"] = (storageLabel).toJson();
+      _json["storageLabel"] = storageLabel.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -12241,15 +12677,15 @@ class GooglePrivacyDlpV2NumericalStatsConfig {
 
   GooglePrivacyDlpV2NumericalStatsConfig.fromJson(core.Map _json) {
     if (_json.containsKey("field")) {
-      field = new GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = (field).toJson();
+      _json["field"] = field.toJson();
     }
     return _json;
   }
@@ -12271,31 +12707,31 @@ class GooglePrivacyDlpV2NumericalStatsResult {
 
   GooglePrivacyDlpV2NumericalStatsResult.fromJson(core.Map _json) {
     if (_json.containsKey("maxValue")) {
-      maxValue = new GooglePrivacyDlpV2Value.fromJson(_json["maxValue"]);
+      maxValue = GooglePrivacyDlpV2Value.fromJson(_json["maxValue"]);
     }
     if (_json.containsKey("minValue")) {
-      minValue = new GooglePrivacyDlpV2Value.fromJson(_json["minValue"]);
+      minValue = GooglePrivacyDlpV2Value.fromJson(_json["minValue"]);
     }
     if (_json.containsKey("quantileValues")) {
       quantileValues = (_json["quantileValues"] as core.List)
           .map<GooglePrivacyDlpV2Value>(
-              (value) => new GooglePrivacyDlpV2Value.fromJson(value))
+              (value) => GooglePrivacyDlpV2Value.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maxValue != null) {
-      _json["maxValue"] = (maxValue).toJson();
+      _json["maxValue"] = maxValue.toJson();
     }
     if (minValue != null) {
-      _json["minValue"] = (minValue).toJson();
+      _json["minValue"] = minValue.toJson();
     }
     if (quantileValues != null) {
       _json["quantileValues"] =
-          quantileValues.map((value) => (value).toJson()).toList();
+          quantileValues.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12344,18 +12780,18 @@ class GooglePrivacyDlpV2OutputStorageConfig {
       outputSchema = _json["outputSchema"];
     }
     if (_json.containsKey("table")) {
-      table = new GooglePrivacyDlpV2BigQueryTable.fromJson(_json["table"]);
+      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json["table"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (outputSchema != null) {
       _json["outputSchema"] = outputSchema;
     }
     if (table != null) {
-      _json["table"] = (table).toJson();
+      _json["table"] = table.toJson();
     }
     return _json;
   }
@@ -12385,7 +12821,7 @@ class GooglePrivacyDlpV2PartitionId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (namespaceId != null) {
       _json["namespaceId"] = namespaceId;
     }
@@ -12429,7 +12865,7 @@ class GooglePrivacyDlpV2PathElement {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -12482,90 +12918,90 @@ class GooglePrivacyDlpV2PrimitiveTransformation {
 
   GooglePrivacyDlpV2PrimitiveTransformation.fromJson(core.Map _json) {
     if (_json.containsKey("bucketingConfig")) {
-      bucketingConfig = new GooglePrivacyDlpV2BucketingConfig.fromJson(
-          _json["bucketingConfig"]);
+      bucketingConfig =
+          GooglePrivacyDlpV2BucketingConfig.fromJson(_json["bucketingConfig"]);
     }
     if (_json.containsKey("characterMaskConfig")) {
-      characterMaskConfig = new GooglePrivacyDlpV2CharacterMaskConfig.fromJson(
+      characterMaskConfig = GooglePrivacyDlpV2CharacterMaskConfig.fromJson(
           _json["characterMaskConfig"]);
     }
     if (_json.containsKey("cryptoDeterministicConfig")) {
       cryptoDeterministicConfig =
-          new GooglePrivacyDlpV2CryptoDeterministicConfig.fromJson(
+          GooglePrivacyDlpV2CryptoDeterministicConfig.fromJson(
               _json["cryptoDeterministicConfig"]);
     }
     if (_json.containsKey("cryptoHashConfig")) {
-      cryptoHashConfig = new GooglePrivacyDlpV2CryptoHashConfig.fromJson(
+      cryptoHashConfig = GooglePrivacyDlpV2CryptoHashConfig.fromJson(
           _json["cryptoHashConfig"]);
     }
     if (_json.containsKey("cryptoReplaceFfxFpeConfig")) {
       cryptoReplaceFfxFpeConfig =
-          new GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig.fromJson(
+          GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig.fromJson(
               _json["cryptoReplaceFfxFpeConfig"]);
     }
     if (_json.containsKey("dateShiftConfig")) {
-      dateShiftConfig = new GooglePrivacyDlpV2DateShiftConfig.fromJson(
-          _json["dateShiftConfig"]);
+      dateShiftConfig =
+          GooglePrivacyDlpV2DateShiftConfig.fromJson(_json["dateShiftConfig"]);
     }
     if (_json.containsKey("fixedSizeBucketingConfig")) {
       fixedSizeBucketingConfig =
-          new GooglePrivacyDlpV2FixedSizeBucketingConfig.fromJson(
+          GooglePrivacyDlpV2FixedSizeBucketingConfig.fromJson(
               _json["fixedSizeBucketingConfig"]);
     }
     if (_json.containsKey("redactConfig")) {
       redactConfig =
-          new GooglePrivacyDlpV2RedactConfig.fromJson(_json["redactConfig"]);
+          GooglePrivacyDlpV2RedactConfig.fromJson(_json["redactConfig"]);
     }
     if (_json.containsKey("replaceConfig")) {
-      replaceConfig = new GooglePrivacyDlpV2ReplaceValueConfig.fromJson(
-          _json["replaceConfig"]);
+      replaceConfig =
+          GooglePrivacyDlpV2ReplaceValueConfig.fromJson(_json["replaceConfig"]);
     }
     if (_json.containsKey("replaceWithInfoTypeConfig")) {
       replaceWithInfoTypeConfig =
-          new GooglePrivacyDlpV2ReplaceWithInfoTypeConfig.fromJson(
+          GooglePrivacyDlpV2ReplaceWithInfoTypeConfig.fromJson(
               _json["replaceWithInfoTypeConfig"]);
     }
     if (_json.containsKey("timePartConfig")) {
-      timePartConfig = new GooglePrivacyDlpV2TimePartConfig.fromJson(
-          _json["timePartConfig"]);
+      timePartConfig =
+          GooglePrivacyDlpV2TimePartConfig.fromJson(_json["timePartConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucketingConfig != null) {
-      _json["bucketingConfig"] = (bucketingConfig).toJson();
+      _json["bucketingConfig"] = bucketingConfig.toJson();
     }
     if (characterMaskConfig != null) {
-      _json["characterMaskConfig"] = (characterMaskConfig).toJson();
+      _json["characterMaskConfig"] = characterMaskConfig.toJson();
     }
     if (cryptoDeterministicConfig != null) {
-      _json["cryptoDeterministicConfig"] = (cryptoDeterministicConfig).toJson();
+      _json["cryptoDeterministicConfig"] = cryptoDeterministicConfig.toJson();
     }
     if (cryptoHashConfig != null) {
-      _json["cryptoHashConfig"] = (cryptoHashConfig).toJson();
+      _json["cryptoHashConfig"] = cryptoHashConfig.toJson();
     }
     if (cryptoReplaceFfxFpeConfig != null) {
-      _json["cryptoReplaceFfxFpeConfig"] = (cryptoReplaceFfxFpeConfig).toJson();
+      _json["cryptoReplaceFfxFpeConfig"] = cryptoReplaceFfxFpeConfig.toJson();
     }
     if (dateShiftConfig != null) {
-      _json["dateShiftConfig"] = (dateShiftConfig).toJson();
+      _json["dateShiftConfig"] = dateShiftConfig.toJson();
     }
     if (fixedSizeBucketingConfig != null) {
-      _json["fixedSizeBucketingConfig"] = (fixedSizeBucketingConfig).toJson();
+      _json["fixedSizeBucketingConfig"] = fixedSizeBucketingConfig.toJson();
     }
     if (redactConfig != null) {
-      _json["redactConfig"] = (redactConfig).toJson();
+      _json["redactConfig"] = redactConfig.toJson();
     }
     if (replaceConfig != null) {
-      _json["replaceConfig"] = (replaceConfig).toJson();
+      _json["replaceConfig"] = replaceConfig.toJson();
     }
     if (replaceWithInfoTypeConfig != null) {
-      _json["replaceWithInfoTypeConfig"] = (replaceWithInfoTypeConfig).toJson();
+      _json["replaceWithInfoTypeConfig"] = replaceWithInfoTypeConfig.toJson();
     }
     if (timePartConfig != null) {
-      _json["timePartConfig"] = (timePartConfig).toJson();
+      _json["timePartConfig"] = timePartConfig.toJson();
     }
     return _json;
   }
@@ -12596,55 +13032,53 @@ class GooglePrivacyDlpV2PrivacyMetric {
   GooglePrivacyDlpV2PrivacyMetric.fromJson(core.Map _json) {
     if (_json.containsKey("categoricalStatsConfig")) {
       categoricalStatsConfig =
-          new GooglePrivacyDlpV2CategoricalStatsConfig.fromJson(
+          GooglePrivacyDlpV2CategoricalStatsConfig.fromJson(
               _json["categoricalStatsConfig"]);
     }
     if (_json.containsKey("deltaPresenceEstimationConfig")) {
       deltaPresenceEstimationConfig =
-          new GooglePrivacyDlpV2DeltaPresenceEstimationConfig.fromJson(
+          GooglePrivacyDlpV2DeltaPresenceEstimationConfig.fromJson(
               _json["deltaPresenceEstimationConfig"]);
     }
     if (_json.containsKey("kAnonymityConfig")) {
-      kAnonymityConfig = new GooglePrivacyDlpV2KAnonymityConfig.fromJson(
+      kAnonymityConfig = GooglePrivacyDlpV2KAnonymityConfig.fromJson(
           _json["kAnonymityConfig"]);
     }
     if (_json.containsKey("kMapEstimationConfig")) {
-      kMapEstimationConfig =
-          new GooglePrivacyDlpV2KMapEstimationConfig.fromJson(
-              _json["kMapEstimationConfig"]);
+      kMapEstimationConfig = GooglePrivacyDlpV2KMapEstimationConfig.fromJson(
+          _json["kMapEstimationConfig"]);
     }
     if (_json.containsKey("lDiversityConfig")) {
-      lDiversityConfig = new GooglePrivacyDlpV2LDiversityConfig.fromJson(
+      lDiversityConfig = GooglePrivacyDlpV2LDiversityConfig.fromJson(
           _json["lDiversityConfig"]);
     }
     if (_json.containsKey("numericalStatsConfig")) {
-      numericalStatsConfig =
-          new GooglePrivacyDlpV2NumericalStatsConfig.fromJson(
-              _json["numericalStatsConfig"]);
+      numericalStatsConfig = GooglePrivacyDlpV2NumericalStatsConfig.fromJson(
+          _json["numericalStatsConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (categoricalStatsConfig != null) {
-      _json["categoricalStatsConfig"] = (categoricalStatsConfig).toJson();
+      _json["categoricalStatsConfig"] = categoricalStatsConfig.toJson();
     }
     if (deltaPresenceEstimationConfig != null) {
       _json["deltaPresenceEstimationConfig"] =
-          (deltaPresenceEstimationConfig).toJson();
+          deltaPresenceEstimationConfig.toJson();
     }
     if (kAnonymityConfig != null) {
-      _json["kAnonymityConfig"] = (kAnonymityConfig).toJson();
+      _json["kAnonymityConfig"] = kAnonymityConfig.toJson();
     }
     if (kMapEstimationConfig != null) {
-      _json["kMapEstimationConfig"] = (kMapEstimationConfig).toJson();
+      _json["kMapEstimationConfig"] = kMapEstimationConfig.toJson();
     }
     if (lDiversityConfig != null) {
-      _json["lDiversityConfig"] = (lDiversityConfig).toJson();
+      _json["lDiversityConfig"] = lDiversityConfig.toJson();
     }
     if (numericalStatsConfig != null) {
-      _json["numericalStatsConfig"] = (numericalStatsConfig).toJson();
+      _json["numericalStatsConfig"] = numericalStatsConfig.toJson();
     }
     return _json;
   }
@@ -12671,7 +13105,7 @@ class GooglePrivacyDlpV2Proximity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (windowAfter != null) {
       _json["windowAfter"] = windowAfter;
     }
@@ -12699,7 +13133,7 @@ class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -12719,7 +13153,7 @@ class GooglePrivacyDlpV2PublishSummaryToCscc {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -12746,7 +13180,7 @@ class GooglePrivacyDlpV2PublishToPubSub {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (topic != null) {
       _json["topic"] = topic;
     }
@@ -12765,7 +13199,7 @@ class GooglePrivacyDlpV2PublishToStackdriver {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -12798,30 +13232,30 @@ class GooglePrivacyDlpV2QuasiId {
       customTag = _json["customTag"];
     }
     if (_json.containsKey("field")) {
-      field = new GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
     }
     if (_json.containsKey("inferred")) {
-      inferred = new GoogleProtobufEmpty.fromJson(_json["inferred"]);
+      inferred = GoogleProtobufEmpty.fromJson(_json["inferred"]);
     }
     if (_json.containsKey("infoType")) {
-      infoType = new GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customTag != null) {
       _json["customTag"] = customTag;
     }
     if (field != null) {
-      _json["field"] = (field).toJson();
+      _json["field"] = field.toJson();
     }
     if (inferred != null) {
-      _json["inferred"] = (inferred).toJson();
+      _json["inferred"] = inferred.toJson();
     }
     if (infoType != null) {
-      _json["infoType"] = (infoType).toJson();
+      _json["infoType"] = infoType.toJson();
     }
     return _json;
   }
@@ -12843,18 +13277,18 @@ class GooglePrivacyDlpV2QuasiIdField {
       customTag = _json["customTag"];
     }
     if (_json.containsKey("field")) {
-      field = new GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customTag != null) {
       _json["customTag"] = customTag;
     }
     if (field != null) {
-      _json["field"] = (field).toJson();
+      _json["field"] = field.toJson();
     }
     return _json;
   }
@@ -12878,18 +13312,18 @@ class GooglePrivacyDlpV2QuasiIdentifierField {
       customTag = _json["customTag"];
     }
     if (_json.containsKey("field")) {
-      field = new GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customTag != null) {
       _json["customTag"] = customTag;
     }
     if (field != null) {
-      _json["field"] = (field).toJson();
+      _json["field"] = field.toJson();
     }
     return _json;
   }
@@ -12904,15 +13338,15 @@ class GooglePrivacyDlpV2QuoteInfo {
 
   GooglePrivacyDlpV2QuoteInfo.fromJson(core.Map _json) {
     if (_json.containsKey("dateTime")) {
-      dateTime = new GooglePrivacyDlpV2DateTime.fromJson(_json["dateTime"]);
+      dateTime = GooglePrivacyDlpV2DateTime.fromJson(_json["dateTime"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dateTime != null) {
-      _json["dateTime"] = (dateTime).toJson();
+      _json["dateTime"] = dateTime.toJson();
     }
     return _json;
   }
@@ -12939,7 +13373,7 @@ class GooglePrivacyDlpV2Range {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (end != null) {
       _json["end"] = end;
     }
@@ -12961,15 +13395,15 @@ class GooglePrivacyDlpV2RecordCondition {
   GooglePrivacyDlpV2RecordCondition.fromJson(core.Map _json) {
     if (_json.containsKey("expressions")) {
       expressions =
-          new GooglePrivacyDlpV2Expressions.fromJson(_json["expressions"]);
+          GooglePrivacyDlpV2Expressions.fromJson(_json["expressions"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (expressions != null) {
-      _json["expressions"] = (expressions).toJson();
+      _json["expressions"] = expressions.toJson();
     }
     return _json;
   }
@@ -12989,11 +13423,11 @@ class GooglePrivacyDlpV2RecordKey {
   GooglePrivacyDlpV2RecordKey.fromJson(core.Map _json) {
     if (_json.containsKey("bigQueryKey")) {
       bigQueryKey =
-          new GooglePrivacyDlpV2BigQueryKey.fromJson(_json["bigQueryKey"]);
+          GooglePrivacyDlpV2BigQueryKey.fromJson(_json["bigQueryKey"]);
     }
     if (_json.containsKey("datastoreKey")) {
       datastoreKey =
-          new GooglePrivacyDlpV2DatastoreKey.fromJson(_json["datastoreKey"]);
+          GooglePrivacyDlpV2DatastoreKey.fromJson(_json["datastoreKey"]);
     }
     if (_json.containsKey("idValues")) {
       idValues = (_json["idValues"] as core.List).cast<core.String>();
@@ -13002,12 +13436,12 @@ class GooglePrivacyDlpV2RecordKey {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bigQueryKey != null) {
-      _json["bigQueryKey"] = (bigQueryKey).toJson();
+      _json["bigQueryKey"] = bigQueryKey.toJson();
     }
     if (datastoreKey != null) {
-      _json["datastoreKey"] = (datastoreKey).toJson();
+      _json["datastoreKey"] = datastoreKey.toJson();
     }
     if (idValues != null) {
       _json["idValues"] = idValues;
@@ -13031,28 +13465,28 @@ class GooglePrivacyDlpV2RecordLocation {
 
   GooglePrivacyDlpV2RecordLocation.fromJson(core.Map _json) {
     if (_json.containsKey("fieldId")) {
-      fieldId = new GooglePrivacyDlpV2FieldId.fromJson(_json["fieldId"]);
+      fieldId = GooglePrivacyDlpV2FieldId.fromJson(_json["fieldId"]);
     }
     if (_json.containsKey("recordKey")) {
-      recordKey = new GooglePrivacyDlpV2RecordKey.fromJson(_json["recordKey"]);
+      recordKey = GooglePrivacyDlpV2RecordKey.fromJson(_json["recordKey"]);
     }
     if (_json.containsKey("tableLocation")) {
       tableLocation =
-          new GooglePrivacyDlpV2TableLocation.fromJson(_json["tableLocation"]);
+          GooglePrivacyDlpV2TableLocation.fromJson(_json["tableLocation"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fieldId != null) {
-      _json["fieldId"] = (fieldId).toJson();
+      _json["fieldId"] = fieldId.toJson();
     }
     if (recordKey != null) {
-      _json["recordKey"] = (recordKey).toJson();
+      _json["recordKey"] = recordKey.toJson();
     }
     if (tableLocation != null) {
-      _json["tableLocation"] = (tableLocation).toJson();
+      _json["tableLocation"] = tableLocation.toJson();
     }
     return _json;
   }
@@ -13070,15 +13504,15 @@ class GooglePrivacyDlpV2RecordSuppression {
   GooglePrivacyDlpV2RecordSuppression.fromJson(core.Map _json) {
     if (_json.containsKey("condition")) {
       condition =
-          new GooglePrivacyDlpV2RecordCondition.fromJson(_json["condition"]);
+          GooglePrivacyDlpV2RecordCondition.fromJson(_json["condition"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (condition != null) {
-      _json["condition"] = (condition).toJson();
+      _json["condition"] = condition.toJson();
     }
     return _json;
   }
@@ -13099,28 +13533,28 @@ class GooglePrivacyDlpV2RecordTransformations {
   GooglePrivacyDlpV2RecordTransformations.fromJson(core.Map _json) {
     if (_json.containsKey("fieldTransformations")) {
       fieldTransformations = (_json["fieldTransformations"] as core.List)
-          .map<GooglePrivacyDlpV2FieldTransformation>((value) =>
-              new GooglePrivacyDlpV2FieldTransformation.fromJson(value))
+          .map<GooglePrivacyDlpV2FieldTransformation>(
+              (value) => GooglePrivacyDlpV2FieldTransformation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("recordSuppressions")) {
       recordSuppressions = (_json["recordSuppressions"] as core.List)
-          .map<GooglePrivacyDlpV2RecordSuppression>((value) =>
-              new GooglePrivacyDlpV2RecordSuppression.fromJson(value))
+          .map<GooglePrivacyDlpV2RecordSuppression>(
+              (value) => GooglePrivacyDlpV2RecordSuppression.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fieldTransformations != null) {
       _json["fieldTransformations"] =
-          fieldTransformations.map((value) => (value).toJson()).toList();
+          fieldTransformations.map((value) => value.toJson()).toList();
     }
     if (recordSuppressions != null) {
       _json["recordSuppressions"] =
-          recordSuppressions.map((value) => (value).toJson()).toList();
+          recordSuppressions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -13136,7 +13570,7 @@ class GooglePrivacyDlpV2RedactConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -13164,13 +13598,12 @@ class GooglePrivacyDlpV2RedactImageRequest {
 
   GooglePrivacyDlpV2RedactImageRequest.fromJson(core.Map _json) {
     if (_json.containsKey("byteItem")) {
-      byteItem =
-          new GooglePrivacyDlpV2ByteContentItem.fromJson(_json["byteItem"]);
+      byteItem = GooglePrivacyDlpV2ByteContentItem.fromJson(_json["byteItem"]);
     }
     if (_json.containsKey("imageRedactionConfigs")) {
       imageRedactionConfigs = (_json["imageRedactionConfigs"] as core.List)
-          .map<GooglePrivacyDlpV2ImageRedactionConfig>((value) =>
-              new GooglePrivacyDlpV2ImageRedactionConfig.fromJson(value))
+          .map<GooglePrivacyDlpV2ImageRedactionConfig>(
+              (value) => GooglePrivacyDlpV2ImageRedactionConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("includeFindings")) {
@@ -13178,7 +13611,7 @@ class GooglePrivacyDlpV2RedactImageRequest {
     }
     if (_json.containsKey("inspectConfig")) {
       inspectConfig =
-          new GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
+          GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
     }
     if (_json.containsKey("locationId")) {
       locationId = _json["locationId"];
@@ -13187,19 +13620,19 @@ class GooglePrivacyDlpV2RedactImageRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (byteItem != null) {
-      _json["byteItem"] = (byteItem).toJson();
+      _json["byteItem"] = byteItem.toJson();
     }
     if (imageRedactionConfigs != null) {
       _json["imageRedactionConfigs"] =
-          imageRedactionConfigs.map((value) => (value).toJson()).toList();
+          imageRedactionConfigs.map((value) => value.toJson()).toList();
     }
     if (includeFindings != null) {
       _json["includeFindings"] = includeFindings;
     }
     if (inspectConfig != null) {
-      _json["inspectConfig"] = (inspectConfig).toJson();
+      _json["inspectConfig"] = inspectConfig.toJson();
     }
     if (locationId != null) {
       _json["locationId"] = locationId;
@@ -13220,9 +13653,8 @@ class GooglePrivacyDlpV2RedactImageResponse {
 
   /// The redacted image. The type will be the same as the original image.
   core.String redactedImage;
-  core.List<core.int> get redactedImageAsBytes {
-    return convert.base64.decode(redactedImage);
-  }
+  core.List<core.int> get redactedImageAsBytes =>
+      convert.base64.decode(redactedImage);
 
   set redactedImageAsBytes(core.List<core.int> _bytes) {
     redactedImage =
@@ -13237,7 +13669,7 @@ class GooglePrivacyDlpV2RedactImageResponse {
     }
     if (_json.containsKey("inspectResult")) {
       inspectResult =
-          new GooglePrivacyDlpV2InspectResult.fromJson(_json["inspectResult"]);
+          GooglePrivacyDlpV2InspectResult.fromJson(_json["inspectResult"]);
     }
     if (_json.containsKey("redactedImage")) {
       redactedImage = _json["redactedImage"];
@@ -13246,12 +13678,12 @@ class GooglePrivacyDlpV2RedactImageResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (extractedText != null) {
       _json["extractedText"] = extractedText;
     }
     if (inspectResult != null) {
-      _json["inspectResult"] = (inspectResult).toJson();
+      _json["inspectResult"] = inspectResult.toJson();
     }
     if (redactedImage != null) {
       _json["redactedImage"] = redactedImage;
@@ -13284,7 +13716,7 @@ class GooglePrivacyDlpV2Regex {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (groupIndexes != null) {
       _json["groupIndexes"] = groupIndexes;
     }
@@ -13337,19 +13769,19 @@ class GooglePrivacyDlpV2ReidentifyContentRequest {
   GooglePrivacyDlpV2ReidentifyContentRequest.fromJson(core.Map _json) {
     if (_json.containsKey("inspectConfig")) {
       inspectConfig =
-          new GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
+          GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
     }
     if (_json.containsKey("inspectTemplateName")) {
       inspectTemplateName = _json["inspectTemplateName"];
     }
     if (_json.containsKey("item")) {
-      item = new GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
+      item = GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
     }
     if (_json.containsKey("locationId")) {
       locationId = _json["locationId"];
     }
     if (_json.containsKey("reidentifyConfig")) {
-      reidentifyConfig = new GooglePrivacyDlpV2DeidentifyConfig.fromJson(
+      reidentifyConfig = GooglePrivacyDlpV2DeidentifyConfig.fromJson(
           _json["reidentifyConfig"]);
     }
     if (_json.containsKey("reidentifyTemplateName")) {
@@ -13359,21 +13791,21 @@ class GooglePrivacyDlpV2ReidentifyContentRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inspectConfig != null) {
-      _json["inspectConfig"] = (inspectConfig).toJson();
+      _json["inspectConfig"] = inspectConfig.toJson();
     }
     if (inspectTemplateName != null) {
       _json["inspectTemplateName"] = inspectTemplateName;
     }
     if (item != null) {
-      _json["item"] = (item).toJson();
+      _json["item"] = item.toJson();
     }
     if (locationId != null) {
       _json["locationId"] = locationId;
     }
     if (reidentifyConfig != null) {
-      _json["reidentifyConfig"] = (reidentifyConfig).toJson();
+      _json["reidentifyConfig"] = reidentifyConfig.toJson();
     }
     if (reidentifyTemplateName != null) {
       _json["reidentifyTemplateName"] = reidentifyTemplateName;
@@ -13394,22 +13826,22 @@ class GooglePrivacyDlpV2ReidentifyContentResponse {
 
   GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(core.Map _json) {
     if (_json.containsKey("item")) {
-      item = new GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
+      item = GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
     }
     if (_json.containsKey("overview")) {
-      overview = new GooglePrivacyDlpV2TransformationOverview.fromJson(
-          _json["overview"]);
+      overview =
+          GooglePrivacyDlpV2TransformationOverview.fromJson(_json["overview"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (item != null) {
-      _json["item"] = (item).toJson();
+      _json["item"] = item.toJson();
     }
     if (overview != null) {
-      _json["overview"] = (overview).toJson();
+      _json["overview"] = overview.toJson();
     }
     return _json;
   }
@@ -13424,15 +13856,15 @@ class GooglePrivacyDlpV2ReplaceValueConfig {
 
   GooglePrivacyDlpV2ReplaceValueConfig.fromJson(core.Map _json) {
     if (_json.containsKey("newValue")) {
-      newValue = new GooglePrivacyDlpV2Value.fromJson(_json["newValue"]);
+      newValue = GooglePrivacyDlpV2Value.fromJson(_json["newValue"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (newValue != null) {
-      _json["newValue"] = (newValue).toJson();
+      _json["newValue"] = newValue.toJson();
     }
     return _json;
   }
@@ -13446,7 +13878,7 @@ class GooglePrivacyDlpV2ReplaceWithInfoTypeConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -13465,22 +13897,22 @@ class GooglePrivacyDlpV2RequestedOptions {
   GooglePrivacyDlpV2RequestedOptions.fromJson(core.Map _json) {
     if (_json.containsKey("jobConfig")) {
       jobConfig =
-          new GooglePrivacyDlpV2InspectJobConfig.fromJson(_json["jobConfig"]);
+          GooglePrivacyDlpV2InspectJobConfig.fromJson(_json["jobConfig"]);
     }
     if (_json.containsKey("snapshotInspectTemplate")) {
-      snapshotInspectTemplate = new GooglePrivacyDlpV2InspectTemplate.fromJson(
+      snapshotInspectTemplate = GooglePrivacyDlpV2InspectTemplate.fromJson(
           _json["snapshotInspectTemplate"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (jobConfig != null) {
-      _json["jobConfig"] = (jobConfig).toJson();
+      _json["jobConfig"] = jobConfig.toJson();
     }
     if (snapshotInspectTemplate != null) {
-      _json["snapshotInspectTemplate"] = (snapshotInspectTemplate).toJson();
+      _json["snapshotInspectTemplate"] = snapshotInspectTemplate.toJson();
     }
     return _json;
   }
@@ -13495,16 +13927,16 @@ class GooglePrivacyDlpV2RequestedRiskAnalysisOptions {
 
   GooglePrivacyDlpV2RequestedRiskAnalysisOptions.fromJson(core.Map _json) {
     if (_json.containsKey("jobConfig")) {
-      jobConfig = new GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(
-          _json["jobConfig"]);
+      jobConfig =
+          GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(_json["jobConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (jobConfig != null) {
-      _json["jobConfig"] = (jobConfig).toJson();
+      _json["jobConfig"] = jobConfig.toJson();
     }
     return _json;
   }
@@ -13532,13 +13964,13 @@ class GooglePrivacyDlpV2Result {
 
   GooglePrivacyDlpV2Result.fromJson(core.Map _json) {
     if (_json.containsKey("hybridStats")) {
-      hybridStats = new GooglePrivacyDlpV2HybridInspectStatistics.fromJson(
+      hybridStats = GooglePrivacyDlpV2HybridInspectStatistics.fromJson(
           _json["hybridStats"]);
     }
     if (_json.containsKey("infoTypeStats")) {
       infoTypeStats = (_json["infoTypeStats"] as core.List)
           .map<GooglePrivacyDlpV2InfoTypeStats>(
-              (value) => new GooglePrivacyDlpV2InfoTypeStats.fromJson(value))
+              (value) => GooglePrivacyDlpV2InfoTypeStats.fromJson(value))
           .toList();
     }
     if (_json.containsKey("processedBytes")) {
@@ -13551,13 +13983,13 @@ class GooglePrivacyDlpV2Result {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hybridStats != null) {
-      _json["hybridStats"] = (hybridStats).toJson();
+      _json["hybridStats"] = hybridStats.toJson();
     }
     if (infoTypeStats != null) {
       _json["infoTypeStats"] =
-          infoTypeStats.map((value) => (value).toJson()).toList();
+          infoTypeStats.map((value) => value.toJson()).toList();
     }
     if (processedBytes != null) {
       _json["processedBytes"] = processedBytes;
@@ -13588,30 +14020,30 @@ class GooglePrivacyDlpV2RiskAnalysisJobConfig {
     if (_json.containsKey("actions")) {
       actions = (_json["actions"] as core.List)
           .map<GooglePrivacyDlpV2Action>(
-              (value) => new GooglePrivacyDlpV2Action.fromJson(value))
+              (value) => GooglePrivacyDlpV2Action.fromJson(value))
           .toList();
     }
     if (_json.containsKey("privacyMetric")) {
       privacyMetric =
-          new GooglePrivacyDlpV2PrivacyMetric.fromJson(_json["privacyMetric"]);
+          GooglePrivacyDlpV2PrivacyMetric.fromJson(_json["privacyMetric"]);
     }
     if (_json.containsKey("sourceTable")) {
       sourceTable =
-          new GooglePrivacyDlpV2BigQueryTable.fromJson(_json["sourceTable"]);
+          GooglePrivacyDlpV2BigQueryTable.fromJson(_json["sourceTable"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (actions != null) {
-      _json["actions"] = actions.map((value) => (value).toJson()).toList();
+      _json["actions"] = actions.map((value) => value.toJson()).toList();
     }
     if (privacyMetric != null) {
-      _json["privacyMetric"] = (privacyMetric).toJson();
+      _json["privacyMetric"] = privacyMetric.toJson();
     }
     if (sourceTable != null) {
-      _json["sourceTable"] = (sourceTable).toJson();
+      _json["sourceTable"] = sourceTable.toJson();
     }
     return _json;
   }
@@ -13628,16 +14060,16 @@ class GooglePrivacyDlpV2Row {
     if (_json.containsKey("values")) {
       values = (_json["values"] as core.List)
           .map<GooglePrivacyDlpV2Value>(
-              (value) => new GooglePrivacyDlpV2Value.fromJson(value))
+              (value) => GooglePrivacyDlpV2Value.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (values != null) {
-      _json["values"] = values.map((value) => (value).toJson()).toList();
+      _json["values"] = values.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -13654,16 +14086,16 @@ class GooglePrivacyDlpV2SaveFindings {
 
   GooglePrivacyDlpV2SaveFindings.fromJson(core.Map _json) {
     if (_json.containsKey("outputConfig")) {
-      outputConfig = new GooglePrivacyDlpV2OutputStorageConfig.fromJson(
-          _json["outputConfig"]);
+      outputConfig =
+          GooglePrivacyDlpV2OutputStorageConfig.fromJson(_json["outputConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = (outputConfig).toJson();
+      _json["outputConfig"] = outputConfig.toJson();
     }
     return _json;
   }
@@ -13688,7 +14120,7 @@ class GooglePrivacyDlpV2Schedule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (recurrencePeriodDuration != null) {
       _json["recurrencePeriodDuration"] = recurrencePeriodDuration;
     }
@@ -13718,30 +14150,30 @@ class GooglePrivacyDlpV2StatisticalTable {
   GooglePrivacyDlpV2StatisticalTable.fromJson(core.Map _json) {
     if (_json.containsKey("quasiIds")) {
       quasiIds = (_json["quasiIds"] as core.List)
-          .map<GooglePrivacyDlpV2QuasiIdentifierField>((value) =>
-              new GooglePrivacyDlpV2QuasiIdentifierField.fromJson(value))
+          .map<GooglePrivacyDlpV2QuasiIdentifierField>(
+              (value) => GooglePrivacyDlpV2QuasiIdentifierField.fromJson(value))
           .toList();
     }
     if (_json.containsKey("relativeFrequency")) {
       relativeFrequency =
-          new GooglePrivacyDlpV2FieldId.fromJson(_json["relativeFrequency"]);
+          GooglePrivacyDlpV2FieldId.fromJson(_json["relativeFrequency"]);
     }
     if (_json.containsKey("table")) {
-      table = new GooglePrivacyDlpV2BigQueryTable.fromJson(_json["table"]);
+      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json["table"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (quasiIds != null) {
-      _json["quasiIds"] = quasiIds.map((value) => (value).toJson()).toList();
+      _json["quasiIds"] = quasiIds.map((value) => value.toJson()).toList();
     }
     if (relativeFrequency != null) {
-      _json["relativeFrequency"] = (relativeFrequency).toJson();
+      _json["relativeFrequency"] = relativeFrequency.toJson();
     }
     if (table != null) {
-      _json["table"] = (table).toJson();
+      _json["table"] = table.toJson();
     }
     return _json;
   }
@@ -13768,44 +14200,44 @@ class GooglePrivacyDlpV2StorageConfig {
 
   GooglePrivacyDlpV2StorageConfig.fromJson(core.Map _json) {
     if (_json.containsKey("bigQueryOptions")) {
-      bigQueryOptions = new GooglePrivacyDlpV2BigQueryOptions.fromJson(
-          _json["bigQueryOptions"]);
+      bigQueryOptions =
+          GooglePrivacyDlpV2BigQueryOptions.fromJson(_json["bigQueryOptions"]);
     }
     if (_json.containsKey("cloudStorageOptions")) {
-      cloudStorageOptions = new GooglePrivacyDlpV2CloudStorageOptions.fromJson(
+      cloudStorageOptions = GooglePrivacyDlpV2CloudStorageOptions.fromJson(
           _json["cloudStorageOptions"]);
     }
     if (_json.containsKey("datastoreOptions")) {
-      datastoreOptions = new GooglePrivacyDlpV2DatastoreOptions.fromJson(
+      datastoreOptions = GooglePrivacyDlpV2DatastoreOptions.fromJson(
           _json["datastoreOptions"]);
     }
     if (_json.containsKey("hybridOptions")) {
       hybridOptions =
-          new GooglePrivacyDlpV2HybridOptions.fromJson(_json["hybridOptions"]);
+          GooglePrivacyDlpV2HybridOptions.fromJson(_json["hybridOptions"]);
     }
     if (_json.containsKey("timespanConfig")) {
-      timespanConfig = new GooglePrivacyDlpV2TimespanConfig.fromJson(
-          _json["timespanConfig"]);
+      timespanConfig =
+          GooglePrivacyDlpV2TimespanConfig.fromJson(_json["timespanConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bigQueryOptions != null) {
-      _json["bigQueryOptions"] = (bigQueryOptions).toJson();
+      _json["bigQueryOptions"] = bigQueryOptions.toJson();
     }
     if (cloudStorageOptions != null) {
-      _json["cloudStorageOptions"] = (cloudStorageOptions).toJson();
+      _json["cloudStorageOptions"] = cloudStorageOptions.toJson();
     }
     if (datastoreOptions != null) {
-      _json["datastoreOptions"] = (datastoreOptions).toJson();
+      _json["datastoreOptions"] = datastoreOptions.toJson();
     }
     if (hybridOptions != null) {
-      _json["hybridOptions"] = (hybridOptions).toJson();
+      _json["hybridOptions"] = hybridOptions.toJson();
     }
     if (timespanConfig != null) {
-      _json["timespanConfig"] = (timespanConfig).toJson();
+      _json["timespanConfig"] = timespanConfig.toJson();
     }
     return _json;
   }
@@ -13825,7 +14257,7 @@ class GooglePrivacyDlpV2StorageMetadataLabel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
@@ -13850,7 +14282,7 @@ class GooglePrivacyDlpV2StoredInfoType {
 
   GooglePrivacyDlpV2StoredInfoType.fromJson(core.Map _json) {
     if (_json.containsKey("currentVersion")) {
-      currentVersion = new GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(
+      currentVersion = GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(
           _json["currentVersion"]);
     }
     if (_json.containsKey("name")) {
@@ -13859,23 +14291,23 @@ class GooglePrivacyDlpV2StoredInfoType {
     if (_json.containsKey("pendingVersions")) {
       pendingVersions = (_json["pendingVersions"] as core.List)
           .map<GooglePrivacyDlpV2StoredInfoTypeVersion>((value) =>
-              new GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(value))
+              GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currentVersion != null) {
-      _json["currentVersion"] = (currentVersion).toJson();
+      _json["currentVersion"] = currentVersion.toJson();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (pendingVersions != null) {
       _json["pendingVersions"] =
-          pendingVersions.map((value) => (value).toJson()).toList();
+          pendingVersions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -13907,39 +14339,38 @@ class GooglePrivacyDlpV2StoredInfoTypeConfig {
       description = _json["description"];
     }
     if (_json.containsKey("dictionary")) {
-      dictionary =
-          new GooglePrivacyDlpV2Dictionary.fromJson(_json["dictionary"]);
+      dictionary = GooglePrivacyDlpV2Dictionary.fromJson(_json["dictionary"]);
     }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("largeCustomDictionary")) {
       largeCustomDictionary =
-          new GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromJson(
+          GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromJson(
               _json["largeCustomDictionary"]);
     }
     if (_json.containsKey("regex")) {
-      regex = new GooglePrivacyDlpV2Regex.fromJson(_json["regex"]);
+      regex = GooglePrivacyDlpV2Regex.fromJson(_json["regex"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
     if (dictionary != null) {
-      _json["dictionary"] = (dictionary).toJson();
+      _json["dictionary"] = dictionary.toJson();
     }
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
     if (largeCustomDictionary != null) {
-      _json["largeCustomDictionary"] = (largeCustomDictionary).toJson();
+      _json["largeCustomDictionary"] = largeCustomDictionary.toJson();
     }
     if (regex != null) {
-      _json["regex"] = (regex).toJson();
+      _json["regex"] = regex.toJson();
     }
     return _json;
   }
@@ -13955,16 +14386,16 @@ class GooglePrivacyDlpV2StoredInfoTypeStats {
   GooglePrivacyDlpV2StoredInfoTypeStats.fromJson(core.Map _json) {
     if (_json.containsKey("largeCustomDictionary")) {
       largeCustomDictionary =
-          new GooglePrivacyDlpV2LargeCustomDictionaryStats.fromJson(
+          GooglePrivacyDlpV2LargeCustomDictionaryStats.fromJson(
               _json["largeCustomDictionary"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (largeCustomDictionary != null) {
-      _json["largeCustomDictionary"] = (largeCustomDictionary).toJson();
+      _json["largeCustomDictionary"] = largeCustomDictionary.toJson();
     }
     return _json;
   }
@@ -14013,8 +14444,7 @@ class GooglePrivacyDlpV2StoredInfoTypeVersion {
 
   GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(core.Map _json) {
     if (_json.containsKey("config")) {
-      config =
-          new GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json["config"]);
+      config = GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json["config"]);
     }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
@@ -14022,35 +14452,34 @@ class GooglePrivacyDlpV2StoredInfoTypeVersion {
     if (_json.containsKey("errors")) {
       errors = (_json["errors"] as core.List)
           .map<GooglePrivacyDlpV2Error>(
-              (value) => new GooglePrivacyDlpV2Error.fromJson(value))
+              (value) => GooglePrivacyDlpV2Error.fromJson(value))
           .toList();
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
     if (_json.containsKey("stats")) {
-      stats =
-          new GooglePrivacyDlpV2StoredInfoTypeStats.fromJson(_json["stats"]);
+      stats = GooglePrivacyDlpV2StoredInfoTypeStats.fromJson(_json["stats"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (config != null) {
-      _json["config"] = (config).toJson();
+      _json["config"] = config.toJson();
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
     if (errors != null) {
-      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+      _json["errors"] = errors.map((value) => value.toJson()).toList();
     }
     if (state != null) {
       _json["state"] = state;
     }
     if (stats != null) {
-      _json["stats"] = (stats).toJson();
+      _json["stats"] = stats.toJson();
     }
     return _json;
   }
@@ -14080,7 +14509,7 @@ class GooglePrivacyDlpV2StoredType {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -14124,7 +14553,7 @@ class GooglePrivacyDlpV2SummaryResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -14152,7 +14581,7 @@ class GooglePrivacyDlpV2SurrogateType {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -14173,25 +14602,25 @@ class GooglePrivacyDlpV2Table {
     if (_json.containsKey("headers")) {
       headers = (_json["headers"] as core.List)
           .map<GooglePrivacyDlpV2FieldId>(
-              (value) => new GooglePrivacyDlpV2FieldId.fromJson(value))
+              (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
           .toList();
     }
     if (_json.containsKey("rows")) {
       rows = (_json["rows"] as core.List)
           .map<GooglePrivacyDlpV2Row>(
-              (value) => new GooglePrivacyDlpV2Row.fromJson(value))
+              (value) => GooglePrivacyDlpV2Row.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (headers != null) {
-      _json["headers"] = headers.map((value) => (value).toJson()).toList();
+      _json["headers"] = headers.map((value) => value.toJson()).toList();
     }
     if (rows != null) {
-      _json["rows"] = rows.map((value) => (value).toJson()).toList();
+      _json["rows"] = rows.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -14217,7 +14646,7 @@ class GooglePrivacyDlpV2TableLocation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (rowIndex != null) {
       _json["rowIndex"] = rowIndex;
     }
@@ -14239,17 +14668,17 @@ class GooglePrivacyDlpV2TableOptions {
     if (_json.containsKey("identifyingFields")) {
       identifyingFields = (_json["identifyingFields"] as core.List)
           .map<GooglePrivacyDlpV2FieldId>(
-              (value) => new GooglePrivacyDlpV2FieldId.fromJson(value))
+              (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (identifyingFields != null) {
       _json["identifyingFields"] =
-          identifyingFields.map((value) => (value).toJson()).toList();
+          identifyingFields.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -14283,30 +14712,30 @@ class GooglePrivacyDlpV2TaggedField {
       customTag = _json["customTag"];
     }
     if (_json.containsKey("field")) {
-      field = new GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
     }
     if (_json.containsKey("inferred")) {
-      inferred = new GoogleProtobufEmpty.fromJson(_json["inferred"]);
+      inferred = GoogleProtobufEmpty.fromJson(_json["inferred"]);
     }
     if (_json.containsKey("infoType")) {
-      infoType = new GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customTag != null) {
       _json["customTag"] = customTag;
     }
     if (field != null) {
-      _json["field"] = (field).toJson();
+      _json["field"] = field.toJson();
     }
     if (inferred != null) {
-      _json["inferred"] = (inferred).toJson();
+      _json["inferred"] = inferred.toJson();
     }
     if (infoType != null) {
-      _json["infoType"] = (infoType).toJson();
+      _json["infoType"] = infoType.toJson();
     }
     return _json;
   }
@@ -14320,7 +14749,7 @@ class GooglePrivacyDlpV2ThrowError {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -14349,7 +14778,7 @@ class GooglePrivacyDlpV2TimePartConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (partToExtract != null) {
       _json["partToExtract"] = partToExtract;
     }
@@ -14373,7 +14802,7 @@ class GooglePrivacyDlpV2TimeZone {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (offsetMinutes != null) {
       _json["offsetMinutes"] = offsetMinutes;
     }
@@ -14423,13 +14852,13 @@ class GooglePrivacyDlpV2TimespanConfig {
     }
     if (_json.containsKey("timestampField")) {
       timestampField =
-          new GooglePrivacyDlpV2FieldId.fromJson(_json["timestampField"]);
+          GooglePrivacyDlpV2FieldId.fromJson(_json["timestampField"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enableAutoPopulationOfTimespanConfig != null) {
       _json["enableAutoPopulationOfTimespanConfig"] =
           enableAutoPopulationOfTimespanConfig;
@@ -14441,7 +14870,7 @@ class GooglePrivacyDlpV2TimespanConfig {
       _json["startTime"] = startTime;
     }
     if (timestampField != null) {
-      _json["timestampField"] = (timestampField).toJson();
+      _json["timestampField"] = timestampField.toJson();
     }
     return _json;
   }
@@ -14465,23 +14894,22 @@ class GooglePrivacyDlpV2TransformationErrorHandling {
 
   GooglePrivacyDlpV2TransformationErrorHandling.fromJson(core.Map _json) {
     if (_json.containsKey("leaveUntransformed")) {
-      leaveUntransformed = new GooglePrivacyDlpV2LeaveUntransformed.fromJson(
+      leaveUntransformed = GooglePrivacyDlpV2LeaveUntransformed.fromJson(
           _json["leaveUntransformed"]);
     }
     if (_json.containsKey("throwError")) {
-      throwError =
-          new GooglePrivacyDlpV2ThrowError.fromJson(_json["throwError"]);
+      throwError = GooglePrivacyDlpV2ThrowError.fromJson(_json["throwError"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (leaveUntransformed != null) {
-      _json["leaveUntransformed"] = (leaveUntransformed).toJson();
+      _json["leaveUntransformed"] = leaveUntransformed.toJson();
     }
     if (throwError != null) {
-      _json["throwError"] = (throwError).toJson();
+      _json["throwError"] = throwError.toJson();
     }
     return _json;
   }
@@ -14501,7 +14929,7 @@ class GooglePrivacyDlpV2TransformationOverview {
     if (_json.containsKey("transformationSummaries")) {
       transformationSummaries = (_json["transformationSummaries"] as core.List)
           .map<GooglePrivacyDlpV2TransformationSummary>((value) =>
-              new GooglePrivacyDlpV2TransformationSummary.fromJson(value))
+              GooglePrivacyDlpV2TransformationSummary.fromJson(value))
           .toList();
     }
     if (_json.containsKey("transformedBytes")) {
@@ -14511,10 +14939,10 @@ class GooglePrivacyDlpV2TransformationOverview {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (transformationSummaries != null) {
       _json["transformationSummaries"] =
-          transformationSummaries.map((value) => (value).toJson()).toList();
+          transformationSummaries.map((value) => value.toJson()).toList();
     }
     if (transformedBytes != null) {
       _json["transformedBytes"] = transformedBytes;
@@ -14553,29 +14981,29 @@ class GooglePrivacyDlpV2TransformationSummary {
 
   GooglePrivacyDlpV2TransformationSummary.fromJson(core.Map _json) {
     if (_json.containsKey("field")) {
-      field = new GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
+      field = GooglePrivacyDlpV2FieldId.fromJson(_json["field"]);
     }
     if (_json.containsKey("fieldTransformations")) {
       fieldTransformations = (_json["fieldTransformations"] as core.List)
-          .map<GooglePrivacyDlpV2FieldTransformation>((value) =>
-              new GooglePrivacyDlpV2FieldTransformation.fromJson(value))
+          .map<GooglePrivacyDlpV2FieldTransformation>(
+              (value) => GooglePrivacyDlpV2FieldTransformation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("infoType")) {
-      infoType = new GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
     }
     if (_json.containsKey("recordSuppress")) {
-      recordSuppress = new GooglePrivacyDlpV2RecordSuppression.fromJson(
-          _json["recordSuppress"]);
+      recordSuppress =
+          GooglePrivacyDlpV2RecordSuppression.fromJson(_json["recordSuppress"]);
     }
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
           .map<GooglePrivacyDlpV2SummaryResult>(
-              (value) => new GooglePrivacyDlpV2SummaryResult.fromJson(value))
+              (value) => GooglePrivacyDlpV2SummaryResult.fromJson(value))
           .toList();
     }
     if (_json.containsKey("transformation")) {
-      transformation = new GooglePrivacyDlpV2PrimitiveTransformation.fromJson(
+      transformation = GooglePrivacyDlpV2PrimitiveTransformation.fromJson(
           _json["transformation"]);
     }
     if (_json.containsKey("transformedBytes")) {
@@ -14585,25 +15013,25 @@ class GooglePrivacyDlpV2TransformationSummary {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = (field).toJson();
+      _json["field"] = field.toJson();
     }
     if (fieldTransformations != null) {
       _json["fieldTransformations"] =
-          fieldTransformations.map((value) => (value).toJson()).toList();
+          fieldTransformations.map((value) => value.toJson()).toList();
     }
     if (infoType != null) {
-      _json["infoType"] = (infoType).toJson();
+      _json["infoType"] = infoType.toJson();
     }
     if (recordSuppress != null) {
-      _json["recordSuppress"] = (recordSuppress).toJson();
+      _json["recordSuppress"] = recordSuppress.toJson();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     if (transformation != null) {
-      _json["transformation"] = (transformation).toJson();
+      _json["transformation"] = transformation.toJson();
     }
     if (transformedBytes != null) {
       _json["transformedBytes"] = transformedBytes;
@@ -14633,7 +15061,7 @@ class GooglePrivacyDlpV2TransientCryptoKey {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -14656,21 +15084,21 @@ class GooglePrivacyDlpV2Trigger {
 
   GooglePrivacyDlpV2Trigger.fromJson(core.Map _json) {
     if (_json.containsKey("manual")) {
-      manual = new GooglePrivacyDlpV2Manual.fromJson(_json["manual"]);
+      manual = GooglePrivacyDlpV2Manual.fromJson(_json["manual"]);
     }
     if (_json.containsKey("schedule")) {
-      schedule = new GooglePrivacyDlpV2Schedule.fromJson(_json["schedule"]);
+      schedule = GooglePrivacyDlpV2Schedule.fromJson(_json["schedule"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (manual != null) {
-      _json["manual"] = (manual).toJson();
+      _json["manual"] = manual.toJson();
     }
     if (schedule != null) {
-      _json["schedule"] = (schedule).toJson();
+      _json["schedule"] = schedule.toJson();
     }
     return _json;
   }
@@ -14681,9 +15109,7 @@ class GooglePrivacyDlpV2Trigger {
 class GooglePrivacyDlpV2UnwrappedCryptoKey {
   /// Required. A 128/192/256 bit key.
   core.String key;
-  core.List<core.int> get keyAsBytes {
-    return convert.base64.decode(key);
-  }
+  core.List<core.int> get keyAsBytes => convert.base64.decode(key);
 
   set keyAsBytes(core.List<core.int> _bytes) {
     key =
@@ -14700,7 +15126,7 @@ class GooglePrivacyDlpV2UnwrappedCryptoKey {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
@@ -14720,7 +15146,7 @@ class GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest {
 
   GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(core.Map _json) {
     if (_json.containsKey("deidentifyTemplate")) {
-      deidentifyTemplate = new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+      deidentifyTemplate = GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
           _json["deidentifyTemplate"]);
     }
     if (_json.containsKey("updateMask")) {
@@ -14730,9 +15156,9 @@ class GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deidentifyTemplate != null) {
-      _json["deidentifyTemplate"] = (deidentifyTemplate).toJson();
+      _json["deidentifyTemplate"] = deidentifyTemplate.toJson();
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;
@@ -14753,8 +15179,8 @@ class GooglePrivacyDlpV2UpdateInspectTemplateRequest {
 
   GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(core.Map _json) {
     if (_json.containsKey("inspectTemplate")) {
-      inspectTemplate = new GooglePrivacyDlpV2InspectTemplate.fromJson(
-          _json["inspectTemplate"]);
+      inspectTemplate =
+          GooglePrivacyDlpV2InspectTemplate.fromJson(_json["inspectTemplate"]);
     }
     if (_json.containsKey("updateMask")) {
       updateMask = _json["updateMask"];
@@ -14763,9 +15189,9 @@ class GooglePrivacyDlpV2UpdateInspectTemplateRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inspectTemplate != null) {
-      _json["inspectTemplate"] = (inspectTemplate).toJson();
+      _json["inspectTemplate"] = inspectTemplate.toJson();
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;
@@ -14786,8 +15212,7 @@ class GooglePrivacyDlpV2UpdateJobTriggerRequest {
 
   GooglePrivacyDlpV2UpdateJobTriggerRequest.fromJson(core.Map _json) {
     if (_json.containsKey("jobTrigger")) {
-      jobTrigger =
-          new GooglePrivacyDlpV2JobTrigger.fromJson(_json["jobTrigger"]);
+      jobTrigger = GooglePrivacyDlpV2JobTrigger.fromJson(_json["jobTrigger"]);
     }
     if (_json.containsKey("updateMask")) {
       updateMask = _json["updateMask"];
@@ -14796,9 +15221,9 @@ class GooglePrivacyDlpV2UpdateJobTriggerRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (jobTrigger != null) {
-      _json["jobTrigger"] = (jobTrigger).toJson();
+      _json["jobTrigger"] = jobTrigger.toJson();
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;
@@ -14821,8 +15246,7 @@ class GooglePrivacyDlpV2UpdateStoredInfoTypeRequest {
 
   GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(core.Map _json) {
     if (_json.containsKey("config")) {
-      config =
-          new GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json["config"]);
+      config = GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json["config"]);
     }
     if (_json.containsKey("updateMask")) {
       updateMask = _json["updateMask"];
@@ -14831,9 +15255,9 @@ class GooglePrivacyDlpV2UpdateStoredInfoTypeRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (config != null) {
-      _json["config"] = (config).toJson();
+      _json["config"] = config.toJson();
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;
@@ -14888,7 +15312,7 @@ class GooglePrivacyDlpV2Value {
       booleanValue = _json["booleanValue"];
     }
     if (_json.containsKey("dateValue")) {
-      dateValue = new GoogleTypeDate.fromJson(_json["dateValue"]);
+      dateValue = GoogleTypeDate.fromJson(_json["dateValue"]);
     }
     if (_json.containsKey("dayOfWeekValue")) {
       dayOfWeekValue = _json["dayOfWeekValue"];
@@ -14903,7 +15327,7 @@ class GooglePrivacyDlpV2Value {
       stringValue = _json["stringValue"];
     }
     if (_json.containsKey("timeValue")) {
-      timeValue = new GoogleTypeTimeOfDay.fromJson(_json["timeValue"]);
+      timeValue = GoogleTypeTimeOfDay.fromJson(_json["timeValue"]);
     }
     if (_json.containsKey("timestampValue")) {
       timestampValue = _json["timestampValue"];
@@ -14912,12 +15336,12 @@ class GooglePrivacyDlpV2Value {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (booleanValue != null) {
       _json["booleanValue"] = booleanValue;
     }
     if (dateValue != null) {
-      _json["dateValue"] = (dateValue).toJson();
+      _json["dateValue"] = dateValue.toJson();
     }
     if (dayOfWeekValue != null) {
       _json["dayOfWeekValue"] = dayOfWeekValue;
@@ -14932,7 +15356,7 @@ class GooglePrivacyDlpV2Value {
       _json["stringValue"] = stringValue;
     }
     if (timeValue != null) {
-      _json["timeValue"] = (timeValue).toJson();
+      _json["timeValue"] = timeValue.toJson();
     }
     if (timestampValue != null) {
       _json["timestampValue"] = timestampValue;
@@ -14956,18 +15380,18 @@ class GooglePrivacyDlpV2ValueFrequency {
       count = _json["count"];
     }
     if (_json.containsKey("value")) {
-      value = new GooglePrivacyDlpV2Value.fromJson(_json["value"]);
+      value = GooglePrivacyDlpV2Value.fromJson(_json["value"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (count != null) {
       _json["count"] = count;
     }
     if (value != null) {
-      _json["value"] = (value).toJson();
+      _json["value"] = value.toJson();
     }
     return _json;
   }
@@ -14990,7 +15414,7 @@ class GooglePrivacyDlpV2WordList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (words != null) {
       _json["words"] = words;
     }
@@ -15010,7 +15434,7 @@ class GoogleProtobufEmpty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -15056,7 +15480,7 @@ class GoogleRpcStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -15108,7 +15532,7 @@ class GoogleTypeDate {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (day != null) {
       _json["day"] = day;
     }
@@ -15159,7 +15583,7 @@ class GoogleTypeTimeOfDay {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hours != null) {
       _json["hours"] = hours;
     }

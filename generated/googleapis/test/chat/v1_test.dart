@@ -1,3 +1,27 @@
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
+// ignore_for_file: avoid_returning_null
+// ignore_for_file: cascade_invocations
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unused_local_variable
+
 library googleapis.chat.v1.test;
 
 import "dart:core" as core;
@@ -18,27 +42,23 @@ class HttpServerMock extends http.BaseClient {
     _expectJson = expectJson;
   }
 
-  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+  @core.override
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) async {
     if (_expectJson) {
-      return request
-          .finalize()
-          .transform(convert.utf8.decoder)
-          .join('')
-          .then((core.String jsonString) {
-        if (jsonString.isEmpty) {
-          return _callback(request, null);
-        } else {
-          return _callback(request, convert.json.decode(jsonString));
-        }
-      });
+      final jsonString =
+          await request.finalize().transform(convert.utf8.decoder).join('');
+      if (jsonString.isEmpty) {
+        return _callback(request, null);
+      } else {
+        return _callback(request, convert.json.decode(jsonString));
+      }
     } else {
       var stream = request.finalize();
       if (stream == null) {
         return _callback(request, []);
       } else {
-        return stream.toBytes().then((data) {
-          return _callback(request, data);
-        });
+        final data = await stream.toBytes();
+        return _callback(request, data);
       }
     }
   }
@@ -46,13 +66,13 @@ class HttpServerMock extends http.BaseClient {
 
 http.StreamedResponse stringResponse(core.int status,
     core.Map<core.String, core.String> headers, core.String body) {
-  var stream = new async.Stream.fromIterable([convert.utf8.encode(body)]);
-  return new http.StreamedResponse(stream, status, headers: headers);
+  var stream = async.Stream.fromIterable([convert.utf8.encode(body)]);
+  return http.StreamedResponse(stream, status, headers: headers);
 }
 
 core.int buildCounterActionParameter = 0;
-buildActionParameter() {
-  var o = new api.ActionParameter();
+api.ActionParameter buildActionParameter() {
+  var o = api.ActionParameter();
   buildCounterActionParameter++;
   if (buildCounterActionParameter < 3) {
     o.key = "foo";
@@ -62,7 +82,7 @@ buildActionParameter() {
   return o;
 }
 
-checkActionParameter(api.ActionParameter o) {
+void checkActionParameter(api.ActionParameter o) {
   buildCounterActionParameter++;
   if (buildCounterActionParameter < 3) {
     unittest.expect(o.key, unittest.equals('foo'));
@@ -72,8 +92,8 @@ checkActionParameter(api.ActionParameter o) {
 }
 
 core.int buildCounterActionResponse = 0;
-buildActionResponse() {
-  var o = new api.ActionResponse();
+api.ActionResponse buildActionResponse() {
+  var o = api.ActionResponse();
   buildCounterActionResponse++;
   if (buildCounterActionResponse < 3) {
     o.type = "foo";
@@ -83,7 +103,7 @@ buildActionResponse() {
   return o;
 }
 
-checkActionResponse(api.ActionResponse o) {
+void checkActionResponse(api.ActionResponse o) {
   buildCounterActionResponse++;
   if (buildCounterActionResponse < 3) {
     unittest.expect(o.type, unittest.equals('foo'));
@@ -93,8 +113,8 @@ checkActionResponse(api.ActionResponse o) {
 }
 
 core.int buildCounterAnnotation = 0;
-buildAnnotation() {
-  var o = new api.Annotation();
+api.Annotation buildAnnotation() {
+  var o = api.Annotation();
   buildCounterAnnotation++;
   if (buildCounterAnnotation < 3) {
     o.length = 42;
@@ -107,7 +127,7 @@ buildAnnotation() {
   return o;
 }
 
-checkAnnotation(api.Annotation o) {
+void checkAnnotation(api.Annotation o) {
   buildCounterAnnotation++;
   if (buildCounterAnnotation < 3) {
     unittest.expect(o.length, unittest.equals(42));
@@ -120,8 +140,8 @@ checkAnnotation(api.Annotation o) {
 }
 
 core.int buildCounterAttachment = 0;
-buildAttachment() {
-  var o = new api.Attachment();
+api.Attachment buildAttachment() {
+  var o = api.Attachment();
   buildCounterAttachment++;
   if (buildCounterAttachment < 3) {
     o.attachmentDataRef = buildAttachmentDataRef();
@@ -137,7 +157,7 @@ buildAttachment() {
   return o;
 }
 
-checkAttachment(api.Attachment o) {
+void checkAttachment(api.Attachment o) {
   buildCounterAttachment++;
   if (buildCounterAttachment < 3) {
     checkAttachmentDataRef(o.attachmentDataRef);
@@ -153,8 +173,8 @@ checkAttachment(api.Attachment o) {
 }
 
 core.int buildCounterAttachmentDataRef = 0;
-buildAttachmentDataRef() {
-  var o = new api.AttachmentDataRef();
+api.AttachmentDataRef buildAttachmentDataRef() {
+  var o = api.AttachmentDataRef();
   buildCounterAttachmentDataRef++;
   if (buildCounterAttachmentDataRef < 3) {
     o.resourceName = "foo";
@@ -163,7 +183,7 @@ buildAttachmentDataRef() {
   return o;
 }
 
-checkAttachmentDataRef(api.AttachmentDataRef o) {
+void checkAttachmentDataRef(api.AttachmentDataRef o) {
   buildCounterAttachmentDataRef++;
   if (buildCounterAttachmentDataRef < 3) {
     unittest.expect(o.resourceName, unittest.equals('foo'));
@@ -172,8 +192,8 @@ checkAttachmentDataRef(api.AttachmentDataRef o) {
 }
 
 core.int buildCounterButton = 0;
-buildButton() {
-  var o = new api.Button();
+api.Button buildButton() {
+  var o = api.Button();
   buildCounterButton++;
   if (buildCounterButton < 3) {
     o.imageButton = buildImageButton();
@@ -183,7 +203,7 @@ buildButton() {
   return o;
 }
 
-checkButton(api.Button o) {
+void checkButton(api.Button o) {
   buildCounterButton++;
   if (buildCounterButton < 3) {
     checkImageButton(o.imageButton);
@@ -192,60 +212,60 @@ checkButton(api.Button o) {
   buildCounterButton--;
 }
 
-buildUnnamed3525() {
-  var o = new core.List<api.CardAction>();
+core.List<api.CardAction> buildUnnamed2960() {
+  var o = <api.CardAction>[];
   o.add(buildCardAction());
   o.add(buildCardAction());
   return o;
 }
 
-checkUnnamed3525(core.List<api.CardAction> o) {
+void checkUnnamed2960(core.List<api.CardAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCardAction(o[0]);
   checkCardAction(o[1]);
 }
 
-buildUnnamed3526() {
-  var o = new core.List<api.Section>();
+core.List<api.Section> buildUnnamed2961() {
+  var o = <api.Section>[];
   o.add(buildSection());
   o.add(buildSection());
   return o;
 }
 
-checkUnnamed3526(core.List<api.Section> o) {
+void checkUnnamed2961(core.List<api.Section> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSection(o[0]);
   checkSection(o[1]);
 }
 
 core.int buildCounterCard = 0;
-buildCard() {
-  var o = new api.Card();
+api.Card buildCard() {
+  var o = api.Card();
   buildCounterCard++;
   if (buildCounterCard < 3) {
-    o.cardActions = buildUnnamed3525();
+    o.cardActions = buildUnnamed2960();
     o.header = buildCardHeader();
     o.name = "foo";
-    o.sections = buildUnnamed3526();
+    o.sections = buildUnnamed2961();
   }
   buildCounterCard--;
   return o;
 }
 
-checkCard(api.Card o) {
+void checkCard(api.Card o) {
   buildCounterCard++;
   if (buildCounterCard < 3) {
-    checkUnnamed3525(o.cardActions);
+    checkUnnamed2960(o.cardActions);
     checkCardHeader(o.header);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3526(o.sections);
+    checkUnnamed2961(o.sections);
   }
   buildCounterCard--;
 }
 
 core.int buildCounterCardAction = 0;
-buildCardAction() {
-  var o = new api.CardAction();
+api.CardAction buildCardAction() {
+  var o = api.CardAction();
   buildCounterCardAction++;
   if (buildCounterCardAction < 3) {
     o.actionLabel = "foo";
@@ -255,7 +275,7 @@ buildCardAction() {
   return o;
 }
 
-checkCardAction(api.CardAction o) {
+void checkCardAction(api.CardAction o) {
   buildCounterCardAction++;
   if (buildCounterCardAction < 3) {
     unittest.expect(o.actionLabel, unittest.equals('foo'));
@@ -265,8 +285,8 @@ checkCardAction(api.CardAction o) {
 }
 
 core.int buildCounterCardHeader = 0;
-buildCardHeader() {
-  var o = new api.CardHeader();
+api.CardHeader buildCardHeader() {
+  var o = api.CardHeader();
   buildCounterCardHeader++;
   if (buildCounterCardHeader < 3) {
     o.imageStyle = "foo";
@@ -278,7 +298,7 @@ buildCardHeader() {
   return o;
 }
 
-checkCardHeader(api.CardHeader o) {
+void checkCardHeader(api.CardHeader o) {
   buildCounterCardHeader++;
   if (buildCounterCardHeader < 3) {
     unittest.expect(o.imageStyle, unittest.equals('foo'));
@@ -290,8 +310,8 @@ checkCardHeader(api.CardHeader o) {
 }
 
 core.int buildCounterDeprecatedEvent = 0;
-buildDeprecatedEvent() {
-  var o = new api.DeprecatedEvent();
+api.DeprecatedEvent buildDeprecatedEvent() {
+  var o = api.DeprecatedEvent();
   buildCounterDeprecatedEvent++;
   if (buildCounterDeprecatedEvent < 3) {
     o.action = buildFormAction();
@@ -308,7 +328,7 @@ buildDeprecatedEvent() {
   return o;
 }
 
-checkDeprecatedEvent(api.DeprecatedEvent o) {
+void checkDeprecatedEvent(api.DeprecatedEvent o) {
   buildCounterDeprecatedEvent++;
   if (buildCounterDeprecatedEvent < 3) {
     checkFormAction(o.action);
@@ -325,8 +345,8 @@ checkDeprecatedEvent(api.DeprecatedEvent o) {
 }
 
 core.int buildCounterDriveDataRef = 0;
-buildDriveDataRef() {
-  var o = new api.DriveDataRef();
+api.DriveDataRef buildDriveDataRef() {
+  var o = api.DriveDataRef();
   buildCounterDriveDataRef++;
   if (buildCounterDriveDataRef < 3) {
     o.driveFileId = "foo";
@@ -335,7 +355,7 @@ buildDriveDataRef() {
   return o;
 }
 
-checkDriveDataRef(api.DriveDataRef o) {
+void checkDriveDataRef(api.DriveDataRef o) {
   buildCounterDriveDataRef++;
   if (buildCounterDriveDataRef < 3) {
     unittest.expect(o.driveFileId, unittest.equals('foo'));
@@ -344,57 +364,57 @@ checkDriveDataRef(api.DriveDataRef o) {
 }
 
 core.int buildCounterEmpty = 0;
-buildEmpty() {
-  var o = new api.Empty();
+api.Empty buildEmpty() {
+  var o = api.Empty();
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
   return o;
 }
 
-checkEmpty(api.Empty o) {
+void checkEmpty(api.Empty o) {
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
 }
 
-buildUnnamed3527() {
-  var o = new core.List<api.ActionParameter>();
+core.List<api.ActionParameter> buildUnnamed2962() {
+  var o = <api.ActionParameter>[];
   o.add(buildActionParameter());
   o.add(buildActionParameter());
   return o;
 }
 
-checkUnnamed3527(core.List<api.ActionParameter> o) {
+void checkUnnamed2962(core.List<api.ActionParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActionParameter(o[0]);
   checkActionParameter(o[1]);
 }
 
 core.int buildCounterFormAction = 0;
-buildFormAction() {
-  var o = new api.FormAction();
+api.FormAction buildFormAction() {
+  var o = api.FormAction();
   buildCounterFormAction++;
   if (buildCounterFormAction < 3) {
     o.actionMethodName = "foo";
-    o.parameters = buildUnnamed3527();
+    o.parameters = buildUnnamed2962();
   }
   buildCounterFormAction--;
   return o;
 }
 
-checkFormAction(api.FormAction o) {
+void checkFormAction(api.FormAction o) {
   buildCounterFormAction++;
   if (buildCounterFormAction < 3) {
     unittest.expect(o.actionMethodName, unittest.equals('foo'));
-    checkUnnamed3527(o.parameters);
+    checkUnnamed2962(o.parameters);
   }
   buildCounterFormAction--;
 }
 
 core.int buildCounterImage = 0;
-buildImage() {
-  var o = new api.Image();
+api.Image buildImage() {
+  var o = api.Image();
   buildCounterImage++;
   if (buildCounterImage < 3) {
     o.aspectRatio = 42.0;
@@ -405,7 +425,7 @@ buildImage() {
   return o;
 }
 
-checkImage(api.Image o) {
+void checkImage(api.Image o) {
   buildCounterImage++;
   if (buildCounterImage < 3) {
     unittest.expect(o.aspectRatio, unittest.equals(42.0));
@@ -416,8 +436,8 @@ checkImage(api.Image o) {
 }
 
 core.int buildCounterImageButton = 0;
-buildImageButton() {
-  var o = new api.ImageButton();
+api.ImageButton buildImageButton() {
+  var o = api.ImageButton();
   buildCounterImageButton++;
   if (buildCounterImageButton < 3) {
     o.icon = "foo";
@@ -429,7 +449,7 @@ buildImageButton() {
   return o;
 }
 
-checkImageButton(api.ImageButton o) {
+void checkImageButton(api.ImageButton o) {
   buildCounterImageButton++;
   if (buildCounterImageButton < 3) {
     unittest.expect(o.icon, unittest.equals('foo'));
@@ -441,8 +461,8 @@ checkImageButton(api.ImageButton o) {
 }
 
 core.int buildCounterKeyValue = 0;
-buildKeyValue() {
-  var o = new api.KeyValue();
+api.KeyValue buildKeyValue() {
+  var o = api.KeyValue();
   buildCounterKeyValue++;
   if (buildCounterKeyValue < 3) {
     o.bottomLabel = "foo";
@@ -458,7 +478,7 @@ buildKeyValue() {
   return o;
 }
 
-checkKeyValue(api.KeyValue o) {
+void checkKeyValue(api.KeyValue o) {
   buildCounterKeyValue++;
   if (buildCounterKeyValue < 3) {
     unittest.expect(o.bottomLabel, unittest.equals('foo'));
@@ -473,77 +493,77 @@ checkKeyValue(api.KeyValue o) {
   buildCounterKeyValue--;
 }
 
-buildUnnamed3528() {
-  var o = new core.List<api.Membership>();
+core.List<api.Membership> buildUnnamed2963() {
+  var o = <api.Membership>[];
   o.add(buildMembership());
   o.add(buildMembership());
   return o;
 }
 
-checkUnnamed3528(core.List<api.Membership> o) {
+void checkUnnamed2963(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0]);
   checkMembership(o[1]);
 }
 
 core.int buildCounterListMembershipsResponse = 0;
-buildListMembershipsResponse() {
-  var o = new api.ListMembershipsResponse();
+api.ListMembershipsResponse buildListMembershipsResponse() {
+  var o = api.ListMembershipsResponse();
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    o.memberships = buildUnnamed3528();
+    o.memberships = buildUnnamed2963();
     o.nextPageToken = "foo";
   }
   buildCounterListMembershipsResponse--;
   return o;
 }
 
-checkListMembershipsResponse(api.ListMembershipsResponse o) {
+void checkListMembershipsResponse(api.ListMembershipsResponse o) {
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    checkUnnamed3528(o.memberships);
+    checkUnnamed2963(o.memberships);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListMembershipsResponse--;
 }
 
-buildUnnamed3529() {
-  var o = new core.List<api.Space>();
+core.List<api.Space> buildUnnamed2964() {
+  var o = <api.Space>[];
   o.add(buildSpace());
   o.add(buildSpace());
   return o;
 }
 
-checkUnnamed3529(core.List<api.Space> o) {
+void checkUnnamed2964(core.List<api.Space> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpace(o[0]);
   checkSpace(o[1]);
 }
 
 core.int buildCounterListSpacesResponse = 0;
-buildListSpacesResponse() {
-  var o = new api.ListSpacesResponse();
+api.ListSpacesResponse buildListSpacesResponse() {
+  var o = api.ListSpacesResponse();
   buildCounterListSpacesResponse++;
   if (buildCounterListSpacesResponse < 3) {
     o.nextPageToken = "foo";
-    o.spaces = buildUnnamed3529();
+    o.spaces = buildUnnamed2964();
   }
   buildCounterListSpacesResponse--;
   return o;
 }
 
-checkListSpacesResponse(api.ListSpacesResponse o) {
+void checkListSpacesResponse(api.ListSpacesResponse o) {
   buildCounterListSpacesResponse++;
   if (buildCounterListSpacesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3529(o.spaces);
+    checkUnnamed2964(o.spaces);
   }
   buildCounterListSpacesResponse--;
 }
 
 core.int buildCounterMedia = 0;
-buildMedia() {
-  var o = new api.Media();
+api.Media buildMedia() {
+  var o = api.Media();
   buildCounterMedia++;
   if (buildCounterMedia < 3) {
     o.resourceName = "foo";
@@ -552,7 +572,7 @@ buildMedia() {
   return o;
 }
 
-checkMedia(api.Media o) {
+void checkMedia(api.Media o) {
   buildCounterMedia++;
   if (buildCounterMedia < 3) {
     unittest.expect(o.resourceName, unittest.equals('foo'));
@@ -561,8 +581,8 @@ checkMedia(api.Media o) {
 }
 
 core.int buildCounterMembership = 0;
-buildMembership() {
-  var o = new api.Membership();
+api.Membership buildMembership() {
+  var o = api.Membership();
   buildCounterMembership++;
   if (buildCounterMembership < 3) {
     o.createTime = "foo";
@@ -574,7 +594,7 @@ buildMembership() {
   return o;
 }
 
-checkMembership(api.Membership o) {
+void checkMembership(api.Membership o) {
   buildCounterMembership++;
   if (buildCounterMembership < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
@@ -585,55 +605,55 @@ checkMembership(api.Membership o) {
   buildCounterMembership--;
 }
 
-buildUnnamed3530() {
-  var o = new core.List<api.Annotation>();
+core.List<api.Annotation> buildUnnamed2965() {
+  var o = <api.Annotation>[];
   o.add(buildAnnotation());
   o.add(buildAnnotation());
   return o;
 }
 
-checkUnnamed3530(core.List<api.Annotation> o) {
+void checkUnnamed2965(core.List<api.Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotation(o[0]);
   checkAnnotation(o[1]);
 }
 
-buildUnnamed3531() {
-  var o = new core.List<api.Attachment>();
+core.List<api.Attachment> buildUnnamed2966() {
+  var o = <api.Attachment>[];
   o.add(buildAttachment());
   o.add(buildAttachment());
   return o;
 }
 
-checkUnnamed3531(core.List<api.Attachment> o) {
+void checkUnnamed2966(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0]);
   checkAttachment(o[1]);
 }
 
-buildUnnamed3532() {
-  var o = new core.List<api.Card>();
+core.List<api.Card> buildUnnamed2967() {
+  var o = <api.Card>[];
   o.add(buildCard());
   o.add(buildCard());
   return o;
 }
 
-checkUnnamed3532(core.List<api.Card> o) {
+void checkUnnamed2967(core.List<api.Card> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCard(o[0]);
   checkCard(o[1]);
 }
 
 core.int buildCounterMessage = 0;
-buildMessage() {
-  var o = new api.Message();
+api.Message buildMessage() {
+  var o = api.Message();
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     o.actionResponse = buildActionResponse();
-    o.annotations = buildUnnamed3530();
+    o.annotations = buildUnnamed2965();
     o.argumentText = "foo";
-    o.attachment = buildUnnamed3531();
-    o.cards = buildUnnamed3532();
+    o.attachment = buildUnnamed2966();
+    o.cards = buildUnnamed2967();
     o.createTime = "foo";
     o.fallbackText = "foo";
     o.name = "foo";
@@ -648,14 +668,14 @@ buildMessage() {
   return o;
 }
 
-checkMessage(api.Message o) {
+void checkMessage(api.Message o) {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     checkActionResponse(o.actionResponse);
-    checkUnnamed3530(o.annotations);
+    checkUnnamed2965(o.annotations);
     unittest.expect(o.argumentText, unittest.equals('foo'));
-    checkUnnamed3531(o.attachment);
-    checkUnnamed3532(o.cards);
+    checkUnnamed2966(o.attachment);
+    checkUnnamed2967(o.cards);
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.fallbackText, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -670,8 +690,8 @@ checkMessage(api.Message o) {
 }
 
 core.int buildCounterOnClick = 0;
-buildOnClick() {
-  var o = new api.OnClick();
+api.OnClick buildOnClick() {
+  var o = api.OnClick();
   buildCounterOnClick++;
   if (buildCounterOnClick < 3) {
     o.action = buildFormAction();
@@ -681,7 +701,7 @@ buildOnClick() {
   return o;
 }
 
-checkOnClick(api.OnClick o) {
+void checkOnClick(api.OnClick o) {
   buildCounterOnClick++;
   if (buildCounterOnClick < 3) {
     checkFormAction(o.action);
@@ -691,8 +711,8 @@ checkOnClick(api.OnClick o) {
 }
 
 core.int buildCounterOpenLink = 0;
-buildOpenLink() {
-  var o = new api.OpenLink();
+api.OpenLink buildOpenLink() {
+  var o = api.OpenLink();
   buildCounterOpenLink++;
   if (buildCounterOpenLink < 3) {
     o.url = "foo";
@@ -701,7 +721,7 @@ buildOpenLink() {
   return o;
 }
 
-checkOpenLink(api.OpenLink o) {
+void checkOpenLink(api.OpenLink o) {
   buildCounterOpenLink++;
   if (buildCounterOpenLink < 3) {
     unittest.expect(o.url, unittest.equals('foo'));
@@ -709,43 +729,43 @@ checkOpenLink(api.OpenLink o) {
   buildCounterOpenLink--;
 }
 
-buildUnnamed3533() {
-  var o = new core.List<api.WidgetMarkup>();
+core.List<api.WidgetMarkup> buildUnnamed2968() {
+  var o = <api.WidgetMarkup>[];
   o.add(buildWidgetMarkup());
   o.add(buildWidgetMarkup());
   return o;
 }
 
-checkUnnamed3533(core.List<api.WidgetMarkup> o) {
+void checkUnnamed2968(core.List<api.WidgetMarkup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWidgetMarkup(o[0]);
   checkWidgetMarkup(o[1]);
 }
 
 core.int buildCounterSection = 0;
-buildSection() {
-  var o = new api.Section();
+api.Section buildSection() {
+  var o = api.Section();
   buildCounterSection++;
   if (buildCounterSection < 3) {
     o.header = "foo";
-    o.widgets = buildUnnamed3533();
+    o.widgets = buildUnnamed2968();
   }
   buildCounterSection--;
   return o;
 }
 
-checkSection(api.Section o) {
+void checkSection(api.Section o) {
   buildCounterSection++;
   if (buildCounterSection < 3) {
     unittest.expect(o.header, unittest.equals('foo'));
-    checkUnnamed3533(o.widgets);
+    checkUnnamed2968(o.widgets);
   }
   buildCounterSection--;
 }
 
 core.int buildCounterSlashCommand = 0;
-buildSlashCommand() {
-  var o = new api.SlashCommand();
+api.SlashCommand buildSlashCommand() {
+  var o = api.SlashCommand();
   buildCounterSlashCommand++;
   if (buildCounterSlashCommand < 3) {
     o.commandId = "foo";
@@ -754,7 +774,7 @@ buildSlashCommand() {
   return o;
 }
 
-checkSlashCommand(api.SlashCommand o) {
+void checkSlashCommand(api.SlashCommand o) {
   buildCounterSlashCommand++;
   if (buildCounterSlashCommand < 3) {
     unittest.expect(o.commandId, unittest.equals('foo'));
@@ -763,8 +783,8 @@ checkSlashCommand(api.SlashCommand o) {
 }
 
 core.int buildCounterSlashCommandMetadata = 0;
-buildSlashCommandMetadata() {
-  var o = new api.SlashCommandMetadata();
+api.SlashCommandMetadata buildSlashCommandMetadata() {
+  var o = api.SlashCommandMetadata();
   buildCounterSlashCommandMetadata++;
   if (buildCounterSlashCommandMetadata < 3) {
     o.bot = buildUser();
@@ -777,7 +797,7 @@ buildSlashCommandMetadata() {
   return o;
 }
 
-checkSlashCommandMetadata(api.SlashCommandMetadata o) {
+void checkSlashCommandMetadata(api.SlashCommandMetadata o) {
   buildCounterSlashCommandMetadata++;
   if (buildCounterSlashCommandMetadata < 3) {
     checkUser(o.bot);
@@ -790,8 +810,8 @@ checkSlashCommandMetadata(api.SlashCommandMetadata o) {
 }
 
 core.int buildCounterSpace = 0;
-buildSpace() {
-  var o = new api.Space();
+api.Space buildSpace() {
+  var o = api.Space();
   buildCounterSpace++;
   if (buildCounterSpace < 3) {
     o.displayName = "foo";
@@ -804,7 +824,7 @@ buildSpace() {
   return o;
 }
 
-checkSpace(api.Space o) {
+void checkSpace(api.Space o) {
   buildCounterSpace++;
   if (buildCounterSpace < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
@@ -817,8 +837,8 @@ checkSpace(api.Space o) {
 }
 
 core.int buildCounterTextButton = 0;
-buildTextButton() {
-  var o = new api.TextButton();
+api.TextButton buildTextButton() {
+  var o = api.TextButton();
   buildCounterTextButton++;
   if (buildCounterTextButton < 3) {
     o.onClick = buildOnClick();
@@ -828,7 +848,7 @@ buildTextButton() {
   return o;
 }
 
-checkTextButton(api.TextButton o) {
+void checkTextButton(api.TextButton o) {
   buildCounterTextButton++;
   if (buildCounterTextButton < 3) {
     checkOnClick(o.onClick);
@@ -838,8 +858,8 @@ checkTextButton(api.TextButton o) {
 }
 
 core.int buildCounterTextParagraph = 0;
-buildTextParagraph() {
-  var o = new api.TextParagraph();
+api.TextParagraph buildTextParagraph() {
+  var o = api.TextParagraph();
   buildCounterTextParagraph++;
   if (buildCounterTextParagraph < 3) {
     o.text = "foo";
@@ -848,7 +868,7 @@ buildTextParagraph() {
   return o;
 }
 
-checkTextParagraph(api.TextParagraph o) {
+void checkTextParagraph(api.TextParagraph o) {
   buildCounterTextParagraph++;
   if (buildCounterTextParagraph < 3) {
     unittest.expect(o.text, unittest.equals('foo'));
@@ -857,8 +877,8 @@ checkTextParagraph(api.TextParagraph o) {
 }
 
 core.int buildCounterThread = 0;
-buildThread() {
-  var o = new api.Thread();
+api.Thread buildThread() {
+  var o = api.Thread();
   buildCounterThread++;
   if (buildCounterThread < 3) {
     o.name = "foo";
@@ -867,7 +887,7 @@ buildThread() {
   return o;
 }
 
-checkThread(api.Thread o) {
+void checkThread(api.Thread o) {
   buildCounterThread++;
   if (buildCounterThread < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
@@ -876,8 +896,8 @@ checkThread(api.Thread o) {
 }
 
 core.int buildCounterUser = 0;
-buildUser() {
-  var o = new api.User();
+api.User buildUser() {
+  var o = api.User();
   buildCounterUser++;
   if (buildCounterUser < 3) {
     o.displayName = "foo";
@@ -889,7 +909,7 @@ buildUser() {
   return o;
 }
 
-checkUser(api.User o) {
+void checkUser(api.User o) {
   buildCounterUser++;
   if (buildCounterUser < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
@@ -901,8 +921,8 @@ checkUser(api.User o) {
 }
 
 core.int buildCounterUserMentionMetadata = 0;
-buildUserMentionMetadata() {
-  var o = new api.UserMentionMetadata();
+api.UserMentionMetadata buildUserMentionMetadata() {
+  var o = api.UserMentionMetadata();
   buildCounterUserMentionMetadata++;
   if (buildCounterUserMentionMetadata < 3) {
     o.type = "foo";
@@ -912,7 +932,7 @@ buildUserMentionMetadata() {
   return o;
 }
 
-checkUserMentionMetadata(api.UserMentionMetadata o) {
+void checkUserMentionMetadata(api.UserMentionMetadata o) {
   buildCounterUserMentionMetadata++;
   if (buildCounterUserMentionMetadata < 3) {
     unittest.expect(o.type, unittest.equals('foo'));
@@ -921,25 +941,25 @@ checkUserMentionMetadata(api.UserMentionMetadata o) {
   buildCounterUserMentionMetadata--;
 }
 
-buildUnnamed3534() {
-  var o = new core.List<api.Button>();
+core.List<api.Button> buildUnnamed2969() {
+  var o = <api.Button>[];
   o.add(buildButton());
   o.add(buildButton());
   return o;
 }
 
-checkUnnamed3534(core.List<api.Button> o) {
+void checkUnnamed2969(core.List<api.Button> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkButton(o[0]);
   checkButton(o[1]);
 }
 
 core.int buildCounterWidgetMarkup = 0;
-buildWidgetMarkup() {
-  var o = new api.WidgetMarkup();
+api.WidgetMarkup buildWidgetMarkup() {
+  var o = api.WidgetMarkup();
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    o.buttons = buildUnnamed3534();
+    o.buttons = buildUnnamed2969();
     o.image = buildImage();
     o.keyValue = buildKeyValue();
     o.textParagraph = buildTextParagraph();
@@ -948,10 +968,10 @@ buildWidgetMarkup() {
   return o;
 }
 
-checkWidgetMarkup(api.WidgetMarkup o) {
+void checkWidgetMarkup(api.WidgetMarkup o) {
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    checkUnnamed3534(o.buttons);
+    checkUnnamed2969(o.buttons);
     checkImage(o.image);
     checkKeyValue(o.keyValue);
     checkTextParagraph(o.textParagraph);
@@ -959,11 +979,11 @@ checkWidgetMarkup(api.WidgetMarkup o) {
   buildCounterWidgetMarkup--;
 }
 
-main() {
+void main() {
   unittest.group("obj-schema-ActionParameter", () {
     unittest.test("to-json--from-json", () {
       var o = buildActionParameter();
-      var od = new api.ActionParameter.fromJson(o.toJson());
+      var od = api.ActionParameter.fromJson(o.toJson());
       checkActionParameter(od);
     });
   });
@@ -971,7 +991,7 @@ main() {
   unittest.group("obj-schema-ActionResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildActionResponse();
-      var od = new api.ActionResponse.fromJson(o.toJson());
+      var od = api.ActionResponse.fromJson(o.toJson());
       checkActionResponse(od);
     });
   });
@@ -979,7 +999,7 @@ main() {
   unittest.group("obj-schema-Annotation", () {
     unittest.test("to-json--from-json", () {
       var o = buildAnnotation();
-      var od = new api.Annotation.fromJson(o.toJson());
+      var od = api.Annotation.fromJson(o.toJson());
       checkAnnotation(od);
     });
   });
@@ -987,7 +1007,7 @@ main() {
   unittest.group("obj-schema-Attachment", () {
     unittest.test("to-json--from-json", () {
       var o = buildAttachment();
-      var od = new api.Attachment.fromJson(o.toJson());
+      var od = api.Attachment.fromJson(o.toJson());
       checkAttachment(od);
     });
   });
@@ -995,7 +1015,7 @@ main() {
   unittest.group("obj-schema-AttachmentDataRef", () {
     unittest.test("to-json--from-json", () {
       var o = buildAttachmentDataRef();
-      var od = new api.AttachmentDataRef.fromJson(o.toJson());
+      var od = api.AttachmentDataRef.fromJson(o.toJson());
       checkAttachmentDataRef(od);
     });
   });
@@ -1003,7 +1023,7 @@ main() {
   unittest.group("obj-schema-Button", () {
     unittest.test("to-json--from-json", () {
       var o = buildButton();
-      var od = new api.Button.fromJson(o.toJson());
+      var od = api.Button.fromJson(o.toJson());
       checkButton(od);
     });
   });
@@ -1011,7 +1031,7 @@ main() {
   unittest.group("obj-schema-Card", () {
     unittest.test("to-json--from-json", () {
       var o = buildCard();
-      var od = new api.Card.fromJson(o.toJson());
+      var od = api.Card.fromJson(o.toJson());
       checkCard(od);
     });
   });
@@ -1019,7 +1039,7 @@ main() {
   unittest.group("obj-schema-CardAction", () {
     unittest.test("to-json--from-json", () {
       var o = buildCardAction();
-      var od = new api.CardAction.fromJson(o.toJson());
+      var od = api.CardAction.fromJson(o.toJson());
       checkCardAction(od);
     });
   });
@@ -1027,7 +1047,7 @@ main() {
   unittest.group("obj-schema-CardHeader", () {
     unittest.test("to-json--from-json", () {
       var o = buildCardHeader();
-      var od = new api.CardHeader.fromJson(o.toJson());
+      var od = api.CardHeader.fromJson(o.toJson());
       checkCardHeader(od);
     });
   });
@@ -1035,7 +1055,7 @@ main() {
   unittest.group("obj-schema-DeprecatedEvent", () {
     unittest.test("to-json--from-json", () {
       var o = buildDeprecatedEvent();
-      var od = new api.DeprecatedEvent.fromJson(o.toJson());
+      var od = api.DeprecatedEvent.fromJson(o.toJson());
       checkDeprecatedEvent(od);
     });
   });
@@ -1043,7 +1063,7 @@ main() {
   unittest.group("obj-schema-DriveDataRef", () {
     unittest.test("to-json--from-json", () {
       var o = buildDriveDataRef();
-      var od = new api.DriveDataRef.fromJson(o.toJson());
+      var od = api.DriveDataRef.fromJson(o.toJson());
       checkDriveDataRef(od);
     });
   });
@@ -1051,7 +1071,7 @@ main() {
   unittest.group("obj-schema-Empty", () {
     unittest.test("to-json--from-json", () {
       var o = buildEmpty();
-      var od = new api.Empty.fromJson(o.toJson());
+      var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
@@ -1059,7 +1079,7 @@ main() {
   unittest.group("obj-schema-FormAction", () {
     unittest.test("to-json--from-json", () {
       var o = buildFormAction();
-      var od = new api.FormAction.fromJson(o.toJson());
+      var od = api.FormAction.fromJson(o.toJson());
       checkFormAction(od);
     });
   });
@@ -1067,7 +1087,7 @@ main() {
   unittest.group("obj-schema-Image", () {
     unittest.test("to-json--from-json", () {
       var o = buildImage();
-      var od = new api.Image.fromJson(o.toJson());
+      var od = api.Image.fromJson(o.toJson());
       checkImage(od);
     });
   });
@@ -1075,7 +1095,7 @@ main() {
   unittest.group("obj-schema-ImageButton", () {
     unittest.test("to-json--from-json", () {
       var o = buildImageButton();
-      var od = new api.ImageButton.fromJson(o.toJson());
+      var od = api.ImageButton.fromJson(o.toJson());
       checkImageButton(od);
     });
   });
@@ -1083,7 +1103,7 @@ main() {
   unittest.group("obj-schema-KeyValue", () {
     unittest.test("to-json--from-json", () {
       var o = buildKeyValue();
-      var od = new api.KeyValue.fromJson(o.toJson());
+      var od = api.KeyValue.fromJson(o.toJson());
       checkKeyValue(od);
     });
   });
@@ -1091,7 +1111,7 @@ main() {
   unittest.group("obj-schema-ListMembershipsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListMembershipsResponse();
-      var od = new api.ListMembershipsResponse.fromJson(o.toJson());
+      var od = api.ListMembershipsResponse.fromJson(o.toJson());
       checkListMembershipsResponse(od);
     });
   });
@@ -1099,7 +1119,7 @@ main() {
   unittest.group("obj-schema-ListSpacesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListSpacesResponse();
-      var od = new api.ListSpacesResponse.fromJson(o.toJson());
+      var od = api.ListSpacesResponse.fromJson(o.toJson());
       checkListSpacesResponse(od);
     });
   });
@@ -1107,7 +1127,7 @@ main() {
   unittest.group("obj-schema-Media", () {
     unittest.test("to-json--from-json", () {
       var o = buildMedia();
-      var od = new api.Media.fromJson(o.toJson());
+      var od = api.Media.fromJson(o.toJson());
       checkMedia(od);
     });
   });
@@ -1115,7 +1135,7 @@ main() {
   unittest.group("obj-schema-Membership", () {
     unittest.test("to-json--from-json", () {
       var o = buildMembership();
-      var od = new api.Membership.fromJson(o.toJson());
+      var od = api.Membership.fromJson(o.toJson());
       checkMembership(od);
     });
   });
@@ -1123,7 +1143,7 @@ main() {
   unittest.group("obj-schema-Message", () {
     unittest.test("to-json--from-json", () {
       var o = buildMessage();
-      var od = new api.Message.fromJson(o.toJson());
+      var od = api.Message.fromJson(o.toJson());
       checkMessage(od);
     });
   });
@@ -1131,7 +1151,7 @@ main() {
   unittest.group("obj-schema-OnClick", () {
     unittest.test("to-json--from-json", () {
       var o = buildOnClick();
-      var od = new api.OnClick.fromJson(o.toJson());
+      var od = api.OnClick.fromJson(o.toJson());
       checkOnClick(od);
     });
   });
@@ -1139,7 +1159,7 @@ main() {
   unittest.group("obj-schema-OpenLink", () {
     unittest.test("to-json--from-json", () {
       var o = buildOpenLink();
-      var od = new api.OpenLink.fromJson(o.toJson());
+      var od = api.OpenLink.fromJson(o.toJson());
       checkOpenLink(od);
     });
   });
@@ -1147,7 +1167,7 @@ main() {
   unittest.group("obj-schema-Section", () {
     unittest.test("to-json--from-json", () {
       var o = buildSection();
-      var od = new api.Section.fromJson(o.toJson());
+      var od = api.Section.fromJson(o.toJson());
       checkSection(od);
     });
   });
@@ -1155,7 +1175,7 @@ main() {
   unittest.group("obj-schema-SlashCommand", () {
     unittest.test("to-json--from-json", () {
       var o = buildSlashCommand();
-      var od = new api.SlashCommand.fromJson(o.toJson());
+      var od = api.SlashCommand.fromJson(o.toJson());
       checkSlashCommand(od);
     });
   });
@@ -1163,7 +1183,7 @@ main() {
   unittest.group("obj-schema-SlashCommandMetadata", () {
     unittest.test("to-json--from-json", () {
       var o = buildSlashCommandMetadata();
-      var od = new api.SlashCommandMetadata.fromJson(o.toJson());
+      var od = api.SlashCommandMetadata.fromJson(o.toJson());
       checkSlashCommandMetadata(od);
     });
   });
@@ -1171,7 +1191,7 @@ main() {
   unittest.group("obj-schema-Space", () {
     unittest.test("to-json--from-json", () {
       var o = buildSpace();
-      var od = new api.Space.fromJson(o.toJson());
+      var od = api.Space.fromJson(o.toJson());
       checkSpace(od);
     });
   });
@@ -1179,7 +1199,7 @@ main() {
   unittest.group("obj-schema-TextButton", () {
     unittest.test("to-json--from-json", () {
       var o = buildTextButton();
-      var od = new api.TextButton.fromJson(o.toJson());
+      var od = api.TextButton.fromJson(o.toJson());
       checkTextButton(od);
     });
   });
@@ -1187,7 +1207,7 @@ main() {
   unittest.group("obj-schema-TextParagraph", () {
     unittest.test("to-json--from-json", () {
       var o = buildTextParagraph();
-      var od = new api.TextParagraph.fromJson(o.toJson());
+      var od = api.TextParagraph.fromJson(o.toJson());
       checkTextParagraph(od);
     });
   });
@@ -1195,7 +1215,7 @@ main() {
   unittest.group("obj-schema-Thread", () {
     unittest.test("to-json--from-json", () {
       var o = buildThread();
-      var od = new api.Thread.fromJson(o.toJson());
+      var od = api.Thread.fromJson(o.toJson());
       checkThread(od);
     });
   });
@@ -1203,7 +1223,7 @@ main() {
   unittest.group("obj-schema-User", () {
     unittest.test("to-json--from-json", () {
       var o = buildUser();
-      var od = new api.User.fromJson(o.toJson());
+      var od = api.User.fromJson(o.toJson());
       checkUser(od);
     });
   });
@@ -1211,7 +1231,7 @@ main() {
   unittest.group("obj-schema-UserMentionMetadata", () {
     unittest.test("to-json--from-json", () {
       var o = buildUserMentionMetadata();
-      var od = new api.UserMentionMetadata.fromJson(o.toJson());
+      var od = api.UserMentionMetadata.fromJson(o.toJson());
       checkUserMentionMetadata(od);
     });
   });
@@ -1219,7 +1239,7 @@ main() {
   unittest.group("obj-schema-WidgetMarkup", () {
     unittest.test("to-json--from-json", () {
       var o = buildWidgetMarkup();
-      var od = new api.WidgetMarkup.fromJson(o.toJson());
+      var od = api.WidgetMarkup.fromJson(o.toJson());
       checkWidgetMarkup(od);
     });
   });
@@ -1229,15 +1249,15 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new HttpServerMock();
-      api.MediaResourceApi res = new api.ChatApi(mock).media;
+      var mock = HttpServerMock();
+      api.MediaResourceApi res = api.ChatApi(mock).media;
       var arg_resourceName = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1249,19 +1269,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1270,7 +1286,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildMedia());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .download(arg_resourceName, $fields: arg_$fields)
@@ -1282,15 +1298,15 @@ main() {
 
   unittest.group("resource-SpacesResourceApi", () {
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
-      api.SpacesResourceApi res = new api.ChatApi(mock).spaces;
+      var mock = HttpServerMock();
+      api.SpacesResourceApi res = api.ChatApi(mock).spaces;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1302,19 +1318,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1323,7 +1335,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildSpace());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
@@ -1333,16 +1345,16 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
-      api.SpacesResourceApi res = new api.ChatApi(mock).spaces;
+      var mock = HttpServerMock();
+      api.SpacesResourceApi res = api.ChatApi(mock).spaces;
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1353,19 +1365,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
@@ -1378,7 +1386,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListSpacesResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(
@@ -1393,15 +1401,15 @@ main() {
 
   unittest.group("resource-SpacesMembersResourceApi", () {
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
-      api.SpacesMembersResourceApi res = new api.ChatApi(mock).spaces.members;
+      var mock = HttpServerMock();
+      api.SpacesMembersResourceApi res = api.ChatApi(mock).spaces.members;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1413,19 +1421,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1434,7 +1438,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildMembership());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
@@ -1444,8 +1448,8 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
-      api.SpacesMembersResourceApi res = new api.ChatApi(mock).spaces.members;
+      var mock = HttpServerMock();
+      api.SpacesMembersResourceApi res = api.ChatApi(mock).spaces.members;
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
@@ -1453,8 +1457,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1466,19 +1470,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -1491,7 +1491,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListMembershipsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_parent,
@@ -1506,20 +1506,20 @@ main() {
 
   unittest.group("resource-SpacesMessagesResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
-      api.SpacesMessagesResourceApi res = new api.ChatApi(mock).spaces.messages;
+      var mock = HttpServerMock();
+      api.SpacesMessagesResourceApi res = api.ChatApi(mock).spaces.messages;
       var arg_request = buildMessage();
       var arg_parent = "foo";
       var arg_threadKey = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Message.fromJson(json);
+        var obj = api.Message.fromJson(json);
         checkMessage(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1531,19 +1531,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -1554,7 +1550,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildMessage());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_parent,
@@ -1565,15 +1561,15 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
-      api.SpacesMessagesResourceApi res = new api.ChatApi(mock).spaces.messages;
+      var mock = HttpServerMock();
+      api.SpacesMessagesResourceApi res = api.ChatApi(mock).spaces.messages;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1585,19 +1581,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1606,7 +1598,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
@@ -1616,15 +1608,15 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
-      api.SpacesMessagesResourceApi res = new api.ChatApi(mock).spaces.messages;
+      var mock = HttpServerMock();
+      api.SpacesMessagesResourceApi res = api.ChatApi(mock).spaces.messages;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1636,19 +1628,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1657,7 +1645,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildMessage());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
@@ -1667,20 +1655,20 @@ main() {
     });
 
     unittest.test("method--update", () {
-      var mock = new HttpServerMock();
-      api.SpacesMessagesResourceApi res = new api.ChatApi(mock).spaces.messages;
+      var mock = HttpServerMock();
+      api.SpacesMessagesResourceApi res = api.ChatApi(mock).spaces.messages;
       var arg_request = buildMessage();
       var arg_name = "foo";
       var arg_updateMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Message.fromJson(json);
+        var obj = api.Message.fromJson(json);
         checkMessage(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1692,19 +1680,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -1715,7 +1699,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildMessage());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .update(arg_request, arg_name,
@@ -1728,16 +1712,16 @@ main() {
 
   unittest.group("resource-SpacesMessagesAttachmentsResourceApi", () {
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.SpacesMessagesAttachmentsResourceApi res =
-          new api.ChatApi(mock).spaces.messages.attachments;
+          api.ChatApi(mock).spaces.messages.attachments;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1749,19 +1733,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1770,7 +1750,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildAttachment());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)

@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.androidmanagement.v1;
 
@@ -25,32 +43,31 @@ class AndroidmanagementApi {
 
   final commons.ApiRequester _requester;
 
-  EnterprisesResourceApi get enterprises =>
-      new EnterprisesResourceApi(_requester);
-  SignupUrlsResourceApi get signupUrls => new SignupUrlsResourceApi(_requester);
+  EnterprisesResourceApi get enterprises => EnterprisesResourceApi(_requester);
+  SignupUrlsResourceApi get signupUrls => SignupUrlsResourceApi(_requester);
 
   AndroidmanagementApi(http.Client client,
       {core.String rootUrl = "https://androidmanagement.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class EnterprisesResourceApi {
   final commons.ApiRequester _requester;
 
   EnterprisesApplicationsResourceApi get applications =>
-      new EnterprisesApplicationsResourceApi(_requester);
+      EnterprisesApplicationsResourceApi(_requester);
   EnterprisesDevicesResourceApi get devices =>
-      new EnterprisesDevicesResourceApi(_requester);
+      EnterprisesDevicesResourceApi(_requester);
   EnterprisesEnrollmentTokensResourceApi get enrollmentTokens =>
-      new EnterprisesEnrollmentTokensResourceApi(_requester);
+      EnterprisesEnrollmentTokensResourceApi(_requester);
   EnterprisesPoliciesResourceApi get policies =>
-      new EnterprisesPoliciesResourceApi(_requester);
+      EnterprisesPoliciesResourceApi(_requester);
   EnterprisesWebAppsResourceApi get webApps =>
-      new EnterprisesWebAppsResourceApi(_requester);
+      EnterprisesWebAppsResourceApi(_requester);
   EnterprisesWebTokensResourceApi get webTokens =>
-      new EnterprisesWebTokensResourceApi(_requester);
+      EnterprisesWebTokensResourceApi(_requester);
 
   EnterprisesResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -79,20 +96,22 @@ class EnterprisesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Enterprise> create(Enterprise request,
-      {core.String projectId,
-      core.String enterpriseToken,
-      core.String signupUrlName,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Enterprise> create(
+    Enterprise request, {
+    core.String projectId,
+    core.String enterpriseToken,
+    core.String signupUrlName,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
@@ -109,13 +128,16 @@ class EnterprisesResourceApi {
 
     _url = 'v1/enterprises';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Enterprise.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Enterprise.fromJson(data));
   }
 
   /// Gets an enterprise.
@@ -136,16 +158,19 @@ class EnterprisesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Enterprise> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Enterprise> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -153,13 +178,16 @@ class EnterprisesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Enterprise.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Enterprise.fromJson(data));
   }
 
   /// Updates an enterprise.
@@ -185,20 +213,24 @@ class EnterprisesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Enterprise> patch(Enterprise request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Enterprise> patch(
+    Enterprise request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -209,13 +241,16 @@ class EnterprisesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Enterprise.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Enterprise.fromJson(data));
   }
 }
 
@@ -247,17 +282,20 @@ class EnterprisesApplicationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Application> get(core.String name,
-      {core.String languageCode, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Application> get(
+    core.String name, {
+    core.String languageCode,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
@@ -268,13 +306,16 @@ class EnterprisesApplicationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Application.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Application.fromJson(data));
   }
 }
 
@@ -282,7 +323,7 @@ class EnterprisesDevicesResourceApi {
   final commons.ApiRequester _requester;
 
   EnterprisesDevicesOperationsResourceApi get operations =>
-      new EnterprisesDevicesOperationsResourceApi(_requester);
+      EnterprisesDevicesOperationsResourceApi(_requester);
 
   EnterprisesDevicesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -311,19 +352,21 @@ class EnterprisesDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name,
-      {core.String wipeReasonMessage,
-      core.List<core.String> wipeDataFlags,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String wipeReasonMessage,
+    core.List<core.String> wipeDataFlags,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (wipeReasonMessage != null) {
       _queryParams["wipeReasonMessage"] = [wipeReasonMessage];
@@ -337,13 +380,16 @@ class EnterprisesDevicesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a device.
@@ -364,16 +410,19 @@ class EnterprisesDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Device> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Device> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -381,13 +430,16 @@ class EnterprisesDevicesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Device.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Device.fromJson(data));
   }
 
   /// Issues a command to a device. The Operation resource returned contains a
@@ -412,20 +464,23 @@ class EnterprisesDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> issueCommand(Command request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> issueCommand(
+    Command request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -435,13 +490,16 @@ class EnterprisesDevicesResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':issueCommand';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists devices for a given enterprise.
@@ -468,17 +526,21 @@ class EnterprisesDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListDevicesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListDevicesResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -493,13 +555,16 @@ class EnterprisesDevicesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListDevicesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListDevicesResponse.fromJson(data));
   }
 
   /// Updates a device.
@@ -525,20 +590,24 @@ class EnterprisesDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Device> patch(Device request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Device> patch(
+    Device request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -549,13 +618,16 @@ class EnterprisesDevicesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Device.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Device.fromJson(data));
   }
 }
 
@@ -591,16 +663,19 @@ class EnterprisesDevicesOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> cancel(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -608,13 +683,16 @@ class EnterprisesDevicesOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -638,16 +716,19 @@ class EnterprisesDevicesOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -655,13 +736,16 @@ class EnterprisesDevicesOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -684,16 +768,19 @@ class EnterprisesDevicesOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -701,13 +788,16 @@ class EnterprisesDevicesOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -741,20 +831,22 @@ class EnterprisesDevicesOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String filter,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -771,13 +863,16 @@ class EnterprisesDevicesOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListOperationsResponse.fromJson(data));
   }
 }
 
@@ -808,20 +903,22 @@ class EnterprisesEnrollmentTokensResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EnrollmentToken> create(
-      EnrollmentToken request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    EnrollmentToken request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -831,13 +928,16 @@ class EnterprisesEnrollmentTokensResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/enrollmentTokens';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new EnrollmentToken.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => EnrollmentToken.fromJson(data));
   }
 
   /// Deletes an enrollment token. This operation invalidates the token,
@@ -859,16 +959,19 @@ class EnterprisesEnrollmentTokensResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -876,13 +979,16 @@ class EnterprisesEnrollmentTokensResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 }
 
@@ -911,16 +1017,19 @@ class EnterprisesPoliciesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -928,13 +1037,16 @@ class EnterprisesPoliciesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a policy.
@@ -955,16 +1067,19 @@ class EnterprisesPoliciesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Policy> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -972,13 +1087,16 @@ class EnterprisesPoliciesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Lists policies for a given enterprise.
@@ -1005,17 +1123,21 @@ class EnterprisesPoliciesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListPoliciesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListPoliciesResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1030,13 +1152,16 @@ class EnterprisesPoliciesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/policies';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListPoliciesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListPoliciesResponse.fromJson(data));
   }
 
   /// Updates or creates a policy.
@@ -1062,20 +1187,24 @@ class EnterprisesPoliciesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> patch(Policy request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Policy> patch(
+    Policy request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1086,13 +1215,16 @@ class EnterprisesPoliciesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 }
 
@@ -1122,20 +1254,23 @@ class EnterprisesWebAppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WebApp> create(WebApp request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<WebApp> create(
+    WebApp request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1144,13 +1279,16 @@ class EnterprisesWebAppsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/webApps';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new WebApp.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => WebApp.fromJson(data));
   }
 
   /// Deletes a web app.
@@ -1171,16 +1309,19 @@ class EnterprisesWebAppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1188,13 +1329,16 @@ class EnterprisesWebAppsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a web app.
@@ -1215,16 +1359,19 @@ class EnterprisesWebAppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WebApp> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<WebApp> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1232,13 +1379,16 @@ class EnterprisesWebAppsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new WebApp.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => WebApp.fromJson(data));
   }
 
   /// Lists web apps for a given enterprise.
@@ -1265,17 +1415,21 @@ class EnterprisesWebAppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListWebAppsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListWebAppsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1290,13 +1444,16 @@ class EnterprisesWebAppsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/webApps';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListWebAppsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListWebAppsResponse.fromJson(data));
   }
 
   /// Updates a web app.
@@ -1322,20 +1479,24 @@ class EnterprisesWebAppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WebApp> patch(WebApp request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<WebApp> patch(
+    WebApp request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1346,13 +1507,16 @@ class EnterprisesWebAppsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new WebApp.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => WebApp.fromJson(data));
   }
 }
 
@@ -1383,20 +1547,23 @@ class EnterprisesWebTokensResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WebToken> create(WebToken request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<WebToken> create(
+    WebToken request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1405,13 +1572,16 @@ class EnterprisesWebTokensResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/webTokens';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new WebToken.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => WebToken.fromJson(data));
   }
 }
 
@@ -1444,14 +1614,17 @@ class SignupUrlsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SignupUrl> create(
-      {core.String callbackUrl, core.String projectId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SignupUrl> create({
+    core.String callbackUrl,
+    core.String projectId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (callbackUrl != null) {
       _queryParams["callbackUrl"] = [callbackUrl];
@@ -1465,13 +1638,16 @@ class SignupUrlsResourceApi {
 
     _url = 'v1/signupUrls';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SignupUrl.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SignupUrl.fromJson(data));
   }
 }
 
@@ -1503,7 +1679,7 @@ class AdvancedSecurityOverrides {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (untrustedAppsPolicy != null) {
       _json["untrustedAppsPolicy"] = untrustedAppsPolicy;
     }
@@ -1532,7 +1708,7 @@ class AlwaysOnVpnPackage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (lockdownEnabled != null) {
       _json["lockdownEnabled"] = lockdownEnabled;
     }
@@ -1562,7 +1738,7 @@ class ApiLevelCondition {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (minApiLevel != null) {
       _json["minApiLevel"] = minApiLevel;
     }
@@ -1594,7 +1770,7 @@ class AppTrackInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (trackAlias != null) {
       _json["trackAlias"] = trackAlias;
     }
@@ -1628,12 +1804,12 @@ class Application {
   Application.fromJson(core.Map _json) {
     if (_json.containsKey("appTracks")) {
       appTracks = (_json["appTracks"] as core.List)
-          .map<AppTrackInfo>((value) => new AppTrackInfo.fromJson(value))
+          .map<AppTrackInfo>((value) => AppTrackInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("managedProperties")) {
       managedProperties = (_json["managedProperties"] as core.List)
-          .map<ManagedProperty>((value) => new ManagedProperty.fromJson(value))
+          .map<ManagedProperty>((value) => ManagedProperty.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -1642,7 +1818,7 @@ class Application {
     if (_json.containsKey("permissions")) {
       permissions = (_json["permissions"] as core.List)
           .map<ApplicationPermission>(
-              (value) => new ApplicationPermission.fromJson(value))
+              (value) => ApplicationPermission.fromJson(value))
           .toList();
     }
     if (_json.containsKey("title")) {
@@ -1652,20 +1828,20 @@ class Application {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appTracks != null) {
-      _json["appTracks"] = appTracks.map((value) => (value).toJson()).toList();
+      _json["appTracks"] = appTracks.map((value) => value.toJson()).toList();
     }
     if (managedProperties != null) {
       _json["managedProperties"] =
-          managedProperties.map((value) => (value).toJson()).toList();
+          managedProperties.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (permissions != null) {
       _json["permissions"] =
-          permissions.map((value) => (value).toJson()).toList();
+          permissions.map((value) => value.toJson()).toList();
     }
     if (title != null) {
       _json["title"] = title;
@@ -1707,7 +1883,7 @@ class ApplicationEvent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -1746,7 +1922,7 @@ class ApplicationPermission {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -1891,7 +2067,7 @@ class ApplicationPolicy {
           .cast<core.String, core.Object>();
     }
     if (_json.containsKey("managedConfigurationTemplate")) {
-      managedConfigurationTemplate = new ManagedConfigurationTemplate.fromJson(
+      managedConfigurationTemplate = ManagedConfigurationTemplate.fromJson(
           _json["managedConfigurationTemplate"]);
     }
     if (_json.containsKey("minimumVersionCode")) {
@@ -1902,14 +2078,14 @@ class ApplicationPolicy {
     }
     if (_json.containsKey("permissionGrants")) {
       permissionGrants = (_json["permissionGrants"] as core.List)
-          .map<PermissionGrant>((value) => new PermissionGrant.fromJson(value))
+          .map<PermissionGrant>((value) => PermissionGrant.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accessibleTrackIds != null) {
       _json["accessibleTrackIds"] = accessibleTrackIds;
     }
@@ -1936,7 +2112,7 @@ class ApplicationPolicy {
     }
     if (managedConfigurationTemplate != null) {
       _json["managedConfigurationTemplate"] =
-          (managedConfigurationTemplate).toJson();
+          managedConfigurationTemplate.toJson();
     }
     if (minimumVersionCode != null) {
       _json["minimumVersionCode"] = minimumVersionCode;
@@ -1946,7 +2122,7 @@ class ApplicationPolicy {
     }
     if (permissionGrants != null) {
       _json["permissionGrants"] =
-          permissionGrants.map((value) => (value).toJson()).toList();
+          permissionGrants.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2016,8 +2192,7 @@ class ApplicationReport {
     }
     if (_json.containsKey("events")) {
       events = (_json["events"] as core.List)
-          .map<ApplicationEvent>(
-              (value) => new ApplicationEvent.fromJson(value))
+          .map<ApplicationEvent>((value) => ApplicationEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("installerPackageName")) {
@@ -2025,7 +2200,7 @@ class ApplicationReport {
     }
     if (_json.containsKey("keyedAppStates")) {
       keyedAppStates = (_json["keyedAppStates"] as core.List)
-          .map<KeyedAppState>((value) => new KeyedAppState.fromJson(value))
+          .map<KeyedAppState>((value) => KeyedAppState.fromJson(value))
           .toList();
     }
     if (_json.containsKey("packageName")) {
@@ -2052,7 +2227,7 @@ class ApplicationReport {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (applicationSource != null) {
       _json["applicationSource"] = applicationSource;
     }
@@ -2060,14 +2235,14 @@ class ApplicationReport {
       _json["displayName"] = displayName;
     }
     if (events != null) {
-      _json["events"] = events.map((value) => (value).toJson()).toList();
+      _json["events"] = events.map((value) => value.toJson()).toList();
     }
     if (installerPackageName != null) {
       _json["installerPackageName"] = installerPackageName;
     }
     if (keyedAppStates != null) {
       _json["keyedAppStates"] =
-          keyedAppStates.map((value) => (value).toJson()).toList();
+          keyedAppStates.map((value) => value.toJson()).toList();
     }
     if (packageName != null) {
       _json["packageName"] = packageName;
@@ -2106,7 +2281,7 @@ class ApplicationReportingSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (includeRemovedApps != null) {
       _json["includeRemovedApps"] = includeRemovedApps;
     }
@@ -2148,7 +2323,7 @@ class BlockAction {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blockAfterDays != null) {
       _json["blockAfterDays"] = blockAfterDays;
     }
@@ -2194,7 +2369,7 @@ class ChoosePrivateKeyRule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (packageNames != null) {
       _json["packageNames"] = packageNames;
     }
@@ -2282,7 +2457,7 @@ class Command {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -2338,13 +2513,13 @@ class ComplianceRule {
   ComplianceRule.fromJson(core.Map _json) {
     if (_json.containsKey("apiLevelCondition")) {
       apiLevelCondition =
-          new ApiLevelCondition.fromJson(_json["apiLevelCondition"]);
+          ApiLevelCondition.fromJson(_json["apiLevelCondition"]);
     }
     if (_json.containsKey("disableApps")) {
       disableApps = _json["disableApps"];
     }
     if (_json.containsKey("nonComplianceDetailCondition")) {
-      nonComplianceDetailCondition = new NonComplianceDetailCondition.fromJson(
+      nonComplianceDetailCondition = NonComplianceDetailCondition.fromJson(
           _json["nonComplianceDetailCondition"]);
     }
     if (_json.containsKey("packageNamesToDisable")) {
@@ -2355,16 +2530,16 @@ class ComplianceRule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiLevelCondition != null) {
-      _json["apiLevelCondition"] = (apiLevelCondition).toJson();
+      _json["apiLevelCondition"] = apiLevelCondition.toJson();
     }
     if (disableApps != null) {
       _json["disableApps"] = disableApps;
     }
     if (nonComplianceDetailCondition != null) {
       _json["nonComplianceDetailCondition"] =
-          (nonComplianceDetailCondition).toJson();
+          nonComplianceDetailCondition.toJson();
     }
     if (packageNamesToDisable != null) {
       _json["packageNamesToDisable"] = packageNamesToDisable;
@@ -2411,7 +2586,7 @@ class Date {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (day != null) {
       _json["day"] = day;
     }
@@ -2594,8 +2769,7 @@ class Device {
     }
     if (_json.containsKey("applicationReports")) {
       applicationReports = (_json["applicationReports"] as core.List)
-          .map<ApplicationReport>(
-              (value) => new ApplicationReport.fromJson(value))
+          .map<ApplicationReport>((value) => ApplicationReport.fromJson(value))
           .toList();
     }
     if (_json.containsKey("appliedPolicyName")) {
@@ -2608,14 +2782,14 @@ class Device {
       appliedState = _json["appliedState"];
     }
     if (_json.containsKey("deviceSettings")) {
-      deviceSettings = new DeviceSettings.fromJson(_json["deviceSettings"]);
+      deviceSettings = DeviceSettings.fromJson(_json["deviceSettings"]);
     }
     if (_json.containsKey("disabledReason")) {
-      disabledReason = new UserFacingMessage.fromJson(_json["disabledReason"]);
+      disabledReason = UserFacingMessage.fromJson(_json["disabledReason"]);
     }
     if (_json.containsKey("displays")) {
       displays = (_json["displays"] as core.List)
-          .map<Display>((value) => new Display.fromJson(value))
+          .map<Display>((value) => Display.fromJson(value))
           .toList();
     }
     if (_json.containsKey("enrollmentTime")) {
@@ -2628,11 +2802,11 @@ class Device {
       enrollmentTokenName = _json["enrollmentTokenName"];
     }
     if (_json.containsKey("hardwareInfo")) {
-      hardwareInfo = new HardwareInfo.fromJson(_json["hardwareInfo"]);
+      hardwareInfo = HardwareInfo.fromJson(_json["hardwareInfo"]);
     }
     if (_json.containsKey("hardwareStatusSamples")) {
       hardwareStatusSamples = (_json["hardwareStatusSamples"] as core.List)
-          .map<HardwareStatus>((value) => new HardwareStatus.fromJson(value))
+          .map<HardwareStatus>((value) => HardwareStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("lastPolicyComplianceReportTime")) {
@@ -2649,22 +2823,22 @@ class Device {
     }
     if (_json.containsKey("memoryEvents")) {
       memoryEvents = (_json["memoryEvents"] as core.List)
-          .map<MemoryEvent>((value) => new MemoryEvent.fromJson(value))
+          .map<MemoryEvent>((value) => MemoryEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("memoryInfo")) {
-      memoryInfo = new MemoryInfo.fromJson(_json["memoryInfo"]);
+      memoryInfo = MemoryInfo.fromJson(_json["memoryInfo"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("networkInfo")) {
-      networkInfo = new NetworkInfo.fromJson(_json["networkInfo"]);
+      networkInfo = NetworkInfo.fromJson(_json["networkInfo"]);
     }
     if (_json.containsKey("nonComplianceDetails")) {
       nonComplianceDetails = (_json["nonComplianceDetails"] as core.List)
           .map<NonComplianceDetail>(
-              (value) => new NonComplianceDetail.fromJson(value))
+              (value) => NonComplianceDetail.fromJson(value))
           .toList();
     }
     if (_json.containsKey("ownership")) {
@@ -2679,7 +2853,7 @@ class Device {
     if (_json.containsKey("powerManagementEvents")) {
       powerManagementEvents = (_json["powerManagementEvents"] as core.List)
           .map<PowerManagementEvent>(
-              (value) => new PowerManagementEvent.fromJson(value))
+              (value) => PowerManagementEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("previousDeviceNames")) {
@@ -2687,10 +2861,10 @@ class Device {
           (_json["previousDeviceNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("securityPosture")) {
-      securityPosture = new SecurityPosture.fromJson(_json["securityPosture"]);
+      securityPosture = SecurityPosture.fromJson(_json["securityPosture"]);
     }
     if (_json.containsKey("softwareInfo")) {
-      softwareInfo = new SoftwareInfo.fromJson(_json["softwareInfo"]);
+      softwareInfo = SoftwareInfo.fromJson(_json["softwareInfo"]);
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
@@ -2700,7 +2874,7 @@ class Device {
           .cast<core.String, core.String>();
     }
     if (_json.containsKey("user")) {
-      user = new User.fromJson(_json["user"]);
+      user = User.fromJson(_json["user"]);
     }
     if (_json.containsKey("userName")) {
       userName = _json["userName"];
@@ -2709,13 +2883,13 @@ class Device {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiLevel != null) {
       _json["apiLevel"] = apiLevel;
     }
     if (applicationReports != null) {
       _json["applicationReports"] =
-          applicationReports.map((value) => (value).toJson()).toList();
+          applicationReports.map((value) => value.toJson()).toList();
     }
     if (appliedPolicyName != null) {
       _json["appliedPolicyName"] = appliedPolicyName;
@@ -2727,13 +2901,13 @@ class Device {
       _json["appliedState"] = appliedState;
     }
     if (deviceSettings != null) {
-      _json["deviceSettings"] = (deviceSettings).toJson();
+      _json["deviceSettings"] = deviceSettings.toJson();
     }
     if (disabledReason != null) {
-      _json["disabledReason"] = (disabledReason).toJson();
+      _json["disabledReason"] = disabledReason.toJson();
     }
     if (displays != null) {
-      _json["displays"] = displays.map((value) => (value).toJson()).toList();
+      _json["displays"] = displays.map((value) => value.toJson()).toList();
     }
     if (enrollmentTime != null) {
       _json["enrollmentTime"] = enrollmentTime;
@@ -2745,11 +2919,11 @@ class Device {
       _json["enrollmentTokenName"] = enrollmentTokenName;
     }
     if (hardwareInfo != null) {
-      _json["hardwareInfo"] = (hardwareInfo).toJson();
+      _json["hardwareInfo"] = hardwareInfo.toJson();
     }
     if (hardwareStatusSamples != null) {
       _json["hardwareStatusSamples"] =
-          hardwareStatusSamples.map((value) => (value).toJson()).toList();
+          hardwareStatusSamples.map((value) => value.toJson()).toList();
     }
     if (lastPolicyComplianceReportTime != null) {
       _json["lastPolicyComplianceReportTime"] = lastPolicyComplianceReportTime;
@@ -2765,20 +2939,20 @@ class Device {
     }
     if (memoryEvents != null) {
       _json["memoryEvents"] =
-          memoryEvents.map((value) => (value).toJson()).toList();
+          memoryEvents.map((value) => value.toJson()).toList();
     }
     if (memoryInfo != null) {
-      _json["memoryInfo"] = (memoryInfo).toJson();
+      _json["memoryInfo"] = memoryInfo.toJson();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (networkInfo != null) {
-      _json["networkInfo"] = (networkInfo).toJson();
+      _json["networkInfo"] = networkInfo.toJson();
     }
     if (nonComplianceDetails != null) {
       _json["nonComplianceDetails"] =
-          nonComplianceDetails.map((value) => (value).toJson()).toList();
+          nonComplianceDetails.map((value) => value.toJson()).toList();
     }
     if (ownership != null) {
       _json["ownership"] = ownership;
@@ -2791,16 +2965,16 @@ class Device {
     }
     if (powerManagementEvents != null) {
       _json["powerManagementEvents"] =
-          powerManagementEvents.map((value) => (value).toJson()).toList();
+          powerManagementEvents.map((value) => value.toJson()).toList();
     }
     if (previousDeviceNames != null) {
       _json["previousDeviceNames"] = previousDeviceNames;
     }
     if (securityPosture != null) {
-      _json["securityPosture"] = (securityPosture).toJson();
+      _json["securityPosture"] = securityPosture.toJson();
     }
     if (softwareInfo != null) {
-      _json["softwareInfo"] = (softwareInfo).toJson();
+      _json["softwareInfo"] = softwareInfo.toJson();
     }
     if (state != null) {
       _json["state"] = state;
@@ -2809,7 +2983,7 @@ class Device {
       _json["systemProperties"] = systemProperties;
     }
     if (user != null) {
-      _json["user"] = (user).toJson();
+      _json["user"] = user.toJson();
     }
     if (userName != null) {
       _json["userName"] = userName;
@@ -2885,7 +3059,7 @@ class DeviceSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adbEnabled != null) {
       _json["adbEnabled"] = adbEnabled;
     }
@@ -2968,7 +3142,7 @@ class Display {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (density != null) {
       _json["density"] = density;
     }
@@ -3006,7 +3180,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3106,7 +3280,7 @@ class EnrollmentToken {
       qrCode = _json["qrCode"];
     }
     if (_json.containsKey("user")) {
-      user = new User.fromJson(_json["user"]);
+      user = User.fromJson(_json["user"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -3115,7 +3289,7 @@ class EnrollmentToken {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (additionalData != null) {
       _json["additionalData"] = additionalData;
     }
@@ -3141,7 +3315,7 @@ class EnrollmentToken {
       _json["qrCode"] = qrCode;
     }
     if (user != null) {
-      _json["user"] = (user).toJson();
+      _json["user"] = user.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -3202,7 +3376,7 @@ class Enterprise {
       enterpriseDisplayName = _json["enterpriseDisplayName"];
     }
     if (_json.containsKey("logo")) {
-      logo = new ExternalData.fromJson(_json["logo"]);
+      logo = ExternalData.fromJson(_json["logo"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -3215,20 +3389,20 @@ class Enterprise {
     }
     if (_json.containsKey("signinDetails")) {
       signinDetails = (_json["signinDetails"] as core.List)
-          .map<SigninDetail>((value) => new SigninDetail.fromJson(value))
+          .map<SigninDetail>((value) => SigninDetail.fromJson(value))
           .toList();
     }
     if (_json.containsKey("termsAndConditions")) {
       termsAndConditions = (_json["termsAndConditions"] as core.List)
           .map<TermsAndConditions>(
-              (value) => new TermsAndConditions.fromJson(value))
+              (value) => TermsAndConditions.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appAutoApprovalEnabled != null) {
       _json["appAutoApprovalEnabled"] = appAutoApprovalEnabled;
     }
@@ -3239,7 +3413,7 @@ class Enterprise {
       _json["enterpriseDisplayName"] = enterpriseDisplayName;
     }
     if (logo != null) {
-      _json["logo"] = (logo).toJson();
+      _json["logo"] = logo.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -3252,11 +3426,11 @@ class Enterprise {
     }
     if (signinDetails != null) {
       _json["signinDetails"] =
-          signinDetails.map((value) => (value).toJson()).toList();
+          signinDetails.map((value) => value.toJson()).toList();
     }
     if (termsAndConditions != null) {
       _json["termsAndConditions"] =
-          termsAndConditions.map((value) => (value).toJson()).toList();
+          termsAndConditions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3289,7 +3463,7 @@ class ExternalData {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sha256Hash != null) {
       _json["sha256Hash"] = sha256Hash;
     }
@@ -3325,21 +3499,21 @@ class FreezePeriod {
 
   FreezePeriod.fromJson(core.Map _json) {
     if (_json.containsKey("endDate")) {
-      endDate = new Date.fromJson(_json["endDate"]);
+      endDate = Date.fromJson(_json["endDate"]);
     }
     if (_json.containsKey("startDate")) {
-      startDate = new Date.fromJson(_json["startDate"]);
+      startDate = Date.fromJson(_json["startDate"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endDate != null) {
-      _json["endDate"] = (endDate).toJson();
+      _json["endDate"] = endDate.toJson();
     }
     if (startDate != null) {
-      _json["startDate"] = (startDate).toJson();
+      _json["startDate"] = startDate.toJson();
     }
     return _json;
   }
@@ -3466,7 +3640,7 @@ class HardwareInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (batteryShutdownTemperatures != null) {
       _json["batteryShutdownTemperatures"] = batteryShutdownTemperatures;
     }
@@ -3580,7 +3754,7 @@ class HardwareStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (batteryTemperatures != null) {
       _json["batteryTemperatures"] = batteryTemperatures;
     }
@@ -3663,7 +3837,7 @@ class KeyedAppState {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -3772,7 +3946,7 @@ class KioskCustomization {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceSettings != null) {
       _json["deviceSettings"] = deviceSettings;
     }
@@ -3807,7 +3981,7 @@ class LaunchAppAction {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (packageName != null) {
       _json["packageName"] = packageName;
     }
@@ -3828,7 +4002,7 @@ class ListDevicesResponse {
   ListDevicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("devices")) {
       devices = (_json["devices"] as core.List)
-          .map<Device>((value) => new Device.fromJson(value))
+          .map<Device>((value) => Device.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3838,9 +4012,9 @@ class ListDevicesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (devices != null) {
-      _json["devices"] = devices.map((value) => (value).toJson()).toList();
+      _json["devices"] = devices.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -3865,20 +4039,19 @@ class ListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = (_json["operations"] as core.List)
-          .map<Operation>((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
+      _json["operations"] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3900,19 +4073,19 @@ class ListPoliciesResponse {
     }
     if (_json.containsKey("policies")) {
       policies = (_json["policies"] as core.List)
-          .map<Policy>((value) => new Policy.fromJson(value))
+          .map<Policy>((value) => Policy.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (policies != null) {
-      _json["policies"] = policies.map((value) => (value).toJson()).toList();
+      _json["policies"] = policies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3934,19 +4107,19 @@ class ListWebAppsResponse {
     }
     if (_json.containsKey("webApps")) {
       webApps = (_json["webApps"] as core.List)
-          .map<WebApp>((value) => new WebApp.fromJson(value))
+          .map<WebApp>((value) => WebApp.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (webApps != null) {
-      _json["webApps"] = webApps.map((value) => (value).toJson()).toList();
+      _json["webApps"] = webApps.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3976,7 +4149,7 @@ class ManagedConfigurationTemplate {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (configurationVariables != null) {
       _json["configurationVariables"] = configurationVariables;
     }
@@ -4041,7 +4214,7 @@ class ManagedProperty {
     if (_json.containsKey("entries")) {
       entries = (_json["entries"] as core.List)
           .map<ManagedPropertyEntry>(
-              (value) => new ManagedPropertyEntry.fromJson(value))
+              (value) => ManagedPropertyEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("key")) {
@@ -4049,7 +4222,7 @@ class ManagedProperty {
     }
     if (_json.containsKey("nestedProperties")) {
       nestedProperties = (_json["nestedProperties"] as core.List)
-          .map<ManagedProperty>((value) => new ManagedProperty.fromJson(value))
+          .map<ManagedProperty>((value) => ManagedProperty.fromJson(value))
           .toList();
     }
     if (_json.containsKey("title")) {
@@ -4062,7 +4235,7 @@ class ManagedProperty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (defaultValue != null) {
       _json["defaultValue"] = defaultValue;
     }
@@ -4070,14 +4243,14 @@ class ManagedProperty {
       _json["description"] = description;
     }
     if (entries != null) {
-      _json["entries"] = entries.map((value) => (value).toJson()).toList();
+      _json["entries"] = entries.map((value) => value.toJson()).toList();
     }
     if (key != null) {
       _json["key"] = key;
     }
     if (nestedProperties != null) {
       _json["nestedProperties"] =
-          nestedProperties.map((value) => (value).toJson()).toList();
+          nestedProperties.map((value) => value.toJson()).toList();
     }
     if (title != null) {
       _json["title"] = title;
@@ -4111,7 +4284,7 @@ class ManagedPropertyEntry {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -4162,7 +4335,7 @@ class MemoryEvent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (byteCount != null) {
       _json["byteCount"] = byteCount;
     }
@@ -4197,7 +4370,7 @@ class MemoryInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (totalInternalStorage != null) {
       _json["totalInternalStorage"] = totalInternalStorage;
     }
@@ -4241,7 +4414,7 @@ class NetworkInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (imei != null) {
       _json["imei"] = imei;
     }
@@ -4361,7 +4534,7 @@ class NonComplianceDetail {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currentValue != null) {
       _json["currentValue"] = currentValue;
     }
@@ -4439,7 +4612,7 @@ class NonComplianceDetailCondition {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nonComplianceReason != null) {
       _json["nonComplianceReason"] = nonComplianceReason;
     }
@@ -4497,7 +4670,7 @@ class Operation {
       done = _json["done"];
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
       metadata =
@@ -4514,12 +4687,12 @@ class Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -4549,7 +4722,7 @@ class PackageNameList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (packageNames != null) {
       _json["packageNames"] = packageNames;
     }
@@ -4692,7 +4865,7 @@ class PasswordRequirements {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maximumFailedPasswordsForWipe != null) {
       _json["maximumFailedPasswordsForWipe"] = maximumFailedPasswordsForWipe;
     }
@@ -4765,7 +4938,7 @@ class PermissionGrant {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permission != null) {
       _json["permission"] = permission;
     }
@@ -4814,7 +4987,7 @@ class PersistentPreferredActivity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (actions != null) {
       _json["actions"] = actions;
     }
@@ -4855,7 +5028,7 @@ class PersonalApplicationPolicy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (installType != null) {
       _json["installType"] = installType;
     }
@@ -4910,7 +5083,7 @@ class PersonalUsagePolicies {
     if (_json.containsKey("personalApplications")) {
       personalApplications = (_json["personalApplications"] as core.List)
           .map<PersonalApplicationPolicy>(
-              (value) => new PersonalApplicationPolicy.fromJson(value))
+              (value) => PersonalApplicationPolicy.fromJson(value))
           .toList();
     }
     if (_json.containsKey("personalPlayStoreMode")) {
@@ -4923,7 +5096,7 @@ class PersonalUsagePolicies {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountTypesWithManagementDisabled != null) {
       _json["accountTypesWithManagementDisabled"] =
           accountTypesWithManagementDisabled;
@@ -4936,7 +5109,7 @@ class PersonalUsagePolicies {
     }
     if (personalApplications != null) {
       _json["personalApplications"] =
-          personalApplications.map((value) => (value).toJson()).toList();
+          personalApplications.map((value) => value.toJson()).toList();
     }
     if (personalPlayStoreMode != null) {
       _json["personalPlayStoreMode"] = personalPlayStoreMode;
@@ -5321,12 +5494,12 @@ class Policy {
       adjustVolumeDisabled = _json["adjustVolumeDisabled"];
     }
     if (_json.containsKey("advancedSecurityOverrides")) {
-      advancedSecurityOverrides = new AdvancedSecurityOverrides.fromJson(
+      advancedSecurityOverrides = AdvancedSecurityOverrides.fromJson(
           _json["advancedSecurityOverrides"]);
     }
     if (_json.containsKey("alwaysOnVpnPackage")) {
       alwaysOnVpnPackage =
-          new AlwaysOnVpnPackage.fromJson(_json["alwaysOnVpnPackage"]);
+          AlwaysOnVpnPackage.fromJson(_json["alwaysOnVpnPackage"]);
     }
     if (_json.containsKey("androidDevicePolicyTracks")) {
       androidDevicePolicyTracks =
@@ -5337,8 +5510,7 @@ class Policy {
     }
     if (_json.containsKey("applications")) {
       applications = (_json["applications"] as core.List)
-          .map<ApplicationPolicy>(
-              (value) => new ApplicationPolicy.fromJson(value))
+          .map<ApplicationPolicy>((value) => ApplicationPolicy.fromJson(value))
           .toList();
     }
     if (_json.containsKey("autoTimeRequired")) {
@@ -5366,12 +5538,12 @@ class Policy {
     if (_json.containsKey("choosePrivateKeyRules")) {
       choosePrivateKeyRules = (_json["choosePrivateKeyRules"] as core.List)
           .map<ChoosePrivateKeyRule>(
-              (value) => new ChoosePrivateKeyRule.fromJson(value))
+              (value) => ChoosePrivateKeyRule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("complianceRules")) {
       complianceRules = (_json["complianceRules"] as core.List)
-          .map<ComplianceRule>((value) => new ComplianceRule.fromJson(value))
+          .map<ComplianceRule>((value) => ComplianceRule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("createWindowsDisabled")) {
@@ -5391,7 +5563,7 @@ class Policy {
     }
     if (_json.containsKey("deviceOwnerLockScreenInfo")) {
       deviceOwnerLockScreenInfo =
-          new UserFacingMessage.fromJson(_json["deviceOwnerLockScreenInfo"]);
+          UserFacingMessage.fromJson(_json["deviceOwnerLockScreenInfo"]);
     }
     if (_json.containsKey("encryptionPolicy")) {
       encryptionPolicy = _json["encryptionPolicy"];
@@ -5427,14 +5599,14 @@ class Policy {
     }
     if (_json.containsKey("kioskCustomization")) {
       kioskCustomization =
-          new KioskCustomization.fromJson(_json["kioskCustomization"]);
+          KioskCustomization.fromJson(_json["kioskCustomization"]);
     }
     if (_json.containsKey("locationMode")) {
       locationMode = _json["locationMode"];
     }
     if (_json.containsKey("longSupportMessage")) {
       longSupportMessage =
-          new UserFacingMessage.fromJson(_json["longSupportMessage"]);
+          UserFacingMessage.fromJson(_json["longSupportMessage"]);
     }
     if (_json.containsKey("maximumTimeToLock")) {
       maximumTimeToLock = _json["maximumTimeToLock"];
@@ -5473,36 +5645,36 @@ class Policy {
     if (_json.containsKey("passwordPolicies")) {
       passwordPolicies = (_json["passwordPolicies"] as core.List)
           .map<PasswordRequirements>(
-              (value) => new PasswordRequirements.fromJson(value))
+              (value) => PasswordRequirements.fromJson(value))
           .toList();
     }
     if (_json.containsKey("passwordRequirements")) {
       passwordRequirements =
-          new PasswordRequirements.fromJson(_json["passwordRequirements"]);
+          PasswordRequirements.fromJson(_json["passwordRequirements"]);
     }
     if (_json.containsKey("permissionGrants")) {
       permissionGrants = (_json["permissionGrants"] as core.List)
-          .map<PermissionGrant>((value) => new PermissionGrant.fromJson(value))
+          .map<PermissionGrant>((value) => PermissionGrant.fromJson(value))
           .toList();
     }
     if (_json.containsKey("permittedAccessibilityServices")) {
       permittedAccessibilityServices =
-          new PackageNameList.fromJson(_json["permittedAccessibilityServices"]);
+          PackageNameList.fromJson(_json["permittedAccessibilityServices"]);
     }
     if (_json.containsKey("permittedInputMethods")) {
       permittedInputMethods =
-          new PackageNameList.fromJson(_json["permittedInputMethods"]);
+          PackageNameList.fromJson(_json["permittedInputMethods"]);
     }
     if (_json.containsKey("persistentPreferredActivities")) {
       persistentPreferredActivities =
           (_json["persistentPreferredActivities"] as core.List)
               .map<PersistentPreferredActivity>(
-                  (value) => new PersistentPreferredActivity.fromJson(value))
+                  (value) => PersistentPreferredActivity.fromJson(value))
               .toList();
     }
     if (_json.containsKey("personalUsagePolicies")) {
       personalUsagePolicies =
-          new PersonalUsagePolicies.fromJson(_json["personalUsagePolicies"]);
+          PersonalUsagePolicies.fromJson(_json["personalUsagePolicies"]);
     }
     if (_json.containsKey("playStoreMode")) {
       playStoreMode = _json["playStoreMode"];
@@ -5510,7 +5682,7 @@ class Policy {
     if (_json.containsKey("policyEnforcementRules")) {
       policyEnforcementRules = (_json["policyEnforcementRules"] as core.List)
           .map<PolicyEnforcementRule>(
-              (value) => new PolicyEnforcementRule.fromJson(value))
+              (value) => PolicyEnforcementRule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("privateKeySelectionEnabled")) {
@@ -5518,7 +5690,7 @@ class Policy {
     }
     if (_json.containsKey("recommendedGlobalProxy")) {
       recommendedGlobalProxy =
-          new ProxyInfo.fromJson(_json["recommendedGlobalProxy"]);
+          ProxyInfo.fromJson(_json["recommendedGlobalProxy"]);
     }
     if (_json.containsKey("removeUserDisabled")) {
       removeUserDisabled = _json["removeUserDisabled"];
@@ -5537,7 +5709,7 @@ class Policy {
     }
     if (_json.containsKey("setupActions")) {
       setupActions = (_json["setupActions"] as core.List)
-          .map<SetupAction>((value) => new SetupAction.fromJson(value))
+          .map<SetupAction>((value) => SetupAction.fromJson(value))
           .toList();
     }
     if (_json.containsKey("shareLocationDisabled")) {
@@ -5545,7 +5717,7 @@ class Policy {
     }
     if (_json.containsKey("shortSupportMessage")) {
       shortSupportMessage =
-          new UserFacingMessage.fromJson(_json["shortSupportMessage"]);
+          UserFacingMessage.fromJson(_json["shortSupportMessage"]);
     }
     if (_json.containsKey("skipFirstUseHintsEnabled")) {
       skipFirstUseHintsEnabled = _json["skipFirstUseHintsEnabled"];
@@ -5557,15 +5729,15 @@ class Policy {
       statusBarDisabled = _json["statusBarDisabled"];
     }
     if (_json.containsKey("statusReportingSettings")) {
-      statusReportingSettings = new StatusReportingSettings.fromJson(
-          _json["statusReportingSettings"]);
+      statusReportingSettings =
+          StatusReportingSettings.fromJson(_json["statusReportingSettings"]);
     }
     if (_json.containsKey("stayOnPluggedModes")) {
       stayOnPluggedModes =
           (_json["stayOnPluggedModes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("systemUpdate")) {
-      systemUpdate = new SystemUpdate.fromJson(_json["systemUpdate"]);
+      systemUpdate = SystemUpdate.fromJson(_json["systemUpdate"]);
     }
     if (_json.containsKey("tetheringConfigDisabled")) {
       tetheringConfigDisabled = _json["tetheringConfigDisabled"];
@@ -5598,7 +5770,7 @@ class Policy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountTypesWithManagementDisabled != null) {
       _json["accountTypesWithManagementDisabled"] =
           accountTypesWithManagementDisabled;
@@ -5610,10 +5782,10 @@ class Policy {
       _json["adjustVolumeDisabled"] = adjustVolumeDisabled;
     }
     if (advancedSecurityOverrides != null) {
-      _json["advancedSecurityOverrides"] = (advancedSecurityOverrides).toJson();
+      _json["advancedSecurityOverrides"] = advancedSecurityOverrides.toJson();
     }
     if (alwaysOnVpnPackage != null) {
-      _json["alwaysOnVpnPackage"] = (alwaysOnVpnPackage).toJson();
+      _json["alwaysOnVpnPackage"] = alwaysOnVpnPackage.toJson();
     }
     if (androidDevicePolicyTracks != null) {
       _json["androidDevicePolicyTracks"] = androidDevicePolicyTracks;
@@ -5623,7 +5795,7 @@ class Policy {
     }
     if (applications != null) {
       _json["applications"] =
-          applications.map((value) => (value).toJson()).toList();
+          applications.map((value) => value.toJson()).toList();
     }
     if (autoTimeRequired != null) {
       _json["autoTimeRequired"] = autoTimeRequired;
@@ -5649,11 +5821,11 @@ class Policy {
     }
     if (choosePrivateKeyRules != null) {
       _json["choosePrivateKeyRules"] =
-          choosePrivateKeyRules.map((value) => (value).toJson()).toList();
+          choosePrivateKeyRules.map((value) => value.toJson()).toList();
     }
     if (complianceRules != null) {
       _json["complianceRules"] =
-          complianceRules.map((value) => (value).toJson()).toList();
+          complianceRules.map((value) => value.toJson()).toList();
     }
     if (createWindowsDisabled != null) {
       _json["createWindowsDisabled"] = createWindowsDisabled;
@@ -5671,7 +5843,7 @@ class Policy {
       _json["defaultPermissionPolicy"] = defaultPermissionPolicy;
     }
     if (deviceOwnerLockScreenInfo != null) {
-      _json["deviceOwnerLockScreenInfo"] = (deviceOwnerLockScreenInfo).toJson();
+      _json["deviceOwnerLockScreenInfo"] = deviceOwnerLockScreenInfo.toJson();
     }
     if (encryptionPolicy != null) {
       _json["encryptionPolicy"] = encryptionPolicy;
@@ -5704,13 +5876,13 @@ class Policy {
       _json["kioskCustomLauncherEnabled"] = kioskCustomLauncherEnabled;
     }
     if (kioskCustomization != null) {
-      _json["kioskCustomization"] = (kioskCustomization).toJson();
+      _json["kioskCustomization"] = kioskCustomization.toJson();
     }
     if (locationMode != null) {
       _json["locationMode"] = locationMode;
     }
     if (longSupportMessage != null) {
-      _json["longSupportMessage"] = (longSupportMessage).toJson();
+      _json["longSupportMessage"] = longSupportMessage.toJson();
     }
     if (maximumTimeToLock != null) {
       _json["maximumTimeToLock"] = maximumTimeToLock;
@@ -5747,42 +5919,41 @@ class Policy {
     }
     if (passwordPolicies != null) {
       _json["passwordPolicies"] =
-          passwordPolicies.map((value) => (value).toJson()).toList();
+          passwordPolicies.map((value) => value.toJson()).toList();
     }
     if (passwordRequirements != null) {
-      _json["passwordRequirements"] = (passwordRequirements).toJson();
+      _json["passwordRequirements"] = passwordRequirements.toJson();
     }
     if (permissionGrants != null) {
       _json["permissionGrants"] =
-          permissionGrants.map((value) => (value).toJson()).toList();
+          permissionGrants.map((value) => value.toJson()).toList();
     }
     if (permittedAccessibilityServices != null) {
       _json["permittedAccessibilityServices"] =
-          (permittedAccessibilityServices).toJson();
+          permittedAccessibilityServices.toJson();
     }
     if (permittedInputMethods != null) {
-      _json["permittedInputMethods"] = (permittedInputMethods).toJson();
+      _json["permittedInputMethods"] = permittedInputMethods.toJson();
     }
     if (persistentPreferredActivities != null) {
-      _json["persistentPreferredActivities"] = persistentPreferredActivities
-          .map((value) => (value).toJson())
-          .toList();
+      _json["persistentPreferredActivities"] =
+          persistentPreferredActivities.map((value) => value.toJson()).toList();
     }
     if (personalUsagePolicies != null) {
-      _json["personalUsagePolicies"] = (personalUsagePolicies).toJson();
+      _json["personalUsagePolicies"] = personalUsagePolicies.toJson();
     }
     if (playStoreMode != null) {
       _json["playStoreMode"] = playStoreMode;
     }
     if (policyEnforcementRules != null) {
       _json["policyEnforcementRules"] =
-          policyEnforcementRules.map((value) => (value).toJson()).toList();
+          policyEnforcementRules.map((value) => value.toJson()).toList();
     }
     if (privateKeySelectionEnabled != null) {
       _json["privateKeySelectionEnabled"] = privateKeySelectionEnabled;
     }
     if (recommendedGlobalProxy != null) {
-      _json["recommendedGlobalProxy"] = (recommendedGlobalProxy).toJson();
+      _json["recommendedGlobalProxy"] = recommendedGlobalProxy.toJson();
     }
     if (removeUserDisabled != null) {
       _json["removeUserDisabled"] = removeUserDisabled;
@@ -5801,13 +5972,13 @@ class Policy {
     }
     if (setupActions != null) {
       _json["setupActions"] =
-          setupActions.map((value) => (value).toJson()).toList();
+          setupActions.map((value) => value.toJson()).toList();
     }
     if (shareLocationDisabled != null) {
       _json["shareLocationDisabled"] = shareLocationDisabled;
     }
     if (shortSupportMessage != null) {
-      _json["shortSupportMessage"] = (shortSupportMessage).toJson();
+      _json["shortSupportMessage"] = shortSupportMessage.toJson();
     }
     if (skipFirstUseHintsEnabled != null) {
       _json["skipFirstUseHintsEnabled"] = skipFirstUseHintsEnabled;
@@ -5819,13 +5990,13 @@ class Policy {
       _json["statusBarDisabled"] = statusBarDisabled;
     }
     if (statusReportingSettings != null) {
-      _json["statusReportingSettings"] = (statusReportingSettings).toJson();
+      _json["statusReportingSettings"] = statusReportingSettings.toJson();
     }
     if (stayOnPluggedModes != null) {
       _json["stayOnPluggedModes"] = stayOnPluggedModes;
     }
     if (systemUpdate != null) {
-      _json["systemUpdate"] = (systemUpdate).toJson();
+      _json["systemUpdate"] = systemUpdate.toJson();
     }
     if (tetheringConfigDisabled != null) {
       _json["tetheringConfigDisabled"] = tetheringConfigDisabled;
@@ -5879,27 +6050,27 @@ class PolicyEnforcementRule {
 
   PolicyEnforcementRule.fromJson(core.Map _json) {
     if (_json.containsKey("blockAction")) {
-      blockAction = new BlockAction.fromJson(_json["blockAction"]);
+      blockAction = BlockAction.fromJson(_json["blockAction"]);
     }
     if (_json.containsKey("settingName")) {
       settingName = _json["settingName"];
     }
     if (_json.containsKey("wipeAction")) {
-      wipeAction = new WipeAction.fromJson(_json["wipeAction"]);
+      wipeAction = WipeAction.fromJson(_json["wipeAction"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blockAction != null) {
-      _json["blockAction"] = (blockAction).toJson();
+      _json["blockAction"] = blockAction.toJson();
     }
     if (settingName != null) {
       _json["settingName"] = settingName;
     }
     if (wipeAction != null) {
-      _json["wipeAction"] = (wipeAction).toJson();
+      _json["wipeAction"] = wipeAction.toJson();
     }
     return _json;
   }
@@ -5926,8 +6097,7 @@ class PostureDetail {
   PostureDetail.fromJson(core.Map _json) {
     if (_json.containsKey("advice")) {
       advice = (_json["advice"] as core.List)
-          .map<UserFacingMessage>(
-              (value) => new UserFacingMessage.fromJson(value))
+          .map<UserFacingMessage>((value) => UserFacingMessage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("securityRisk")) {
@@ -5937,9 +6107,9 @@ class PostureDetail {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advice != null) {
-      _json["advice"] = advice.map((value) => (value).toJson()).toList();
+      _json["advice"] = advice.map((value) => value.toJson()).toList();
     }
     if (securityRisk != null) {
       _json["securityRisk"] = securityRisk;
@@ -5985,7 +6155,7 @@ class PowerManagementEvent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (batteryLevel != null) {
       _json["batteryLevel"] = batteryLevel;
     }
@@ -6035,7 +6205,7 @@ class ProxyInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (excludedHosts != null) {
       _json["excludedHosts"] = excludedHosts;
     }
@@ -6077,20 +6247,20 @@ class SecurityPosture {
     }
     if (_json.containsKey("postureDetails")) {
       postureDetails = (_json["postureDetails"] as core.List)
-          .map<PostureDetail>((value) => new PostureDetail.fromJson(value))
+          .map<PostureDetail>((value) => PostureDetail.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (devicePosture != null) {
       _json["devicePosture"] = devicePosture;
     }
     if (postureDetails != null) {
       _json["postureDetails"] =
-          postureDetails.map((value) => (value).toJson()).toList();
+          postureDetails.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6111,27 +6281,27 @@ class SetupAction {
 
   SetupAction.fromJson(core.Map _json) {
     if (_json.containsKey("description")) {
-      description = new UserFacingMessage.fromJson(_json["description"]);
+      description = UserFacingMessage.fromJson(_json["description"]);
     }
     if (_json.containsKey("launchApp")) {
-      launchApp = new LaunchAppAction.fromJson(_json["launchApp"]);
+      launchApp = LaunchAppAction.fromJson(_json["launchApp"]);
     }
     if (_json.containsKey("title")) {
-      title = new UserFacingMessage.fromJson(_json["title"]);
+      title = UserFacingMessage.fromJson(_json["title"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = (description).toJson();
+      _json["description"] = description.toJson();
     }
     if (launchApp != null) {
-      _json["launchApp"] = (launchApp).toJson();
+      _json["launchApp"] = launchApp.toJson();
     }
     if (title != null) {
-      _json["title"] = (title).toJson();
+      _json["title"] = title.toJson();
     }
     return _json;
   }
@@ -6191,7 +6361,7 @@ class SigninDetail {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allowPersonalUsage != null) {
       _json["allowPersonalUsage"] = allowPersonalUsage;
     }
@@ -6231,7 +6401,7 @@ class SignupUrl {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -6315,14 +6485,13 @@ class SoftwareInfo {
       securityPatchLevel = _json["securityPatchLevel"];
     }
     if (_json.containsKey("systemUpdateInfo")) {
-      systemUpdateInfo =
-          new SystemUpdateInfo.fromJson(_json["systemUpdateInfo"]);
+      systemUpdateInfo = SystemUpdateInfo.fromJson(_json["systemUpdateInfo"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (androidBuildNumber != null) {
       _json["androidBuildNumber"] = androidBuildNumber;
     }
@@ -6354,7 +6523,7 @@ class SoftwareInfo {
       _json["securityPatchLevel"] = securityPatchLevel;
     }
     if (systemUpdateInfo != null) {
-      _json["systemUpdateInfo"] = (systemUpdateInfo).toJson();
+      _json["systemUpdateInfo"] = systemUpdateInfo.toJson();
     }
     return _json;
   }
@@ -6401,7 +6570,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -6455,7 +6624,7 @@ class StatusReportingSettings {
 
   StatusReportingSettings.fromJson(core.Map _json) {
     if (_json.containsKey("applicationReportingSettings")) {
-      applicationReportingSettings = new ApplicationReportingSettings.fromJson(
+      applicationReportingSettings = ApplicationReportingSettings.fromJson(
           _json["applicationReportingSettings"]);
     }
     if (_json.containsKey("applicationReportsEnabled")) {
@@ -6489,10 +6658,10 @@ class StatusReportingSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (applicationReportingSettings != null) {
       _json["applicationReportingSettings"] =
-          (applicationReportingSettings).toJson();
+          applicationReportingSettings.toJson();
     }
     if (applicationReportsEnabled != null) {
       _json["applicationReportsEnabled"] = applicationReportsEnabled;
@@ -6567,7 +6736,7 @@ class SystemUpdate {
     }
     if (_json.containsKey("freezePeriods")) {
       freezePeriods = (_json["freezePeriods"] as core.List)
-          .map<FreezePeriod>((value) => new FreezePeriod.fromJson(value))
+          .map<FreezePeriod>((value) => FreezePeriod.fromJson(value))
           .toList();
     }
     if (_json.containsKey("startMinutes")) {
@@ -6580,13 +6749,13 @@ class SystemUpdate {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endMinutes != null) {
       _json["endMinutes"] = endMinutes;
     }
     if (freezePeriods != null) {
       _json["freezePeriods"] =
-          freezePeriods.map((value) => (value).toJson()).toList();
+          freezePeriods.map((value) => value.toJson()).toList();
     }
     if (startMinutes != null) {
       _json["startMinutes"] = startMinutes;
@@ -6632,7 +6801,7 @@ class SystemUpdateInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (updateReceivedTime != null) {
       _json["updateReceivedTime"] = updateReceivedTime;
     }
@@ -6656,21 +6825,21 @@ class TermsAndConditions {
 
   TermsAndConditions.fromJson(core.Map _json) {
     if (_json.containsKey("content")) {
-      content = new UserFacingMessage.fromJson(_json["content"]);
+      content = UserFacingMessage.fromJson(_json["content"]);
     }
     if (_json.containsKey("header")) {
-      header = new UserFacingMessage.fromJson(_json["header"]);
+      header = UserFacingMessage.fromJson(_json["header"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (content != null) {
-      _json["content"] = (content).toJson();
+      _json["content"] = content.toJson();
     }
     if (header != null) {
-      _json["header"] = (header).toJson();
+      _json["header"] = header.toJson();
     }
     return _json;
   }
@@ -6695,7 +6864,7 @@ class User {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountIdentifier != null) {
       _json["accountIdentifier"] = accountIdentifier;
     }
@@ -6730,7 +6899,7 @@ class UserFacingMessage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (defaultMessage != null) {
       _json["defaultMessage"] = defaultMessage;
     }
@@ -6785,7 +6954,7 @@ class WebApp {
     }
     if (_json.containsKey("icons")) {
       icons = (_json["icons"] as core.List)
-          .map<WebAppIcon>((value) => new WebAppIcon.fromJson(value))
+          .map<WebAppIcon>((value) => WebAppIcon.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -6804,12 +6973,12 @@ class WebApp {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayMode != null) {
       _json["displayMode"] = displayMode;
     }
     if (icons != null) {
-      _json["icons"] = icons.map((value) => (value).toJson()).toList();
+      _json["icons"] = icons.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -6845,7 +7014,7 @@ class WebAppIcon {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (imageData != null) {
       _json["imageData"] = imageData;
     }
@@ -6904,7 +7073,7 @@ class WebToken {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabledFeatures != null) {
       _json["enabledFeatures"] = enabledFeatures;
     }
@@ -6948,7 +7117,7 @@ class WipeAction {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (preserveFrp != null) {
       _json["preserveFrp"] = preserveFrp;
     }

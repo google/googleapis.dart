@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis_beta.language.v1beta1;
 
@@ -30,13 +48,13 @@ class LanguageApi {
 
   final commons.ApiRequester _requester;
 
-  DocumentsResourceApi get documents => new DocumentsResourceApi(_requester);
+  DocumentsResourceApi get documents => DocumentsResourceApi(_requester);
 
   LanguageApi(http.Client client,
       {core.String rootUrl = "https://language.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class DocumentsResourceApi {
@@ -63,17 +81,18 @@ class DocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AnalyzeEntitiesResponse> analyzeEntities(
-      AnalyzeEntitiesRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AnalyzeEntitiesRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -81,13 +100,16 @@ class DocumentsResourceApi {
 
     _url = 'v1beta1/documents:analyzeEntities';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AnalyzeEntitiesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AnalyzeEntitiesResponse.fromJson(data));
   }
 
   /// Analyzes the sentiment of the provided text.
@@ -107,17 +129,18 @@ class DocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AnalyzeSentimentResponse> analyzeSentiment(
-      AnalyzeSentimentRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AnalyzeSentimentRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -125,14 +148,16 @@ class DocumentsResourceApi {
 
     _url = 'v1beta1/documents:analyzeSentiment';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new AnalyzeSentimentResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AnalyzeSentimentResponse.fromJson(data));
   }
 
   /// Analyzes the syntax of the text and provides sentence boundaries and
@@ -154,17 +179,18 @@ class DocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AnalyzeSyntaxResponse> analyzeSyntax(
-      AnalyzeSyntaxRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AnalyzeSyntaxRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -172,13 +198,16 @@ class DocumentsResourceApi {
 
     _url = 'v1beta1/documents:analyzeSyntax';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AnalyzeSyntaxResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AnalyzeSyntaxResponse.fromJson(data));
   }
 
   /// A convenience method that provides all the features that analyzeSentiment,
@@ -198,17 +227,19 @@ class DocumentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AnnotateTextResponse> annotateText(AnnotateTextRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AnnotateTextResponse> annotateText(
+    AnnotateTextRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -216,13 +247,16 @@ class DocumentsResourceApi {
 
     _url = 'v1beta1/documents:annotateText';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AnnotateTextResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AnnotateTextResponse.fromJson(data));
   }
 }
 
@@ -250,7 +284,7 @@ class AnalyzeEntitiesRequest {
 
   AnalyzeEntitiesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("document")) {
-      document = new Document.fromJson(_json["document"]);
+      document = Document.fromJson(_json["document"]);
     }
     if (_json.containsKey("encodingType")) {
       encodingType = _json["encodingType"];
@@ -259,9 +293,9 @@ class AnalyzeEntitiesRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (document != null) {
-      _json["document"] = (document).toJson();
+      _json["document"] = document.toJson();
     }
     if (encodingType != null) {
       _json["encodingType"] = encodingType;
@@ -285,7 +319,7 @@ class AnalyzeEntitiesResponse {
   AnalyzeEntitiesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entities")) {
       entities = (_json["entities"] as core.List)
-          .map<Entity>((value) => new Entity.fromJson(value))
+          .map<Entity>((value) => Entity.fromJson(value))
           .toList();
     }
     if (_json.containsKey("language")) {
@@ -295,9 +329,9 @@ class AnalyzeEntitiesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (entities != null) {
-      _json["entities"] = entities.map((value) => (value).toJson()).toList();
+      _json["entities"] = entities.map((value) => value.toJson()).toList();
     }
     if (language != null) {
       _json["language"] = language;
@@ -331,7 +365,7 @@ class AnalyzeSentimentRequest {
 
   AnalyzeSentimentRequest.fromJson(core.Map _json) {
     if (_json.containsKey("document")) {
-      document = new Document.fromJson(_json["document"]);
+      document = Document.fromJson(_json["document"]);
     }
     if (_json.containsKey("encodingType")) {
       encodingType = _json["encodingType"];
@@ -340,9 +374,9 @@ class AnalyzeSentimentRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (document != null) {
-      _json["document"] = (document).toJson();
+      _json["document"] = document.toJson();
     }
     if (encodingType != null) {
       _json["encodingType"] = encodingType;
@@ -368,29 +402,29 @@ class AnalyzeSentimentResponse {
 
   AnalyzeSentimentResponse.fromJson(core.Map _json) {
     if (_json.containsKey("documentSentiment")) {
-      documentSentiment = new Sentiment.fromJson(_json["documentSentiment"]);
+      documentSentiment = Sentiment.fromJson(_json["documentSentiment"]);
     }
     if (_json.containsKey("language")) {
       language = _json["language"];
     }
     if (_json.containsKey("sentences")) {
       sentences = (_json["sentences"] as core.List)
-          .map<Sentence>((value) => new Sentence.fromJson(value))
+          .map<Sentence>((value) => Sentence.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (documentSentiment != null) {
-      _json["documentSentiment"] = (documentSentiment).toJson();
+      _json["documentSentiment"] = documentSentiment.toJson();
     }
     if (language != null) {
       _json["language"] = language;
     }
     if (sentences != null) {
-      _json["sentences"] = sentences.map((value) => (value).toJson()).toList();
+      _json["sentences"] = sentences.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -420,7 +454,7 @@ class AnalyzeSyntaxRequest {
 
   AnalyzeSyntaxRequest.fromJson(core.Map _json) {
     if (_json.containsKey("document")) {
-      document = new Document.fromJson(_json["document"]);
+      document = Document.fromJson(_json["document"]);
     }
     if (_json.containsKey("encodingType")) {
       encodingType = _json["encodingType"];
@@ -429,9 +463,9 @@ class AnalyzeSyntaxRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (document != null) {
-      _json["document"] = (document).toJson();
+      _json["document"] = document.toJson();
     }
     if (encodingType != null) {
       _json["encodingType"] = encodingType;
@@ -461,27 +495,27 @@ class AnalyzeSyntaxResponse {
     }
     if (_json.containsKey("sentences")) {
       sentences = (_json["sentences"] as core.List)
-          .map<Sentence>((value) => new Sentence.fromJson(value))
+          .map<Sentence>((value) => Sentence.fromJson(value))
           .toList();
     }
     if (_json.containsKey("tokens")) {
       tokens = (_json["tokens"] as core.List)
-          .map<Token>((value) => new Token.fromJson(value))
+          .map<Token>((value) => Token.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (language != null) {
       _json["language"] = language;
     }
     if (sentences != null) {
-      _json["sentences"] = sentences.map((value) => (value).toJson()).toList();
+      _json["sentences"] = sentences.map((value) => value.toJson()).toList();
     }
     if (tokens != null) {
-      _json["tokens"] = tokens.map((value) => (value).toJson()).toList();
+      _json["tokens"] = tokens.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -515,27 +549,27 @@ class AnnotateTextRequest {
 
   AnnotateTextRequest.fromJson(core.Map _json) {
     if (_json.containsKey("document")) {
-      document = new Document.fromJson(_json["document"]);
+      document = Document.fromJson(_json["document"]);
     }
     if (_json.containsKey("encodingType")) {
       encodingType = _json["encodingType"];
     }
     if (_json.containsKey("features")) {
-      features = new Features.fromJson(_json["features"]);
+      features = Features.fromJson(_json["features"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (document != null) {
-      _json["document"] = (document).toJson();
+      _json["document"] = document.toJson();
     }
     if (encodingType != null) {
       _json["encodingType"] = encodingType;
     }
     if (features != null) {
-      _json["features"] = (features).toJson();
+      _json["features"] = features.toJson();
     }
     return _json;
   }
@@ -569,11 +603,11 @@ class AnnotateTextResponse {
 
   AnnotateTextResponse.fromJson(core.Map _json) {
     if (_json.containsKey("documentSentiment")) {
-      documentSentiment = new Sentiment.fromJson(_json["documentSentiment"]);
+      documentSentiment = Sentiment.fromJson(_json["documentSentiment"]);
     }
     if (_json.containsKey("entities")) {
       entities = (_json["entities"] as core.List)
-          .map<Entity>((value) => new Entity.fromJson(value))
+          .map<Entity>((value) => Entity.fromJson(value))
           .toList();
     }
     if (_json.containsKey("language")) {
@@ -581,33 +615,33 @@ class AnnotateTextResponse {
     }
     if (_json.containsKey("sentences")) {
       sentences = (_json["sentences"] as core.List)
-          .map<Sentence>((value) => new Sentence.fromJson(value))
+          .map<Sentence>((value) => Sentence.fromJson(value))
           .toList();
     }
     if (_json.containsKey("tokens")) {
       tokens = (_json["tokens"] as core.List)
-          .map<Token>((value) => new Token.fromJson(value))
+          .map<Token>((value) => Token.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (documentSentiment != null) {
-      _json["documentSentiment"] = (documentSentiment).toJson();
+      _json["documentSentiment"] = documentSentiment.toJson();
     }
     if (entities != null) {
-      _json["entities"] = entities.map((value) => (value).toJson()).toList();
+      _json["entities"] = entities.map((value) => value.toJson()).toList();
     }
     if (language != null) {
       _json["language"] = language;
     }
     if (sentences != null) {
-      _json["sentences"] = sentences.map((value) => (value).toJson()).toList();
+      _json["sentences"] = sentences.map((value) => value.toJson()).toList();
     }
     if (tokens != null) {
-      _json["tokens"] = tokens.map((value) => (value).toJson()).toList();
+      _json["tokens"] = tokens.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -723,7 +757,7 @@ class DependencyEdge {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (headTokenIndex != null) {
       _json["headTokenIndex"] = headTokenIndex;
     }
@@ -783,7 +817,7 @@ class Document {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (content != null) {
       _json["content"] = content;
     }
@@ -839,7 +873,7 @@ class Entity {
   Entity.fromJson(core.Map _json) {
     if (_json.containsKey("mentions")) {
       mentions = (_json["mentions"] as core.List)
-          .map<EntityMention>((value) => new EntityMention.fromJson(value))
+          .map<EntityMention>((value) => EntityMention.fromJson(value))
           .toList();
     }
     if (_json.containsKey("metadata")) {
@@ -859,9 +893,9 @@ class Entity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (mentions != null) {
-      _json["mentions"] = mentions.map((value) => (value).toJson()).toList();
+      _json["mentions"] = mentions.map((value) => value.toJson()).toList();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -896,7 +930,7 @@ class EntityMention {
 
   EntityMention.fromJson(core.Map _json) {
     if (_json.containsKey("text")) {
-      text = new TextSpan.fromJson(_json["text"]);
+      text = TextSpan.fromJson(_json["text"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -905,9 +939,9 @@ class EntityMention {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (text != null) {
-      _json["text"] = (text).toJson();
+      _json["text"] = text.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -944,7 +978,7 @@ class Features {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (extractDocumentSentiment != null) {
       _json["extractDocumentSentiment"] = extractDocumentSentiment;
     }
@@ -1144,7 +1178,7 @@ class PartOfSpeech {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (aspect != null) {
       _json["aspect"] = aspect;
     }
@@ -1199,21 +1233,21 @@ class Sentence {
 
   Sentence.fromJson(core.Map _json) {
     if (_json.containsKey("sentiment")) {
-      sentiment = new Sentiment.fromJson(_json["sentiment"]);
+      sentiment = Sentiment.fromJson(_json["sentiment"]);
     }
     if (_json.containsKey("text")) {
-      text = new TextSpan.fromJson(_json["text"]);
+      text = TextSpan.fromJson(_json["text"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sentiment != null) {
-      _json["sentiment"] = (sentiment).toJson();
+      _json["sentiment"] = sentiment.toJson();
     }
     if (text != null) {
-      _json["text"] = (text).toJson();
+      _json["text"] = text.toJson();
     }
     return _json;
   }
@@ -1252,7 +1286,7 @@ class Sentiment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (magnitude != null) {
       _json["magnitude"] = magnitude;
     }
@@ -1307,7 +1341,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -1343,7 +1377,7 @@ class TextSpan {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (beginOffset != null) {
       _json["beginOffset"] = beginOffset;
     }
@@ -1373,33 +1407,33 @@ class Token {
 
   Token.fromJson(core.Map _json) {
     if (_json.containsKey("dependencyEdge")) {
-      dependencyEdge = new DependencyEdge.fromJson(_json["dependencyEdge"]);
+      dependencyEdge = DependencyEdge.fromJson(_json["dependencyEdge"]);
     }
     if (_json.containsKey("lemma")) {
       lemma = _json["lemma"];
     }
     if (_json.containsKey("partOfSpeech")) {
-      partOfSpeech = new PartOfSpeech.fromJson(_json["partOfSpeech"]);
+      partOfSpeech = PartOfSpeech.fromJson(_json["partOfSpeech"]);
     }
     if (_json.containsKey("text")) {
-      text = new TextSpan.fromJson(_json["text"]);
+      text = TextSpan.fromJson(_json["text"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dependencyEdge != null) {
-      _json["dependencyEdge"] = (dependencyEdge).toJson();
+      _json["dependencyEdge"] = dependencyEdge.toJson();
     }
     if (lemma != null) {
       _json["lemma"] = lemma;
     }
     if (partOfSpeech != null) {
-      _json["partOfSpeech"] = (partOfSpeech).toJson();
+      _json["partOfSpeech"] = partOfSpeech.toJson();
     }
     if (text != null) {
-      _json["text"] = (text).toJson();
+      _json["text"] = text.toJson();
     }
     return _json;
   }

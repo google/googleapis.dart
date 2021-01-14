@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis_beta.appengine.v1beta;
 
@@ -32,32 +50,30 @@ class AppengineApi {
 
   final commons.ApiRequester _requester;
 
-  AppsResourceApi get apps => new AppsResourceApi(_requester);
+  AppsResourceApi get apps => AppsResourceApi(_requester);
 
   AppengineApi(http.Client client,
       {core.String rootUrl = "https://appengine.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AppsResourceApi {
   final commons.ApiRequester _requester;
 
   AppsAuthorizedCertificatesResourceApi get authorizedCertificates =>
-      new AppsAuthorizedCertificatesResourceApi(_requester);
+      AppsAuthorizedCertificatesResourceApi(_requester);
   AppsAuthorizedDomainsResourceApi get authorizedDomains =>
-      new AppsAuthorizedDomainsResourceApi(_requester);
+      AppsAuthorizedDomainsResourceApi(_requester);
   AppsDomainMappingsResourceApi get domainMappings =>
-      new AppsDomainMappingsResourceApi(_requester);
-  AppsFirewallResourceApi get firewall =>
-      new AppsFirewallResourceApi(_requester);
+      AppsDomainMappingsResourceApi(_requester);
+  AppsFirewallResourceApi get firewall => AppsFirewallResourceApi(_requester);
   AppsLocationsResourceApi get locations =>
-      new AppsLocationsResourceApi(_requester);
+      AppsLocationsResourceApi(_requester);
   AppsOperationsResourceApi get operations =>
-      new AppsOperationsResourceApi(_requester);
-  AppsServicesResourceApi get services =>
-      new AppsServicesResourceApi(_requester);
+      AppsOperationsResourceApi(_requester);
+  AppsServicesResourceApi get services => AppsServicesResourceApi(_requester);
 
   AppsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -83,16 +99,19 @@ class AppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(Application request, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> create(
+    Application request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -100,13 +119,16 @@ class AppsResourceApi {
 
     _url = 'v1beta/apps';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Gets information about an application.
@@ -126,16 +148,19 @@ class AppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Application> get(core.String appsId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Application> get(
+    core.String appsId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -143,13 +168,16 @@ class AppsResourceApi {
 
     _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Application.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Application.fromJson(data));
   }
 
   /// Updates the specified Application resource. You can update the following
@@ -176,20 +204,24 @@ class AppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> patch(Application request, core.String appsId,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> patch(
+    Application request,
+    core.String appsId, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -200,13 +232,16 @@ class AppsResourceApi {
 
     _url = 'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Recreates the required App Engine features for the specified App Engine
@@ -238,20 +273,22 @@ class AppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> repair(
-      RepairApplicationRequest request, core.String appsId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RepairApplicationRequest request,
+    core.String appsId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -260,13 +297,16 @@ class AppsResourceApi {
     _url =
         'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + ':repair';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -296,20 +336,22 @@ class AppsAuthorizedCertificatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AuthorizedCertificate> create(
-      AuthorizedCertificate request, core.String appsId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AuthorizedCertificate request,
+    core.String appsId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -319,13 +361,16 @@ class AppsAuthorizedCertificatesResourceApi {
         commons.Escaper.ecapeVariable('$appsId') +
         '/authorizedCertificates';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AuthorizedCertificate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AuthorizedCertificate.fromJson(data));
   }
 
   /// Deletes the specified SSL certificate.
@@ -349,20 +394,22 @@ class AppsAuthorizedCertificatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(
-      core.String appsId, core.String authorizedCertificatesId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String appsId,
+    core.String authorizedCertificatesId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (authorizedCertificatesId == null) {
-      throw new core.ArgumentError(
+      throw core.ArgumentError(
           "Parameter authorizedCertificatesId is required.");
     }
     if ($fields != null) {
@@ -374,13 +421,16 @@ class AppsAuthorizedCertificatesResourceApi {
         '/authorizedCertificates/' +
         commons.Escaper.ecapeVariable('$authorizedCertificatesId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the specified SSL certificate.
@@ -412,20 +462,23 @@ class AppsAuthorizedCertificatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AuthorizedCertificate> get(
-      core.String appsId, core.String authorizedCertificatesId,
-      {core.String view, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String appsId,
+    core.String authorizedCertificatesId, {
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (authorizedCertificatesId == null) {
-      throw new core.ArgumentError(
+      throw core.ArgumentError(
           "Parameter authorizedCertificatesId is required.");
     }
     if (view != null) {
@@ -440,13 +493,16 @@ class AppsAuthorizedCertificatesResourceApi {
         '/authorizedCertificates/' +
         commons.Escaper.ecapeVariable('$authorizedCertificatesId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AuthorizedCertificate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AuthorizedCertificate.fromJson(data));
   }
 
   /// Lists all SSL certificates the user is authorized to administer.
@@ -478,20 +534,22 @@ class AppsAuthorizedCertificatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListAuthorizedCertificatesResponse> list(core.String appsId,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String view,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListAuthorizedCertificatesResponse> list(
+    core.String appsId, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -510,14 +568,17 @@ class AppsAuthorizedCertificatesResourceApi {
         commons.Escaper.ecapeVariable('$appsId') +
         '/authorizedCertificates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListAuthorizedCertificatesResponse.fromJson(data));
+        .then((data) => ListAuthorizedCertificatesResponse.fromJson(data));
   }
 
   /// Updates the specified SSL certificate. To renew a certificate and maintain
@@ -550,24 +611,28 @@ class AppsAuthorizedCertificatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AuthorizedCertificate> patch(AuthorizedCertificate request,
-      core.String appsId, core.String authorizedCertificatesId,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AuthorizedCertificate> patch(
+    AuthorizedCertificate request,
+    core.String appsId,
+    core.String authorizedCertificatesId, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (authorizedCertificatesId == null) {
-      throw new core.ArgumentError(
+      throw core.ArgumentError(
           "Parameter authorizedCertificatesId is required.");
     }
     if (updateMask != null) {
@@ -582,13 +647,16 @@ class AppsAuthorizedCertificatesResourceApi {
         '/authorizedCertificates/' +
         commons.Escaper.ecapeVariable('$authorizedCertificatesId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AuthorizedCertificate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AuthorizedCertificate.fromJson(data));
   }
 }
 
@@ -619,17 +687,21 @@ class AppsAuthorizedDomainsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListAuthorizedDomainsResponse> list(core.String appsId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListAuthorizedDomainsResponse> list(
+    core.String appsId, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -645,14 +717,17 @@ class AppsAuthorizedDomainsResourceApi {
         commons.Escaper.ecapeVariable('$appsId') +
         '/authorizedDomains';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListAuthorizedDomainsResponse.fromJson(data));
+        .then((data) => ListAuthorizedDomainsResponse.fromJson(data));
   }
 }
 
@@ -696,20 +771,24 @@ class AppsDomainMappingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(DomainMapping request, core.String appsId,
-      {core.String overrideStrategy, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> create(
+    DomainMapping request,
+    core.String appsId, {
+    core.String overrideStrategy,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (overrideStrategy != null) {
       _queryParams["overrideStrategy"] = [overrideStrategy];
@@ -722,13 +801,16 @@ class AppsDomainMappingsResourceApi {
         commons.Escaper.ecapeVariable('$appsId') +
         '/domainMappings';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes the specified domain mapping. A user must be authorized to
@@ -753,20 +835,22 @@ class AppsDomainMappingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(
-      core.String appsId, core.String domainMappingsId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String appsId,
+    core.String domainMappingsId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (domainMappingsId == null) {
-      throw new core.ArgumentError("Parameter domainMappingsId is required.");
+      throw core.ArgumentError("Parameter domainMappingsId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -777,13 +861,16 @@ class AppsDomainMappingsResourceApi {
         '/domainMappings/' +
         commons.Escaper.ecapeVariable('$domainMappingsId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Gets the specified domain mapping.
@@ -806,20 +893,22 @@ class AppsDomainMappingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DomainMapping> get(
-      core.String appsId, core.String domainMappingsId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String appsId,
+    core.String domainMappingsId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (domainMappingsId == null) {
-      throw new core.ArgumentError("Parameter domainMappingsId is required.");
+      throw core.ArgumentError("Parameter domainMappingsId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -830,13 +919,16 @@ class AppsDomainMappingsResourceApi {
         '/domainMappings/' +
         commons.Escaper.ecapeVariable('$domainMappingsId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DomainMapping.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DomainMapping.fromJson(data));
   }
 
   /// Lists the domain mappings on an application.
@@ -860,17 +952,21 @@ class AppsDomainMappingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListDomainMappingsResponse> list(core.String appsId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListDomainMappingsResponse> list(
+    core.String appsId, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -886,14 +982,16 @@ class AppsDomainMappingsResourceApi {
         commons.Escaper.ecapeVariable('$appsId') +
         '/domainMappings';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListDomainMappingsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListDomainMappingsResponse.fromJson(data));
   }
 
   /// Updates the specified domain mapping. To map an SSL certificate to a
@@ -923,23 +1021,27 @@ class AppsDomainMappingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> patch(
-      DomainMapping request, core.String appsId, core.String domainMappingsId,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    DomainMapping request,
+    core.String appsId,
+    core.String domainMappingsId, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (domainMappingsId == null) {
-      throw new core.ArgumentError("Parameter domainMappingsId is required.");
+      throw core.ArgumentError("Parameter domainMappingsId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -953,13 +1055,16 @@ class AppsDomainMappingsResourceApi {
         '/domainMappings/' +
         commons.Escaper.ecapeVariable('$domainMappingsId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -967,7 +1072,7 @@ class AppsFirewallResourceApi {
   final commons.ApiRequester _requester;
 
   AppsFirewallIngressRulesResourceApi get ingressRules =>
-      new AppsFirewallIngressRulesResourceApi(_requester);
+      AppsFirewallIngressRulesResourceApi(_requester);
 
   AppsFirewallResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -1001,20 +1106,22 @@ class AppsFirewallIngressRulesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchUpdateIngressRulesResponse> batchUpdate(
-      BatchUpdateIngressRulesRequest request, core.String appsId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchUpdateIngressRulesRequest request,
+    core.String appsId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1024,14 +1131,17 @@ class AppsFirewallIngressRulesResourceApi {
         commons.Escaper.ecapeVariable('$appsId') +
         '/firewall/ingressRules:batchUpdate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new BatchUpdateIngressRulesResponse.fromJson(data));
+        .then((data) => BatchUpdateIngressRulesResponse.fromJson(data));
   }
 
   /// Creates a firewall rule for the application.
@@ -1053,20 +1163,23 @@ class AppsFirewallIngressRulesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FirewallRule> create(FirewallRule request, core.String appsId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FirewallRule> create(
+    FirewallRule request,
+    core.String appsId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1076,13 +1189,16 @@ class AppsFirewallIngressRulesResourceApi {
         commons.Escaper.ecapeVariable('$appsId') +
         '/firewall/ingressRules';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FirewallRule.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FirewallRule.fromJson(data));
   }
 
   /// Deletes the specified firewall rule.
@@ -1104,20 +1220,23 @@ class AppsFirewallIngressRulesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String appsId, core.String ingressRulesId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String appsId,
+    core.String ingressRulesId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (ingressRulesId == null) {
-      throw new core.ArgumentError("Parameter ingressRulesId is required.");
+      throw core.ArgumentError("Parameter ingressRulesId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1128,13 +1247,16 @@ class AppsFirewallIngressRulesResourceApi {
         '/firewall/ingressRules/' +
         commons.Escaper.ecapeVariable('$ingressRulesId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the specified firewall rule.
@@ -1156,20 +1278,23 @@ class AppsFirewallIngressRulesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FirewallRule> get(core.String appsId, core.String ingressRulesId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FirewallRule> get(
+    core.String appsId,
+    core.String ingressRulesId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (ingressRulesId == null) {
-      throw new core.ArgumentError("Parameter ingressRulesId is required.");
+      throw core.ArgumentError("Parameter ingressRulesId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1180,13 +1305,16 @@ class AppsFirewallIngressRulesResourceApi {
         '/firewall/ingressRules/' +
         commons.Escaper.ecapeVariable('$ingressRulesId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FirewallRule.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FirewallRule.fromJson(data));
   }
 
   /// Lists the firewall rules of an application.
@@ -1214,20 +1342,22 @@ class AppsFirewallIngressRulesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListIngressRulesResponse> list(core.String appsId,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String matchingAddress,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListIngressRulesResponse> list(
+    core.String appsId, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String matchingAddress,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1246,14 +1376,16 @@ class AppsFirewallIngressRulesResourceApi {
         commons.Escaper.ecapeVariable('$appsId') +
         '/firewall/ingressRules';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListIngressRulesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListIngressRulesResponse.fromJson(data));
   }
 
   /// Updates the specified firewall rule.
@@ -1280,23 +1412,27 @@ class AppsFirewallIngressRulesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FirewallRule> patch(
-      FirewallRule request, core.String appsId, core.String ingressRulesId,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    FirewallRule request,
+    core.String appsId,
+    core.String ingressRulesId, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (ingressRulesId == null) {
-      throw new core.ArgumentError("Parameter ingressRulesId is required.");
+      throw core.ArgumentError("Parameter ingressRulesId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1310,13 +1446,16 @@ class AppsFirewallIngressRulesResourceApi {
         '/firewall/ingressRules/' +
         commons.Escaper.ecapeVariable('$ingressRulesId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FirewallRule.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FirewallRule.fromJson(data));
   }
 }
 
@@ -1343,20 +1482,23 @@ class AppsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String appsId, core.String locationsId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Location> get(
+    core.String appsId,
+    core.String locationsId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (locationsId == null) {
-      throw new core.ArgumentError("Parameter locationsId is required.");
+      throw core.ArgumentError("Parameter locationsId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1367,13 +1509,16 @@ class AppsLocationsResourceApi {
         '/locations/' +
         commons.Escaper.ecapeVariable('$locationsId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Location.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Location.fromJson(data));
   }
 
   /// Lists information about the supported locations for this service.
@@ -1399,20 +1544,22 @@ class AppsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListLocationsResponse> list(core.String appsId,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListLocationsResponse> list(
+    core.String appsId, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1431,13 +1578,16 @@ class AppsLocationsResourceApi {
         commons.Escaper.ecapeVariable('$appsId') +
         '/locations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListLocationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListLocationsResponse.fromJson(data));
   }
 }
 
@@ -1466,20 +1616,23 @@ class AppsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String appsId, core.String operationsId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String appsId,
+    core.String operationsId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (operationsId == null) {
-      throw new core.ArgumentError("Parameter operationsId is required.");
+      throw core.ArgumentError("Parameter operationsId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1490,13 +1643,16 @@ class AppsOperationsResourceApi {
         '/operations/' +
         commons.Escaper.ecapeVariable('$operationsId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -1529,20 +1685,22 @@ class AppsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.int pageSize,
-      core.String filter,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListOperationsResponse> list(
+    core.String appsId, {
+    core.int pageSize,
+    core.String filter,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1561,13 +1719,16 @@ class AppsOperationsResourceApi {
         commons.Escaper.ecapeVariable('$appsId') +
         '/operations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListOperationsResponse.fromJson(data));
   }
 }
 
@@ -1575,7 +1736,7 @@ class AppsServicesResourceApi {
   final commons.ApiRequester _requester;
 
   AppsServicesVersionsResourceApi get versions =>
-      new AppsServicesVersionsResourceApi(_requester);
+      AppsServicesVersionsResourceApi(_requester);
 
   AppsServicesResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -1598,20 +1759,23 @@ class AppsServicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String appsId, core.String servicesId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String appsId,
+    core.String servicesId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (servicesId == null) {
-      throw new core.ArgumentError("Parameter servicesId is required.");
+      throw core.ArgumentError("Parameter servicesId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1622,13 +1786,16 @@ class AppsServicesResourceApi {
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Gets the current configuration of the specified service.
@@ -1650,20 +1817,23 @@ class AppsServicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Service> get(core.String appsId, core.String servicesId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Service> get(
+    core.String appsId,
+    core.String servicesId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (servicesId == null) {
-      throw new core.ArgumentError("Parameter servicesId is required.");
+      throw core.ArgumentError("Parameter servicesId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1674,13 +1844,16 @@ class AppsServicesResourceApi {
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Service.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Service.fromJson(data));
   }
 
   /// Lists all the services in the application.
@@ -1704,17 +1877,21 @@ class AppsServicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListServicesResponse> list(core.String appsId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListServicesResponse> list(
+    core.String appsId, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1729,13 +1906,16 @@ class AppsServicesResourceApi {
     _url =
         'v1beta/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListServicesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListServicesResponse.fromJson(data));
   }
 
   /// Updates the configuration of the specified service.
@@ -1776,23 +1956,28 @@ class AppsServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> patch(
-      Service request, core.String appsId, core.String servicesId,
-      {core.bool migrateTraffic, core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Service request,
+    core.String appsId,
+    core.String servicesId, {
+    core.bool migrateTraffic,
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (servicesId == null) {
-      throw new core.ArgumentError("Parameter servicesId is required.");
+      throw core.ArgumentError("Parameter servicesId is required.");
     }
     if (migrateTraffic != null) {
       _queryParams["migrateTraffic"] = ["${migrateTraffic}"];
@@ -1809,13 +1994,16 @@ class AppsServicesResourceApi {
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -1823,7 +2011,7 @@ class AppsServicesVersionsResourceApi {
   final commons.ApiRequester _requester;
 
   AppsServicesVersionsInstancesResourceApi get instances =>
-      new AppsServicesVersionsInstancesResourceApi(_requester);
+      AppsServicesVersionsInstancesResourceApi(_requester);
 
   AppsServicesVersionsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -1850,23 +2038,26 @@ class AppsServicesVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> create(
-      Version request, core.String appsId, core.String servicesId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Version request,
+    core.String appsId,
+    core.String servicesId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (servicesId == null) {
-      throw new core.ArgumentError("Parameter servicesId is required.");
+      throw core.ArgumentError("Parameter servicesId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1878,13 +2069,16 @@ class AppsServicesVersionsResourceApi {
         commons.Escaper.ecapeVariable('$servicesId') +
         '/versions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes an existing Version resource.
@@ -1909,23 +2103,26 @@ class AppsServicesVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(
-      core.String appsId, core.String servicesId, core.String versionsId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String appsId,
+    core.String servicesId,
+    core.String versionsId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (servicesId == null) {
-      throw new core.ArgumentError("Parameter servicesId is required.");
+      throw core.ArgumentError("Parameter servicesId is required.");
     }
     if (versionsId == null) {
-      throw new core.ArgumentError("Parameter versionsId is required.");
+      throw core.ArgumentError("Parameter versionsId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1938,13 +2135,16 @@ class AppsServicesVersionsResourceApi {
         '/versions/' +
         commons.Escaper.ecapeVariable('$versionsId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Gets the specified Version resource. By default, only a BASIC_VIEW will be
@@ -1978,23 +2178,27 @@ class AppsServicesVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Version> get(
-      core.String appsId, core.String servicesId, core.String versionsId,
-      {core.String view, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String appsId,
+    core.String servicesId,
+    core.String versionsId, {
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (servicesId == null) {
-      throw new core.ArgumentError("Parameter servicesId is required.");
+      throw core.ArgumentError("Parameter servicesId is required.");
     }
     if (versionsId == null) {
-      throw new core.ArgumentError("Parameter versionsId is required.");
+      throw core.ArgumentError("Parameter versionsId is required.");
     }
     if (view != null) {
       _queryParams["view"] = [view];
@@ -2010,13 +2214,16 @@ class AppsServicesVersionsResourceApi {
         '/versions/' +
         commons.Escaper.ecapeVariable('$versionsId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Version.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Version.fromJson(data));
   }
 
   /// Lists the versions of a service.
@@ -2051,23 +2258,25 @@ class AppsServicesVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(
-      core.String appsId, core.String servicesId,
-      {core.int pageSize,
-      core.String view,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String appsId,
+    core.String servicesId, {
+    core.int pageSize,
+    core.String view,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (servicesId == null) {
-      throw new core.ArgumentError("Parameter servicesId is required.");
+      throw core.ArgumentError("Parameter servicesId is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -2088,13 +2297,16 @@ class AppsServicesVersionsResourceApi {
         commons.Escaper.ecapeVariable('$servicesId') +
         '/versions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListVersionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListVersionsResponse.fromJson(data));
   }
 
   /// Updates the specified Version resource. You can specify the following
@@ -2153,27 +2365,32 @@ class AppsServicesVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> patch(Version request, core.String appsId,
-      core.String servicesId, core.String versionsId,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> patch(
+    Version request,
+    core.String appsId,
+    core.String servicesId,
+    core.String versionsId, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (servicesId == null) {
-      throw new core.ArgumentError("Parameter servicesId is required.");
+      throw core.ArgumentError("Parameter servicesId is required.");
     }
     if (versionsId == null) {
-      throw new core.ArgumentError("Parameter versionsId is required.");
+      throw core.ArgumentError("Parameter versionsId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -2189,13 +2406,16 @@ class AppsServicesVersionsResourceApi {
         '/versions/' +
         commons.Escaper.ecapeVariable('$versionsId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -2236,33 +2456,34 @@ class AppsServicesVersionsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> debug(
-      DebugInstanceRequest request,
-      core.String appsId,
-      core.String servicesId,
-      core.String versionsId,
-      core.String instancesId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    DebugInstanceRequest request,
+    core.String appsId,
+    core.String servicesId,
+    core.String versionsId,
+    core.String instancesId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (servicesId == null) {
-      throw new core.ArgumentError("Parameter servicesId is required.");
+      throw core.ArgumentError("Parameter servicesId is required.");
     }
     if (versionsId == null) {
-      throw new core.ArgumentError("Parameter versionsId is required.");
+      throw core.ArgumentError("Parameter versionsId is required.");
     }
     if (instancesId == null) {
-      throw new core.ArgumentError("Parameter instancesId is required.");
+      throw core.ArgumentError("Parameter instancesId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2278,13 +2499,16 @@ class AppsServicesVersionsInstancesResourceApi {
         commons.Escaper.ecapeVariable('$instancesId') +
         ':debug';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Stops a running instance.The instance might be automatically recreated
@@ -2320,27 +2544,31 @@ class AppsServicesVersionsInstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String appsId, core.String servicesId,
-      core.String versionsId, core.String instancesId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String appsId,
+    core.String servicesId,
+    core.String versionsId,
+    core.String instancesId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (servicesId == null) {
-      throw new core.ArgumentError("Parameter servicesId is required.");
+      throw core.ArgumentError("Parameter servicesId is required.");
     }
     if (versionsId == null) {
-      throw new core.ArgumentError("Parameter versionsId is required.");
+      throw core.ArgumentError("Parameter versionsId is required.");
     }
     if (instancesId == null) {
-      throw new core.ArgumentError("Parameter instancesId is required.");
+      throw core.ArgumentError("Parameter instancesId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2355,13 +2583,16 @@ class AppsServicesVersionsInstancesResourceApi {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instancesId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Gets instance information.
@@ -2387,27 +2618,31 @@ class AppsServicesVersionsInstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Instance> get(core.String appsId, core.String servicesId,
-      core.String versionsId, core.String instancesId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Instance> get(
+    core.String appsId,
+    core.String servicesId,
+    core.String versionsId,
+    core.String instancesId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (servicesId == null) {
-      throw new core.ArgumentError("Parameter servicesId is required.");
+      throw core.ArgumentError("Parameter servicesId is required.");
     }
     if (versionsId == null) {
-      throw new core.ArgumentError("Parameter versionsId is required.");
+      throw core.ArgumentError("Parameter versionsId is required.");
     }
     if (instancesId == null) {
-      throw new core.ArgumentError("Parameter instancesId is required.");
+      throw core.ArgumentError("Parameter instancesId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2422,13 +2657,16 @@ class AppsServicesVersionsInstancesResourceApi {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instancesId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Instance.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Instance.fromJson(data));
   }
 
   /// Lists the instances of a version.Tip: To aggregate details about instances
@@ -2459,23 +2697,28 @@ class AppsServicesVersionsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(
-      core.String appsId, core.String servicesId, core.String versionsId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String appsId,
+    core.String servicesId,
+    core.String versionsId, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (appsId == null) {
-      throw new core.ArgumentError("Parameter appsId is required.");
+      throw core.ArgumentError("Parameter appsId is required.");
     }
     if (servicesId == null) {
-      throw new core.ArgumentError("Parameter servicesId is required.");
+      throw core.ArgumentError("Parameter servicesId is required.");
     }
     if (versionsId == null) {
-      throw new core.ArgumentError("Parameter versionsId is required.");
+      throw core.ArgumentError("Parameter versionsId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2495,13 +2738,16 @@ class AppsServicesVersionsInstancesResourceApi {
         commons.Escaper.ecapeVariable('$versionsId') +
         '/instances';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListInstancesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListInstancesResponse.fromJson(data));
   }
 }
 
@@ -2577,7 +2823,7 @@ class ApiConfigHandler {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (authFailAction != null) {
       _json["authFailAction"] = authFailAction;
     }
@@ -2612,7 +2858,7 @@ class ApiEndpointHandler {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (scriptPath != null) {
       _json["scriptPath"] = scriptPath;
     }
@@ -2712,17 +2958,17 @@ class Application {
     }
     if (_json.containsKey("dispatchRules")) {
       dispatchRules = (_json["dispatchRules"] as core.List)
-          .map<UrlDispatchRule>((value) => new UrlDispatchRule.fromJson(value))
+          .map<UrlDispatchRule>((value) => UrlDispatchRule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("featureSettings")) {
-      featureSettings = new FeatureSettings.fromJson(_json["featureSettings"]);
+      featureSettings = FeatureSettings.fromJson(_json["featureSettings"]);
     }
     if (_json.containsKey("gcrDomain")) {
       gcrDomain = _json["gcrDomain"];
     }
     if (_json.containsKey("iap")) {
-      iap = new IdentityAwareProxy.fromJson(_json["iap"]);
+      iap = IdentityAwareProxy.fromJson(_json["iap"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -2740,7 +2986,7 @@ class Application {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (authDomain != null) {
       _json["authDomain"] = authDomain;
     }
@@ -2761,16 +3007,16 @@ class Application {
     }
     if (dispatchRules != null) {
       _json["dispatchRules"] =
-          dispatchRules.map((value) => (value).toJson()).toList();
+          dispatchRules.map((value) => value.toJson()).toList();
     }
     if (featureSettings != null) {
-      _json["featureSettings"] = (featureSettings).toJson();
+      _json["featureSettings"] = featureSettings.toJson();
     }
     if (gcrDomain != null) {
       _json["gcrDomain"] = gcrDomain;
     }
     if (iap != null) {
-      _json["iap"] = (iap).toJson();
+      _json["iap"] = iap.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -2843,7 +3089,7 @@ class AuthorizedCertificate {
   AuthorizedCertificate.fromJson(core.Map _json) {
     if (_json.containsKey("certificateRawData")) {
       certificateRawData =
-          new CertificateRawData.fromJson(_json["certificateRawData"]);
+          CertificateRawData.fromJson(_json["certificateRawData"]);
     }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
@@ -2862,7 +3108,7 @@ class AuthorizedCertificate {
     }
     if (_json.containsKey("managedCertificate")) {
       managedCertificate =
-          new ManagedCertificate.fromJson(_json["managedCertificate"]);
+          ManagedCertificate.fromJson(_json["managedCertificate"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -2875,9 +3121,9 @@ class AuthorizedCertificate {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (certificateRawData != null) {
-      _json["certificateRawData"] = (certificateRawData).toJson();
+      _json["certificateRawData"] = certificateRawData.toJson();
     }
     if (displayName != null) {
       _json["displayName"] = displayName;
@@ -2895,7 +3141,7 @@ class AuthorizedCertificate {
       _json["id"] = id;
     }
     if (managedCertificate != null) {
-      _json["managedCertificate"] = (managedCertificate).toJson();
+      _json["managedCertificate"] = managedCertificate.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -2932,7 +3178,7 @@ class AuthorizedDomain {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -3009,15 +3255,15 @@ class AutomaticScaling {
       coolDownPeriod = _json["coolDownPeriod"];
     }
     if (_json.containsKey("cpuUtilization")) {
-      cpuUtilization = new CpuUtilization.fromJson(_json["cpuUtilization"]);
+      cpuUtilization = CpuUtilization.fromJson(_json["cpuUtilization"]);
     }
     if (_json.containsKey("customMetrics")) {
       customMetrics = (_json["customMetrics"] as core.List)
-          .map<CustomMetric>((value) => new CustomMetric.fromJson(value))
+          .map<CustomMetric>((value) => CustomMetric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("diskUtilization")) {
-      diskUtilization = new DiskUtilization.fromJson(_json["diskUtilization"]);
+      diskUtilization = DiskUtilization.fromJson(_json["diskUtilization"]);
     }
     if (_json.containsKey("maxConcurrentRequests")) {
       maxConcurrentRequests = _json["maxConcurrentRequests"];
@@ -3042,33 +3288,33 @@ class AutomaticScaling {
     }
     if (_json.containsKey("networkUtilization")) {
       networkUtilization =
-          new NetworkUtilization.fromJson(_json["networkUtilization"]);
+          NetworkUtilization.fromJson(_json["networkUtilization"]);
     }
     if (_json.containsKey("requestUtilization")) {
       requestUtilization =
-          new RequestUtilization.fromJson(_json["requestUtilization"]);
+          RequestUtilization.fromJson(_json["requestUtilization"]);
     }
     if (_json.containsKey("standardSchedulerSettings")) {
-      standardSchedulerSettings = new StandardSchedulerSettings.fromJson(
+      standardSchedulerSettings = StandardSchedulerSettings.fromJson(
           _json["standardSchedulerSettings"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (coolDownPeriod != null) {
       _json["coolDownPeriod"] = coolDownPeriod;
     }
     if (cpuUtilization != null) {
-      _json["cpuUtilization"] = (cpuUtilization).toJson();
+      _json["cpuUtilization"] = cpuUtilization.toJson();
     }
     if (customMetrics != null) {
       _json["customMetrics"] =
-          customMetrics.map((value) => (value).toJson()).toList();
+          customMetrics.map((value) => value.toJson()).toList();
     }
     if (diskUtilization != null) {
-      _json["diskUtilization"] = (diskUtilization).toJson();
+      _json["diskUtilization"] = diskUtilization.toJson();
     }
     if (maxConcurrentRequests != null) {
       _json["maxConcurrentRequests"] = maxConcurrentRequests;
@@ -3092,13 +3338,13 @@ class AutomaticScaling {
       _json["minTotalInstances"] = minTotalInstances;
     }
     if (networkUtilization != null) {
-      _json["networkUtilization"] = (networkUtilization).toJson();
+      _json["networkUtilization"] = networkUtilization.toJson();
     }
     if (requestUtilization != null) {
-      _json["requestUtilization"] = (requestUtilization).toJson();
+      _json["requestUtilization"] = requestUtilization.toJson();
     }
     if (standardSchedulerSettings != null) {
-      _json["standardSchedulerSettings"] = (standardSchedulerSettings).toJson();
+      _json["standardSchedulerSettings"] = standardSchedulerSettings.toJson();
     }
     return _json;
   }
@@ -3129,7 +3375,7 @@ class BasicScaling {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (idleTimeout != null) {
       _json["idleTimeout"] = idleTimeout;
     }
@@ -3150,17 +3396,17 @@ class BatchUpdateIngressRulesRequest {
   BatchUpdateIngressRulesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("ingressRules")) {
       ingressRules = (_json["ingressRules"] as core.List)
-          .map<FirewallRule>((value) => new FirewallRule.fromJson(value))
+          .map<FirewallRule>((value) => FirewallRule.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ingressRules != null) {
       _json["ingressRules"] =
-          ingressRules.map((value) => (value).toJson()).toList();
+          ingressRules.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3176,17 +3422,17 @@ class BatchUpdateIngressRulesResponse {
   BatchUpdateIngressRulesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("ingressRules")) {
       ingressRules = (_json["ingressRules"] as core.List)
-          .map<FirewallRule>((value) => new FirewallRule.fromJson(value))
+          .map<FirewallRule>((value) => FirewallRule.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ingressRules != null) {
       _json["ingressRules"] =
-          ingressRules.map((value) => (value).toJson()).toList();
+          ingressRules.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3207,7 +3453,7 @@ class BuildInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cloudBuildId != null) {
       _json["cloudBuildId"] = cloudBuildId;
     }
@@ -3241,7 +3487,7 @@ class CertificateRawData {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (privateKey != null) {
       _json["privateKey"] = privateKey;
     }
@@ -3279,7 +3525,7 @@ class CloudBuildOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appYamlPath != null) {
       _json["appYamlPath"] = appYamlPath;
     }
@@ -3309,7 +3555,7 @@ class ContainerInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (image != null) {
       _json["image"] = image;
     }
@@ -3339,7 +3585,7 @@ class CpuUtilization {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (aggregationWindowLength != null) {
       _json["aggregationWindowLength"] = aggregationWindowLength;
     }
@@ -3367,7 +3613,7 @@ class CreateVersionMetadataV1 {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cloudBuildId != null) {
       _json["cloudBuildId"] = cloudBuildId;
     }
@@ -3392,7 +3638,7 @@ class CreateVersionMetadataV1Alpha {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cloudBuildId != null) {
       _json["cloudBuildId"] = cloudBuildId;
     }
@@ -3417,7 +3663,7 @@ class CreateVersionMetadataV1Beta {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cloudBuildId != null) {
       _json["cloudBuildId"] = cloudBuildId;
     }
@@ -3469,7 +3715,7 @@ class CustomMetric {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (filter != null) {
       _json["filter"] = filter;
     }
@@ -3508,7 +3754,7 @@ class DebugInstanceRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sshKey != null) {
       _json["sshKey"] = sshKey;
     }
@@ -3544,44 +3790,44 @@ class Deployment {
 
   Deployment.fromJson(core.Map _json) {
     if (_json.containsKey("build")) {
-      build = new BuildInfo.fromJson(_json["build"]);
+      build = BuildInfo.fromJson(_json["build"]);
     }
     if (_json.containsKey("cloudBuildOptions")) {
       cloudBuildOptions =
-          new CloudBuildOptions.fromJson(_json["cloudBuildOptions"]);
+          CloudBuildOptions.fromJson(_json["cloudBuildOptions"]);
     }
     if (_json.containsKey("container")) {
-      container = new ContainerInfo.fromJson(_json["container"]);
+      container = ContainerInfo.fromJson(_json["container"]);
     }
     if (_json.containsKey("files")) {
       files = commons.mapMap<core.Map, FileInfo>(
           _json["files"].cast<core.String, core.Map>(),
-          (core.Map item) => new FileInfo.fromJson(item));
+          (core.Map item) => FileInfo.fromJson(item));
     }
     if (_json.containsKey("zip")) {
-      zip = new ZipInfo.fromJson(_json["zip"]);
+      zip = ZipInfo.fromJson(_json["zip"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (build != null) {
-      _json["build"] = (build).toJson();
+      _json["build"] = build.toJson();
     }
     if (cloudBuildOptions != null) {
-      _json["cloudBuildOptions"] = (cloudBuildOptions).toJson();
+      _json["cloudBuildOptions"] = cloudBuildOptions.toJson();
     }
     if (container != null) {
-      _json["container"] = (container).toJson();
+      _json["container"] = container.toJson();
     }
     if (files != null) {
       _json["files"] =
           commons.mapMap<FileInfo, core.Map<core.String, core.Object>>(
-              files, (FileInfo item) => (item).toJson());
+              files, (FileInfo item) => item.toJson());
     }
     if (zip != null) {
-      _json["zip"] = (zip).toJson();
+      _json["zip"] = zip.toJson();
     }
     return _json;
   }
@@ -3621,7 +3867,7 @@ class DiskUtilization {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (targetReadBytesPerSecond != null) {
       _json["targetReadBytesPerSecond"] = targetReadBytesPerSecond;
     }
@@ -3667,17 +3913,17 @@ class DomainMapping {
     }
     if (_json.containsKey("resourceRecords")) {
       resourceRecords = (_json["resourceRecords"] as core.List)
-          .map<ResourceRecord>((value) => new ResourceRecord.fromJson(value))
+          .map<ResourceRecord>((value) => ResourceRecord.fromJson(value))
           .toList();
     }
     if (_json.containsKey("sslSettings")) {
-      sslSettings = new SslSettings.fromJson(_json["sslSettings"]);
+      sslSettings = SslSettings.fromJson(_json["sslSettings"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -3686,10 +3932,10 @@ class DomainMapping {
     }
     if (resourceRecords != null) {
       _json["resourceRecords"] =
-          resourceRecords.map((value) => (value).toJson()).toList();
+          resourceRecords.map((value) => value.toJson()).toList();
     }
     if (sslSettings != null) {
-      _json["sslSettings"] = (sslSettings).toJson();
+      _json["sslSettings"] = sslSettings.toJson();
     }
     return _json;
   }
@@ -3707,7 +3953,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3767,7 +4013,7 @@ class EndpointsApiService {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (configId != null) {
       _json["configId"] = configId;
     }
@@ -3799,7 +4045,7 @@ class Entrypoint {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (shell != null) {
       _json["shell"] = shell;
     }
@@ -3841,7 +4087,7 @@ class ErrorHandler {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errorCode != null) {
       _json["errorCode"] = errorCode;
     }
@@ -3883,7 +4129,7 @@ class FeatureSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (splitHealthChecks != null) {
       _json["splitHealthChecks"] = splitHealthChecks;
     }
@@ -3923,7 +4169,7 @@ class FileInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (mimeType != null) {
       _json["mimeType"] = mimeType;
     }
@@ -3987,7 +4233,7 @@ class FirewallRule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (action != null) {
       _json["action"] = action;
     }
@@ -4061,7 +4307,7 @@ class HealthCheck {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (checkInterval != null) {
       _json["checkInterval"] = checkInterval;
     }
@@ -4125,7 +4371,7 @@ class IdentityAwareProxy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -4283,7 +4529,7 @@ class Instance {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appEngineRelease != null) {
       _json["appEngineRelease"] = appEngineRelease;
     }
@@ -4360,7 +4606,7 @@ class Library {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -4385,7 +4631,7 @@ class ListAuthorizedCertificatesResponse {
     if (_json.containsKey("certificates")) {
       certificates = (_json["certificates"] as core.List)
           .map<AuthorizedCertificate>(
-              (value) => new AuthorizedCertificate.fromJson(value))
+              (value) => AuthorizedCertificate.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4395,10 +4641,10 @@ class ListAuthorizedCertificatesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (certificates != null) {
       _json["certificates"] =
-          certificates.map((value) => (value).toJson()).toList();
+          certificates.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -4420,8 +4666,7 @@ class ListAuthorizedDomainsResponse {
   ListAuthorizedDomainsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("domains")) {
       domains = (_json["domains"] as core.List)
-          .map<AuthorizedDomain>(
-              (value) => new AuthorizedDomain.fromJson(value))
+          .map<AuthorizedDomain>((value) => AuthorizedDomain.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4431,9 +4676,9 @@ class ListAuthorizedDomainsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (domains != null) {
-      _json["domains"] = domains.map((value) => (value).toJson()).toList();
+      _json["domains"] = domains.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -4455,7 +4700,7 @@ class ListDomainMappingsResponse {
   ListDomainMappingsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("domainMappings")) {
       domainMappings = (_json["domainMappings"] as core.List)
-          .map<DomainMapping>((value) => new DomainMapping.fromJson(value))
+          .map<DomainMapping>((value) => DomainMapping.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4465,10 +4710,10 @@ class ListDomainMappingsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (domainMappings != null) {
       _json["domainMappings"] =
-          domainMappings.map((value) => (value).toJson()).toList();
+          domainMappings.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -4490,7 +4735,7 @@ class ListIngressRulesResponse {
   ListIngressRulesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("ingressRules")) {
       ingressRules = (_json["ingressRules"] as core.List)
-          .map<FirewallRule>((value) => new FirewallRule.fromJson(value))
+          .map<FirewallRule>((value) => FirewallRule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4500,10 +4745,10 @@ class ListIngressRulesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ingressRules != null) {
       _json["ingressRules"] =
-          ingressRules.map((value) => (value).toJson()).toList();
+          ingressRules.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -4525,7 +4770,7 @@ class ListInstancesResponse {
   ListInstancesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("instances")) {
       instances = (_json["instances"] as core.List)
-          .map<Instance>((value) => new Instance.fromJson(value))
+          .map<Instance>((value) => Instance.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4535,9 +4780,9 @@ class ListInstancesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (instances != null) {
-      _json["instances"] = instances.map((value) => (value).toJson()).toList();
+      _json["instances"] = instances.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -4559,7 +4804,7 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
       locations = (_json["locations"] as core.List)
-          .map<Location>((value) => new Location.fromJson(value))
+          .map<Location>((value) => Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4569,9 +4814,9 @@ class ListLocationsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (locations != null) {
-      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+      _json["locations"] = locations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -4596,20 +4841,19 @@ class ListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = (_json["operations"] as core.List)
-          .map<Operation>((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
+      _json["operations"] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4631,19 +4875,19 @@ class ListServicesResponse {
     }
     if (_json.containsKey("services")) {
       services = (_json["services"] as core.List)
-          .map<Service>((value) => new Service.fromJson(value))
+          .map<Service>((value) => Service.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (services != null) {
-      _json["services"] = services.map((value) => (value).toJson()).toList();
+      _json["services"] = services.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4665,19 +4909,19 @@ class ListVersionsResponse {
     }
     if (_json.containsKey("versions")) {
       versions = (_json["versions"] as core.List)
-          .map<Version>((value) => new Version.fromJson(value))
+          .map<Version>((value) => Version.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (versions != null) {
-      _json["versions"] = versions.map((value) => (value).toJson()).toList();
+      _json["versions"] = versions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4738,7 +4982,7 @@ class LivenessCheck {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (checkInterval != null) {
       _json["checkInterval"] = checkInterval;
     }
@@ -4811,7 +5055,7 @@ class Location {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -4854,7 +5098,7 @@ class LocationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (flexibleEnvironmentAvailable != null) {
       _json["flexibleEnvironmentAvailable"] = flexibleEnvironmentAvailable;
     }
@@ -4912,7 +5156,7 @@ class ManagedCertificate {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (lastRenewalTime != null) {
       _json["lastRenewalTime"] = lastRenewalTime;
     }
@@ -4942,7 +5186,7 @@ class ManualScaling {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (instances != null) {
       _json["instances"] = instances;
     }
@@ -5008,7 +5252,7 @@ class Network {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (forwardedPorts != null) {
       _json["forwardedPorts"] = forwardedPorts;
     }
@@ -5052,7 +5296,7 @@ class NetworkSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ingressTrafficAllowed != null) {
       _json["ingressTrafficAllowed"] = ingressTrafficAllowed;
     }
@@ -5094,7 +5338,7 @@ class NetworkUtilization {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (targetReceivedBytesPerSecond != null) {
       _json["targetReceivedBytesPerSecond"] = targetReceivedBytesPerSecond;
     }
@@ -5155,7 +5399,7 @@ class Operation {
       done = _json["done"];
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
       metadata =
@@ -5172,12 +5416,12 @@ class Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -5225,7 +5469,7 @@ class OperationMetadataV1 {
   OperationMetadataV1.fromJson(core.Map _json) {
     if (_json.containsKey("createVersionMetadata")) {
       createVersionMetadata =
-          new CreateVersionMetadataV1.fromJson(_json["createVersionMetadata"]);
+          CreateVersionMetadataV1.fromJson(_json["createVersionMetadata"]);
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
@@ -5252,9 +5496,9 @@ class OperationMetadataV1 {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createVersionMetadata != null) {
-      _json["createVersionMetadata"] = (createVersionMetadata).toJson();
+      _json["createVersionMetadata"] = createVersionMetadata.toJson();
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
@@ -5313,8 +5557,8 @@ class OperationMetadataV1Alpha {
 
   OperationMetadataV1Alpha.fromJson(core.Map _json) {
     if (_json.containsKey("createVersionMetadata")) {
-      createVersionMetadata = new CreateVersionMetadataV1Alpha.fromJson(
-          _json["createVersionMetadata"]);
+      createVersionMetadata =
+          CreateVersionMetadataV1Alpha.fromJson(_json["createVersionMetadata"]);
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
@@ -5341,9 +5585,9 @@ class OperationMetadataV1Alpha {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createVersionMetadata != null) {
-      _json["createVersionMetadata"] = (createVersionMetadata).toJson();
+      _json["createVersionMetadata"] = createVersionMetadata.toJson();
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
@@ -5402,8 +5646,8 @@ class OperationMetadataV1Beta {
 
   OperationMetadataV1Beta.fromJson(core.Map _json) {
     if (_json.containsKey("createVersionMetadata")) {
-      createVersionMetadata = new CreateVersionMetadataV1Beta.fromJson(
-          _json["createVersionMetadata"]);
+      createVersionMetadata =
+          CreateVersionMetadataV1Beta.fromJson(_json["createVersionMetadata"]);
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
@@ -5430,9 +5674,9 @@ class OperationMetadataV1Beta {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createVersionMetadata != null) {
-      _json["createVersionMetadata"] = (createVersionMetadata).toJson();
+      _json["createVersionMetadata"] = createVersionMetadata.toJson();
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
@@ -5514,7 +5758,7 @@ class ReadinessCheck {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appStartTimeout != null) {
       _json["appStartTimeout"] = appStartTimeout;
     }
@@ -5548,7 +5792,7 @@ class RepairApplicationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -5575,7 +5819,7 @@ class RequestUtilization {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (targetConcurrentRequests != null) {
       _json["targetConcurrentRequests"] = targetConcurrentRequests;
     }
@@ -5619,7 +5863,7 @@ class ResourceRecord {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -5668,14 +5912,14 @@ class Resources {
     }
     if (_json.containsKey("volumes")) {
       volumes = (_json["volumes"] as core.List)
-          .map<Volume>((value) => new Volume.fromJson(value))
+          .map<Volume>((value) => Volume.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cpu != null) {
       _json["cpu"] = cpu;
     }
@@ -5689,7 +5933,7 @@ class Resources {
       _json["memoryGb"] = memoryGb;
     }
     if (volumes != null) {
-      _json["volumes"] = volumes.map((value) => (value).toJson()).toList();
+      _json["volumes"] = volumes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5710,7 +5954,7 @@ class ScriptHandler {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (scriptPath != null) {
       _json["scriptPath"] = scriptPath;
     }
@@ -5750,16 +5994,16 @@ class Service {
       name = _json["name"];
     }
     if (_json.containsKey("networkSettings")) {
-      networkSettings = new NetworkSettings.fromJson(_json["networkSettings"]);
+      networkSettings = NetworkSettings.fromJson(_json["networkSettings"]);
     }
     if (_json.containsKey("split")) {
-      split = new TrafficSplit.fromJson(_json["split"]);
+      split = TrafficSplit.fromJson(_json["split"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -5767,10 +6011,10 @@ class Service {
       _json["name"] = name;
     }
     if (networkSettings != null) {
-      _json["networkSettings"] = (networkSettings).toJson();
+      _json["networkSettings"] = networkSettings.toJson();
     }
     if (split != null) {
-      _json["split"] = (split).toJson();
+      _json["split"] = split.toJson();
     }
     return _json;
   }
@@ -5823,7 +6067,7 @@ class SslSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (certificateId != null) {
       _json["certificateId"] = certificateId;
     }
@@ -5873,7 +6117,7 @@ class StandardSchedulerSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maxInstances != null) {
       _json["maxInstances"] = maxInstances;
     }
@@ -5956,7 +6200,7 @@ class StaticFilesHandler {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (applicationReadable != null) {
       _json["applicationReadable"] = applicationReadable;
     }
@@ -6023,7 +6267,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -6080,7 +6324,7 @@ class TrafficSplit {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allocations != null) {
       _json["allocations"] = allocations;
     }
@@ -6122,7 +6366,7 @@ class UrlDispatchRule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (domain != null) {
       _json["domain"] = domain;
     }
@@ -6213,7 +6457,7 @@ class UrlMap {
 
   UrlMap.fromJson(core.Map _json) {
     if (_json.containsKey("apiEndpoint")) {
-      apiEndpoint = new ApiEndpointHandler.fromJson(_json["apiEndpoint"]);
+      apiEndpoint = ApiEndpointHandler.fromJson(_json["apiEndpoint"]);
     }
     if (_json.containsKey("authFailAction")) {
       authFailAction = _json["authFailAction"];
@@ -6225,13 +6469,13 @@ class UrlMap {
       redirectHttpResponseCode = _json["redirectHttpResponseCode"];
     }
     if (_json.containsKey("script")) {
-      script = new ScriptHandler.fromJson(_json["script"]);
+      script = ScriptHandler.fromJson(_json["script"]);
     }
     if (_json.containsKey("securityLevel")) {
       securityLevel = _json["securityLevel"];
     }
     if (_json.containsKey("staticFiles")) {
-      staticFiles = new StaticFilesHandler.fromJson(_json["staticFiles"]);
+      staticFiles = StaticFilesHandler.fromJson(_json["staticFiles"]);
     }
     if (_json.containsKey("urlRegex")) {
       urlRegex = _json["urlRegex"];
@@ -6240,9 +6484,9 @@ class UrlMap {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiEndpoint != null) {
-      _json["apiEndpoint"] = (apiEndpoint).toJson();
+      _json["apiEndpoint"] = apiEndpoint.toJson();
     }
     if (authFailAction != null) {
       _json["authFailAction"] = authFailAction;
@@ -6254,13 +6498,13 @@ class UrlMap {
       _json["redirectHttpResponseCode"] = redirectHttpResponseCode;
     }
     if (script != null) {
-      _json["script"] = (script).toJson();
+      _json["script"] = script.toJson();
     }
     if (securityLevel != null) {
       _json["securityLevel"] = securityLevel;
     }
     if (staticFiles != null) {
-      _json["staticFiles"] = (staticFiles).toJson();
+      _json["staticFiles"] = staticFiles.toJson();
     }
     if (urlRegex != null) {
       _json["urlRegex"] = urlRegex;
@@ -6445,14 +6689,13 @@ class Version {
 
   Version.fromJson(core.Map _json) {
     if (_json.containsKey("apiConfig")) {
-      apiConfig = new ApiConfigHandler.fromJson(_json["apiConfig"]);
+      apiConfig = ApiConfigHandler.fromJson(_json["apiConfig"]);
     }
     if (_json.containsKey("automaticScaling")) {
-      automaticScaling =
-          new AutomaticScaling.fromJson(_json["automaticScaling"]);
+      automaticScaling = AutomaticScaling.fromJson(_json["automaticScaling"]);
     }
     if (_json.containsKey("basicScaling")) {
-      basicScaling = new BasicScaling.fromJson(_json["basicScaling"]);
+      basicScaling = BasicScaling.fromJson(_json["basicScaling"]);
     }
     if (_json.containsKey("betaSettings")) {
       betaSettings =
@@ -6472,17 +6715,17 @@ class Version {
       defaultExpiration = _json["defaultExpiration"];
     }
     if (_json.containsKey("deployment")) {
-      deployment = new Deployment.fromJson(_json["deployment"]);
+      deployment = Deployment.fromJson(_json["deployment"]);
     }
     if (_json.containsKey("diskUsageBytes")) {
       diskUsageBytes = _json["diskUsageBytes"];
     }
     if (_json.containsKey("endpointsApiService")) {
       endpointsApiService =
-          new EndpointsApiService.fromJson(_json["endpointsApiService"]);
+          EndpointsApiService.fromJson(_json["endpointsApiService"]);
     }
     if (_json.containsKey("entrypoint")) {
-      entrypoint = new Entrypoint.fromJson(_json["entrypoint"]);
+      entrypoint = Entrypoint.fromJson(_json["entrypoint"]);
     }
     if (_json.containsKey("env")) {
       env = _json["env"];
@@ -6493,16 +6736,16 @@ class Version {
     }
     if (_json.containsKey("errorHandlers")) {
       errorHandlers = (_json["errorHandlers"] as core.List)
-          .map<ErrorHandler>((value) => new ErrorHandler.fromJson(value))
+          .map<ErrorHandler>((value) => ErrorHandler.fromJson(value))
           .toList();
     }
     if (_json.containsKey("handlers")) {
       handlers = (_json["handlers"] as core.List)
-          .map<UrlMap>((value) => new UrlMap.fromJson(value))
+          .map<UrlMap>((value) => UrlMap.fromJson(value))
           .toList();
     }
     if (_json.containsKey("healthCheck")) {
-      healthCheck = new HealthCheck.fromJson(_json["healthCheck"]);
+      healthCheck = HealthCheck.fromJson(_json["healthCheck"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -6516,29 +6759,29 @@ class Version {
     }
     if (_json.containsKey("libraries")) {
       libraries = (_json["libraries"] as core.List)
-          .map<Library>((value) => new Library.fromJson(value))
+          .map<Library>((value) => Library.fromJson(value))
           .toList();
     }
     if (_json.containsKey("livenessCheck")) {
-      livenessCheck = new LivenessCheck.fromJson(_json["livenessCheck"]);
+      livenessCheck = LivenessCheck.fromJson(_json["livenessCheck"]);
     }
     if (_json.containsKey("manualScaling")) {
-      manualScaling = new ManualScaling.fromJson(_json["manualScaling"]);
+      manualScaling = ManualScaling.fromJson(_json["manualScaling"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("network")) {
-      network = new Network.fromJson(_json["network"]);
+      network = Network.fromJson(_json["network"]);
     }
     if (_json.containsKey("nobuildFilesRegex")) {
       nobuildFilesRegex = _json["nobuildFilesRegex"];
     }
     if (_json.containsKey("readinessCheck")) {
-      readinessCheck = new ReadinessCheck.fromJson(_json["readinessCheck"]);
+      readinessCheck = ReadinessCheck.fromJson(_json["readinessCheck"]);
     }
     if (_json.containsKey("resources")) {
-      resources = new Resources.fromJson(_json["resources"]);
+      resources = Resources.fromJson(_json["resources"]);
     }
     if (_json.containsKey("runtime")) {
       runtime = _json["runtime"];
@@ -6566,7 +6809,7 @@ class Version {
     }
     if (_json.containsKey("vpcAccessConnector")) {
       vpcAccessConnector =
-          new VpcAccessConnector.fromJson(_json["vpcAccessConnector"]);
+          VpcAccessConnector.fromJson(_json["vpcAccessConnector"]);
     }
     if (_json.containsKey("zones")) {
       zones = (_json["zones"] as core.List).cast<core.String>();
@@ -6575,15 +6818,15 @@ class Version {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiConfig != null) {
-      _json["apiConfig"] = (apiConfig).toJson();
+      _json["apiConfig"] = apiConfig.toJson();
     }
     if (automaticScaling != null) {
-      _json["automaticScaling"] = (automaticScaling).toJson();
+      _json["automaticScaling"] = automaticScaling.toJson();
     }
     if (basicScaling != null) {
-      _json["basicScaling"] = (basicScaling).toJson();
+      _json["basicScaling"] = basicScaling.toJson();
     }
     if (betaSettings != null) {
       _json["betaSettings"] = betaSettings;
@@ -6601,16 +6844,16 @@ class Version {
       _json["defaultExpiration"] = defaultExpiration;
     }
     if (deployment != null) {
-      _json["deployment"] = (deployment).toJson();
+      _json["deployment"] = deployment.toJson();
     }
     if (diskUsageBytes != null) {
       _json["diskUsageBytes"] = diskUsageBytes;
     }
     if (endpointsApiService != null) {
-      _json["endpointsApiService"] = (endpointsApiService).toJson();
+      _json["endpointsApiService"] = endpointsApiService.toJson();
     }
     if (entrypoint != null) {
-      _json["entrypoint"] = (entrypoint).toJson();
+      _json["entrypoint"] = entrypoint.toJson();
     }
     if (env != null) {
       _json["env"] = env;
@@ -6620,13 +6863,13 @@ class Version {
     }
     if (errorHandlers != null) {
       _json["errorHandlers"] =
-          errorHandlers.map((value) => (value).toJson()).toList();
+          errorHandlers.map((value) => value.toJson()).toList();
     }
     if (handlers != null) {
-      _json["handlers"] = handlers.map((value) => (value).toJson()).toList();
+      _json["handlers"] = handlers.map((value) => value.toJson()).toList();
     }
     if (healthCheck != null) {
-      _json["healthCheck"] = (healthCheck).toJson();
+      _json["healthCheck"] = healthCheck.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -6638,28 +6881,28 @@ class Version {
       _json["instanceClass"] = instanceClass;
     }
     if (libraries != null) {
-      _json["libraries"] = libraries.map((value) => (value).toJson()).toList();
+      _json["libraries"] = libraries.map((value) => value.toJson()).toList();
     }
     if (livenessCheck != null) {
-      _json["livenessCheck"] = (livenessCheck).toJson();
+      _json["livenessCheck"] = livenessCheck.toJson();
     }
     if (manualScaling != null) {
-      _json["manualScaling"] = (manualScaling).toJson();
+      _json["manualScaling"] = manualScaling.toJson();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (network != null) {
-      _json["network"] = (network).toJson();
+      _json["network"] = network.toJson();
     }
     if (nobuildFilesRegex != null) {
       _json["nobuildFilesRegex"] = nobuildFilesRegex;
     }
     if (readinessCheck != null) {
-      _json["readinessCheck"] = (readinessCheck).toJson();
+      _json["readinessCheck"] = readinessCheck.toJson();
     }
     if (resources != null) {
-      _json["resources"] = (resources).toJson();
+      _json["resources"] = resources.toJson();
     }
     if (runtime != null) {
       _json["runtime"] = runtime;
@@ -6686,7 +6929,7 @@ class Version {
       _json["vm"] = vm;
     }
     if (vpcAccessConnector != null) {
-      _json["vpcAccessConnector"] = (vpcAccessConnector).toJson();
+      _json["vpcAccessConnector"] = vpcAccessConnector.toJson();
     }
     if (zones != null) {
       _json["zones"] = zones;
@@ -6723,7 +6966,7 @@ class Volume {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -6753,7 +6996,7 @@ class VpcAccessConnector {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -6785,7 +7028,7 @@ class ZipInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (filesCount != null) {
       _json["filesCount"] = filesCount;
     }

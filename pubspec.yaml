@@ -1,11 +1,17 @@
 name: googleapis_generator_dependency
 
 environment:
-  sdk: '>=2.0.0-dev.22.0 <3.0.0'
+  sdk: '>=2.10.0 <3.0.0'
 
 dependencies:
   discoveryapis_generator:
-    git: https://github.com/dart-lang/discoveryapis_generator.git
+    git:
+      url: https://github.com/dart-lang/discoveryapis_generator.git
+      path: discoveryapis_generator
   io: ^0.3.3
   pool: ^1.4.0
   yaml: ^2.1.0
+
+dev_dependencies:
+  googleapis: any
+  googleapis_auth: any

@@ -1,3 +1,27 @@
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
+// ignore_for_file: avoid_returning_null
+// ignore_for_file: cascade_invocations
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unused_local_variable
+
 library googleapis.cloudidentity.v1.test;
 
 import "dart:core" as core;
@@ -18,27 +42,23 @@ class HttpServerMock extends http.BaseClient {
     _expectJson = expectJson;
   }
 
-  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+  @core.override
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) async {
     if (_expectJson) {
-      return request
-          .finalize()
-          .transform(convert.utf8.decoder)
-          .join('')
-          .then((core.String jsonString) {
-        if (jsonString.isEmpty) {
-          return _callback(request, null);
-        } else {
-          return _callback(request, convert.json.decode(jsonString));
-        }
-      });
+      final jsonString =
+          await request.finalize().transform(convert.utf8.decoder).join('');
+      if (jsonString.isEmpty) {
+        return _callback(request, null);
+      } else {
+        return _callback(request, convert.json.decode(jsonString));
+      }
     } else {
       var stream = request.finalize();
       if (stream == null) {
         return _callback(request, []);
       } else {
-        return stream.toBytes().then((data) {
-          return _callback(request, data);
-        });
+        final data = await stream.toBytes();
+        return _callback(request, data);
       }
     }
   }
@@ -46,13 +66,13 @@ class HttpServerMock extends http.BaseClient {
 
 http.StreamedResponse stringResponse(core.int status,
     core.Map<core.String, core.String> headers, core.String body) {
-  var stream = new async.Stream.fromIterable([convert.utf8.encode(body)]);
-  return new http.StreamedResponse(stream, status, headers: headers);
+  var stream = async.Stream.fromIterable([convert.utf8.encode(body)]);
+  return http.StreamedResponse(stream, status, headers: headers);
 }
 
 core.int buildCounterEntityKey = 0;
-buildEntityKey() {
-  var o = new api.EntityKey();
+api.EntityKey buildEntityKey() {
+  var o = api.EntityKey();
   buildCounterEntityKey++;
   if (buildCounterEntityKey < 3) {
     o.id = "foo";
@@ -62,7 +82,7 @@ buildEntityKey() {
   return o;
 }
 
-checkEntityKey(api.EntityKey o) {
+void checkEntityKey(api.EntityKey o) {
   buildCounterEntityKey++;
   if (buildCounterEntityKey < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
@@ -72,8 +92,9 @@ checkEntityKey(api.EntityKey o) {
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1AndroidAttributes = 0;
-buildGoogleAppsCloudidentityDevicesV1AndroidAttributes() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1AndroidAttributes();
+api.GoogleAppsCloudidentityDevicesV1AndroidAttributes
+    buildGoogleAppsCloudidentityDevicesV1AndroidAttributes() {
+  var o = api.GoogleAppsCloudidentityDevicesV1AndroidAttributes();
   buildCounterGoogleAppsCloudidentityDevicesV1AndroidAttributes++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1AndroidAttributes < 3) {
     o.enabledUnknownSources = true;
@@ -85,7 +106,7 @@ buildGoogleAppsCloudidentityDevicesV1AndroidAttributes() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1AndroidAttributes(
+void checkGoogleAppsCloudidentityDevicesV1AndroidAttributes(
     api.GoogleAppsCloudidentityDevicesV1AndroidAttributes o) {
   buildCounterGoogleAppsCloudidentityDevicesV1AndroidAttributes++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1AndroidAttributes < 3) {
@@ -99,8 +120,9 @@ checkGoogleAppsCloudidentityDevicesV1AndroidAttributes(
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest =
     0;
-buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest();
+api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest
+    buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest() {
+  var o = api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest();
   buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest <
       3) {
@@ -110,7 +132,7 @@ buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest(
+void checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest(
     api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest o) {
   buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest <
@@ -122,8 +144,9 @@ checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest(
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse =
     0;
-buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse();
+api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
+    buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse() {
+  var o = api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse();
   buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse <
       3) {
@@ -133,7 +156,7 @@ buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse(
+void checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse(
     api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse <
@@ -144,8 +167,9 @@ checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse(
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest = 0;
-buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest();
+api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest
+    buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest() {
+  var o = api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest();
   buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest < 3) {
     o.customer = "foo";
@@ -154,7 +178,7 @@ buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest(
+void checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest(
     api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest o) {
   buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest < 3) {
@@ -165,8 +189,9 @@ checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest(
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse =
     0;
-buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse();
+api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse
+    buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse() {
+  var o = api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse();
   buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse < 3) {
     o.deviceUser = buildGoogleAppsCloudidentityDevicesV1DeviceUser();
@@ -175,7 +200,7 @@ buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse(
+void checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse(
     api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse < 3) {
@@ -186,8 +211,9 @@ checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse(
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest =
     0;
-buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest();
+api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest
+    buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest() {
+  var o = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest();
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest < 3) {
     o.customer = "foo";
@@ -196,7 +222,7 @@ buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest(
+void checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest(
     api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest o) {
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest < 3) {
@@ -207,8 +233,9 @@ checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest(
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse =
     0;
-buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse();
+api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse
+    buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse() {
+  var o = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse();
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse <
       3) {
@@ -218,7 +245,7 @@ buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse(
+void checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse(
     api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse <
@@ -230,8 +257,9 @@ checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse(
 
 core.int
     buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest = 0;
-buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest();
+api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
+    buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest() {
+  var o = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest();
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest <
       3) {
@@ -241,7 +269,7 @@ buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest(
+void checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest(
     api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest o) {
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest <
@@ -254,9 +282,9 @@ checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest(
 core.int
     buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse =
     0;
-buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse() {
-  var o =
-      new api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse();
+api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse
+    buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse() {
+  var o = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse();
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse <
       3) {
@@ -266,7 +294,7 @@ buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse(
+void checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse(
     api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse <
@@ -276,28 +304,29 @@ checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse--;
 }
 
-buildUnnamed2690() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed1515() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2690(core.List<core.String> o) {
+void checkUnnamed1515(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2691() {
-  var o = new core.Map<core.String,
-      api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue>();
+core.Map<core.String, api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue>
+    buildUnnamed1516() {
+  var o =
+      <core.String, api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue>{};
   o["x"] = buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue();
   o["y"] = buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue();
   return o;
 }
 
-checkUnnamed2691(
+void checkUnnamed1516(
     core.Map<core.String,
             api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue>
         o) {
@@ -307,17 +336,18 @@ checkUnnamed2691(
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1ClientState = 0;
-buildGoogleAppsCloudidentityDevicesV1ClientState() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1ClientState();
+api.GoogleAppsCloudidentityDevicesV1ClientState
+    buildGoogleAppsCloudidentityDevicesV1ClientState() {
+  var o = api.GoogleAppsCloudidentityDevicesV1ClientState();
   buildCounterGoogleAppsCloudidentityDevicesV1ClientState++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ClientState < 3) {
-    o.assetTags = buildUnnamed2690();
+    o.assetTags = buildUnnamed1515();
     o.complianceState = "foo";
     o.createTime = "foo";
     o.customId = "foo";
     o.etag = "foo";
     o.healthScore = "foo";
-    o.keyValuePairs = buildUnnamed2691();
+    o.keyValuePairs = buildUnnamed1516();
     o.lastUpdateTime = "foo";
     o.managed = "foo";
     o.name = "foo";
@@ -328,17 +358,17 @@ buildGoogleAppsCloudidentityDevicesV1ClientState() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1ClientState(
+void checkGoogleAppsCloudidentityDevicesV1ClientState(
     api.GoogleAppsCloudidentityDevicesV1ClientState o) {
   buildCounterGoogleAppsCloudidentityDevicesV1ClientState++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ClientState < 3) {
-    checkUnnamed2690(o.assetTags);
+    checkUnnamed1515(o.assetTags);
     unittest.expect(o.complianceState, unittest.equals('foo'));
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.customId, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.healthScore, unittest.equals('foo'));
-    checkUnnamed2691(o.keyValuePairs);
+    checkUnnamed1516(o.keyValuePairs);
     unittest.expect(o.lastUpdateTime, unittest.equals('foo'));
     unittest.expect(o.managed, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -349,8 +379,9 @@ checkGoogleAppsCloudidentityDevicesV1ClientState(
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1CustomAttributeValue = 0;
-buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue();
+api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue
+    buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue() {
+  var o = api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue();
   buildCounterGoogleAppsCloudidentityDevicesV1CustomAttributeValue++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1CustomAttributeValue < 3) {
     o.boolValue = true;
@@ -361,7 +392,7 @@ buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(
+void checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(
     api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue o) {
   buildCounterGoogleAppsCloudidentityDevicesV1CustomAttributeValue++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1CustomAttributeValue < 3) {
@@ -372,35 +403,36 @@ checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(
   buildCounterGoogleAppsCloudidentityDevicesV1CustomAttributeValue--;
 }
 
-buildUnnamed2692() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed1517() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2692(core.List<core.String> o) {
+void checkUnnamed1517(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2693() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed1518() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2693(core.List<core.String> o) {
+void checkUnnamed1518(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1Device = 0;
-buildGoogleAppsCloudidentityDevicesV1Device() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1Device();
+api.GoogleAppsCloudidentityDevicesV1Device
+    buildGoogleAppsCloudidentityDevicesV1Device() {
+  var o = api.GoogleAppsCloudidentityDevicesV1Device();
   buildCounterGoogleAppsCloudidentityDevicesV1Device++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1Device < 3) {
     o.androidSpecificAttributes =
@@ -426,18 +458,18 @@ buildGoogleAppsCloudidentityDevicesV1Device() {
     o.name = "foo";
     o.networkOperator = "foo";
     o.osVersion = "foo";
-    o.otherAccounts = buildUnnamed2692();
+    o.otherAccounts = buildUnnamed1517();
     o.ownerType = "foo";
     o.releaseVersion = "foo";
     o.securityPatchTime = "foo";
     o.serialNumber = "foo";
-    o.wifiMacAddresses = buildUnnamed2693();
+    o.wifiMacAddresses = buildUnnamed1518();
   }
   buildCounterGoogleAppsCloudidentityDevicesV1Device--;
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1Device(
+void checkGoogleAppsCloudidentityDevicesV1Device(
     api.GoogleAppsCloudidentityDevicesV1Device o) {
   buildCounterGoogleAppsCloudidentityDevicesV1Device++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1Device < 3) {
@@ -464,19 +496,20 @@ checkGoogleAppsCloudidentityDevicesV1Device(
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.networkOperator, unittest.equals('foo'));
     unittest.expect(o.osVersion, unittest.equals('foo'));
-    checkUnnamed2692(o.otherAccounts);
+    checkUnnamed1517(o.otherAccounts);
     unittest.expect(o.ownerType, unittest.equals('foo'));
     unittest.expect(o.releaseVersion, unittest.equals('foo'));
     unittest.expect(o.securityPatchTime, unittest.equals('foo'));
     unittest.expect(o.serialNumber, unittest.equals('foo'));
-    checkUnnamed2693(o.wifiMacAddresses);
+    checkUnnamed1518(o.wifiMacAddresses);
   }
   buildCounterGoogleAppsCloudidentityDevicesV1Device--;
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1DeviceUser = 0;
-buildGoogleAppsCloudidentityDevicesV1DeviceUser() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1DeviceUser();
+api.GoogleAppsCloudidentityDevicesV1DeviceUser
+    buildGoogleAppsCloudidentityDevicesV1DeviceUser() {
+  var o = api.GoogleAppsCloudidentityDevicesV1DeviceUser();
   buildCounterGoogleAppsCloudidentityDevicesV1DeviceUser++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1DeviceUser < 3) {
     o.compromisedState = "foo";
@@ -494,7 +527,7 @@ buildGoogleAppsCloudidentityDevicesV1DeviceUser() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1DeviceUser(
+void checkGoogleAppsCloudidentityDevicesV1DeviceUser(
     api.GoogleAppsCloudidentityDevicesV1DeviceUser o) {
   buildCounterGoogleAppsCloudidentityDevicesV1DeviceUser++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1DeviceUser < 3) {
@@ -512,14 +545,15 @@ checkGoogleAppsCloudidentityDevicesV1DeviceUser(
   buildCounterGoogleAppsCloudidentityDevicesV1DeviceUser--;
 }
 
-buildUnnamed2694() {
-  var o = new core.List<api.GoogleAppsCloudidentityDevicesV1ClientState>();
+core.List<api.GoogleAppsCloudidentityDevicesV1ClientState> buildUnnamed1519() {
+  var o = <api.GoogleAppsCloudidentityDevicesV1ClientState>[];
   o.add(buildGoogleAppsCloudidentityDevicesV1ClientState());
   o.add(buildGoogleAppsCloudidentityDevicesV1ClientState());
   return o;
 }
 
-checkUnnamed2694(core.List<api.GoogleAppsCloudidentityDevicesV1ClientState> o) {
+void checkUnnamed1519(
+    core.List<api.GoogleAppsCloudidentityDevicesV1ClientState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCloudidentityDevicesV1ClientState(o[0]);
   checkGoogleAppsCloudidentityDevicesV1ClientState(o[1]);
@@ -527,37 +561,39 @@ checkUnnamed2694(core.List<api.GoogleAppsCloudidentityDevicesV1ClientState> o) {
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse =
     0;
-buildGoogleAppsCloudidentityDevicesV1ListClientStatesResponse() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1ListClientStatesResponse();
+api.GoogleAppsCloudidentityDevicesV1ListClientStatesResponse
+    buildGoogleAppsCloudidentityDevicesV1ListClientStatesResponse() {
+  var o = api.GoogleAppsCloudidentityDevicesV1ListClientStatesResponse();
   buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse <
       3) {
-    o.clientStates = buildUnnamed2694();
+    o.clientStates = buildUnnamed1519();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse--;
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(
+void checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(
     api.GoogleAppsCloudidentityDevicesV1ListClientStatesResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse <
       3) {
-    checkUnnamed2694(o.clientStates);
+    checkUnnamed1519(o.clientStates);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse--;
 }
 
-buildUnnamed2695() {
-  var o = new core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser>();
+core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser> buildUnnamed1520() {
+  var o = <api.GoogleAppsCloudidentityDevicesV1DeviceUser>[];
   o.add(buildGoogleAppsCloudidentityDevicesV1DeviceUser());
   o.add(buildGoogleAppsCloudidentityDevicesV1DeviceUser());
   return o;
 }
 
-checkUnnamed2695(core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser> o) {
+void checkUnnamed1520(
+    core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCloudidentityDevicesV1DeviceUser(o[0]);
   checkGoogleAppsCloudidentityDevicesV1DeviceUser(o[1]);
@@ -565,70 +601,72 @@ checkUnnamed2695(core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser> o) {
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse =
     0;
-buildGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse();
+api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse
+    buildGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse() {
+  var o = api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse();
   buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse < 3) {
-    o.deviceUsers = buildUnnamed2695();
+    o.deviceUsers = buildUnnamed1520();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse--;
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(
+void checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(
     api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse < 3) {
-    checkUnnamed2695(o.deviceUsers);
+    checkUnnamed1520(o.deviceUsers);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse--;
 }
 
-buildUnnamed2696() {
-  var o = new core.List<api.GoogleAppsCloudidentityDevicesV1Device>();
+core.List<api.GoogleAppsCloudidentityDevicesV1Device> buildUnnamed1521() {
+  var o = <api.GoogleAppsCloudidentityDevicesV1Device>[];
   o.add(buildGoogleAppsCloudidentityDevicesV1Device());
   o.add(buildGoogleAppsCloudidentityDevicesV1Device());
   return o;
 }
 
-checkUnnamed2696(core.List<api.GoogleAppsCloudidentityDevicesV1Device> o) {
+void checkUnnamed1521(core.List<api.GoogleAppsCloudidentityDevicesV1Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCloudidentityDevicesV1Device(o[0]);
   checkGoogleAppsCloudidentityDevicesV1Device(o[1]);
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse = 0;
-buildGoogleAppsCloudidentityDevicesV1ListDevicesResponse() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse();
+api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse
+    buildGoogleAppsCloudidentityDevicesV1ListDevicesResponse() {
+  var o = api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse();
   buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse < 3) {
-    o.devices = buildUnnamed2696();
+    o.devices = buildUnnamed1521();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse--;
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(
+void checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(
     api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse < 3) {
-    checkUnnamed2696(o.devices);
+    checkUnnamed1521(o.devices);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse--;
 }
 
-buildUnnamed2697() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed1522() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2697(core.List<core.String> o) {
+void checkUnnamed1522(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -637,35 +675,36 @@ checkUnnamed2697(core.List<core.String> o) {
 core.int
     buildCounterGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse =
     0;
-buildGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse() {
-  var o =
-      new api.GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse();
+api.GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
+    buildGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse() {
+  var o = api.GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse();
   buildCounterGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse <
       3) {
     o.customer = "foo";
-    o.names = buildUnnamed2697();
+    o.names = buildUnnamed1522();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse--;
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse(
+void checkGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse(
     api.GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse <
       3) {
     unittest.expect(o.customer, unittest.equals('foo'));
-    checkUnnamed2697(o.names);
+    checkUnnamed1522(o.names);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse--;
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceRequest = 0;
-buildGoogleAppsCloudidentityDevicesV1WipeDeviceRequest() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest();
+api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest
+    buildGoogleAppsCloudidentityDevicesV1WipeDeviceRequest() {
+  var o = api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest();
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceRequest++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceRequest < 3) {
     o.customer = "foo";
@@ -674,7 +713,7 @@ buildGoogleAppsCloudidentityDevicesV1WipeDeviceRequest() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1WipeDeviceRequest(
+void checkGoogleAppsCloudidentityDevicesV1WipeDeviceRequest(
     api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest o) {
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceRequest++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceRequest < 3) {
@@ -684,8 +723,9 @@ checkGoogleAppsCloudidentityDevicesV1WipeDeviceRequest(
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceResponse = 0;
-buildGoogleAppsCloudidentityDevicesV1WipeDeviceResponse() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse();
+api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse
+    buildGoogleAppsCloudidentityDevicesV1WipeDeviceResponse() {
+  var o = api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse();
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceResponse < 3) {
     o.device = buildGoogleAppsCloudidentityDevicesV1Device();
@@ -694,7 +734,7 @@ buildGoogleAppsCloudidentityDevicesV1WipeDeviceResponse() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1WipeDeviceResponse(
+void checkGoogleAppsCloudidentityDevicesV1WipeDeviceResponse(
     api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceResponse < 3) {
@@ -704,8 +744,9 @@ checkGoogleAppsCloudidentityDevicesV1WipeDeviceResponse(
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest = 0;
-buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest();
+api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest
+    buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest() {
+  var o = api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest();
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest < 3) {
     o.customer = "foo";
@@ -714,7 +755,7 @@ buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest(
+void checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest(
     api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest o) {
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest < 3) {
@@ -724,8 +765,9 @@ checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest(
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse = 0;
-buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse() {
-  var o = new api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse();
+api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse
+    buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse() {
+  var o = api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse();
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse < 3) {
     o.deviceUser = buildGoogleAppsCloudidentityDevicesV1DeviceUser();
@@ -734,7 +776,7 @@ buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse() {
   return o;
 }
 
-checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse(
+void checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse(
     api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse < 3) {
@@ -743,29 +785,29 @@ checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse--;
 }
 
-buildUnnamed2698() {
-  var o = new core.Map<core.String, core.String>();
+core.Map<core.String, core.String> buildUnnamed1523() {
+  var o = <core.String, core.String>{};
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed2698(core.Map<core.String, core.String> o) {
+void checkUnnamed1523(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
 core.int buildCounterGroup = 0;
-buildGroup() {
-  var o = new api.Group();
+api.Group buildGroup() {
+  var o = api.Group();
   buildCounterGroup++;
   if (buildCounterGroup < 3) {
     o.createTime = "foo";
     o.description = "foo";
     o.displayName = "foo";
     o.groupKey = buildEntityKey();
-    o.labels = buildUnnamed2698();
+    o.labels = buildUnnamed1523();
     o.name = "foo";
     o.parent = "foo";
     o.updateTime = "foo";
@@ -774,14 +816,14 @@ buildGroup() {
   return o;
 }
 
-checkGroup(api.Group o) {
+void checkGroup(api.Group o) {
   buildCounterGroup++;
   if (buildCounterGroup < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     checkEntityKey(o.groupKey);
-    checkUnnamed2698(o.labels);
+    checkUnnamed1523(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
@@ -789,77 +831,77 @@ checkGroup(api.Group o) {
   buildCounterGroup--;
 }
 
-buildUnnamed2699() {
-  var o = new core.List<api.Group>();
+core.List<api.Group> buildUnnamed1524() {
+  var o = <api.Group>[];
   o.add(buildGroup());
   o.add(buildGroup());
   return o;
 }
 
-checkUnnamed2699(core.List<api.Group> o) {
+void checkUnnamed1524(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
 }
 
 core.int buildCounterListGroupsResponse = 0;
-buildListGroupsResponse() {
-  var o = new api.ListGroupsResponse();
+api.ListGroupsResponse buildListGroupsResponse() {
+  var o = api.ListGroupsResponse();
   buildCounterListGroupsResponse++;
   if (buildCounterListGroupsResponse < 3) {
-    o.groups = buildUnnamed2699();
+    o.groups = buildUnnamed1524();
     o.nextPageToken = "foo";
   }
   buildCounterListGroupsResponse--;
   return o;
 }
 
-checkListGroupsResponse(api.ListGroupsResponse o) {
+void checkListGroupsResponse(api.ListGroupsResponse o) {
   buildCounterListGroupsResponse++;
   if (buildCounterListGroupsResponse < 3) {
-    checkUnnamed2699(o.groups);
+    checkUnnamed1524(o.groups);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListGroupsResponse--;
 }
 
-buildUnnamed2700() {
-  var o = new core.List<api.Membership>();
+core.List<api.Membership> buildUnnamed1525() {
+  var o = <api.Membership>[];
   o.add(buildMembership());
   o.add(buildMembership());
   return o;
 }
 
-checkUnnamed2700(core.List<api.Membership> o) {
+void checkUnnamed1525(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0]);
   checkMembership(o[1]);
 }
 
 core.int buildCounterListMembershipsResponse = 0;
-buildListMembershipsResponse() {
-  var o = new api.ListMembershipsResponse();
+api.ListMembershipsResponse buildListMembershipsResponse() {
+  var o = api.ListMembershipsResponse();
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    o.memberships = buildUnnamed2700();
+    o.memberships = buildUnnamed1525();
     o.nextPageToken = "foo";
   }
   buildCounterListMembershipsResponse--;
   return o;
 }
 
-checkListMembershipsResponse(api.ListMembershipsResponse o) {
+void checkListMembershipsResponse(api.ListMembershipsResponse o) {
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    checkUnnamed2700(o.memberships);
+    checkUnnamed1525(o.memberships);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListMembershipsResponse--;
 }
 
 core.int buildCounterLookupGroupNameResponse = 0;
-buildLookupGroupNameResponse() {
-  var o = new api.LookupGroupNameResponse();
+api.LookupGroupNameResponse buildLookupGroupNameResponse() {
+  var o = api.LookupGroupNameResponse();
   buildCounterLookupGroupNameResponse++;
   if (buildCounterLookupGroupNameResponse < 3) {
     o.name = "foo";
@@ -868,7 +910,7 @@ buildLookupGroupNameResponse() {
   return o;
 }
 
-checkLookupGroupNameResponse(api.LookupGroupNameResponse o) {
+void checkLookupGroupNameResponse(api.LookupGroupNameResponse o) {
   buildCounterLookupGroupNameResponse++;
   if (buildCounterLookupGroupNameResponse < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
@@ -877,8 +919,8 @@ checkLookupGroupNameResponse(api.LookupGroupNameResponse o) {
 }
 
 core.int buildCounterLookupMembershipNameResponse = 0;
-buildLookupMembershipNameResponse() {
-  var o = new api.LookupMembershipNameResponse();
+api.LookupMembershipNameResponse buildLookupMembershipNameResponse() {
+  var o = api.LookupMembershipNameResponse();
   buildCounterLookupMembershipNameResponse++;
   if (buildCounterLookupMembershipNameResponse < 3) {
     o.name = "foo";
@@ -887,7 +929,7 @@ buildLookupMembershipNameResponse() {
   return o;
 }
 
-checkLookupMembershipNameResponse(api.LookupMembershipNameResponse o) {
+void checkLookupMembershipNameResponse(api.LookupMembershipNameResponse o) {
   buildCounterLookupMembershipNameResponse++;
   if (buildCounterLookupMembershipNameResponse < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
@@ -895,28 +937,28 @@ checkLookupMembershipNameResponse(api.LookupMembershipNameResponse o) {
   buildCounterLookupMembershipNameResponse--;
 }
 
-buildUnnamed2701() {
-  var o = new core.List<api.MembershipRole>();
+core.List<api.MembershipRole> buildUnnamed1526() {
+  var o = <api.MembershipRole>[];
   o.add(buildMembershipRole());
   o.add(buildMembershipRole());
   return o;
 }
 
-checkUnnamed2701(core.List<api.MembershipRole> o) {
+void checkUnnamed1526(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipRole(o[0]);
   checkMembershipRole(o[1]);
 }
 
 core.int buildCounterMembership = 0;
-buildMembership() {
-  var o = new api.Membership();
+api.Membership buildMembership() {
+  var o = api.Membership();
   buildCounterMembership++;
   if (buildCounterMembership < 3) {
     o.createTime = "foo";
     o.name = "foo";
     o.preferredMemberKey = buildEntityKey();
-    o.roles = buildUnnamed2701();
+    o.roles = buildUnnamed1526();
     o.type = "foo";
     o.updateTime = "foo";
   }
@@ -924,13 +966,13 @@ buildMembership() {
   return o;
 }
 
-checkMembership(api.Membership o) {
+void checkMembership(api.Membership o) {
   buildCounterMembership++;
   if (buildCounterMembership < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     checkEntityKey(o.preferredMemberKey);
-    checkUnnamed2701(o.roles);
+    checkUnnamed1526(o.roles);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
@@ -938,8 +980,8 @@ checkMembership(api.Membership o) {
 }
 
 core.int buildCounterMembershipRole = 0;
-buildMembershipRole() {
-  var o = new api.MembershipRole();
+api.MembershipRole buildMembershipRole() {
+  var o = api.MembershipRole();
   buildCounterMembershipRole++;
   if (buildCounterMembershipRole < 3) {
     o.name = "foo";
@@ -948,7 +990,7 @@ buildMembershipRole() {
   return o;
 }
 
-checkMembershipRole(api.MembershipRole o) {
+void checkMembershipRole(api.MembershipRole o) {
   buildCounterMembershipRole++;
   if (buildCounterMembershipRole < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
@@ -956,56 +998,56 @@ checkMembershipRole(api.MembershipRole o) {
   buildCounterMembershipRole--;
 }
 
-buildUnnamed2702() {
-  var o = new core.List<api.MembershipRole>();
+core.List<api.MembershipRole> buildUnnamed1527() {
+  var o = <api.MembershipRole>[];
   o.add(buildMembershipRole());
   o.add(buildMembershipRole());
   return o;
 }
 
-checkUnnamed2702(core.List<api.MembershipRole> o) {
+void checkUnnamed1527(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipRole(o[0]);
   checkMembershipRole(o[1]);
 }
 
-buildUnnamed2703() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed1528() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2703(core.List<core.String> o) {
+void checkUnnamed1528(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterModifyMembershipRolesRequest = 0;
-buildModifyMembershipRolesRequest() {
-  var o = new api.ModifyMembershipRolesRequest();
+api.ModifyMembershipRolesRequest buildModifyMembershipRolesRequest() {
+  var o = api.ModifyMembershipRolesRequest();
   buildCounterModifyMembershipRolesRequest++;
   if (buildCounterModifyMembershipRolesRequest < 3) {
-    o.addRoles = buildUnnamed2702();
-    o.removeRoles = buildUnnamed2703();
+    o.addRoles = buildUnnamed1527();
+    o.removeRoles = buildUnnamed1528();
   }
   buildCounterModifyMembershipRolesRequest--;
   return o;
 }
 
-checkModifyMembershipRolesRequest(api.ModifyMembershipRolesRequest o) {
+void checkModifyMembershipRolesRequest(api.ModifyMembershipRolesRequest o) {
   buildCounterModifyMembershipRolesRequest++;
   if (buildCounterModifyMembershipRolesRequest < 3) {
-    checkUnnamed2702(o.addRoles);
-    checkUnnamed2703(o.removeRoles);
+    checkUnnamed1527(o.addRoles);
+    checkUnnamed1528(o.removeRoles);
   }
   buildCounterModifyMembershipRolesRequest--;
 }
 
 core.int buildCounterModifyMembershipRolesResponse = 0;
-buildModifyMembershipRolesResponse() {
-  var o = new api.ModifyMembershipRolesResponse();
+api.ModifyMembershipRolesResponse buildModifyMembershipRolesResponse() {
+  var o = api.ModifyMembershipRolesResponse();
   buildCounterModifyMembershipRolesResponse++;
   if (buildCounterModifyMembershipRolesResponse < 3) {
     o.membership = buildMembership();
@@ -1014,7 +1056,7 @@ buildModifyMembershipRolesResponse() {
   return o;
 }
 
-checkModifyMembershipRolesResponse(api.ModifyMembershipRolesResponse o) {
+void checkModifyMembershipRolesResponse(api.ModifyMembershipRolesResponse o) {
   buildCounterModifyMembershipRolesResponse++;
   if (buildCounterModifyMembershipRolesResponse < 3) {
     checkMembership(o.membership);
@@ -1022,8 +1064,8 @@ checkModifyMembershipRolesResponse(api.ModifyMembershipRolesResponse o) {
   buildCounterModifyMembershipRolesResponse--;
 }
 
-buildUnnamed2704() {
-  var o = new core.Map<core.String, core.Object>();
+core.Map<core.String, core.Object> buildUnnamed1529() {
+  var o = <core.String, core.Object>{};
   o["x"] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -1037,7 +1079,7 @@ buildUnnamed2704() {
   return o;
 }
 
-checkUnnamed2704(core.Map<core.String, core.Object> o) {
+void checkUnnamed1529(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1051,8 +1093,8 @@ checkUnnamed2704(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed2705() {
-  var o = new core.Map<core.String, core.Object>();
+core.Map<core.String, core.Object> buildUnnamed1530() {
+  var o = <core.String, core.Object>{};
   o["x"] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -1066,7 +1108,7 @@ buildUnnamed2705() {
   return o;
 }
 
-checkUnnamed2705(core.Map<core.String, core.Object> o) {
+void checkUnnamed1530(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1081,68 +1123,68 @@ checkUnnamed2705(core.Map<core.String, core.Object> o) {
 }
 
 core.int buildCounterOperation = 0;
-buildOperation() {
-  var o = new api.Operation();
+api.Operation buildOperation() {
+  var o = api.Operation();
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed2704();
+    o.metadata = buildUnnamed1529();
     o.name = "foo";
-    o.response = buildUnnamed2705();
+    o.response = buildUnnamed1530();
   }
   buildCounterOperation--;
   return o;
 }
 
-checkOperation(api.Operation o) {
+void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed2704(o.metadata);
+    checkUnnamed1529(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed2705(o.response);
+    checkUnnamed1530(o.response);
   }
   buildCounterOperation--;
 }
 
-buildUnnamed2706() {
-  var o = new core.List<api.Group>();
+core.List<api.Group> buildUnnamed1531() {
+  var o = <api.Group>[];
   o.add(buildGroup());
   o.add(buildGroup());
   return o;
 }
 
-checkUnnamed2706(core.List<api.Group> o) {
+void checkUnnamed1531(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
 }
 
 core.int buildCounterSearchGroupsResponse = 0;
-buildSearchGroupsResponse() {
-  var o = new api.SearchGroupsResponse();
+api.SearchGroupsResponse buildSearchGroupsResponse() {
+  var o = api.SearchGroupsResponse();
   buildCounterSearchGroupsResponse++;
   if (buildCounterSearchGroupsResponse < 3) {
-    o.groups = buildUnnamed2706();
+    o.groups = buildUnnamed1531();
     o.nextPageToken = "foo";
   }
   buildCounterSearchGroupsResponse--;
   return o;
 }
 
-checkSearchGroupsResponse(api.SearchGroupsResponse o) {
+void checkSearchGroupsResponse(api.SearchGroupsResponse o) {
   buildCounterSearchGroupsResponse++;
   if (buildCounterSearchGroupsResponse < 3) {
-    checkUnnamed2706(o.groups);
+    checkUnnamed1531(o.groups);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterSearchGroupsResponse--;
 }
 
-buildUnnamed2707() {
-  var o = new core.Map<core.String, core.Object>();
+core.Map<core.String, core.Object> buildUnnamed1532() {
+  var o = <core.String, core.Object>{};
   o["x"] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -1156,7 +1198,7 @@ buildUnnamed2707() {
   return o;
 }
 
-checkUnnamed2707(core.Map<core.String, core.Object> o) {
+void checkUnnamed1532(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1170,47 +1212,47 @@ checkUnnamed2707(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6["string"], unittest.equals('foo'));
 }
 
-buildUnnamed2708() {
-  var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed2707());
-  o.add(buildUnnamed2707());
+core.List<core.Map<core.String, core.Object>> buildUnnamed1533() {
+  var o = <core.Map<core.String, core.Object>>[];
+  o.add(buildUnnamed1532());
+  o.add(buildUnnamed1532());
   return o;
 }
 
-checkUnnamed2708(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed1533(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2707(o[0]);
-  checkUnnamed2707(o[1]);
+  checkUnnamed1532(o[0]);
+  checkUnnamed1532(o[1]);
 }
 
 core.int buildCounterStatus = 0;
-buildStatus() {
-  var o = new api.Status();
+api.Status buildStatus() {
+  var o = api.Status();
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed2708();
+    o.details = buildUnnamed1533();
     o.message = "foo";
   }
   buildCounterStatus--;
   return o;
 }
 
-checkStatus(api.Status o) {
+void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed2708(o.details);
+    checkUnnamed1533(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
 }
 
-main() {
+void main() {
   unittest.group("obj-schema-EntityKey", () {
     unittest.test("to-json--from-json", () {
       var o = buildEntityKey();
-      var od = new api.EntityKey.fromJson(o.toJson());
+      var od = api.EntityKey.fromJson(o.toJson());
       checkEntityKey(od);
     });
   });
@@ -1219,9 +1261,8 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1AndroidAttributes();
-      var od =
-          new api.GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
-              o.toJson());
+      var od = api.GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
+          o.toJson());
       checkGoogleAppsCloudidentityDevicesV1AndroidAttributes(od);
     });
   });
@@ -1231,9 +1272,9 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest();
-      var od = new api
-              .GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest.fromJson(
+              o.toJson());
       checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest(od);
     });
   });
@@ -1243,9 +1284,8 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse();
-      var od = new api
-              .GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse.fromJson(
-          o.toJson());
+      var od = api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
+          .fromJson(o.toJson());
       checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse(od);
     });
   });
@@ -1254,9 +1294,9 @@ main() {
       "obj-schema-GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest();
-      var od = new api
-              .GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
+              o.toJson());
       checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest(od);
     });
   });
@@ -1265,9 +1305,9 @@ main() {
       "obj-schema-GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse();
-      var od = new api
-              .GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse.fromJson(
+              o.toJson());
       checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse(od);
     });
   });
@@ -1276,9 +1316,9 @@ main() {
       "obj-schema-GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest();
-      var od = new api
-              .GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest.fromJson(
+              o.toJson());
       checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest(od);
     });
   });
@@ -1288,9 +1328,9 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse();
-      var od = new api
-              .GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse.fromJson(
+              o.toJson());
       checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse(od);
     });
   });
@@ -1301,9 +1341,8 @@ main() {
     unittest.test("to-json--from-json", () {
       var o =
           buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest();
-      var od = new api
-              .GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest.fromJson(
-          o.toJson());
+      var od = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
+          .fromJson(o.toJson());
       checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest(od);
     });
   });
@@ -1314,9 +1353,8 @@ main() {
     unittest.test("to-json--from-json", () {
       var o =
           buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse();
-      var od = new api
-              .GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse.fromJson(
-          o.toJson());
+      var od = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse
+          .fromJson(o.toJson());
       checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse(od);
     });
   });
@@ -1324,8 +1362,8 @@ main() {
   unittest.group("obj-schema-GoogleAppsCloudidentityDevicesV1ClientState", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1ClientState();
-      var od = new api.GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleAppsCloudidentityDevicesV1ClientState.fromJson(o.toJson());
       checkGoogleAppsCloudidentityDevicesV1ClientState(od);
     });
   });
@@ -1335,7 +1373,7 @@ main() {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue();
       var od =
-          new api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
+          api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
               o.toJson());
       checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(od);
     });
@@ -1344,8 +1382,7 @@ main() {
   unittest.group("obj-schema-GoogleAppsCloudidentityDevicesV1Device", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1Device();
-      var od =
-          new api.GoogleAppsCloudidentityDevicesV1Device.fromJson(o.toJson());
+      var od = api.GoogleAppsCloudidentityDevicesV1Device.fromJson(o.toJson());
       checkGoogleAppsCloudidentityDevicesV1Device(od);
     });
   });
@@ -1353,8 +1390,8 @@ main() {
   unittest.group("obj-schema-GoogleAppsCloudidentityDevicesV1DeviceUser", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1DeviceUser();
-      var od = new api.GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(o.toJson());
       checkGoogleAppsCloudidentityDevicesV1DeviceUser(od);
     });
   });
@@ -1364,9 +1401,9 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1ListClientStatesResponse();
-      var od = new api
-              .GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
+              o.toJson());
       checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(od);
     });
   });
@@ -1375,9 +1412,9 @@ main() {
       "obj-schema-GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse();
-      var od = new api
-              .GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
+              o.toJson());
       checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(od);
     });
   });
@@ -1386,9 +1423,8 @@ main() {
       "obj-schema-GoogleAppsCloudidentityDevicesV1ListDevicesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1ListDevicesResponse();
-      var od =
-          new api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(
-              o.toJson());
+      var od = api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(
+          o.toJson());
       checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(od);
     });
   });
@@ -1399,9 +1435,8 @@ main() {
     unittest.test("to-json--from-json", () {
       var o =
           buildGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse();
-      var od = new api
-              .GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse.fromJson(
-          o.toJson());
+      var od = api.GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
+          .fromJson(o.toJson());
       checkGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse(od);
     });
   });
@@ -1410,9 +1445,8 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceRequest();
-      var od =
-          new api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(
-              o.toJson());
+      var od = api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(
+          o.toJson());
       checkGoogleAppsCloudidentityDevicesV1WipeDeviceRequest(od);
     });
   });
@@ -1421,9 +1455,8 @@ main() {
       "obj-schema-GoogleAppsCloudidentityDevicesV1WipeDeviceResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceResponse();
-      var od =
-          new api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse.fromJson(
-              o.toJson());
+      var od = api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse.fromJson(
+          o.toJson());
       checkGoogleAppsCloudidentityDevicesV1WipeDeviceResponse(od);
     });
   });
@@ -1432,9 +1465,9 @@ main() {
       "obj-schema-GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest();
-      var od = new api
-              .GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(
+              o.toJson());
       checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest(od);
     });
   });
@@ -1443,9 +1476,9 @@ main() {
       "obj-schema-GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse();
-      var od = new api
-              .GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse.fromJson(
+              o.toJson());
       checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse(od);
     });
   });
@@ -1453,7 +1486,7 @@ main() {
   unittest.group("obj-schema-Group", () {
     unittest.test("to-json--from-json", () {
       var o = buildGroup();
-      var od = new api.Group.fromJson(o.toJson());
+      var od = api.Group.fromJson(o.toJson());
       checkGroup(od);
     });
   });
@@ -1461,7 +1494,7 @@ main() {
   unittest.group("obj-schema-ListGroupsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListGroupsResponse();
-      var od = new api.ListGroupsResponse.fromJson(o.toJson());
+      var od = api.ListGroupsResponse.fromJson(o.toJson());
       checkListGroupsResponse(od);
     });
   });
@@ -1469,7 +1502,7 @@ main() {
   unittest.group("obj-schema-ListMembershipsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListMembershipsResponse();
-      var od = new api.ListMembershipsResponse.fromJson(o.toJson());
+      var od = api.ListMembershipsResponse.fromJson(o.toJson());
       checkListMembershipsResponse(od);
     });
   });
@@ -1477,7 +1510,7 @@ main() {
   unittest.group("obj-schema-LookupGroupNameResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildLookupGroupNameResponse();
-      var od = new api.LookupGroupNameResponse.fromJson(o.toJson());
+      var od = api.LookupGroupNameResponse.fromJson(o.toJson());
       checkLookupGroupNameResponse(od);
     });
   });
@@ -1485,7 +1518,7 @@ main() {
   unittest.group("obj-schema-LookupMembershipNameResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildLookupMembershipNameResponse();
-      var od = new api.LookupMembershipNameResponse.fromJson(o.toJson());
+      var od = api.LookupMembershipNameResponse.fromJson(o.toJson());
       checkLookupMembershipNameResponse(od);
     });
   });
@@ -1493,7 +1526,7 @@ main() {
   unittest.group("obj-schema-Membership", () {
     unittest.test("to-json--from-json", () {
       var o = buildMembership();
-      var od = new api.Membership.fromJson(o.toJson());
+      var od = api.Membership.fromJson(o.toJson());
       checkMembership(od);
     });
   });
@@ -1501,7 +1534,7 @@ main() {
   unittest.group("obj-schema-MembershipRole", () {
     unittest.test("to-json--from-json", () {
       var o = buildMembershipRole();
-      var od = new api.MembershipRole.fromJson(o.toJson());
+      var od = api.MembershipRole.fromJson(o.toJson());
       checkMembershipRole(od);
     });
   });
@@ -1509,7 +1542,7 @@ main() {
   unittest.group("obj-schema-ModifyMembershipRolesRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildModifyMembershipRolesRequest();
-      var od = new api.ModifyMembershipRolesRequest.fromJson(o.toJson());
+      var od = api.ModifyMembershipRolesRequest.fromJson(o.toJson());
       checkModifyMembershipRolesRequest(od);
     });
   });
@@ -1517,7 +1550,7 @@ main() {
   unittest.group("obj-schema-ModifyMembershipRolesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildModifyMembershipRolesResponse();
-      var od = new api.ModifyMembershipRolesResponse.fromJson(o.toJson());
+      var od = api.ModifyMembershipRolesResponse.fromJson(o.toJson());
       checkModifyMembershipRolesResponse(od);
     });
   });
@@ -1525,7 +1558,7 @@ main() {
   unittest.group("obj-schema-Operation", () {
     unittest.test("to-json--from-json", () {
       var o = buildOperation();
-      var od = new api.Operation.fromJson(o.toJson());
+      var od = api.Operation.fromJson(o.toJson());
       checkOperation(od);
     });
   });
@@ -1533,7 +1566,7 @@ main() {
   unittest.group("obj-schema-SearchGroupsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildSearchGroupsResponse();
-      var od = new api.SearchGroupsResponse.fromJson(o.toJson());
+      var od = api.SearchGroupsResponse.fromJson(o.toJson());
       checkSearchGroupsResponse(od);
     });
   });
@@ -1541,29 +1574,28 @@ main() {
   unittest.group("obj-schema-Status", () {
     unittest.test("to-json--from-json", () {
       var o = buildStatus();
-      var od = new api.Status.fromJson(o.toJson());
+      var od = api.Status.fromJson(o.toJson());
       checkStatus(od);
     });
   });
 
   unittest.group("resource-DevicesResourceApi", () {
     unittest.test("method--cancelWipe", () {
-      var mock = new HttpServerMock();
-      api.DevicesResourceApi res = new api.CloudidentityApi(mock).devices;
+      var mock = HttpServerMock();
+      api.DevicesResourceApi res = api.CloudidentityApi(mock).devices;
       var arg_request =
           buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest();
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api
-                .GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest.fromJson(
-            json);
+        var obj = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest
+            .fromJson(json);
         checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1575,19 +1607,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1596,7 +1624,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .cancelWipe(arg_request, arg_name, $fields: arg_$fields)
@@ -1606,19 +1634,19 @@ main() {
     });
 
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
-      api.DevicesResourceApi res = new api.CloudidentityApi(mock).devices;
+      var mock = HttpServerMock();
+      api.DevicesResourceApi res = api.CloudidentityApi(mock).devices;
       var arg_request = buildGoogleAppsCloudidentityDevicesV1Device();
       var arg_customer = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GoogleAppsCloudidentityDevicesV1Device.fromJson(json);
+        var obj = api.GoogleAppsCloudidentityDevicesV1Device.fromJson(json);
         checkGoogleAppsCloudidentityDevicesV1Device(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1629,19 +1657,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -1652,7 +1676,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, customer: arg_customer, $fields: arg_$fields)
@@ -1662,16 +1686,16 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
-      api.DevicesResourceApi res = new api.CloudidentityApi(mock).devices;
+      var mock = HttpServerMock();
+      api.DevicesResourceApi res = api.CloudidentityApi(mock).devices;
       var arg_name = "foo";
       var arg_customer = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1683,19 +1707,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -1706,7 +1726,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, customer: arg_customer, $fields: arg_$fields)
@@ -1716,16 +1736,16 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
-      api.DevicesResourceApi res = new api.CloudidentityApi(mock).devices;
+      var mock = HttpServerMock();
+      api.DevicesResourceApi res = api.CloudidentityApi(mock).devices;
       var arg_name = "foo";
       var arg_customer = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1737,19 +1757,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -1761,7 +1777,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleAppsCloudidentityDevicesV1Device());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, customer: arg_customer, $fields: arg_$fields)
@@ -1771,8 +1787,8 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
-      api.DevicesResourceApi res = new api.CloudidentityApi(mock).devices;
+      var mock = HttpServerMock();
+      api.DevicesResourceApi res = api.CloudidentityApi(mock).devices;
       var arg_pageSize = 42;
       var arg_filter = "foo";
       var arg_orderBy = "foo";
@@ -1783,8 +1799,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1795,19 +1811,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
@@ -1827,7 +1839,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleAppsCloudidentityDevicesV1ListDevicesResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(
@@ -1844,22 +1856,22 @@ main() {
     });
 
     unittest.test("method--wipe", () {
-      var mock = new HttpServerMock();
-      api.DevicesResourceApi res = new api.CloudidentityApi(mock).devices;
+      var mock = HttpServerMock();
+      api.DevicesResourceApi res = api.CloudidentityApi(mock).devices;
       var arg_request =
           buildGoogleAppsCloudidentityDevicesV1WipeDeviceRequest();
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
-            new api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(
+            api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(
                 json);
         checkGoogleAppsCloudidentityDevicesV1WipeDeviceRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1871,19 +1883,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1892,7 +1900,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .wipe(arg_request, arg_name, $fields: arg_$fields)
@@ -1904,23 +1912,22 @@ main() {
 
   unittest.group("resource-DevicesDeviceUsersResourceApi", () {
     unittest.test("method--approve", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.DevicesDeviceUsersResourceApi res =
-          new api.CloudidentityApi(mock).devices.deviceUsers;
+          api.CloudidentityApi(mock).devices.deviceUsers;
       var arg_request =
           buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest();
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api
-                .GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest.fromJson(
-            json);
+        var obj = api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest
+            .fromJson(json);
         checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1932,19 +1939,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1953,7 +1956,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .approve(arg_request, arg_name, $fields: arg_$fields)
@@ -1963,23 +1966,23 @@ main() {
     });
 
     unittest.test("method--block", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.DevicesDeviceUsersResourceApi res =
-          new api.CloudidentityApi(mock).devices.deviceUsers;
+          api.CloudidentityApi(mock).devices.deviceUsers;
       var arg_request =
           buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest();
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api
-                .GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
-            json);
+        var obj =
+            api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
+                json);
         checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1991,19 +1994,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2012,7 +2011,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .block(arg_request, arg_name, $fields: arg_$fields)
@@ -2022,23 +2021,23 @@ main() {
     });
 
     unittest.test("method--cancelWipe", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.DevicesDeviceUsersResourceApi res =
-          new api.CloudidentityApi(mock).devices.deviceUsers;
+          api.CloudidentityApi(mock).devices.deviceUsers;
       var arg_request =
           buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest();
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api
-                .GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest.fromJson(
-            json);
+        var obj =
+            api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
+                .fromJson(json);
         checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2050,19 +2049,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2071,7 +2066,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .cancelWipe(arg_request, arg_name, $fields: arg_$fields)
@@ -2081,17 +2076,17 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.DevicesDeviceUsersResourceApi res =
-          new api.CloudidentityApi(mock).devices.deviceUsers;
+          api.CloudidentityApi(mock).devices.deviceUsers;
       var arg_name = "foo";
       var arg_customer = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2103,19 +2098,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -2126,7 +2117,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, customer: arg_customer, $fields: arg_$fields)
@@ -2136,17 +2127,17 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.DevicesDeviceUsersResourceApi res =
-          new api.CloudidentityApi(mock).devices.deviceUsers;
+          api.CloudidentityApi(mock).devices.deviceUsers;
       var arg_name = "foo";
       var arg_customer = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2158,19 +2149,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -2182,7 +2169,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleAppsCloudidentityDevicesV1DeviceUser());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, customer: arg_customer, $fields: arg_$fields)
@@ -2192,9 +2179,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.DevicesDeviceUsersResourceApi res =
-          new api.CloudidentityApi(mock).devices.deviceUsers;
+          api.CloudidentityApi(mock).devices.deviceUsers;
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
@@ -2205,8 +2192,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2218,19 +2205,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -2249,7 +2232,7 @@ main() {
         };
         var resp = convert.json.encode(
             buildGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_parent,
@@ -2265,9 +2248,9 @@ main() {
     });
 
     unittest.test("method--lookup", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.DevicesDeviceUsersResourceApi res =
-          new api.CloudidentityApi(mock).devices.deviceUsers;
+          api.CloudidentityApi(mock).devices.deviceUsers;
       var arg_parent = "foo";
       var arg_rawResourceId = "foo";
       var arg_userId = "foo";
@@ -2278,8 +2261,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2291,19 +2274,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["rawResourceId"].first,
@@ -2322,7 +2301,7 @@ main() {
         };
         var resp = convert.json.encode(
             buildGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .lookup(arg_parent,
@@ -2339,23 +2318,23 @@ main() {
     });
 
     unittest.test("method--wipe", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.DevicesDeviceUsersResourceApi res =
-          new api.CloudidentityApi(mock).devices.deviceUsers;
+          api.CloudidentityApi(mock).devices.deviceUsers;
       var arg_request =
           buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest();
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api
-                .GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(
-            json);
+        var obj =
+            api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(
+                json);
         checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2367,19 +2346,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2388,7 +2363,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .wipe(arg_request, arg_name, $fields: arg_$fields)
@@ -2400,17 +2375,17 @@ main() {
 
   unittest.group("resource-DevicesDeviceUsersClientStatesResourceApi", () {
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.DevicesDeviceUsersClientStatesResourceApi res =
-          new api.CloudidentityApi(mock).devices.deviceUsers.clientStates;
+          api.CloudidentityApi(mock).devices.deviceUsers.clientStates;
       var arg_name = "foo";
       var arg_customer = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2422,19 +2397,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -2446,7 +2417,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleAppsCloudidentityDevicesV1ClientState());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, customer: arg_customer, $fields: arg_$fields)
@@ -2456,9 +2427,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.DevicesDeviceUsersClientStatesResourceApi res =
-          new api.CloudidentityApi(mock).devices.deviceUsers.clientStates;
+          api.CloudidentityApi(mock).devices.deviceUsers.clientStates;
       var arg_parent = "foo";
       var arg_orderBy = "foo";
       var arg_filter = "foo";
@@ -2468,8 +2439,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2481,19 +2452,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -2510,7 +2477,7 @@ main() {
         };
         var resp = convert.json.encode(
             buildGoogleAppsCloudidentityDevicesV1ListClientStatesResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_parent,
@@ -2525,9 +2492,9 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.DevicesDeviceUsersClientStatesResourceApi res =
-          new api.CloudidentityApi(mock).devices.deviceUsers.clientStates;
+          api.CloudidentityApi(mock).devices.deviceUsers.clientStates;
       var arg_request = buildGoogleAppsCloudidentityDevicesV1ClientState();
       var arg_name = "foo";
       var arg_updateMask = "foo";
@@ -2535,13 +2502,13 @@ main() {
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
-            new api.GoogleAppsCloudidentityDevicesV1ClientState.fromJson(json);
+            api.GoogleAppsCloudidentityDevicesV1ClientState.fromJson(json);
         checkGoogleAppsCloudidentityDevicesV1ClientState(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2553,19 +2520,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -2578,7 +2541,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_name,
@@ -2593,19 +2556,19 @@ main() {
 
   unittest.group("resource-GroupsResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
-      api.GroupsResourceApi res = new api.CloudidentityApi(mock).groups;
+      var mock = HttpServerMock();
+      api.GroupsResourceApi res = api.CloudidentityApi(mock).groups;
       var arg_request = buildGroup();
       var arg_initialGroupConfig = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Group.fromJson(json);
+        var obj = api.Group.fromJson(json);
         checkGroup(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2616,19 +2579,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["initialGroupConfig"].first,
@@ -2639,7 +2598,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request,
@@ -2650,15 +2609,15 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
-      api.GroupsResourceApi res = new api.CloudidentityApi(mock).groups;
+      var mock = HttpServerMock();
+      api.GroupsResourceApi res = api.CloudidentityApi(mock).groups;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2670,19 +2629,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2691,7 +2646,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
@@ -2701,15 +2656,15 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
-      api.GroupsResourceApi res = new api.CloudidentityApi(mock).groups;
+      var mock = HttpServerMock();
+      api.GroupsResourceApi res = api.CloudidentityApi(mock).groups;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2721,19 +2676,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2742,7 +2693,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildGroup());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
@@ -2752,8 +2703,8 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
-      api.GroupsResourceApi res = new api.CloudidentityApi(mock).groups;
+      var mock = HttpServerMock();
+      api.GroupsResourceApi res = api.CloudidentityApi(mock).groups;
       var arg_pageSize = 42;
       var arg_view = "foo";
       var arg_parent = "foo";
@@ -2762,8 +2713,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2774,19 +2725,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
@@ -2801,7 +2748,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListGroupsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(
@@ -2816,16 +2763,16 @@ main() {
     });
 
     unittest.test("method--lookup", () {
-      var mock = new HttpServerMock();
-      api.GroupsResourceApi res = new api.CloudidentityApi(mock).groups;
+      var mock = HttpServerMock();
+      api.GroupsResourceApi res = api.CloudidentityApi(mock).groups;
       var arg_groupKey_namespace = "foo";
       var arg_groupKey_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2836,19 +2783,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["groupKey.namespace"].first,
@@ -2861,7 +2804,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildLookupGroupNameResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .lookup(
@@ -2874,20 +2817,20 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
-      api.GroupsResourceApi res = new api.CloudidentityApi(mock).groups;
+      var mock = HttpServerMock();
+      api.GroupsResourceApi res = api.CloudidentityApi(mock).groups;
       var arg_request = buildGroup();
       var arg_name = "foo";
       var arg_updateMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Group.fromJson(json);
+        var obj = api.Group.fromJson(json);
         checkGroup(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2899,19 +2842,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -2922,7 +2861,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_name,
@@ -2933,8 +2872,8 @@ main() {
     });
 
     unittest.test("method--search", () {
-      var mock = new HttpServerMock();
-      api.GroupsResourceApi res = new api.CloudidentityApi(mock).groups;
+      var mock = HttpServerMock();
+      api.GroupsResourceApi res = api.CloudidentityApi(mock).groups;
       var arg_view = "foo";
       var arg_query = "foo";
       var arg_pageToken = "foo";
@@ -2943,8 +2882,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2955,19 +2894,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
@@ -2982,7 +2917,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildSearchGroupsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .search(
@@ -2999,20 +2934,20 @@ main() {
 
   unittest.group("resource-GroupsMembershipsResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.GroupsMembershipsResourceApi res =
-          new api.CloudidentityApi(mock).groups.memberships;
+          api.CloudidentityApi(mock).groups.memberships;
       var arg_request = buildMembership();
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Membership.fromJson(json);
+        var obj = api.Membership.fromJson(json);
         checkMembership(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3024,19 +2959,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3045,7 +2976,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
@@ -3055,16 +2986,16 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.GroupsMembershipsResourceApi res =
-          new api.CloudidentityApi(mock).groups.memberships;
+          api.CloudidentityApi(mock).groups.memberships;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3076,19 +3007,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3097,7 +3024,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
@@ -3107,16 +3034,16 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.GroupsMembershipsResourceApi res =
-          new api.CloudidentityApi(mock).groups.memberships;
+          api.CloudidentityApi(mock).groups.memberships;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3128,19 +3055,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3149,7 +3072,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildMembership());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
@@ -3159,9 +3082,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.GroupsMembershipsResourceApi res =
-          new api.CloudidentityApi(mock).groups.memberships;
+          api.CloudidentityApi(mock).groups.memberships;
       var arg_parent = "foo";
       var arg_pageSize = 42;
       var arg_view = "foo";
@@ -3170,8 +3093,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3183,19 +3106,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
@@ -3209,7 +3128,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListMembershipsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_parent,
@@ -3223,9 +3142,9 @@ main() {
     });
 
     unittest.test("method--lookup", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.GroupsMembershipsResourceApi res =
-          new api.CloudidentityApi(mock).groups.memberships;
+          api.CloudidentityApi(mock).groups.memberships;
       var arg_parent = "foo";
       var arg_memberKey_id = "foo";
       var arg_memberKey_namespace = "foo";
@@ -3233,8 +3152,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3246,19 +3165,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -3271,7 +3186,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildLookupMembershipNameResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .lookup(arg_parent,
@@ -3284,20 +3199,20 @@ main() {
     });
 
     unittest.test("method--modifyMembershipRoles", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.GroupsMembershipsResourceApi res =
-          new api.CloudidentityApi(mock).groups.memberships;
+          api.CloudidentityApi(mock).groups.memberships;
       var arg_request = buildModifyMembershipRolesRequest();
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.ModifyMembershipRolesRequest.fromJson(json);
+        var obj = api.ModifyMembershipRolesRequest.fromJson(json);
         checkModifyMembershipRolesRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3309,19 +3224,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3330,7 +3241,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildModifyMembershipRolesResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .modifyMembershipRoles(arg_request, arg_name, $fields: arg_$fields)

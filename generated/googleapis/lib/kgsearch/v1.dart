@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.kgsearch.v1;
 
@@ -19,13 +37,13 @@ const core.String USER_AGENT = 'dart-api-client kgsearch/v1';
 class KgsearchApi {
   final commons.ApiRequester _requester;
 
-  EntitiesResourceApi get entities => new EntitiesResourceApi(_requester);
+  EntitiesResourceApi get entities => EntitiesResourceApi(_requester);
 
   KgsearchApi(http.Client client,
       {core.String rootUrl = "https://kgsearch.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class EntitiesResourceApi {
@@ -68,21 +86,22 @@ class EntitiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SearchResponse> search(
-      {core.List<core.String> ids,
-      core.List<core.String> types,
-      core.String query,
-      core.bool prefix,
-      core.bool indent,
-      core.int limit,
-      core.List<core.String> languages,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SearchResponse> search({
+    core.List<core.String> ids,
+    core.List<core.String> types,
+    core.String query,
+    core.bool prefix,
+    core.bool indent,
+    core.int limit,
+    core.List<core.String> languages,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (ids != null) {
       _queryParams["ids"] = ids;
@@ -111,13 +130,16 @@ class EntitiesResourceApi {
 
     _url = 'v1/entities:search';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SearchResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SearchResponse.fromJson(data));
   }
 }
 
@@ -160,7 +182,7 @@ class SearchResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (P_context != null) {
       _json["@context"] = P_context;
     }

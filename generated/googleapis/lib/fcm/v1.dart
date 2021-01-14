@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.fcm.v1;
 
@@ -25,20 +43,20 @@ class FcmApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   FcmApi(http.Client client,
       {core.String rootUrl = "https://fcm.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsMessagesResourceApi get messages =>
-      new ProjectsMessagesResourceApi(_requester);
+      ProjectsMessagesResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -73,20 +91,23 @@ class ProjectsMessagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Message> send(SendMessageRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Message> send(
+    SendMessageRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -96,13 +117,16 @@ class ProjectsMessagesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/messages:send';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Message.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Message.fromJson(data));
   }
 }
 
@@ -178,10 +202,10 @@ class AndroidConfig {
       directBootOk = _json["directBootOk"];
     }
     if (_json.containsKey("fcmOptions")) {
-      fcmOptions = new AndroidFcmOptions.fromJson(_json["fcmOptions"]);
+      fcmOptions = AndroidFcmOptions.fromJson(_json["fcmOptions"]);
     }
     if (_json.containsKey("notification")) {
-      notification = new AndroidNotification.fromJson(_json["notification"]);
+      notification = AndroidNotification.fromJson(_json["notification"]);
     }
     if (_json.containsKey("priority")) {
       priority = _json["priority"];
@@ -196,7 +220,7 @@ class AndroidConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (collapseKey != null) {
       _json["collapseKey"] = collapseKey;
     }
@@ -207,10 +231,10 @@ class AndroidConfig {
       _json["directBootOk"] = directBootOk;
     }
     if (fcmOptions != null) {
-      _json["fcmOptions"] = (fcmOptions).toJson();
+      _json["fcmOptions"] = fcmOptions.toJson();
     }
     if (notification != null) {
-      _json["notification"] = (notification).toJson();
+      _json["notification"] = notification.toJson();
     }
     if (priority != null) {
       _json["priority"] = priority;
@@ -240,7 +264,7 @@ class AndroidFcmOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (analyticsLabel != null) {
       _json["analyticsLabel"] = analyticsLabel;
     }
@@ -470,7 +494,7 @@ class AndroidNotification {
       image = _json["image"];
     }
     if (_json.containsKey("lightSettings")) {
-      lightSettings = new LightSettings.fromJson(_json["lightSettings"]);
+      lightSettings = LightSettings.fromJson(_json["lightSettings"]);
     }
     if (_json.containsKey("localOnly")) {
       localOnly = _json["localOnly"];
@@ -513,7 +537,7 @@ class AndroidNotification {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (body != null) {
       _json["body"] = body;
     }
@@ -551,7 +575,7 @@ class AndroidNotification {
       _json["image"] = image;
     }
     if (lightSettings != null) {
-      _json["lightSettings"] = (lightSettings).toJson();
+      _json["lightSettings"] = lightSettings.toJson();
     }
     if (localOnly != null) {
       _json["localOnly"] = localOnly;
@@ -618,7 +642,7 @@ class ApnsConfig {
 
   ApnsConfig.fromJson(core.Map _json) {
     if (_json.containsKey("fcmOptions")) {
-      fcmOptions = new ApnsFcmOptions.fromJson(_json["fcmOptions"]);
+      fcmOptions = ApnsFcmOptions.fromJson(_json["fcmOptions"]);
     }
     if (_json.containsKey("headers")) {
       headers = (_json["headers"] as core.Map).cast<core.String, core.String>();
@@ -630,9 +654,9 @@ class ApnsConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fcmOptions != null) {
-      _json["fcmOptions"] = (fcmOptions).toJson();
+      _json["fcmOptions"] = fcmOptions.toJson();
     }
     if (headers != null) {
       _json["headers"] = headers;
@@ -667,7 +691,7 @@ class ApnsFcmOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (analyticsLabel != null) {
       _json["analyticsLabel"] = analyticsLabel;
     }
@@ -766,7 +790,7 @@ class Color {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alpha != null) {
       _json["alpha"] = alpha;
     }
@@ -798,7 +822,7 @@ class FcmOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (analyticsLabel != null) {
       _json["analyticsLabel"] = analyticsLabel;
     }
@@ -826,7 +850,7 @@ class LightSettings {
 
   LightSettings.fromJson(core.Map _json) {
     if (_json.containsKey("color")) {
-      color = new Color.fromJson(_json["color"]);
+      color = Color.fromJson(_json["color"]);
     }
     if (_json.containsKey("lightOffDuration")) {
       lightOffDuration = _json["lightOffDuration"];
@@ -838,9 +862,9 @@ class LightSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (color != null) {
-      _json["color"] = (color).toJson();
+      _json["color"] = color.toJson();
     }
     if (lightOffDuration != null) {
       _json["lightOffDuration"] = lightOffDuration;
@@ -896,10 +920,10 @@ class Message {
 
   Message.fromJson(core.Map _json) {
     if (_json.containsKey("android")) {
-      android = new AndroidConfig.fromJson(_json["android"]);
+      android = AndroidConfig.fromJson(_json["android"]);
     }
     if (_json.containsKey("apns")) {
-      apns = new ApnsConfig.fromJson(_json["apns"]);
+      apns = ApnsConfig.fromJson(_json["apns"]);
     }
     if (_json.containsKey("condition")) {
       condition = _json["condition"];
@@ -908,13 +932,13 @@ class Message {
       data = (_json["data"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("fcmOptions")) {
-      fcmOptions = new FcmOptions.fromJson(_json["fcmOptions"]);
+      fcmOptions = FcmOptions.fromJson(_json["fcmOptions"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("notification")) {
-      notification = new Notification.fromJson(_json["notification"]);
+      notification = Notification.fromJson(_json["notification"]);
     }
     if (_json.containsKey("token")) {
       token = _json["token"];
@@ -923,18 +947,18 @@ class Message {
       topic = _json["topic"];
     }
     if (_json.containsKey("webpush")) {
-      webpush = new WebpushConfig.fromJson(_json["webpush"]);
+      webpush = WebpushConfig.fromJson(_json["webpush"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (android != null) {
-      _json["android"] = (android).toJson();
+      _json["android"] = android.toJson();
     }
     if (apns != null) {
-      _json["apns"] = (apns).toJson();
+      _json["apns"] = apns.toJson();
     }
     if (condition != null) {
       _json["condition"] = condition;
@@ -943,13 +967,13 @@ class Message {
       _json["data"] = data;
     }
     if (fcmOptions != null) {
-      _json["fcmOptions"] = (fcmOptions).toJson();
+      _json["fcmOptions"] = fcmOptions.toJson();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (notification != null) {
-      _json["notification"] = (notification).toJson();
+      _json["notification"] = notification.toJson();
     }
     if (token != null) {
       _json["token"] = token;
@@ -958,7 +982,7 @@ class Message {
       _json["topic"] = topic;
     }
     if (webpush != null) {
-      _json["webpush"] = (webpush).toJson();
+      _json["webpush"] = webpush.toJson();
     }
     return _json;
   }
@@ -996,7 +1020,7 @@ class Notification {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (body != null) {
       _json["body"] = body;
     }
@@ -1022,7 +1046,7 @@ class SendMessageRequest {
 
   SendMessageRequest.fromJson(core.Map _json) {
     if (_json.containsKey("message")) {
-      message = new Message.fromJson(_json["message"]);
+      message = Message.fromJson(_json["message"]);
     }
     if (_json.containsKey("validateOnly")) {
       validateOnly = _json["validateOnly"];
@@ -1031,9 +1055,9 @@ class SendMessageRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (message != null) {
-      _json["message"] = (message).toJson();
+      _json["message"] = message.toJson();
     }
     if (validateOnly != null) {
       _json["validateOnly"] = validateOnly;
@@ -1074,7 +1098,7 @@ class WebpushConfig {
       data = (_json["data"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("fcmOptions")) {
-      fcmOptions = new WebpushFcmOptions.fromJson(_json["fcmOptions"]);
+      fcmOptions = WebpushFcmOptions.fromJson(_json["fcmOptions"]);
     }
     if (_json.containsKey("headers")) {
       headers = (_json["headers"] as core.Map).cast<core.String, core.String>();
@@ -1087,12 +1111,12 @@ class WebpushConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (data != null) {
       _json["data"] = data;
     }
     if (fcmOptions != null) {
-      _json["fcmOptions"] = (fcmOptions).toJson();
+      _json["fcmOptions"] = fcmOptions.toJson();
     }
     if (headers != null) {
       _json["headers"] = headers;
@@ -1126,7 +1150,7 @@ class WebpushFcmOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (analyticsLabel != null) {
       _json["analyticsLabel"] = analyticsLabel;
     }

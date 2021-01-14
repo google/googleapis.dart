@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.clouddebugger.v2;
 
@@ -29,21 +47,21 @@ class ClouddebuggerApi {
 
   final commons.ApiRequester _requester;
 
-  ControllerResourceApi get controller => new ControllerResourceApi(_requester);
-  DebuggerResourceApi get debugger => new DebuggerResourceApi(_requester);
+  ControllerResourceApi get controller => ControllerResourceApi(_requester);
+  DebuggerResourceApi get debugger => DebuggerResourceApi(_requester);
 
   ClouddebuggerApi(http.Client client,
       {core.String rootUrl = "https://clouddebugger.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ControllerResourceApi {
   final commons.ApiRequester _requester;
 
   ControllerDebuggeesResourceApi get debuggees =>
-      new ControllerDebuggeesResourceApi(_requester);
+      ControllerDebuggeesResourceApi(_requester);
 
   ControllerResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -52,7 +70,7 @@ class ControllerDebuggeesResourceApi {
   final commons.ApiRequester _requester;
 
   ControllerDebuggeesBreakpointsResourceApi get breakpoints =>
-      new ControllerDebuggeesBreakpointsResourceApi(_requester);
+      ControllerDebuggeesBreakpointsResourceApi(_requester);
 
   ControllerDebuggeesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -80,17 +98,18 @@ class ControllerDebuggeesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RegisterDebuggeeResponse> register(
-      RegisterDebuggeeRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RegisterDebuggeeRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -98,14 +117,16 @@ class ControllerDebuggeesResourceApi {
 
     _url = 'v2/controller/debuggees/register';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new RegisterDebuggeeResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RegisterDebuggeeResponse.fromJson(data));
   }
 }
 
@@ -154,20 +175,22 @@ class ControllerDebuggeesBreakpointsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListActiveBreakpointsResponse> list(core.String debuggeeId,
-      {core.String agentId,
-      core.bool successOnTimeout,
-      core.String waitToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListActiveBreakpointsResponse> list(
+    core.String debuggeeId, {
+    core.String agentId,
+    core.bool successOnTimeout,
+    core.String waitToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (debuggeeId == null) {
-      throw new core.ArgumentError("Parameter debuggeeId is required.");
+      throw core.ArgumentError("Parameter debuggeeId is required.");
     }
     if (agentId != null) {
       _queryParams["agentId"] = [agentId];
@@ -186,14 +209,17 @@ class ControllerDebuggeesBreakpointsResourceApi {
         commons.Escaper.ecapeVariable('$debuggeeId') +
         '/breakpoints';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListActiveBreakpointsResponse.fromJson(data));
+        .then((data) => ListActiveBreakpointsResponse.fromJson(data));
   }
 
   /// Updates the breakpoint state or mutable fields. The entire Breakpoint
@@ -223,25 +249,26 @@ class ControllerDebuggeesBreakpointsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UpdateActiveBreakpointResponse> update(
-      UpdateActiveBreakpointRequest request,
-      core.String debuggeeId,
-      core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    UpdateActiveBreakpointRequest request,
+    core.String debuggeeId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (debuggeeId == null) {
-      throw new core.ArgumentError("Parameter debuggeeId is required.");
+      throw core.ArgumentError("Parameter debuggeeId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -252,14 +279,17 @@ class ControllerDebuggeesBreakpointsResourceApi {
         '/breakpoints/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new UpdateActiveBreakpointResponse.fromJson(data));
+        .then((data) => UpdateActiveBreakpointResponse.fromJson(data));
   }
 }
 
@@ -267,7 +297,7 @@ class DebuggerResourceApi {
   final commons.ApiRequester _requester;
 
   DebuggerDebuggeesResourceApi get debuggees =>
-      new DebuggerDebuggeesResourceApi(_requester);
+      DebuggerDebuggeesResourceApi(_requester);
 
   DebuggerResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -276,7 +306,7 @@ class DebuggerDebuggeesResourceApi {
   final commons.ApiRequester _requester;
 
   DebuggerDebuggeesBreakpointsResourceApi get breakpoints =>
-      new DebuggerDebuggeesBreakpointsResourceApi(_requester);
+      DebuggerDebuggeesBreakpointsResourceApi(_requester);
 
   DebuggerDebuggeesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -304,17 +334,18 @@ class DebuggerDebuggeesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListDebuggeesResponse> list(
-      {core.String clientVersion,
-      core.String project,
-      core.bool includeInactive,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListDebuggeesResponse> list({
+    core.String clientVersion,
+    core.String project,
+    core.bool includeInactive,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
@@ -331,13 +362,16 @@ class DebuggerDebuggeesResourceApi {
 
     _url = 'v2/debugger/debuggees';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListDebuggeesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListDebuggeesResponse.fromJson(data));
   }
 }
 
@@ -368,20 +402,24 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String debuggeeId, core.String breakpointId,
-      {core.String clientVersion, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String debuggeeId,
+    core.String breakpointId, {
+    core.String clientVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (debuggeeId == null) {
-      throw new core.ArgumentError("Parameter debuggeeId is required.");
+      throw core.ArgumentError("Parameter debuggeeId is required.");
     }
     if (breakpointId == null) {
-      throw new core.ArgumentError("Parameter breakpointId is required.");
+      throw core.ArgumentError("Parameter breakpointId is required.");
     }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
@@ -395,13 +433,16 @@ class DebuggerDebuggeesBreakpointsResourceApi {
         '/breakpoints/' +
         commons.Escaper.ecapeVariable('$breakpointId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets breakpoint information.
@@ -426,20 +467,23 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetBreakpointResponse> get(
-      core.String debuggeeId, core.String breakpointId,
-      {core.String clientVersion, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String debuggeeId,
+    core.String breakpointId, {
+    core.String clientVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (debuggeeId == null) {
-      throw new core.ArgumentError("Parameter debuggeeId is required.");
+      throw core.ArgumentError("Parameter debuggeeId is required.");
     }
     if (breakpointId == null) {
-      throw new core.ArgumentError("Parameter breakpointId is required.");
+      throw core.ArgumentError("Parameter breakpointId is required.");
     }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
@@ -453,13 +497,16 @@ class DebuggerDebuggeesBreakpointsResourceApi {
         '/breakpoints/' +
         commons.Escaper.ecapeVariable('$breakpointId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GetBreakpointResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GetBreakpointResponse.fromJson(data));
   }
 
   /// Lists all breakpoints for the debuggee.
@@ -507,23 +554,25 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListBreakpointsResponse> list(core.String debuggeeId,
-      {core.String clientVersion,
-      core.String waitToken,
-      core.String action_value,
-      core.bool stripResults,
-      core.bool includeInactive,
-      core.bool includeAllUsers,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListBreakpointsResponse> list(
+    core.String debuggeeId, {
+    core.String clientVersion,
+    core.String waitToken,
+    core.String action_value,
+    core.bool stripResults,
+    core.bool includeInactive,
+    core.bool includeAllUsers,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (debuggeeId == null) {
-      throw new core.ArgumentError("Parameter debuggeeId is required.");
+      throw core.ArgumentError("Parameter debuggeeId is required.");
     }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
@@ -551,13 +600,16 @@ class DebuggerDebuggeesBreakpointsResourceApi {
         commons.Escaper.ecapeVariable('$debuggeeId') +
         '/breakpoints';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListBreakpointsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListBreakpointsResponse.fromJson(data));
   }
 
   /// Sets the breakpoint to the debuggee.
@@ -595,22 +647,24 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SetBreakpointResponse> set(
-      Breakpoint request, core.String debuggeeId,
-      {core.String clientVersion,
-      core.String canaryOption,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Breakpoint request,
+    core.String debuggeeId, {
+    core.String clientVersion,
+    core.String canaryOption,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (debuggeeId == null) {
-      throw new core.ArgumentError("Parameter debuggeeId is required.");
+      throw core.ArgumentError("Parameter debuggeeId is required.");
     }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
@@ -626,13 +680,16 @@ class DebuggerDebuggeesBreakpointsResourceApi {
         commons.Escaper.ecapeVariable('$debuggeeId') +
         '/breakpoints/set';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SetBreakpointResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SetBreakpointResponse.fromJson(data));
   }
 }
 
@@ -664,7 +721,7 @@ class AliasContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -804,7 +861,7 @@ class Breakpoint {
     }
     if (_json.containsKey("evaluatedExpressions")) {
       evaluatedExpressions = (_json["evaluatedExpressions"] as core.List)
-          .map<Variable>((value) => new Variable.fromJson(value))
+          .map<Variable>((value) => Variable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("expressions")) {
@@ -823,7 +880,7 @@ class Breakpoint {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("location")) {
-      location = new SourceLocation.fromJson(_json["location"]);
+      location = SourceLocation.fromJson(_json["location"]);
     }
     if (_json.containsKey("logLevel")) {
       logLevel = _json["logLevel"];
@@ -833,28 +890,28 @@ class Breakpoint {
     }
     if (_json.containsKey("stackFrames")) {
       stackFrames = (_json["stackFrames"] as core.List)
-          .map<StackFrame>((value) => new StackFrame.fromJson(value))
+          .map<StackFrame>((value) => StackFrame.fromJson(value))
           .toList();
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
     if (_json.containsKey("status")) {
-      status = new StatusMessage.fromJson(_json["status"]);
+      status = StatusMessage.fromJson(_json["status"]);
     }
     if (_json.containsKey("userEmail")) {
       userEmail = _json["userEmail"];
     }
     if (_json.containsKey("variableTable")) {
       variableTable = (_json["variableTable"] as core.List)
-          .map<Variable>((value) => new Variable.fromJson(value))
+          .map<Variable>((value) => Variable.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (action != null) {
       _json["action"] = action;
     }
@@ -869,7 +926,7 @@ class Breakpoint {
     }
     if (evaluatedExpressions != null) {
       _json["evaluatedExpressions"] =
-          evaluatedExpressions.map((value) => (value).toJson()).toList();
+          evaluatedExpressions.map((value) => value.toJson()).toList();
     }
     if (expressions != null) {
       _json["expressions"] = expressions;
@@ -887,7 +944,7 @@ class Breakpoint {
       _json["labels"] = labels;
     }
     if (location != null) {
-      _json["location"] = (location).toJson();
+      _json["location"] = location.toJson();
     }
     if (logLevel != null) {
       _json["logLevel"] = logLevel;
@@ -897,20 +954,20 @@ class Breakpoint {
     }
     if (stackFrames != null) {
       _json["stackFrames"] =
-          stackFrames.map((value) => (value).toJson()).toList();
+          stackFrames.map((value) => value.toJson()).toList();
     }
     if (state != null) {
       _json["state"] = state;
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     if (userEmail != null) {
       _json["userEmail"] = userEmail;
     }
     if (variableTable != null) {
       _json["variableTable"] =
-          variableTable.map((value) => (value).toJson()).toList();
+          variableTable.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -935,13 +992,13 @@ class CloudRepoSourceContext {
 
   CloudRepoSourceContext.fromJson(core.Map _json) {
     if (_json.containsKey("aliasContext")) {
-      aliasContext = new AliasContext.fromJson(_json["aliasContext"]);
+      aliasContext = AliasContext.fromJson(_json["aliasContext"]);
     }
     if (_json.containsKey("aliasName")) {
       aliasName = _json["aliasName"];
     }
     if (_json.containsKey("repoId")) {
-      repoId = new RepoId.fromJson(_json["repoId"]);
+      repoId = RepoId.fromJson(_json["repoId"]);
     }
     if (_json.containsKey("revisionId")) {
       revisionId = _json["revisionId"];
@@ -950,15 +1007,15 @@ class CloudRepoSourceContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (aliasContext != null) {
-      _json["aliasContext"] = (aliasContext).toJson();
+      _json["aliasContext"] = aliasContext.toJson();
     }
     if (aliasName != null) {
       _json["aliasName"] = aliasName;
     }
     if (repoId != null) {
-      _json["repoId"] = (repoId).toJson();
+      _json["repoId"] = repoId.toJson();
     }
     if (revisionId != null) {
       _json["revisionId"] = revisionId;
@@ -985,18 +1042,18 @@ class CloudWorkspaceId {
       name = _json["name"];
     }
     if (_json.containsKey("repoId")) {
-      repoId = new RepoId.fromJson(_json["repoId"]);
+      repoId = RepoId.fromJson(_json["repoId"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
     if (repoId != null) {
-      _json["repoId"] = (repoId).toJson();
+      _json["repoId"] = repoId.toJson();
     }
     return _json;
   }
@@ -1018,18 +1075,18 @@ class CloudWorkspaceSourceContext {
       snapshotId = _json["snapshotId"];
     }
     if (_json.containsKey("workspaceId")) {
-      workspaceId = new CloudWorkspaceId.fromJson(_json["workspaceId"]);
+      workspaceId = CloudWorkspaceId.fromJson(_json["workspaceId"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (snapshotId != null) {
       _json["snapshotId"] = snapshotId;
     }
     if (workspaceId != null) {
-      _json["workspaceId"] = (workspaceId).toJson();
+      _json["workspaceId"] = workspaceId.toJson();
     }
     return _json;
   }
@@ -1121,7 +1178,7 @@ class Debuggee {
     if (_json.containsKey("extSourceContexts")) {
       extSourceContexts = (_json["extSourceContexts"] as core.List)
           .map<ExtendedSourceContext>(
-              (value) => new ExtendedSourceContext.fromJson(value))
+              (value) => ExtendedSourceContext.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -1141,11 +1198,11 @@ class Debuggee {
     }
     if (_json.containsKey("sourceContexts")) {
       sourceContexts = (_json["sourceContexts"] as core.List)
-          .map<SourceContext>((value) => new SourceContext.fromJson(value))
+          .map<SourceContext>((value) => SourceContext.fromJson(value))
           .toList();
     }
     if (_json.containsKey("status")) {
-      status = new StatusMessage.fromJson(_json["status"]);
+      status = StatusMessage.fromJson(_json["status"]);
     }
     if (_json.containsKey("uniquifier")) {
       uniquifier = _json["uniquifier"];
@@ -1154,7 +1211,7 @@ class Debuggee {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (agentVersion != null) {
       _json["agentVersion"] = agentVersion;
     }
@@ -1166,7 +1223,7 @@ class Debuggee {
     }
     if (extSourceContexts != null) {
       _json["extSourceContexts"] =
-          extSourceContexts.map((value) => (value).toJson()).toList();
+          extSourceContexts.map((value) => value.toJson()).toList();
     }
     if (id != null) {
       _json["id"] = id;
@@ -1185,10 +1242,10 @@ class Debuggee {
     }
     if (sourceContexts != null) {
       _json["sourceContexts"] =
-          sourceContexts.map((value) => (value).toJson()).toList();
+          sourceContexts.map((value) => value.toJson()).toList();
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     if (uniquifier != null) {
       _json["uniquifier"] = uniquifier;
@@ -1209,7 +1266,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1227,7 +1284,7 @@ class ExtendedSourceContext {
 
   ExtendedSourceContext.fromJson(core.Map _json) {
     if (_json.containsKey("context")) {
-      context = new SourceContext.fromJson(_json["context"]);
+      context = SourceContext.fromJson(_json["context"]);
     }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
@@ -1236,9 +1293,9 @@ class ExtendedSourceContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = (context).toJson();
+      _json["context"] = context.toJson();
     }
     if (labels != null) {
       _json["labels"] = labels;
@@ -1272,7 +1329,7 @@ class FormatMessage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (format != null) {
       _json["format"] = format;
     }
@@ -1306,7 +1363,7 @@ class GerritSourceContext {
 
   GerritSourceContext.fromJson(core.Map _json) {
     if (_json.containsKey("aliasContext")) {
-      aliasContext = new AliasContext.fromJson(_json["aliasContext"]);
+      aliasContext = AliasContext.fromJson(_json["aliasContext"]);
     }
     if (_json.containsKey("aliasName")) {
       aliasName = _json["aliasName"];
@@ -1324,9 +1381,9 @@ class GerritSourceContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (aliasContext != null) {
-      _json["aliasContext"] = (aliasContext).toJson();
+      _json["aliasContext"] = aliasContext.toJson();
     }
     if (aliasName != null) {
       _json["aliasName"] = aliasName;
@@ -1354,15 +1411,15 @@ class GetBreakpointResponse {
 
   GetBreakpointResponse.fromJson(core.Map _json) {
     if (_json.containsKey("breakpoint")) {
-      breakpoint = new Breakpoint.fromJson(_json["breakpoint"]);
+      breakpoint = Breakpoint.fromJson(_json["breakpoint"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (breakpoint != null) {
-      _json["breakpoint"] = (breakpoint).toJson();
+      _json["breakpoint"] = breakpoint.toJson();
     }
     return _json;
   }
@@ -1390,7 +1447,7 @@ class GitSourceContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (revisionId != null) {
       _json["revisionId"] = revisionId;
     }
@@ -1421,7 +1478,7 @@ class ListActiveBreakpointsResponse {
   ListActiveBreakpointsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("breakpoints")) {
       breakpoints = (_json["breakpoints"] as core.List)
-          .map<Breakpoint>((value) => new Breakpoint.fromJson(value))
+          .map<Breakpoint>((value) => Breakpoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextWaitToken")) {
@@ -1434,10 +1491,10 @@ class ListActiveBreakpointsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (breakpoints != null) {
       _json["breakpoints"] =
-          breakpoints.map((value) => (value).toJson()).toList();
+          breakpoints.map((value) => value.toJson()).toList();
     }
     if (nextWaitToken != null) {
       _json["nextWaitToken"] = nextWaitToken;
@@ -1467,7 +1524,7 @@ class ListBreakpointsResponse {
   ListBreakpointsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("breakpoints")) {
       breakpoints = (_json["breakpoints"] as core.List)
-          .map<Breakpoint>((value) => new Breakpoint.fromJson(value))
+          .map<Breakpoint>((value) => Breakpoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextWaitToken")) {
@@ -1477,10 +1534,10 @@ class ListBreakpointsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (breakpoints != null) {
       _json["breakpoints"] =
-          breakpoints.map((value) => (value).toJson()).toList();
+          breakpoints.map((value) => value.toJson()).toList();
     }
     if (nextWaitToken != null) {
       _json["nextWaitToken"] = nextWaitToken;
@@ -1501,16 +1558,16 @@ class ListDebuggeesResponse {
   ListDebuggeesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("debuggees")) {
       debuggees = (_json["debuggees"] as core.List)
-          .map<Debuggee>((value) => new Debuggee.fromJson(value))
+          .map<Debuggee>((value) => Debuggee.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (debuggees != null) {
-      _json["debuggees"] = debuggees.map((value) => (value).toJson()).toList();
+      _json["debuggees"] = debuggees.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1538,7 +1595,7 @@ class ProjectRepoId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (projectId != null) {
       _json["projectId"] = projectId;
     }
@@ -1560,15 +1617,15 @@ class RegisterDebuggeeRequest {
 
   RegisterDebuggeeRequest.fromJson(core.Map _json) {
     if (_json.containsKey("debuggee")) {
-      debuggee = new Debuggee.fromJson(_json["debuggee"]);
+      debuggee = Debuggee.fromJson(_json["debuggee"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (debuggee != null) {
-      _json["debuggee"] = (debuggee).toJson();
+      _json["debuggee"] = debuggee.toJson();
     }
     return _json;
   }
@@ -1594,18 +1651,18 @@ class RegisterDebuggeeResponse {
       agentId = _json["agentId"];
     }
     if (_json.containsKey("debuggee")) {
-      debuggee = new Debuggee.fromJson(_json["debuggee"]);
+      debuggee = Debuggee.fromJson(_json["debuggee"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (agentId != null) {
       _json["agentId"] = agentId;
     }
     if (debuggee != null) {
-      _json["debuggee"] = (debuggee).toJson();
+      _json["debuggee"] = debuggee.toJson();
     }
     return _json;
   }
@@ -1623,7 +1680,7 @@ class RepoId {
 
   RepoId.fromJson(core.Map _json) {
     if (_json.containsKey("projectRepoId")) {
-      projectRepoId = new ProjectRepoId.fromJson(_json["projectRepoId"]);
+      projectRepoId = ProjectRepoId.fromJson(_json["projectRepoId"]);
     }
     if (_json.containsKey("uid")) {
       uid = _json["uid"];
@@ -1632,9 +1689,9 @@ class RepoId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (projectRepoId != null) {
-      _json["projectRepoId"] = (projectRepoId).toJson();
+      _json["projectRepoId"] = projectRepoId.toJson();
     }
     if (uid != null) {
       _json["uid"] = uid;
@@ -1653,15 +1710,15 @@ class SetBreakpointResponse {
 
   SetBreakpointResponse.fromJson(core.Map _json) {
     if (_json.containsKey("breakpoint")) {
-      breakpoint = new Breakpoint.fromJson(_json["breakpoint"]);
+      breakpoint = Breakpoint.fromJson(_json["breakpoint"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (breakpoint != null) {
-      _json["breakpoint"] = (breakpoint).toJson();
+      _json["breakpoint"] = breakpoint.toJson();
     }
     return _json;
   }
@@ -1686,34 +1743,34 @@ class SourceContext {
 
   SourceContext.fromJson(core.Map _json) {
     if (_json.containsKey("cloudRepo")) {
-      cloudRepo = new CloudRepoSourceContext.fromJson(_json["cloudRepo"]);
+      cloudRepo = CloudRepoSourceContext.fromJson(_json["cloudRepo"]);
     }
     if (_json.containsKey("cloudWorkspace")) {
       cloudWorkspace =
-          new CloudWorkspaceSourceContext.fromJson(_json["cloudWorkspace"]);
+          CloudWorkspaceSourceContext.fromJson(_json["cloudWorkspace"]);
     }
     if (_json.containsKey("gerrit")) {
-      gerrit = new GerritSourceContext.fromJson(_json["gerrit"]);
+      gerrit = GerritSourceContext.fromJson(_json["gerrit"]);
     }
     if (_json.containsKey("git")) {
-      git = new GitSourceContext.fromJson(_json["git"]);
+      git = GitSourceContext.fromJson(_json["git"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cloudRepo != null) {
-      _json["cloudRepo"] = (cloudRepo).toJson();
+      _json["cloudRepo"] = cloudRepo.toJson();
     }
     if (cloudWorkspace != null) {
-      _json["cloudWorkspace"] = (cloudWorkspace).toJson();
+      _json["cloudWorkspace"] = cloudWorkspace.toJson();
     }
     if (gerrit != null) {
-      _json["gerrit"] = (gerrit).toJson();
+      _json["gerrit"] = gerrit.toJson();
     }
     if (git != null) {
-      _json["git"] = (git).toJson();
+      _json["git"] = git.toJson();
     }
     return _json;
   }
@@ -1748,7 +1805,7 @@ class SourceLocation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (column != null) {
       _json["column"] = column;
     }
@@ -1783,7 +1840,7 @@ class StackFrame {
   StackFrame.fromJson(core.Map _json) {
     if (_json.containsKey("arguments")) {
       arguments = (_json["arguments"] as core.List)
-          .map<Variable>((value) => new Variable.fromJson(value))
+          .map<Variable>((value) => Variable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("function")) {
@@ -1791,28 +1848,28 @@ class StackFrame {
     }
     if (_json.containsKey("locals")) {
       locals = (_json["locals"] as core.List)
-          .map<Variable>((value) => new Variable.fromJson(value))
+          .map<Variable>((value) => Variable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("location")) {
-      location = new SourceLocation.fromJson(_json["location"]);
+      location = SourceLocation.fromJson(_json["location"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (arguments != null) {
-      _json["arguments"] = arguments.map((value) => (value).toJson()).toList();
+      _json["arguments"] = arguments.map((value) => value.toJson()).toList();
     }
     if (function != null) {
       _json["function"] = function;
     }
     if (locals != null) {
-      _json["locals"] = locals.map((value) => (value).toJson()).toList();
+      _json["locals"] = locals.map((value) => value.toJson()).toList();
     }
     if (location != null) {
-      _json["location"] = (location).toJson();
+      _json["location"] = location.toJson();
     }
     return _json;
   }
@@ -1851,7 +1908,7 @@ class StatusMessage {
 
   StatusMessage.fromJson(core.Map _json) {
     if (_json.containsKey("description")) {
-      description = new FormatMessage.fromJson(_json["description"]);
+      description = FormatMessage.fromJson(_json["description"]);
     }
     if (_json.containsKey("isError")) {
       isError = _json["isError"];
@@ -1863,9 +1920,9 @@ class StatusMessage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = (description).toJson();
+      _json["description"] = description.toJson();
     }
     if (isError != null) {
       _json["isError"] = isError;
@@ -1887,15 +1944,15 @@ class UpdateActiveBreakpointRequest {
 
   UpdateActiveBreakpointRequest.fromJson(core.Map _json) {
     if (_json.containsKey("breakpoint")) {
-      breakpoint = new Breakpoint.fromJson(_json["breakpoint"]);
+      breakpoint = Breakpoint.fromJson(_json["breakpoint"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (breakpoint != null) {
-      _json["breakpoint"] = (breakpoint).toJson();
+      _json["breakpoint"] = breakpoint.toJson();
     }
     return _json;
   }
@@ -1910,7 +1967,7 @@ class UpdateActiveBreakpointResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1988,14 +2045,14 @@ class Variable {
   Variable.fromJson(core.Map _json) {
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List)
-          .map<Variable>((value) => new Variable.fromJson(value))
+          .map<Variable>((value) => Variable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("status")) {
-      status = new StatusMessage.fromJson(_json["status"]);
+      status = StatusMessage.fromJson(_json["status"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -2010,15 +2067,15 @@ class Variable {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (members != null) {
-      _json["members"] = members.map((value) => (value).toJson()).toList();
+      _json["members"] = members.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     if (type != null) {
       _json["type"] = type;

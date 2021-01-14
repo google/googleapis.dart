@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis_beta.alertcenter.v1beta1;
 
@@ -23,21 +41,21 @@ class AlertcenterApi {
 
   final commons.ApiRequester _requester;
 
-  AlertsResourceApi get alerts => new AlertsResourceApi(_requester);
-  V1beta1ResourceApi get v1beta1 => new V1beta1ResourceApi(_requester);
+  AlertsResourceApi get alerts => AlertsResourceApi(_requester);
+  V1beta1ResourceApi get v1beta1 => V1beta1ResourceApi(_requester);
 
   AlertcenterApi(http.Client client,
       {core.String rootUrl = "https://alertcenter.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AlertsResourceApi {
   final commons.ApiRequester _requester;
 
   AlertsFeedbackResourceApi get feedback =>
-      new AlertsFeedbackResourceApi(_requester);
+      AlertsFeedbackResourceApi(_requester);
 
   AlertsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -58,17 +76,18 @@ class AlertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchDeleteAlertsResponse> batchDelete(
-      BatchDeleteAlertsRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchDeleteAlertsRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -76,14 +95,16 @@ class AlertsResourceApi {
 
     _url = 'v1beta1/alerts:batchDelete';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new BatchDeleteAlertsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BatchDeleteAlertsResponse.fromJson(data));
   }
 
   /// Performs batch undelete operation on alerts.
@@ -103,17 +124,18 @@ class AlertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchUndeleteAlertsResponse> batchUndelete(
-      BatchUndeleteAlertsRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchUndeleteAlertsRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -121,14 +143,16 @@ class AlertsResourceApi {
 
     _url = 'v1beta1/alerts:batchUndelete';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new BatchUndeleteAlertsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BatchUndeleteAlertsResponse.fromJson(data));
   }
 
   /// Marks the specified alert for deletion. An alert that has been marked for
@@ -155,17 +179,20 @@ class AlertsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String alertId,
-      {core.String customerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String alertId, {
+    core.String customerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (alertId == null) {
-      throw new core.ArgumentError("Parameter alertId is required.");
+      throw core.ArgumentError("Parameter alertId is required.");
     }
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
@@ -176,13 +203,16 @@ class AlertsResourceApi {
 
     _url = 'v1beta1/alerts/' + commons.Escaper.ecapeVariable('$alertId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the specified alert. Attempting to get a nonexistent alert returns
@@ -206,17 +236,20 @@ class AlertsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Alert> get(core.String alertId,
-      {core.String customerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Alert> get(
+    core.String alertId, {
+    core.String customerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (alertId == null) {
-      throw new core.ArgumentError("Parameter alertId is required.");
+      throw core.ArgumentError("Parameter alertId is required.");
     }
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
@@ -227,13 +260,16 @@ class AlertsResourceApi {
 
     _url = 'v1beta1/alerts/' + commons.Escaper.ecapeVariable('$alertId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Alert.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Alert.fromJson(data));
   }
 
   /// Returns the metadata of an alert. Attempting to get metadata for a
@@ -258,17 +294,20 @@ class AlertsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AlertMetadata> getMetadata(core.String alertId,
-      {core.String customerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AlertMetadata> getMetadata(
+    core.String alertId, {
+    core.String customerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (alertId == null) {
-      throw new core.ArgumentError("Parameter alertId is required.");
+      throw core.ArgumentError("Parameter alertId is required.");
     }
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
@@ -281,13 +320,16 @@ class AlertsResourceApi {
         commons.Escaper.ecapeVariable('$alertId') +
         '/metadata';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AlertMetadata.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AlertMetadata.fromJson(data));
   }
 
   /// Lists the alerts.
@@ -327,19 +369,20 @@ class AlertsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListAlertsResponse> list(
-      {core.int pageSize,
-      core.String orderBy,
-      core.String customerId,
-      core.String pageToken,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListAlertsResponse> list({
+    core.int pageSize,
+    core.String orderBy,
+    core.String customerId,
+    core.String pageToken,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -362,13 +405,16 @@ class AlertsResourceApi {
 
     _url = 'v1beta1/alerts';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListAlertsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListAlertsResponse.fromJson(data));
   }
 
   /// Restores, or "undeletes", an alert that was marked for deletion within the
@@ -394,20 +440,22 @@ class AlertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Alert> undelete(
-      UndeleteAlertRequest request, core.String alertId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    UndeleteAlertRequest request,
+    core.String alertId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (alertId == null) {
-      throw new core.ArgumentError("Parameter alertId is required.");
+      throw core.ArgumentError("Parameter alertId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -417,13 +465,16 @@ class AlertsResourceApi {
         commons.Escaper.ecapeVariable('$alertId') +
         ':undelete';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Alert.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Alert.fromJson(data));
   }
 }
 
@@ -458,20 +509,24 @@ class AlertsFeedbackResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AlertFeedback> create(AlertFeedback request, core.String alertId,
-      {core.String customerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AlertFeedback> create(
+    AlertFeedback request,
+    core.String alertId, {
+    core.String customerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (alertId == null) {
-      throw new core.ArgumentError("Parameter alertId is required.");
+      throw core.ArgumentError("Parameter alertId is required.");
     }
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
@@ -484,13 +539,16 @@ class AlertsFeedbackResourceApi {
         commons.Escaper.ecapeVariable('$alertId') +
         '/feedback';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AlertFeedback.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AlertFeedback.fromJson(data));
   }
 
   /// Lists all the feedback for an alert. Attempting to list feedbacks for a
@@ -521,17 +579,21 @@ class AlertsFeedbackResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListAlertFeedbackResponse> list(core.String alertId,
-      {core.String filter, core.String customerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListAlertFeedbackResponse> list(
+    core.String alertId, {
+    core.String filter,
+    core.String customerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (alertId == null) {
-      throw new core.ArgumentError("Parameter alertId is required.");
+      throw core.ArgumentError("Parameter alertId is required.");
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -547,14 +609,16 @@ class AlertsFeedbackResourceApi {
         commons.Escaper.ecapeVariable('$alertId') +
         '/feedback';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListAlertFeedbackResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListAlertFeedbackResponse.fromJson(data));
   }
 }
 
@@ -581,14 +645,16 @@ class V1beta1ResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Settings> getSettings(
-      {core.String customerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Settings> getSettings({
+    core.String customerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
@@ -599,13 +665,16 @@ class V1beta1ResourceApi {
 
     _url = 'v1beta1/settings';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Settings.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Settings.fromJson(data));
   }
 
   /// Updates the customer-level settings.
@@ -628,17 +697,20 @@ class V1beta1ResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Settings> updateSettings(Settings request,
-      {core.String customerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Settings> updateSettings(
+    Settings request, {
+    core.String customerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
@@ -649,13 +721,16 @@ class V1beta1ResourceApi {
 
     _url = 'v1beta1/settings';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Settings.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Settings.fromJson(data));
   }
 }
 
@@ -677,18 +752,18 @@ class AccountWarning {
       email = _json["email"];
     }
     if (_json.containsKey("loginDetails")) {
-      loginDetails = new LoginDetails.fromJson(_json["loginDetails"]);
+      loginDetails = LoginDetails.fromJson(_json["loginDetails"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (email != null) {
       _json["email"] = email;
     }
     if (loginDetails != null) {
-      _json["loginDetails"] = (loginDetails).toJson();
+      _json["loginDetails"] = loginDetails.toJson();
     }
     return _json;
   }
@@ -781,7 +856,7 @@ class ActivityRule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (actionNames != null) {
       _json["actionNames"] = actionNames;
     }
@@ -909,7 +984,7 @@ class Alert {
       etag = _json["etag"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new AlertMetadata.fromJson(_json["metadata"]);
+      metadata = AlertMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("securityInvestigationToolLink")) {
       securityInvestigationToolLink = _json["securityInvestigationToolLink"];
@@ -930,7 +1005,7 @@ class Alert {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alertId != null) {
       _json["alertId"] = alertId;
     }
@@ -953,7 +1028,7 @@ class Alert {
       _json["etag"] = etag;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (securityInvestigationToolLink != null) {
       _json["securityInvestigationToolLink"] = securityInvestigationToolLink;
@@ -1024,7 +1099,7 @@ class AlertFeedback {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alertId != null) {
       _json["alertId"] = alertId;
     }
@@ -1111,7 +1186,7 @@ class AlertMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alertId != null) {
       _json["alertId"] = alertId;
     }
@@ -1147,17 +1222,17 @@ class AppMakerSqlSetupNotification {
   AppMakerSqlSetupNotification.fromJson(core.Map _json) {
     if (_json.containsKey("requestInfo")) {
       requestInfo = (_json["requestInfo"] as core.List)
-          .map<RequestInfo>((value) => new RequestInfo.fromJson(value))
+          .map<RequestInfo>((value) => RequestInfo.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (requestInfo != null) {
       _json["requestInfo"] =
-          requestInfo.map((value) => (value).toJson()).toList();
+          requestInfo.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1172,15 +1247,15 @@ class Attachment {
 
   Attachment.fromJson(core.Map _json) {
     if (_json.containsKey("csv")) {
-      csv = new Csv.fromJson(_json["csv"]);
+      csv = Csv.fromJson(_json["csv"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (csv != null) {
-      _json["csv"] = (csv).toJson();
+      _json["csv"] = csv.toJson();
     }
     return _json;
   }
@@ -1205,15 +1280,14 @@ class BadWhitelist {
 
   BadWhitelist.fromJson(core.Map _json) {
     if (_json.containsKey("domainId")) {
-      domainId = new DomainId.fromJson(_json["domainId"]);
+      domainId = DomainId.fromJson(_json["domainId"]);
     }
     if (_json.containsKey("maliciousEntity")) {
-      maliciousEntity = new MaliciousEntity.fromJson(_json["maliciousEntity"]);
+      maliciousEntity = MaliciousEntity.fromJson(_json["maliciousEntity"]);
     }
     if (_json.containsKey("messages")) {
       messages = (_json["messages"] as core.List)
-          .map<GmailMessageInfo>(
-              (value) => new GmailMessageInfo.fromJson(value))
+          .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("sourceIp")) {
@@ -1223,15 +1297,15 @@ class BadWhitelist {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (domainId != null) {
-      _json["domainId"] = (domainId).toJson();
+      _json["domainId"] = domainId.toJson();
     }
     if (maliciousEntity != null) {
-      _json["maliciousEntity"] = (maliciousEntity).toJson();
+      _json["maliciousEntity"] = maliciousEntity.toJson();
     }
     if (messages != null) {
-      _json["messages"] = messages.map((value) => (value).toJson()).toList();
+      _json["messages"] = messages.map((value) => value.toJson()).toList();
     }
     if (sourceIp != null) {
       _json["sourceIp"] = sourceIp;
@@ -1262,7 +1336,7 @@ class BatchDeleteAlertsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alertId != null) {
       _json["alertId"] = alertId;
     }
@@ -1287,7 +1361,7 @@ class BatchDeleteAlertsResponse {
     if (_json.containsKey("failedAlertStatus")) {
       failedAlertStatus = commons.mapMap<core.Map, Status>(
           _json["failedAlertStatus"].cast<core.String, core.Map>(),
-          (core.Map item) => new Status.fromJson(item));
+          (core.Map item) => Status.fromJson(item));
     }
     if (_json.containsKey("successAlertIds")) {
       successAlertIds =
@@ -1297,11 +1371,11 @@ class BatchDeleteAlertsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (failedAlertStatus != null) {
       _json["failedAlertStatus"] =
           commons.mapMap<Status, core.Map<core.String, core.Object>>(
-              failedAlertStatus, (Status item) => (item).toJson());
+              failedAlertStatus, (Status item) => item.toJson());
     }
     if (successAlertIds != null) {
       _json["successAlertIds"] = successAlertIds;
@@ -1332,7 +1406,7 @@ class BatchUndeleteAlertsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alertId != null) {
       _json["alertId"] = alertId;
     }
@@ -1357,7 +1431,7 @@ class BatchUndeleteAlertsResponse {
     if (_json.containsKey("failedAlertStatus")) {
       failedAlertStatus = commons.mapMap<core.Map, Status>(
           _json["failedAlertStatus"].cast<core.String, core.Map>(),
-          (core.Map item) => new Status.fromJson(item));
+          (core.Map item) => Status.fromJson(item));
     }
     if (_json.containsKey("successAlertIds")) {
       successAlertIds =
@@ -1367,11 +1441,11 @@ class BatchUndeleteAlertsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (failedAlertStatus != null) {
       _json["failedAlertStatus"] =
           commons.mapMap<Status, core.Map<core.String, core.Object>>(
-              failedAlertStatus, (Status item) => (item).toJson());
+              failedAlertStatus, (Status item) => item.toJson());
     }
     if (successAlertIds != null) {
       _json["successAlertIds"] = successAlertIds;
@@ -1410,7 +1484,7 @@ class CloudPubsubTopic {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (payloadFormat != null) {
       _json["payloadFormat"] = payloadFormat;
     }
@@ -1436,7 +1510,7 @@ class Csv {
   Csv.fromJson(core.Map _json) {
     if (_json.containsKey("dataRows")) {
       dataRows = (_json["dataRows"] as core.List)
-          .map<CsvRow>((value) => new CsvRow.fromJson(value))
+          .map<CsvRow>((value) => CsvRow.fromJson(value))
           .toList();
     }
     if (_json.containsKey("headers")) {
@@ -1446,9 +1520,9 @@ class Csv {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dataRows != null) {
-      _json["dataRows"] = dataRows.map((value) => (value).toJson()).toList();
+      _json["dataRows"] = dataRows.map((value) => value.toJson()).toList();
     }
     if (headers != null) {
       _json["headers"] = headers;
@@ -1473,7 +1547,7 @@ class CsvRow {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (entries != null) {
       _json["entries"] = entries;
     }
@@ -1498,19 +1572,19 @@ class DeviceCompromised {
     if (_json.containsKey("events")) {
       events = (_json["events"] as core.List)
           .map<DeviceCompromisedSecurityDetail>(
-              (value) => new DeviceCompromisedSecurityDetail.fromJson(value))
+              (value) => DeviceCompromisedSecurityDetail.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (email != null) {
       _json["email"] = email;
     }
     if (events != null) {
-      _json["events"] = events.map((value) => (value).toJson()).toList();
+      _json["events"] = events.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1568,7 +1642,7 @@ class DeviceCompromisedSecurityDetail {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceCompromisedState != null) {
       _json["deviceCompromisedState"] = deviceCompromisedState;
     }
@@ -1607,15 +1681,15 @@ class DlpRuleViolation {
   DlpRuleViolation.fromJson(core.Map _json) {
     if (_json.containsKey("ruleViolationInfo")) {
       ruleViolationInfo =
-          new RuleViolationInfo.fromJson(_json["ruleViolationInfo"]);
+          RuleViolationInfo.fromJson(_json["ruleViolationInfo"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ruleViolationInfo != null) {
-      _json["ruleViolationInfo"] = (ruleViolationInfo).toJson();
+      _json["ruleViolationInfo"] = ruleViolationInfo.toJson();
     }
     return _json;
   }
@@ -1636,7 +1710,7 @@ class DomainId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customerPrimaryDomain != null) {
       _json["customerPrimaryDomain"] = customerPrimaryDomain;
     }
@@ -1666,7 +1740,7 @@ class DomainWideTakeoutInitiated {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (email != null) {
       _json["email"] = email;
     }
@@ -1689,7 +1763,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1752,7 +1826,7 @@ class GmailMessageInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attachmentsSha256Hash != null) {
       _json["attachmentsSha256Hash"] = attachmentsSha256Hash;
     }
@@ -1806,7 +1880,7 @@ class GoogleOperations {
           (_json["affectedUserEmails"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("attachmentData")) {
-      attachmentData = new Attachment.fromJson(_json["attachmentData"]);
+      attachmentData = Attachment.fromJson(_json["attachmentData"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -1818,12 +1892,12 @@ class GoogleOperations {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (affectedUserEmails != null) {
       _json["affectedUserEmails"] = affectedUserEmails;
     }
     if (attachmentData != null) {
-      _json["attachmentData"] = (attachmentData).toJson();
+      _json["attachmentData"] = attachmentData.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -1846,16 +1920,16 @@ class ListAlertFeedbackResponse {
   ListAlertFeedbackResponse.fromJson(core.Map _json) {
     if (_json.containsKey("feedback")) {
       feedback = (_json["feedback"] as core.List)
-          .map<AlertFeedback>((value) => new AlertFeedback.fromJson(value))
+          .map<AlertFeedback>((value) => AlertFeedback.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (feedback != null) {
-      _json["feedback"] = feedback.map((value) => (value).toJson()).toList();
+      _json["feedback"] = feedback.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1877,7 +1951,7 @@ class ListAlertsResponse {
   ListAlertsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("alerts")) {
       alerts = (_json["alerts"] as core.List)
-          .map<Alert>((value) => new Alert.fromJson(value))
+          .map<Alert>((value) => Alert.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -1887,9 +1961,9 @@ class ListAlertsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alerts != null) {
-      _json["alerts"] = alerts.map((value) => (value).toJson()).toList();
+      _json["alerts"] = alerts.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -1921,7 +1995,7 @@ class LoginDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ipAddress != null) {
       _json["ipAddress"] = ipAddress;
     }
@@ -1960,18 +2034,17 @@ class MailPhishing {
 
   MailPhishing.fromJson(core.Map _json) {
     if (_json.containsKey("domainId")) {
-      domainId = new DomainId.fromJson(_json["domainId"]);
+      domainId = DomainId.fromJson(_json["domainId"]);
     }
     if (_json.containsKey("isInternal")) {
       isInternal = _json["isInternal"];
     }
     if (_json.containsKey("maliciousEntity")) {
-      maliciousEntity = new MaliciousEntity.fromJson(_json["maliciousEntity"]);
+      maliciousEntity = MaliciousEntity.fromJson(_json["maliciousEntity"]);
     }
     if (_json.containsKey("messages")) {
       messages = (_json["messages"] as core.List)
-          .map<GmailMessageInfo>(
-              (value) => new GmailMessageInfo.fromJson(value))
+          .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("systemActionType")) {
@@ -1981,18 +2054,18 @@ class MailPhishing {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (domainId != null) {
-      _json["domainId"] = (domainId).toJson();
+      _json["domainId"] = domainId.toJson();
     }
     if (isInternal != null) {
       _json["isInternal"] = isInternal;
     }
     if (maliciousEntity != null) {
-      _json["maliciousEntity"] = (maliciousEntity).toJson();
+      _json["maliciousEntity"] = maliciousEntity.toJson();
     }
     if (messages != null) {
-      _json["messages"] = messages.map((value) => (value).toJson()).toList();
+      _json["messages"] = messages.map((value) => value.toJson()).toList();
     }
     if (systemActionType != null) {
       _json["systemActionType"] = systemActionType;
@@ -2019,7 +2092,7 @@ class MaliciousEntity {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("entity")) {
-      entity = new User.fromJson(_json["entity"]);
+      entity = User.fromJson(_json["entity"]);
     }
     if (_json.containsKey("fromHeader")) {
       fromHeader = _json["fromHeader"];
@@ -2028,12 +2101,12 @@ class MaliciousEntity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
     if (entity != null) {
-      _json["entity"] = (entity).toJson();
+      _json["entity"] = entity.toJson();
     }
     if (fromHeader != null) {
       _json["fromHeader"] = fromHeader;
@@ -2055,22 +2128,22 @@ class MatchInfo {
   MatchInfo.fromJson(core.Map _json) {
     if (_json.containsKey("predefinedDetector")) {
       predefinedDetector =
-          new PredefinedDetectorInfo.fromJson(_json["predefinedDetector"]);
+          PredefinedDetectorInfo.fromJson(_json["predefinedDetector"]);
     }
     if (_json.containsKey("userDefinedDetector")) {
       userDefinedDetector =
-          new UserDefinedDetectorInfo.fromJson(_json["userDefinedDetector"]);
+          UserDefinedDetectorInfo.fromJson(_json["userDefinedDetector"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (predefinedDetector != null) {
-      _json["predefinedDetector"] = (predefinedDetector).toJson();
+      _json["predefinedDetector"] = predefinedDetector.toJson();
     }
     if (userDefinedDetector != null) {
-      _json["userDefinedDetector"] = (userDefinedDetector).toJson();
+      _json["userDefinedDetector"] = userDefinedDetector.toJson();
     }
     return _json;
   }
@@ -2086,16 +2159,15 @@ class Notification {
 
   Notification.fromJson(core.Map _json) {
     if (_json.containsKey("cloudPubsubTopic")) {
-      cloudPubsubTopic =
-          new CloudPubsubTopic.fromJson(_json["cloudPubsubTopic"]);
+      cloudPubsubTopic = CloudPubsubTopic.fromJson(_json["cloudPubsubTopic"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cloudPubsubTopic != null) {
-      _json["cloudPubsubTopic"] = (cloudPubsubTopic).toJson();
+      _json["cloudPubsubTopic"] = cloudPubsubTopic.toJson();
     }
     return _json;
   }
@@ -2122,36 +2194,35 @@ class PhishingSpike {
 
   PhishingSpike.fromJson(core.Map _json) {
     if (_json.containsKey("domainId")) {
-      domainId = new DomainId.fromJson(_json["domainId"]);
+      domainId = DomainId.fromJson(_json["domainId"]);
     }
     if (_json.containsKey("isInternal")) {
       isInternal = _json["isInternal"];
     }
     if (_json.containsKey("maliciousEntity")) {
-      maliciousEntity = new MaliciousEntity.fromJson(_json["maliciousEntity"]);
+      maliciousEntity = MaliciousEntity.fromJson(_json["maliciousEntity"]);
     }
     if (_json.containsKey("messages")) {
       messages = (_json["messages"] as core.List)
-          .map<GmailMessageInfo>(
-              (value) => new GmailMessageInfo.fromJson(value))
+          .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (domainId != null) {
-      _json["domainId"] = (domainId).toJson();
+      _json["domainId"] = domainId.toJson();
     }
     if (isInternal != null) {
       _json["isInternal"] = isInternal;
     }
     if (maliciousEntity != null) {
-      _json["maliciousEntity"] = (maliciousEntity).toJson();
+      _json["maliciousEntity"] = maliciousEntity.toJson();
     }
     if (messages != null) {
-      _json["messages"] = messages.map((value) => (value).toJson()).toList();
+      _json["messages"] = messages.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2172,7 +2243,7 @@ class PredefinedDetectorInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (detectorName != null) {
       _json["detectorName"] = detectorName;
     }
@@ -2209,7 +2280,7 @@ class RequestInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appDeveloperEmail != null) {
       _json["appDeveloperEmail"] = appDeveloperEmail;
     }
@@ -2244,7 +2315,7 @@ class ResourceInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (documentId != null) {
       _json["documentId"] = documentId;
     }
@@ -2276,7 +2347,7 @@ class RuleInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -2337,17 +2408,17 @@ class RuleViolationInfo {
     }
     if (_json.containsKey("matchInfo")) {
       matchInfo = (_json["matchInfo"] as core.List)
-          .map<MatchInfo>((value) => new MatchInfo.fromJson(value))
+          .map<MatchInfo>((value) => MatchInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("recipients")) {
       recipients = (_json["recipients"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("resourceInfo")) {
-      resourceInfo = new ResourceInfo.fromJson(_json["resourceInfo"]);
+      resourceInfo = ResourceInfo.fromJson(_json["resourceInfo"]);
     }
     if (_json.containsKey("ruleInfo")) {
-      ruleInfo = new RuleInfo.fromJson(_json["ruleInfo"]);
+      ruleInfo = RuleInfo.fromJson(_json["ruleInfo"]);
     }
     if (_json.containsKey("suppressedActionTypes")) {
       suppressedActionTypes =
@@ -2367,21 +2438,21 @@ class RuleViolationInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dataSource != null) {
       _json["dataSource"] = dataSource;
     }
     if (matchInfo != null) {
-      _json["matchInfo"] = matchInfo.map((value) => (value).toJson()).toList();
+      _json["matchInfo"] = matchInfo.map((value) => value.toJson()).toList();
     }
     if (recipients != null) {
       _json["recipients"] = recipients;
     }
     if (resourceInfo != null) {
-      _json["resourceInfo"] = (resourceInfo).toJson();
+      _json["resourceInfo"] = resourceInfo.toJson();
     }
     if (ruleInfo != null) {
-      _json["ruleInfo"] = (ruleInfo).toJson();
+      _json["ruleInfo"] = ruleInfo.toJson();
     }
     if (suppressedActionTypes != null) {
       _json["suppressedActionTypes"] = suppressedActionTypes;
@@ -2409,17 +2480,17 @@ class Settings {
   Settings.fromJson(core.Map _json) {
     if (_json.containsKey("notifications")) {
       notifications = (_json["notifications"] as core.List)
-          .map<Notification>((value) => new Notification.fromJson(value))
+          .map<Notification>((value) => Notification.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (notifications != null) {
       _json["notifications"] =
-          notifications.map((value) => (value).toJson()).toList();
+          notifications.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2440,7 +2511,7 @@ class StateSponsoredAttack {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (email != null) {
       _json["email"] = email;
     }
@@ -2489,7 +2560,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -2520,19 +2591,19 @@ class SuspiciousActivity {
     if (_json.containsKey("events")) {
       events = (_json["events"] as core.List)
           .map<SuspiciousActivitySecurityDetail>(
-              (value) => new SuspiciousActivitySecurityDetail.fromJson(value))
+              (value) => SuspiciousActivitySecurityDetail.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (email != null) {
       _json["email"] = email;
     }
     if (events != null) {
-      _json["events"] = events.map((value) => (value).toJson()).toList();
+      _json["events"] = events.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2601,7 +2672,7 @@ class SuspiciousActivitySecurityDetail {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceId != null) {
       _json["deviceId"] = deviceId;
     }
@@ -2650,7 +2721,7 @@ class UndeleteAlertRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customerId != null) {
       _json["customerId"] = customerId;
     }
@@ -2679,7 +2750,7 @@ class User {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -2711,7 +2782,7 @@ class UserDefinedDetectorInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }

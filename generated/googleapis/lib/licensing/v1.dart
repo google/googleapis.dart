@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.licensing.v1;
 
@@ -26,13 +44,13 @@ class LicensingApi {
   final commons.ApiRequester _requester;
 
   LicenseAssignmentsResourceApi get licenseAssignments =>
-      new LicenseAssignmentsResourceApi(_requester);
+      LicenseAssignmentsResourceApi(_requester);
 
   LicensingApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class LicenseAssignmentsResourceApi {
@@ -66,23 +84,26 @@ class LicenseAssignmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String productId, core.String skuId, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String productId,
+    core.String skuId,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (productId == null) {
-      throw new core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError("Parameter productId is required.");
     }
     if (skuId == null) {
-      throw new core.ArgumentError("Parameter skuId is required.");
+      throw core.ArgumentError("Parameter skuId is required.");
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -97,12 +118,15 @@ class LicenseAssignmentsResourceApi {
         '/user/' +
         commons.Escaper.ecapeVariable('$userId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -133,23 +157,26 @@ class LicenseAssignmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LicenseAssignment> get(
-      core.String productId, core.String skuId, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String productId,
+    core.String skuId,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (productId == null) {
-      throw new core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError("Parameter productId is required.");
     }
     if (skuId == null) {
-      throw new core.ArgumentError("Parameter skuId is required.");
+      throw core.ArgumentError("Parameter skuId is required.");
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -162,13 +189,16 @@ class LicenseAssignmentsResourceApi {
         '/user/' +
         commons.Escaper.ecapeVariable('$userId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LicenseAssignment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LicenseAssignment.fromJson(data));
   }
 
   /// Assign a license.
@@ -194,23 +224,26 @@ class LicenseAssignmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LicenseAssignment> insert(
-      LicenseAssignmentInsert request, core.String productId, core.String skuId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    LicenseAssignmentInsert request,
+    core.String productId,
+    core.String skuId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (productId == null) {
-      throw new core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError("Parameter productId is required.");
     }
     if (skuId == null) {
-      throw new core.ArgumentError("Parameter skuId is required.");
+      throw core.ArgumentError("Parameter skuId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -222,13 +255,16 @@ class LicenseAssignmentsResourceApi {
         commons.Escaper.ecapeVariable('$skuId') +
         '/user';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LicenseAssignment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LicenseAssignment.fromJson(data));
   }
 
   /// List all users assigned licenses for a specific product SKU.
@@ -263,20 +299,24 @@ class LicenseAssignmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LicenseAssignmentList> listForProduct(
-      core.String productId, core.String customerId,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String productId,
+    core.String customerId, {
+    core.String pageToken,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (productId == null) {
-      throw new core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError("Parameter productId is required.");
     }
     if (customerId == null) {
-      throw new core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError("Parameter customerId is required.");
     }
     _queryParams["customerId"] = [customerId];
     if (pageToken != null) {
@@ -293,13 +333,16 @@ class LicenseAssignmentsResourceApi {
         commons.Escaper.ecapeVariable('$productId') +
         '/users';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LicenseAssignmentList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LicenseAssignmentList.fromJson(data));
   }
 
   /// List all users assigned licenses for a specific product SKU.
@@ -337,23 +380,28 @@ class LicenseAssignmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LicenseAssignmentList> listForProductAndSku(
-      core.String productId, core.String skuId, core.String customerId,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String productId,
+    core.String skuId,
+    core.String customerId, {
+    core.String pageToken,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (productId == null) {
-      throw new core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError("Parameter productId is required.");
     }
     if (skuId == null) {
-      throw new core.ArgumentError("Parameter skuId is required.");
+      throw core.ArgumentError("Parameter skuId is required.");
     }
     if (customerId == null) {
-      throw new core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError("Parameter customerId is required.");
     }
     _queryParams["customerId"] = [customerId];
     if (pageToken != null) {
@@ -372,13 +420,16 @@ class LicenseAssignmentsResourceApi {
         commons.Escaper.ecapeVariable('$skuId') +
         '/users';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LicenseAssignmentList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LicenseAssignmentList.fromJson(data));
   }
 
   /// Patch a Licensing info via Apiary Patch Orchestration
@@ -409,27 +460,31 @@ class LicenseAssignmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LicenseAssignment> patch(LicenseAssignment request,
-      core.String productId, core.String skuId, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LicenseAssignment> patch(
+    LicenseAssignment request,
+    core.String productId,
+    core.String skuId,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (productId == null) {
-      throw new core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError("Parameter productId is required.");
     }
     if (skuId == null) {
-      throw new core.ArgumentError("Parameter skuId is required.");
+      throw core.ArgumentError("Parameter skuId is required.");
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -442,13 +497,16 @@ class LicenseAssignmentsResourceApi {
         '/user/' +
         commons.Escaper.ecapeVariable('$userId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LicenseAssignment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LicenseAssignment.fromJson(data));
   }
 
   /// Reassign a user's product SKU with a different SKU in the same product.
@@ -479,27 +537,31 @@ class LicenseAssignmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LicenseAssignment> update(LicenseAssignment request,
-      core.String productId, core.String skuId, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LicenseAssignment> update(
+    LicenseAssignment request,
+    core.String productId,
+    core.String skuId,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (productId == null) {
-      throw new core.ArgumentError("Parameter productId is required.");
+      throw core.ArgumentError("Parameter productId is required.");
     }
     if (skuId == null) {
-      throw new core.ArgumentError("Parameter skuId is required.");
+      throw core.ArgumentError("Parameter skuId is required.");
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -512,13 +574,16 @@ class LicenseAssignmentsResourceApi {
         '/user/' +
         commons.Escaper.ecapeVariable('$userId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LicenseAssignment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LicenseAssignment.fromJson(data));
   }
 }
 
@@ -585,7 +650,7 @@ class LicenseAssignment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etags != null) {
       _json["etags"] = etags;
     }
@@ -629,7 +694,7 @@ class LicenseAssignmentInsert {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (userId != null) {
       _json["userId"] = userId;
     }
@@ -661,8 +726,7 @@ class LicenseAssignmentList {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<LicenseAssignment>(
-              (value) => new LicenseAssignment.fromJson(value))
+          .map<LicenseAssignment>((value) => LicenseAssignment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -675,12 +739,12 @@ class LicenseAssignmentList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;

@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.cloudbuild.v1;
 
@@ -24,14 +42,14 @@ class CloudbuildApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi get operations => new OperationsResourceApi(_requester);
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  OperationsResourceApi get operations => OperationsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   CloudbuildApi(http.Client client,
       {core.String rootUrl = "https://cloudbuild.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class OperationsResourceApi {
@@ -66,20 +84,23 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -87,13 +108,16 @@ class OperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -115,16 +139,19 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -132,25 +159,27 @@ class OperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsBuildsResourceApi get builds =>
-      new ProjectsBuildsResourceApi(_requester);
+  ProjectsBuildsResourceApi get builds => ProjectsBuildsResourceApi(_requester);
   ProjectsLocationsResourceApi get locations =>
-      new ProjectsLocationsResourceApi(_requester);
+      ProjectsLocationsResourceApi(_requester);
   ProjectsTriggersResourceApi get triggers =>
-      new ProjectsTriggersResourceApi(_requester);
+      ProjectsTriggersResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -181,23 +210,26 @@ class ProjectsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Build> cancel(
-      CancelBuildRequest request, core.String projectId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CancelBuildRequest request,
+    core.String projectId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -209,13 +241,16 @@ class ProjectsBuildsResourceApi {
         commons.Escaper.ecapeVariable('$id') +
         ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Build.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Build.fromJson(data));
   }
 
   /// Starts a build with the specified configuration. This method returns a
@@ -242,20 +277,24 @@ class ProjectsBuildsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(Build request, core.String projectId,
-      {core.String parent, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> create(
+    Build request,
+    core.String projectId, {
+    core.String parent,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
@@ -268,13 +307,16 @@ class ProjectsBuildsResourceApi {
         commons.Escaper.ecapeVariable('$projectId') +
         '/builds';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Returns information about a previously requested build. The `Build` that
@@ -300,20 +342,24 @@ class ProjectsBuildsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Build> get(core.String projectId, core.String id,
-      {core.String name, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Build> get(
+    core.String projectId,
+    core.String id, {
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if (name != null) {
       _queryParams["name"] = [name];
@@ -327,13 +373,16 @@ class ProjectsBuildsResourceApi {
         '/builds/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Build.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Build.fromJson(data));
   }
 
   /// Lists previously requested builds. Previously requested builds may still
@@ -362,21 +411,23 @@ class ProjectsBuildsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListBuildsResponse> list(core.String projectId,
-      {core.String parent,
-      core.String filter,
-      core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListBuildsResponse> list(
+    core.String projectId, {
+    core.String parent,
+    core.String filter,
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
@@ -398,13 +449,16 @@ class ProjectsBuildsResourceApi {
         commons.Escaper.ecapeVariable('$projectId') +
         '/builds';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListBuildsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListBuildsResponse.fromJson(data));
   }
 
   /// Creates a new build based on the specified build. This method creates a
@@ -443,23 +497,26 @@ class ProjectsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> retry(
-      RetryBuildRequest request, core.String projectId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RetryBuildRequest request,
+    core.String projectId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -471,13 +528,16 @@ class ProjectsBuildsResourceApi {
         commons.Escaper.ecapeVariable('$id') +
         ':retry';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -485,9 +545,9 @@ class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsBuildsResourceApi get builds =>
-      new ProjectsLocationsBuildsResourceApi(_requester);
+      ProjectsLocationsBuildsResourceApi(_requester);
   ProjectsLocationsOperationsResourceApi get operations =>
-      new ProjectsLocationsOperationsResourceApi(_requester);
+      ProjectsLocationsOperationsResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -519,20 +579,23 @@ class ProjectsLocationsBuildsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Build> cancel(CancelBuildRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Build> cancel(
+    CancelBuildRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -540,13 +603,16 @@ class ProjectsLocationsBuildsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Build.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Build.fromJson(data));
   }
 
   /// Starts a build with the specified configuration. This method returns a
@@ -574,20 +640,24 @@ class ProjectsLocationsBuildsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(Build request, core.String parent,
-      {core.String projectId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> create(
+    Build request,
+    core.String parent, {
+    core.String projectId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
@@ -598,13 +668,16 @@ class ProjectsLocationsBuildsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/builds';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Returns information about a previously requested build. The `Build` that
@@ -631,17 +704,21 @@ class ProjectsLocationsBuildsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Build> get(core.String name,
-      {core.String id, core.String projectId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Build> get(
+    core.String name, {
+    core.String id,
+    core.String projectId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (id != null) {
       _queryParams["id"] = [id];
@@ -655,13 +732,16 @@ class ProjectsLocationsBuildsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Build.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Build.fromJson(data));
   }
 
   /// Lists previously requested builds. Previously requested builds may still
@@ -691,21 +771,23 @@ class ProjectsLocationsBuildsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListBuildsResponse> list(core.String parent,
-      {core.String projectId,
-      core.int pageSize,
-      core.String pageToken,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListBuildsResponse> list(
+    core.String parent, {
+    core.String projectId,
+    core.int pageSize,
+    core.String pageToken,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
@@ -725,13 +807,16 @@ class ProjectsLocationsBuildsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/builds';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListBuildsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListBuildsResponse.fromJson(data));
   }
 
   /// Creates a new build based on the specified build. This method creates a
@@ -769,20 +854,23 @@ class ProjectsLocationsBuildsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> retry(RetryBuildRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> retry(
+    RetryBuildRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -790,13 +878,16 @@ class ProjectsLocationsBuildsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':retry';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -834,20 +925,23 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -855,13 +949,16 @@ class ProjectsLocationsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -884,16 +981,19 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -901,13 +1001,16 @@ class ProjectsLocationsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -936,20 +1039,23 @@ class ProjectsTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BuildTrigger> create(BuildTrigger request, core.String projectId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<BuildTrigger> create(
+    BuildTrigger request,
+    core.String projectId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -959,13 +1065,16 @@ class ProjectsTriggersResourceApi {
         commons.Escaper.ecapeVariable('$projectId') +
         '/triggers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new BuildTrigger.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BuildTrigger.fromJson(data));
   }
 
   /// Deletes a `BuildTrigger` by its project ID and trigger ID. This API is
@@ -987,20 +1096,23 @@ class ProjectsTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String projectId, core.String triggerId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String projectId,
+    core.String triggerId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (triggerId == null) {
-      throw new core.ArgumentError("Parameter triggerId is required.");
+      throw core.ArgumentError("Parameter triggerId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1011,13 +1123,16 @@ class ProjectsTriggersResourceApi {
         '/triggers/' +
         commons.Escaper.ecapeVariable('$triggerId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Returns information about a `BuildTrigger`. This API is experimental.
@@ -1039,20 +1154,23 @@ class ProjectsTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BuildTrigger> get(core.String projectId, core.String triggerId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<BuildTrigger> get(
+    core.String projectId,
+    core.String triggerId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (triggerId == null) {
-      throw new core.ArgumentError("Parameter triggerId is required.");
+      throw core.ArgumentError("Parameter triggerId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1063,13 +1181,16 @@ class ProjectsTriggersResourceApi {
         '/triggers/' +
         commons.Escaper.ecapeVariable('$triggerId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new BuildTrigger.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BuildTrigger.fromJson(data));
   }
 
   /// Lists existing `BuildTrigger`s. This API is experimental.
@@ -1092,17 +1213,21 @@ class ProjectsTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListBuildTriggersResponse> list(core.String projectId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListBuildTriggersResponse> list(
+    core.String projectId, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1118,14 +1243,16 @@ class ProjectsTriggersResourceApi {
         commons.Escaper.ecapeVariable('$projectId') +
         '/triggers';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListBuildTriggersResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListBuildTriggersResponse.fromJson(data));
   }
 
   /// Updates a `BuildTrigger` by its project ID and trigger ID. This API is
@@ -1150,23 +1277,26 @@ class ProjectsTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BuildTrigger> patch(
-      BuildTrigger request, core.String projectId, core.String triggerId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BuildTrigger request,
+    core.String projectId,
+    core.String triggerId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (triggerId == null) {
-      throw new core.ArgumentError("Parameter triggerId is required.");
+      throw core.ArgumentError("Parameter triggerId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1177,13 +1307,16 @@ class ProjectsTriggersResourceApi {
         '/triggers/' +
         commons.Escaper.ecapeVariable('$triggerId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new BuildTrigger.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BuildTrigger.fromJson(data));
   }
 
   /// Runs a `BuildTrigger` at a particular source revision.
@@ -1207,23 +1340,26 @@ class ProjectsTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> run(
-      RepoSource request, core.String projectId, core.String triggerId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RepoSource request,
+    core.String projectId,
+    core.String triggerId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (triggerId == null) {
-      throw new core.ArgumentError("Parameter triggerId is required.");
+      throw core.ArgumentError("Parameter triggerId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1235,13 +1371,16 @@ class ProjectsTriggersResourceApi {
         commons.Escaper.ecapeVariable('$triggerId') +
         ':run';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -1271,13 +1410,13 @@ class ArtifactObjects {
       paths = (_json["paths"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("timing")) {
-      timing = new TimeSpan.fromJson(_json["timing"]);
+      timing = TimeSpan.fromJson(_json["timing"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (location != null) {
       _json["location"] = location;
     }
@@ -1285,7 +1424,7 @@ class ArtifactObjects {
       _json["paths"] = paths;
     }
     if (timing != null) {
-      _json["timing"] = (timing).toJson();
+      _json["timing"] = timing.toJson();
     }
     return _json;
   }
@@ -1307,7 +1446,7 @@ class ArtifactResult {
   ArtifactResult.fromJson(core.Map _json) {
     if (_json.containsKey("fileHash")) {
       fileHash = (_json["fileHash"] as core.List)
-          .map<FileHashes>((value) => new FileHashes.fromJson(value))
+          .map<FileHashes>((value) => FileHashes.fromJson(value))
           .toList();
     }
     if (_json.containsKey("location")) {
@@ -1317,9 +1456,9 @@ class ArtifactResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fileHash != null) {
-      _json["fileHash"] = fileHash.map((value) => (value).toJson()).toList();
+      _json["fileHash"] = fileHash.map((value) => value.toJson()).toList();
     }
     if (location != null) {
       _json["location"] = location;
@@ -1353,18 +1492,18 @@ class Artifacts {
       images = (_json["images"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("objects")) {
-      objects = new ArtifactObjects.fromJson(_json["objects"]);
+      objects = ArtifactObjects.fromJson(_json["objects"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (images != null) {
       _json["images"] = images;
     }
     if (objects != null) {
-      _json["objects"] = (objects).toJson();
+      _json["objects"] = objects.toJson();
     }
     return _json;
   }
@@ -1495,7 +1634,7 @@ class Build {
 
   Build.fromJson(core.Map _json) {
     if (_json.containsKey("artifacts")) {
-      artifacts = new Artifacts.fromJson(_json["artifacts"]);
+      artifacts = Artifacts.fromJson(_json["artifacts"]);
     }
     if (_json.containsKey("buildTriggerId")) {
       buildTriggerId = _json["buildTriggerId"];
@@ -1522,7 +1661,7 @@ class Build {
       name = _json["name"];
     }
     if (_json.containsKey("options")) {
-      options = new BuildOptions.fromJson(_json["options"]);
+      options = BuildOptions.fromJson(_json["options"]);
     }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
@@ -1531,22 +1670,21 @@ class Build {
       queueTtl = _json["queueTtl"];
     }
     if (_json.containsKey("results")) {
-      results = new Results.fromJson(_json["results"]);
+      results = Results.fromJson(_json["results"]);
     }
     if (_json.containsKey("secrets")) {
       secrets = (_json["secrets"] as core.List)
-          .map<Secret>((value) => new Secret.fromJson(value))
+          .map<Secret>((value) => Secret.fromJson(value))
           .toList();
     }
     if (_json.containsKey("serviceAccount")) {
       serviceAccount = _json["serviceAccount"];
     }
     if (_json.containsKey("source")) {
-      source = new Source.fromJson(_json["source"]);
+      source = Source.fromJson(_json["source"]);
     }
     if (_json.containsKey("sourceProvenance")) {
-      sourceProvenance =
-          new SourceProvenance.fromJson(_json["sourceProvenance"]);
+      sourceProvenance = SourceProvenance.fromJson(_json["sourceProvenance"]);
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -1559,7 +1697,7 @@ class Build {
     }
     if (_json.containsKey("steps")) {
       steps = (_json["steps"] as core.List)
-          .map<BuildStep>((value) => new BuildStep.fromJson(value))
+          .map<BuildStep>((value) => BuildStep.fromJson(value))
           .toList();
     }
     if (_json.containsKey("substitutions")) {
@@ -1575,15 +1713,15 @@ class Build {
     if (_json.containsKey("timing")) {
       timing = commons.mapMap<core.Map, TimeSpan>(
           _json["timing"].cast<core.String, core.Map>(),
-          (core.Map item) => new TimeSpan.fromJson(item));
+          (core.Map item) => TimeSpan.fromJson(item));
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (artifacts != null) {
-      _json["artifacts"] = (artifacts).toJson();
+      _json["artifacts"] = artifacts.toJson();
     }
     if (buildTriggerId != null) {
       _json["buildTriggerId"] = buildTriggerId;
@@ -1610,7 +1748,7 @@ class Build {
       _json["name"] = name;
     }
     if (options != null) {
-      _json["options"] = (options).toJson();
+      _json["options"] = options.toJson();
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
@@ -1619,19 +1757,19 @@ class Build {
       _json["queueTtl"] = queueTtl;
     }
     if (results != null) {
-      _json["results"] = (results).toJson();
+      _json["results"] = results.toJson();
     }
     if (secrets != null) {
-      _json["secrets"] = secrets.map((value) => (value).toJson()).toList();
+      _json["secrets"] = secrets.map((value) => value.toJson()).toList();
     }
     if (serviceAccount != null) {
       _json["serviceAccount"] = serviceAccount;
     }
     if (source != null) {
-      _json["source"] = (source).toJson();
+      _json["source"] = source.toJson();
     }
     if (sourceProvenance != null) {
-      _json["sourceProvenance"] = (sourceProvenance).toJson();
+      _json["sourceProvenance"] = sourceProvenance.toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -1643,7 +1781,7 @@ class Build {
       _json["statusDetail"] = statusDetail;
     }
     if (steps != null) {
-      _json["steps"] = steps.map((value) => (value).toJson()).toList();
+      _json["steps"] = steps.map((value) => value.toJson()).toList();
     }
     if (substitutions != null) {
       _json["substitutions"] = substitutions;
@@ -1657,7 +1795,7 @@ class Build {
     if (timing != null) {
       _json["timing"] =
           commons.mapMap<TimeSpan, core.Map<core.String, core.Object>>(
-              timing, (TimeSpan item) => (item).toJson());
+              timing, (TimeSpan item) => item.toJson());
     }
     return _json;
   }
@@ -1672,15 +1810,15 @@ class BuildOperationMetadata {
 
   BuildOperationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("build")) {
-      build = new Build.fromJson(_json["build"]);
+      build = Build.fromJson(_json["build"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (build != null) {
-      _json["build"] = (build).toJson();
+      _json["build"] = build.toJson();
     }
     return _json;
   }
@@ -1813,7 +1951,7 @@ class BuildOptions {
     }
     if (_json.containsKey("volumes")) {
       volumes = (_json["volumes"] as core.List)
-          .map<Volume>((value) => new Volume.fromJson(value))
+          .map<Volume>((value) => Volume.fromJson(value))
           .toList();
     }
     if (_json.containsKey("workerPool")) {
@@ -1823,7 +1961,7 @@ class BuildOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (diskSizeGb != null) {
       _json["diskSizeGb"] = diskSizeGb;
     }
@@ -1855,7 +1993,7 @@ class BuildOptions {
       _json["substitutionOption"] = substitutionOption;
     }
     if (volumes != null) {
-      _json["volumes"] = volumes.map((value) => (value).toJson()).toList();
+      _json["volumes"] = volumes.map((value) => value.toJson()).toList();
     }
     if (workerPool != null) {
       _json["workerPool"] = workerPool;
@@ -1978,7 +2116,7 @@ class BuildStep {
       name = _json["name"];
     }
     if (_json.containsKey("pullTiming")) {
-      pullTiming = new TimeSpan.fromJson(_json["pullTiming"]);
+      pullTiming = TimeSpan.fromJson(_json["pullTiming"]);
     }
     if (_json.containsKey("secretEnv")) {
       secretEnv = (_json["secretEnv"] as core.List).cast<core.String>();
@@ -1990,11 +2128,11 @@ class BuildStep {
       timeout = _json["timeout"];
     }
     if (_json.containsKey("timing")) {
-      timing = new TimeSpan.fromJson(_json["timing"]);
+      timing = TimeSpan.fromJson(_json["timing"]);
     }
     if (_json.containsKey("volumes")) {
       volumes = (_json["volumes"] as core.List)
-          .map<Volume>((value) => new Volume.fromJson(value))
+          .map<Volume>((value) => Volume.fromJson(value))
           .toList();
     }
     if (_json.containsKey("waitFor")) {
@@ -2004,7 +2142,7 @@ class BuildStep {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (args != null) {
       _json["args"] = args;
     }
@@ -2024,7 +2162,7 @@ class BuildStep {
       _json["name"] = name;
     }
     if (pullTiming != null) {
-      _json["pullTiming"] = (pullTiming).toJson();
+      _json["pullTiming"] = pullTiming.toJson();
     }
     if (secretEnv != null) {
       _json["secretEnv"] = secretEnv;
@@ -2036,10 +2174,10 @@ class BuildStep {
       _json["timeout"] = timeout;
     }
     if (timing != null) {
-      _json["timing"] = (timing).toJson();
+      _json["timing"] = timing.toJson();
     }
     if (volumes != null) {
-      _json["volumes"] = volumes.map((value) => (value).toJson()).toList();
+      _json["volumes"] = volumes.map((value) => value.toJson()).toList();
     }
     if (waitFor != null) {
       _json["waitFor"] = waitFor;
@@ -2115,7 +2253,7 @@ class BuildTrigger {
 
   BuildTrigger.fromJson(core.Map _json) {
     if (_json.containsKey("build")) {
-      build = new Build.fromJson(_json["build"]);
+      build = Build.fromJson(_json["build"]);
     }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
@@ -2130,7 +2268,7 @@ class BuildTrigger {
       filename = _json["filename"];
     }
     if (_json.containsKey("github")) {
-      github = new GitHubEventsConfig.fromJson(_json["github"]);
+      github = GitHubEventsConfig.fromJson(_json["github"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -2152,15 +2290,15 @@ class BuildTrigger {
       tags = (_json["tags"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("triggerTemplate")) {
-      triggerTemplate = new RepoSource.fromJson(_json["triggerTemplate"]);
+      triggerTemplate = RepoSource.fromJson(_json["triggerTemplate"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (build != null) {
-      _json["build"] = (build).toJson();
+      _json["build"] = build.toJson();
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
@@ -2175,7 +2313,7 @@ class BuildTrigger {
       _json["filename"] = filename;
     }
     if (github != null) {
-      _json["github"] = (github).toJson();
+      _json["github"] = github.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -2196,7 +2334,7 @@ class BuildTrigger {
       _json["tags"] = tags;
     }
     if (triggerTemplate != null) {
-      _json["triggerTemplate"] = (triggerTemplate).toJson();
+      _json["triggerTemplate"] = triggerTemplate.toJson();
     }
     return _json;
   }
@@ -2224,13 +2362,13 @@ class BuiltImage {
       name = _json["name"];
     }
     if (_json.containsKey("pushTiming")) {
-      pushTiming = new TimeSpan.fromJson(_json["pushTiming"]);
+      pushTiming = TimeSpan.fromJson(_json["pushTiming"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (digest != null) {
       _json["digest"] = digest;
     }
@@ -2238,7 +2376,7 @@ class BuiltImage {
       _json["name"] = name;
     }
     if (pushTiming != null) {
-      _json["pushTiming"] = (pushTiming).toJson();
+      _json["pushTiming"] = pushTiming.toJson();
     }
     return _json;
   }
@@ -2272,7 +2410,7 @@ class CancelBuildRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -2294,7 +2432,7 @@ class CancelOperationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2311,7 +2449,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2327,16 +2465,16 @@ class FileHashes {
   FileHashes.fromJson(core.Map _json) {
     if (_json.containsKey("fileHash")) {
       fileHash = (_json["fileHash"] as core.List)
-          .map<Hash>((value) => new Hash.fromJson(value))
+          .map<Hash>((value) => Hash.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fileHash != null) {
-      _json["fileHash"] = fileHash.map((value) => (value).toJson()).toList();
+      _json["fileHash"] = fileHash.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2376,16 +2514,16 @@ class GitHubEventsConfig {
       owner = _json["owner"];
     }
     if (_json.containsKey("pullRequest")) {
-      pullRequest = new PullRequestFilter.fromJson(_json["pullRequest"]);
+      pullRequest = PullRequestFilter.fromJson(_json["pullRequest"]);
     }
     if (_json.containsKey("push")) {
-      push = new PushFilter.fromJson(_json["push"]);
+      push = PushFilter.fromJson(_json["push"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (installationId != null) {
       _json["installationId"] = installationId;
     }
@@ -2396,10 +2534,10 @@ class GitHubEventsConfig {
       _json["owner"] = owner;
     }
     if (pullRequest != null) {
-      _json["pullRequest"] = (pullRequest).toJson();
+      _json["pullRequest"] = pullRequest.toJson();
     }
     if (push != null) {
-      _json["push"] = (push).toJson();
+      _json["push"] = push.toJson();
     }
     return _json;
   }
@@ -2420,7 +2558,7 @@ class HTTPDelivery {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (uri != null) {
       _json["uri"] = uri;
     }
@@ -2439,9 +2577,7 @@ class Hash {
 
   /// The hash value.
   core.String value;
-  core.List<core.int> get valueAsBytes {
-    return convert.base64.decode(value);
-  }
+  core.List<core.int> get valueAsBytes => convert.base64.decode(value);
 
   set valueAsBytes(core.List<core.int> _bytes) {
     value =
@@ -2461,7 +2597,7 @@ class Hash {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (type != null) {
       _json["type"] = type;
     }
@@ -2488,19 +2624,19 @@ class ListBuildTriggersResponse {
     }
     if (_json.containsKey("triggers")) {
       triggers = (_json["triggers"] as core.List)
-          .map<BuildTrigger>((value) => new BuildTrigger.fromJson(value))
+          .map<BuildTrigger>((value) => BuildTrigger.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (triggers != null) {
-      _json["triggers"] = triggers.map((value) => (value).toJson()).toList();
+      _json["triggers"] = triggers.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2519,7 +2655,7 @@ class ListBuildsResponse {
   ListBuildsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("builds")) {
       builds = (_json["builds"] as core.List)
-          .map<Build>((value) => new Build.fromJson(value))
+          .map<Build>((value) => Build.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2529,9 +2665,9 @@ class ListBuildsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (builds != null) {
-      _json["builds"] = builds.map((value) => (value).toJson()).toList();
+      _json["builds"] = builds.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -2570,13 +2706,13 @@ class Notification {
       filter = _json["filter"];
     }
     if (_json.containsKey("httpDelivery")) {
-      httpDelivery = new HTTPDelivery.fromJson(_json["httpDelivery"]);
+      httpDelivery = HTTPDelivery.fromJson(_json["httpDelivery"]);
     }
     if (_json.containsKey("slackDelivery")) {
-      slackDelivery = new SlackDelivery.fromJson(_json["slackDelivery"]);
+      slackDelivery = SlackDelivery.fromJson(_json["slackDelivery"]);
     }
     if (_json.containsKey("smtpDelivery")) {
-      smtpDelivery = new SMTPDelivery.fromJson(_json["smtpDelivery"]);
+      smtpDelivery = SMTPDelivery.fromJson(_json["smtpDelivery"]);
     }
     if (_json.containsKey("structDelivery")) {
       structDelivery = (_json["structDelivery"] as core.Map)
@@ -2586,18 +2722,18 @@ class Notification {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (filter != null) {
       _json["filter"] = filter;
     }
     if (httpDelivery != null) {
-      _json["httpDelivery"] = (httpDelivery).toJson();
+      _json["httpDelivery"] = httpDelivery.toJson();
     }
     if (slackDelivery != null) {
-      _json["slackDelivery"] = (slackDelivery).toJson();
+      _json["slackDelivery"] = slackDelivery.toJson();
     }
     if (smtpDelivery != null) {
-      _json["smtpDelivery"] = (smtpDelivery).toJson();
+      _json["smtpDelivery"] = smtpDelivery.toJson();
     }
     if (structDelivery != null) {
       _json["structDelivery"] = structDelivery;
@@ -2630,16 +2766,16 @@ class NotifierConfig {
       kind = _json["kind"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new NotifierMetadata.fromJson(_json["metadata"]);
+      metadata = NotifierMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("spec")) {
-      spec = new NotifierSpec.fromJson(_json["spec"]);
+      spec = NotifierSpec.fromJson(_json["spec"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiVersion != null) {
       _json["apiVersion"] = apiVersion;
     }
@@ -2647,10 +2783,10 @@ class NotifierConfig {
       _json["kind"] = kind;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (spec != null) {
-      _json["spec"] = (spec).toJson();
+      _json["spec"] = spec.toJson();
     }
     return _json;
   }
@@ -2681,7 +2817,7 @@ class NotifierMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -2718,7 +2854,7 @@ class NotifierSecret {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -2746,7 +2882,7 @@ class NotifierSecretRef {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (secretRef != null) {
       _json["secretRef"] = secretRef;
     }
@@ -2766,23 +2902,23 @@ class NotifierSpec {
 
   NotifierSpec.fromJson(core.Map _json) {
     if (_json.containsKey("notification")) {
-      notification = new Notification.fromJson(_json["notification"]);
+      notification = Notification.fromJson(_json["notification"]);
     }
     if (_json.containsKey("secrets")) {
       secrets = (_json["secrets"] as core.List)
-          .map<NotifierSecret>((value) => new NotifierSecret.fromJson(value))
+          .map<NotifierSecret>((value) => NotifierSecret.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (notification != null) {
-      _json["notification"] = (notification).toJson();
+      _json["notification"] = notification.toJson();
     }
     if (secrets != null) {
-      _json["secrets"] = secrets.map((value) => (value).toJson()).toList();
+      _json["secrets"] = secrets.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2832,7 +2968,7 @@ class Operation {
       done = _json["done"];
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
       metadata =
@@ -2849,12 +2985,12 @@ class Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -2908,7 +3044,7 @@ class PullRequestFilter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (branch != null) {
       _json["branch"] = branch;
     }
@@ -2954,7 +3090,7 @@ class PushFilter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (branch != null) {
       _json["branch"] = branch;
     }
@@ -3035,7 +3171,7 @@ class RepoSource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (branchName != null) {
       _json["branchName"] = branchName;
     }
@@ -3096,7 +3232,7 @@ class Results {
       artifactManifest = _json["artifactManifest"];
     }
     if (_json.containsKey("artifactTiming")) {
-      artifactTiming = new TimeSpan.fromJson(_json["artifactTiming"]);
+      artifactTiming = TimeSpan.fromJson(_json["artifactTiming"]);
     }
     if (_json.containsKey("buildStepImages")) {
       buildStepImages =
@@ -3108,7 +3244,7 @@ class Results {
     }
     if (_json.containsKey("images")) {
       images = (_json["images"] as core.List)
-          .map<BuiltImage>((value) => new BuiltImage.fromJson(value))
+          .map<BuiltImage>((value) => BuiltImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("numArtifacts")) {
@@ -3118,12 +3254,12 @@ class Results {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (artifactManifest != null) {
       _json["artifactManifest"] = artifactManifest;
     }
     if (artifactTiming != null) {
-      _json["artifactTiming"] = (artifactTiming).toJson();
+      _json["artifactTiming"] = artifactTiming.toJson();
     }
     if (buildStepImages != null) {
       _json["buildStepImages"] = buildStepImages;
@@ -3132,7 +3268,7 @@ class Results {
       _json["buildStepOutputs"] = buildStepOutputs;
     }
     if (images != null) {
-      _json["images"] = images.map((value) => (value).toJson()).toList();
+      _json["images"] = images.map((value) => value.toJson()).toList();
     }
     if (numArtifacts != null) {
       _json["numArtifacts"] = numArtifacts;
@@ -3169,7 +3305,7 @@ class RetryBuildRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -3212,7 +3348,7 @@ class SMTPDelivery {
       fromAddress = _json["fromAddress"];
     }
     if (_json.containsKey("password")) {
-      password = new NotifierSecretRef.fromJson(_json["password"]);
+      password = NotifierSecretRef.fromJson(_json["password"]);
     }
     if (_json.containsKey("port")) {
       port = _json["port"];
@@ -3231,12 +3367,12 @@ class SMTPDelivery {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fromAddress != null) {
       _json["fromAddress"] = fromAddress;
     }
     if (password != null) {
-      _json["password"] = (password).toJson();
+      _json["password"] = password.toJson();
     }
     if (port != null) {
       _json["port"] = port;
@@ -3281,7 +3417,7 @@ class Secret {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kmsKeyName != null) {
       _json["kmsKeyName"] = kmsKeyName;
     }
@@ -3304,15 +3440,15 @@ class SlackDelivery {
 
   SlackDelivery.fromJson(core.Map _json) {
     if (_json.containsKey("webhookUri")) {
-      webhookUri = new NotifierSecretRef.fromJson(_json["webhookUri"]);
+      webhookUri = NotifierSecretRef.fromJson(_json["webhookUri"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (webhookUri != null) {
-      _json["webhookUri"] = (webhookUri).toJson();
+      _json["webhookUri"] = webhookUri.toJson();
     }
     return _json;
   }
@@ -3331,21 +3467,21 @@ class Source {
 
   Source.fromJson(core.Map _json) {
     if (_json.containsKey("repoSource")) {
-      repoSource = new RepoSource.fromJson(_json["repoSource"]);
+      repoSource = RepoSource.fromJson(_json["repoSource"]);
     }
     if (_json.containsKey("storageSource")) {
-      storageSource = new StorageSource.fromJson(_json["storageSource"]);
+      storageSource = StorageSource.fromJson(_json["storageSource"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (repoSource != null) {
-      _json["repoSource"] = (repoSource).toJson();
+      _json["repoSource"] = repoSource.toJson();
     }
     if (storageSource != null) {
-      _json["storageSource"] = (storageSource).toJson();
+      _json["storageSource"] = storageSource.toJson();
     }
     return _json;
   }
@@ -3377,30 +3513,30 @@ class SourceProvenance {
     if (_json.containsKey("fileHashes")) {
       fileHashes = commons.mapMap<core.Map, FileHashes>(
           _json["fileHashes"].cast<core.String, core.Map>(),
-          (core.Map item) => new FileHashes.fromJson(item));
+          (core.Map item) => FileHashes.fromJson(item));
     }
     if (_json.containsKey("resolvedRepoSource")) {
-      resolvedRepoSource = new RepoSource.fromJson(_json["resolvedRepoSource"]);
+      resolvedRepoSource = RepoSource.fromJson(_json["resolvedRepoSource"]);
     }
     if (_json.containsKey("resolvedStorageSource")) {
       resolvedStorageSource =
-          new StorageSource.fromJson(_json["resolvedStorageSource"]);
+          StorageSource.fromJson(_json["resolvedStorageSource"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fileHashes != null) {
       _json["fileHashes"] =
           commons.mapMap<FileHashes, core.Map<core.String, core.Object>>(
-              fileHashes, (FileHashes item) => (item).toJson());
+              fileHashes, (FileHashes item) => item.toJson());
     }
     if (resolvedRepoSource != null) {
-      _json["resolvedRepoSource"] = (resolvedRepoSource).toJson();
+      _json["resolvedRepoSource"] = resolvedRepoSource.toJson();
     }
     if (resolvedStorageSource != null) {
-      _json["resolvedStorageSource"] = (resolvedStorageSource).toJson();
+      _json["resolvedStorageSource"] = resolvedStorageSource.toJson();
     }
     return _json;
   }
@@ -3447,7 +3583,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -3491,7 +3627,7 @@ class StorageSource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucket != null) {
       _json["bucket"] = bucket;
     }
@@ -3526,7 +3662,7 @@ class TimeSpan {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -3563,7 +3699,7 @@ class Volume {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }

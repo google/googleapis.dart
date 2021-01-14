@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.displayvideo.v1;
 
@@ -47,60 +65,58 @@ class DisplayvideoApi {
 
   final commons.ApiRequester _requester;
 
-  AdvertisersResourceApi get advertisers =>
-      new AdvertisersResourceApi(_requester);
+  AdvertisersResourceApi get advertisers => AdvertisersResourceApi(_requester);
   CombinedAudiencesResourceApi get combinedAudiences =>
-      new CombinedAudiencesResourceApi(_requester);
+      CombinedAudiencesResourceApi(_requester);
   CustomBiddingAlgorithmsResourceApi get customBiddingAlgorithms =>
-      new CustomBiddingAlgorithmsResourceApi(_requester);
-  CustomListsResourceApi get customLists =>
-      new CustomListsResourceApi(_requester);
+      CustomBiddingAlgorithmsResourceApi(_requester);
+  CustomListsResourceApi get customLists => CustomListsResourceApi(_requester);
   FirstAndThirdPartyAudiencesResourceApi get firstAndThirdPartyAudiences =>
-      new FirstAndThirdPartyAudiencesResourceApi(_requester);
+      FirstAndThirdPartyAudiencesResourceApi(_requester);
   FloodlightGroupsResourceApi get floodlightGroups =>
-      new FloodlightGroupsResourceApi(_requester);
+      FloodlightGroupsResourceApi(_requester);
   GoogleAudiencesResourceApi get googleAudiences =>
-      new GoogleAudiencesResourceApi(_requester);
+      GoogleAudiencesResourceApi(_requester);
   InventorySourceGroupsResourceApi get inventorySourceGroups =>
-      new InventorySourceGroupsResourceApi(_requester);
+      InventorySourceGroupsResourceApi(_requester);
   InventorySourcesResourceApi get inventorySources =>
-      new InventorySourcesResourceApi(_requester);
-  MediaResourceApi get media => new MediaResourceApi(_requester);
-  PartnersResourceApi get partners => new PartnersResourceApi(_requester);
+      InventorySourcesResourceApi(_requester);
+  MediaResourceApi get media => MediaResourceApi(_requester);
+  PartnersResourceApi get partners => PartnersResourceApi(_requester);
   SdfdownloadtasksResourceApi get sdfdownloadtasks =>
-      new SdfdownloadtasksResourceApi(_requester);
+      SdfdownloadtasksResourceApi(_requester);
   TargetingTypesResourceApi get targetingTypes =>
-      new TargetingTypesResourceApi(_requester);
-  UsersResourceApi get users => new UsersResourceApi(_requester);
+      TargetingTypesResourceApi(_requester);
+  UsersResourceApi get users => UsersResourceApi(_requester);
 
   DisplayvideoApi(http.Client client,
       {core.String rootUrl = "https://displayvideo.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AdvertisersResourceApi {
   final commons.ApiRequester _requester;
 
   AdvertisersAssetsResourceApi get assets =>
-      new AdvertisersAssetsResourceApi(_requester);
+      AdvertisersAssetsResourceApi(_requester);
   AdvertisersCampaignsResourceApi get campaigns =>
-      new AdvertisersCampaignsResourceApi(_requester);
+      AdvertisersCampaignsResourceApi(_requester);
   AdvertisersChannelsResourceApi get channels =>
-      new AdvertisersChannelsResourceApi(_requester);
+      AdvertisersChannelsResourceApi(_requester);
   AdvertisersCreativesResourceApi get creatives =>
-      new AdvertisersCreativesResourceApi(_requester);
+      AdvertisersCreativesResourceApi(_requester);
   AdvertisersInsertionOrdersResourceApi get insertionOrders =>
-      new AdvertisersInsertionOrdersResourceApi(_requester);
+      AdvertisersInsertionOrdersResourceApi(_requester);
   AdvertisersLineItemsResourceApi get lineItems =>
-      new AdvertisersLineItemsResourceApi(_requester);
+      AdvertisersLineItemsResourceApi(_requester);
   AdvertisersLocationListsResourceApi get locationLists =>
-      new AdvertisersLocationListsResourceApi(_requester);
+      AdvertisersLocationListsResourceApi(_requester);
   AdvertisersNegativeKeywordListsResourceApi get negativeKeywordLists =>
-      new AdvertisersNegativeKeywordListsResourceApi(_requester);
+      AdvertisersNegativeKeywordListsResourceApi(_requester);
   AdvertisersTargetingTypesResourceApi get targetingTypes =>
-      new AdvertisersTargetingTypesResourceApi(_requester);
+      AdvertisersTargetingTypesResourceApi(_requester);
 
   AdvertisersResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -130,17 +146,20 @@ class AdvertisersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AuditAdvertiserResponse> audit(core.String advertiserId,
-      {core.String readMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AuditAdvertiserResponse> audit(
+    core.String advertiserId, {
+    core.String readMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (readMask != null) {
       _queryParams["readMask"] = [readMask];
@@ -153,13 +172,16 @@ class AdvertisersResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         ':audit';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AuditAdvertiserResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AuditAdvertiserResponse.fromJson(data));
   }
 
   /// Bulk edits targeting options under a single advertiser. The operation will
@@ -187,21 +209,22 @@ class AdvertisersResourceApi {
   /// this method will complete with the same error.
   async.Future<BulkEditAdvertiserAssignedTargetingOptionsResponse>
       bulkEditAdvertiserAssignedTargetingOptions(
-          BulkEditAdvertiserAssignedTargetingOptionsRequest request,
-          core.String advertiserId,
-          {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BulkEditAdvertiserAssignedTargetingOptionsRequest request,
+    core.String advertiserId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -211,14 +234,17 @@ class AdvertisersResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         ':bulkEditAdvertiserAssignedTargetingOptions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new BulkEditAdvertiserAssignedTargetingOptionsResponse.fromJson(data));
+        BulkEditAdvertiserAssignedTargetingOptionsResponse.fromJson(data));
   }
 
   /// Lists assigned targeting options of an advertiser across targeting types.
@@ -263,21 +289,23 @@ class AdvertisersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BulkListAdvertiserAssignedTargetingOptionsResponse>
-      bulkListAdvertiserAssignedTargetingOptions(core.String advertiserId,
-          {core.String orderBy,
-          core.String filter,
-          core.String pageToken,
-          core.int pageSize,
-          core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+      bulkListAdvertiserAssignedTargetingOptions(
+    core.String advertiserId, {
+    core.String orderBy,
+    core.String filter,
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -299,14 +327,17 @@ class AdvertisersResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         ':bulkListAdvertiserAssignedTargetingOptions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new BulkListAdvertiserAssignedTargetingOptionsResponse.fromJson(data));
+        BulkListAdvertiserAssignedTargetingOptionsResponse.fromJson(data));
   }
 
   /// Creates a new advertiser. Returns the newly created advertiser if
@@ -326,16 +357,19 @@ class AdvertisersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Advertiser> create(Advertiser request, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Advertiser> create(
+    Advertiser request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -343,13 +377,16 @@ class AdvertisersResourceApi {
 
     _url = 'v1/advertisers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Advertiser.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Advertiser.fromJson(data));
   }
 
   /// Deletes an advertiser. Deleting an advertiser will delete all of its child
@@ -371,16 +408,19 @@ class AdvertisersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String advertiserId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String advertiserId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -389,13 +429,16 @@ class AdvertisersResourceApi {
     _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets an advertiser.
@@ -415,17 +458,19 @@ class AdvertisersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Advertiser> get(core.String advertiserId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Advertiser> get(
+    core.String advertiserId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -434,13 +479,16 @@ class AdvertisersResourceApi {
     _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Advertiser.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Advertiser.fromJson(data));
   }
 
   /// Lists advertisers that are accessible to the current user. The order is
@@ -486,19 +534,20 @@ class AdvertisersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListAdvertisersResponse> list(
-      {core.String partnerId,
-      core.String filter,
-      core.String orderBy,
-      core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListAdvertisersResponse> list({
+    core.String partnerId,
+    core.String filter,
+    core.String orderBy,
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (partnerId != null) {
       _queryParams["partnerId"] = [partnerId];
@@ -521,13 +570,16 @@ class AdvertisersResourceApi {
 
     _url = 'v1/advertisers';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListAdvertisersResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListAdvertisersResponse.fromJson(data));
   }
 
   /// Updates an existing advertiser. Returns the updated advertiser if
@@ -553,20 +605,24 @@ class AdvertisersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Advertiser> patch(Advertiser request, core.String advertiserId,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Advertiser> patch(
+    Advertiser request,
+    core.String advertiserId, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -578,13 +634,16 @@ class AdvertisersResourceApi {
     _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Advertiser.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Advertiser.fromJson(data));
   }
 }
 
@@ -618,20 +677,23 @@ class AdvertisersAssetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreateAssetResponse> upload(
-      CreateAssetRequest request, core.String advertiserId,
-      {core.String $fields, commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CreateAssetRequest request,
+    core.String advertiserId, {
+    core.String $fields,
+    commons.Media uploadMedia,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -650,13 +712,16 @@ class AdvertisersAssetsResourceApi {
           '/assets';
     }
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreateAssetResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreateAssetResponse.fromJson(data));
   }
 }
 
@@ -686,20 +751,23 @@ class AdvertisersCampaignsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Campaign> create(Campaign request, core.String advertiserId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Campaign> create(
+    Campaign request,
+    core.String advertiserId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -709,13 +777,16 @@ class AdvertisersCampaignsResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/campaigns';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Campaign.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Campaign.fromJson(data));
   }
 
   /// Permanently deletes a campaign. A deleted campaign cannot be recovered.
@@ -740,20 +811,23 @@ class AdvertisersCampaignsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String advertiserId, core.String campaignId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String advertiserId,
+    core.String campaignId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (campaignId == null) {
-      throw new core.ArgumentError("Parameter campaignId is required.");
+      throw core.ArgumentError("Parameter campaignId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -764,13 +838,16 @@ class AdvertisersCampaignsResourceApi {
         '/campaigns/' +
         commons.Escaper.ecapeVariableReserved('$campaignId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a campaign.
@@ -794,20 +871,23 @@ class AdvertisersCampaignsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Campaign> get(core.String advertiserId, core.String campaignId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Campaign> get(
+    core.String advertiserId,
+    core.String campaignId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (campaignId == null) {
-      throw new core.ArgumentError("Parameter campaignId is required.");
+      throw core.ArgumentError("Parameter campaignId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -818,13 +898,16 @@ class AdvertisersCampaignsResourceApi {
         '/campaigns/' +
         commons.Escaper.ecapeVariableReserved('$campaignId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Campaign.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Campaign.fromJson(data));
   }
 
   /// Lists campaigns in an advertiser. The order is defined by the order_by
@@ -870,21 +953,23 @@ class AdvertisersCampaignsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListCampaignsResponse> list(core.String advertiserId,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String orderBy,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListCampaignsResponse> list(
+    core.String advertiserId, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String orderBy,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -906,13 +991,16 @@ class AdvertisersCampaignsResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/campaigns';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListCampaignsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListCampaignsResponse.fromJson(data));
   }
 
   /// Updates an existing campaign. Returns the updated campaign if successful.
@@ -942,23 +1030,27 @@ class AdvertisersCampaignsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Campaign> patch(
-      Campaign request, core.String advertiserId, core.String campaignId,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Campaign request,
+    core.String advertiserId,
+    core.String campaignId, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (campaignId == null) {
-      throw new core.ArgumentError("Parameter campaignId is required.");
+      throw core.ArgumentError("Parameter campaignId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -972,13 +1064,16 @@ class AdvertisersCampaignsResourceApi {
         '/campaigns/' +
         commons.Escaper.ecapeVariableReserved('$campaignId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Campaign.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Campaign.fromJson(data));
   }
 }
 
@@ -986,7 +1081,7 @@ class AdvertisersChannelsResourceApi {
   final commons.ApiRequester _requester;
 
   AdvertisersChannelsSitesResourceApi get sites =>
-      new AdvertisersChannelsSitesResourceApi(_requester);
+      AdvertisersChannelsSitesResourceApi(_requester);
 
   AdvertisersChannelsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -1012,20 +1107,24 @@ class AdvertisersChannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Channel> create(Channel request, core.String advertiserId,
-      {core.String partnerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Channel> create(
+    Channel request,
+    core.String advertiserId, {
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (partnerId != null) {
       _queryParams["partnerId"] = [partnerId];
@@ -1038,13 +1137,16 @@ class AdvertisersChannelsResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/channels';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Channel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Channel.fromJson(data));
   }
 
   /// Gets a channel for a partner or advertiser.
@@ -1069,20 +1171,24 @@ class AdvertisersChannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Channel> get(core.String advertiserId, core.String channelId,
-      {core.String partnerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Channel> get(
+    core.String advertiserId,
+    core.String channelId, {
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (channelId == null) {
-      throw new core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError("Parameter channelId is required.");
     }
     if (partnerId != null) {
       _queryParams["partnerId"] = [partnerId];
@@ -1096,13 +1202,16 @@ class AdvertisersChannelsResourceApi {
         '/channels/' +
         commons.Escaper.ecapeVariableReserved('$channelId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Channel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Channel.fromJson(data));
   }
 
   /// Lists channels for a partner or advertiser.
@@ -1146,22 +1255,24 @@ class AdvertisersChannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListChannelsResponse> list(core.String advertiserId,
-      {core.String pageToken,
-      core.String filter,
-      core.int pageSize,
-      core.String orderBy,
-      core.String partnerId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListChannelsResponse> list(
+    core.String advertiserId, {
+    core.String pageToken,
+    core.String filter,
+    core.int pageSize,
+    core.String orderBy,
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1186,13 +1297,16 @@ class AdvertisersChannelsResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/channels';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListChannelsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListChannelsResponse.fromJson(data));
   }
 
   /// Updates a channel. Returns the updated channel if successful.
@@ -1222,23 +1336,28 @@ class AdvertisersChannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Channel> patch(
-      Channel request, core.String advertiserId, core.String channelId,
-      {core.String updateMask, core.String partnerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Channel request,
+    core.String advertiserId,
+    core.String channelId, {
+    core.String updateMask,
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (channelId == null) {
-      throw new core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError("Parameter channelId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1255,13 +1374,16 @@ class AdvertisersChannelsResourceApi {
         '/channels/' +
         commons.Escaper.ecapeVariable('$channelId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Channel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Channel.fromJson(data));
   }
 }
 
@@ -1295,24 +1417,27 @@ class AdvertisersChannelsSitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BulkEditSitesResponse> bulkEdit(BulkEditSitesRequest request,
-      core.String advertiserId, core.String channelId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<BulkEditSitesResponse> bulkEdit(
+    BulkEditSitesRequest request,
+    core.String advertiserId,
+    core.String channelId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (channelId == null) {
-      throw new core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError("Parameter channelId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1324,13 +1449,16 @@ class AdvertisersChannelsSitesResourceApi {
         commons.Escaper.ecapeVariableReserved('$channelId') +
         '/sites:bulkEdit';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new BulkEditSitesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BulkEditSitesResponse.fromJson(data));
   }
 
   /// Creates a site in a channel.
@@ -1358,23 +1486,27 @@ class AdvertisersChannelsSitesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Site> create(
-      Site request, core.String advertiserId, core.String channelId,
-      {core.String partnerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Site request,
+    core.String advertiserId,
+    core.String channelId, {
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (channelId == null) {
-      throw new core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError("Parameter channelId is required.");
     }
     if (partnerId != null) {
       _queryParams["partnerId"] = [partnerId];
@@ -1389,13 +1521,16 @@ class AdvertisersChannelsSitesResourceApi {
         commons.Escaper.ecapeVariableReserved('$channelId') +
         '/sites';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Site.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Site.fromJson(data));
   }
 
   /// Deletes a site from a channel.
@@ -1424,23 +1559,27 @@ class AdvertisersChannelsSitesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(
-      core.String advertiserId, core.String channelId, core.String urlOrAppId,
-      {core.String partnerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String advertiserId,
+    core.String channelId,
+    core.String urlOrAppId, {
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (channelId == null) {
-      throw new core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError("Parameter channelId is required.");
     }
     if (urlOrAppId == null) {
-      throw new core.ArgumentError("Parameter urlOrAppId is required.");
+      throw core.ArgumentError("Parameter urlOrAppId is required.");
     }
     if (partnerId != null) {
       _queryParams["partnerId"] = [partnerId];
@@ -1456,13 +1595,16 @@ class AdvertisersChannelsSitesResourceApi {
         '/sites/' +
         commons.Escaper.ecapeVariableReserved('$urlOrAppId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Lists sites in a channel.
@@ -1510,25 +1652,27 @@ class AdvertisersChannelsSitesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSitesResponse> list(
-      core.String advertiserId, core.String channelId,
-      {core.String pageToken,
-      core.String filter,
-      core.String partnerId,
-      core.String orderBy,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String advertiserId,
+    core.String channelId, {
+    core.String pageToken,
+    core.String filter,
+    core.String partnerId,
+    core.String orderBy,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (channelId == null) {
-      throw new core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError("Parameter channelId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1555,13 +1699,16 @@ class AdvertisersChannelsSitesResourceApi {
         commons.Escaper.ecapeVariableReserved('$channelId') +
         '/sites';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListSitesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListSitesResponse.fromJson(data));
   }
 }
 
@@ -1591,20 +1738,23 @@ class AdvertisersCreativesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Creative> create(Creative request, core.String advertiserId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Creative> create(
+    Creative request,
+    core.String advertiserId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1614,13 +1764,16 @@ class AdvertisersCreativesResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/creatives';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Creative.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Creative.fromJson(data));
   }
 
   /// Deletes a creative. Returns error code `NOT_FOUND` if the creative does
@@ -1645,20 +1798,23 @@ class AdvertisersCreativesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String advertiserId, core.String creativeId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String advertiserId,
+    core.String creativeId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (creativeId == null) {
-      throw new core.ArgumentError("Parameter creativeId is required.");
+      throw core.ArgumentError("Parameter creativeId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1669,13 +1825,16 @@ class AdvertisersCreativesResourceApi {
         '/creatives/' +
         commons.Escaper.ecapeVariableReserved('$creativeId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a creative.
@@ -1699,20 +1858,23 @@ class AdvertisersCreativesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Creative> get(core.String advertiserId, core.String creativeId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Creative> get(
+    core.String advertiserId,
+    core.String creativeId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (creativeId == null) {
-      throw new core.ArgumentError("Parameter creativeId is required.");
+      throw core.ArgumentError("Parameter creativeId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1723,13 +1885,16 @@ class AdvertisersCreativesResourceApi {
         '/creatives/' +
         commons.Escaper.ecapeVariableReserved('$creativeId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Creative.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Creative.fromJson(data));
   }
 
   /// Lists creatives in an advertiser. The order is defined by the order_by
@@ -1797,21 +1962,23 @@ class AdvertisersCreativesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListCreativesResponse> list(core.String advertiserId,
-      {core.int pageSize,
-      core.String orderBy,
-      core.String pageToken,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListCreativesResponse> list(
+    core.String advertiserId, {
+    core.int pageSize,
+    core.String orderBy,
+    core.String pageToken,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1833,13 +2000,16 @@ class AdvertisersCreativesResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/creatives';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListCreativesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListCreativesResponse.fromJson(data));
   }
 
   /// Updates an existing creative. Returns the updated creative if successful.
@@ -1869,23 +2039,27 @@ class AdvertisersCreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Creative> patch(
-      Creative request, core.String advertiserId, core.String creativeId,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Creative request,
+    core.String advertiserId,
+    core.String creativeId, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (creativeId == null) {
-      throw new core.ArgumentError("Parameter creativeId is required.");
+      throw core.ArgumentError("Parameter creativeId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1899,13 +2073,16 @@ class AdvertisersCreativesResourceApi {
         '/creatives/' +
         commons.Escaper.ecapeVariableReserved('$creativeId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Creative.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Creative.fromJson(data));
   }
 }
 
@@ -1937,20 +2114,22 @@ class AdvertisersInsertionOrdersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InsertionOrder> create(
-      InsertionOrder request, core.String advertiserId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    InsertionOrder request,
+    core.String advertiserId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1960,13 +2139,16 @@ class AdvertisersInsertionOrdersResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/insertionOrders';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new InsertionOrder.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => InsertionOrder.fromJson(data));
   }
 
   /// Deletes an insertion order. Returns error code `NOT_FOUND` if the
@@ -1993,20 +2175,22 @@ class AdvertisersInsertionOrdersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(
-      core.String advertiserId, core.String insertionOrderId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String advertiserId,
+    core.String insertionOrderId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (insertionOrderId == null) {
-      throw new core.ArgumentError("Parameter insertionOrderId is required.");
+      throw core.ArgumentError("Parameter insertionOrderId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2017,13 +2201,16 @@ class AdvertisersInsertionOrdersResourceApi {
         '/insertionOrders/' +
         commons.Escaper.ecapeVariableReserved('$insertionOrderId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets an insertion order. Returns error code `NOT_FOUND` if the insertion
@@ -2049,20 +2236,22 @@ class AdvertisersInsertionOrdersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InsertionOrder> get(
-      core.String advertiserId, core.String insertionOrderId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String advertiserId,
+    core.String insertionOrderId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (insertionOrderId == null) {
-      throw new core.ArgumentError("Parameter insertionOrderId is required.");
+      throw core.ArgumentError("Parameter insertionOrderId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2073,13 +2262,16 @@ class AdvertisersInsertionOrdersResourceApi {
         '/insertionOrders/' +
         commons.Escaper.ecapeVariableReserved('$insertionOrderId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new InsertionOrder.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => InsertionOrder.fromJson(data));
   }
 
   /// Lists insertion orders in an advertiser. The order is defined by the
@@ -2134,21 +2326,23 @@ class AdvertisersInsertionOrdersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListInsertionOrdersResponse> list(core.String advertiserId,
-      {core.String orderBy,
-      core.int pageSize,
-      core.String pageToken,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListInsertionOrdersResponse> list(
+    core.String advertiserId, {
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -2170,14 +2364,16 @@ class AdvertisersInsertionOrdersResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/insertionOrders';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListInsertionOrdersResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListInsertionOrdersResponse.fromJson(data));
   }
 
   /// Updates an existing insertion order. Returns the updated insertion order
@@ -2207,24 +2403,28 @@ class AdvertisersInsertionOrdersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<InsertionOrder> patch(InsertionOrder request,
-      core.String advertiserId, core.String insertionOrderId,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<InsertionOrder> patch(
+    InsertionOrder request,
+    core.String advertiserId,
+    core.String insertionOrderId, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (insertionOrderId == null) {
-      throw new core.ArgumentError("Parameter insertionOrderId is required.");
+      throw core.ArgumentError("Parameter insertionOrderId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -2238,13 +2438,16 @@ class AdvertisersInsertionOrdersResourceApi {
         '/insertionOrders/' +
         commons.Escaper.ecapeVariableReserved('$insertionOrderId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new InsertionOrder.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => InsertionOrder.fromJson(data));
   }
 }
 
@@ -2252,7 +2455,7 @@ class AdvertisersLineItemsResourceApi {
   final commons.ApiRequester _requester;
 
   AdvertisersLineItemsTargetingTypesResourceApi get targetingTypes =>
-      new AdvertisersLineItemsTargetingTypesResourceApi(_requester);
+      AdvertisersLineItemsTargetingTypesResourceApi(_requester);
 
   AdvertisersLineItemsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -2287,25 +2490,26 @@ class AdvertisersLineItemsResourceApi {
   /// this method will complete with the same error.
   async.Future<BulkEditLineItemAssignedTargetingOptionsResponse>
       bulkEditLineItemAssignedTargetingOptions(
-          BulkEditLineItemAssignedTargetingOptionsRequest request,
-          core.String advertiserId,
-          core.String lineItemId,
-          {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BulkEditLineItemAssignedTargetingOptionsRequest request,
+    core.String advertiserId,
+    core.String lineItemId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (lineItemId == null) {
-      throw new core.ArgumentError("Parameter lineItemId is required.");
+      throw core.ArgumentError("Parameter lineItemId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2317,14 +2521,17 @@ class AdvertisersLineItemsResourceApi {
         commons.Escaper.ecapeVariableReserved('$lineItemId') +
         ':bulkEditLineItemAssignedTargetingOptions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new BulkEditLineItemAssignedTargetingOptionsResponse.fromJson(data));
+        BulkEditLineItemAssignedTargetingOptionsResponse.fromJson(data));
   }
 
   /// Lists assigned targeting options of a line item across targeting types.
@@ -2379,24 +2586,26 @@ class AdvertisersLineItemsResourceApi {
   /// this method will complete with the same error.
   async.Future<BulkListLineItemAssignedTargetingOptionsResponse>
       bulkListLineItemAssignedTargetingOptions(
-          core.String advertiserId, core.String lineItemId,
-          {core.String pageToken,
-          core.String orderBy,
-          core.int pageSize,
-          core.String filter,
-          core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String advertiserId,
+    core.String lineItemId, {
+    core.String pageToken,
+    core.String orderBy,
+    core.int pageSize,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (lineItemId == null) {
-      throw new core.ArgumentError("Parameter lineItemId is required.");
+      throw core.ArgumentError("Parameter lineItemId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2420,14 +2629,17 @@ class AdvertisersLineItemsResourceApi {
         commons.Escaper.ecapeVariableReserved('$lineItemId') +
         ':bulkListLineItemAssignedTargetingOptions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new BulkListLineItemAssignedTargetingOptionsResponse.fromJson(data));
+        BulkListLineItemAssignedTargetingOptionsResponse.fromJson(data));
   }
 
   /// Creates a new line item. Returns the newly created line item if
@@ -2451,20 +2663,23 @@ class AdvertisersLineItemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LineItem> create(LineItem request, core.String advertiserId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LineItem> create(
+    LineItem request,
+    core.String advertiserId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2474,13 +2689,16 @@ class AdvertisersLineItemsResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/lineItems';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LineItem.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LineItem.fromJson(data));
   }
 
   /// Deletes a line item. Returns error code `NOT_FOUND` if the line item does
@@ -2505,20 +2723,23 @@ class AdvertisersLineItemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String advertiserId, core.String lineItemId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String advertiserId,
+    core.String lineItemId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (lineItemId == null) {
-      throw new core.ArgumentError("Parameter lineItemId is required.");
+      throw core.ArgumentError("Parameter lineItemId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2529,13 +2750,16 @@ class AdvertisersLineItemsResourceApi {
         '/lineItems/' +
         commons.Escaper.ecapeVariableReserved('$lineItemId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a line item.
@@ -2559,20 +2783,23 @@ class AdvertisersLineItemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LineItem> get(core.String advertiserId, core.String lineItemId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LineItem> get(
+    core.String advertiserId,
+    core.String lineItemId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (lineItemId == null) {
-      throw new core.ArgumentError("Parameter lineItemId is required.");
+      throw core.ArgumentError("Parameter lineItemId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2583,13 +2810,16 @@ class AdvertisersLineItemsResourceApi {
         '/lineItems/' +
         commons.Escaper.ecapeVariableReserved('$lineItemId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LineItem.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LineItem.fromJson(data));
   }
 
   /// Lists line items in an advertiser. The order is defined by the order_by
@@ -2649,21 +2879,23 @@ class AdvertisersLineItemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListLineItemsResponse> list(core.String advertiserId,
-      {core.String orderBy,
-      core.String filter,
-      core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListLineItemsResponse> list(
+    core.String advertiserId, {
+    core.String orderBy,
+    core.String filter,
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -2685,13 +2917,16 @@ class AdvertisersLineItemsResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/lineItems';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListLineItemsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListLineItemsResponse.fromJson(data));
   }
 
   /// Updates an existing line item. Returns the updated line item if
@@ -2722,23 +2957,27 @@ class AdvertisersLineItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LineItem> patch(
-      LineItem request, core.String advertiserId, core.String lineItemId,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    LineItem request,
+    core.String advertiserId,
+    core.String lineItemId, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (lineItemId == null) {
-      throw new core.ArgumentError("Parameter lineItemId is required.");
+      throw core.ArgumentError("Parameter lineItemId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -2752,13 +2991,16 @@ class AdvertisersLineItemsResourceApi {
         '/lineItems/' +
         commons.Escaper.ecapeVariableReserved('$lineItemId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LineItem.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LineItem.fromJson(data));
   }
 }
 
@@ -2767,7 +3009,7 @@ class AdvertisersLineItemsTargetingTypesResourceApi {
 
   AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi
       get assignedTargetingOptions =>
-          new AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi(
+          AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi(
               _requester);
 
   AdvertisersLineItemsTargetingTypesResourceApi(commons.ApiRequester client)
@@ -2890,29 +3132,30 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AssignedTargetingOption> create(
-      AssignedTargetingOption request,
-      core.String advertiserId,
-      core.String lineItemId,
-      core.String targetingType,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AssignedTargetingOption request,
+    core.String advertiserId,
+    core.String lineItemId,
+    core.String targetingType, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (lineItemId == null) {
-      throw new core.ArgumentError("Parameter lineItemId is required.");
+      throw core.ArgumentError("Parameter lineItemId is required.");
     }
     if (targetingType == null) {
-      throw new core.ArgumentError("Parameter targetingType is required.");
+      throw core.ArgumentError("Parameter targetingType is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2926,13 +3169,16 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/assignedTargetingOptions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AssignedTargetingOption.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AssignedTargetingOption.fromJson(data));
   }
 
   /// Deletes an assigned targeting option from a line item.
@@ -3044,27 +3290,31 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String advertiserId, core.String lineItemId,
-      core.String targetingType, core.String assignedTargetingOptionId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String advertiserId,
+    core.String lineItemId,
+    core.String targetingType,
+    core.String assignedTargetingOptionId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (lineItemId == null) {
-      throw new core.ArgumentError("Parameter lineItemId is required.");
+      throw core.ArgumentError("Parameter lineItemId is required.");
     }
     if (targetingType == null) {
-      throw new core.ArgumentError("Parameter targetingType is required.");
+      throw core.ArgumentError("Parameter targetingType is required.");
     }
     if (assignedTargetingOptionId == null) {
-      throw new core.ArgumentError(
+      throw core.ArgumentError(
           "Parameter assignedTargetingOptionId is required.");
     }
     if ($fields != null) {
@@ -3080,13 +3330,16 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi {
         '/assignedTargetingOptions/' +
         commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a single targeting option assigned to a line item.
@@ -3200,29 +3453,30 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AssignedTargetingOption> get(
-      core.String advertiserId,
-      core.String lineItemId,
-      core.String targetingType,
-      core.String assignedTargetingOptionId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String advertiserId,
+    core.String lineItemId,
+    core.String targetingType,
+    core.String assignedTargetingOptionId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (lineItemId == null) {
-      throw new core.ArgumentError("Parameter lineItemId is required.");
+      throw core.ArgumentError("Parameter lineItemId is required.");
     }
     if (targetingType == null) {
-      throw new core.ArgumentError("Parameter targetingType is required.");
+      throw core.ArgumentError("Parameter targetingType is required.");
     }
     if (assignedTargetingOptionId == null) {
-      throw new core.ArgumentError(
+      throw core.ArgumentError(
           "Parameter assignedTargetingOptionId is required.");
     }
     if ($fields != null) {
@@ -3238,13 +3492,16 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi {
         '/assignedTargetingOptions/' +
         commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AssignedTargetingOption.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AssignedTargetingOption.fromJson(data));
   }
 
   /// Lists the targeting options assigned to a line item.
@@ -3379,29 +3636,30 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLineItemAssignedTargetingOptionsResponse> list(
-      core.String advertiserId,
-      core.String lineItemId,
-      core.String targetingType,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String orderBy,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String advertiserId,
+    core.String lineItemId,
+    core.String targetingType, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String orderBy,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (lineItemId == null) {
-      throw new core.ArgumentError("Parameter lineItemId is required.");
+      throw core.ArgumentError("Parameter lineItemId is required.");
     }
     if (targetingType == null) {
-      throw new core.ArgumentError("Parameter targetingType is required.");
+      throw core.ArgumentError("Parameter targetingType is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -3427,14 +3685,17 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/assignedTargetingOptions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new ListLineItemAssignedTargetingOptionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => ListLineItemAssignedTargetingOptionsResponse.fromJson(data));
   }
 }
 
@@ -3442,7 +3703,7 @@ class AdvertisersLocationListsResourceApi {
   final commons.ApiRequester _requester;
 
   AdvertisersLocationListsAssignedLocationsResourceApi get assignedLocations =>
-      new AdvertisersLocationListsAssignedLocationsResourceApi(_requester);
+      AdvertisersLocationListsAssignedLocationsResourceApi(_requester);
 
   AdvertisersLocationListsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -3469,20 +3730,22 @@ class AdvertisersLocationListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LocationList> create(
-      LocationList request, core.String advertiserId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    LocationList request,
+    core.String advertiserId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3492,13 +3755,16 @@ class AdvertisersLocationListsResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/locationLists';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LocationList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LocationList.fromJson(data));
   }
 
   /// Gets a location list.
@@ -3523,20 +3789,22 @@ class AdvertisersLocationListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LocationList> get(
-      core.String advertiserId, core.String locationListId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String advertiserId,
+    core.String locationListId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (locationListId == null) {
-      throw new core.ArgumentError("Parameter locationListId is required.");
+      throw core.ArgumentError("Parameter locationListId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3547,13 +3815,16 @@ class AdvertisersLocationListsResourceApi {
         '/locationLists/' +
         commons.Escaper.ecapeVariableReserved('$locationListId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LocationList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LocationList.fromJson(data));
   }
 
   /// Lists location lists based on a given advertiser id.
@@ -3597,21 +3868,23 @@ class AdvertisersLocationListsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListLocationListsResponse> list(core.String advertiserId,
-      {core.String orderBy,
-      core.int pageSize,
-      core.String filter,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListLocationListsResponse> list(
+    core.String advertiserId, {
+    core.String orderBy,
+    core.int pageSize,
+    core.String filter,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -3633,14 +3906,16 @@ class AdvertisersLocationListsResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/locationLists';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListLocationListsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListLocationListsResponse.fromJson(data));
   }
 
   /// Updates a location list. Returns the updated location list if successful.
@@ -3668,24 +3943,28 @@ class AdvertisersLocationListsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LocationList> patch(LocationList request,
-      core.String advertiserId, core.String locationListId,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LocationList> patch(
+    LocationList request,
+    core.String advertiserId,
+    core.String locationListId, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (locationListId == null) {
-      throw new core.ArgumentError("Parameter locationListId is required.");
+      throw core.ArgumentError("Parameter locationListId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -3699,13 +3978,16 @@ class AdvertisersLocationListsResourceApi {
         '/locationLists/' +
         commons.Escaper.ecapeVariable('$locationListId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LocationList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LocationList.fromJson(data));
   }
 }
 
@@ -3744,25 +4026,26 @@ class AdvertisersLocationListsAssignedLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BulkEditAssignedLocationsResponse> bulkEdit(
-      BulkEditAssignedLocationsRequest request,
-      core.String advertiserId,
-      core.String locationListId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BulkEditAssignedLocationsRequest request,
+    core.String advertiserId,
+    core.String locationListId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (locationListId == null) {
-      throw new core.ArgumentError("Parameter locationListId is required.");
+      throw core.ArgumentError("Parameter locationListId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3774,14 +4057,17 @@ class AdvertisersLocationListsAssignedLocationsResourceApi {
         commons.Escaper.ecapeVariableReserved('$locationListId') +
         '/assignedLocations:bulkEdit';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new BulkEditAssignedLocationsResponse.fromJson(data));
+        .then((data) => BulkEditAssignedLocationsResponse.fromJson(data));
   }
 
   /// Creates an assignment between a location and a location list.
@@ -3806,24 +4092,27 @@ class AdvertisersLocationListsAssignedLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AssignedLocation> create(AssignedLocation request,
-      core.String advertiserId, core.String locationListId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AssignedLocation> create(
+    AssignedLocation request,
+    core.String advertiserId,
+    core.String locationListId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (locationListId == null) {
-      throw new core.ArgumentError("Parameter locationListId is required.");
+      throw core.ArgumentError("Parameter locationListId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3835,13 +4124,16 @@ class AdvertisersLocationListsAssignedLocationsResourceApi {
         commons.Escaper.ecapeVariable('$locationListId') +
         '/assignedLocations';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AssignedLocation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AssignedLocation.fromJson(data));
   }
 
   /// Deletes the assignment between a location and a location list.
@@ -3868,24 +4160,27 @@ class AdvertisersLocationListsAssignedLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String advertiserId,
-      core.String locationListId, core.String assignedLocationId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String advertiserId,
+    core.String locationListId,
+    core.String assignedLocationId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (locationListId == null) {
-      throw new core.ArgumentError("Parameter locationListId is required.");
+      throw core.ArgumentError("Parameter locationListId is required.");
     }
     if (assignedLocationId == null) {
-      throw new core.ArgumentError("Parameter assignedLocationId is required.");
+      throw core.ArgumentError("Parameter assignedLocationId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3898,13 +4193,16 @@ class AdvertisersLocationListsAssignedLocationsResourceApi {
         '/assignedLocations/' +
         commons.Escaper.ecapeVariableReserved('$assignedLocationId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Lists locations assigned to a location list.
@@ -3949,24 +4247,26 @@ class AdvertisersLocationListsAssignedLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAssignedLocationsResponse> list(
-      core.String advertiserId, core.String locationListId,
-      {core.String pageToken,
-      core.String filter,
-      core.String orderBy,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String advertiserId,
+    core.String locationListId, {
+    core.String pageToken,
+    core.String filter,
+    core.String orderBy,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (locationListId == null) {
-      throw new core.ArgumentError("Parameter locationListId is required.");
+      throw core.ArgumentError("Parameter locationListId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -3990,14 +4290,17 @@ class AdvertisersLocationListsAssignedLocationsResourceApi {
         commons.Escaper.ecapeVariable('$locationListId') +
         '/assignedLocations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListAssignedLocationsResponse.fromJson(data));
+        .then((data) => ListAssignedLocationsResponse.fromJson(data));
   }
 }
 
@@ -4006,7 +4309,7 @@ class AdvertisersNegativeKeywordListsResourceApi {
 
   AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi
       get negativeKeywords =>
-          new AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi(
+          AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi(
               _requester);
 
   AdvertisersNegativeKeywordListsResourceApi(commons.ApiRequester client)
@@ -4034,20 +4337,22 @@ class AdvertisersNegativeKeywordListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<NegativeKeywordList> create(
-      NegativeKeywordList request, core.String advertiserId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    NegativeKeywordList request,
+    core.String advertiserId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4057,13 +4362,16 @@ class AdvertisersNegativeKeywordListsResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/negativeKeywordLists';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new NegativeKeywordList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => NegativeKeywordList.fromJson(data));
   }
 
   /// Deletes a negative keyword list given an advertiser ID and a negative
@@ -4090,21 +4398,22 @@ class AdvertisersNegativeKeywordListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(
-      core.String advertiserId, core.String negativeKeywordListId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String advertiserId,
+    core.String negativeKeywordListId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (negativeKeywordListId == null) {
-      throw new core.ArgumentError(
-          "Parameter negativeKeywordListId is required.");
+      throw core.ArgumentError("Parameter negativeKeywordListId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4115,13 +4424,16 @@ class AdvertisersNegativeKeywordListsResourceApi {
         '/negativeKeywordLists/' +
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a negative keyword list given an advertiser ID and a negative keyword
@@ -4148,21 +4460,22 @@ class AdvertisersNegativeKeywordListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<NegativeKeywordList> get(
-      core.String advertiserId, core.String negativeKeywordListId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String advertiserId,
+    core.String negativeKeywordListId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (negativeKeywordListId == null) {
-      throw new core.ArgumentError(
-          "Parameter negativeKeywordListId is required.");
+      throw core.ArgumentError("Parameter negativeKeywordListId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4173,13 +4486,16 @@ class AdvertisersNegativeKeywordListsResourceApi {
         '/negativeKeywordLists/' +
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new NegativeKeywordList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => NegativeKeywordList.fromJson(data));
   }
 
   /// Lists negative keyword lists based on a given advertiser id.
@@ -4209,17 +4525,21 @@ class AdvertisersNegativeKeywordListsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListNegativeKeywordListsResponse> list(core.String advertiserId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListNegativeKeywordListsResponse> list(
+    core.String advertiserId, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -4235,14 +4555,17 @@ class AdvertisersNegativeKeywordListsResourceApi {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/negativeKeywordLists';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListNegativeKeywordListsResponse.fromJson(data));
+        .then((data) => ListNegativeKeywordListsResponse.fromJson(data));
   }
 
   /// Updates a negative keyword list. Returns the updated negative keyword list
@@ -4271,25 +4594,28 @@ class AdvertisersNegativeKeywordListsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<NegativeKeywordList> patch(NegativeKeywordList request,
-      core.String advertiserId, core.String negativeKeywordListId,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<NegativeKeywordList> patch(
+    NegativeKeywordList request,
+    core.String advertiserId,
+    core.String negativeKeywordListId, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (negativeKeywordListId == null) {
-      throw new core.ArgumentError(
-          "Parameter negativeKeywordListId is required.");
+      throw core.ArgumentError("Parameter negativeKeywordListId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -4303,13 +4629,16 @@ class AdvertisersNegativeKeywordListsResourceApi {
         '/negativeKeywordLists/' +
         commons.Escaper.ecapeVariable('$negativeKeywordListId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new NegativeKeywordList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => NegativeKeywordList.fromJson(data));
   }
 }
 
@@ -4350,26 +4679,26 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BulkEditNegativeKeywordsResponse> bulkEdit(
-      BulkEditNegativeKeywordsRequest request,
-      core.String advertiserId,
-      core.String negativeKeywordListId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BulkEditNegativeKeywordsRequest request,
+    core.String advertiserId,
+    core.String negativeKeywordListId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (negativeKeywordListId == null) {
-      throw new core.ArgumentError(
-          "Parameter negativeKeywordListId is required.");
+      throw core.ArgumentError("Parameter negativeKeywordListId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4381,14 +4710,17 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi {
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId') +
         '/negativeKeywords:bulkEdit';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new BulkEditNegativeKeywordsResponse.fromJson(data));
+        .then((data) => BulkEditNegativeKeywordsResponse.fromJson(data));
   }
 
   /// Creates a negative keyword in a negative keyword list.
@@ -4414,25 +4746,27 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<NegativeKeyword> create(NegativeKeyword request,
-      core.String advertiserId, core.String negativeKeywordListId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<NegativeKeyword> create(
+    NegativeKeyword request,
+    core.String advertiserId,
+    core.String negativeKeywordListId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (negativeKeywordListId == null) {
-      throw new core.ArgumentError(
-          "Parameter negativeKeywordListId is required.");
+      throw core.ArgumentError("Parameter negativeKeywordListId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4444,13 +4778,16 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi {
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId') +
         '/negativeKeywords';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new NegativeKeyword.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => NegativeKeyword.fromJson(data));
   }
 
   /// Deletes a negative keyword from a negative keyword list.
@@ -4478,25 +4815,27 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String advertiserId,
-      core.String negativeKeywordListId, core.String keywordValue,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String advertiserId,
+    core.String negativeKeywordListId,
+    core.String keywordValue, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (negativeKeywordListId == null) {
-      throw new core.ArgumentError(
-          "Parameter negativeKeywordListId is required.");
+      throw core.ArgumentError("Parameter negativeKeywordListId is required.");
     }
     if (keywordValue == null) {
-      throw new core.ArgumentError("Parameter keywordValue is required.");
+      throw core.ArgumentError("Parameter keywordValue is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4509,13 +4848,16 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi {
         '/negativeKeywords/' +
         commons.Escaper.ecapeVariableReserved('$keywordValue');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Lists negative keywords in a negative keyword list.
@@ -4562,25 +4904,26 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNegativeKeywordsResponse> list(
-      core.String advertiserId, core.String negativeKeywordListId,
-      {core.String orderBy,
-      core.String filter,
-      core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String advertiserId,
+    core.String negativeKeywordListId, {
+    core.String orderBy,
+    core.String filter,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (negativeKeywordListId == null) {
-      throw new core.ArgumentError(
-          "Parameter negativeKeywordListId is required.");
+      throw core.ArgumentError("Parameter negativeKeywordListId is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -4604,14 +4947,17 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi {
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId') +
         '/negativeKeywords';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListNegativeKeywordsResponse.fromJson(data));
+        .then((data) => ListNegativeKeywordsResponse.fromJson(data));
   }
 }
 
@@ -4620,7 +4966,7 @@ class AdvertisersTargetingTypesResourceApi {
 
   AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi
       get assignedTargetingOptions =>
-          new AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi(
+          AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi(
               _requester);
 
   AdvertisersTargetingTypesResourceApi(commons.ApiRequester client)
@@ -4737,24 +5083,27 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AssignedTargetingOption> create(AssignedTargetingOption request,
-      core.String advertiserId, core.String targetingType,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AssignedTargetingOption> create(
+    AssignedTargetingOption request,
+    core.String advertiserId,
+    core.String targetingType, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (targetingType == null) {
-      throw new core.ArgumentError("Parameter targetingType is required.");
+      throw core.ArgumentError("Parameter targetingType is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4766,13 +5115,16 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/assignedTargetingOptions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AssignedTargetingOption.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AssignedTargetingOption.fromJson(data));
   }
 
   /// Deletes an assigned targeting option from an advertiser.
@@ -4879,24 +5231,27 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String advertiserId,
-      core.String targetingType, core.String assignedTargetingOptionId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String advertiserId,
+    core.String targetingType,
+    core.String assignedTargetingOptionId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (targetingType == null) {
-      throw new core.ArgumentError("Parameter targetingType is required.");
+      throw core.ArgumentError("Parameter targetingType is required.");
     }
     if (assignedTargetingOptionId == null) {
-      throw new core.ArgumentError(
+      throw core.ArgumentError(
           "Parameter assignedTargetingOptionId is required.");
     }
     if ($fields != null) {
@@ -4910,13 +5265,16 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi {
         '/assignedTargetingOptions/' +
         commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a single targeting option assigned to an advertiser.
@@ -5024,24 +5382,27 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AssignedTargetingOption> get(core.String advertiserId,
-      core.String targetingType, core.String assignedTargetingOptionId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AssignedTargetingOption> get(
+    core.String advertiserId,
+    core.String targetingType,
+    core.String assignedTargetingOptionId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (targetingType == null) {
-      throw new core.ArgumentError("Parameter targetingType is required.");
+      throw core.ArgumentError("Parameter targetingType is required.");
     }
     if (assignedTargetingOptionId == null) {
-      throw new core.ArgumentError(
+      throw core.ArgumentError(
           "Parameter assignedTargetingOptionId is required.");
     }
     if ($fields != null) {
@@ -5055,13 +5416,16 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi {
         '/assignedTargetingOptions/' +
         commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AssignedTargetingOption.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AssignedTargetingOption.fromJson(data));
   }
 
   /// Lists the targeting options assigned to an advertiser.
@@ -5188,24 +5552,26 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAdvertiserAssignedTargetingOptionsResponse> list(
-      core.String advertiserId, core.String targetingType,
-      {core.String orderBy,
-      core.String filter,
-      core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String advertiserId,
+    core.String targetingType, {
+    core.String orderBy,
+    core.String filter,
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if (targetingType == null) {
-      throw new core.ArgumentError("Parameter targetingType is required.");
+      throw core.ArgumentError("Parameter targetingType is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -5229,14 +5595,17 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/assignedTargetingOptions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new ListAdvertiserAssignedTargetingOptionsResponse.fromJson(data));
+        ListAdvertiserAssignedTargetingOptionsResponse.fromJson(data));
   }
 }
 
@@ -5269,17 +5638,21 @@ class CombinedAudiencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CombinedAudience> get(core.String combinedAudienceId,
-      {core.String advertiserId, core.String partnerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CombinedAudience> get(
+    core.String combinedAudienceId, {
+    core.String advertiserId,
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (combinedAudienceId == null) {
-      throw new core.ArgumentError("Parameter combinedAudienceId is required.");
+      throw core.ArgumentError("Parameter combinedAudienceId is required.");
     }
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -5294,13 +5667,16 @@ class CombinedAudiencesResourceApi {
     _url = 'v1/combinedAudiences/' +
         commons.Escaper.ecapeVariableReserved('$combinedAudienceId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CombinedAudience.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CombinedAudience.fromJson(data));
   }
 
   /// Lists combined audiences. The order is defined by the order_by parameter.
@@ -5345,20 +5721,21 @@ class CombinedAudiencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListCombinedAudiencesResponse> list(
-      {core.String orderBy,
-      core.String pageToken,
-      core.String partnerId,
-      core.String filter,
-      core.int pageSize,
-      core.String advertiserId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListCombinedAudiencesResponse> list({
+    core.String orderBy,
+    core.String pageToken,
+    core.String partnerId,
+    core.String filter,
+    core.int pageSize,
+    core.String advertiserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -5384,14 +5761,17 @@ class CombinedAudiencesResourceApi {
 
     _url = 'v1/combinedAudiences';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListCombinedAudiencesResponse.fromJson(data));
+        .then((data) => ListCombinedAudiencesResponse.fromJson(data));
   }
 }
 
@@ -5425,17 +5805,21 @@ class CustomBiddingAlgorithmsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CustomBiddingAlgorithm> get(core.String customBiddingAlgorithmId,
-      {core.String advertiserId, core.String partnerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CustomBiddingAlgorithm> get(
+    core.String customBiddingAlgorithmId, {
+    core.String advertiserId,
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (customBiddingAlgorithmId == null) {
-      throw new core.ArgumentError(
+      throw core.ArgumentError(
           "Parameter customBiddingAlgorithmId is required.");
     }
     if (advertiserId != null) {
@@ -5451,13 +5835,16 @@ class CustomBiddingAlgorithmsResourceApi {
     _url = 'v1/customBiddingAlgorithms/' +
         commons.Escaper.ecapeVariableReserved('$customBiddingAlgorithmId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CustomBiddingAlgorithm.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CustomBiddingAlgorithm.fromJson(data));
   }
 
   /// Lists custom bidding algorithms that are accessible to the current user
@@ -5513,20 +5900,21 @@ class CustomBiddingAlgorithmsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListCustomBiddingAlgorithmsResponse> list(
-      {core.String partnerId,
-      core.int pageSize,
-      core.String pageToken,
-      core.String advertiserId,
-      core.String filter,
-      core.String orderBy,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListCustomBiddingAlgorithmsResponse> list({
+    core.String partnerId,
+    core.int pageSize,
+    core.String pageToken,
+    core.String advertiserId,
+    core.String filter,
+    core.String orderBy,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (partnerId != null) {
       _queryParams["partnerId"] = [partnerId];
@@ -5552,14 +5940,17 @@ class CustomBiddingAlgorithmsResourceApi {
 
     _url = 'v1/customBiddingAlgorithms';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListCustomBiddingAlgorithmsResponse.fromJson(data));
+        .then((data) => ListCustomBiddingAlgorithmsResponse.fromJson(data));
   }
 }
 
@@ -5588,17 +5979,20 @@ class CustomListsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CustomList> get(core.String customListId,
-      {core.String advertiserId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CustomList> get(
+    core.String customListId, {
+    core.String advertiserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (customListId == null) {
-      throw new core.ArgumentError("Parameter customListId is required.");
+      throw core.ArgumentError("Parameter customListId is required.");
     }
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -5610,13 +6004,16 @@ class CustomListsResourceApi {
     _url = 'v1/customLists/' +
         commons.Escaper.ecapeVariableReserved('$customListId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CustomList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CustomList.fromJson(data));
   }
 
   /// Lists custom lists. The order is defined by the order_by parameter.
@@ -5658,19 +6055,20 @@ class CustomListsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListCustomListsResponse> list(
-      {core.String pageToken,
-      core.String advertiserId,
-      core.int pageSize,
-      core.String orderBy,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListCustomListsResponse> list({
+    core.String pageToken,
+    core.String advertiserId,
+    core.int pageSize,
+    core.String orderBy,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -5693,13 +6091,16 @@ class CustomListsResourceApi {
 
     _url = 'v1/customLists';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListCustomListsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListCustomListsResponse.fromJson(data));
   }
 }
 
@@ -5734,19 +6135,20 @@ class FirstAndThirdPartyAudiencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FirstAndThirdPartyAudience> get(
-      core.String firstAndThirdPartyAudienceId,
-      {core.String partnerId,
-      core.String advertiserId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String firstAndThirdPartyAudienceId, {
+    core.String partnerId,
+    core.String advertiserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (firstAndThirdPartyAudienceId == null) {
-      throw new core.ArgumentError(
+      throw core.ArgumentError(
           "Parameter firstAndThirdPartyAudienceId is required.");
     }
     if (partnerId != null) {
@@ -5762,14 +6164,16 @@ class FirstAndThirdPartyAudiencesResourceApi {
     _url = 'v1/firstAndThirdPartyAudiences/' +
         commons.Escaper.ecapeVariableReserved('$firstAndThirdPartyAudienceId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new FirstAndThirdPartyAudience.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FirstAndThirdPartyAudience.fromJson(data));
   }
 
   /// Lists first and third party audiences. The order is defined by the
@@ -5817,20 +6221,21 @@ class FirstAndThirdPartyAudiencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListFirstAndThirdPartyAudiencesResponse> list(
-      {core.String advertiserId,
-      core.String orderBy,
-      core.String filter,
-      core.String pageToken,
-      core.String partnerId,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListFirstAndThirdPartyAudiencesResponse> list({
+    core.String advertiserId,
+    core.String orderBy,
+    core.String filter,
+    core.String pageToken,
+    core.String partnerId,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -5856,14 +6261,17 @@ class FirstAndThirdPartyAudiencesResourceApi {
 
     _url = 'v1/firstAndThirdPartyAudiences';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new ListFirstAndThirdPartyAudiencesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => ListFirstAndThirdPartyAudiencesResponse.fromJson(data));
   }
 }
 
@@ -5893,17 +6301,20 @@ class FloodlightGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FloodlightGroup> get(core.String floodlightGroupId,
-      {core.String partnerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FloodlightGroup> get(
+    core.String floodlightGroupId, {
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (floodlightGroupId == null) {
-      throw new core.ArgumentError("Parameter floodlightGroupId is required.");
+      throw core.ArgumentError("Parameter floodlightGroupId is required.");
     }
     if (partnerId != null) {
       _queryParams["partnerId"] = [partnerId];
@@ -5915,13 +6326,16 @@ class FloodlightGroupsResourceApi {
     _url = 'v1/floodlightGroups/' +
         commons.Escaper.ecapeVariableReserved('$floodlightGroupId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FloodlightGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FloodlightGroup.fromJson(data));
   }
 
   /// Updates an existing Floodlight group. Returns the updated Floodlight group
@@ -5950,20 +6364,24 @@ class FloodlightGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightGroup> patch(
-      FloodlightGroup request, core.String floodlightGroupId,
-      {core.String updateMask, core.String partnerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    FloodlightGroup request,
+    core.String floodlightGroupId, {
+    core.String updateMask,
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (floodlightGroupId == null) {
-      throw new core.ArgumentError("Parameter floodlightGroupId is required.");
+      throw core.ArgumentError("Parameter floodlightGroupId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -5978,13 +6396,16 @@ class FloodlightGroupsResourceApi {
     _url = 'v1/floodlightGroups/' +
         commons.Escaper.ecapeVariable('$floodlightGroupId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FloodlightGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FloodlightGroup.fromJson(data));
   }
 }
 
@@ -6016,17 +6437,21 @@ class GoogleAudiencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleAudience> get(core.String googleAudienceId,
-      {core.String advertiserId, core.String partnerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleAudience> get(
+    core.String googleAudienceId, {
+    core.String advertiserId,
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (googleAudienceId == null) {
-      throw new core.ArgumentError("Parameter googleAudienceId is required.");
+      throw core.ArgumentError("Parameter googleAudienceId is required.");
     }
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -6041,13 +6466,16 @@ class GoogleAudiencesResourceApi {
     _url = 'v1/googleAudiences/' +
         commons.Escaper.ecapeVariableReserved('$googleAudienceId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleAudience.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleAudience.fromJson(data));
   }
 
   /// Lists Google audiences. The order is defined by the order_by parameter.
@@ -6092,20 +6520,21 @@ class GoogleAudiencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListGoogleAudiencesResponse> list(
-      {core.String advertiserId,
-      core.String filter,
-      core.String partnerId,
-      core.String pageToken,
-      core.String orderBy,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListGoogleAudiencesResponse> list({
+    core.String advertiserId,
+    core.String filter,
+    core.String partnerId,
+    core.String pageToken,
+    core.String orderBy,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -6131,14 +6560,16 @@ class GoogleAudiencesResourceApi {
 
     _url = 'v1/googleAudiences';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListGoogleAudiencesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListGoogleAudiencesResponse.fromJson(data));
   }
 }
 
@@ -6147,8 +6578,7 @@ class InventorySourceGroupsResourceApi {
 
   InventorySourceGroupsAssignedInventorySourcesResourceApi
       get assignedInventorySources =>
-          new InventorySourceGroupsAssignedInventorySourcesResourceApi(
-              _requester);
+          InventorySourceGroupsAssignedInventorySourcesResourceApi(_requester);
 
   InventorySourceGroupsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -6178,17 +6608,21 @@ class InventorySourceGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<InventorySourceGroup> create(InventorySourceGroup request,
-      {core.String advertiserId, core.String partnerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<InventorySourceGroup> create(
+    InventorySourceGroup request, {
+    core.String advertiserId,
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -6202,13 +6636,16 @@ class InventorySourceGroupsResourceApi {
 
     _url = 'v1/inventorySourceGroups';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new InventorySourceGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => InventorySourceGroup.fromJson(data));
   }
 
   /// Deletes an inventory source group.
@@ -6235,18 +6672,21 @@ class InventorySourceGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String inventorySourceGroupId,
-      {core.String partnerId, core.String advertiserId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String inventorySourceGroupId, {
+    core.String partnerId,
+    core.String advertiserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (inventorySourceGroupId == null) {
-      throw new core.ArgumentError(
-          "Parameter inventorySourceGroupId is required.");
+      throw core.ArgumentError("Parameter inventorySourceGroupId is required.");
     }
     if (partnerId != null) {
       _queryParams["partnerId"] = [partnerId];
@@ -6261,13 +6701,16 @@ class InventorySourceGroupsResourceApi {
     _url = 'v1/inventorySourceGroups/' +
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets an inventory source group.
@@ -6296,18 +6739,21 @@ class InventorySourceGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<InventorySourceGroup> get(core.String inventorySourceGroupId,
-      {core.String partnerId, core.String advertiserId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<InventorySourceGroup> get(
+    core.String inventorySourceGroupId, {
+    core.String partnerId,
+    core.String advertiserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (inventorySourceGroupId == null) {
-      throw new core.ArgumentError(
-          "Parameter inventorySourceGroupId is required.");
+      throw core.ArgumentError("Parameter inventorySourceGroupId is required.");
     }
     if (partnerId != null) {
       _queryParams["partnerId"] = [partnerId];
@@ -6322,13 +6768,16 @@ class InventorySourceGroupsResourceApi {
     _url = 'v1/inventorySourceGroups/' +
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new InventorySourceGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => InventorySourceGroup.fromJson(data));
   }
 
   /// Lists inventory source groups that are accessible to the current user. The
@@ -6375,20 +6824,21 @@ class InventorySourceGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListInventorySourceGroupsResponse> list(
-      {core.String advertiserId,
-      core.String filter,
-      core.String orderBy,
-      core.String pageToken,
-      core.int pageSize,
-      core.String partnerId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListInventorySourceGroupsResponse> list({
+    core.String advertiserId,
+    core.String filter,
+    core.String orderBy,
+    core.String pageToken,
+    core.int pageSize,
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -6414,14 +6864,17 @@ class InventorySourceGroupsResourceApi {
 
     _url = 'v1/inventorySourceGroups';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListInventorySourceGroupsResponse.fromJson(data));
+        .then((data) => ListInventorySourceGroupsResponse.fromJson(data));
   }
 
   /// Updates an inventory source group. Returns the updated inventory source
@@ -6453,24 +6906,25 @@ class InventorySourceGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InventorySourceGroup> patch(
-      InventorySourceGroup request, core.String inventorySourceGroupId,
-      {core.String updateMask,
-      core.String advertiserId,
-      core.String partnerId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    InventorySourceGroup request,
+    core.String inventorySourceGroupId, {
+    core.String updateMask,
+    core.String advertiserId,
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (inventorySourceGroupId == null) {
-      throw new core.ArgumentError(
-          "Parameter inventorySourceGroupId is required.");
+      throw core.ArgumentError("Parameter inventorySourceGroupId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -6488,13 +6942,16 @@ class InventorySourceGroupsResourceApi {
     _url = 'v1/inventorySourceGroups/' +
         commons.Escaper.ecapeVariable('$inventorySourceGroupId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new InventorySourceGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => InventorySourceGroup.fromJson(data));
   }
 }
 
@@ -6531,22 +6988,22 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BulkEditAssignedInventorySourcesResponse> bulkEdit(
-      BulkEditAssignedInventorySourcesRequest request,
-      core.String inventorySourceGroupId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BulkEditAssignedInventorySourcesRequest request,
+    core.String inventorySourceGroupId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (inventorySourceGroupId == null) {
-      throw new core.ArgumentError(
-          "Parameter inventorySourceGroupId is required.");
+      throw core.ArgumentError("Parameter inventorySourceGroupId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6556,14 +7013,17 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId') +
         '/assignedInventorySources:bulkEdit';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new BulkEditAssignedInventorySourcesResponse.fromJson(data));
+        (data) => BulkEditAssignedInventorySourcesResponse.fromJson(data));
   }
 
   /// Creates an assignment between an inventory source and an inventory source
@@ -6596,21 +7056,24 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AssignedInventorySource> create(
-      AssignedInventorySource request, core.String inventorySourceGroupId,
-      {core.String partnerId, core.String advertiserId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AssignedInventorySource request,
+    core.String inventorySourceGroupId, {
+    core.String partnerId,
+    core.String advertiserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (inventorySourceGroupId == null) {
-      throw new core.ArgumentError(
-          "Parameter inventorySourceGroupId is required.");
+      throw core.ArgumentError("Parameter inventorySourceGroupId is required.");
     }
     if (partnerId != null) {
       _queryParams["partnerId"] = [partnerId];
@@ -6626,13 +7089,16 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId') +
         '/assignedInventorySources';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AssignedInventorySource.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AssignedInventorySource.fromJson(data));
   }
 
   /// Deletes the assignment between an inventory source and an inventory source
@@ -6667,21 +7133,24 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(
-      core.String inventorySourceGroupId, core.String assignedInventorySourceId,
-      {core.String advertiserId, core.String partnerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String inventorySourceGroupId,
+    core.String assignedInventorySourceId, {
+    core.String advertiserId,
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (inventorySourceGroupId == null) {
-      throw new core.ArgumentError(
-          "Parameter inventorySourceGroupId is required.");
+      throw core.ArgumentError("Parameter inventorySourceGroupId is required.");
     }
     if (assignedInventorySourceId == null) {
-      throw new core.ArgumentError(
+      throw core.ArgumentError(
           "Parameter assignedInventorySourceId is required.");
     }
     if (advertiserId != null) {
@@ -6699,13 +7168,16 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
         '/assignedInventorySources/' +
         commons.Escaper.ecapeVariableReserved('$assignedInventorySourceId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Lists inventory sources assigned to an inventory source group.
@@ -6758,24 +7230,24 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAssignedInventorySourcesResponse> list(
-      core.String inventorySourceGroupId,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String orderBy,
-      core.String partnerId,
-      core.String filter,
-      core.String advertiserId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String inventorySourceGroupId, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String orderBy,
+    core.String partnerId,
+    core.String filter,
+    core.String advertiserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (inventorySourceGroupId == null) {
-      throw new core.ArgumentError(
-          "Parameter inventorySourceGroupId is required.");
+      throw core.ArgumentError("Parameter inventorySourceGroupId is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -6803,14 +7275,17 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId') +
         '/assignedInventorySources';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new ListAssignedInventorySourcesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => ListAssignedInventorySourcesResponse.fromJson(data));
   }
 }
 
@@ -6840,17 +7315,20 @@ class InventorySourcesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<InventorySource> get(core.String inventorySourceId,
-      {core.String partnerId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<InventorySource> get(
+    core.String inventorySourceId, {
+    core.String partnerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (inventorySourceId == null) {
-      throw new core.ArgumentError("Parameter inventorySourceId is required.");
+      throw core.ArgumentError("Parameter inventorySourceId is required.");
     }
     if (partnerId != null) {
       _queryParams["partnerId"] = [partnerId];
@@ -6862,13 +7340,16 @@ class InventorySourcesResourceApi {
     _url = 'v1/inventorySources/' +
         commons.Escaper.ecapeVariableReserved('$inventorySourceId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new InventorySource.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => InventorySource.fromJson(data));
   }
 
   /// Lists inventory sources that are accessible to the current user. The order
@@ -6919,20 +7400,21 @@ class InventorySourcesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListInventorySourcesResponse> list(
-      {core.String partnerId,
-      core.String filter,
-      core.String pageToken,
-      core.String advertiserId,
-      core.String orderBy,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListInventorySourcesResponse> list({
+    core.String partnerId,
+    core.String filter,
+    core.String pageToken,
+    core.String advertiserId,
+    core.String orderBy,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (partnerId != null) {
       _queryParams["partnerId"] = [partnerId];
@@ -6958,14 +7440,17 @@ class InventorySourcesResourceApi {
 
     _url = 'v1/inventorySources';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListInventorySourcesResponse.fromJson(data));
+        .then((data) => ListInventorySourcesResponse.fromJson(data));
   }
 }
 
@@ -7002,19 +7487,20 @@ class MediaResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future download(core.String resourceName,
-      {core.String $fields,
-      commons.DownloadOptions downloadOptions =
-          commons.DownloadOptions.Metadata}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future download(
+    core.String resourceName, {
+    core.String $fields,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
+      throw core.ArgumentError("Parameter resourceName is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7024,15 +7510,18 @@ class MediaResourceApi {
 
     _url = 'download/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => new GoogleBytestreamMedia.fromJson(data));
+      return _response.then((data) => GoogleBytestreamMedia.fromJson(data));
     } else {
       return _response;
     }
@@ -7043,9 +7532,9 @@ class PartnersResourceApi {
   final commons.ApiRequester _requester;
 
   PartnersChannelsResourceApi get channels =>
-      new PartnersChannelsResourceApi(_requester);
+      PartnersChannelsResourceApi(_requester);
   PartnersTargetingTypesResourceApi get targetingTypes =>
-      new PartnersTargetingTypesResourceApi(_requester);
+      PartnersTargetingTypesResourceApi(_requester);
 
   PartnersResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -7074,21 +7563,22 @@ class PartnersResourceApi {
   /// this method will complete with the same error.
   async.Future<BulkEditPartnerAssignedTargetingOptionsResponse>
       bulkEditPartnerAssignedTargetingOptions(
-          BulkEditPartnerAssignedTargetingOptionsRequest request,
-          core.String partnerId,
-          {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BulkEditPartnerAssignedTargetingOptionsRequest request,
+    core.String partnerId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (partnerId == null) {
-      throw new core.ArgumentError("Parameter partnerId is required.");
+      throw core.ArgumentError("Parameter partnerId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7098,14 +7588,17 @@ class PartnersResourceApi {
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         ':bulkEditPartnerAssignedTargetingOptions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new BulkEditPartnerAssignedTargetingOptionsResponse.fromJson(data));
+        BulkEditPartnerAssignedTargetingOptionsResponse.fromJson(data));
   }
 
   /// Gets a partner.
@@ -7125,16 +7618,19 @@ class PartnersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Partner> get(core.String partnerId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Partner> get(
+    core.String partnerId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (partnerId == null) {
-      throw new core.ArgumentError("Parameter partnerId is required.");
+      throw core.ArgumentError("Parameter partnerId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7142,13 +7638,16 @@ class PartnersResourceApi {
 
     _url = 'v1/partners/' + commons.Escaper.ecapeVariableReserved('$partnerId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Partner.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Partner.fromJson(data));
   }
 
   /// Lists partners that are accessible to the current user. The order is
@@ -7188,18 +7687,19 @@ class PartnersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListPartnersResponse> list(
-      {core.String filter,
-      core.String pageToken,
-      core.int pageSize,
-      core.String orderBy,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListPartnersResponse> list({
+    core.String filter,
+    core.String pageToken,
+    core.int pageSize,
+    core.String orderBy,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -7219,13 +7719,16 @@ class PartnersResourceApi {
 
     _url = 'v1/partners';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListPartnersResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListPartnersResponse.fromJson(data));
   }
 }
 
@@ -7233,7 +7736,7 @@ class PartnersChannelsResourceApi {
   final commons.ApiRequester _requester;
 
   PartnersChannelsSitesResourceApi get sites =>
-      new PartnersChannelsSitesResourceApi(_requester);
+      PartnersChannelsSitesResourceApi(_requester);
 
   PartnersChannelsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -7259,20 +7762,24 @@ class PartnersChannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Channel> create(Channel request, core.String partnerId,
-      {core.String advertiserId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Channel> create(
+    Channel request,
+    core.String partnerId, {
+    core.String advertiserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (partnerId == null) {
-      throw new core.ArgumentError("Parameter partnerId is required.");
+      throw core.ArgumentError("Parameter partnerId is required.");
     }
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -7285,13 +7792,16 @@ class PartnersChannelsResourceApi {
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/channels';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Channel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Channel.fromJson(data));
   }
 
   /// Gets a channel for a partner or advertiser.
@@ -7316,20 +7826,24 @@ class PartnersChannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Channel> get(core.String partnerId, core.String channelId,
-      {core.String advertiserId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Channel> get(
+    core.String partnerId,
+    core.String channelId, {
+    core.String advertiserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (partnerId == null) {
-      throw new core.ArgumentError("Parameter partnerId is required.");
+      throw core.ArgumentError("Parameter partnerId is required.");
     }
     if (channelId == null) {
-      throw new core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError("Parameter channelId is required.");
     }
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -7343,13 +7857,16 @@ class PartnersChannelsResourceApi {
         '/channels/' +
         commons.Escaper.ecapeVariableReserved('$channelId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Channel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Channel.fromJson(data));
   }
 
   /// Lists channels for a partner or advertiser.
@@ -7393,22 +7910,24 @@ class PartnersChannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListChannelsResponse> list(core.String partnerId,
-      {core.String orderBy,
-      core.int pageSize,
-      core.String pageToken,
-      core.String filter,
-      core.String advertiserId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListChannelsResponse> list(
+    core.String partnerId, {
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String filter,
+    core.String advertiserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (partnerId == null) {
-      throw new core.ArgumentError("Parameter partnerId is required.");
+      throw core.ArgumentError("Parameter partnerId is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -7433,13 +7952,16 @@ class PartnersChannelsResourceApi {
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/channels';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListChannelsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListChannelsResponse.fromJson(data));
   }
 
   /// Updates a channel. Returns the updated channel if successful.
@@ -7469,23 +7991,28 @@ class PartnersChannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Channel> patch(
-      Channel request, core.String partnerId, core.String channelId,
-      {core.String updateMask, core.String advertiserId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Channel request,
+    core.String partnerId,
+    core.String channelId, {
+    core.String updateMask,
+    core.String advertiserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (partnerId == null) {
-      throw new core.ArgumentError("Parameter partnerId is required.");
+      throw core.ArgumentError("Parameter partnerId is required.");
     }
     if (channelId == null) {
-      throw new core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError("Parameter channelId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -7502,13 +8029,16 @@ class PartnersChannelsResourceApi {
         '/channels/' +
         commons.Escaper.ecapeVariable('$channelId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Channel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Channel.fromJson(data));
   }
 }
 
@@ -7542,24 +8072,27 @@ class PartnersChannelsSitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BulkEditSitesResponse> bulkEdit(BulkEditSitesRequest request,
-      core.String partnerId, core.String channelId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<BulkEditSitesResponse> bulkEdit(
+    BulkEditSitesRequest request,
+    core.String partnerId,
+    core.String channelId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (partnerId == null) {
-      throw new core.ArgumentError("Parameter partnerId is required.");
+      throw core.ArgumentError("Parameter partnerId is required.");
     }
     if (channelId == null) {
-      throw new core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError("Parameter channelId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7571,13 +8104,16 @@ class PartnersChannelsSitesResourceApi {
         commons.Escaper.ecapeVariableReserved('$channelId') +
         '/sites:bulkEdit';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new BulkEditSitesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BulkEditSitesResponse.fromJson(data));
   }
 
   /// Creates a site in a channel.
@@ -7605,23 +8141,27 @@ class PartnersChannelsSitesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Site> create(
-      Site request, core.String partnerId, core.String channelId,
-      {core.String advertiserId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Site request,
+    core.String partnerId,
+    core.String channelId, {
+    core.String advertiserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (partnerId == null) {
-      throw new core.ArgumentError("Parameter partnerId is required.");
+      throw core.ArgumentError("Parameter partnerId is required.");
     }
     if (channelId == null) {
-      throw new core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError("Parameter channelId is required.");
     }
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -7636,13 +8176,16 @@ class PartnersChannelsSitesResourceApi {
         commons.Escaper.ecapeVariableReserved('$channelId') +
         '/sites';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Site.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Site.fromJson(data));
   }
 
   /// Deletes a site from a channel.
@@ -7671,23 +8214,27 @@ class PartnersChannelsSitesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(
-      core.String partnerId, core.String channelId, core.String urlOrAppId,
-      {core.String advertiserId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String partnerId,
+    core.String channelId,
+    core.String urlOrAppId, {
+    core.String advertiserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (partnerId == null) {
-      throw new core.ArgumentError("Parameter partnerId is required.");
+      throw core.ArgumentError("Parameter partnerId is required.");
     }
     if (channelId == null) {
-      throw new core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError("Parameter channelId is required.");
     }
     if (urlOrAppId == null) {
-      throw new core.ArgumentError("Parameter urlOrAppId is required.");
+      throw core.ArgumentError("Parameter urlOrAppId is required.");
     }
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -7703,13 +8250,16 @@ class PartnersChannelsSitesResourceApi {
         '/sites/' +
         commons.Escaper.ecapeVariableReserved('$urlOrAppId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Lists sites in a channel.
@@ -7757,25 +8307,27 @@ class PartnersChannelsSitesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSitesResponse> list(
-      core.String partnerId, core.String channelId,
-      {core.String filter,
-      core.String pageToken,
-      core.String advertiserId,
-      core.int pageSize,
-      core.String orderBy,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String partnerId,
+    core.String channelId, {
+    core.String filter,
+    core.String pageToken,
+    core.String advertiserId,
+    core.int pageSize,
+    core.String orderBy,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (partnerId == null) {
-      throw new core.ArgumentError("Parameter partnerId is required.");
+      throw core.ArgumentError("Parameter partnerId is required.");
     }
     if (channelId == null) {
-      throw new core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError("Parameter channelId is required.");
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -7802,13 +8354,16 @@ class PartnersChannelsSitesResourceApi {
         commons.Escaper.ecapeVariableReserved('$channelId') +
         '/sites';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListSitesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListSitesResponse.fromJson(data));
   }
 }
 
@@ -7817,8 +8372,7 @@ class PartnersTargetingTypesResourceApi {
 
   PartnersTargetingTypesAssignedTargetingOptionsResourceApi
       get assignedTargetingOptions =>
-          new PartnersTargetingTypesAssignedTargetingOptionsResourceApi(
-              _requester);
+          PartnersTargetingTypesAssignedTargetingOptionsResourceApi(_requester);
 
   PartnersTargetingTypesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -7934,24 +8488,27 @@ class PartnersTargetingTypesAssignedTargetingOptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AssignedTargetingOption> create(AssignedTargetingOption request,
-      core.String partnerId, core.String targetingType,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AssignedTargetingOption> create(
+    AssignedTargetingOption request,
+    core.String partnerId,
+    core.String targetingType, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (partnerId == null) {
-      throw new core.ArgumentError("Parameter partnerId is required.");
+      throw core.ArgumentError("Parameter partnerId is required.");
     }
     if (targetingType == null) {
-      throw new core.ArgumentError("Parameter targetingType is required.");
+      throw core.ArgumentError("Parameter targetingType is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7963,13 +8520,16 @@ class PartnersTargetingTypesAssignedTargetingOptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/assignedTargetingOptions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AssignedTargetingOption.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AssignedTargetingOption.fromJson(data));
   }
 
   /// Deletes an assigned targeting option from a partner.
@@ -8076,24 +8636,27 @@ class PartnersTargetingTypesAssignedTargetingOptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String partnerId, core.String targetingType,
-      core.String assignedTargetingOptionId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String partnerId,
+    core.String targetingType,
+    core.String assignedTargetingOptionId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (partnerId == null) {
-      throw new core.ArgumentError("Parameter partnerId is required.");
+      throw core.ArgumentError("Parameter partnerId is required.");
     }
     if (targetingType == null) {
-      throw new core.ArgumentError("Parameter targetingType is required.");
+      throw core.ArgumentError("Parameter targetingType is required.");
     }
     if (assignedTargetingOptionId == null) {
-      throw new core.ArgumentError(
+      throw core.ArgumentError(
           "Parameter assignedTargetingOptionId is required.");
     }
     if ($fields != null) {
@@ -8107,13 +8670,16 @@ class PartnersTargetingTypesAssignedTargetingOptionsResourceApi {
         '/assignedTargetingOptions/' +
         commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a single targeting option assigned to a partner.
@@ -8221,24 +8787,27 @@ class PartnersTargetingTypesAssignedTargetingOptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AssignedTargetingOption> get(core.String partnerId,
-      core.String targetingType, core.String assignedTargetingOptionId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AssignedTargetingOption> get(
+    core.String partnerId,
+    core.String targetingType,
+    core.String assignedTargetingOptionId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (partnerId == null) {
-      throw new core.ArgumentError("Parameter partnerId is required.");
+      throw core.ArgumentError("Parameter partnerId is required.");
     }
     if (targetingType == null) {
-      throw new core.ArgumentError("Parameter targetingType is required.");
+      throw core.ArgumentError("Parameter targetingType is required.");
     }
     if (assignedTargetingOptionId == null) {
-      throw new core.ArgumentError(
+      throw core.ArgumentError(
           "Parameter assignedTargetingOptionId is required.");
     }
     if ($fields != null) {
@@ -8252,13 +8821,16 @@ class PartnersTargetingTypesAssignedTargetingOptionsResourceApi {
         '/assignedTargetingOptions/' +
         commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AssignedTargetingOption.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AssignedTargetingOption.fromJson(data));
   }
 
   /// Lists the targeting options assigned to a partner.
@@ -8385,24 +8957,26 @@ class PartnersTargetingTypesAssignedTargetingOptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPartnerAssignedTargetingOptionsResponse> list(
-      core.String partnerId, core.String targetingType,
-      {core.String pageToken,
-      core.String orderBy,
-      core.int pageSize,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String partnerId,
+    core.String targetingType, {
+    core.String pageToken,
+    core.String orderBy,
+    core.int pageSize,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (partnerId == null) {
-      throw new core.ArgumentError("Parameter partnerId is required.");
+      throw core.ArgumentError("Parameter partnerId is required.");
     }
     if (targetingType == null) {
-      throw new core.ArgumentError("Parameter targetingType is required.");
+      throw core.ArgumentError("Parameter targetingType is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -8426,14 +9000,17 @@ class PartnersTargetingTypesAssignedTargetingOptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/assignedTargetingOptions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new ListPartnerAssignedTargetingOptionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => ListPartnerAssignedTargetingOptionsResponse.fromJson(data));
   }
 }
 
@@ -8441,7 +9018,7 @@ class SdfdownloadtasksResourceApi {
   final commons.ApiRequester _requester;
 
   SdfdownloadtasksOperationsResourceApi get operations =>
-      new SdfdownloadtasksOperationsResourceApi(_requester);
+      SdfdownloadtasksOperationsResourceApi(_requester);
 
   SdfdownloadtasksResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -8469,17 +9046,19 @@ class SdfdownloadtasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(CreateSdfDownloadTaskRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> create(
+    CreateSdfDownloadTaskRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8487,13 +9066,16 @@ class SdfdownloadtasksResourceApi {
 
     _url = 'v1/sdfdownloadtasks';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -8521,16 +9103,19 @@ class SdfdownloadtasksOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8538,13 +9123,16 @@ class SdfdownloadtasksOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -8552,7 +9140,7 @@ class TargetingTypesResourceApi {
   final commons.ApiRequester _requester;
 
   TargetingTypesTargetingOptionsResourceApi get targetingOptions =>
-      new TargetingTypesTargetingOptionsResourceApi(_requester);
+      TargetingTypesTargetingOptionsResourceApi(_requester);
 
   TargetingTypesResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -8667,20 +9255,23 @@ class TargetingTypesTargetingOptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetingOption> get(
-      core.String targetingType, core.String targetingOptionId,
-      {core.String advertiserId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String targetingType,
+    core.String targetingOptionId, {
+    core.String advertiserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (targetingType == null) {
-      throw new core.ArgumentError("Parameter targetingType is required.");
+      throw core.ArgumentError("Parameter targetingType is required.");
     }
     if (targetingOptionId == null) {
-      throw new core.ArgumentError("Parameter targetingOptionId is required.");
+      throw core.ArgumentError("Parameter targetingOptionId is required.");
     }
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -8694,13 +9285,16 @@ class TargetingTypesTargetingOptionsResourceApi {
         '/targetingOptions/' +
         commons.Escaper.ecapeVariableReserved('$targetingOptionId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TargetingOption.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TargetingOption.fromJson(data));
   }
 
   /// Lists targeting options of a given type.
@@ -8831,22 +9425,24 @@ class TargetingTypesTargetingOptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListTargetingOptionsResponse> list(core.String targetingType,
-      {core.String orderBy,
-      core.String advertiserId,
-      core.int pageSize,
-      core.String filter,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListTargetingOptionsResponse> list(
+    core.String targetingType, {
+    core.String orderBy,
+    core.String advertiserId,
+    core.int pageSize,
+    core.String filter,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (targetingType == null) {
-      throw new core.ArgumentError("Parameter targetingType is required.");
+      throw core.ArgumentError("Parameter targetingType is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -8871,14 +9467,17 @@ class TargetingTypesTargetingOptionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/targetingOptions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListTargetingOptionsResponse.fromJson(data));
+        .then((data) => ListTargetingOptionsResponse.fromJson(data));
   }
 }
 
@@ -8912,20 +9511,22 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BulkEditAssignedUserRolesResponse> bulkEditAssignedUserRoles(
-      BulkEditAssignedUserRolesRequest request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BulkEditAssignedUserRolesRequest request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8935,14 +9536,17 @@ class UsersResourceApi {
         commons.Escaper.ecapeVariableReserved('$userId') +
         ':bulkEditAssignedUserRoles';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new BulkEditAssignedUserRolesResponse.fromJson(data));
+        .then((data) => BulkEditAssignedUserRolesResponse.fromJson(data));
   }
 
   /// Creates a new user. Returns the newly created user if successful.
@@ -8961,16 +9565,19 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<User> create(User request, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<User> create(
+    User request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8978,13 +9585,16 @@ class UsersResourceApi {
 
     _url = 'v1/users';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new User.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => User.fromJson(data));
   }
 
   /// Deletes a user.
@@ -9004,16 +9614,19 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String userId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9021,13 +9634,16 @@ class UsersResourceApi {
 
     _url = 'v1/users/' + commons.Escaper.ecapeVariableReserved('$userId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a user.
@@ -9047,16 +9663,19 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<User> get(core.String userId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<User> get(
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9064,13 +9683,16 @@ class UsersResourceApi {
 
     _url = 'v1/users/' + commons.Escaper.ecapeVariableReserved('$userId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new User.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => User.fromJson(data));
   }
 
   /// Lists users that are accessible to the current user. If two users have
@@ -9125,18 +9747,19 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListUsersResponse> list(
-      {core.String pageToken,
-      core.int pageSize,
-      core.String orderBy,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListUsersResponse> list({
+    core.String pageToken,
+    core.int pageSize,
+    core.String orderBy,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -9156,13 +9779,16 @@ class UsersResourceApi {
 
     _url = 'v1/users';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListUsersResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListUsersResponse.fromJson(data));
   }
 
   /// Updates an existing user. Returns the updated user if successful.
@@ -9186,20 +9812,24 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<User> patch(User request, core.String userId,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<User> patch(
+    User request,
+    core.String userId, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -9210,13 +9840,16 @@ class UsersResourceApi {
 
     _url = 'v1/users/' + commons.Escaper.ecapeVariableReserved('$userId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new User.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => User.fromJson(data));
   }
 }
 
@@ -9312,7 +9945,7 @@ class ActiveViewVideoViewabilityMetricConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -9348,7 +9981,7 @@ class Adloox {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (excludedAdlooxCategories != null) {
       _json["excludedAdlooxCategories"] = excludedAdlooxCategories;
     }
@@ -9421,18 +10054,18 @@ class Advertiser {
   Advertiser.fromJson(core.Map _json) {
     if (_json.containsKey("adServerConfig")) {
       adServerConfig =
-          new AdvertiserAdServerConfig.fromJson(_json["adServerConfig"]);
+          AdvertiserAdServerConfig.fromJson(_json["adServerConfig"]);
     }
     if (_json.containsKey("advertiserId")) {
       advertiserId = _json["advertiserId"];
     }
     if (_json.containsKey("creativeConfig")) {
       creativeConfig =
-          new AdvertiserCreativeConfig.fromJson(_json["creativeConfig"]);
+          AdvertiserCreativeConfig.fromJson(_json["creativeConfig"]);
     }
     if (_json.containsKey("dataAccessConfig")) {
       dataAccessConfig =
-          new AdvertiserDataAccessConfig.fromJson(_json["dataAccessConfig"]);
+          AdvertiserDataAccessConfig.fromJson(_json["dataAccessConfig"]);
     }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
@@ -9441,12 +10074,11 @@ class Advertiser {
       entityStatus = _json["entityStatus"];
     }
     if (_json.containsKey("generalConfig")) {
-      generalConfig =
-          new AdvertiserGeneralConfig.fromJson(_json["generalConfig"]);
+      generalConfig = AdvertiserGeneralConfig.fromJson(_json["generalConfig"]);
     }
     if (_json.containsKey("integrationDetails")) {
       integrationDetails =
-          new IntegrationDetails.fromJson(_json["integrationDetails"]);
+          IntegrationDetails.fromJson(_json["integrationDetails"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -9456,7 +10088,7 @@ class Advertiser {
     }
     if (_json.containsKey("servingConfig")) {
       servingConfig =
-          new AdvertiserTargetingConfig.fromJson(_json["servingConfig"]);
+          AdvertiserTargetingConfig.fromJson(_json["servingConfig"]);
     }
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
@@ -9465,18 +10097,18 @@ class Advertiser {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adServerConfig != null) {
-      _json["adServerConfig"] = (adServerConfig).toJson();
+      _json["adServerConfig"] = adServerConfig.toJson();
     }
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
     if (creativeConfig != null) {
-      _json["creativeConfig"] = (creativeConfig).toJson();
+      _json["creativeConfig"] = creativeConfig.toJson();
     }
     if (dataAccessConfig != null) {
-      _json["dataAccessConfig"] = (dataAccessConfig).toJson();
+      _json["dataAccessConfig"] = dataAccessConfig.toJson();
     }
     if (displayName != null) {
       _json["displayName"] = displayName;
@@ -9485,10 +10117,10 @@ class Advertiser {
       _json["entityStatus"] = entityStatus;
     }
     if (generalConfig != null) {
-      _json["generalConfig"] = (generalConfig).toJson();
+      _json["generalConfig"] = generalConfig.toJson();
     }
     if (integrationDetails != null) {
-      _json["integrationDetails"] = (integrationDetails).toJson();
+      _json["integrationDetails"] = integrationDetails.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -9497,7 +10129,7 @@ class Advertiser {
       _json["partnerId"] = partnerId;
     }
     if (servingConfig != null) {
-      _json["servingConfig"] = (servingConfig).toJson();
+      _json["servingConfig"] = servingConfig.toJson();
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
@@ -9519,22 +10151,22 @@ class AdvertiserAdServerConfig {
 
   AdvertiserAdServerConfig.fromJson(core.Map _json) {
     if (_json.containsKey("cmHybridConfig")) {
-      cmHybridConfig = new CmHybridConfig.fromJson(_json["cmHybridConfig"]);
+      cmHybridConfig = CmHybridConfig.fromJson(_json["cmHybridConfig"]);
     }
     if (_json.containsKey("thirdPartyOnlyConfig")) {
       thirdPartyOnlyConfig =
-          new ThirdPartyOnlyConfig.fromJson(_json["thirdPartyOnlyConfig"]);
+          ThirdPartyOnlyConfig.fromJson(_json["thirdPartyOnlyConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cmHybridConfig != null) {
-      _json["cmHybridConfig"] = (cmHybridConfig).toJson();
+      _json["cmHybridConfig"] = cmHybridConfig.toJson();
     }
     if (thirdPartyOnlyConfig != null) {
-      _json["thirdPartyOnlyConfig"] = (thirdPartyOnlyConfig).toJson();
+      _json["thirdPartyOnlyConfig"] = thirdPartyOnlyConfig.toJson();
     }
     return _json;
   }
@@ -9583,7 +10215,7 @@ class AdvertiserCreativeConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dynamicCreativeEnabled != null) {
       _json["dynamicCreativeEnabled"] = dynamicCreativeEnabled;
     }
@@ -9611,15 +10243,15 @@ class AdvertiserDataAccessConfig {
 
   AdvertiserDataAccessConfig.fromJson(core.Map _json) {
     if (_json.containsKey("sdfConfig")) {
-      sdfConfig = new AdvertiserSdfConfig.fromJson(_json["sdfConfig"]);
+      sdfConfig = AdvertiserSdfConfig.fromJson(_json["sdfConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sdfConfig != null) {
-      _json["sdfConfig"] = (sdfConfig).toJson();
+      _json["sdfConfig"] = sdfConfig.toJson();
     }
     return _json;
   }
@@ -9674,7 +10306,7 @@ class AdvertiserGeneralConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currencyCode != null) {
       _json["currencyCode"] = currencyCode;
     }
@@ -9708,18 +10340,18 @@ class AdvertiserSdfConfig {
       overridePartnerSdfConfig = _json["overridePartnerSdfConfig"];
     }
     if (_json.containsKey("sdfConfig")) {
-      sdfConfig = new SdfConfig.fromJson(_json["sdfConfig"]);
+      sdfConfig = SdfConfig.fromJson(_json["sdfConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (overridePartnerSdfConfig != null) {
       _json["overridePartnerSdfConfig"] = overridePartnerSdfConfig;
     }
     if (sdfConfig != null) {
-      _json["sdfConfig"] = (sdfConfig).toJson();
+      _json["sdfConfig"] = sdfConfig.toJson();
     }
     return _json;
   }
@@ -9742,7 +10374,7 @@ class AdvertiserTargetingConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exemptTvFromViewabilityTargeting != null) {
       _json["exemptTvFromViewabilityTargeting"] =
           exemptTvFromViewabilityTargeting;
@@ -9790,7 +10422,7 @@ class AgeRangeAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ageRange != null) {
       _json["ageRange"] = ageRange;
     }
@@ -9828,7 +10460,7 @@ class AgeRangeTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ageRange != null) {
       _json["ageRange"] = ageRange;
     }
@@ -9867,7 +10499,7 @@ class AppAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appId != null) {
       _json["appId"] = appId;
     }
@@ -9911,7 +10543,7 @@ class AppCategoryAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -9944,7 +10576,7 @@ class AppCategoryTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -9975,7 +10607,7 @@ class Asset {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (content != null) {
       _json["content"] = content;
     }
@@ -10084,7 +10716,7 @@ class AssetAssociation {
 
   AssetAssociation.fromJson(core.Map _json) {
     if (_json.containsKey("asset")) {
-      asset = new Asset.fromJson(_json["asset"]);
+      asset = Asset.fromJson(_json["asset"]);
     }
     if (_json.containsKey("role")) {
       role = _json["role"];
@@ -10093,9 +10725,9 @@ class AssetAssociation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (asset != null) {
-      _json["asset"] = (asset).toJson();
+      _json["asset"] = asset.toJson();
     }
     if (role != null) {
       _json["role"] = role;
@@ -10134,7 +10766,7 @@ class AssignedInventorySource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assignedInventorySourceId != null) {
       _json["assignedInventorySourceId"] = assignedInventorySourceId;
     }
@@ -10179,7 +10811,7 @@ class AssignedLocation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assignedLocationId != null) {
       _json["assignedLocationId"] = assignedLocationId;
     }
@@ -10478,96 +11110,94 @@ class AssignedTargetingOption {
 
   AssignedTargetingOption.fromJson(core.Map _json) {
     if (_json.containsKey("ageRangeDetails")) {
-      ageRangeDetails = new AgeRangeAssignedTargetingOptionDetails.fromJson(
+      ageRangeDetails = AgeRangeAssignedTargetingOptionDetails.fromJson(
           _json["ageRangeDetails"]);
     }
     if (_json.containsKey("appCategoryDetails")) {
-      appCategoryDetails =
-          new AppCategoryAssignedTargetingOptionDetails.fromJson(
-              _json["appCategoryDetails"]);
+      appCategoryDetails = AppCategoryAssignedTargetingOptionDetails.fromJson(
+          _json["appCategoryDetails"]);
     }
     if (_json.containsKey("appDetails")) {
       appDetails =
-          new AppAssignedTargetingOptionDetails.fromJson(_json["appDetails"]);
+          AppAssignedTargetingOptionDetails.fromJson(_json["appDetails"]);
     }
     if (_json.containsKey("assignedTargetingOptionId")) {
       assignedTargetingOptionId = _json["assignedTargetingOptionId"];
     }
     if (_json.containsKey("audienceGroupDetails")) {
       audienceGroupDetails =
-          new AudienceGroupAssignedTargetingOptionDetails.fromJson(
+          AudienceGroupAssignedTargetingOptionDetails.fromJson(
               _json["audienceGroupDetails"]);
     }
     if (_json.containsKey("authorizedSellerStatusDetails")) {
       authorizedSellerStatusDetails =
-          new AuthorizedSellerStatusAssignedTargetingOptionDetails.fromJson(
+          AuthorizedSellerStatusAssignedTargetingOptionDetails.fromJson(
               _json["authorizedSellerStatusDetails"]);
     }
     if (_json.containsKey("browserDetails")) {
-      browserDetails = new BrowserAssignedTargetingOptionDetails.fromJson(
+      browserDetails = BrowserAssignedTargetingOptionDetails.fromJson(
           _json["browserDetails"]);
     }
     if (_json.containsKey("carrierAndIspDetails")) {
       carrierAndIspDetails =
-          new CarrierAndIspAssignedTargetingOptionDetails.fromJson(
+          CarrierAndIspAssignedTargetingOptionDetails.fromJson(
               _json["carrierAndIspDetails"]);
     }
     if (_json.containsKey("categoryDetails")) {
-      categoryDetails = new CategoryAssignedTargetingOptionDetails.fromJson(
+      categoryDetails = CategoryAssignedTargetingOptionDetails.fromJson(
           _json["categoryDetails"]);
     }
     if (_json.containsKey("channelDetails")) {
-      channelDetails = new ChannelAssignedTargetingOptionDetails.fromJson(
+      channelDetails = ChannelAssignedTargetingOptionDetails.fromJson(
           _json["channelDetails"]);
     }
     if (_json.containsKey("contentInstreamPositionDetails")) {
       contentInstreamPositionDetails =
-          new ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
+          ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
               _json["contentInstreamPositionDetails"]);
     }
     if (_json.containsKey("contentOutstreamPositionDetails")) {
       contentOutstreamPositionDetails =
-          new ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
+          ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
               _json["contentOutstreamPositionDetails"]);
     }
     if (_json.containsKey("dayAndTimeDetails")) {
-      dayAndTimeDetails = new DayAndTimeAssignedTargetingOptionDetails.fromJson(
+      dayAndTimeDetails = DayAndTimeAssignedTargetingOptionDetails.fromJson(
           _json["dayAndTimeDetails"]);
     }
     if (_json.containsKey("deviceMakeModelDetails")) {
       deviceMakeModelDetails =
-          new DeviceMakeModelAssignedTargetingOptionDetails.fromJson(
+          DeviceMakeModelAssignedTargetingOptionDetails.fromJson(
               _json["deviceMakeModelDetails"]);
     }
     if (_json.containsKey("deviceTypeDetails")) {
-      deviceTypeDetails = new DeviceTypeAssignedTargetingOptionDetails.fromJson(
+      deviceTypeDetails = DeviceTypeAssignedTargetingOptionDetails.fromJson(
           _json["deviceTypeDetails"]);
     }
     if (_json.containsKey("digitalContentLabelExclusionDetails")) {
       digitalContentLabelExclusionDetails =
-          new DigitalContentLabelAssignedTargetingOptionDetails.fromJson(
+          DigitalContentLabelAssignedTargetingOptionDetails.fromJson(
               _json["digitalContentLabelExclusionDetails"]);
     }
     if (_json.containsKey("environmentDetails")) {
-      environmentDetails =
-          new EnvironmentAssignedTargetingOptionDetails.fromJson(
-              _json["environmentDetails"]);
+      environmentDetails = EnvironmentAssignedTargetingOptionDetails.fromJson(
+          _json["environmentDetails"]);
     }
     if (_json.containsKey("exchangeDetails")) {
-      exchangeDetails = new ExchangeAssignedTargetingOptionDetails.fromJson(
+      exchangeDetails = ExchangeAssignedTargetingOptionDetails.fromJson(
           _json["exchangeDetails"]);
     }
     if (_json.containsKey("genderDetails")) {
-      genderDetails = new GenderAssignedTargetingOptionDetails.fromJson(
-          _json["genderDetails"]);
+      genderDetails =
+          GenderAssignedTargetingOptionDetails.fromJson(_json["genderDetails"]);
     }
     if (_json.containsKey("geoRegionDetails")) {
-      geoRegionDetails = new GeoRegionAssignedTargetingOptionDetails.fromJson(
+      geoRegionDetails = GeoRegionAssignedTargetingOptionDetails.fromJson(
           _json["geoRegionDetails"]);
     }
     if (_json.containsKey("householdIncomeDetails")) {
       householdIncomeDetails =
-          new HouseholdIncomeAssignedTargetingOptionDetails.fromJson(
+          HouseholdIncomeAssignedTargetingOptionDetails.fromJson(
               _json["householdIncomeDetails"]);
     }
     if (_json.containsKey("inheritance")) {
@@ -10575,20 +11205,20 @@ class AssignedTargetingOption {
     }
     if (_json.containsKey("inventorySourceDetails")) {
       inventorySourceDetails =
-          new InventorySourceAssignedTargetingOptionDetails.fromJson(
+          InventorySourceAssignedTargetingOptionDetails.fromJson(
               _json["inventorySourceDetails"]);
     }
     if (_json.containsKey("inventorySourceGroupDetails")) {
       inventorySourceGroupDetails =
-          new InventorySourceGroupAssignedTargetingOptionDetails.fromJson(
+          InventorySourceGroupAssignedTargetingOptionDetails.fromJson(
               _json["inventorySourceGroupDetails"]);
     }
     if (_json.containsKey("keywordDetails")) {
-      keywordDetails = new KeywordAssignedTargetingOptionDetails.fromJson(
+      keywordDetails = KeywordAssignedTargetingOptionDetails.fromJson(
           _json["keywordDetails"]);
     }
     if (_json.containsKey("languageDetails")) {
-      languageDetails = new LanguageAssignedTargetingOptionDetails.fromJson(
+      languageDetails = LanguageAssignedTargetingOptionDetails.fromJson(
           _json["languageDetails"]);
     }
     if (_json.containsKey("name")) {
@@ -10596,208 +11226,204 @@ class AssignedTargetingOption {
     }
     if (_json.containsKey("negativeKeywordListDetails")) {
       negativeKeywordListDetails =
-          new NegativeKeywordListAssignedTargetingOptionDetails.fromJson(
+          NegativeKeywordListAssignedTargetingOptionDetails.fromJson(
               _json["negativeKeywordListDetails"]);
     }
     if (_json.containsKey("onScreenPositionDetails")) {
       onScreenPositionDetails =
-          new OnScreenPositionAssignedTargetingOptionDetails.fromJson(
+          OnScreenPositionAssignedTargetingOptionDetails.fromJson(
               _json["onScreenPositionDetails"]);
     }
     if (_json.containsKey("operatingSystemDetails")) {
       operatingSystemDetails =
-          new OperatingSystemAssignedTargetingOptionDetails.fromJson(
+          OperatingSystemAssignedTargetingOptionDetails.fromJson(
               _json["operatingSystemDetails"]);
     }
     if (_json.containsKey("parentalStatusDetails")) {
       parentalStatusDetails =
-          new ParentalStatusAssignedTargetingOptionDetails.fromJson(
+          ParentalStatusAssignedTargetingOptionDetails.fromJson(
               _json["parentalStatusDetails"]);
     }
     if (_json.containsKey("proximityLocationListDetails")) {
       proximityLocationListDetails =
-          new ProximityLocationListAssignedTargetingOptionDetails.fromJson(
+          ProximityLocationListAssignedTargetingOptionDetails.fromJson(
               _json["proximityLocationListDetails"]);
     }
     if (_json.containsKey("regionalLocationListDetails")) {
       regionalLocationListDetails =
-          new RegionalLocationListAssignedTargetingOptionDetails.fromJson(
+          RegionalLocationListAssignedTargetingOptionDetails.fromJson(
               _json["regionalLocationListDetails"]);
     }
     if (_json.containsKey("sensitiveCategoryExclusionDetails")) {
       sensitiveCategoryExclusionDetails =
-          new SensitiveCategoryAssignedTargetingOptionDetails.fromJson(
+          SensitiveCategoryAssignedTargetingOptionDetails.fromJson(
               _json["sensitiveCategoryExclusionDetails"]);
     }
     if (_json.containsKey("subExchangeDetails")) {
-      subExchangeDetails =
-          new SubExchangeAssignedTargetingOptionDetails.fromJson(
-              _json["subExchangeDetails"]);
+      subExchangeDetails = SubExchangeAssignedTargetingOptionDetails.fromJson(
+          _json["subExchangeDetails"]);
     }
     if (_json.containsKey("targetingType")) {
       targetingType = _json["targetingType"];
     }
     if (_json.containsKey("thirdPartyVerifierDetails")) {
       thirdPartyVerifierDetails =
-          new ThirdPartyVerifierAssignedTargetingOptionDetails.fromJson(
+          ThirdPartyVerifierAssignedTargetingOptionDetails.fromJson(
               _json["thirdPartyVerifierDetails"]);
     }
     if (_json.containsKey("urlDetails")) {
       urlDetails =
-          new UrlAssignedTargetingOptionDetails.fromJson(_json["urlDetails"]);
+          UrlAssignedTargetingOptionDetails.fromJson(_json["urlDetails"]);
     }
     if (_json.containsKey("userRewardedContentDetails")) {
       userRewardedContentDetails =
-          new UserRewardedContentAssignedTargetingOptionDetails.fromJson(
+          UserRewardedContentAssignedTargetingOptionDetails.fromJson(
               _json["userRewardedContentDetails"]);
     }
     if (_json.containsKey("videoPlayerSizeDetails")) {
       videoPlayerSizeDetails =
-          new VideoPlayerSizeAssignedTargetingOptionDetails.fromJson(
+          VideoPlayerSizeAssignedTargetingOptionDetails.fromJson(
               _json["videoPlayerSizeDetails"]);
     }
     if (_json.containsKey("viewabilityDetails")) {
-      viewabilityDetails =
-          new ViewabilityAssignedTargetingOptionDetails.fromJson(
-              _json["viewabilityDetails"]);
+      viewabilityDetails = ViewabilityAssignedTargetingOptionDetails.fromJson(
+          _json["viewabilityDetails"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ageRangeDetails != null) {
-      _json["ageRangeDetails"] = (ageRangeDetails).toJson();
+      _json["ageRangeDetails"] = ageRangeDetails.toJson();
     }
     if (appCategoryDetails != null) {
-      _json["appCategoryDetails"] = (appCategoryDetails).toJson();
+      _json["appCategoryDetails"] = appCategoryDetails.toJson();
     }
     if (appDetails != null) {
-      _json["appDetails"] = (appDetails).toJson();
+      _json["appDetails"] = appDetails.toJson();
     }
     if (assignedTargetingOptionId != null) {
       _json["assignedTargetingOptionId"] = assignedTargetingOptionId;
     }
     if (audienceGroupDetails != null) {
-      _json["audienceGroupDetails"] = (audienceGroupDetails).toJson();
+      _json["audienceGroupDetails"] = audienceGroupDetails.toJson();
     }
     if (authorizedSellerStatusDetails != null) {
       _json["authorizedSellerStatusDetails"] =
-          (authorizedSellerStatusDetails).toJson();
+          authorizedSellerStatusDetails.toJson();
     }
     if (browserDetails != null) {
-      _json["browserDetails"] = (browserDetails).toJson();
+      _json["browserDetails"] = browserDetails.toJson();
     }
     if (carrierAndIspDetails != null) {
-      _json["carrierAndIspDetails"] = (carrierAndIspDetails).toJson();
+      _json["carrierAndIspDetails"] = carrierAndIspDetails.toJson();
     }
     if (categoryDetails != null) {
-      _json["categoryDetails"] = (categoryDetails).toJson();
+      _json["categoryDetails"] = categoryDetails.toJson();
     }
     if (channelDetails != null) {
-      _json["channelDetails"] = (channelDetails).toJson();
+      _json["channelDetails"] = channelDetails.toJson();
     }
     if (contentInstreamPositionDetails != null) {
       _json["contentInstreamPositionDetails"] =
-          (contentInstreamPositionDetails).toJson();
+          contentInstreamPositionDetails.toJson();
     }
     if (contentOutstreamPositionDetails != null) {
       _json["contentOutstreamPositionDetails"] =
-          (contentOutstreamPositionDetails).toJson();
+          contentOutstreamPositionDetails.toJson();
     }
     if (dayAndTimeDetails != null) {
-      _json["dayAndTimeDetails"] = (dayAndTimeDetails).toJson();
+      _json["dayAndTimeDetails"] = dayAndTimeDetails.toJson();
     }
     if (deviceMakeModelDetails != null) {
-      _json["deviceMakeModelDetails"] = (deviceMakeModelDetails).toJson();
+      _json["deviceMakeModelDetails"] = deviceMakeModelDetails.toJson();
     }
     if (deviceTypeDetails != null) {
-      _json["deviceTypeDetails"] = (deviceTypeDetails).toJson();
+      _json["deviceTypeDetails"] = deviceTypeDetails.toJson();
     }
     if (digitalContentLabelExclusionDetails != null) {
       _json["digitalContentLabelExclusionDetails"] =
-          (digitalContentLabelExclusionDetails).toJson();
+          digitalContentLabelExclusionDetails.toJson();
     }
     if (environmentDetails != null) {
-      _json["environmentDetails"] = (environmentDetails).toJson();
+      _json["environmentDetails"] = environmentDetails.toJson();
     }
     if (exchangeDetails != null) {
-      _json["exchangeDetails"] = (exchangeDetails).toJson();
+      _json["exchangeDetails"] = exchangeDetails.toJson();
     }
     if (genderDetails != null) {
-      _json["genderDetails"] = (genderDetails).toJson();
+      _json["genderDetails"] = genderDetails.toJson();
     }
     if (geoRegionDetails != null) {
-      _json["geoRegionDetails"] = (geoRegionDetails).toJson();
+      _json["geoRegionDetails"] = geoRegionDetails.toJson();
     }
     if (householdIncomeDetails != null) {
-      _json["householdIncomeDetails"] = (householdIncomeDetails).toJson();
+      _json["householdIncomeDetails"] = householdIncomeDetails.toJson();
     }
     if (inheritance != null) {
       _json["inheritance"] = inheritance;
     }
     if (inventorySourceDetails != null) {
-      _json["inventorySourceDetails"] = (inventorySourceDetails).toJson();
+      _json["inventorySourceDetails"] = inventorySourceDetails.toJson();
     }
     if (inventorySourceGroupDetails != null) {
       _json["inventorySourceGroupDetails"] =
-          (inventorySourceGroupDetails).toJson();
+          inventorySourceGroupDetails.toJson();
     }
     if (keywordDetails != null) {
-      _json["keywordDetails"] = (keywordDetails).toJson();
+      _json["keywordDetails"] = keywordDetails.toJson();
     }
     if (languageDetails != null) {
-      _json["languageDetails"] = (languageDetails).toJson();
+      _json["languageDetails"] = languageDetails.toJson();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (negativeKeywordListDetails != null) {
-      _json["negativeKeywordListDetails"] =
-          (negativeKeywordListDetails).toJson();
+      _json["negativeKeywordListDetails"] = negativeKeywordListDetails.toJson();
     }
     if (onScreenPositionDetails != null) {
-      _json["onScreenPositionDetails"] = (onScreenPositionDetails).toJson();
+      _json["onScreenPositionDetails"] = onScreenPositionDetails.toJson();
     }
     if (operatingSystemDetails != null) {
-      _json["operatingSystemDetails"] = (operatingSystemDetails).toJson();
+      _json["operatingSystemDetails"] = operatingSystemDetails.toJson();
     }
     if (parentalStatusDetails != null) {
-      _json["parentalStatusDetails"] = (parentalStatusDetails).toJson();
+      _json["parentalStatusDetails"] = parentalStatusDetails.toJson();
     }
     if (proximityLocationListDetails != null) {
       _json["proximityLocationListDetails"] =
-          (proximityLocationListDetails).toJson();
+          proximityLocationListDetails.toJson();
     }
     if (regionalLocationListDetails != null) {
       _json["regionalLocationListDetails"] =
-          (regionalLocationListDetails).toJson();
+          regionalLocationListDetails.toJson();
     }
     if (sensitiveCategoryExclusionDetails != null) {
       _json["sensitiveCategoryExclusionDetails"] =
-          (sensitiveCategoryExclusionDetails).toJson();
+          sensitiveCategoryExclusionDetails.toJson();
     }
     if (subExchangeDetails != null) {
-      _json["subExchangeDetails"] = (subExchangeDetails).toJson();
+      _json["subExchangeDetails"] = subExchangeDetails.toJson();
     }
     if (targetingType != null) {
       _json["targetingType"] = targetingType;
     }
     if (thirdPartyVerifierDetails != null) {
-      _json["thirdPartyVerifierDetails"] = (thirdPartyVerifierDetails).toJson();
+      _json["thirdPartyVerifierDetails"] = thirdPartyVerifierDetails.toJson();
     }
     if (urlDetails != null) {
-      _json["urlDetails"] = (urlDetails).toJson();
+      _json["urlDetails"] = urlDetails.toJson();
     }
     if (userRewardedContentDetails != null) {
-      _json["userRewardedContentDetails"] =
-          (userRewardedContentDetails).toJson();
+      _json["userRewardedContentDetails"] = userRewardedContentDetails.toJson();
     }
     if (videoPlayerSizeDetails != null) {
-      _json["videoPlayerSizeDetails"] = (videoPlayerSizeDetails).toJson();
+      _json["videoPlayerSizeDetails"] = videoPlayerSizeDetails.toJson();
     }
     if (viewabilityDetails != null) {
-      _json["viewabilityDetails"] = (viewabilityDetails).toJson();
+      _json["viewabilityDetails"] = viewabilityDetails.toJson();
     }
     return _json;
   }
@@ -10877,7 +11503,7 @@ class AssignedUserRole {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
@@ -10938,61 +11564,61 @@ class AudienceGroupAssignedTargetingOptionDetails {
   AudienceGroupAssignedTargetingOptionDetails.fromJson(core.Map _json) {
     if (_json.containsKey("excludedFirstAndThirdPartyAudienceGroup")) {
       excludedFirstAndThirdPartyAudienceGroup =
-          new FirstAndThirdPartyAudienceGroup.fromJson(
+          FirstAndThirdPartyAudienceGroup.fromJson(
               _json["excludedFirstAndThirdPartyAudienceGroup"]);
     }
     if (_json.containsKey("excludedGoogleAudienceGroup")) {
-      excludedGoogleAudienceGroup = new GoogleAudienceGroup.fromJson(
-          _json["excludedGoogleAudienceGroup"]);
+      excludedGoogleAudienceGroup =
+          GoogleAudienceGroup.fromJson(_json["excludedGoogleAudienceGroup"]);
     }
     if (_json.containsKey("includedCombinedAudienceGroup")) {
-      includedCombinedAudienceGroup = new CombinedAudienceGroup.fromJson(
+      includedCombinedAudienceGroup = CombinedAudienceGroup.fromJson(
           _json["includedCombinedAudienceGroup"]);
     }
     if (_json.containsKey("includedCustomListGroup")) {
       includedCustomListGroup =
-          new CustomListGroup.fromJson(_json["includedCustomListGroup"]);
+          CustomListGroup.fromJson(_json["includedCustomListGroup"]);
     }
     if (_json.containsKey("includedFirstAndThirdPartyAudienceGroups")) {
       includedFirstAndThirdPartyAudienceGroups =
           (_json["includedFirstAndThirdPartyAudienceGroups"] as core.List)
-              .map<FirstAndThirdPartyAudienceGroup>((value) =>
-                  new FirstAndThirdPartyAudienceGroup.fromJson(value))
+              .map<FirstAndThirdPartyAudienceGroup>(
+                  (value) => FirstAndThirdPartyAudienceGroup.fromJson(value))
               .toList();
     }
     if (_json.containsKey("includedGoogleAudienceGroup")) {
-      includedGoogleAudienceGroup = new GoogleAudienceGroup.fromJson(
-          _json["includedGoogleAudienceGroup"]);
+      includedGoogleAudienceGroup =
+          GoogleAudienceGroup.fromJson(_json["includedGoogleAudienceGroup"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (excludedFirstAndThirdPartyAudienceGroup != null) {
       _json["excludedFirstAndThirdPartyAudienceGroup"] =
-          (excludedFirstAndThirdPartyAudienceGroup).toJson();
+          excludedFirstAndThirdPartyAudienceGroup.toJson();
     }
     if (excludedGoogleAudienceGroup != null) {
       _json["excludedGoogleAudienceGroup"] =
-          (excludedGoogleAudienceGroup).toJson();
+          excludedGoogleAudienceGroup.toJson();
     }
     if (includedCombinedAudienceGroup != null) {
       _json["includedCombinedAudienceGroup"] =
-          (includedCombinedAudienceGroup).toJson();
+          includedCombinedAudienceGroup.toJson();
     }
     if (includedCustomListGroup != null) {
-      _json["includedCustomListGroup"] = (includedCustomListGroup).toJson();
+      _json["includedCustomListGroup"] = includedCustomListGroup.toJson();
     }
     if (includedFirstAndThirdPartyAudienceGroups != null) {
       _json["includedFirstAndThirdPartyAudienceGroups"] =
           includedFirstAndThirdPartyAudienceGroups
-              .map((value) => (value).toJson())
+              .map((value) => value.toJson())
               .toList();
     }
     if (includedGoogleAudienceGroup != null) {
       _json["includedGoogleAudienceGroup"] =
-          (includedGoogleAudienceGroup).toJson();
+          includedGoogleAudienceGroup.toJson();
     }
     return _json;
   }
@@ -11019,7 +11645,7 @@ class AudioVideoOffset {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (percentage != null) {
       _json["percentage"] = percentage;
     }
@@ -11111,7 +11737,7 @@ class AuditAdvertiserResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adGroupCriteriaCount != null) {
       _json["adGroupCriteriaCount"] = adGroupCriteriaCount;
     }
@@ -11178,7 +11804,7 @@ class AuthorizedSellerStatusAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (authorizedSellerStatus != null) {
       _json["authorizedSellerStatus"] = authorizedSellerStatus;
     }
@@ -11218,7 +11844,7 @@ class AuthorizedSellerStatusTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (authorizedSellerStatus != null) {
       _json["authorizedSellerStatus"] = authorizedSellerStatus;
     }
@@ -11256,29 +11882,29 @@ class BiddingStrategy {
 
   BiddingStrategy.fromJson(core.Map _json) {
     if (_json.containsKey("fixedBid")) {
-      fixedBid = new FixedBidStrategy.fromJson(_json["fixedBid"]);
+      fixedBid = FixedBidStrategy.fromJson(_json["fixedBid"]);
     }
     if (_json.containsKey("maximizeSpendAutoBid")) {
       maximizeSpendAutoBid =
-          new MaximizeSpendBidStrategy.fromJson(_json["maximizeSpendAutoBid"]);
+          MaximizeSpendBidStrategy.fromJson(_json["maximizeSpendAutoBid"]);
     }
     if (_json.containsKey("performanceGoalAutoBid")) {
-      performanceGoalAutoBid = new PerformanceGoalBidStrategy.fromJson(
-          _json["performanceGoalAutoBid"]);
+      performanceGoalAutoBid =
+          PerformanceGoalBidStrategy.fromJson(_json["performanceGoalAutoBid"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fixedBid != null) {
-      _json["fixedBid"] = (fixedBid).toJson();
+      _json["fixedBid"] = fixedBid.toJson();
     }
     if (maximizeSpendAutoBid != null) {
-      _json["maximizeSpendAutoBid"] = (maximizeSpendAutoBid).toJson();
+      _json["maximizeSpendAutoBid"] = maximizeSpendAutoBid.toJson();
     }
     if (performanceGoalAutoBid != null) {
-      _json["performanceGoalAutoBid"] = (performanceGoalAutoBid).toJson();
+      _json["performanceGoalAutoBid"] = performanceGoalAutoBid.toJson();
     }
     return _json;
   }
@@ -11316,7 +11942,7 @@ class BrowserAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -11346,7 +11972,7 @@ class BrowserTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -11369,28 +11995,28 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   BulkEditAdvertiserAssignedTargetingOptionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("createRequests")) {
       createRequests = (_json["createRequests"] as core.List)
-          .map<CreateAssignedTargetingOptionsRequest>((value) =>
-              new CreateAssignedTargetingOptionsRequest.fromJson(value))
+          .map<CreateAssignedTargetingOptionsRequest>(
+              (value) => CreateAssignedTargetingOptionsRequest.fromJson(value))
           .toList();
     }
     if (_json.containsKey("deleteRequests")) {
       deleteRequests = (_json["deleteRequests"] as core.List)
-          .map<DeleteAssignedTargetingOptionsRequest>((value) =>
-              new DeleteAssignedTargetingOptionsRequest.fromJson(value))
+          .map<DeleteAssignedTargetingOptionsRequest>(
+              (value) => DeleteAssignedTargetingOptionsRequest.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createRequests != null) {
       _json["createRequests"] =
-          createRequests.map((value) => (value).toJson()).toList();
+          createRequests.map((value) => value.toJson()).toList();
     }
     if (deleteRequests != null) {
       _json["deleteRequests"] =
-          deleteRequests.map((value) => (value).toJson()).toList();
+          deleteRequests.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11408,17 +12034,17 @@ class BulkEditAdvertiserAssignedTargetingOptionsResponse {
       createdAssignedTargetingOptions =
           (_json["createdAssignedTargetingOptions"] as core.List)
               .map<AssignedTargetingOption>(
-                  (value) => new AssignedTargetingOption.fromJson(value))
+                  (value) => AssignedTargetingOption.fromJson(value))
               .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createdAssignedTargetingOptions != null) {
       _json["createdAssignedTargetingOptions"] = createdAssignedTargetingOptions
-          .map((value) => (value).toJson())
+          .map((value) => value.toJson())
           .toList();
     }
     return _json;
@@ -11453,7 +12079,7 @@ class BulkEditAssignedInventorySourcesRequest {
       createdAssignedInventorySources =
           (_json["createdAssignedInventorySources"] as core.List)
               .map<AssignedInventorySource>(
-                  (value) => new AssignedInventorySource.fromJson(value))
+                  (value) => AssignedInventorySource.fromJson(value))
               .toList();
     }
     if (_json.containsKey("deletedAssignedInventorySources")) {
@@ -11468,13 +12094,13 @@ class BulkEditAssignedInventorySourcesRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
     if (createdAssignedInventorySources != null) {
       _json["createdAssignedInventorySources"] = createdAssignedInventorySources
-          .map((value) => (value).toJson())
+          .map((value) => value.toJson())
           .toList();
     }
     if (deletedAssignedInventorySources != null) {
@@ -11501,17 +12127,17 @@ class BulkEditAssignedInventorySourcesResponse {
       assignedInventorySources =
           (_json["assignedInventorySources"] as core.List)
               .map<AssignedInventorySource>(
-                  (value) => new AssignedInventorySource.fromJson(value))
+                  (value) => AssignedInventorySource.fromJson(value))
               .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assignedInventorySources != null) {
       _json["assignedInventorySources"] =
-          assignedInventorySources.map((value) => (value).toJson()).toList();
+          assignedInventorySources.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11531,11 +12157,10 @@ class BulkEditAssignedLocationsRequest {
 
   BulkEditAssignedLocationsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("createdAssignedLocations")) {
-      createdAssignedLocations =
-          (_json["createdAssignedLocations"] as core.List)
-              .map<AssignedLocation>(
-                  (value) => new AssignedLocation.fromJson(value))
-              .toList();
+      createdAssignedLocations = (_json["createdAssignedLocations"]
+              as core.List)
+          .map<AssignedLocation>((value) => AssignedLocation.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("deletedAssignedLocations")) {
       deletedAssignedLocations =
@@ -11545,10 +12170,10 @@ class BulkEditAssignedLocationsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createdAssignedLocations != null) {
       _json["createdAssignedLocations"] =
-          createdAssignedLocations.map((value) => (value).toJson()).toList();
+          createdAssignedLocations.map((value) => value.toJson()).toList();
     }
     if (deletedAssignedLocations != null) {
       _json["deletedAssignedLocations"] = deletedAssignedLocations;
@@ -11568,18 +12193,17 @@ class BulkEditAssignedLocationsResponse {
   BulkEditAssignedLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("assignedLocations")) {
       assignedLocations = (_json["assignedLocations"] as core.List)
-          .map<AssignedLocation>(
-              (value) => new AssignedLocation.fromJson(value))
+          .map<AssignedLocation>((value) => AssignedLocation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assignedLocations != null) {
       _json["assignedLocations"] =
-          assignedLocations.map((value) => (value).toJson()).toList();
+          assignedLocations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11600,11 +12224,10 @@ class BulkEditAssignedUserRolesRequest {
 
   BulkEditAssignedUserRolesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("createdAssignedUserRoles")) {
-      createdAssignedUserRoles =
-          (_json["createdAssignedUserRoles"] as core.List)
-              .map<AssignedUserRole>(
-                  (value) => new AssignedUserRole.fromJson(value))
-              .toList();
+      createdAssignedUserRoles = (_json["createdAssignedUserRoles"]
+              as core.List)
+          .map<AssignedUserRole>((value) => AssignedUserRole.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("deletedAssignedUserRoles")) {
       deletedAssignedUserRoles =
@@ -11614,10 +12237,10 @@ class BulkEditAssignedUserRolesRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createdAssignedUserRoles != null) {
       _json["createdAssignedUserRoles"] =
-          createdAssignedUserRoles.map((value) => (value).toJson()).toList();
+          createdAssignedUserRoles.map((value) => value.toJson()).toList();
     }
     if (deletedAssignedUserRoles != null) {
       _json["deletedAssignedUserRoles"] = deletedAssignedUserRoles;
@@ -11635,20 +12258,19 @@ class BulkEditAssignedUserRolesResponse {
 
   BulkEditAssignedUserRolesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("createdAssignedUserRoles")) {
-      createdAssignedUserRoles =
-          (_json["createdAssignedUserRoles"] as core.List)
-              .map<AssignedUserRole>(
-                  (value) => new AssignedUserRole.fromJson(value))
-              .toList();
+      createdAssignedUserRoles = (_json["createdAssignedUserRoles"]
+              as core.List)
+          .map<AssignedUserRole>((value) => AssignedUserRole.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createdAssignedUserRoles != null) {
       _json["createdAssignedUserRoles"] =
-          createdAssignedUserRoles.map((value) => (value).toJson()).toList();
+          createdAssignedUserRoles.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11669,28 +12291,28 @@ class BulkEditLineItemAssignedTargetingOptionsRequest {
   BulkEditLineItemAssignedTargetingOptionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("createRequests")) {
       createRequests = (_json["createRequests"] as core.List)
-          .map<CreateAssignedTargetingOptionsRequest>((value) =>
-              new CreateAssignedTargetingOptionsRequest.fromJson(value))
+          .map<CreateAssignedTargetingOptionsRequest>(
+              (value) => CreateAssignedTargetingOptionsRequest.fromJson(value))
           .toList();
     }
     if (_json.containsKey("deleteRequests")) {
       deleteRequests = (_json["deleteRequests"] as core.List)
-          .map<DeleteAssignedTargetingOptionsRequest>((value) =>
-              new DeleteAssignedTargetingOptionsRequest.fromJson(value))
+          .map<DeleteAssignedTargetingOptionsRequest>(
+              (value) => DeleteAssignedTargetingOptionsRequest.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createRequests != null) {
       _json["createRequests"] =
-          createRequests.map((value) => (value).toJson()).toList();
+          createRequests.map((value) => value.toJson()).toList();
     }
     if (deleteRequests != null) {
       _json["deleteRequests"] =
-          deleteRequests.map((value) => (value).toJson()).toList();
+          deleteRequests.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11708,17 +12330,17 @@ class BulkEditLineItemAssignedTargetingOptionsResponse {
       createdAssignedTargetingOptions =
           (_json["createdAssignedTargetingOptions"] as core.List)
               .map<AssignedTargetingOption>(
-                  (value) => new AssignedTargetingOption.fromJson(value))
+                  (value) => AssignedTargetingOption.fromJson(value))
               .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createdAssignedTargetingOptions != null) {
       _json["createdAssignedTargetingOptions"] = createdAssignedTargetingOptions
-          .map((value) => (value).toJson())
+          .map((value) => value.toJson())
           .toList();
     }
     return _json;
@@ -11740,7 +12362,7 @@ class BulkEditNegativeKeywordsRequest {
   BulkEditNegativeKeywordsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("createdNegativeKeywords")) {
       createdNegativeKeywords = (_json["createdNegativeKeywords"] as core.List)
-          .map<NegativeKeyword>((value) => new NegativeKeyword.fromJson(value))
+          .map<NegativeKeyword>((value) => NegativeKeyword.fromJson(value))
           .toList();
     }
     if (_json.containsKey("deletedNegativeKeywords")) {
@@ -11751,10 +12373,10 @@ class BulkEditNegativeKeywordsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createdNegativeKeywords != null) {
       _json["createdNegativeKeywords"] =
-          createdNegativeKeywords.map((value) => (value).toJson()).toList();
+          createdNegativeKeywords.map((value) => value.toJson()).toList();
     }
     if (deletedNegativeKeywords != null) {
       _json["deletedNegativeKeywords"] = deletedNegativeKeywords;
@@ -11774,17 +12396,17 @@ class BulkEditNegativeKeywordsResponse {
   BulkEditNegativeKeywordsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("negativeKeywords")) {
       negativeKeywords = (_json["negativeKeywords"] as core.List)
-          .map<NegativeKeyword>((value) => new NegativeKeyword.fromJson(value))
+          .map<NegativeKeyword>((value) => NegativeKeyword.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (negativeKeywords != null) {
       _json["negativeKeywords"] =
-          negativeKeywords.map((value) => (value).toJson()).toList();
+          negativeKeywords.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11807,28 +12429,28 @@ class BulkEditPartnerAssignedTargetingOptionsRequest {
   BulkEditPartnerAssignedTargetingOptionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("createRequests")) {
       createRequests = (_json["createRequests"] as core.List)
-          .map<CreateAssignedTargetingOptionsRequest>((value) =>
-              new CreateAssignedTargetingOptionsRequest.fromJson(value))
+          .map<CreateAssignedTargetingOptionsRequest>(
+              (value) => CreateAssignedTargetingOptionsRequest.fromJson(value))
           .toList();
     }
     if (_json.containsKey("deleteRequests")) {
       deleteRequests = (_json["deleteRequests"] as core.List)
-          .map<DeleteAssignedTargetingOptionsRequest>((value) =>
-              new DeleteAssignedTargetingOptionsRequest.fromJson(value))
+          .map<DeleteAssignedTargetingOptionsRequest>(
+              (value) => DeleteAssignedTargetingOptionsRequest.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createRequests != null) {
       _json["createRequests"] =
-          createRequests.map((value) => (value).toJson()).toList();
+          createRequests.map((value) => value.toJson()).toList();
     }
     if (deleteRequests != null) {
       _json["deleteRequests"] =
-          deleteRequests.map((value) => (value).toJson()).toList();
+          deleteRequests.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11846,17 +12468,17 @@ class BulkEditPartnerAssignedTargetingOptionsResponse {
       createdAssignedTargetingOptions =
           (_json["createdAssignedTargetingOptions"] as core.List)
               .map<AssignedTargetingOption>(
-                  (value) => new AssignedTargetingOption.fromJson(value))
+                  (value) => AssignedTargetingOption.fromJson(value))
               .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createdAssignedTargetingOptions != null) {
       _json["createdAssignedTargetingOptions"] = createdAssignedTargetingOptions
-          .map((value) => (value).toJson())
+          .map((value) => value.toJson())
           .toList();
     }
     return _json;
@@ -11885,7 +12507,7 @@ class BulkEditSitesRequest {
     }
     if (_json.containsKey("createdSites")) {
       createdSites = (_json["createdSites"] as core.List)
-          .map<Site>((value) => new Site.fromJson(value))
+          .map<Site>((value) => Site.fromJson(value))
           .toList();
     }
     if (_json.containsKey("deletedSites")) {
@@ -11898,13 +12520,13 @@ class BulkEditSitesRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
     if (createdSites != null) {
       _json["createdSites"] =
-          createdSites.map((value) => (value).toJson()).toList();
+          createdSites.map((value) => value.toJson()).toList();
     }
     if (deletedSites != null) {
       _json["deletedSites"] = deletedSites;
@@ -11927,16 +12549,16 @@ class BulkEditSitesResponse {
   BulkEditSitesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("sites")) {
       sites = (_json["sites"] as core.List)
-          .map<Site>((value) => new Site.fromJson(value))
+          .map<Site>((value) => Site.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sites != null) {
-      _json["sites"] = sites.map((value) => (value).toJson()).toList();
+      _json["sites"] = sites.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11960,7 +12582,7 @@ class BulkListAdvertiserAssignedTargetingOptionsResponse {
       assignedTargetingOptions =
           (_json["assignedTargetingOptions"] as core.List)
               .map<AssignedTargetingOption>(
-                  (value) => new AssignedTargetingOption.fromJson(value))
+                  (value) => AssignedTargetingOption.fromJson(value))
               .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -11970,10 +12592,10 @@ class BulkListAdvertiserAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assignedTargetingOptions != null) {
       _json["assignedTargetingOptions"] =
-          assignedTargetingOptions.map((value) => (value).toJson()).toList();
+          assignedTargetingOptions.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -12000,7 +12622,7 @@ class BulkListLineItemAssignedTargetingOptionsResponse {
       assignedTargetingOptions =
           (_json["assignedTargetingOptions"] as core.List)
               .map<AssignedTargetingOption>(
-                  (value) => new AssignedTargetingOption.fromJson(value))
+                  (value) => AssignedTargetingOption.fromJson(value))
               .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -12010,10 +12632,10 @@ class BulkListLineItemAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assignedTargetingOptions != null) {
       _json["assignedTargetingOptions"] =
-          assignedTargetingOptions.map((value) => (value).toJson()).toList();
+          assignedTargetingOptions.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -12077,10 +12699,10 @@ class Campaign {
       advertiserId = _json["advertiserId"];
     }
     if (_json.containsKey("campaignFlight")) {
-      campaignFlight = new CampaignFlight.fromJson(_json["campaignFlight"]);
+      campaignFlight = CampaignFlight.fromJson(_json["campaignFlight"]);
     }
     if (_json.containsKey("campaignGoal")) {
-      campaignGoal = new CampaignGoal.fromJson(_json["campaignGoal"]);
+      campaignGoal = CampaignGoal.fromJson(_json["campaignGoal"]);
     }
     if (_json.containsKey("campaignId")) {
       campaignId = _json["campaignId"];
@@ -12092,7 +12714,7 @@ class Campaign {
       entityStatus = _json["entityStatus"];
     }
     if (_json.containsKey("frequencyCap")) {
-      frequencyCap = new FrequencyCap.fromJson(_json["frequencyCap"]);
+      frequencyCap = FrequencyCap.fromJson(_json["frequencyCap"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -12104,15 +12726,15 @@ class Campaign {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
     if (campaignFlight != null) {
-      _json["campaignFlight"] = (campaignFlight).toJson();
+      _json["campaignFlight"] = campaignFlight.toJson();
     }
     if (campaignGoal != null) {
-      _json["campaignGoal"] = (campaignGoal).toJson();
+      _json["campaignGoal"] = campaignGoal.toJson();
     }
     if (campaignId != null) {
       _json["campaignId"] = campaignId;
@@ -12124,7 +12746,7 @@ class Campaign {
       _json["entityStatus"] = entityStatus;
     }
     if (frequencyCap != null) {
-      _json["frequencyCap"] = (frequencyCap).toJson();
+      _json["frequencyCap"] = frequencyCap.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -12158,7 +12780,7 @@ class CampaignFlight {
 
   CampaignFlight.fromJson(core.Map _json) {
     if (_json.containsKey("plannedDates")) {
-      plannedDates = new DateRange.fromJson(_json["plannedDates"]);
+      plannedDates = DateRange.fromJson(_json["plannedDates"]);
     }
     if (_json.containsKey("plannedSpendAmountMicros")) {
       plannedSpendAmountMicros = _json["plannedSpendAmountMicros"];
@@ -12167,9 +12789,9 @@ class CampaignFlight {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (plannedDates != null) {
-      _json["plannedDates"] = (plannedDates).toJson();
+      _json["plannedDates"] = plannedDates.toJson();
     }
     if (plannedSpendAmountMicros != null) {
       _json["plannedSpendAmountMicros"] = plannedSpendAmountMicros;
@@ -12205,18 +12827,18 @@ class CampaignGoal {
       campaignGoalType = _json["campaignGoalType"];
     }
     if (_json.containsKey("performanceGoal")) {
-      performanceGoal = new PerformanceGoal.fromJson(_json["performanceGoal"]);
+      performanceGoal = PerformanceGoal.fromJson(_json["performanceGoal"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (campaignGoalType != null) {
       _json["campaignGoalType"] = campaignGoalType;
     }
     if (performanceGoal != null) {
-      _json["performanceGoal"] = (performanceGoal).toJson();
+      _json["performanceGoal"] = performanceGoal.toJson();
     }
     return _json;
   }
@@ -12254,7 +12876,7 @@ class CarrierAndIspAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -12298,7 +12920,7 @@ class CarrierAndIspTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -12338,7 +12960,7 @@ class CategoryAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -12369,7 +12991,7 @@ class CategoryTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -12417,7 +13039,7 @@ class Channel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
@@ -12464,7 +13086,7 @@ class ChannelAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -12530,7 +13152,7 @@ class CmHybridConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cmAccountId != null) {
       _json["cmAccountId"] = cmAccountId;
     }
@@ -12580,7 +13202,7 @@ class CmTrackingAd {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cmAdId != null) {
       _json["cmAdId"] = cmAdId;
     }
@@ -12622,7 +13244,7 @@ class CombinedAudience {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (combinedAudienceId != null) {
       _json["combinedAudienceId"] = combinedAudienceId;
     }
@@ -12651,16 +13273,16 @@ class CombinedAudienceGroup {
     if (_json.containsKey("settings")) {
       settings = (_json["settings"] as core.List)
           .map<CombinedAudienceTargetingSetting>(
-              (value) => new CombinedAudienceTargetingSetting.fromJson(value))
+              (value) => CombinedAudienceTargetingSetting.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (settings != null) {
-      _json["settings"] = settings.map((value) => (value).toJson()).toList();
+      _json["settings"] = settings.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12682,7 +13304,7 @@ class CombinedAudienceTargetingSetting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (combinedAudienceId != null) {
       _json["combinedAudienceId"] = combinedAudienceId;
     }
@@ -12725,7 +13347,7 @@ class ContentInstreamPositionAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentInstreamPosition != null) {
       _json["contentInstreamPosition"] = contentInstreamPosition;
     }
@@ -12764,7 +13386,7 @@ class ContentInstreamPositionTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentInstreamPosition != null) {
       _json["contentInstreamPosition"] = contentInstreamPosition;
     }
@@ -12812,7 +13434,7 @@ class ContentOutstreamPositionAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentOutstreamPosition != null) {
       _json["contentOutstreamPosition"] = contentOutstreamPosition;
     }
@@ -12856,7 +13478,7 @@ class ContentOutstreamPositionTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentOutstreamPosition != null) {
       _json["contentOutstreamPosition"] = contentOutstreamPosition;
     }
@@ -12882,11 +13504,11 @@ class ConversionCountingConfig {
 
   ConversionCountingConfig.fromJson(core.Map _json) {
     if (_json.containsKey("floodlightActivityConfigs")) {
-      floodlightActivityConfigs = (_json["floodlightActivityConfigs"]
-              as core.List)
-          .map<TrackingFloodlightActivityConfig>(
-              (value) => new TrackingFloodlightActivityConfig.fromJson(value))
-          .toList();
+      floodlightActivityConfigs =
+          (_json["floodlightActivityConfigs"] as core.List)
+              .map<TrackingFloodlightActivityConfig>(
+                  (value) => TrackingFloodlightActivityConfig.fromJson(value))
+              .toList();
     }
     if (_json.containsKey("postViewCountPercentageMillis")) {
       postViewCountPercentageMillis = _json["postViewCountPercentageMillis"];
@@ -12895,10 +13517,10 @@ class ConversionCountingConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (floodlightActivityConfigs != null) {
       _json["floodlightActivityConfigs"] =
-          floodlightActivityConfigs.map((value) => (value).toJson()).toList();
+          floodlightActivityConfigs.map((value) => value.toJson()).toList();
     }
     if (postViewCountPercentageMillis != null) {
       _json["postViewCountPercentageMillis"] = postViewCountPercentageMillis;
@@ -12928,7 +13550,7 @@ class CounterEvent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -12955,7 +13577,7 @@ class CreateAssetRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (filename != null) {
       _json["filename"] = filename;
     }
@@ -12972,15 +13594,15 @@ class CreateAssetResponse {
 
   CreateAssetResponse.fromJson(core.Map _json) {
     if (_json.containsKey("asset")) {
-      asset = new Asset.fromJson(_json["asset"]);
+      asset = Asset.fromJson(_json["asset"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (asset != null) {
-      _json["asset"] = (asset).toJson();
+      _json["asset"] = asset.toJson();
     }
     return _json;
   }
@@ -13081,7 +13703,7 @@ class CreateAssignedTargetingOptionsRequest {
       assignedTargetingOptions =
           (_json["assignedTargetingOptions"] as core.List)
               .map<AssignedTargetingOption>(
-                  (value) => new AssignedTargetingOption.fromJson(value))
+                  (value) => AssignedTargetingOption.fromJson(value))
               .toList();
     }
     if (_json.containsKey("targetingType")) {
@@ -13091,10 +13713,10 @@ class CreateAssignedTargetingOptionsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assignedTargetingOptions != null) {
       _json["assignedTargetingOptions"] =
-          assignedTargetingOptions.map((value) => (value).toJson()).toList();
+          assignedTargetingOptions.map((value) => value.toJson()).toList();
     }
     if (targetingType != null) {
       _json["targetingType"] = targetingType;
@@ -13145,15 +13767,15 @@ class CreateSdfDownloadTaskRequest {
       advertiserId = _json["advertiserId"];
     }
     if (_json.containsKey("idFilter")) {
-      idFilter = new IdFilter.fromJson(_json["idFilter"]);
+      idFilter = IdFilter.fromJson(_json["idFilter"]);
     }
     if (_json.containsKey("inventorySourceFilter")) {
       inventorySourceFilter =
-          new InventorySourceFilter.fromJson(_json["inventorySourceFilter"]);
+          InventorySourceFilter.fromJson(_json["inventorySourceFilter"]);
     }
     if (_json.containsKey("parentEntityFilter")) {
       parentEntityFilter =
-          new ParentEntityFilter.fromJson(_json["parentEntityFilter"]);
+          ParentEntityFilter.fromJson(_json["parentEntityFilter"]);
     }
     if (_json.containsKey("partnerId")) {
       partnerId = _json["partnerId"];
@@ -13165,18 +13787,18 @@ class CreateSdfDownloadTaskRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
     if (idFilter != null) {
-      _json["idFilter"] = (idFilter).toJson();
+      _json["idFilter"] = idFilter.toJson();
     }
     if (inventorySourceFilter != null) {
-      _json["inventorySourceFilter"] = (inventorySourceFilter).toJson();
+      _json["inventorySourceFilter"] = inventorySourceFilter.toJson();
     }
     if (parentEntityFilter != null) {
-      _json["parentEntityFilter"] = (parentEntityFilter).toJson();
+      _json["parentEntityFilter"] = parentEntityFilter.toJson();
     }
     if (partnerId != null) {
       _json["partnerId"] = partnerId;
@@ -13555,7 +14177,7 @@ class Creative {
   Creative.fromJson(core.Map _json) {
     if (_json.containsKey("additionalDimensions")) {
       additionalDimensions = (_json["additionalDimensions"] as core.List)
-          .map<Dimensions>((value) => new Dimensions.fromJson(value))
+          .map<Dimensions>((value) => Dimensions.fromJson(value))
           .toList();
     }
     if (_json.containsKey("advertiserId")) {
@@ -13566,15 +14188,14 @@ class Creative {
     }
     if (_json.containsKey("assets")) {
       assets = (_json["assets"] as core.List)
-          .map<AssetAssociation>(
-              (value) => new AssetAssociation.fromJson(value))
+          .map<AssetAssociation>((value) => AssetAssociation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("cmPlacementId")) {
       cmPlacementId = _json["cmPlacementId"];
     }
     if (_json.containsKey("cmTrackingAd")) {
-      cmTrackingAd = new CmTrackingAd.fromJson(_json["cmTrackingAd"]);
+      cmTrackingAd = CmTrackingAd.fromJson(_json["cmTrackingAd"]);
     }
     if (_json.containsKey("companionCreativeIds")) {
       companionCreativeIds =
@@ -13582,7 +14203,7 @@ class Creative {
     }
     if (_json.containsKey("counterEvents")) {
       counterEvents = (_json["counterEvents"] as core.List)
-          .map<CounterEvent>((value) => new CounterEvent.fromJson(value))
+          .map<CounterEvent>((value) => CounterEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("createTime")) {
@@ -13599,7 +14220,7 @@ class Creative {
       creativeType = _json["creativeType"];
     }
     if (_json.containsKey("dimensions")) {
-      dimensions = new Dimensions.fromJson(_json["dimensions"]);
+      dimensions = Dimensions.fromJson(_json["dimensions"]);
     }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
@@ -13612,7 +14233,7 @@ class Creative {
     }
     if (_json.containsKey("exitEvents")) {
       exitEvents = (_json["exitEvents"] as core.List)
-          .map<ExitEvent>((value) => new ExitEvent.fromJson(value))
+          .map<ExitEvent>((value) => ExitEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("expandOnHover")) {
@@ -13649,10 +14270,10 @@ class Creative {
       notes = _json["notes"];
     }
     if (_json.containsKey("obaIcon")) {
-      obaIcon = new ObaIcon.fromJson(_json["obaIcon"]);
+      obaIcon = ObaIcon.fromJson(_json["obaIcon"]);
     }
     if (_json.containsKey("progressOffset")) {
-      progressOffset = new AudioVideoOffset.fromJson(_json["progressOffset"]);
+      progressOffset = AudioVideoOffset.fromJson(_json["progressOffset"]);
     }
     if (_json.containsKey("requireHtml5")) {
       requireHtml5 = _json["requireHtml5"];
@@ -13664,10 +14285,10 @@ class Creative {
       requirePingForAttribution = _json["requirePingForAttribution"];
     }
     if (_json.containsKey("reviewStatus")) {
-      reviewStatus = new ReviewStatusInfo.fromJson(_json["reviewStatus"]);
+      reviewStatus = ReviewStatusInfo.fromJson(_json["reviewStatus"]);
     }
     if (_json.containsKey("skipOffset")) {
-      skipOffset = new AudioVideoOffset.fromJson(_json["skipOffset"]);
+      skipOffset = AudioVideoOffset.fromJson(_json["skipOffset"]);
     }
     if (_json.containsKey("skippable")) {
       skippable = _json["skippable"];
@@ -13677,12 +14298,12 @@ class Creative {
     }
     if (_json.containsKey("thirdPartyUrls")) {
       thirdPartyUrls = (_json["thirdPartyUrls"] as core.List)
-          .map<ThirdPartyUrl>((value) => new ThirdPartyUrl.fromJson(value))
+          .map<ThirdPartyUrl>((value) => ThirdPartyUrl.fromJson(value))
           .toList();
     }
     if (_json.containsKey("timerEvents")) {
       timerEvents = (_json["timerEvents"] as core.List)
-          .map<TimerEvent>((value) => new TimerEvent.fromJson(value))
+          .map<TimerEvent>((value) => TimerEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("trackerUrls")) {
@@ -13690,11 +14311,11 @@ class Creative {
     }
     if (_json.containsKey("transcodes")) {
       transcodes = (_json["transcodes"] as core.List)
-          .map<Transcode>((value) => new Transcode.fromJson(value))
+          .map<Transcode>((value) => Transcode.fromJson(value))
           .toList();
     }
     if (_json.containsKey("universalAdId")) {
-      universalAdId = new UniversalAdId.fromJson(_json["universalAdId"]);
+      universalAdId = UniversalAdId.fromJson(_json["universalAdId"]);
     }
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
@@ -13709,10 +14330,10 @@ class Creative {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (additionalDimensions != null) {
       _json["additionalDimensions"] =
-          additionalDimensions.map((value) => (value).toJson()).toList();
+          additionalDimensions.map((value) => value.toJson()).toList();
     }
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
@@ -13721,20 +14342,20 @@ class Creative {
       _json["appendedTag"] = appendedTag;
     }
     if (assets != null) {
-      _json["assets"] = assets.map((value) => (value).toJson()).toList();
+      _json["assets"] = assets.map((value) => value.toJson()).toList();
     }
     if (cmPlacementId != null) {
       _json["cmPlacementId"] = cmPlacementId;
     }
     if (cmTrackingAd != null) {
-      _json["cmTrackingAd"] = (cmTrackingAd).toJson();
+      _json["cmTrackingAd"] = cmTrackingAd.toJson();
     }
     if (companionCreativeIds != null) {
       _json["companionCreativeIds"] = companionCreativeIds;
     }
     if (counterEvents != null) {
       _json["counterEvents"] =
-          counterEvents.map((value) => (value).toJson()).toList();
+          counterEvents.map((value) => value.toJson()).toList();
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
@@ -13749,7 +14370,7 @@ class Creative {
       _json["creativeType"] = creativeType;
     }
     if (dimensions != null) {
-      _json["dimensions"] = (dimensions).toJson();
+      _json["dimensions"] = dimensions.toJson();
     }
     if (displayName != null) {
       _json["displayName"] = displayName;
@@ -13761,8 +14382,7 @@ class Creative {
       _json["entityStatus"] = entityStatus;
     }
     if (exitEvents != null) {
-      _json["exitEvents"] =
-          exitEvents.map((value) => (value).toJson()).toList();
+      _json["exitEvents"] = exitEvents.map((value) => value.toJson()).toList();
     }
     if (expandOnHover != null) {
       _json["expandOnHover"] = expandOnHover;
@@ -13798,10 +14418,10 @@ class Creative {
       _json["notes"] = notes;
     }
     if (obaIcon != null) {
-      _json["obaIcon"] = (obaIcon).toJson();
+      _json["obaIcon"] = obaIcon.toJson();
     }
     if (progressOffset != null) {
-      _json["progressOffset"] = (progressOffset).toJson();
+      _json["progressOffset"] = progressOffset.toJson();
     }
     if (requireHtml5 != null) {
       _json["requireHtml5"] = requireHtml5;
@@ -13813,10 +14433,10 @@ class Creative {
       _json["requirePingForAttribution"] = requirePingForAttribution;
     }
     if (reviewStatus != null) {
-      _json["reviewStatus"] = (reviewStatus).toJson();
+      _json["reviewStatus"] = reviewStatus.toJson();
     }
     if (skipOffset != null) {
-      _json["skipOffset"] = (skipOffset).toJson();
+      _json["skipOffset"] = skipOffset.toJson();
     }
     if (skippable != null) {
       _json["skippable"] = skippable;
@@ -13826,21 +14446,20 @@ class Creative {
     }
     if (thirdPartyUrls != null) {
       _json["thirdPartyUrls"] =
-          thirdPartyUrls.map((value) => (value).toJson()).toList();
+          thirdPartyUrls.map((value) => value.toJson()).toList();
     }
     if (timerEvents != null) {
       _json["timerEvents"] =
-          timerEvents.map((value) => (value).toJson()).toList();
+          timerEvents.map((value) => value.toJson()).toList();
     }
     if (trackerUrls != null) {
       _json["trackerUrls"] = trackerUrls;
     }
     if (transcodes != null) {
-      _json["transcodes"] =
-          transcodes.map((value) => (value).toJson()).toList();
+      _json["transcodes"] = transcodes.map((value) => value.toJson()).toList();
     }
     if (universalAdId != null) {
-      _json["universalAdId"] = (universalAdId).toJson();
+      _json["universalAdId"] = universalAdId.toJson();
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
@@ -13918,26 +14537,26 @@ class CreativeConfig {
       creativeType = _json["creativeType"];
     }
     if (_json.containsKey("displayCreativeConfig")) {
-      displayCreativeConfig = new InventorySourceDisplayCreativeConfig.fromJson(
+      displayCreativeConfig = InventorySourceDisplayCreativeConfig.fromJson(
           _json["displayCreativeConfig"]);
     }
     if (_json.containsKey("videoCreativeConfig")) {
-      videoCreativeConfig = new InventorySourceVideoCreativeConfig.fromJson(
+      videoCreativeConfig = InventorySourceVideoCreativeConfig.fromJson(
           _json["videoCreativeConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creativeType != null) {
       _json["creativeType"] = creativeType;
     }
     if (displayCreativeConfig != null) {
-      _json["displayCreativeConfig"] = (displayCreativeConfig).toJson();
+      _json["displayCreativeConfig"] = displayCreativeConfig.toJson();
     }
     if (videoCreativeConfig != null) {
-      _json["videoCreativeConfig"] = (videoCreativeConfig).toJson();
+      _json["videoCreativeConfig"] = videoCreativeConfig.toJson();
     }
     return _json;
   }
@@ -14019,7 +14638,7 @@ class CustomBiddingAlgorithm {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
@@ -14073,7 +14692,7 @@ class CustomList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customListId != null) {
       _json["customListId"] = customListId;
     }
@@ -14100,16 +14719,16 @@ class CustomListGroup {
     if (_json.containsKey("settings")) {
       settings = (_json["settings"] as core.List)
           .map<CustomListTargetingSetting>(
-              (value) => new CustomListTargetingSetting.fromJson(value))
+              (value) => CustomListTargetingSetting.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (settings != null) {
-      _json["settings"] = settings.map((value) => (value).toJson()).toList();
+      _json["settings"] = settings.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -14131,7 +14750,7 @@ class CustomListTargetingSetting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customListId != null) {
       _json["customListId"] = customListId;
     }
@@ -14177,7 +14796,7 @@ class Date {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (day != null) {
       _json["day"] = day;
     }
@@ -14205,21 +14824,21 @@ class DateRange {
 
   DateRange.fromJson(core.Map _json) {
     if (_json.containsKey("endDate")) {
-      endDate = new Date.fromJson(_json["endDate"]);
+      endDate = Date.fromJson(_json["endDate"]);
     }
     if (_json.containsKey("startDate")) {
-      startDate = new Date.fromJson(_json["startDate"]);
+      startDate = Date.fromJson(_json["startDate"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endDate != null) {
-      _json["endDate"] = (endDate).toJson();
+      _json["endDate"] = endDate.toJson();
     }
     if (startDate != null) {
-      _json["startDate"] = (startDate).toJson();
+      _json["startDate"] = startDate.toJson();
     }
     return _json;
   }
@@ -14279,7 +14898,7 @@ class DayAndTimeAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dayOfWeek != null) {
       _json["dayOfWeek"] = dayOfWeek;
     }
@@ -14399,7 +15018,7 @@ class DeleteAssignedTargetingOptionsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assignedTargetingOptionIds != null) {
       _json["assignedTargetingOptionIds"] = assignedTargetingOptionIds;
     }
@@ -14440,7 +15059,7 @@ class DeviceMakeModelAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -14471,7 +15090,7 @@ class DeviceMakeModelTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -14510,7 +15129,7 @@ class DeviceTypeAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceType != null) {
       _json["deviceType"] = deviceType;
     }
@@ -14546,7 +15165,7 @@ class DeviceTypeTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceType != null) {
       _json["deviceType"] = deviceType;
     }
@@ -14589,7 +15208,7 @@ class DigitalContentLabelAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentRatingTier != null) {
       _json["contentRatingTier"] = contentRatingTier;
     }
@@ -14629,7 +15248,7 @@ class DigitalContentLabelTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentRatingTier != null) {
       _json["contentRatingTier"] = contentRatingTier;
     }
@@ -14658,7 +15277,7 @@ class Dimensions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (heightPixels != null) {
       _json["heightPixels"] = heightPixels;
     }
@@ -14694,50 +15313,50 @@ class DoubleVerify {
   DoubleVerify.fromJson(core.Map _json) {
     if (_json.containsKey("appStarRating")) {
       appStarRating =
-          new DoubleVerifyAppStarRating.fromJson(_json["appStarRating"]);
+          DoubleVerifyAppStarRating.fromJson(_json["appStarRating"]);
     }
     if (_json.containsKey("avoidedAgeRatings")) {
       avoidedAgeRatings =
           (_json["avoidedAgeRatings"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("brandSafetyCategories")) {
-      brandSafetyCategories = new DoubleVerifyBrandSafetyCategories.fromJson(
+      brandSafetyCategories = DoubleVerifyBrandSafetyCategories.fromJson(
           _json["brandSafetyCategories"]);
     }
     if (_json.containsKey("displayViewability")) {
-      displayViewability = new DoubleVerifyDisplayViewability.fromJson(
-          _json["displayViewability"]);
+      displayViewability =
+          DoubleVerifyDisplayViewability.fromJson(_json["displayViewability"]);
     }
     if (_json.containsKey("fraudInvalidTraffic")) {
-      fraudInvalidTraffic = new DoubleVerifyFraudInvalidTraffic.fromJson(
+      fraudInvalidTraffic = DoubleVerifyFraudInvalidTraffic.fromJson(
           _json["fraudInvalidTraffic"]);
     }
     if (_json.containsKey("videoViewability")) {
       videoViewability =
-          new DoubleVerifyVideoViewability.fromJson(_json["videoViewability"]);
+          DoubleVerifyVideoViewability.fromJson(_json["videoViewability"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appStarRating != null) {
-      _json["appStarRating"] = (appStarRating).toJson();
+      _json["appStarRating"] = appStarRating.toJson();
     }
     if (avoidedAgeRatings != null) {
       _json["avoidedAgeRatings"] = avoidedAgeRatings;
     }
     if (brandSafetyCategories != null) {
-      _json["brandSafetyCategories"] = (brandSafetyCategories).toJson();
+      _json["brandSafetyCategories"] = brandSafetyCategories.toJson();
     }
     if (displayViewability != null) {
-      _json["displayViewability"] = (displayViewability).toJson();
+      _json["displayViewability"] = displayViewability.toJson();
     }
     if (fraudInvalidTraffic != null) {
-      _json["fraudInvalidTraffic"] = (fraudInvalidTraffic).toJson();
+      _json["fraudInvalidTraffic"] = fraudInvalidTraffic.toJson();
     }
     if (videoViewability != null) {
-      _json["videoViewability"] = (videoViewability).toJson();
+      _json["videoViewability"] = videoViewability.toJson();
     }
     return _json;
   }
@@ -14774,7 +15393,7 @@ class DoubleVerifyAppStarRating {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (avoidInsufficientStarRating != null) {
       _json["avoidInsufficientStarRating"] = avoidInsufficientStarRating;
     }
@@ -14817,7 +15436,7 @@ class DoubleVerifyBrandSafetyCategories {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (avoidUnknownBrandSafetyCategory != null) {
       _json["avoidUnknownBrandSafetyCategory"] =
           avoidUnknownBrandSafetyCategory;
@@ -14884,7 +15503,7 @@ class DoubleVerifyDisplayViewability {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (iab != null) {
       _json["iab"] = iab;
     }
@@ -14927,7 +15546,7 @@ class DoubleVerifyFraudInvalidTraffic {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (avoidInsufficientOption != null) {
       _json["avoidInsufficientOption"] = avoidInsufficientOption;
     }
@@ -15009,7 +15628,7 @@ class DoubleVerifyVideoViewability {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (playerImpressionRate != null) {
       _json["playerImpressionRate"] = playerImpressionRate;
     }
@@ -15035,7 +15654,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -15080,7 +15699,7 @@ class EnvironmentAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (environment != null) {
       _json["environment"] = environment;
     }
@@ -15123,7 +15742,7 @@ class EnvironmentTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (environment != null) {
       _json["environment"] = environment;
     }
@@ -15149,7 +15768,7 @@ class ExchangeAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (targetingOptionId != null) {
       _json["targetingOptionId"] = targetingOptionId;
     }
@@ -15169,17 +15788,17 @@ class ExchangeConfig {
     if (_json.containsKey("enabledExchanges")) {
       enabledExchanges = (_json["enabledExchanges"] as core.List)
           .map<ExchangeConfigEnabledExchange>(
-              (value) => new ExchangeConfigEnabledExchange.fromJson(value))
+              (value) => ExchangeConfigEnabledExchange.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabledExchanges != null) {
       _json["enabledExchanges"] =
-          enabledExchanges.map((value) => (value).toJson()).toList();
+          enabledExchanges.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15283,7 +15902,7 @@ class ExchangeConfigEnabledExchange {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exchange != null) {
       _json["exchange"] = exchange;
     }
@@ -15390,7 +16009,7 @@ class ExchangeReviewStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exchange != null) {
       _json["exchange"] = exchange;
     }
@@ -15481,7 +16100,7 @@ class ExchangeTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exchange != null) {
       _json["exchange"] = exchange;
     }
@@ -15532,7 +16151,7 @@ class ExitEvent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -15713,7 +16332,7 @@ class FirstAndThirdPartyAudience {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activeDisplayAudienceSize != null) {
       _json["activeDisplayAudienceSize"] = activeDisplayAudienceSize;
     }
@@ -15777,16 +16396,16 @@ class FirstAndThirdPartyAudienceGroup {
     if (_json.containsKey("settings")) {
       settings = (_json["settings"] as core.List)
           .map<FirstAndThirdPartyAudienceTargetingSetting>((value) =>
-              new FirstAndThirdPartyAudienceTargetingSetting.fromJson(value))
+              FirstAndThirdPartyAudienceTargetingSetting.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (settings != null) {
-      _json["settings"] = settings.map((value) => (value).toJson()).toList();
+      _json["settings"] = settings.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15848,7 +16467,7 @@ class FirstAndThirdPartyAudienceTargetingSetting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (firstAndThirdPartyAudienceId != null) {
       _json["firstAndThirdPartyAudienceId"] = firstAndThirdPartyAudienceId;
     }
@@ -15879,7 +16498,7 @@ class FixedBidStrategy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bidAmountMicros != null) {
       _json["bidAmountMicros"] = bidAmountMicros;
     }
@@ -15940,7 +16559,7 @@ class FloodlightGroup {
 
   FloodlightGroup.fromJson(core.Map _json) {
     if (_json.containsKey("activeViewConfig")) {
-      activeViewConfig = new ActiveViewVideoViewabilityMetricConfig.fromJson(
+      activeViewConfig = ActiveViewVideoViewabilityMetricConfig.fromJson(
           _json["activeViewConfig"]);
     }
     if (_json.containsKey("customVariables")) {
@@ -15954,7 +16573,7 @@ class FloodlightGroup {
       floodlightGroupId = _json["floodlightGroupId"];
     }
     if (_json.containsKey("lookbackWindow")) {
-      lookbackWindow = new LookbackWindow.fromJson(_json["lookbackWindow"]);
+      lookbackWindow = LookbackWindow.fromJson(_json["lookbackWindow"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -15966,9 +16585,9 @@ class FloodlightGroup {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activeViewConfig != null) {
-      _json["activeViewConfig"] = (activeViewConfig).toJson();
+      _json["activeViewConfig"] = activeViewConfig.toJson();
     }
     if (customVariables != null) {
       _json["customVariables"] = customVariables;
@@ -15980,7 +16599,7 @@ class FloodlightGroup {
       _json["floodlightGroupId"] = floodlightGroupId;
     }
     if (lookbackWindow != null) {
-      _json["lookbackWindow"] = (lookbackWindow).toJson();
+      _json["lookbackWindow"] = lookbackWindow.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -16050,7 +16669,7 @@ class FrequencyCap {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maxImpressions != null) {
       _json["maxImpressions"] = maxImpressions;
     }
@@ -16098,7 +16717,7 @@ class GenderAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gender != null) {
       _json["gender"] = gender;
     }
@@ -16132,7 +16751,7 @@ class GenderTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gender != null) {
       _json["gender"] = gender;
     }
@@ -16216,7 +16835,7 @@ class GeoRegionAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -16295,7 +16914,7 @@ class GeoRegionTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -16348,7 +16967,7 @@ class GoogleAudience {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -16378,16 +16997,16 @@ class GoogleAudienceGroup {
     if (_json.containsKey("settings")) {
       settings = (_json["settings"] as core.List)
           .map<GoogleAudienceTargetingSetting>(
-              (value) => new GoogleAudienceTargetingSetting.fromJson(value))
+              (value) => GoogleAudienceTargetingSetting.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (settings != null) {
-      _json["settings"] = settings.map((value) => (value).toJson()).toList();
+      _json["settings"] = settings.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -16409,7 +17028,7 @@ class GoogleAudienceTargetingSetting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (googleAudienceId != null) {
       _json["googleAudienceId"] = googleAudienceId;
     }
@@ -16432,7 +17051,7 @@ class GoogleBytestreamMedia {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceName != null) {
       _json["resourceName"] = resourceName;
     }
@@ -16482,7 +17101,7 @@ class HouseholdIncomeAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (householdIncome != null) {
       _json["householdIncome"] = householdIncome;
     }
@@ -16528,7 +17147,7 @@ class HouseholdIncomeTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (householdIncome != null) {
       _json["householdIncome"] = householdIncome;
     }
@@ -16589,7 +17208,7 @@ class IdFilter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adGroupAdIds != null) {
       _json["adGroupAdIds"] = adGroupAdIds;
     }
@@ -16690,10 +17309,10 @@ class InsertionOrder {
       advertiserId = _json["advertiserId"];
     }
     if (_json.containsKey("bidStrategy")) {
-      bidStrategy = new BiddingStrategy.fromJson(_json["bidStrategy"]);
+      bidStrategy = BiddingStrategy.fromJson(_json["bidStrategy"]);
     }
     if (_json.containsKey("budget")) {
-      budget = new InsertionOrderBudget.fromJson(_json["budget"]);
+      budget = InsertionOrderBudget.fromJson(_json["budget"]);
     }
     if (_json.containsKey("campaignId")) {
       campaignId = _json["campaignId"];
@@ -16705,28 +17324,28 @@ class InsertionOrder {
       entityStatus = _json["entityStatus"];
     }
     if (_json.containsKey("frequencyCap")) {
-      frequencyCap = new FrequencyCap.fromJson(_json["frequencyCap"]);
+      frequencyCap = FrequencyCap.fromJson(_json["frequencyCap"]);
     }
     if (_json.containsKey("insertionOrderId")) {
       insertionOrderId = _json["insertionOrderId"];
     }
     if (_json.containsKey("integrationDetails")) {
       integrationDetails =
-          new IntegrationDetails.fromJson(_json["integrationDetails"]);
+          IntegrationDetails.fromJson(_json["integrationDetails"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("pacing")) {
-      pacing = new Pacing.fromJson(_json["pacing"]);
+      pacing = Pacing.fromJson(_json["pacing"]);
     }
     if (_json.containsKey("partnerCosts")) {
       partnerCosts = (_json["partnerCosts"] as core.List)
-          .map<PartnerCost>((value) => new PartnerCost.fromJson(value))
+          .map<PartnerCost>((value) => PartnerCost.fromJson(value))
           .toList();
     }
     if (_json.containsKey("performanceGoal")) {
-      performanceGoal = new PerformanceGoal.fromJson(_json["performanceGoal"]);
+      performanceGoal = PerformanceGoal.fromJson(_json["performanceGoal"]);
     }
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
@@ -16735,15 +17354,15 @@ class InsertionOrder {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
     if (bidStrategy != null) {
-      _json["bidStrategy"] = (bidStrategy).toJson();
+      _json["bidStrategy"] = bidStrategy.toJson();
     }
     if (budget != null) {
-      _json["budget"] = (budget).toJson();
+      _json["budget"] = budget.toJson();
     }
     if (campaignId != null) {
       _json["campaignId"] = campaignId;
@@ -16755,26 +17374,26 @@ class InsertionOrder {
       _json["entityStatus"] = entityStatus;
     }
     if (frequencyCap != null) {
-      _json["frequencyCap"] = (frequencyCap).toJson();
+      _json["frequencyCap"] = frequencyCap.toJson();
     }
     if (insertionOrderId != null) {
       _json["insertionOrderId"] = insertionOrderId;
     }
     if (integrationDetails != null) {
-      _json["integrationDetails"] = (integrationDetails).toJson();
+      _json["integrationDetails"] = integrationDetails.toJson();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (pacing != null) {
-      _json["pacing"] = (pacing).toJson();
+      _json["pacing"] = pacing.toJson();
     }
     if (partnerCosts != null) {
       _json["partnerCosts"] =
-          partnerCosts.map((value) => (value).toJson()).toList();
+          partnerCosts.map((value) => value.toJson()).toList();
     }
     if (performanceGoal != null) {
-      _json["performanceGoal"] = (performanceGoal).toJson();
+      _json["performanceGoal"] = performanceGoal.toJson();
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
@@ -16825,7 +17444,7 @@ class InsertionOrderBudget {
     if (_json.containsKey("budgetSegments")) {
       budgetSegments = (_json["budgetSegments"] as core.List)
           .map<InsertionOrderBudgetSegment>(
-              (value) => new InsertionOrderBudgetSegment.fromJson(value))
+              (value) => InsertionOrderBudgetSegment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("budgetUnit")) {
@@ -16835,13 +17454,13 @@ class InsertionOrderBudget {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (automationType != null) {
       _json["automationType"] = automationType;
     }
     if (budgetSegments != null) {
       _json["budgetSegments"] =
-          budgetSegments.map((value) => (value).toJson()).toList();
+          budgetSegments.map((value) => value.toJson()).toList();
     }
     if (budgetUnit != null) {
       _json["budgetUnit"] = budgetUnit;
@@ -16885,7 +17504,7 @@ class InsertionOrderBudgetSegment {
       campaignBudgetId = _json["campaignBudgetId"];
     }
     if (_json.containsKey("dateRange")) {
-      dateRange = new DateRange.fromJson(_json["dateRange"]);
+      dateRange = DateRange.fromJson(_json["dateRange"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -16894,7 +17513,7 @@ class InsertionOrderBudgetSegment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (budgetAmountMicros != null) {
       _json["budgetAmountMicros"] = budgetAmountMicros;
     }
@@ -16902,7 +17521,7 @@ class InsertionOrderBudgetSegment {
       _json["campaignBudgetId"] = campaignBudgetId;
     }
     if (dateRange != null) {
-      _json["dateRange"] = (dateRange).toJson();
+      _json["dateRange"] = dateRange.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -17069,7 +17688,7 @@ class IntegralAdScience {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayViewability != null) {
       _json["displayViewability"] = displayViewability;
     }
@@ -17138,7 +17757,7 @@ class IntegrationDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (details != null) {
       _json["details"] = details;
     }
@@ -17293,7 +17912,7 @@ class InventorySource {
     }
     if (_json.containsKey("creativeConfigs")) {
       creativeConfigs = (_json["creativeConfigs"] as core.List)
-          .map<CreativeConfig>((value) => new CreativeConfig.fromJson(value))
+          .map<CreativeConfig>((value) => CreativeConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dealId")) {
@@ -17321,13 +17940,13 @@ class InventorySource {
       publisherName = _json["publisherName"];
     }
     if (_json.containsKey("rateDetails")) {
-      rateDetails = new RateDetails.fromJson(_json["rateDetails"]);
+      rateDetails = RateDetails.fromJson(_json["rateDetails"]);
     }
     if (_json.containsKey("status")) {
-      status = new InventorySourceStatus.fromJson(_json["status"]);
+      status = InventorySourceStatus.fromJson(_json["status"]);
     }
     if (_json.containsKey("timeRange")) {
-      timeRange = new TimeRange.fromJson(_json["timeRange"]);
+      timeRange = TimeRange.fromJson(_json["timeRange"]);
     }
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
@@ -17336,13 +17955,13 @@ class InventorySource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (commitment != null) {
       _json["commitment"] = commitment;
     }
     if (creativeConfigs != null) {
       _json["creativeConfigs"] =
-          creativeConfigs.map((value) => (value).toJson()).toList();
+          creativeConfigs.map((value) => value.toJson()).toList();
     }
     if (dealId != null) {
       _json["dealId"] = dealId;
@@ -17369,13 +17988,13 @@ class InventorySource {
       _json["publisherName"] = publisherName;
     }
     if (rateDetails != null) {
-      _json["rateDetails"] = (rateDetails).toJson();
+      _json["rateDetails"] = rateDetails.toJson();
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     if (timeRange != null) {
-      _json["timeRange"] = (timeRange).toJson();
+      _json["timeRange"] = timeRange.toJson();
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
@@ -17402,7 +18021,7 @@ class InventorySourceAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inventorySourceId != null) {
       _json["inventorySourceId"] = inventorySourceId;
     }
@@ -17420,15 +18039,15 @@ class InventorySourceDisplayCreativeConfig {
 
   InventorySourceDisplayCreativeConfig.fromJson(core.Map _json) {
     if (_json.containsKey("creativeSize")) {
-      creativeSize = new Dimensions.fromJson(_json["creativeSize"]);
+      creativeSize = Dimensions.fromJson(_json["creativeSize"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creativeSize != null) {
-      _json["creativeSize"] = (creativeSize).toJson();
+      _json["creativeSize"] = creativeSize.toJson();
     }
     return _json;
   }
@@ -17453,7 +18072,7 @@ class InventorySourceFilter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inventorySourceIds != null) {
       _json["inventorySourceIds"] = inventorySourceIds;
     }
@@ -17490,7 +18109,7 @@ class InventorySourceGroup {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -17522,7 +18141,7 @@ class InventorySourceGroupAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inventorySourceGroupId != null) {
       _json["inventorySourceGroupId"] = inventorySourceGroupId;
     }
@@ -17616,7 +18235,7 @@ class InventorySourceStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (configStatus != null) {
       _json["configStatus"] = configStatus;
     }
@@ -17652,7 +18271,7 @@ class InventorySourceVideoCreativeConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (duration != null) {
       _json["duration"] = duration;
     }
@@ -17685,7 +18304,7 @@ class KeywordAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (keyword != null) {
       _json["keyword"] = keyword;
     }
@@ -17728,7 +18347,7 @@ class LanguageAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -17758,7 +18377,7 @@ class LanguageTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -17881,17 +18500,17 @@ class LineItem {
       advertiserId = _json["advertiserId"];
     }
     if (_json.containsKey("bidStrategy")) {
-      bidStrategy = new BiddingStrategy.fromJson(_json["bidStrategy"]);
+      bidStrategy = BiddingStrategy.fromJson(_json["bidStrategy"]);
     }
     if (_json.containsKey("budget")) {
-      budget = new LineItemBudget.fromJson(_json["budget"]);
+      budget = LineItemBudget.fromJson(_json["budget"]);
     }
     if (_json.containsKey("campaignId")) {
       campaignId = _json["campaignId"];
     }
     if (_json.containsKey("conversionCounting")) {
       conversionCounting =
-          new ConversionCountingConfig.fromJson(_json["conversionCounting"]);
+          ConversionCountingConfig.fromJson(_json["conversionCounting"]);
     }
     if (_json.containsKey("creativeIds")) {
       creativeIds = (_json["creativeIds"] as core.List).cast<core.String>();
@@ -17903,17 +18522,17 @@ class LineItem {
       entityStatus = _json["entityStatus"];
     }
     if (_json.containsKey("flight")) {
-      flight = new LineItemFlight.fromJson(_json["flight"]);
+      flight = LineItemFlight.fromJson(_json["flight"]);
     }
     if (_json.containsKey("frequencyCap")) {
-      frequencyCap = new FrequencyCap.fromJson(_json["frequencyCap"]);
+      frequencyCap = FrequencyCap.fromJson(_json["frequencyCap"]);
     }
     if (_json.containsKey("insertionOrderId")) {
       insertionOrderId = _json["insertionOrderId"];
     }
     if (_json.containsKey("integrationDetails")) {
       integrationDetails =
-          new IntegrationDetails.fromJson(_json["integrationDetails"]);
+          IntegrationDetails.fromJson(_json["integrationDetails"]);
     }
     if (_json.containsKey("inventorySourceIds")) {
       inventorySourceIds =
@@ -17929,16 +18548,16 @@ class LineItem {
       name = _json["name"];
     }
     if (_json.containsKey("pacing")) {
-      pacing = new Pacing.fromJson(_json["pacing"]);
+      pacing = Pacing.fromJson(_json["pacing"]);
     }
     if (_json.containsKey("partnerCosts")) {
       partnerCosts = (_json["partnerCosts"] as core.List)
-          .map<PartnerCost>((value) => new PartnerCost.fromJson(value))
+          .map<PartnerCost>((value) => PartnerCost.fromJson(value))
           .toList();
     }
     if (_json.containsKey("partnerRevenueModel")) {
       partnerRevenueModel =
-          new PartnerRevenueModel.fromJson(_json["partnerRevenueModel"]);
+          PartnerRevenueModel.fromJson(_json["partnerRevenueModel"]);
     }
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
@@ -17951,21 +18570,21 @@ class LineItem {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
     if (bidStrategy != null) {
-      _json["bidStrategy"] = (bidStrategy).toJson();
+      _json["bidStrategy"] = bidStrategy.toJson();
     }
     if (budget != null) {
-      _json["budget"] = (budget).toJson();
+      _json["budget"] = budget.toJson();
     }
     if (campaignId != null) {
       _json["campaignId"] = campaignId;
     }
     if (conversionCounting != null) {
-      _json["conversionCounting"] = (conversionCounting).toJson();
+      _json["conversionCounting"] = conversionCounting.toJson();
     }
     if (creativeIds != null) {
       _json["creativeIds"] = creativeIds;
@@ -17977,16 +18596,16 @@ class LineItem {
       _json["entityStatus"] = entityStatus;
     }
     if (flight != null) {
-      _json["flight"] = (flight).toJson();
+      _json["flight"] = flight.toJson();
     }
     if (frequencyCap != null) {
-      _json["frequencyCap"] = (frequencyCap).toJson();
+      _json["frequencyCap"] = frequencyCap.toJson();
     }
     if (insertionOrderId != null) {
       _json["insertionOrderId"] = insertionOrderId;
     }
     if (integrationDetails != null) {
-      _json["integrationDetails"] = (integrationDetails).toJson();
+      _json["integrationDetails"] = integrationDetails.toJson();
     }
     if (inventorySourceIds != null) {
       _json["inventorySourceIds"] = inventorySourceIds;
@@ -18001,14 +18620,14 @@ class LineItem {
       _json["name"] = name;
     }
     if (pacing != null) {
-      _json["pacing"] = (pacing).toJson();
+      _json["pacing"] = pacing.toJson();
     }
     if (partnerCosts != null) {
       _json["partnerCosts"] =
-          partnerCosts.map((value) => (value).toJson()).toList();
+          partnerCosts.map((value) => value.toJson()).toList();
     }
     if (partnerRevenueModel != null) {
-      _json["partnerRevenueModel"] = (partnerRevenueModel).toJson();
+      _json["partnerRevenueModel"] = partnerRevenueModel.toJson();
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
@@ -18074,7 +18693,7 @@ class LineItemBudget {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (budgetAllocationType != null) {
       _json["budgetAllocationType"] = budgetAllocationType;
     }
@@ -18113,7 +18732,7 @@ class LineItemFlight {
 
   LineItemFlight.fromJson(core.Map _json) {
     if (_json.containsKey("dateRange")) {
-      dateRange = new DateRange.fromJson(_json["dateRange"]);
+      dateRange = DateRange.fromJson(_json["dateRange"]);
     }
     if (_json.containsKey("flightDateType")) {
       flightDateType = _json["flightDateType"];
@@ -18122,9 +18741,9 @@ class LineItemFlight {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dateRange != null) {
-      _json["dateRange"] = (dateRange).toJson();
+      _json["dateRange"] = dateRange.toJson();
     }
     if (flightDateType != null) {
       _json["flightDateType"] = flightDateType;
@@ -18152,7 +18771,7 @@ class ListAdvertiserAssignedTargetingOptionsResponse {
       assignedTargetingOptions =
           (_json["assignedTargetingOptions"] as core.List)
               .map<AssignedTargetingOption>(
-                  (value) => new AssignedTargetingOption.fromJson(value))
+                  (value) => AssignedTargetingOption.fromJson(value))
               .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18162,10 +18781,10 @@ class ListAdvertiserAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assignedTargetingOptions != null) {
       _json["assignedTargetingOptions"] =
-          assignedTargetingOptions.map((value) => (value).toJson()).toList();
+          assignedTargetingOptions.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18188,7 +18807,7 @@ class ListAdvertisersResponse {
   ListAdvertisersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("advertisers")) {
       advertisers = (_json["advertisers"] as core.List)
-          .map<Advertiser>((value) => new Advertiser.fromJson(value))
+          .map<Advertiser>((value) => Advertiser.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18198,10 +18817,10 @@ class ListAdvertisersResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertisers != null) {
       _json["advertisers"] =
-          advertisers.map((value) => (value).toJson()).toList();
+          advertisers.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18228,7 +18847,7 @@ class ListAssignedInventorySourcesResponse {
       assignedInventorySources =
           (_json["assignedInventorySources"] as core.List)
               .map<AssignedInventorySource>(
-                  (value) => new AssignedInventorySource.fromJson(value))
+                  (value) => AssignedInventorySource.fromJson(value))
               .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18238,10 +18857,10 @@ class ListAssignedInventorySourcesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assignedInventorySources != null) {
       _json["assignedInventorySources"] =
-          assignedInventorySources.map((value) => (value).toJson()).toList();
+          assignedInventorySources.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18265,8 +18884,7 @@ class ListAssignedLocationsResponse {
   ListAssignedLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("assignedLocations")) {
       assignedLocations = (_json["assignedLocations"] as core.List)
-          .map<AssignedLocation>(
-              (value) => new AssignedLocation.fromJson(value))
+          .map<AssignedLocation>((value) => AssignedLocation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18276,10 +18894,10 @@ class ListAssignedLocationsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assignedLocations != null) {
       _json["assignedLocations"] =
-          assignedLocations.map((value) => (value).toJson()).toList();
+          assignedLocations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18302,7 +18920,7 @@ class ListCampaignsResponse {
   ListCampaignsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("campaigns")) {
       campaigns = (_json["campaigns"] as core.List)
-          .map<Campaign>((value) => new Campaign.fromJson(value))
+          .map<Campaign>((value) => Campaign.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18312,9 +18930,9 @@ class ListCampaignsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (campaigns != null) {
-      _json["campaigns"] = campaigns.map((value) => (value).toJson()).toList();
+      _json["campaigns"] = campaigns.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18337,7 +18955,7 @@ class ListChannelsResponse {
   ListChannelsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("channels")) {
       channels = (_json["channels"] as core.List)
-          .map<Channel>((value) => new Channel.fromJson(value))
+          .map<Channel>((value) => Channel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18347,9 +18965,9 @@ class ListChannelsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channels != null) {
-      _json["channels"] = channels.map((value) => (value).toJson()).toList();
+      _json["channels"] = channels.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18372,8 +18990,7 @@ class ListCombinedAudiencesResponse {
   ListCombinedAudiencesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("combinedAudiences")) {
       combinedAudiences = (_json["combinedAudiences"] as core.List)
-          .map<CombinedAudience>(
-              (value) => new CombinedAudience.fromJson(value))
+          .map<CombinedAudience>((value) => CombinedAudience.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18383,10 +19000,10 @@ class ListCombinedAudiencesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (combinedAudiences != null) {
       _json["combinedAudiences"] =
-          combinedAudiences.map((value) => (value).toJson()).toList();
+          combinedAudiences.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18410,7 +19027,7 @@ class ListCreativesResponse {
   ListCreativesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("creatives")) {
       creatives = (_json["creatives"] as core.List)
-          .map<Creative>((value) => new Creative.fromJson(value))
+          .map<Creative>((value) => Creative.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18420,9 +19037,9 @@ class ListCreativesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creatives != null) {
-      _json["creatives"] = creatives.map((value) => (value).toJson()).toList();
+      _json["creatives"] = creatives.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18447,7 +19064,7 @@ class ListCustomBiddingAlgorithmsResponse {
     if (_json.containsKey("customBiddingAlgorithms")) {
       customBiddingAlgorithms = (_json["customBiddingAlgorithms"] as core.List)
           .map<CustomBiddingAlgorithm>(
-              (value) => new CustomBiddingAlgorithm.fromJson(value))
+              (value) => CustomBiddingAlgorithm.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18457,10 +19074,10 @@ class ListCustomBiddingAlgorithmsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customBiddingAlgorithms != null) {
       _json["customBiddingAlgorithms"] =
-          customBiddingAlgorithms.map((value) => (value).toJson()).toList();
+          customBiddingAlgorithms.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18483,7 +19100,7 @@ class ListCustomListsResponse {
   ListCustomListsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("customLists")) {
       customLists = (_json["customLists"] as core.List)
-          .map<CustomList>((value) => new CustomList.fromJson(value))
+          .map<CustomList>((value) => CustomList.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18493,10 +19110,10 @@ class ListCustomListsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customLists != null) {
       _json["customLists"] =
-          customLists.map((value) => (value).toJson()).toList();
+          customLists.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18523,7 +19140,7 @@ class ListFirstAndThirdPartyAudiencesResponse {
       firstAndThirdPartyAudiences =
           (_json["firstAndThirdPartyAudiences"] as core.List)
               .map<FirstAndThirdPartyAudience>(
-                  (value) => new FirstAndThirdPartyAudience.fromJson(value))
+                  (value) => FirstAndThirdPartyAudience.fromJson(value))
               .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18533,10 +19150,10 @@ class ListFirstAndThirdPartyAudiencesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (firstAndThirdPartyAudiences != null) {
       _json["firstAndThirdPartyAudiences"] =
-          firstAndThirdPartyAudiences.map((value) => (value).toJson()).toList();
+          firstAndThirdPartyAudiences.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18559,7 +19176,7 @@ class ListGoogleAudiencesResponse {
   ListGoogleAudiencesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("googleAudiences")) {
       googleAudiences = (_json["googleAudiences"] as core.List)
-          .map<GoogleAudience>((value) => new GoogleAudience.fromJson(value))
+          .map<GoogleAudience>((value) => GoogleAudience.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18569,10 +19186,10 @@ class ListGoogleAudiencesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (googleAudiences != null) {
       _json["googleAudiences"] =
-          googleAudiences.map((value) => (value).toJson()).toList();
+          googleAudiences.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18595,7 +19212,7 @@ class ListInsertionOrdersResponse {
   ListInsertionOrdersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("insertionOrders")) {
       insertionOrders = (_json["insertionOrders"] as core.List)
-          .map<InsertionOrder>((value) => new InsertionOrder.fromJson(value))
+          .map<InsertionOrder>((value) => InsertionOrder.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18605,10 +19222,10 @@ class ListInsertionOrdersResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (insertionOrders != null) {
       _json["insertionOrders"] =
-          insertionOrders.map((value) => (value).toJson()).toList();
+          insertionOrders.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18633,7 +19250,7 @@ class ListInventorySourceGroupsResponse {
     if (_json.containsKey("inventorySourceGroups")) {
       inventorySourceGroups = (_json["inventorySourceGroups"] as core.List)
           .map<InventorySourceGroup>(
-              (value) => new InventorySourceGroup.fromJson(value))
+              (value) => InventorySourceGroup.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18643,10 +19260,10 @@ class ListInventorySourceGroupsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inventorySourceGroups != null) {
       _json["inventorySourceGroups"] =
-          inventorySourceGroups.map((value) => (value).toJson()).toList();
+          inventorySourceGroups.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18669,7 +19286,7 @@ class ListInventorySourcesResponse {
   ListInventorySourcesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("inventorySources")) {
       inventorySources = (_json["inventorySources"] as core.List)
-          .map<InventorySource>((value) => new InventorySource.fromJson(value))
+          .map<InventorySource>((value) => InventorySource.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18679,10 +19296,10 @@ class ListInventorySourcesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inventorySources != null) {
       _json["inventorySources"] =
-          inventorySources.map((value) => (value).toJson()).toList();
+          inventorySources.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18710,7 +19327,7 @@ class ListLineItemAssignedTargetingOptionsResponse {
       assignedTargetingOptions =
           (_json["assignedTargetingOptions"] as core.List)
               .map<AssignedTargetingOption>(
-                  (value) => new AssignedTargetingOption.fromJson(value))
+                  (value) => AssignedTargetingOption.fromJson(value))
               .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18720,10 +19337,10 @@ class ListLineItemAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assignedTargetingOptions != null) {
       _json["assignedTargetingOptions"] =
-          assignedTargetingOptions.map((value) => (value).toJson()).toList();
+          assignedTargetingOptions.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18746,7 +19363,7 @@ class ListLineItemsResponse {
   ListLineItemsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("lineItems")) {
       lineItems = (_json["lineItems"] as core.List)
-          .map<LineItem>((value) => new LineItem.fromJson(value))
+          .map<LineItem>((value) => LineItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18756,9 +19373,9 @@ class ListLineItemsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (lineItems != null) {
-      _json["lineItems"] = lineItems.map((value) => (value).toJson()).toList();
+      _json["lineItems"] = lineItems.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18781,7 +19398,7 @@ class ListLocationListsResponse {
   ListLocationListsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locationLists")) {
       locationLists = (_json["locationLists"] as core.List)
-          .map<LocationList>((value) => new LocationList.fromJson(value))
+          .map<LocationList>((value) => LocationList.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18791,10 +19408,10 @@ class ListLocationListsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (locationLists != null) {
       _json["locationLists"] =
-          locationLists.map((value) => (value).toJson()).toList();
+          locationLists.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18819,7 +19436,7 @@ class ListNegativeKeywordListsResponse {
     if (_json.containsKey("negativeKeywordLists")) {
       negativeKeywordLists = (_json["negativeKeywordLists"] as core.List)
           .map<NegativeKeywordList>(
-              (value) => new NegativeKeywordList.fromJson(value))
+              (value) => NegativeKeywordList.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18829,10 +19446,10 @@ class ListNegativeKeywordListsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (negativeKeywordLists != null) {
       _json["negativeKeywordLists"] =
-          negativeKeywordLists.map((value) => (value).toJson()).toList();
+          negativeKeywordLists.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18856,7 +19473,7 @@ class ListNegativeKeywordsResponse {
   ListNegativeKeywordsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("negativeKeywords")) {
       negativeKeywords = (_json["negativeKeywords"] as core.List)
-          .map<NegativeKeyword>((value) => new NegativeKeyword.fromJson(value))
+          .map<NegativeKeyword>((value) => NegativeKeyword.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18866,10 +19483,10 @@ class ListNegativeKeywordsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (negativeKeywords != null) {
       _json["negativeKeywords"] =
-          negativeKeywords.map((value) => (value).toJson()).toList();
+          negativeKeywords.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18896,7 +19513,7 @@ class ListPartnerAssignedTargetingOptionsResponse {
       assignedTargetingOptions =
           (_json["assignedTargetingOptions"] as core.List)
               .map<AssignedTargetingOption>(
-                  (value) => new AssignedTargetingOption.fromJson(value))
+                  (value) => AssignedTargetingOption.fromJson(value))
               .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -18906,10 +19523,10 @@ class ListPartnerAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assignedTargetingOptions != null) {
       _json["assignedTargetingOptions"] =
-          assignedTargetingOptions.map((value) => (value).toJson()).toList();
+          assignedTargetingOptions.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -18935,19 +19552,19 @@ class ListPartnersResponse {
     }
     if (_json.containsKey("partners")) {
       partners = (_json["partners"] as core.List)
-          .map<Partner>((value) => new Partner.fromJson(value))
+          .map<Partner>((value) => Partner.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (partners != null) {
-      _json["partners"] = partners.map((value) => (value).toJson()).toList();
+      _json["partners"] = partners.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -18971,19 +19588,19 @@ class ListSitesResponse {
     }
     if (_json.containsKey("sites")) {
       sites = (_json["sites"] as core.List)
-          .map<Site>((value) => new Site.fromJson(value))
+          .map<Site>((value) => Site.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (sites != null) {
-      _json["sites"] = sites.map((value) => (value).toJson()).toList();
+      _json["sites"] = sites.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -19007,20 +19624,20 @@ class ListTargetingOptionsResponse {
     }
     if (_json.containsKey("targetingOptions")) {
       targetingOptions = (_json["targetingOptions"] as core.List)
-          .map<TargetingOption>((value) => new TargetingOption.fromJson(value))
+          .map<TargetingOption>((value) => TargetingOption.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (targetingOptions != null) {
       _json["targetingOptions"] =
-          targetingOptions.map((value) => (value).toJson()).toList();
+          targetingOptions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -19044,19 +19661,19 @@ class ListUsersResponse {
     }
     if (_json.containsKey("users")) {
       users = (_json["users"] as core.List)
-          .map<User>((value) => new User.fromJson(value))
+          .map<User>((value) => User.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (users != null) {
-      _json["users"] = users.map((value) => (value).toJson()).toList();
+      _json["users"] = users.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -19110,7 +19727,7 @@ class LocationList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
@@ -19154,7 +19771,7 @@ class LookbackWindow {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clickDays != null) {
       _json["clickDays"] = clickDays;
     }
@@ -19215,7 +19832,7 @@ class MaximizeSpendBidStrategy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customBiddingAlgorithmId != null) {
       _json["customBiddingAlgorithmId"] = customBiddingAlgorithmId;
     }
@@ -19250,7 +19867,7 @@ class MeasurementConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dv360ToCmCostReportingEnabled != null) {
       _json["dv360ToCmCostReportingEnabled"] = dv360ToCmCostReportingEnabled;
     }
@@ -19294,7 +19911,7 @@ class Money {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currencyCode != null) {
       _json["currencyCode"] = currencyCode;
     }
@@ -19334,7 +19951,7 @@ class NegativeKeyword {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (keywordValue != null) {
       _json["keywordValue"] = keywordValue;
     }
@@ -19381,7 +19998,7 @@ class NegativeKeywordList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
@@ -19416,7 +20033,7 @@ class NegativeKeywordListAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (negativeKeywordListId != null) {
       _json["negativeKeywordListId"] = negativeKeywordListId;
     }
@@ -19471,7 +20088,7 @@ class ObaIcon {
       clickTrackingUrl = _json["clickTrackingUrl"];
     }
     if (_json.containsKey("dimensions")) {
-      dimensions = new Dimensions.fromJson(_json["dimensions"]);
+      dimensions = Dimensions.fromJson(_json["dimensions"]);
     }
     if (_json.containsKey("landingPageUrl")) {
       landingPageUrl = _json["landingPageUrl"];
@@ -19495,12 +20112,12 @@ class ObaIcon {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clickTrackingUrl != null) {
       _json["clickTrackingUrl"] = clickTrackingUrl;
     }
     if (dimensions != null) {
-      _json["dimensions"] = (dimensions).toJson();
+      _json["dimensions"] = dimensions.toJson();
     }
     if (landingPageUrl != null) {
       _json["landingPageUrl"] = landingPageUrl;
@@ -19555,7 +20172,7 @@ class OnScreenPositionAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (onScreenPosition != null) {
       _json["onScreenPosition"] = onScreenPosition;
     }
@@ -19590,7 +20207,7 @@ class OnScreenPositionTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (onScreenPosition != null) {
       _json["onScreenPosition"] = onScreenPosition;
     }
@@ -19628,7 +20245,7 @@ class OperatingSystemAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -19659,7 +20276,7 @@ class OperatingSystemTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -19711,7 +20328,7 @@ class Operation {
       done = _json["done"];
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
       metadata =
@@ -19728,12 +20345,12 @@ class Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -19812,7 +20429,7 @@ class Pacing {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dailyMaxImpressions != null) {
       _json["dailyMaxImpressions"] = dailyMaxImpressions;
     }
@@ -19884,7 +20501,7 @@ class ParentEntityFilter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fileType != null) {
       _json["fileType"] = fileType;
     }
@@ -19930,7 +20547,7 @@ class ParentalStatusAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (parentalStatus != null) {
       _json["parentalStatus"] = parentalStatus;
     }
@@ -19966,7 +20583,7 @@ class ParentalStatusTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (parentalStatus != null) {
       _json["parentalStatus"] = parentalStatus;
     }
@@ -20022,12 +20639,11 @@ class Partner {
 
   Partner.fromJson(core.Map _json) {
     if (_json.containsKey("adServerConfig")) {
-      adServerConfig =
-          new PartnerAdServerConfig.fromJson(_json["adServerConfig"]);
+      adServerConfig = PartnerAdServerConfig.fromJson(_json["adServerConfig"]);
     }
     if (_json.containsKey("dataAccessConfig")) {
       dataAccessConfig =
-          new PartnerDataAccessConfig.fromJson(_json["dataAccessConfig"]);
+          PartnerDataAccessConfig.fromJson(_json["dataAccessConfig"]);
     }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
@@ -20036,10 +20652,10 @@ class Partner {
       entityStatus = _json["entityStatus"];
     }
     if (_json.containsKey("exchangeConfig")) {
-      exchangeConfig = new ExchangeConfig.fromJson(_json["exchangeConfig"]);
+      exchangeConfig = ExchangeConfig.fromJson(_json["exchangeConfig"]);
     }
     if (_json.containsKey("generalConfig")) {
-      generalConfig = new PartnerGeneralConfig.fromJson(_json["generalConfig"]);
+      generalConfig = PartnerGeneralConfig.fromJson(_json["generalConfig"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -20054,12 +20670,12 @@ class Partner {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adServerConfig != null) {
-      _json["adServerConfig"] = (adServerConfig).toJson();
+      _json["adServerConfig"] = adServerConfig.toJson();
     }
     if (dataAccessConfig != null) {
-      _json["dataAccessConfig"] = (dataAccessConfig).toJson();
+      _json["dataAccessConfig"] = dataAccessConfig.toJson();
     }
     if (displayName != null) {
       _json["displayName"] = displayName;
@@ -20068,10 +20684,10 @@ class Partner {
       _json["entityStatus"] = entityStatus;
     }
     if (exchangeConfig != null) {
-      _json["exchangeConfig"] = (exchangeConfig).toJson();
+      _json["exchangeConfig"] = exchangeConfig.toJson();
     }
     if (generalConfig != null) {
-      _json["generalConfig"] = (generalConfig).toJson();
+      _json["generalConfig"] = generalConfig.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -20096,15 +20712,15 @@ class PartnerAdServerConfig {
   PartnerAdServerConfig.fromJson(core.Map _json) {
     if (_json.containsKey("measurementConfig")) {
       measurementConfig =
-          new MeasurementConfig.fromJson(_json["measurementConfig"]);
+          MeasurementConfig.fromJson(_json["measurementConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (measurementConfig != null) {
-      _json["measurementConfig"] = (measurementConfig).toJson();
+      _json["measurementConfig"] = measurementConfig.toJson();
     }
     return _json;
   }
@@ -20227,7 +20843,7 @@ class PartnerCost {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (costType != null) {
       _json["costType"] = costType;
     }
@@ -20257,15 +20873,15 @@ class PartnerDataAccessConfig {
 
   PartnerDataAccessConfig.fromJson(core.Map _json) {
     if (_json.containsKey("sdfConfig")) {
-      sdfConfig = new SdfConfig.fromJson(_json["sdfConfig"]);
+      sdfConfig = SdfConfig.fromJson(_json["sdfConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sdfConfig != null) {
-      _json["sdfConfig"] = (sdfConfig).toJson();
+      _json["sdfConfig"] = sdfConfig.toJson();
     }
     return _json;
   }
@@ -20294,7 +20910,7 @@ class PartnerGeneralConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currencyCode != null) {
       _json["currencyCode"] = currencyCode;
     }
@@ -20346,7 +20962,7 @@ class PartnerRevenueModel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (markupAmount != null) {
       _json["markupAmount"] = markupAmount;
     }
@@ -20418,7 +21034,7 @@ class PerformanceGoal {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (performanceGoalAmountMicros != null) {
       _json["performanceGoalAmountMicros"] = performanceGoalAmountMicros;
     }
@@ -20514,7 +21130,7 @@ class PerformanceGoalBidStrategy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customBiddingAlgorithmId != null) {
       _json["customBiddingAlgorithmId"] = customBiddingAlgorithmId;
     }
@@ -20569,7 +21185,7 @@ class ProximityLocationListAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (proximityLocationListId != null) {
       _json["proximityLocationListId"] = proximityLocationListId;
     }
@@ -20607,7 +21223,7 @@ class PublisherReviewStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (publisherName != null) {
       _json["publisherName"] = publisherName;
     }
@@ -20652,10 +21268,10 @@ class RateDetails {
       inventorySourceRateType = _json["inventorySourceRateType"];
     }
     if (_json.containsKey("minimumSpend")) {
-      minimumSpend = new Money.fromJson(_json["minimumSpend"]);
+      minimumSpend = Money.fromJson(_json["minimumSpend"]);
     }
     if (_json.containsKey("rate")) {
-      rate = new Money.fromJson(_json["rate"]);
+      rate = Money.fromJson(_json["rate"]);
     }
     if (_json.containsKey("unitsPurchased")) {
       unitsPurchased = _json["unitsPurchased"];
@@ -20664,15 +21280,15 @@ class RateDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inventorySourceRateType != null) {
       _json["inventorySourceRateType"] = inventorySourceRateType;
     }
     if (minimumSpend != null) {
-      _json["minimumSpend"] = (minimumSpend).toJson();
+      _json["minimumSpend"] = minimumSpend.toJson();
     }
     if (rate != null) {
-      _json["rate"] = (rate).toJson();
+      _json["rate"] = rate.toJson();
     }
     if (unitsPurchased != null) {
       _json["unitsPurchased"] = unitsPurchased;
@@ -20706,7 +21322,7 @@ class RegionalLocationListAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (negative != null) {
       _json["negative"] = negative;
     }
@@ -20776,20 +21392,20 @@ class ReviewStatusInfo {
     if (_json.containsKey("exchangeReviewStatuses")) {
       exchangeReviewStatuses = (_json["exchangeReviewStatuses"] as core.List)
           .map<ExchangeReviewStatus>(
-              (value) => new ExchangeReviewStatus.fromJson(value))
+              (value) => ExchangeReviewStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("publisherReviewStatuses")) {
       publisherReviewStatuses = (_json["publisherReviewStatuses"] as core.List)
           .map<PublisherReviewStatus>(
-              (value) => new PublisherReviewStatus.fromJson(value))
+              (value) => PublisherReviewStatus.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (approvalStatus != null) {
       _json["approvalStatus"] = approvalStatus;
     }
@@ -20802,11 +21418,11 @@ class ReviewStatusInfo {
     }
     if (exchangeReviewStatuses != null) {
       _json["exchangeReviewStatuses"] =
-          exchangeReviewStatuses.map((value) => (value).toJson()).toList();
+          exchangeReviewStatuses.map((value) => value.toJson()).toList();
     }
     if (publisherReviewStatuses != null) {
       _json["publisherReviewStatuses"] =
-          publisherReviewStatuses.map((value) => (value).toJson()).toList();
+          publisherReviewStatuses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -20844,7 +21460,7 @@ class SdfConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adminEmail != null) {
       _json["adminEmail"] = adminEmail;
     }
@@ -20875,7 +21491,7 @@ class SdfDownloadTask {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceName != null) {
       _json["resourceName"] = resourceName;
     }
@@ -20921,7 +21537,7 @@ class SdfDownloadTaskMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -21009,7 +21625,7 @@ class SensitiveCategoryAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (excludedTargetingOptionId != null) {
       _json["excludedTargetingOptionId"] = excludedTargetingOptionId;
     }
@@ -21088,7 +21704,7 @@ class SensitiveCategoryTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sensitiveCategory != null) {
       _json["sensitiveCategory"] = sensitiveCategory;
     }
@@ -21118,7 +21734,7 @@ class Site {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -21170,7 +21786,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -21202,7 +21818,7 @@ class SubExchangeAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (targetingOptionId != null) {
       _json["targetingOptionId"] = targetingOptionId;
     }
@@ -21227,7 +21843,7 @@ class SubExchangeTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -21408,102 +22024,98 @@ class TargetingOption {
   TargetingOption.fromJson(core.Map _json) {
     if (_json.containsKey("ageRangeDetails")) {
       ageRangeDetails =
-          new AgeRangeTargetingOptionDetails.fromJson(_json["ageRangeDetails"]);
+          AgeRangeTargetingOptionDetails.fromJson(_json["ageRangeDetails"]);
     }
     if (_json.containsKey("appCategoryDetails")) {
-      appCategoryDetails = new AppCategoryTargetingOptionDetails.fromJson(
+      appCategoryDetails = AppCategoryTargetingOptionDetails.fromJson(
           _json["appCategoryDetails"]);
     }
     if (_json.containsKey("authorizedSellerStatusDetails")) {
       authorizedSellerStatusDetails =
-          new AuthorizedSellerStatusTargetingOptionDetails.fromJson(
+          AuthorizedSellerStatusTargetingOptionDetails.fromJson(
               _json["authorizedSellerStatusDetails"]);
     }
     if (_json.containsKey("browserDetails")) {
       browserDetails =
-          new BrowserTargetingOptionDetails.fromJson(_json["browserDetails"]);
+          BrowserTargetingOptionDetails.fromJson(_json["browserDetails"]);
     }
     if (_json.containsKey("carrierAndIspDetails")) {
-      carrierAndIspDetails = new CarrierAndIspTargetingOptionDetails.fromJson(
+      carrierAndIspDetails = CarrierAndIspTargetingOptionDetails.fromJson(
           _json["carrierAndIspDetails"]);
     }
     if (_json.containsKey("categoryDetails")) {
       categoryDetails =
-          new CategoryTargetingOptionDetails.fromJson(_json["categoryDetails"]);
+          CategoryTargetingOptionDetails.fromJson(_json["categoryDetails"]);
     }
     if (_json.containsKey("contentInstreamPositionDetails")) {
       contentInstreamPositionDetails =
-          new ContentInstreamPositionTargetingOptionDetails.fromJson(
+          ContentInstreamPositionTargetingOptionDetails.fromJson(
               _json["contentInstreamPositionDetails"]);
     }
     if (_json.containsKey("contentOutstreamPositionDetails")) {
       contentOutstreamPositionDetails =
-          new ContentOutstreamPositionTargetingOptionDetails.fromJson(
+          ContentOutstreamPositionTargetingOptionDetails.fromJson(
               _json["contentOutstreamPositionDetails"]);
     }
     if (_json.containsKey("deviceMakeModelDetails")) {
-      deviceMakeModelDetails =
-          new DeviceMakeModelTargetingOptionDetails.fromJson(
-              _json["deviceMakeModelDetails"]);
+      deviceMakeModelDetails = DeviceMakeModelTargetingOptionDetails.fromJson(
+          _json["deviceMakeModelDetails"]);
     }
     if (_json.containsKey("deviceTypeDetails")) {
-      deviceTypeDetails = new DeviceTypeTargetingOptionDetails.fromJson(
-          _json["deviceTypeDetails"]);
+      deviceTypeDetails =
+          DeviceTypeTargetingOptionDetails.fromJson(_json["deviceTypeDetails"]);
     }
     if (_json.containsKey("digitalContentLabelDetails")) {
       digitalContentLabelDetails =
-          new DigitalContentLabelTargetingOptionDetails.fromJson(
+          DigitalContentLabelTargetingOptionDetails.fromJson(
               _json["digitalContentLabelDetails"]);
     }
     if (_json.containsKey("environmentDetails")) {
-      environmentDetails = new EnvironmentTargetingOptionDetails.fromJson(
+      environmentDetails = EnvironmentTargetingOptionDetails.fromJson(
           _json["environmentDetails"]);
     }
     if (_json.containsKey("exchangeDetails")) {
       exchangeDetails =
-          new ExchangeTargetingOptionDetails.fromJson(_json["exchangeDetails"]);
+          ExchangeTargetingOptionDetails.fromJson(_json["exchangeDetails"]);
     }
     if (_json.containsKey("genderDetails")) {
       genderDetails =
-          new GenderTargetingOptionDetails.fromJson(_json["genderDetails"]);
+          GenderTargetingOptionDetails.fromJson(_json["genderDetails"]);
     }
     if (_json.containsKey("geoRegionDetails")) {
-      geoRegionDetails = new GeoRegionTargetingOptionDetails.fromJson(
-          _json["geoRegionDetails"]);
+      geoRegionDetails =
+          GeoRegionTargetingOptionDetails.fromJson(_json["geoRegionDetails"]);
     }
     if (_json.containsKey("householdIncomeDetails")) {
-      householdIncomeDetails =
-          new HouseholdIncomeTargetingOptionDetails.fromJson(
-              _json["householdIncomeDetails"]);
+      householdIncomeDetails = HouseholdIncomeTargetingOptionDetails.fromJson(
+          _json["householdIncomeDetails"]);
     }
     if (_json.containsKey("languageDetails")) {
       languageDetails =
-          new LanguageTargetingOptionDetails.fromJson(_json["languageDetails"]);
+          LanguageTargetingOptionDetails.fromJson(_json["languageDetails"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("onScreenPositionDetails")) {
-      onScreenPositionDetails =
-          new OnScreenPositionTargetingOptionDetails.fromJson(
-              _json["onScreenPositionDetails"]);
+      onScreenPositionDetails = OnScreenPositionTargetingOptionDetails.fromJson(
+          _json["onScreenPositionDetails"]);
     }
     if (_json.containsKey("operatingSystemDetails")) {
-      operatingSystemDetails =
-          new OperatingSystemTargetingOptionDetails.fromJson(
-              _json["operatingSystemDetails"]);
+      operatingSystemDetails = OperatingSystemTargetingOptionDetails.fromJson(
+          _json["operatingSystemDetails"]);
     }
     if (_json.containsKey("parentalStatusDetails")) {
-      parentalStatusDetails = new ParentalStatusTargetingOptionDetails.fromJson(
+      parentalStatusDetails = ParentalStatusTargetingOptionDetails.fromJson(
           _json["parentalStatusDetails"]);
     }
     if (_json.containsKey("sensitiveCategoryDetails")) {
       sensitiveCategoryDetails =
-          new SensitiveCategoryTargetingOptionDetails.fromJson(
+          SensitiveCategoryTargetingOptionDetails.fromJson(
               _json["sensitiveCategoryDetails"]);
     }
     if (_json.containsKey("subExchangeDetails")) {
-      subExchangeDetails = new SubExchangeTargetingOptionDetails.fromJson(
+      subExchangeDetails = SubExchangeTargetingOptionDetails.fromJson(
           _json["subExchangeDetails"]);
     }
     if (_json.containsKey("targetingOptionId")) {
@@ -21514,95 +22126,93 @@ class TargetingOption {
     }
     if (_json.containsKey("userRewardedContentDetails")) {
       userRewardedContentDetails =
-          new UserRewardedContentTargetingOptionDetails.fromJson(
+          UserRewardedContentTargetingOptionDetails.fromJson(
               _json["userRewardedContentDetails"]);
     }
     if (_json.containsKey("videoPlayerSizeDetails")) {
-      videoPlayerSizeDetails =
-          new VideoPlayerSizeTargetingOptionDetails.fromJson(
-              _json["videoPlayerSizeDetails"]);
+      videoPlayerSizeDetails = VideoPlayerSizeTargetingOptionDetails.fromJson(
+          _json["videoPlayerSizeDetails"]);
     }
     if (_json.containsKey("viewabilityDetails")) {
-      viewabilityDetails = new ViewabilityTargetingOptionDetails.fromJson(
+      viewabilityDetails = ViewabilityTargetingOptionDetails.fromJson(
           _json["viewabilityDetails"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ageRangeDetails != null) {
-      _json["ageRangeDetails"] = (ageRangeDetails).toJson();
+      _json["ageRangeDetails"] = ageRangeDetails.toJson();
     }
     if (appCategoryDetails != null) {
-      _json["appCategoryDetails"] = (appCategoryDetails).toJson();
+      _json["appCategoryDetails"] = appCategoryDetails.toJson();
     }
     if (authorizedSellerStatusDetails != null) {
       _json["authorizedSellerStatusDetails"] =
-          (authorizedSellerStatusDetails).toJson();
+          authorizedSellerStatusDetails.toJson();
     }
     if (browserDetails != null) {
-      _json["browserDetails"] = (browserDetails).toJson();
+      _json["browserDetails"] = browserDetails.toJson();
     }
     if (carrierAndIspDetails != null) {
-      _json["carrierAndIspDetails"] = (carrierAndIspDetails).toJson();
+      _json["carrierAndIspDetails"] = carrierAndIspDetails.toJson();
     }
     if (categoryDetails != null) {
-      _json["categoryDetails"] = (categoryDetails).toJson();
+      _json["categoryDetails"] = categoryDetails.toJson();
     }
     if (contentInstreamPositionDetails != null) {
       _json["contentInstreamPositionDetails"] =
-          (contentInstreamPositionDetails).toJson();
+          contentInstreamPositionDetails.toJson();
     }
     if (contentOutstreamPositionDetails != null) {
       _json["contentOutstreamPositionDetails"] =
-          (contentOutstreamPositionDetails).toJson();
+          contentOutstreamPositionDetails.toJson();
     }
     if (deviceMakeModelDetails != null) {
-      _json["deviceMakeModelDetails"] = (deviceMakeModelDetails).toJson();
+      _json["deviceMakeModelDetails"] = deviceMakeModelDetails.toJson();
     }
     if (deviceTypeDetails != null) {
-      _json["deviceTypeDetails"] = (deviceTypeDetails).toJson();
+      _json["deviceTypeDetails"] = deviceTypeDetails.toJson();
     }
     if (digitalContentLabelDetails != null) {
-      _json["digitalContentLabelDetails"] =
-          (digitalContentLabelDetails).toJson();
+      _json["digitalContentLabelDetails"] = digitalContentLabelDetails.toJson();
     }
     if (environmentDetails != null) {
-      _json["environmentDetails"] = (environmentDetails).toJson();
+      _json["environmentDetails"] = environmentDetails.toJson();
     }
     if (exchangeDetails != null) {
-      _json["exchangeDetails"] = (exchangeDetails).toJson();
+      _json["exchangeDetails"] = exchangeDetails.toJson();
     }
     if (genderDetails != null) {
-      _json["genderDetails"] = (genderDetails).toJson();
+      _json["genderDetails"] = genderDetails.toJson();
     }
     if (geoRegionDetails != null) {
-      _json["geoRegionDetails"] = (geoRegionDetails).toJson();
+      _json["geoRegionDetails"] = geoRegionDetails.toJson();
     }
     if (householdIncomeDetails != null) {
-      _json["householdIncomeDetails"] = (householdIncomeDetails).toJson();
+      _json["householdIncomeDetails"] = householdIncomeDetails.toJson();
     }
     if (languageDetails != null) {
-      _json["languageDetails"] = (languageDetails).toJson();
+      _json["languageDetails"] = languageDetails.toJson();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (onScreenPositionDetails != null) {
-      _json["onScreenPositionDetails"] = (onScreenPositionDetails).toJson();
+      _json["onScreenPositionDetails"] = onScreenPositionDetails.toJson();
     }
     if (operatingSystemDetails != null) {
-      _json["operatingSystemDetails"] = (operatingSystemDetails).toJson();
+      _json["operatingSystemDetails"] = operatingSystemDetails.toJson();
     }
     if (parentalStatusDetails != null) {
-      _json["parentalStatusDetails"] = (parentalStatusDetails).toJson();
+      _json["parentalStatusDetails"] = parentalStatusDetails.toJson();
     }
     if (sensitiveCategoryDetails != null) {
-      _json["sensitiveCategoryDetails"] = (sensitiveCategoryDetails).toJson();
+      _json["sensitiveCategoryDetails"] = sensitiveCategoryDetails.toJson();
     }
     if (subExchangeDetails != null) {
-      _json["subExchangeDetails"] = (subExchangeDetails).toJson();
+      _json["subExchangeDetails"] = subExchangeDetails.toJson();
     }
     if (targetingOptionId != null) {
       _json["targetingOptionId"] = targetingOptionId;
@@ -21611,14 +22221,13 @@ class TargetingOption {
       _json["targetingType"] = targetingType;
     }
     if (userRewardedContentDetails != null) {
-      _json["userRewardedContentDetails"] =
-          (userRewardedContentDetails).toJson();
+      _json["userRewardedContentDetails"] = userRewardedContentDetails.toJson();
     }
     if (videoPlayerSizeDetails != null) {
-      _json["videoPlayerSizeDetails"] = (videoPlayerSizeDetails).toJson();
+      _json["videoPlayerSizeDetails"] = videoPlayerSizeDetails.toJson();
     }
     if (viewabilityDetails != null) {
-      _json["viewabilityDetails"] = (viewabilityDetails).toJson();
+      _json["viewabilityDetails"] = viewabilityDetails.toJson();
     }
     return _json;
   }
@@ -21640,7 +22249,7 @@ class ThirdPartyOnlyConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pixelOrderIdReportingEnabled != null) {
       _json["pixelOrderIdReportingEnabled"] = pixelOrderIdReportingEnabled;
     }
@@ -21707,7 +22316,7 @@ class ThirdPartyUrl {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (type != null) {
       _json["type"] = type;
     }
@@ -21735,28 +22344,28 @@ class ThirdPartyVerifierAssignedTargetingOptionDetails {
 
   ThirdPartyVerifierAssignedTargetingOptionDetails.fromJson(core.Map _json) {
     if (_json.containsKey("adloox")) {
-      adloox = new Adloox.fromJson(_json["adloox"]);
+      adloox = Adloox.fromJson(_json["adloox"]);
     }
     if (_json.containsKey("doubleVerify")) {
-      doubleVerify = new DoubleVerify.fromJson(_json["doubleVerify"]);
+      doubleVerify = DoubleVerify.fromJson(_json["doubleVerify"]);
     }
     if (_json.containsKey("integralAdScience")) {
       integralAdScience =
-          new IntegralAdScience.fromJson(_json["integralAdScience"]);
+          IntegralAdScience.fromJson(_json["integralAdScience"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adloox != null) {
-      _json["adloox"] = (adloox).toJson();
+      _json["adloox"] = adloox.toJson();
     }
     if (doubleVerify != null) {
-      _json["doubleVerify"] = (doubleVerify).toJson();
+      _json["doubleVerify"] = doubleVerify.toJson();
     }
     if (integralAdScience != null) {
-      _json["integralAdScience"] = (integralAdScience).toJson();
+      _json["integralAdScience"] = integralAdScience.toJson();
     }
     return _json;
   }
@@ -21783,7 +22392,7 @@ class TimeRange {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -21815,7 +22424,7 @@ class TimerEvent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -21855,7 +22464,7 @@ class TrackingFloodlightActivityConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (floodlightActivityId != null) {
       _json["floodlightActivityId"] = floodlightActivityId;
     }
@@ -21913,7 +22522,7 @@ class Transcode {
       bitRateKbps = _json["bitRateKbps"];
     }
     if (_json.containsKey("dimensions")) {
-      dimensions = new Dimensions.fromJson(_json["dimensions"]);
+      dimensions = Dimensions.fromJson(_json["dimensions"]);
     }
     if (_json.containsKey("fileSizeBytes")) {
       fileSizeBytes = _json["fileSizeBytes"];
@@ -21934,7 +22543,7 @@ class Transcode {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audioBitRateKbps != null) {
       _json["audioBitRateKbps"] = audioBitRateKbps;
     }
@@ -21945,7 +22554,7 @@ class Transcode {
       _json["bitRateKbps"] = bitRateKbps;
     }
     if (dimensions != null) {
-      _json["dimensions"] = (dimensions).toJson();
+      _json["dimensions"] = dimensions.toJson();
     }
     if (fileSizeBytes != null) {
       _json["fileSizeBytes"] = fileSizeBytes;
@@ -22001,7 +22610,7 @@ class UniversalAdId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -22038,7 +22647,7 @@ class UrlAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (negative != null) {
       _json["negative"] = negative;
     }
@@ -22073,8 +22682,7 @@ class User {
   User.fromJson(core.Map _json) {
     if (_json.containsKey("assignedUserRoles")) {
       assignedUserRoles = (_json["assignedUserRoles"] as core.List)
-          .map<AssignedUserRole>(
-              (value) => new AssignedUserRole.fromJson(value))
+          .map<AssignedUserRole>((value) => AssignedUserRole.fromJson(value))
           .toList();
     }
     if (_json.containsKey("displayName")) {
@@ -22093,10 +22701,10 @@ class User {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assignedUserRoles != null) {
       _json["assignedUserRoles"] =
-          assignedUserRoles.map((value) => (value).toJson()).toList();
+          assignedUserRoles.map((value) => value.toJson()).toList();
     }
     if (displayName != null) {
       _json["displayName"] = displayName;
@@ -22145,7 +22753,7 @@ class UserRewardedContentAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (targetingOptionId != null) {
       _json["targetingOptionId"] = targetingOptionId;
     }
@@ -22180,7 +22788,7 @@ class UserRewardedContentTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (userRewardedContent != null) {
       _json["userRewardedContent"] = userRewardedContent;
     }
@@ -22227,7 +22835,7 @@ class VideoPlayerSizeAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (targetingOptionId != null) {
       _json["targetingOptionId"] = targetingOptionId;
     }
@@ -22268,7 +22876,7 @@ class VideoPlayerSizeTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (videoPlayerSize != null) {
       _json["videoPlayerSize"] = videoPlayerSize;
     }
@@ -22323,7 +22931,7 @@ class ViewabilityAssignedTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (targetingOptionId != null) {
       _json["targetingOptionId"] = targetingOptionId;
     }
@@ -22373,7 +22981,7 @@ class ViewabilityTargetingOptionDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (viewability != null) {
       _json["viewability"] = viewability;
     }

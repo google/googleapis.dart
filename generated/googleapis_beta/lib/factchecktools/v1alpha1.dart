@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis_beta.factchecktools.v1alpha1;
 
@@ -23,14 +41,14 @@ class FactchecktoolsApi {
 
   final commons.ApiRequester _requester;
 
-  ClaimsResourceApi get claims => new ClaimsResourceApi(_requester);
-  PagesResourceApi get pages => new PagesResourceApi(_requester);
+  ClaimsResourceApi get claims => ClaimsResourceApi(_requester);
+  PagesResourceApi get pages => PagesResourceApi(_requester);
 
   FactchecktoolsApi(http.Client client,
       {core.String rootUrl = "https://factchecktools.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ClaimsResourceApi {
@@ -82,21 +100,22 @@ class ClaimsResourceApi {
   /// this method will complete with the same error.
   async.Future<
           GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse>
-      search(
-          {core.String pageToken,
-          core.int pageSize,
-          core.int maxAgeDays,
-          core.String languageCode,
-          core.int offset,
-          core.String query,
-          core.String reviewPublisherSiteFilter,
-          core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+      search({
+    core.String pageToken,
+    core.int pageSize,
+    core.int maxAgeDays,
+    core.String languageCode,
+    core.int offset,
+    core.String query,
+    core.String reviewPublisherSiteFilter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -125,14 +144,17 @@ class ClaimsResourceApi {
 
     _url = 'v1alpha1/claims:search';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
+        GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
             .fromJson(data));
   }
 }
@@ -161,17 +183,18 @@ class PagesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
       create(
-          GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage request,
-          {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -179,15 +202,18 @@ class PagesResourceApi {
 
     _url = 'v1alpha1/pages';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
-            .fromJson(data));
+        GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.fromJson(
+            data));
   }
 
   /// Delete all `ClaimReview` markup on a page.
@@ -208,17 +234,19 @@ class PagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -226,13 +254,16 @@ class PagesResourceApi {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Get all `ClaimReview` markup on a page.
@@ -255,16 +286,19 @@ class PagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
-      get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+      get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -272,15 +306,18 @@ class PagesResourceApi {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
-            .fromJson(data));
+        GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.fromJson(
+            data));
   }
 
   /// List the `ClaimReview` markup pages for a specific URL or for an
@@ -323,19 +360,20 @@ class PagesResourceApi {
   /// this method will complete with the same error.
   async.Future<
           GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse>
-      list(
-          {core.String url,
-          core.int pageSize,
-          core.int offset,
-          core.String organization,
-          core.String pageToken,
-          core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+      list({
+    core.String url,
+    core.int pageSize,
+    core.int offset,
+    core.String organization,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (url != null) {
       _queryParams["url"] = [url];
@@ -358,14 +396,17 @@ class PagesResourceApi {
 
     _url = 'v1alpha1/pages';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
+        GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
             .fromJson(data));
   }
 
@@ -396,21 +437,22 @@ class PagesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
       update(
-          GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage request,
-          core.String name,
-          {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -418,15 +460,18 @@ class PagesResourceApi {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
-            .fromJson(data));
+        GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.fromJson(
+            data));
   }
 }
 
@@ -453,7 +498,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Claim {
     if (_json.containsKey("claimReview")) {
       claimReview = (_json["claimReview"] as core.List)
           .map<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>((value) =>
-              new GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview.fromJson(
+              GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview.fromJson(
                   value))
           .toList();
     }
@@ -467,13 +512,13 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Claim {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (claimDate != null) {
       _json["claimDate"] = claimDate;
     }
     if (claimReview != null) {
       _json["claimReview"] =
-          claimReview.map((value) => (value).toJson()).toList();
+          claimReview.map((value) => value.toJson()).toList();
     }
     if (claimant != null) {
       _json["claimant"] = claimant;
@@ -519,7 +564,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (imageUrl != null) {
       _json["imageUrl"] = imageUrl;
     }
@@ -585,7 +630,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bestRating != null) {
       _json["bestRating"] = bestRating;
     }
@@ -635,9 +680,8 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
       languageCode = _json["languageCode"];
     }
     if (_json.containsKey("publisher")) {
-      publisher =
-          new GoogleFactcheckingFactchecktoolsV1alpha1Publisher.fromJson(
-              _json["publisher"]);
+      publisher = GoogleFactcheckingFactchecktoolsV1alpha1Publisher.fromJson(
+          _json["publisher"]);
     }
     if (_json.containsKey("reviewDate")) {
       reviewDate = _json["reviewDate"];
@@ -655,12 +699,12 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
     }
     if (publisher != null) {
-      _json["publisher"] = (publisher).toJson();
+      _json["publisher"] = publisher.toJson();
     }
     if (reviewDate != null) {
       _json["reviewDate"] = reviewDate;
@@ -701,7 +745,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (imageUrl != null) {
       _json["imageUrl"] = imageUrl;
     }
@@ -759,7 +803,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
     }
     if (_json.containsKey("claimAuthor")) {
       claimAuthor =
-          new GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor.fromJson(
+          GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor.fromJson(
               _json["claimAuthor"]);
     }
     if (_json.containsKey("claimDate")) {
@@ -775,7 +819,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
       claimReviewed = _json["claimReviewed"];
     }
     if (_json.containsKey("rating")) {
-      rating = new GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating.fromJson(
+      rating = GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating.fromJson(
           _json["rating"]);
     }
     if (_json.containsKey("url")) {
@@ -785,12 +829,12 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (claimAppearances != null) {
       _json["claimAppearances"] = claimAppearances;
     }
     if (claimAuthor != null) {
-      _json["claimAuthor"] = (claimAuthor).toJson();
+      _json["claimAuthor"] = claimAuthor.toJson();
     }
     if (claimDate != null) {
       _json["claimDate"] = claimDate;
@@ -805,7 +849,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
       _json["claimReviewed"] = claimReviewed;
     }
     if (rating != null) {
-      _json["rating"] = (rating).toJson();
+      _json["rating"] = rating.toJson();
     }
     if (url != null) {
       _json["url"] = url;
@@ -853,14 +897,14 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
       core.Map _json) {
     if (_json.containsKey("claimReviewAuthor")) {
       claimReviewAuthor =
-          new GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor
-              .fromJson(_json["claimReviewAuthor"]);
+          GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor.fromJson(
+              _json["claimReviewAuthor"]);
     }
     if (_json.containsKey("claimReviewMarkups")) {
       claimReviewMarkups = (_json["claimReviewMarkups"] as core.List)
           .map<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>(
               (value) =>
-                  new GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup
+                  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup
                       .fromJson(value))
           .toList();
     }
@@ -880,13 +924,13 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (claimReviewAuthor != null) {
-      _json["claimReviewAuthor"] = (claimReviewAuthor).toJson();
+      _json["claimReviewAuthor"] = claimReviewAuthor.toJson();
     }
     if (claimReviewMarkups != null) {
       _json["claimReviewMarkups"] =
-          claimReviewMarkups.map((value) => (value).toJson()).toList();
+          claimReviewMarkups.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -921,7 +965,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse {
     if (_json.containsKey("claims")) {
       claims = (_json["claims"] as core.List)
           .map<GoogleFactcheckingFactchecktoolsV1alpha1Claim>((value) =>
-              new GoogleFactcheckingFactchecktoolsV1alpha1Claim.fromJson(value))
+              GoogleFactcheckingFactchecktoolsV1alpha1Claim.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -931,9 +975,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (claims != null) {
-      _json["claims"] = claims.map((value) => (value).toJson()).toList();
+      _json["claims"] = claims.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -961,7 +1005,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
       claimReviewMarkupPages = (_json["claimReviewMarkupPages"] as core.List)
           .map<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>(
               (value) =>
-                  new GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
+                  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
                       .fromJson(value))
           .toList();
     }
@@ -972,10 +1016,10 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (claimReviewMarkupPages != null) {
       _json["claimReviewMarkupPages"] =
-          claimReviewMarkupPages.map((value) => (value).toJson()).toList();
+          claimReviewMarkupPages.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -1007,7 +1051,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -1030,7 +1074,7 @@ class GoogleProtobufEmpty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }

@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.vault.v1;
 
@@ -27,24 +45,24 @@ class VaultApi {
 
   final commons.ApiRequester _requester;
 
-  MattersResourceApi get matters => new MattersResourceApi(_requester);
-  OperationsResourceApi get operations => new OperationsResourceApi(_requester);
+  MattersResourceApi get matters => MattersResourceApi(_requester);
+  OperationsResourceApi get operations => OperationsResourceApi(_requester);
 
   VaultApi(http.Client client,
       {core.String rootUrl = "https://vault.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class MattersResourceApi {
   final commons.ApiRequester _requester;
 
   MattersExportsResourceApi get exports =>
-      new MattersExportsResourceApi(_requester);
-  MattersHoldsResourceApi get holds => new MattersHoldsResourceApi(_requester);
+      MattersExportsResourceApi(_requester);
+  MattersHoldsResourceApi get holds => MattersHoldsResourceApi(_requester);
   MattersSavedQueriesResourceApi get savedQueries =>
-      new MattersSavedQueriesResourceApi(_requester);
+      MattersSavedQueriesResourceApi(_requester);
 
   MattersResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -67,20 +85,22 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<MatterPermission> addPermissions(
-      AddMatterPermissionsRequest request, core.String matterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AddMatterPermissionsRequest request,
+    core.String matterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -90,13 +110,16 @@ class MattersResourceApi {
         commons.Escaper.ecapeVariable('$matterId') +
         ':addPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new MatterPermission.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => MatterPermission.fromJson(data));
   }
 
   /// Closes the specified matter. Returns matter with updated state.
@@ -118,20 +141,22 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CloseMatterResponse> close(
-      CloseMatterRequest request, core.String matterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CloseMatterRequest request,
+    core.String matterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -140,13 +165,16 @@ class MattersResourceApi {
     _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + ':close';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CloseMatterResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CloseMatterResponse.fromJson(data));
   }
 
   /// Creates a new matter with the given name and description. The initial
@@ -167,16 +195,19 @@ class MattersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Matter> create(Matter request, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Matter> create(
+    Matter request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -184,13 +215,16 @@ class MattersResourceApi {
 
     _url = 'v1/matters';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Matter.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Matter.fromJson(data));
   }
 
   /// Deletes the specified matter. Returns matter with updated state.
@@ -209,16 +243,19 @@ class MattersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Matter> delete(core.String matterId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Matter> delete(
+    core.String matterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -226,13 +263,16 @@ class MattersResourceApi {
 
     _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Matter.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Matter.fromJson(data));
   }
 
   /// Gets the specified matter.
@@ -259,17 +299,20 @@ class MattersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Matter> get(core.String matterId,
-      {core.String view, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Matter> get(
+    core.String matterId, {
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (view != null) {
       _queryParams["view"] = [view];
@@ -280,13 +323,16 @@ class MattersResourceApi {
 
     _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Matter.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Matter.fromJson(data));
   }
 
   /// Lists matters the user has access to.
@@ -324,18 +370,19 @@ class MattersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListMattersResponse> list(
-      {core.String pageToken,
-      core.String state,
-      core.int pageSize,
-      core.String view,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListMattersResponse> list({
+    core.String pageToken,
+    core.String state,
+    core.int pageSize,
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -355,13 +402,16 @@ class MattersResourceApi {
 
     _url = 'v1/matters';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListMattersResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListMattersResponse.fromJson(data));
   }
 
   /// Removes an account as a matter collaborator.
@@ -383,20 +433,22 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> removePermissions(
-      RemoveMatterPermissionsRequest request, core.String matterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RemoveMatterPermissionsRequest request,
+    core.String matterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -406,13 +458,16 @@ class MattersResourceApi {
         commons.Escaper.ecapeVariable('$matterId') +
         ':removePermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Reopens the specified matter. Returns matter with updated state.
@@ -434,20 +489,22 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ReopenMatterResponse> reopen(
-      ReopenMatterRequest request, core.String matterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ReopenMatterRequest request,
+    core.String matterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -456,13 +513,16 @@ class MattersResourceApi {
     _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + ':reopen';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ReopenMatterResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ReopenMatterResponse.fromJson(data));
   }
 
   /// Undeletes the specified matter. Returns matter with updated state.
@@ -484,20 +544,22 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Matter> undelete(
-      UndeleteMatterRequest request, core.String matterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    UndeleteMatterRequest request,
+    core.String matterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -507,13 +569,16 @@ class MattersResourceApi {
         commons.Escaper.ecapeVariable('$matterId') +
         ':undelete';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Matter.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Matter.fromJson(data));
   }
 
   /// Updates the specified matter. This updates only the name and description
@@ -536,20 +601,23 @@ class MattersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Matter> update(Matter request, core.String matterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Matter> update(
+    Matter request,
+    core.String matterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -557,13 +625,16 @@ class MattersResourceApi {
 
     _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Matter.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Matter.fromJson(data));
   }
 }
 
@@ -590,20 +661,23 @@ class MattersExportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Export> create(Export request, core.String matterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Export> create(
+    Export request,
+    core.String matterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -612,13 +686,16 @@ class MattersExportsResourceApi {
     _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/exports';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Export.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Export.fromJson(data));
   }
 
   /// Deletes an Export.
@@ -639,20 +716,23 @@ class MattersExportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String matterId, core.String exportId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String matterId,
+    core.String exportId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (exportId == null) {
-      throw new core.ArgumentError("Parameter exportId is required.");
+      throw core.ArgumentError("Parameter exportId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -663,13 +743,16 @@ class MattersExportsResourceApi {
         '/exports/' +
         commons.Escaper.ecapeVariable('$exportId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets an Export.
@@ -690,20 +773,23 @@ class MattersExportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Export> get(core.String matterId, core.String exportId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Export> get(
+    core.String matterId,
+    core.String exportId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (exportId == null) {
-      throw new core.ArgumentError("Parameter exportId is required.");
+      throw core.ArgumentError("Parameter exportId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -714,13 +800,16 @@ class MattersExportsResourceApi {
         '/exports/' +
         commons.Escaper.ecapeVariable('$exportId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Export.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Export.fromJson(data));
   }
 
   /// Lists Exports.
@@ -743,17 +832,21 @@ class MattersExportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListExportsResponse> list(core.String matterId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListExportsResponse> list(
+    core.String matterId, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -768,13 +861,16 @@ class MattersExportsResourceApi {
     _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/exports';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListExportsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListExportsResponse.fromJson(data));
   }
 }
 
@@ -782,7 +878,7 @@ class MattersHoldsResourceApi {
   final commons.ApiRequester _requester;
 
   MattersHoldsAccountsResourceApi get accounts =>
-      new MattersHoldsAccountsResourceApi(_requester);
+      MattersHoldsAccountsResourceApi(_requester);
 
   MattersHoldsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -809,23 +905,26 @@ class MattersHoldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AddHeldAccountsResponse> addHeldAccounts(
-      AddHeldAccountsRequest request, core.String matterId, core.String holdId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AddHeldAccountsRequest request,
+    core.String matterId,
+    core.String holdId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (holdId == null) {
-      throw new core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError("Parameter holdId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -837,13 +936,16 @@ class MattersHoldsResourceApi {
         commons.Escaper.ecapeVariable('$holdId') +
         ':addHeldAccounts';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AddHeldAccountsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AddHeldAccountsResponse.fromJson(data));
   }
 
   /// Creates a hold in the given matter.
@@ -864,20 +966,23 @@ class MattersHoldsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Hold> create(Hold request, core.String matterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Hold> create(
+    Hold request,
+    core.String matterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -886,13 +991,16 @@ class MattersHoldsResourceApi {
     _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/holds';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Hold.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Hold.fromJson(data));
   }
 
   /// Removes a hold by ID. This will release any HeldAccounts on this Hold.
@@ -913,20 +1021,23 @@ class MattersHoldsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String matterId, core.String holdId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String matterId,
+    core.String holdId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (holdId == null) {
-      throw new core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError("Parameter holdId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -937,13 +1048,16 @@ class MattersHoldsResourceApi {
         '/holds/' +
         commons.Escaper.ecapeVariable('$holdId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a hold by ID.
@@ -974,20 +1088,24 @@ class MattersHoldsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Hold> get(core.String matterId, core.String holdId,
-      {core.String view, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Hold> get(
+    core.String matterId,
+    core.String holdId, {
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (holdId == null) {
-      throw new core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError("Parameter holdId is required.");
     }
     if (view != null) {
       _queryParams["view"] = [view];
@@ -1001,13 +1119,16 @@ class MattersHoldsResourceApi {
         '/holds/' +
         commons.Escaper.ecapeVariable('$holdId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Hold.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Hold.fromJson(data));
   }
 
   /// Lists holds within a matter. An empty page token in ListHoldsResponse
@@ -1044,20 +1165,22 @@ class MattersHoldsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListHoldsResponse> list(core.String matterId,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String view,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListHoldsResponse> list(
+    core.String matterId, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1075,13 +1198,16 @@ class MattersHoldsResourceApi {
     _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/holds';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListHoldsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListHoldsResponse.fromJson(data));
   }
 
   /// Removes HeldAccounts from a hold. Returns a list of statuses in the same
@@ -1107,25 +1233,26 @@ class MattersHoldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemoveHeldAccountsResponse> removeHeldAccounts(
-      RemoveHeldAccountsRequest request,
-      core.String matterId,
-      core.String holdId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RemoveHeldAccountsRequest request,
+    core.String matterId,
+    core.String holdId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (holdId == null) {
-      throw new core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError("Parameter holdId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1137,14 +1264,16 @@ class MattersHoldsResourceApi {
         commons.Escaper.ecapeVariable('$holdId') +
         ':removeHeldAccounts';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new RemoveHeldAccountsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RemoveHeldAccountsResponse.fromJson(data));
   }
 
   /// Updates the OU and/or query parameters of a hold. You cannot add accounts
@@ -1170,23 +1299,26 @@ class MattersHoldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Hold> update(
-      Hold request, core.String matterId, core.String holdId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Hold request,
+    core.String matterId,
+    core.String holdId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (holdId == null) {
-      throw new core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError("Parameter holdId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1197,13 +1329,16 @@ class MattersHoldsResourceApi {
         '/holds/' +
         commons.Escaper.ecapeVariable('$holdId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Hold.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Hold.fromJson(data));
   }
 }
 
@@ -1236,23 +1371,26 @@ class MattersHoldsAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HeldAccount> create(
-      HeldAccount request, core.String matterId, core.String holdId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    HeldAccount request,
+    core.String matterId,
+    core.String holdId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (holdId == null) {
-      throw new core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError("Parameter holdId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1264,13 +1402,16 @@ class MattersHoldsAccountsResourceApi {
         commons.Escaper.ecapeVariable('$holdId') +
         '/accounts';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HeldAccount.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HeldAccount.fromJson(data));
   }
 
   /// Removes a HeldAccount from a hold. If this request leaves the hold with no
@@ -1295,23 +1436,26 @@ class MattersHoldsAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(
-      core.String matterId, core.String holdId, core.String accountId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String matterId,
+    core.String holdId,
+    core.String accountId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (holdId == null) {
-      throw new core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError("Parameter holdId is required.");
     }
     if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+      throw core.ArgumentError("Parameter accountId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1324,13 +1468,16 @@ class MattersHoldsAccountsResourceApi {
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Lists HeldAccounts for a hold. This will only list individually specified
@@ -1354,20 +1501,22 @@ class MattersHoldsAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListHeldAccountsResponse> list(
-      core.String matterId, core.String holdId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String matterId,
+    core.String holdId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (holdId == null) {
-      throw new core.ArgumentError("Parameter holdId is required.");
+      throw core.ArgumentError("Parameter holdId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1379,14 +1528,16 @@ class MattersHoldsAccountsResourceApi {
         commons.Escaper.ecapeVariable('$holdId') +
         '/accounts';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListHeldAccountsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListHeldAccountsResponse.fromJson(data));
   }
 }
 
@@ -1415,20 +1566,23 @@ class MattersSavedQueriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SavedQuery> create(SavedQuery request, core.String matterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SavedQuery> create(
+    SavedQuery request,
+    core.String matterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1438,13 +1592,16 @@ class MattersSavedQueriesResourceApi {
         commons.Escaper.ecapeVariable('$matterId') +
         '/savedQueries';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SavedQuery.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SavedQuery.fromJson(data));
   }
 
   /// Deletes a saved query by Id.
@@ -1466,20 +1623,23 @@ class MattersSavedQueriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String matterId, core.String savedQueryId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String matterId,
+    core.String savedQueryId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (savedQueryId == null) {
-      throw new core.ArgumentError("Parameter savedQueryId is required.");
+      throw core.ArgumentError("Parameter savedQueryId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1490,13 +1650,16 @@ class MattersSavedQueriesResourceApi {
         '/savedQueries/' +
         commons.Escaper.ecapeVariable('$savedQueryId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Retrieves a saved query by Id.
@@ -1518,20 +1681,23 @@ class MattersSavedQueriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SavedQuery> get(core.String matterId, core.String savedQueryId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SavedQuery> get(
+    core.String matterId,
+    core.String savedQueryId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (savedQueryId == null) {
-      throw new core.ArgumentError("Parameter savedQueryId is required.");
+      throw core.ArgumentError("Parameter savedQueryId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1542,13 +1708,16 @@ class MattersSavedQueriesResourceApi {
         '/savedQueries/' +
         commons.Escaper.ecapeVariable('$savedQueryId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SavedQuery.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SavedQuery.fromJson(data));
   }
 
   /// Lists saved queries within a matter. An empty page token in
@@ -1574,17 +1743,21 @@ class MattersSavedQueriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListSavedQueriesResponse> list(core.String matterId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListSavedQueriesResponse> list(
+    core.String matterId, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (matterId == null) {
-      throw new core.ArgumentError("Parameter matterId is required.");
+      throw core.ArgumentError("Parameter matterId is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1600,14 +1773,16 @@ class MattersSavedQueriesResourceApi {
         commons.Escaper.ecapeVariable('$matterId') +
         '/savedQueries';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListSavedQueriesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListSavedQueriesResponse.fromJson(data));
   }
 }
 
@@ -1636,16 +1811,19 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1653,13 +1831,16 @@ class OperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 }
 
@@ -1678,7 +1859,7 @@ class AccountInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (emails != null) {
       _json["emails"] = emails;
     }
@@ -1699,21 +1880,21 @@ class AddHeldAccountResult {
 
   AddHeldAccountResult.fromJson(core.Map _json) {
     if (_json.containsKey("account")) {
-      account = new HeldAccount.fromJson(_json["account"]);
+      account = HeldAccount.fromJson(_json["account"]);
     }
     if (_json.containsKey("status")) {
-      status = new Status.fromJson(_json["status"]);
+      status = Status.fromJson(_json["status"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (account != null) {
-      _json["account"] = (account).toJson();
+      _json["account"] = account.toJson();
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     return _json;
   }
@@ -1742,7 +1923,7 @@ class AddHeldAccountsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountIds != null) {
       _json["accountIds"] = accountIds;
     }
@@ -1764,16 +1945,16 @@ class AddHeldAccountsResponse {
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
           .map<AddHeldAccountResult>(
-              (value) => new AddHeldAccountResult.fromJson(value))
+              (value) => AddHeldAccountResult.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1800,8 +1981,7 @@ class AddMatterPermissionsRequest {
       ccMe = _json["ccMe"];
     }
     if (_json.containsKey("matterPermission")) {
-      matterPermission =
-          new MatterPermission.fromJson(_json["matterPermission"]);
+      matterPermission = MatterPermission.fromJson(_json["matterPermission"]);
     }
     if (_json.containsKey("sendEmails")) {
       sendEmails = _json["sendEmails"];
@@ -1810,12 +1990,12 @@ class AddMatterPermissionsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ccMe != null) {
       _json["ccMe"] = ccMe;
     }
     if (matterPermission != null) {
-      _json["matterPermission"] = (matterPermission).toJson();
+      _json["matterPermission"] = matterPermission.toJson();
     }
     if (sendEmails != null) {
       _json["sendEmails"] = sendEmails;
@@ -1832,7 +2012,7 @@ class CloseMatterRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1846,15 +2026,15 @@ class CloseMatterResponse {
 
   CloseMatterResponse.fromJson(core.Map _json) {
     if (_json.containsKey("matter")) {
-      matter = new Matter.fromJson(_json["matter"]);
+      matter = Matter.fromJson(_json["matter"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (matter != null) {
-      _json["matter"] = (matter).toJson();
+      _json["matter"] = matter.toJson();
     }
     return _json;
   }
@@ -1896,7 +2076,7 @@ class CloudStorageFile {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucketName != null) {
       _json["bucketName"] = bucketName;
     }
@@ -1923,17 +2103,16 @@ class CloudStorageSink {
   CloudStorageSink.fromJson(core.Map _json) {
     if (_json.containsKey("files")) {
       files = (_json["files"] as core.List)
-          .map<CloudStorageFile>(
-              (value) => new CloudStorageFile.fromJson(value))
+          .map<CloudStorageFile>((value) => CloudStorageFile.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (files != null) {
-      _json["files"] = files.map((value) => (value).toJson()).toList();
+      _json["files"] = files.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1958,34 +2137,34 @@ class CorpusQuery {
 
   CorpusQuery.fromJson(core.Map _json) {
     if (_json.containsKey("driveQuery")) {
-      driveQuery = new HeldDriveQuery.fromJson(_json["driveQuery"]);
+      driveQuery = HeldDriveQuery.fromJson(_json["driveQuery"]);
     }
     if (_json.containsKey("groupsQuery")) {
-      groupsQuery = new HeldGroupsQuery.fromJson(_json["groupsQuery"]);
+      groupsQuery = HeldGroupsQuery.fromJson(_json["groupsQuery"]);
     }
     if (_json.containsKey("hangoutsChatQuery")) {
       hangoutsChatQuery =
-          new HeldHangoutsChatQuery.fromJson(_json["hangoutsChatQuery"]);
+          HeldHangoutsChatQuery.fromJson(_json["hangoutsChatQuery"]);
     }
     if (_json.containsKey("mailQuery")) {
-      mailQuery = new HeldMailQuery.fromJson(_json["mailQuery"]);
+      mailQuery = HeldMailQuery.fromJson(_json["mailQuery"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (driveQuery != null) {
-      _json["driveQuery"] = (driveQuery).toJson();
+      _json["driveQuery"] = driveQuery.toJson();
     }
     if (groupsQuery != null) {
-      _json["groupsQuery"] = (groupsQuery).toJson();
+      _json["groupsQuery"] = groupsQuery.toJson();
     }
     if (hangoutsChatQuery != null) {
-      _json["hangoutsChatQuery"] = (hangoutsChatQuery).toJson();
+      _json["hangoutsChatQuery"] = hangoutsChatQuery.toJson();
     }
     if (mailQuery != null) {
-      _json["mailQuery"] = (mailQuery).toJson();
+      _json["mailQuery"] = mailQuery.toJson();
     }
     return _json;
   }
@@ -2007,7 +2186,7 @@ class DriveExportOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (includeAccessInfo != null) {
       _json["includeAccessInfo"] = includeAccessInfo;
     }
@@ -2043,7 +2222,7 @@ class DriveOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (includeSharedDrives != null) {
       _json["includeSharedDrives"] = includeSharedDrives;
     }
@@ -2069,7 +2248,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2115,14 +2294,13 @@ class Export {
 
   Export.fromJson(core.Map _json) {
     if (_json.containsKey("cloudStorageSink")) {
-      cloudStorageSink =
-          new CloudStorageSink.fromJson(_json["cloudStorageSink"]);
+      cloudStorageSink = CloudStorageSink.fromJson(_json["cloudStorageSink"]);
     }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
     if (_json.containsKey("exportOptions")) {
-      exportOptions = new ExportOptions.fromJson(_json["exportOptions"]);
+      exportOptions = ExportOptions.fromJson(_json["exportOptions"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -2134,13 +2312,13 @@ class Export {
       name = _json["name"];
     }
     if (_json.containsKey("query")) {
-      query = new Query.fromJson(_json["query"]);
+      query = Query.fromJson(_json["query"]);
     }
     if (_json.containsKey("requester")) {
-      requester = new UserInfo.fromJson(_json["requester"]);
+      requester = UserInfo.fromJson(_json["requester"]);
     }
     if (_json.containsKey("stats")) {
-      stats = new ExportStats.fromJson(_json["stats"]);
+      stats = ExportStats.fromJson(_json["stats"]);
     }
     if (_json.containsKey("status")) {
       status = _json["status"];
@@ -2149,15 +2327,15 @@ class Export {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cloudStorageSink != null) {
-      _json["cloudStorageSink"] = (cloudStorageSink).toJson();
+      _json["cloudStorageSink"] = cloudStorageSink.toJson();
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
     if (exportOptions != null) {
-      _json["exportOptions"] = (exportOptions).toJson();
+      _json["exportOptions"] = exportOptions.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -2169,13 +2347,13 @@ class Export {
       _json["name"] = name;
     }
     if (query != null) {
-      _json["query"] = (query).toJson();
+      _json["query"] = query.toJson();
     }
     if (requester != null) {
-      _json["requester"] = (requester).toJson();
+      _json["requester"] = requester.toJson();
     }
     if (stats != null) {
-      _json["stats"] = (stats).toJson();
+      _json["stats"] = stats.toJson();
     }
     if (status != null) {
       _json["status"] = status;
@@ -2211,17 +2389,17 @@ class ExportOptions {
 
   ExportOptions.fromJson(core.Map _json) {
     if (_json.containsKey("driveOptions")) {
-      driveOptions = new DriveExportOptions.fromJson(_json["driveOptions"]);
+      driveOptions = DriveExportOptions.fromJson(_json["driveOptions"]);
     }
     if (_json.containsKey("groupsOptions")) {
-      groupsOptions = new GroupsExportOptions.fromJson(_json["groupsOptions"]);
+      groupsOptions = GroupsExportOptions.fromJson(_json["groupsOptions"]);
     }
     if (_json.containsKey("hangoutsChatOptions")) {
       hangoutsChatOptions =
-          new HangoutsChatExportOptions.fromJson(_json["hangoutsChatOptions"]);
+          HangoutsChatExportOptions.fromJson(_json["hangoutsChatOptions"]);
     }
     if (_json.containsKey("mailOptions")) {
-      mailOptions = new MailExportOptions.fromJson(_json["mailOptions"]);
+      mailOptions = MailExportOptions.fromJson(_json["mailOptions"]);
     }
     if (_json.containsKey("region")) {
       region = _json["region"];
@@ -2230,18 +2408,18 @@ class ExportOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (driveOptions != null) {
-      _json["driveOptions"] = (driveOptions).toJson();
+      _json["driveOptions"] = driveOptions.toJson();
     }
     if (groupsOptions != null) {
-      _json["groupsOptions"] = (groupsOptions).toJson();
+      _json["groupsOptions"] = groupsOptions.toJson();
     }
     if (hangoutsChatOptions != null) {
-      _json["hangoutsChatOptions"] = (hangoutsChatOptions).toJson();
+      _json["hangoutsChatOptions"] = hangoutsChatOptions.toJson();
     }
     if (mailOptions != null) {
-      _json["mailOptions"] = (mailOptions).toJson();
+      _json["mailOptions"] = mailOptions.toJson();
     }
     if (region != null) {
       _json["region"] = region;
@@ -2277,7 +2455,7 @@ class ExportStats {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exportedArtifactCount != null) {
       _json["exportedArtifactCount"] = exportedArtifactCount;
     }
@@ -2310,7 +2488,7 @@ class GroupsExportOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exportFormat != null) {
       _json["exportFormat"] = exportFormat;
     }
@@ -2337,7 +2515,7 @@ class HangoutsChatExportOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exportFormat != null) {
       _json["exportFormat"] = exportFormat;
     }
@@ -2360,7 +2538,7 @@ class HangoutsChatInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (roomId != null) {
       _json["roomId"] = roomId;
     }
@@ -2383,7 +2561,7 @@ class HangoutsChatOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (includeRooms != null) {
       _json["includeRooms"] = includeRooms;
     }
@@ -2432,7 +2610,7 @@ class HeldAccount {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -2473,7 +2651,7 @@ class HeldDriveQuery {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (includeSharedDriveFiles != null) {
       _json["includeSharedDriveFiles"] = includeSharedDriveFiles;
     }
@@ -2513,7 +2691,7 @@ class HeldGroupsQuery {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -2542,7 +2720,7 @@ class HeldHangoutsChatQuery {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (includeRooms != null) {
       _json["includeRooms"] = includeRooms;
     }
@@ -2579,7 +2757,7 @@ class HeldMailQuery {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -2615,7 +2793,7 @@ class HeldOrgUnit {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (holdTime != null) {
       _json["holdTime"] = holdTime;
     }
@@ -2666,7 +2844,7 @@ class Hold {
   Hold.fromJson(core.Map _json) {
     if (_json.containsKey("accounts")) {
       accounts = (_json["accounts"] as core.List)
-          .map<HeldAccount>((value) => new HeldAccount.fromJson(value))
+          .map<HeldAccount>((value) => HeldAccount.fromJson(value))
           .toList();
     }
     if (_json.containsKey("corpus")) {
@@ -2679,10 +2857,10 @@ class Hold {
       name = _json["name"];
     }
     if (_json.containsKey("orgUnit")) {
-      orgUnit = new HeldOrgUnit.fromJson(_json["orgUnit"]);
+      orgUnit = HeldOrgUnit.fromJson(_json["orgUnit"]);
     }
     if (_json.containsKey("query")) {
-      query = new CorpusQuery.fromJson(_json["query"]);
+      query = CorpusQuery.fromJson(_json["query"]);
     }
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
@@ -2691,9 +2869,9 @@ class Hold {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accounts != null) {
-      _json["accounts"] = accounts.map((value) => (value).toJson()).toList();
+      _json["accounts"] = accounts.map((value) => value.toJson()).toList();
     }
     if (corpus != null) {
       _json["corpus"] = corpus;
@@ -2705,10 +2883,10 @@ class Hold {
       _json["name"] = name;
     }
     if (orgUnit != null) {
-      _json["orgUnit"] = (orgUnit).toJson();
+      _json["orgUnit"] = orgUnit.toJson();
     }
     if (query != null) {
-      _json["query"] = (query).toJson();
+      _json["query"] = query.toJson();
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
@@ -2730,7 +2908,7 @@ class ListExportsResponse {
   ListExportsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("exports")) {
       exports = (_json["exports"] as core.List)
-          .map<Export>((value) => new Export.fromJson(value))
+          .map<Export>((value) => Export.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2740,9 +2918,9 @@ class ListExportsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exports != null) {
-      _json["exports"] = exports.map((value) => (value).toJson()).toList();
+      _json["exports"] = exports.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -2761,16 +2939,16 @@ class ListHeldAccountsResponse {
   ListHeldAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("accounts")) {
       accounts = (_json["accounts"] as core.List)
-          .map<HeldAccount>((value) => new HeldAccount.fromJson(value))
+          .map<HeldAccount>((value) => HeldAccount.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accounts != null) {
-      _json["accounts"] = accounts.map((value) => (value).toJson()).toList();
+      _json["accounts"] = accounts.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2790,7 +2968,7 @@ class ListHoldsResponse {
   ListHoldsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("holds")) {
       holds = (_json["holds"] as core.List)
-          .map<Hold>((value) => new Hold.fromJson(value))
+          .map<Hold>((value) => Hold.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2800,9 +2978,9 @@ class ListHoldsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (holds != null) {
-      _json["holds"] = holds.map((value) => (value).toJson()).toList();
+      _json["holds"] = holds.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -2824,7 +3002,7 @@ class ListMattersResponse {
   ListMattersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("matters")) {
       matters = (_json["matters"] as core.List)
-          .map<Matter>((value) => new Matter.fromJson(value))
+          .map<Matter>((value) => Matter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2834,9 +3012,9 @@ class ListMattersResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (matters != null) {
-      _json["matters"] = matters.map((value) => (value).toJson()).toList();
+      _json["matters"] = matters.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -2862,20 +3040,20 @@ class ListSavedQueriesResponse {
     }
     if (_json.containsKey("savedQueries")) {
       savedQueries = (_json["savedQueries"] as core.List)
-          .map<SavedQuery>((value) => new SavedQuery.fromJson(value))
+          .map<SavedQuery>((value) => SavedQuery.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (savedQueries != null) {
       _json["savedQueries"] =
-          savedQueries.map((value) => (value).toJson()).toList();
+          savedQueries.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2906,7 +3084,7 @@ class MailExportOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exportFormat != null) {
       _json["exportFormat"] = exportFormat;
     }
@@ -2932,7 +3110,7 @@ class MailOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (excludeDrafts != null) {
       _json["excludeDrafts"] = excludeDrafts;
     }
@@ -2975,8 +3153,7 @@ class Matter {
     }
     if (_json.containsKey("matterPermissions")) {
       matterPermissions = (_json["matterPermissions"] as core.List)
-          .map<MatterPermission>(
-              (value) => new MatterPermission.fromJson(value))
+          .map<MatterPermission>((value) => MatterPermission.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -2989,7 +3166,7 @@ class Matter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -2998,7 +3175,7 @@ class Matter {
     }
     if (matterPermissions != null) {
       _json["matterPermissions"] =
-          matterPermissions.map((value) => (value).toJson()).toList();
+          matterPermissions.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -3037,7 +3214,7 @@ class MatterPermission {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -3063,7 +3240,7 @@ class OrgUnitInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (orgUnitId != null) {
       _json["orgUnitId"] = orgUnitId;
     }
@@ -3175,7 +3352,7 @@ class Query {
 
   Query.fromJson(core.Map _json) {
     if (_json.containsKey("accountInfo")) {
-      accountInfo = new AccountInfo.fromJson(_json["accountInfo"]);
+      accountInfo = AccountInfo.fromJson(_json["accountInfo"]);
     }
     if (_json.containsKey("corpus")) {
       corpus = _json["corpus"];
@@ -3184,39 +3361,38 @@ class Query {
       dataScope = _json["dataScope"];
     }
     if (_json.containsKey("driveOptions")) {
-      driveOptions = new DriveOptions.fromJson(_json["driveOptions"]);
+      driveOptions = DriveOptions.fromJson(_json["driveOptions"]);
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }
     if (_json.containsKey("hangoutsChatInfo")) {
-      hangoutsChatInfo =
-          new HangoutsChatInfo.fromJson(_json["hangoutsChatInfo"]);
+      hangoutsChatInfo = HangoutsChatInfo.fromJson(_json["hangoutsChatInfo"]);
     }
     if (_json.containsKey("hangoutsChatOptions")) {
       hangoutsChatOptions =
-          new HangoutsChatOptions.fromJson(_json["hangoutsChatOptions"]);
+          HangoutsChatOptions.fromJson(_json["hangoutsChatOptions"]);
     }
     if (_json.containsKey("mailOptions")) {
-      mailOptions = new MailOptions.fromJson(_json["mailOptions"]);
+      mailOptions = MailOptions.fromJson(_json["mailOptions"]);
     }
     if (_json.containsKey("method")) {
       method = _json["method"];
     }
     if (_json.containsKey("orgUnitInfo")) {
-      orgUnitInfo = new OrgUnitInfo.fromJson(_json["orgUnitInfo"]);
+      orgUnitInfo = OrgUnitInfo.fromJson(_json["orgUnitInfo"]);
     }
     if (_json.containsKey("searchMethod")) {
       searchMethod = _json["searchMethod"];
     }
     if (_json.containsKey("sharedDriveInfo")) {
-      sharedDriveInfo = new SharedDriveInfo.fromJson(_json["sharedDriveInfo"]);
+      sharedDriveInfo = SharedDriveInfo.fromJson(_json["sharedDriveInfo"]);
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
     }
     if (_json.containsKey("teamDriveInfo")) {
-      teamDriveInfo = new TeamDriveInfo.fromJson(_json["teamDriveInfo"]);
+      teamDriveInfo = TeamDriveInfo.fromJson(_json["teamDriveInfo"]);
     }
     if (_json.containsKey("terms")) {
       terms = _json["terms"];
@@ -3228,9 +3404,9 @@ class Query {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountInfo != null) {
-      _json["accountInfo"] = (accountInfo).toJson();
+      _json["accountInfo"] = accountInfo.toJson();
     }
     if (corpus != null) {
       _json["corpus"] = corpus;
@@ -3239,37 +3415,37 @@ class Query {
       _json["dataScope"] = dataScope;
     }
     if (driveOptions != null) {
-      _json["driveOptions"] = (driveOptions).toJson();
+      _json["driveOptions"] = driveOptions.toJson();
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
     if (hangoutsChatInfo != null) {
-      _json["hangoutsChatInfo"] = (hangoutsChatInfo).toJson();
+      _json["hangoutsChatInfo"] = hangoutsChatInfo.toJson();
     }
     if (hangoutsChatOptions != null) {
-      _json["hangoutsChatOptions"] = (hangoutsChatOptions).toJson();
+      _json["hangoutsChatOptions"] = hangoutsChatOptions.toJson();
     }
     if (mailOptions != null) {
-      _json["mailOptions"] = (mailOptions).toJson();
+      _json["mailOptions"] = mailOptions.toJson();
     }
     if (method != null) {
       _json["method"] = method;
     }
     if (orgUnitInfo != null) {
-      _json["orgUnitInfo"] = (orgUnitInfo).toJson();
+      _json["orgUnitInfo"] = orgUnitInfo.toJson();
     }
     if (searchMethod != null) {
       _json["searchMethod"] = searchMethod;
     }
     if (sharedDriveInfo != null) {
-      _json["sharedDriveInfo"] = (sharedDriveInfo).toJson();
+      _json["sharedDriveInfo"] = sharedDriveInfo.toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
     }
     if (teamDriveInfo != null) {
-      _json["teamDriveInfo"] = (teamDriveInfo).toJson();
+      _json["teamDriveInfo"] = teamDriveInfo.toJson();
     }
     if (terms != null) {
       _json["terms"] = terms;
@@ -3296,7 +3472,7 @@ class RemoveHeldAccountsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountIds != null) {
       _json["accountIds"] = accountIds;
     }
@@ -3315,16 +3491,16 @@ class RemoveHeldAccountsResponse {
   RemoveHeldAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("statuses")) {
       statuses = (_json["statuses"] as core.List)
-          .map<Status>((value) => new Status.fromJson(value))
+          .map<Status>((value) => Status.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (statuses != null) {
-      _json["statuses"] = statuses.map((value) => (value).toJson()).toList();
+      _json["statuses"] = statuses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3345,7 +3521,7 @@ class RemoveMatterPermissionsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -3361,7 +3537,7 @@ class ReopenMatterRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3375,15 +3551,15 @@ class ReopenMatterResponse {
 
   ReopenMatterResponse.fromJson(core.Map _json) {
     if (_json.containsKey("matter")) {
-      matter = new Matter.fromJson(_json["matter"]);
+      matter = Matter.fromJson(_json["matter"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (matter != null) {
-      _json["matter"] = (matter).toJson();
+      _json["matter"] = matter.toJson();
     }
     return _json;
   }
@@ -3422,7 +3598,7 @@ class SavedQuery {
       matterId = _json["matterId"];
     }
     if (_json.containsKey("query")) {
-      query = new Query.fromJson(_json["query"]);
+      query = Query.fromJson(_json["query"]);
     }
     if (_json.containsKey("savedQueryId")) {
       savedQueryId = _json["savedQueryId"];
@@ -3431,7 +3607,7 @@ class SavedQuery {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -3442,7 +3618,7 @@ class SavedQuery {
       _json["matterId"] = matterId;
     }
     if (query != null) {
-      _json["query"] = (query).toJson();
+      _json["query"] = query.toJson();
     }
     if (savedQueryId != null) {
       _json["savedQueryId"] = savedQueryId;
@@ -3467,7 +3643,7 @@ class SharedDriveInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sharedDriveIds != null) {
       _json["sharedDriveIds"] = sharedDriveIds;
     }
@@ -3516,7 +3692,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -3545,7 +3721,7 @@ class TeamDriveInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (teamDriveIds != null) {
       _json["teamDriveIds"] = teamDriveIds;
     }
@@ -3561,7 +3737,7 @@ class UndeleteMatterRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3587,7 +3763,7 @@ class UserInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }

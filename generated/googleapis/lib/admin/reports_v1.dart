@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.admin.reports_v1;
 
@@ -30,20 +48,20 @@ class AdminApi {
 
   final commons.ApiRequester _requester;
 
-  ActivitiesResourceApi get activities => new ActivitiesResourceApi(_requester);
-  ChannelsResourceApi get channels => new ChannelsResourceApi(_requester);
+  ActivitiesResourceApi get activities => ActivitiesResourceApi(_requester);
+  ChannelsResourceApi get channels => ChannelsResourceApi(_requester);
   CustomerUsageReportsResourceApi get customerUsageReports =>
-      new CustomerUsageReportsResourceApi(_requester);
+      CustomerUsageReportsResourceApi(_requester);
   EntityUsageReportsResourceApi get entityUsageReports =>
-      new EntityUsageReportsResourceApi(_requester);
+      EntityUsageReportsResourceApi(_requester);
   UserUsageReportResourceApi get userUsageReport =>
-      new UserUsageReportResourceApi(_requester);
+      UserUsageReportResourceApi(_requester);
 
   AdminApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ActivitiesResourceApi {
@@ -221,29 +239,31 @@ class ActivitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Activities> list(
-      core.String userKey, core.String applicationName,
-      {core.String actorIpAddress,
-      core.String filters,
-      core.String startTime,
-      core.String orgUnitID,
-      core.String endTime,
-      core.String pageToken,
-      core.int maxResults,
-      core.String customerId,
-      core.String eventName,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String userKey,
+    core.String applicationName, {
+    core.String actorIpAddress,
+    core.String filters,
+    core.String startTime,
+    core.String orgUnitID,
+    core.String endTime,
+    core.String pageToken,
+    core.int maxResults,
+    core.String customerId,
+    core.String eventName,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userKey == null) {
-      throw new core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError("Parameter userKey is required.");
     }
     if (applicationName == null) {
-      throw new core.ArgumentError("Parameter applicationName is required.");
+      throw core.ArgumentError("Parameter applicationName is required.");
     }
     if (actorIpAddress != null) {
       _queryParams["actorIpAddress"] = [actorIpAddress];
@@ -281,13 +301,16 @@ class ActivitiesResourceApi {
         '/applications/' +
         commons.Escaper.ecapeVariable('$applicationName');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Activities.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Activities.fromJson(data));
   }
 
   /// Start receiving notifications for account activities. For more
@@ -459,32 +482,35 @@ class ActivitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Channel> watch(
-      Channel request, core.String userKey, core.String applicationName,
-      {core.String eventName,
-      core.String customerId,
-      core.String orgUnitID,
-      core.String endTime,
-      core.String filters,
-      core.int maxResults,
-      core.String pageToken,
-      core.String actorIpAddress,
-      core.String startTime,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Channel request,
+    core.String userKey,
+    core.String applicationName, {
+    core.String eventName,
+    core.String customerId,
+    core.String orgUnitID,
+    core.String endTime,
+    core.String filters,
+    core.int maxResults,
+    core.String pageToken,
+    core.String actorIpAddress,
+    core.String startTime,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userKey == null) {
-      throw new core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError("Parameter userKey is required.");
     }
     if (applicationName == null) {
-      throw new core.ArgumentError("Parameter applicationName is required.");
+      throw core.ArgumentError("Parameter applicationName is required.");
     }
     if (eventName != null) {
       _queryParams["eventName"] = [eventName];
@@ -523,13 +549,16 @@ class ActivitiesResourceApi {
         commons.Escaper.ecapeVariable('$applicationName') +
         '/watch';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Channel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Channel.fromJson(data));
   }
 }
 
@@ -552,16 +581,19 @@ class ChannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future stop(Channel request, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future stop(
+    Channel request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -571,12 +603,15 @@ class ChannelsResourceApi {
 
     _url = 'admin/reports_v1/channels/stop';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 }
@@ -635,20 +670,22 @@ class CustomerUsageReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UsageReports> get(core.String date,
-      {core.String customerId,
-      core.String parameters,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UsageReports> get(
+    core.String date, {
+    core.String customerId,
+    core.String parameters,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (date == null) {
-      throw new core.ArgumentError("Parameter date is required.");
+      throw core.ArgumentError("Parameter date is required.");
     }
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
@@ -666,13 +703,16 @@ class CustomerUsageReportsResourceApi {
     _url = 'admin/reports/v1/usage/dates/' +
         commons.Escaper.ecapeVariable('$date');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UsageReports.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UsageReports.fromJson(data));
   }
 }
 
@@ -767,28 +807,31 @@ class EntityUsageReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UsageReports> get(
-      core.String entityType, core.String entityKey, core.String date,
-      {core.String filters,
-      core.int maxResults,
-      core.String parameters,
-      core.String pageToken,
-      core.String customerId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String entityType,
+    core.String entityKey,
+    core.String date, {
+    core.String filters,
+    core.int maxResults,
+    core.String parameters,
+    core.String pageToken,
+    core.String customerId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (entityType == null) {
-      throw new core.ArgumentError("Parameter entityType is required.");
+      throw core.ArgumentError("Parameter entityType is required.");
     }
     if (entityKey == null) {
-      throw new core.ArgumentError("Parameter entityKey is required.");
+      throw core.ArgumentError("Parameter entityKey is required.");
     }
     if (date == null) {
-      throw new core.ArgumentError("Parameter date is required.");
+      throw core.ArgumentError("Parameter date is required.");
     }
     if (filters != null) {
       _queryParams["filters"] = [filters];
@@ -816,13 +859,16 @@ class EntityUsageReportsResourceApi {
         '/dates/' +
         commons.Escaper.ecapeVariable('$date');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UsageReports.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UsageReports.fromJson(data));
   }
 }
 
@@ -914,26 +960,29 @@ class UserUsageReportResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UsageReports> get(core.String userKey, core.String date,
-      {core.int maxResults,
-      core.String customerId,
-      core.String orgUnitID,
-      core.String parameters,
-      core.String pageToken,
-      core.String filters,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UsageReports> get(
+    core.String userKey,
+    core.String date, {
+    core.int maxResults,
+    core.String customerId,
+    core.String orgUnitID,
+    core.String parameters,
+    core.String pageToken,
+    core.String filters,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userKey == null) {
-      throw new core.ArgumentError("Parameter userKey is required.");
+      throw core.ArgumentError("Parameter userKey is required.");
     }
     if (date == null) {
-      throw new core.ArgumentError("Parameter date is required.");
+      throw core.ArgumentError("Parameter date is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -962,13 +1011,16 @@ class UserUsageReportResourceApi {
         '/dates/' +
         commons.Escaper.ecapeVariable('$date');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UsageReports.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UsageReports.fromJson(data));
   }
 }
 
@@ -996,7 +1048,7 @@ class Activities {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Activity>((value) => new Activity.fromJson(value))
+          .map<Activity>((value) => Activity.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1009,12 +1061,12 @@ class Activities {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1062,7 +1114,7 @@ class ActivityActor {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (callerType != null) {
       _json["callerType"] = callerType;
     }
@@ -1092,16 +1144,16 @@ class ActivityEventsParametersMessageValue {
   ActivityEventsParametersMessageValue.fromJson(core.Map _json) {
     if (_json.containsKey("parameter")) {
       parameter = (_json["parameter"] as core.List)
-          .map<NestedParameter>((value) => new NestedParameter.fromJson(value))
+          .map<NestedParameter>((value) => NestedParameter.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
+      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1116,16 +1168,16 @@ class ActivityEventsParametersMultiMessageValue {
   ActivityEventsParametersMultiMessageValue.fromJson(core.Map _json) {
     if (_json.containsKey("parameter")) {
       parameter = (_json["parameter"] as core.List)
-          .map<NestedParameter>((value) => new NestedParameter.fromJson(value))
+          .map<NestedParameter>((value) => NestedParameter.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
+      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1169,8 +1221,8 @@ class ActivityEventsParameters {
       intValue = _json["intValue"];
     }
     if (_json.containsKey("messageValue")) {
-      messageValue = new ActivityEventsParametersMessageValue.fromJson(
-          _json["messageValue"]);
+      messageValue =
+          ActivityEventsParametersMessageValue.fromJson(_json["messageValue"]);
     }
     if (_json.containsKey("multiIntValue")) {
       multiIntValue = (_json["multiIntValue"] as core.List).cast<core.String>();
@@ -1178,7 +1230,7 @@ class ActivityEventsParameters {
     if (_json.containsKey("multiMessageValue")) {
       multiMessageValue = (_json["multiMessageValue"] as core.List)
           .map<ActivityEventsParametersMultiMessageValue>((value) =>
-              new ActivityEventsParametersMultiMessageValue.fromJson(value))
+              ActivityEventsParametersMultiMessageValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("multiValue")) {
@@ -1194,7 +1246,7 @@ class ActivityEventsParameters {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boolValue != null) {
       _json["boolValue"] = boolValue;
     }
@@ -1202,14 +1254,14 @@ class ActivityEventsParameters {
       _json["intValue"] = intValue;
     }
     if (messageValue != null) {
-      _json["messageValue"] = (messageValue).toJson();
+      _json["messageValue"] = messageValue.toJson();
     }
     if (multiIntValue != null) {
       _json["multiIntValue"] = multiIntValue;
     }
     if (multiMessageValue != null) {
       _json["multiMessageValue"] =
-          multiMessageValue.map((value) => (value).toJson()).toList();
+          multiMessageValue.map((value) => value.toJson()).toList();
     }
     if (multiValue != null) {
       _json["multiValue"] = multiValue;
@@ -1257,7 +1309,7 @@ class ActivityEvents {
     if (_json.containsKey("parameters")) {
       parameters = (_json["parameters"] as core.List)
           .map<ActivityEventsParameters>(
-              (value) => new ActivityEventsParameters.fromJson(value))
+              (value) => ActivityEventsParameters.fromJson(value))
           .toList();
     }
     if (_json.containsKey("type")) {
@@ -1267,13 +1319,12 @@ class ActivityEvents {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
     if (parameters != null) {
-      _json["parameters"] =
-          parameters.map((value) => (value).toJson()).toList();
+      _json["parameters"] = parameters.map((value) => value.toJson()).toList();
     }
     if (type != null) {
       _json["type"] = type;
@@ -1316,7 +1367,7 @@ class ActivityId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (applicationName != null) {
       _json["applicationName"] = applicationName;
     }
@@ -1366,18 +1417,18 @@ class Activity {
 
   Activity.fromJson(core.Map _json) {
     if (_json.containsKey("actor")) {
-      actor = new ActivityActor.fromJson(_json["actor"]);
+      actor = ActivityActor.fromJson(_json["actor"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
     if (_json.containsKey("events")) {
       events = (_json["events"] as core.List)
-          .map<ActivityEvents>((value) => new ActivityEvents.fromJson(value))
+          .map<ActivityEvents>((value) => ActivityEvents.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
-      id = new ActivityId.fromJson(_json["id"]);
+      id = ActivityId.fromJson(_json["id"]);
     }
     if (_json.containsKey("ipAddress")) {
       ipAddress = _json["ipAddress"];
@@ -1392,18 +1443,18 @@ class Activity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (actor != null) {
-      _json["actor"] = (actor).toJson();
+      _json["actor"] = actor.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (events != null) {
-      _json["events"] = events.map((value) => (value).toJson()).toList();
+      _json["events"] = events.map((value) => value.toJson()).toList();
     }
     if (id != null) {
-      _json["id"] = (id).toJson();
+      _json["id"] = id.toJson();
     }
     if (ipAddress != null) {
       _json["ipAddress"] = ipAddress;
@@ -1491,7 +1542,7 @@ class Channel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (address != null) {
       _json["address"] = address;
     }
@@ -1577,7 +1628,7 @@ class NestedParameter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boolValue != null) {
       _json["boolValue"] = boolValue;
     }
@@ -1644,7 +1695,7 @@ class UsageReportEntity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customerId != null) {
       _json["customerId"] = customerId;
     }
@@ -1715,7 +1766,7 @@ class UsageReportParameters {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boolValue != null) {
       _json["boolValue"] = boolValue;
     }
@@ -1765,7 +1816,7 @@ class UsageReport {
       date = _json["date"];
     }
     if (_json.containsKey("entity")) {
-      entity = new UsageReportEntity.fromJson(_json["entity"]);
+      entity = UsageReportEntity.fromJson(_json["entity"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -1776,19 +1827,19 @@ class UsageReport {
     if (_json.containsKey("parameters")) {
       parameters = (_json["parameters"] as core.List)
           .map<UsageReportParameters>(
-              (value) => new UsageReportParameters.fromJson(value))
+              (value) => UsageReportParameters.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (date != null) {
       _json["date"] = date;
     }
     if (entity != null) {
-      _json["entity"] = (entity).toJson();
+      _json["entity"] = entity.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -1797,8 +1848,7 @@ class UsageReport {
       _json["kind"] = kind;
     }
     if (parameters != null) {
-      _json["parameters"] =
-          parameters.map((value) => (value).toJson()).toList();
+      _json["parameters"] = parameters.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1826,7 +1876,7 @@ class UsageReportsWarningsData {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
@@ -1860,7 +1910,7 @@ class UsageReportsWarnings {
     if (_json.containsKey("data")) {
       data = (_json["data"] as core.List)
           .map<UsageReportsWarningsData>(
-              (value) => new UsageReportsWarningsData.fromJson(value))
+              (value) => UsageReportsWarningsData.fromJson(value))
           .toList();
     }
     if (_json.containsKey("message")) {
@@ -1870,12 +1920,12 @@ class UsageReportsWarnings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
     if (data != null) {
-      _json["data"] = data.map((value) => (value).toJson()).toList();
+      _json["data"] = data.map((value) => value.toJson()).toList();
     }
     if (message != null) {
       _json["message"] = message;
@@ -1918,20 +1968,20 @@ class UsageReports {
     }
     if (_json.containsKey("usageReports")) {
       usageReports = (_json["usageReports"] as core.List)
-          .map<UsageReport>((value) => new UsageReport.fromJson(value))
+          .map<UsageReport>((value) => UsageReport.fromJson(value))
           .toList();
     }
     if (_json.containsKey("warnings")) {
       warnings = (_json["warnings"] as core.List)
           .map<UsageReportsWarnings>(
-              (value) => new UsageReportsWarnings.fromJson(value))
+              (value) => UsageReportsWarnings.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -1943,10 +1993,10 @@ class UsageReports {
     }
     if (usageReports != null) {
       _json["usageReports"] =
-          usageReports.map((value) => (value).toJson()).toList();
+          usageReports.map((value) => value.toJson()).toList();
     }
     if (warnings != null) {
-      _json["warnings"] = warnings.map((value) => (value).toJson()).toList();
+      _json["warnings"] = warnings.map((value) => value.toJson()).toList();
     }
     return _json;
   }

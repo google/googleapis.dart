@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.poly.v1;
 
@@ -22,14 +40,14 @@ const core.String USER_AGENT = 'dart-api-client poly/v1';
 class PolyApi {
   final commons.ApiRequester _requester;
 
-  AssetsResourceApi get assets => new AssetsResourceApi(_requester);
-  UsersResourceApi get users => new UsersResourceApi(_requester);
+  AssetsResourceApi get assets => AssetsResourceApi(_requester);
+  UsersResourceApi get users => UsersResourceApi(_requester);
 
   PolyApi(http.Client client,
       {core.String rootUrl = "https://poly.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AssetsResourceApi {
@@ -57,16 +75,19 @@ class AssetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Asset> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Asset> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -74,13 +95,16 @@ class AssetsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Asset.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Asset.fromJson(data));
   }
 
   /// Lists all public, remixable assets. These are assets with an access level
@@ -141,22 +165,23 @@ class AssetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListAssetsResponse> list(
-      {core.String maxComplexity,
-      core.int pageSize,
-      core.String keywords,
-      core.String pageToken,
-      core.bool curated,
-      core.String orderBy,
-      core.String category,
-      core.String format,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListAssetsResponse> list({
+    core.String maxComplexity,
+    core.int pageSize,
+    core.String keywords,
+    core.String pageToken,
+    core.bool curated,
+    core.String orderBy,
+    core.String category,
+    core.String format,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (maxComplexity != null) {
       _queryParams["maxComplexity"] = [maxComplexity];
@@ -188,22 +213,25 @@ class AssetsResourceApi {
 
     _url = 'v1/assets';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListAssetsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListAssetsResponse.fromJson(data));
   }
 }
 
 class UsersResourceApi {
   final commons.ApiRequester _requester;
 
-  UsersAssetsResourceApi get assets => new UsersAssetsResourceApi(_requester);
+  UsersAssetsResourceApi get assets => UsersAssetsResourceApi(_requester);
   UsersLikedassetsResourceApi get likedassets =>
-      new UsersLikedassetsResourceApi(_requester);
+      UsersLikedassetsResourceApi(_requester);
 
   UsersResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -265,22 +293,24 @@ class UsersAssetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListUserAssetsResponse> list(core.String name,
-      {core.String orderBy,
-      core.String format,
-      core.String visibility,
-      core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListUserAssetsResponse> list(
+    core.String name, {
+    core.String orderBy,
+    core.String format,
+    core.String visibility,
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -303,13 +333,16 @@ class UsersAssetsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/assets';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListUserAssetsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListUserAssetsResponse.fromJson(data));
   }
 }
 
@@ -359,21 +392,23 @@ class UsersLikedassetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListLikedAssetsResponse> list(core.String name,
-      {core.String pageToken,
-      core.String format,
-      core.String orderBy,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListLikedAssetsResponse> list(
+    core.String name, {
+    core.String pageToken,
+    core.String format,
+    core.String orderBy,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -394,13 +429,16 @@ class UsersLikedassetsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/likedassets';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListLikedAssetsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListLikedAssetsResponse.fromJson(data));
   }
 }
 
@@ -502,7 +540,7 @@ class Asset {
     }
     if (_json.containsKey("formats")) {
       formats = (_json["formats"] as core.List)
-          .map<Format>((value) => new Format.fromJson(value))
+          .map<Format>((value) => Format.fromJson(value))
           .toList();
     }
     if (_json.containsKey("isCurated")) {
@@ -519,13 +557,13 @@ class Asset {
     }
     if (_json.containsKey("presentationParams")) {
       presentationParams =
-          new PresentationParams.fromJson(_json["presentationParams"]);
+          PresentationParams.fromJson(_json["presentationParams"]);
     }
     if (_json.containsKey("remixInfo")) {
-      remixInfo = new RemixInfo.fromJson(_json["remixInfo"]);
+      remixInfo = RemixInfo.fromJson(_json["remixInfo"]);
     }
     if (_json.containsKey("thumbnail")) {
-      thumbnail = new File.fromJson(_json["thumbnail"]);
+      thumbnail = File.fromJson(_json["thumbnail"]);
     }
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
@@ -537,7 +575,7 @@ class Asset {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (authorName != null) {
       _json["authorName"] = authorName;
     }
@@ -551,7 +589,7 @@ class Asset {
       _json["displayName"] = displayName;
     }
     if (formats != null) {
-      _json["formats"] = formats.map((value) => (value).toJson()).toList();
+      _json["formats"] = formats.map((value) => value.toJson()).toList();
     }
     if (isCurated != null) {
       _json["isCurated"] = isCurated;
@@ -566,13 +604,13 @@ class Asset {
       _json["name"] = name;
     }
     if (presentationParams != null) {
-      _json["presentationParams"] = (presentationParams).toJson();
+      _json["presentationParams"] = presentationParams.toJson();
     }
     if (remixInfo != null) {
-      _json["remixInfo"] = (remixInfo).toJson();
+      _json["remixInfo"] = remixInfo.toJson();
     }
     if (thumbnail != null) {
-      _json["thumbnail"] = (thumbnail).toJson();
+      _json["thumbnail"] = thumbnail.toJson();
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
@@ -639,16 +677,16 @@ class AssetImportMessage {
       filePath = _json["filePath"];
     }
     if (_json.containsKey("imageError")) {
-      imageError = new ImageError.fromJson(_json["imageError"]);
+      imageError = ImageError.fromJson(_json["imageError"]);
     }
     if (_json.containsKey("objParseError")) {
-      objParseError = new ObjParseError.fromJson(_json["objParseError"]);
+      objParseError = ObjParseError.fromJson(_json["objParseError"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -656,10 +694,10 @@ class AssetImportMessage {
       _json["filePath"] = filePath;
     }
     if (imageError != null) {
-      _json["imageError"] = (imageError).toJson();
+      _json["imageError"] = imageError.toJson();
     }
     if (objParseError != null) {
-      _json["objParseError"] = (objParseError).toJson();
+      _json["objParseError"] = objParseError.toJson();
     }
     return _json;
   }
@@ -698,7 +736,7 @@ class File {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentType != null) {
       _json["contentType"] = contentType;
     }
@@ -743,36 +781,35 @@ class Format {
 
   Format.fromJson(core.Map _json) {
     if (_json.containsKey("formatComplexity")) {
-      formatComplexity =
-          new FormatComplexity.fromJson(_json["formatComplexity"]);
+      formatComplexity = FormatComplexity.fromJson(_json["formatComplexity"]);
     }
     if (_json.containsKey("formatType")) {
       formatType = _json["formatType"];
     }
     if (_json.containsKey("resources")) {
       resources = (_json["resources"] as core.List)
-          .map<File>((value) => new File.fromJson(value))
+          .map<File>((value) => File.fromJson(value))
           .toList();
     }
     if (_json.containsKey("root")) {
-      root = new File.fromJson(_json["root"]);
+      root = File.fromJson(_json["root"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (formatComplexity != null) {
-      _json["formatComplexity"] = (formatComplexity).toJson();
+      _json["formatComplexity"] = formatComplexity.toJson();
     }
     if (formatType != null) {
       _json["formatType"] = formatType;
     }
     if (resources != null) {
-      _json["resources"] = resources.map((value) => (value).toJson()).toList();
+      _json["resources"] = resources.map((value) => value.toJson()).toList();
     }
     if (root != null) {
-      _json["root"] = (root).toJson();
+      _json["root"] = root.toJson();
     }
     return _json;
   }
@@ -803,7 +840,7 @@ class FormatComplexity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (lodHint != null) {
       _json["lodHint"] = lodHint;
     }
@@ -841,7 +878,7 @@ class ImageError {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -871,7 +908,7 @@ class ListAssetsResponse {
   ListAssetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("assets")) {
       assets = (_json["assets"] as core.List)
-          .map<Asset>((value) => new Asset.fromJson(value))
+          .map<Asset>((value) => Asset.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -884,9 +921,9 @@ class ListAssetsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assets != null) {
-      _json["assets"] = assets.map((value) => (value).toJson()).toList();
+      _json["assets"] = assets.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -917,7 +954,7 @@ class ListLikedAssetsResponse {
   ListLikedAssetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("assets")) {
       assets = (_json["assets"] as core.List)
-          .map<Asset>((value) => new Asset.fromJson(value))
+          .map<Asset>((value) => Asset.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -930,9 +967,9 @@ class ListLikedAssetsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assets != null) {
-      _json["assets"] = assets.map((value) => (value).toJson()).toList();
+      _json["assets"] = assets.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -969,14 +1006,14 @@ class ListUserAssetsResponse {
     }
     if (_json.containsKey("userAssets")) {
       userAssets = (_json["userAssets"] as core.List)
-          .map<UserAsset>((value) => new UserAsset.fromJson(value))
+          .map<UserAsset>((value) => UserAsset.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -984,8 +1021,7 @@ class ListUserAssetsResponse {
       _json["totalSize"] = totalSize;
     }
     if (userAssets != null) {
-      _json["userAssets"] =
-          userAssets.map((value) => (value).toJson()).toList();
+      _json["userAssets"] = userAssets.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1080,7 +1116,7 @@ class ObjParseError {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -1151,13 +1187,13 @@ class PresentationParams {
       colorSpace = _json["colorSpace"];
     }
     if (_json.containsKey("orientingRotation")) {
-      orientingRotation = new Quaternion.fromJson(_json["orientingRotation"]);
+      orientingRotation = Quaternion.fromJson(_json["orientingRotation"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (backgroundColor != null) {
       _json["backgroundColor"] = backgroundColor;
     }
@@ -1165,7 +1201,7 @@ class PresentationParams {
       _json["colorSpace"] = colorSpace;
     }
     if (orientingRotation != null) {
-      _json["orientingRotation"] = (orientingRotation).toJson();
+      _json["orientingRotation"] = orientingRotation.toJson();
     }
     return _json;
   }
@@ -1206,7 +1242,7 @@ class Quaternion {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (w != null) {
       _json["w"] = w;
     }
@@ -1240,7 +1276,7 @@ class RemixInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sourceAsset != null) {
       _json["sourceAsset"] = sourceAsset;
     }
@@ -1279,7 +1315,7 @@ class StartAssetImportResponse {
     if (_json.containsKey("assetImportMessages")) {
       assetImportMessages = (_json["assetImportMessages"] as core.List)
           .map<AssetImportMessage>(
-              (value) => new AssetImportMessage.fromJson(value))
+              (value) => AssetImportMessage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("publishUrl")) {
@@ -1289,7 +1325,7 @@ class StartAssetImportResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assetId != null) {
       _json["assetId"] = assetId;
     }
@@ -1298,7 +1334,7 @@ class StartAssetImportResponse {
     }
     if (assetImportMessages != null) {
       _json["assetImportMessages"] =
-          assetImportMessages.map((value) => (value).toJson()).toList();
+          assetImportMessages.map((value) => value.toJson()).toList();
     }
     if (publishUrl != null) {
       _json["publishUrl"] = publishUrl;
@@ -1316,15 +1352,15 @@ class UserAsset {
 
   UserAsset.fromJson(core.Map _json) {
     if (_json.containsKey("asset")) {
-      asset = new Asset.fromJson(_json["asset"]);
+      asset = Asset.fromJson(_json["asset"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (asset != null) {
-      _json["asset"] = (asset).toJson();
+      _json["asset"] = asset.toJson();
     }
     return _json;
   }

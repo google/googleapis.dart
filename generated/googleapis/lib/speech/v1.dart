@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.speech.v1;
 
@@ -24,15 +42,15 @@ class SpeechApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi get operations => new OperationsResourceApi(_requester);
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
-  SpeechResourceApi get speech => new SpeechResourceApi(_requester);
+  OperationsResourceApi get operations => OperationsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  SpeechResourceApi get speech => SpeechResourceApi(_requester);
 
   SpeechApi(http.Client client,
       {core.String rootUrl = "https://speech.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class OperationsResourceApi {
@@ -59,16 +77,19 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -76,13 +97,16 @@ class OperationsResourceApi {
 
     _url = 'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -115,18 +139,19 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(
-      {core.String name,
-      core.String filter,
-      core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListOperationsResponse> list({
+    core.String name,
+    core.String filter,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name != null) {
       _queryParams["name"] = [name];
@@ -146,13 +171,16 @@ class OperationsResourceApi {
 
     _url = 'v1/operations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListOperationsResponse.fromJson(data));
   }
 }
 
@@ -160,7 +188,7 @@ class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsResourceApi get locations =>
-      new ProjectsLocationsResourceApi(_requester);
+      ProjectsLocationsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -169,7 +197,7 @@ class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResourceApi get operations =>
-      new ProjectsLocationsOperationsResourceApi(_requester);
+      ProjectsLocationsOperationsResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -201,16 +229,19 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -218,13 +249,16 @@ class ProjectsLocationsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -258,20 +292,22 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.int pageSize,
+    core.String filter,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -289,13 +325,16 @@ class ProjectsLocationsOperationsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListOperationsResponse.fromJson(data));
   }
 }
 
@@ -326,17 +365,18 @@ class SpeechResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> longrunningrecognize(
-      LongRunningRecognizeRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    LongRunningRecognizeRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -344,13 +384,16 @@ class SpeechResourceApi {
 
     _url = 'v1/speech:longrunningrecognize';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Performs synchronous speech recognition: receive results after all audio
@@ -370,17 +413,19 @@ class SpeechResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RecognizeResponse> recognize(RecognizeRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RecognizeResponse> recognize(
+    RecognizeRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -388,13 +433,16 @@ class SpeechResourceApi {
 
     _url = 'v1/speech:recognize';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RecognizeResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RecognizeResponse.fromJson(data));
   }
 }
 
@@ -414,20 +462,19 @@ class ListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = (_json["operations"] as core.List)
-          .map<Operation>((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
+      _json["operations"] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -470,7 +517,7 @@ class LongRunningRecognizeMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (lastUpdateTime != null) {
       _json["lastUpdateTime"] = lastUpdateTime;
     }
@@ -501,21 +548,21 @@ class LongRunningRecognizeRequest {
 
   LongRunningRecognizeRequest.fromJson(core.Map _json) {
     if (_json.containsKey("audio")) {
-      audio = new RecognitionAudio.fromJson(_json["audio"]);
+      audio = RecognitionAudio.fromJson(_json["audio"]);
     }
     if (_json.containsKey("config")) {
-      config = new RecognitionConfig.fromJson(_json["config"]);
+      config = RecognitionConfig.fromJson(_json["config"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audio != null) {
-      _json["audio"] = (audio).toJson();
+      _json["audio"] = audio.toJson();
     }
     if (config != null) {
-      _json["config"] = (config).toJson();
+      _json["config"] = config.toJson();
     }
     return _json;
   }
@@ -537,16 +584,16 @@ class LongRunningRecognizeResponse {
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
           .map<SpeechRecognitionResult>(
-              (value) => new SpeechRecognitionResult.fromJson(value))
+              (value) => SpeechRecognitionResult.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -596,7 +643,7 @@ class Operation {
       done = _json["done"];
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
       metadata =
@@ -613,12 +660,12 @@ class Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -642,9 +689,7 @@ class RecognitionAudio {
   /// with all bytes fields, proto buffers use a pure binary representation,
   /// whereas JSON representations use base64.
   core.String content;
-  core.List<core.int> get contentAsBytes {
-    return convert.base64.decode(content);
-  }
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -673,7 +718,7 @@ class RecognitionAudio {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (content != null) {
       _json["content"] = content;
     }
@@ -826,7 +871,7 @@ class RecognitionConfig {
     }
     if (_json.containsKey("diarizationConfig")) {
       diarizationConfig =
-          new SpeakerDiarizationConfig.fromJson(_json["diarizationConfig"]);
+          SpeakerDiarizationConfig.fromJson(_json["diarizationConfig"]);
     }
     if (_json.containsKey("enableAutomaticPunctuation")) {
       enableAutomaticPunctuation = _json["enableAutomaticPunctuation"];
@@ -848,7 +893,7 @@ class RecognitionConfig {
       maxAlternatives = _json["maxAlternatives"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new RecognitionMetadata.fromJson(_json["metadata"]);
+      metadata = RecognitionMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("model")) {
       model = _json["model"];
@@ -861,7 +906,7 @@ class RecognitionConfig {
     }
     if (_json.containsKey("speechContexts")) {
       speechContexts = (_json["speechContexts"] as core.List)
-          .map<SpeechContext>((value) => new SpeechContext.fromJson(value))
+          .map<SpeechContext>((value) => SpeechContext.fromJson(value))
           .toList();
     }
     if (_json.containsKey("useEnhanced")) {
@@ -871,12 +916,12 @@ class RecognitionConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audioChannelCount != null) {
       _json["audioChannelCount"] = audioChannelCount;
     }
     if (diarizationConfig != null) {
-      _json["diarizationConfig"] = (diarizationConfig).toJson();
+      _json["diarizationConfig"] = diarizationConfig.toJson();
     }
     if (enableAutomaticPunctuation != null) {
       _json["enableAutomaticPunctuation"] = enableAutomaticPunctuation;
@@ -898,7 +943,7 @@ class RecognitionConfig {
       _json["maxAlternatives"] = maxAlternatives;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (model != null) {
       _json["model"] = model;
@@ -911,7 +956,7 @@ class RecognitionConfig {
     }
     if (speechContexts != null) {
       _json["speechContexts"] =
-          speechContexts.map((value) => (value).toJson()).toList();
+          speechContexts.map((value) => value.toJson()).toList();
     }
     if (useEnhanced != null) {
       _json["useEnhanced"] = useEnhanced;
@@ -1024,7 +1069,7 @@ class RecognitionMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audioTopic != null) {
       _json["audioTopic"] = audioTopic;
     }
@@ -1066,21 +1111,21 @@ class RecognizeRequest {
 
   RecognizeRequest.fromJson(core.Map _json) {
     if (_json.containsKey("audio")) {
-      audio = new RecognitionAudio.fromJson(_json["audio"]);
+      audio = RecognitionAudio.fromJson(_json["audio"]);
     }
     if (_json.containsKey("config")) {
-      config = new RecognitionConfig.fromJson(_json["config"]);
+      config = RecognitionConfig.fromJson(_json["config"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audio != null) {
-      _json["audio"] = (audio).toJson();
+      _json["audio"] = audio.toJson();
     }
     if (config != null) {
-      _json["config"] = (config).toJson();
+      _json["config"] = config.toJson();
     }
     return _json;
   }
@@ -1100,16 +1145,16 @@ class RecognizeResponse {
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
           .map<SpeechRecognitionResult>(
-              (value) => new SpeechRecognitionResult.fromJson(value))
+              (value) => SpeechRecognitionResult.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1154,7 +1199,7 @@ class SpeakerDiarizationConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enableSpeakerDiarization != null) {
       _json["enableSpeakerDiarization"] = enableSpeakerDiarization;
     }
@@ -1197,7 +1242,7 @@ class SpeechContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (phrases != null) {
       _json["phrases"] = phrases;
     }
@@ -1234,14 +1279,14 @@ class SpeechRecognitionAlternative {
     }
     if (_json.containsKey("words")) {
       words = (_json["words"] as core.List)
-          .map<WordInfo>((value) => new WordInfo.fromJson(value))
+          .map<WordInfo>((value) => WordInfo.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
@@ -1249,7 +1294,7 @@ class SpeechRecognitionAlternative {
       _json["transcript"] = transcript;
     }
     if (words != null) {
-      _json["words"] = words.map((value) => (value).toJson()).toList();
+      _json["words"] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1274,7 +1319,7 @@ class SpeechRecognitionResult {
     if (_json.containsKey("alternatives")) {
       alternatives = (_json["alternatives"] as core.List)
           .map<SpeechRecognitionAlternative>(
-              (value) => new SpeechRecognitionAlternative.fromJson(value))
+              (value) => SpeechRecognitionAlternative.fromJson(value))
           .toList();
     }
     if (_json.containsKey("channelTag")) {
@@ -1284,10 +1329,10 @@ class SpeechRecognitionResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alternatives != null) {
       _json["alternatives"] =
-          alternatives.map((value) => (value).toJson()).toList();
+          alternatives.map((value) => value.toJson()).toList();
     }
     if (channelTag != null) {
       _json["channelTag"] = channelTag;
@@ -1337,7 +1382,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -1394,7 +1439,7 @@ class WordInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }

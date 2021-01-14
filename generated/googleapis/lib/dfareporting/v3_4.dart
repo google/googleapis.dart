@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.dfareporting.v3_4;
 
@@ -42,112 +60,108 @@ class DfareportingApi {
   final commons.ApiRequester _requester;
 
   AccountActiveAdSummariesResourceApi get accountActiveAdSummaries =>
-      new AccountActiveAdSummariesResourceApi(_requester);
+      AccountActiveAdSummariesResourceApi(_requester);
   AccountPermissionGroupsResourceApi get accountPermissionGroups =>
-      new AccountPermissionGroupsResourceApi(_requester);
+      AccountPermissionGroupsResourceApi(_requester);
   AccountPermissionsResourceApi get accountPermissions =>
-      new AccountPermissionsResourceApi(_requester);
+      AccountPermissionsResourceApi(_requester);
   AccountUserProfilesResourceApi get accountUserProfiles =>
-      new AccountUserProfilesResourceApi(_requester);
-  AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
-  AdsResourceApi get ads => new AdsResourceApi(_requester);
+      AccountUserProfilesResourceApi(_requester);
+  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
+  AdsResourceApi get ads => AdsResourceApi(_requester);
   AdvertiserGroupsResourceApi get advertiserGroups =>
-      new AdvertiserGroupsResourceApi(_requester);
+      AdvertiserGroupsResourceApi(_requester);
   AdvertiserLandingPagesResourceApi get advertiserLandingPages =>
-      new AdvertiserLandingPagesResourceApi(_requester);
-  AdvertisersResourceApi get advertisers =>
-      new AdvertisersResourceApi(_requester);
-  BrowsersResourceApi get browsers => new BrowsersResourceApi(_requester);
+      AdvertiserLandingPagesResourceApi(_requester);
+  AdvertisersResourceApi get advertisers => AdvertisersResourceApi(_requester);
+  BrowsersResourceApi get browsers => BrowsersResourceApi(_requester);
   CampaignCreativeAssociationsResourceApi get campaignCreativeAssociations =>
-      new CampaignCreativeAssociationsResourceApi(_requester);
-  CampaignsResourceApi get campaigns => new CampaignsResourceApi(_requester);
-  ChangeLogsResourceApi get changeLogs => new ChangeLogsResourceApi(_requester);
-  CitiesResourceApi get cities => new CitiesResourceApi(_requester);
+      CampaignCreativeAssociationsResourceApi(_requester);
+  CampaignsResourceApi get campaigns => CampaignsResourceApi(_requester);
+  ChangeLogsResourceApi get changeLogs => ChangeLogsResourceApi(_requester);
+  CitiesResourceApi get cities => CitiesResourceApi(_requester);
   ConnectionTypesResourceApi get connectionTypes =>
-      new ConnectionTypesResourceApi(_requester);
+      ConnectionTypesResourceApi(_requester);
   ContentCategoriesResourceApi get contentCategories =>
-      new ContentCategoriesResourceApi(_requester);
-  ConversionsResourceApi get conversions =>
-      new ConversionsResourceApi(_requester);
-  CountriesResourceApi get countries => new CountriesResourceApi(_requester);
+      ContentCategoriesResourceApi(_requester);
+  ConversionsResourceApi get conversions => ConversionsResourceApi(_requester);
+  CountriesResourceApi get countries => CountriesResourceApi(_requester);
   CreativeAssetsResourceApi get creativeAssets =>
-      new CreativeAssetsResourceApi(_requester);
+      CreativeAssetsResourceApi(_requester);
   CreativeFieldValuesResourceApi get creativeFieldValues =>
-      new CreativeFieldValuesResourceApi(_requester);
+      CreativeFieldValuesResourceApi(_requester);
   CreativeFieldsResourceApi get creativeFields =>
-      new CreativeFieldsResourceApi(_requester);
+      CreativeFieldsResourceApi(_requester);
   CreativeGroupsResourceApi get creativeGroups =>
-      new CreativeGroupsResourceApi(_requester);
-  CreativesResourceApi get creatives => new CreativesResourceApi(_requester);
+      CreativeGroupsResourceApi(_requester);
+  CreativesResourceApi get creatives => CreativesResourceApi(_requester);
   CustomEventsResourceApi get customEvents =>
-      new CustomEventsResourceApi(_requester);
+      CustomEventsResourceApi(_requester);
   DimensionValuesResourceApi get dimensionValues =>
-      new DimensionValuesResourceApi(_requester);
+      DimensionValuesResourceApi(_requester);
   DirectorySitesResourceApi get directorySites =>
-      new DirectorySitesResourceApi(_requester);
+      DirectorySitesResourceApi(_requester);
   DynamicTargetingKeysResourceApi get dynamicTargetingKeys =>
-      new DynamicTargetingKeysResourceApi(_requester);
-  EventTagsResourceApi get eventTags => new EventTagsResourceApi(_requester);
-  FilesResourceApi get files => new FilesResourceApi(_requester);
+      DynamicTargetingKeysResourceApi(_requester);
+  EventTagsResourceApi get eventTags => EventTagsResourceApi(_requester);
+  FilesResourceApi get files => FilesResourceApi(_requester);
   FloodlightActivitiesResourceApi get floodlightActivities =>
-      new FloodlightActivitiesResourceApi(_requester);
+      FloodlightActivitiesResourceApi(_requester);
   FloodlightActivityGroupsResourceApi get floodlightActivityGroups =>
-      new FloodlightActivityGroupsResourceApi(_requester);
+      FloodlightActivityGroupsResourceApi(_requester);
   FloodlightConfigurationsResourceApi get floodlightConfigurations =>
-      new FloodlightConfigurationsResourceApi(_requester);
+      FloodlightConfigurationsResourceApi(_requester);
   InventoryItemsResourceApi get inventoryItems =>
-      new InventoryItemsResourceApi(_requester);
-  LanguagesResourceApi get languages => new LanguagesResourceApi(_requester);
-  MetrosResourceApi get metros => new MetrosResourceApi(_requester);
-  MobileAppsResourceApi get mobileApps => new MobileAppsResourceApi(_requester);
+      InventoryItemsResourceApi(_requester);
+  LanguagesResourceApi get languages => LanguagesResourceApi(_requester);
+  MetrosResourceApi get metros => MetrosResourceApi(_requester);
+  MobileAppsResourceApi get mobileApps => MobileAppsResourceApi(_requester);
   MobileCarriersResourceApi get mobileCarriers =>
-      new MobileCarriersResourceApi(_requester);
+      MobileCarriersResourceApi(_requester);
   OperatingSystemVersionsResourceApi get operatingSystemVersions =>
-      new OperatingSystemVersionsResourceApi(_requester);
+      OperatingSystemVersionsResourceApi(_requester);
   OperatingSystemsResourceApi get operatingSystems =>
-      new OperatingSystemsResourceApi(_requester);
+      OperatingSystemsResourceApi(_requester);
   OrderDocumentsResourceApi get orderDocuments =>
-      new OrderDocumentsResourceApi(_requester);
-  OrdersResourceApi get orders => new OrdersResourceApi(_requester);
+      OrderDocumentsResourceApi(_requester);
+  OrdersResourceApi get orders => OrdersResourceApi(_requester);
   PlacementGroupsResourceApi get placementGroups =>
-      new PlacementGroupsResourceApi(_requester);
+      PlacementGroupsResourceApi(_requester);
   PlacementStrategiesResourceApi get placementStrategies =>
-      new PlacementStrategiesResourceApi(_requester);
-  PlacementsResourceApi get placements => new PlacementsResourceApi(_requester);
+      PlacementStrategiesResourceApi(_requester);
+  PlacementsResourceApi get placements => PlacementsResourceApi(_requester);
   PlatformTypesResourceApi get platformTypes =>
-      new PlatformTypesResourceApi(_requester);
-  PostalCodesResourceApi get postalCodes =>
-      new PostalCodesResourceApi(_requester);
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
-  RegionsResourceApi get regions => new RegionsResourceApi(_requester);
+      PlatformTypesResourceApi(_requester);
+  PostalCodesResourceApi get postalCodes => PostalCodesResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  RegionsResourceApi get regions => RegionsResourceApi(_requester);
   RemarketingListSharesResourceApi get remarketingListShares =>
-      new RemarketingListSharesResourceApi(_requester);
+      RemarketingListSharesResourceApi(_requester);
   RemarketingListsResourceApi get remarketingLists =>
-      new RemarketingListsResourceApi(_requester);
-  ReportsResourceApi get reports => new ReportsResourceApi(_requester);
-  SitesResourceApi get sites => new SitesResourceApi(_requester);
-  SizesResourceApi get sizes => new SizesResourceApi(_requester);
-  SubaccountsResourceApi get subaccounts =>
-      new SubaccountsResourceApi(_requester);
+      RemarketingListsResourceApi(_requester);
+  ReportsResourceApi get reports => ReportsResourceApi(_requester);
+  SitesResourceApi get sites => SitesResourceApi(_requester);
+  SizesResourceApi get sizes => SizesResourceApi(_requester);
+  SubaccountsResourceApi get subaccounts => SubaccountsResourceApi(_requester);
   TargetableRemarketingListsResourceApi get targetableRemarketingLists =>
-      new TargetableRemarketingListsResourceApi(_requester);
+      TargetableRemarketingListsResourceApi(_requester);
   TargetingTemplatesResourceApi get targetingTemplates =>
-      new TargetingTemplatesResourceApi(_requester);
+      TargetingTemplatesResourceApi(_requester);
   UserProfilesResourceApi get userProfiles =>
-      new UserProfilesResourceApi(_requester);
+      UserProfilesResourceApi(_requester);
   UserRolePermissionGroupsResourceApi get userRolePermissionGroups =>
-      new UserRolePermissionGroupsResourceApi(_requester);
+      UserRolePermissionGroupsResourceApi(_requester);
   UserRolePermissionsResourceApi get userRolePermissions =>
-      new UserRolePermissionsResourceApi(_requester);
-  UserRolesResourceApi get userRoles => new UserRolesResourceApi(_requester);
+      UserRolePermissionsResourceApi(_requester);
+  UserRolesResourceApi get userRoles => UserRolesResourceApi(_requester);
   VideoFormatsResourceApi get videoFormats =>
-      new VideoFormatsResourceApi(_requester);
+      VideoFormatsResourceApi(_requester);
 
   DfareportingApi(http.Client client,
       {core.String rootUrl = "https://dfareporting.googleapis.com/",
       core.String servicePath = "dfareporting/v3.4/"})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AccountActiveAdSummariesResourceApi {
@@ -175,20 +189,22 @@ class AccountActiveAdSummariesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountActiveAdSummary> get(
-      core.String profileId, core.String summaryAccountId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String summaryAccountId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (summaryAccountId == null) {
-      throw new core.ArgumentError("Parameter summaryAccountId is required.");
+      throw core.ArgumentError("Parameter summaryAccountId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -199,13 +215,16 @@ class AccountActiveAdSummariesResourceApi {
         '/accountActiveAdSummaries/' +
         commons.Escaper.ecapeVariable('$summaryAccountId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AccountActiveAdSummary.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AccountActiveAdSummary.fromJson(data));
   }
 }
 
@@ -234,20 +253,22 @@ class AccountPermissionGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountPermissionGroup> get(
-      core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -258,13 +279,16 @@ class AccountPermissionGroupsResourceApi {
         '/accountPermissionGroups/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AccountPermissionGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AccountPermissionGroup.fromJson(data));
   }
 
   /// Retrieves the list of account permission groups.
@@ -283,17 +307,19 @@ class AccountPermissionGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AccountPermissionGroupsListResponse> list(core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AccountPermissionGroupsListResponse> list(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -303,14 +329,17 @@ class AccountPermissionGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountPermissionGroups';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new AccountPermissionGroupsListResponse.fromJson(data));
+        .then((data) => AccountPermissionGroupsListResponse.fromJson(data));
   }
 }
 
@@ -338,20 +367,23 @@ class AccountPermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AccountPermission> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AccountPermission> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -362,13 +394,16 @@ class AccountPermissionsResourceApi {
         '/accountPermissions/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AccountPermission.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AccountPermission.fromJson(data));
   }
 
   /// Retrieves the list of account permissions.
@@ -387,17 +422,19 @@ class AccountPermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AccountPermissionsListResponse> list(core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AccountPermissionsListResponse> list(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -407,14 +444,17 @@ class AccountPermissionsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountPermissions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new AccountPermissionsListResponse.fromJson(data));
+        .then((data) => AccountPermissionsListResponse.fromJson(data));
   }
 }
 
@@ -442,20 +482,23 @@ class AccountUserProfilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AccountUserProfile> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AccountUserProfile> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -466,13 +509,16 @@ class AccountUserProfilesResourceApi {
         '/accountUserProfiles/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AccountUserProfile.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AccountUserProfile.fromJson(data));
   }
 
   /// Inserts a new account user profile.
@@ -494,20 +540,22 @@ class AccountUserProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountUserProfile> insert(
-      AccountUserProfile request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AccountUserProfile request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -517,13 +565,16 @@ class AccountUserProfilesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountUserProfiles';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AccountUserProfile.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AccountUserProfile.fromJson(data));
   }
 
   /// Retrieves a list of account user profiles, possibly filtered. This method
@@ -575,26 +626,28 @@ class AccountUserProfilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AccountUserProfilesListResponse> list(core.String profileId,
-      {core.String subaccountId,
-      core.String sortOrder,
-      core.String userRoleId,
-      core.String pageToken,
-      core.List<core.String> ids,
-      core.String sortField,
-      core.bool active,
-      core.String searchString,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AccountUserProfilesListResponse> list(
+    core.String profileId, {
+    core.String subaccountId,
+    core.String sortOrder,
+    core.String userRoleId,
+    core.String pageToken,
+    core.List<core.String> ids,
+    core.String sortField,
+    core.bool active,
+    core.String searchString,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (subaccountId != null) {
       _queryParams["subaccountId"] = [subaccountId];
@@ -631,14 +684,17 @@ class AccountUserProfilesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountUserProfiles';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new AccountUserProfilesListResponse.fromJson(data));
+        .then((data) => AccountUserProfilesListResponse.fromJson(data));
   }
 
   /// Updates an existing account user profile. This method supports patch
@@ -663,23 +719,26 @@ class AccountUserProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountUserProfile> patch(
-      AccountUserProfile request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AccountUserProfile request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -690,13 +749,16 @@ class AccountUserProfilesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountUserProfiles';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AccountUserProfile.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AccountUserProfile.fromJson(data));
   }
 
   /// Updates an existing account user profile.
@@ -718,20 +780,22 @@ class AccountUserProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountUserProfile> update(
-      AccountUserProfile request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AccountUserProfile request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -741,13 +805,16 @@ class AccountUserProfilesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountUserProfiles';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AccountUserProfile.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AccountUserProfile.fromJson(data));
   }
 }
 
@@ -774,20 +841,23 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Account> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -798,13 +868,16 @@ class AccountsResourceApi {
         '/accounts/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Account.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Account.fromJson(data));
   }
 
   /// Retrieves the list of accounts, possibly filtered. This method supports
@@ -851,24 +924,26 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AccountsListResponse> list(core.String profileId,
-      {core.String pageToken,
-      core.String searchString,
-      core.String sortField,
-      core.int maxResults,
-      core.List<core.String> ids,
-      core.String sortOrder,
-      core.bool active,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AccountsListResponse> list(
+    core.String profileId, {
+    core.String pageToken,
+    core.String searchString,
+    core.String sortField,
+    core.int maxResults,
+    core.List<core.String> ids,
+    core.String sortOrder,
+    core.bool active,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -899,13 +974,16 @@ class AccountsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accounts';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AccountsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AccountsListResponse.fromJson(data));
   }
 
   /// Updates an existing account. This method supports patch semantics.
@@ -929,23 +1007,26 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Account> patch(
-      Account request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Account request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -956,13 +1037,16 @@ class AccountsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accounts';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Account.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Account.fromJson(data));
   }
 
   /// Updates an existing account.
@@ -983,20 +1067,23 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> update(Account request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Account> update(
+    Account request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1006,13 +1093,16 @@ class AccountsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accounts';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Account.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Account.fromJson(data));
   }
 }
 
@@ -1039,20 +1129,23 @@ class AdsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Ad> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Ad> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1063,13 +1156,16 @@ class AdsResourceApi {
         '/ads/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Ad.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Ad.fromJson(data));
   }
 
   /// Inserts a new ad.
@@ -1090,20 +1186,23 @@ class AdsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Ad> insert(Ad request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Ad> insert(
+    Ad request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1112,13 +1211,16 @@ class AdsResourceApi {
     _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Ad.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Ad.fromJson(data));
   }
 
   /// Retrieves a list of ads, possibly filtered. This method supports paging.
@@ -1212,40 +1314,42 @@ class AdsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AdsListResponse> list(core.String profileId,
-      {core.List<core.String> placementIds,
-      core.List<core.String> campaignIds,
-      core.bool dynamicClickTracker,
-      core.String compatibility,
-      core.List<core.String> type,
-      core.List<core.String> ids,
-      core.String sortOrder,
-      core.bool archived,
-      core.List<core.String> audienceSegmentIds,
-      core.bool active,
-      core.List<core.String> remarketingListIds,
-      core.List<core.String> sizeIds,
-      core.List<core.String> creativeOptimizationConfigurationIds,
-      core.String advertiserId,
-      core.int maxResults,
-      core.String pageToken,
-      core.bool sslCompliant,
-      core.List<core.String> landingPageIds,
-      core.List<core.String> creativeIds,
-      core.String overriddenEventTagId,
-      core.bool sslRequired,
-      core.String sortField,
-      core.String searchString,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AdsListResponse> list(
+    core.String profileId, {
+    core.List<core.String> placementIds,
+    core.List<core.String> campaignIds,
+    core.bool dynamicClickTracker,
+    core.String compatibility,
+    core.List<core.String> type,
+    core.List<core.String> ids,
+    core.String sortOrder,
+    core.bool archived,
+    core.List<core.String> audienceSegmentIds,
+    core.bool active,
+    core.List<core.String> remarketingListIds,
+    core.List<core.String> sizeIds,
+    core.List<core.String> creativeOptimizationConfigurationIds,
+    core.String advertiserId,
+    core.int maxResults,
+    core.String pageToken,
+    core.bool sslCompliant,
+    core.List<core.String> landingPageIds,
+    core.List<core.String> creativeIds,
+    core.String overriddenEventTagId,
+    core.bool sslRequired,
+    core.String sortField,
+    core.String searchString,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (placementIds != null) {
       _queryParams["placementIds"] = placementIds;
@@ -1324,13 +1428,16 @@ class AdsResourceApi {
     _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdsListResponse.fromJson(data));
   }
 
   /// Updates an existing ad. This method supports patch semantics.
@@ -1353,23 +1460,27 @@ class AdsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Ad> patch(Ad request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Ad> patch(
+    Ad request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -1379,13 +1490,16 @@ class AdsResourceApi {
     _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Ad.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Ad.fromJson(data));
   }
 
   /// Updates an existing ad.
@@ -1406,20 +1520,23 @@ class AdsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Ad> update(Ad request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Ad> update(
+    Ad request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1428,13 +1545,16 @@ class AdsResourceApi {
     _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Ad.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Ad.fromJson(data));
   }
 }
 
@@ -1460,20 +1580,23 @@ class AdvertiserGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1486,12 +1609,15 @@ class AdvertiserGroupsResourceApi {
         '/advertiserGroups/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -1513,20 +1639,23 @@ class AdvertiserGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AdvertiserGroup> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AdvertiserGroup> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1537,13 +1666,16 @@ class AdvertiserGroupsResourceApi {
         '/advertiserGroups/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdvertiserGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdvertiserGroup.fromJson(data));
   }
 
   /// Inserts a new advertiser group.
@@ -1565,20 +1697,22 @@ class AdvertiserGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdvertiserGroup> insert(
-      AdvertiserGroup request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AdvertiserGroup request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1588,13 +1722,16 @@ class AdvertiserGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserGroups';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdvertiserGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdvertiserGroup.fromJson(data));
   }
 
   /// Retrieves a list of advertiser groups, possibly filtered. This method
@@ -1639,23 +1776,25 @@ class AdvertiserGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AdvertiserGroupsListResponse> list(core.String profileId,
-      {core.String searchString,
-      core.int maxResults,
-      core.List<core.String> ids,
-      core.String sortOrder,
-      core.String sortField,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AdvertiserGroupsListResponse> list(
+    core.String profileId, {
+    core.String searchString,
+    core.int maxResults,
+    core.List<core.String> ids,
+    core.String sortOrder,
+    core.String sortField,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (searchString != null) {
       _queryParams["searchString"] = [searchString];
@@ -1683,14 +1822,17 @@ class AdvertiserGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserGroups';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new AdvertiserGroupsListResponse.fromJson(data));
+        .then((data) => AdvertiserGroupsListResponse.fromJson(data));
   }
 
   /// Updates an existing advertiser group. This method supports patch
@@ -1715,23 +1857,26 @@ class AdvertiserGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdvertiserGroup> patch(
-      AdvertiserGroup request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AdvertiserGroup request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -1742,13 +1887,16 @@ class AdvertiserGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserGroups';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdvertiserGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdvertiserGroup.fromJson(data));
   }
 
   /// Updates an existing advertiser group.
@@ -1770,20 +1918,22 @@ class AdvertiserGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdvertiserGroup> update(
-      AdvertiserGroup request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AdvertiserGroup request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1793,13 +1943,16 @@ class AdvertiserGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserGroups';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdvertiserGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdvertiserGroup.fromJson(data));
   }
 }
 
@@ -1827,20 +1980,23 @@ class AdvertiserLandingPagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LandingPage> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LandingPage> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1851,13 +2007,16 @@ class AdvertiserLandingPagesResourceApi {
         '/advertiserLandingPages/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LandingPage.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LandingPage.fromJson(data));
   }
 
   /// Inserts a new landing page.
@@ -1878,20 +2037,23 @@ class AdvertiserLandingPagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LandingPage> insert(LandingPage request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LandingPage> insert(
+    LandingPage request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1901,13 +2063,16 @@ class AdvertiserLandingPagesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserLandingPages';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LandingPage.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LandingPage.fromJson(data));
   }
 
   /// Retrieves a list of landing pages.
@@ -1962,27 +2127,29 @@ class AdvertiserLandingPagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AdvertiserLandingPagesListResponse> list(core.String profileId,
-      {core.String subaccountId,
-      core.List<core.String> campaignIds,
-      core.String sortOrder,
-      core.List<core.String> advertiserIds,
-      core.String pageToken,
-      core.String sortField,
-      core.bool archived,
-      core.String searchString,
-      core.int maxResults,
-      core.List<core.String> ids,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AdvertiserLandingPagesListResponse> list(
+    core.String profileId, {
+    core.String subaccountId,
+    core.List<core.String> campaignIds,
+    core.String sortOrder,
+    core.List<core.String> advertiserIds,
+    core.String pageToken,
+    core.String sortField,
+    core.bool archived,
+    core.String searchString,
+    core.int maxResults,
+    core.List<core.String> ids,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (subaccountId != null) {
       _queryParams["subaccountId"] = [subaccountId];
@@ -2022,14 +2189,17 @@ class AdvertiserLandingPagesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserLandingPages';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new AdvertiserLandingPagesListResponse.fromJson(data));
+        .then((data) => AdvertiserLandingPagesListResponse.fromJson(data));
   }
 
   /// Updates an existing advertiser landing page. This method supports patch
@@ -2054,23 +2224,26 @@ class AdvertiserLandingPagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LandingPage> patch(
-      LandingPage request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    LandingPage request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -2081,13 +2254,16 @@ class AdvertiserLandingPagesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserLandingPages';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LandingPage.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LandingPage.fromJson(data));
   }
 
   /// Updates an existing landing page.
@@ -2108,20 +2284,23 @@ class AdvertiserLandingPagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LandingPage> update(LandingPage request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LandingPage> update(
+    LandingPage request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2131,13 +2310,16 @@ class AdvertiserLandingPagesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserLandingPages';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LandingPage.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LandingPage.fromJson(data));
   }
 }
 
@@ -2164,20 +2346,23 @@ class AdvertisersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Advertiser> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Advertiser> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2188,13 +2373,16 @@ class AdvertisersResourceApi {
         '/advertisers/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Advertiser.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Advertiser.fromJson(data));
   }
 
   /// Inserts a new advertiser.
@@ -2215,20 +2403,23 @@ class AdvertisersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Advertiser> insert(Advertiser request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Advertiser> insert(
+    Advertiser request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2238,13 +2429,16 @@ class AdvertisersResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertisers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Advertiser.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Advertiser.fromJson(data));
   }
 
   /// Retrieves a list of advertisers, possibly filtered. This method supports
@@ -2308,29 +2502,31 @@ class AdvertisersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AdvertisersListResponse> list(core.String profileId,
-      {core.int maxResults,
-      core.String subaccountId,
-      core.List<core.String> ids,
-      core.String sortOrder,
-      core.String status,
-      core.bool onlyParent,
-      core.List<core.String> floodlightConfigurationIds,
-      core.String sortField,
-      core.String searchString,
-      core.List<core.String> advertiserGroupIds,
-      core.String pageToken,
-      core.bool includeAdvertisersWithoutGroupsOnly,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AdvertisersListResponse> list(
+    core.String profileId, {
+    core.int maxResults,
+    core.String subaccountId,
+    core.List<core.String> ids,
+    core.String sortOrder,
+    core.String status,
+    core.bool onlyParent,
+    core.List<core.String> floodlightConfigurationIds,
+    core.String sortField,
+    core.String searchString,
+    core.List<core.String> advertiserGroupIds,
+    core.String pageToken,
+    core.bool includeAdvertisersWithoutGroupsOnly,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -2378,13 +2574,16 @@ class AdvertisersResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertisers';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AdvertisersListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AdvertisersListResponse.fromJson(data));
   }
 
   /// Updates an existing advertiser. This method supports patch semantics.
@@ -2408,23 +2607,26 @@ class AdvertisersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Advertiser> patch(
-      Advertiser request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Advertiser request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -2435,13 +2637,16 @@ class AdvertisersResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertisers';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Advertiser.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Advertiser.fromJson(data));
   }
 
   /// Updates an existing advertiser.
@@ -2462,20 +2667,23 @@ class AdvertisersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Advertiser> update(Advertiser request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Advertiser> update(
+    Advertiser request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2485,13 +2693,16 @@ class AdvertisersResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertisers';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Advertiser.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Advertiser.fromJson(data));
   }
 }
 
@@ -2516,17 +2727,19 @@ class BrowsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BrowsersListResponse> list(core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<BrowsersListResponse> list(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2536,13 +2749,16 @@ class BrowsersResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/browsers';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new BrowsersListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BrowsersListResponse.fromJson(data));
   }
 }
 
@@ -2575,25 +2791,26 @@ class CampaignCreativeAssociationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CampaignCreativeAssociation> insert(
-      CampaignCreativeAssociation request,
-      core.String profileId,
-      core.String campaignId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CampaignCreativeAssociation request,
+    core.String profileId,
+    core.String campaignId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (campaignId == null) {
-      throw new core.ArgumentError("Parameter campaignId is required.");
+      throw core.ArgumentError("Parameter campaignId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2605,14 +2822,16 @@ class CampaignCreativeAssociationsResourceApi {
         commons.Escaper.ecapeVariable('$campaignId') +
         '/campaignCreativeAssociations';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new CampaignCreativeAssociation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CampaignCreativeAssociation.fromJson(data));
   }
 
   /// Retrieves the list of creative IDs associated with the specified campaign.
@@ -2645,23 +2864,25 @@ class CampaignCreativeAssociationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CampaignCreativeAssociationsListResponse> list(
-      core.String profileId, core.String campaignId,
-      {core.int maxResults,
-      core.String sortOrder,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String campaignId, {
+    core.int maxResults,
+    core.String sortOrder,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (campaignId == null) {
-      throw new core.ArgumentError("Parameter campaignId is required.");
+      throw core.ArgumentError("Parameter campaignId is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -2682,14 +2903,17 @@ class CampaignCreativeAssociationsResourceApi {
         commons.Escaper.ecapeVariable('$campaignId') +
         '/campaignCreativeAssociations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new CampaignCreativeAssociationsListResponse.fromJson(data));
+        (data) => CampaignCreativeAssociationsListResponse.fromJson(data));
   }
 }
 
@@ -2716,20 +2940,23 @@ class CampaignsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Campaign> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Campaign> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2740,13 +2967,16 @@ class CampaignsResourceApi {
         '/campaigns/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Campaign.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Campaign.fromJson(data));
   }
 
   /// Inserts a new campaign.
@@ -2767,20 +2997,23 @@ class CampaignsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Campaign> insert(Campaign request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Campaign> insert(
+    Campaign request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2790,13 +3023,16 @@ class CampaignsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/campaigns';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Campaign.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Campaign.fromJson(data));
   }
 
   /// Retrieves a list of campaigns, possibly filtered. This method supports
@@ -2859,30 +3095,32 @@ class CampaignsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CampaignsListResponse> list(core.String profileId,
-      {core.int maxResults,
-      core.bool archived,
-      core.String sortField,
-      core.List<core.String> ids,
-      core.bool atLeastOneOptimizationActivity,
-      core.List<core.String> excludedIds,
-      core.String sortOrder,
-      core.String searchString,
-      core.List<core.String> advertiserGroupIds,
-      core.String overriddenEventTagId,
-      core.String pageToken,
-      core.String subaccountId,
-      core.List<core.String> advertiserIds,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CampaignsListResponse> list(
+    core.String profileId, {
+    core.int maxResults,
+    core.bool archived,
+    core.String sortField,
+    core.List<core.String> ids,
+    core.bool atLeastOneOptimizationActivity,
+    core.List<core.String> excludedIds,
+    core.String sortOrder,
+    core.String searchString,
+    core.List<core.String> advertiserGroupIds,
+    core.String overriddenEventTagId,
+    core.String pageToken,
+    core.String subaccountId,
+    core.List<core.String> advertiserIds,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -2933,13 +3171,16 @@ class CampaignsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/campaigns';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CampaignsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CampaignsListResponse.fromJson(data));
   }
 
   /// Updates an existing campaign. This method supports patch semantics.
@@ -2963,23 +3204,26 @@ class CampaignsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Campaign> patch(
-      Campaign request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Campaign request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -2990,13 +3234,16 @@ class CampaignsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/campaigns';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Campaign.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Campaign.fromJson(data));
   }
 
   /// Updates an existing campaign.
@@ -3017,20 +3264,23 @@ class CampaignsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Campaign> update(Campaign request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Campaign> update(
+    Campaign request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3040,13 +3290,16 @@ class CampaignsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/campaigns';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Campaign.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Campaign.fromJson(data));
   }
 }
 
@@ -3073,20 +3326,23 @@ class ChangeLogsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ChangeLog> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ChangeLog> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3097,13 +3353,16 @@ class ChangeLogsResourceApi {
         '/changeLogs/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ChangeLog.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ChangeLog.fromJson(data));
   }
 
   /// Retrieves a list of change logs. This method supports paging.
@@ -3213,27 +3472,29 @@ class ChangeLogsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ChangeLogsListResponse> list(core.String profileId,
-      {core.String action,
-      core.String objectType,
-      core.String maxChangeTime,
-      core.List<core.String> objectIds,
-      core.List<core.String> userProfileIds,
-      core.int maxResults,
-      core.String minChangeTime,
-      core.String pageToken,
-      core.String searchString,
-      core.List<core.String> ids,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ChangeLogsListResponse> list(
+    core.String profileId, {
+    core.String action,
+    core.String objectType,
+    core.String maxChangeTime,
+    core.List<core.String> objectIds,
+    core.List<core.String> userProfileIds,
+    core.int maxResults,
+    core.String minChangeTime,
+    core.String pageToken,
+    core.String searchString,
+    core.List<core.String> ids,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (action != null) {
       _queryParams["action"] = [action];
@@ -3273,13 +3534,16 @@ class ChangeLogsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/changeLogs';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ChangeLogsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ChangeLogsListResponse.fromJson(data));
   }
 }
 
@@ -3312,21 +3576,23 @@ class CitiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CitiesListResponse> list(core.String profileId,
-      {core.List<core.String> countryDartIds,
-      core.String namePrefix,
-      core.List<core.String> dartIds,
-      core.List<core.String> regionDartIds,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CitiesListResponse> list(
+    core.String profileId, {
+    core.List<core.String> countryDartIds,
+    core.String namePrefix,
+    core.List<core.String> dartIds,
+    core.List<core.String> regionDartIds,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (countryDartIds != null) {
       _queryParams["countryDartIds"] = countryDartIds;
@@ -3348,13 +3614,16 @@ class CitiesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/cities';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CitiesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CitiesListResponse.fromJson(data));
   }
 }
 
@@ -3381,20 +3650,23 @@ class ConnectionTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ConnectionType> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ConnectionType> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3405,13 +3677,16 @@ class ConnectionTypesResourceApi {
         '/connectionTypes/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ConnectionType.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ConnectionType.fromJson(data));
   }
 
   /// Retrieves a list of connection types.
@@ -3430,17 +3705,19 @@ class ConnectionTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ConnectionTypesListResponse> list(core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ConnectionTypesListResponse> list(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3450,14 +3727,16 @@ class ConnectionTypesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/connectionTypes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ConnectionTypesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ConnectionTypesListResponse.fromJson(data));
   }
 }
 
@@ -3483,20 +3762,23 @@ class ContentCategoriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3509,12 +3791,15 @@ class ContentCategoriesResourceApi {
         '/contentCategories/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -3536,20 +3821,23 @@ class ContentCategoriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContentCategory> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ContentCategory> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3560,13 +3848,16 @@ class ContentCategoriesResourceApi {
         '/contentCategories/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ContentCategory.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ContentCategory.fromJson(data));
   }
 
   /// Inserts a new content category.
@@ -3588,20 +3879,22 @@ class ContentCategoriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ContentCategory> insert(
-      ContentCategory request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ContentCategory request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3611,13 +3904,16 @@ class ContentCategoriesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/contentCategories';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ContentCategory.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ContentCategory.fromJson(data));
   }
 
   /// Retrieves a list of content categories, possibly filtered. This method
@@ -3662,23 +3958,25 @@ class ContentCategoriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContentCategoriesListResponse> list(core.String profileId,
-      {core.String sortOrder,
-      core.String searchString,
-      core.int maxResults,
-      core.String pageToken,
-      core.String sortField,
-      core.List<core.String> ids,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ContentCategoriesListResponse> list(
+    core.String profileId, {
+    core.String sortOrder,
+    core.String searchString,
+    core.int maxResults,
+    core.String pageToken,
+    core.String sortField,
+    core.List<core.String> ids,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
@@ -3706,14 +4004,17 @@ class ContentCategoriesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/contentCategories';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ContentCategoriesListResponse.fromJson(data));
+        .then((data) => ContentCategoriesListResponse.fromJson(data));
   }
 
   /// Updates an existing content category. This method supports patch
@@ -3738,23 +4039,26 @@ class ContentCategoriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ContentCategory> patch(
-      ContentCategory request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ContentCategory request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -3765,13 +4069,16 @@ class ContentCategoriesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/contentCategories';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ContentCategory.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ContentCategory.fromJson(data));
   }
 
   /// Updates an existing content category.
@@ -3793,20 +4100,22 @@ class ContentCategoriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ContentCategory> update(
-      ContentCategory request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ContentCategory request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3816,13 +4125,16 @@ class ContentCategoriesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/contentCategories';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ContentCategory.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ContentCategory.fromJson(data));
   }
 }
 
@@ -3850,20 +4162,22 @@ class ConversionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ConversionsBatchInsertResponse> batchinsert(
-      ConversionsBatchInsertRequest request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ConversionsBatchInsertRequest request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3873,14 +4187,17 @@ class ConversionsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/conversions/batchinsert';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ConversionsBatchInsertResponse.fromJson(data));
+        .then((data) => ConversionsBatchInsertResponse.fromJson(data));
   }
 
   /// Updates existing conversions.
@@ -3902,20 +4219,22 @@ class ConversionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ConversionsBatchUpdateResponse> batchupdate(
-      ConversionsBatchUpdateRequest request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ConversionsBatchUpdateRequest request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3925,14 +4244,17 @@ class ConversionsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/conversions/batchupdate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ConversionsBatchUpdateResponse.fromJson(data));
+        .then((data) => ConversionsBatchUpdateResponse.fromJson(data));
   }
 }
 
@@ -3959,20 +4281,23 @@ class CountriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Country> get(core.String profileId, core.String dartId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Country> get(
+    core.String profileId,
+    core.String dartId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (dartId == null) {
-      throw new core.ArgumentError("Parameter dartId is required.");
+      throw core.ArgumentError("Parameter dartId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3983,13 +4308,16 @@ class CountriesResourceApi {
         '/countries/' +
         commons.Escaper.ecapeVariable('$dartId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Country.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Country.fromJson(data));
   }
 
   /// Retrieves a list of countries.
@@ -4008,17 +4336,19 @@ class CountriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CountriesListResponse> list(core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CountriesListResponse> list(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4028,13 +4358,16 @@ class CountriesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/countries';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CountriesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CountriesListResponse.fromJson(data));
   }
 }
 
@@ -4065,24 +4398,28 @@ class CreativeAssetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CreativeAssetMetadata> insert(CreativeAssetMetadata request,
-      core.String profileId, core.String advertiserId,
-      {core.String $fields, commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CreativeAssetMetadata> insert(
+    CreativeAssetMetadata request,
+    core.String profileId,
+    core.String advertiserId, {
+    core.String $fields,
+    commons.Media uploadMedia,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4105,13 +4442,16 @@ class CreativeAssetsResourceApi {
           '/creativeAssets';
     }
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreativeAssetMetadata.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativeAssetMetadata.fromJson(data));
   }
 }
 
@@ -4140,23 +4480,26 @@ class CreativeFieldValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String profileId, core.String creativeFieldId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String creativeFieldId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (creativeFieldId == null) {
-      throw new core.ArgumentError("Parameter creativeFieldId is required.");
+      throw core.ArgumentError("Parameter creativeFieldId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4171,12 +4514,15 @@ class CreativeFieldValuesResourceApi {
         '/creativeFieldValues/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -4201,23 +4547,26 @@ class CreativeFieldValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeFieldValue> get(
-      core.String profileId, core.String creativeFieldId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String creativeFieldId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (creativeFieldId == null) {
-      throw new core.ArgumentError("Parameter creativeFieldId is required.");
+      throw core.ArgumentError("Parameter creativeFieldId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4230,13 +4579,16 @@ class CreativeFieldValuesResourceApi {
         '/creativeFieldValues/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreativeFieldValue.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativeFieldValue.fromJson(data));
   }
 
   /// Inserts a new creative field value.
@@ -4259,24 +4611,27 @@ class CreativeFieldValuesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CreativeFieldValue> insert(CreativeFieldValue request,
-      core.String profileId, core.String creativeFieldId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CreativeFieldValue> insert(
+    CreativeFieldValue request,
+    core.String profileId,
+    core.String creativeFieldId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (creativeFieldId == null) {
-      throw new core.ArgumentError("Parameter creativeFieldId is required.");
+      throw core.ArgumentError("Parameter creativeFieldId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4288,13 +4643,16 @@ class CreativeFieldValuesResourceApi {
         commons.Escaper.ecapeVariable('$creativeFieldId') +
         '/creativeFieldValues';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreativeFieldValue.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativeFieldValue.fromJson(data));
   }
 
   /// Retrieves a list of creative field values, possibly filtered. This method
@@ -4337,26 +4695,28 @@ class CreativeFieldValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeFieldValuesListResponse> list(
-      core.String profileId, core.String creativeFieldId,
-      {core.String searchString,
-      core.String sortField,
-      core.int maxResults,
-      core.String pageToken,
-      core.List<core.String> ids,
-      core.String sortOrder,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String creativeFieldId, {
+    core.String searchString,
+    core.String sortField,
+    core.int maxResults,
+    core.String pageToken,
+    core.List<core.String> ids,
+    core.String sortOrder,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (creativeFieldId == null) {
-      throw new core.ArgumentError("Parameter creativeFieldId is required.");
+      throw core.ArgumentError("Parameter creativeFieldId is required.");
     }
     if (searchString != null) {
       _queryParams["searchString"] = [searchString];
@@ -4386,14 +4746,17 @@ class CreativeFieldValuesResourceApi {
         commons.Escaper.ecapeVariable('$creativeFieldId') +
         '/creativeFieldValues';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new CreativeFieldValuesListResponse.fromJson(data));
+        .then((data) => CreativeFieldValuesListResponse.fromJson(data));
   }
 
   /// Updates an existing creative field value. This method supports patch
@@ -4419,27 +4782,31 @@ class CreativeFieldValuesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CreativeFieldValue> patch(CreativeFieldValue request,
-      core.String profileId, core.String creativeFieldId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CreativeFieldValue> patch(
+    CreativeFieldValue request,
+    core.String profileId,
+    core.String creativeFieldId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (creativeFieldId == null) {
-      throw new core.ArgumentError("Parameter creativeFieldId is required.");
+      throw core.ArgumentError("Parameter creativeFieldId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -4452,13 +4819,16 @@ class CreativeFieldValuesResourceApi {
         commons.Escaper.ecapeVariable('$creativeFieldId') +
         '/creativeFieldValues';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreativeFieldValue.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativeFieldValue.fromJson(data));
   }
 
   /// Updates an existing creative field value.
@@ -4481,24 +4851,27 @@ class CreativeFieldValuesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CreativeFieldValue> update(CreativeFieldValue request,
-      core.String profileId, core.String creativeFieldId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CreativeFieldValue> update(
+    CreativeFieldValue request,
+    core.String profileId,
+    core.String creativeFieldId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (creativeFieldId == null) {
-      throw new core.ArgumentError("Parameter creativeFieldId is required.");
+      throw core.ArgumentError("Parameter creativeFieldId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4510,13 +4883,16 @@ class CreativeFieldValuesResourceApi {
         commons.Escaper.ecapeVariable('$creativeFieldId') +
         '/creativeFieldValues';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreativeFieldValue.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativeFieldValue.fromJson(data));
   }
 }
 
@@ -4541,20 +4917,23 @@ class CreativeFieldsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4567,12 +4946,15 @@ class CreativeFieldsResourceApi {
         '/creativeFields/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -4594,20 +4976,23 @@ class CreativeFieldsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CreativeField> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CreativeField> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4618,13 +5003,16 @@ class CreativeFieldsResourceApi {
         '/creativeFields/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreativeField.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativeField.fromJson(data));
   }
 
   /// Inserts a new creative field.
@@ -4646,20 +5034,22 @@ class CreativeFieldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeField> insert(
-      CreativeField request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CreativeField request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4669,13 +5059,16 @@ class CreativeFieldsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreativeField.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativeField.fromJson(data));
   }
 
   /// Retrieves a list of creative fields, possibly filtered. This method
@@ -4724,24 +5117,26 @@ class CreativeFieldsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CreativeFieldsListResponse> list(core.String profileId,
-      {core.String searchString,
-      core.String pageToken,
-      core.int maxResults,
-      core.String sortField,
-      core.List<core.String> advertiserIds,
-      core.String sortOrder,
-      core.List<core.String> ids,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CreativeFieldsListResponse> list(
+    core.String profileId, {
+    core.String searchString,
+    core.String pageToken,
+    core.int maxResults,
+    core.String sortField,
+    core.List<core.String> advertiserIds,
+    core.String sortOrder,
+    core.List<core.String> ids,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (searchString != null) {
       _queryParams["searchString"] = [searchString];
@@ -4772,14 +5167,16 @@ class CreativeFieldsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new CreativeFieldsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativeFieldsListResponse.fromJson(data));
   }
 
   /// Updates an existing creative field. This method supports patch semantics.
@@ -4803,23 +5200,26 @@ class CreativeFieldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeField> patch(
-      CreativeField request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CreativeField request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -4830,13 +5230,16 @@ class CreativeFieldsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreativeField.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativeField.fromJson(data));
   }
 
   /// Updates an existing creative field.
@@ -4858,20 +5261,22 @@ class CreativeFieldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeField> update(
-      CreativeField request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CreativeField request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4881,13 +5286,16 @@ class CreativeFieldsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreativeField.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativeField.fromJson(data));
   }
 }
 
@@ -4914,20 +5322,23 @@ class CreativeGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CreativeGroup> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CreativeGroup> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4938,13 +5349,16 @@ class CreativeGroupsResourceApi {
         '/creativeGroups/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreativeGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativeGroup.fromJson(data));
   }
 
   /// Inserts a new creative group.
@@ -4966,20 +5380,22 @@ class CreativeGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeGroup> insert(
-      CreativeGroup request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CreativeGroup request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4989,13 +5405,16 @@ class CreativeGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeGroups';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreativeGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativeGroup.fromJson(data));
   }
 
   /// Retrieves a list of creative groups, possibly filtered. This method
@@ -5047,25 +5466,27 @@ class CreativeGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CreativeGroupsListResponse> list(core.String profileId,
-      {core.int maxResults,
-      core.int groupNumber,
-      core.String sortField,
-      core.List<core.String> ids,
-      core.List<core.String> advertiserIds,
-      core.String searchString,
-      core.String pageToken,
-      core.String sortOrder,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CreativeGroupsListResponse> list(
+    core.String profileId, {
+    core.int maxResults,
+    core.int groupNumber,
+    core.String sortField,
+    core.List<core.String> ids,
+    core.List<core.String> advertiserIds,
+    core.String searchString,
+    core.String pageToken,
+    core.String sortOrder,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -5099,14 +5520,16 @@ class CreativeGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeGroups';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new CreativeGroupsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativeGroupsListResponse.fromJson(data));
   }
 
   /// Updates an existing creative group. This method supports patch semantics.
@@ -5130,23 +5553,26 @@ class CreativeGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeGroup> patch(
-      CreativeGroup request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CreativeGroup request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -5157,13 +5583,16 @@ class CreativeGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeGroups';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreativeGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativeGroup.fromJson(data));
   }
 
   /// Updates an existing creative group.
@@ -5185,20 +5614,22 @@ class CreativeGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeGroup> update(
-      CreativeGroup request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CreativeGroup request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5208,13 +5639,16 @@ class CreativeGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeGroups';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreativeGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativeGroup.fromJson(data));
   }
 }
 
@@ -5241,20 +5675,23 @@ class CreativesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Creative> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Creative> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5265,13 +5702,16 @@ class CreativesResourceApi {
         '/creatives/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Creative.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Creative.fromJson(data));
   }
 
   /// Inserts a new creative.
@@ -5292,20 +5732,23 @@ class CreativesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Creative> insert(Creative request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Creative> insert(
+    Creative request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5315,13 +5758,16 @@ class CreativesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creatives';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Creative.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Creative.fromJson(data));
   }
 
   /// Retrieves a list of creatives, possibly filtered. This method supports
@@ -5390,33 +5836,35 @@ class CreativesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CreativesListResponse> list(core.String profileId,
-      {core.int maxResults,
-      core.List<core.String> creativeFieldIds,
-      core.List<core.String> types,
-      core.List<core.String> sizeIds,
-      core.String campaignId,
-      core.String advertiserId,
-      core.bool active,
-      core.String sortField,
-      core.String searchString,
-      core.String studioCreativeId,
-      core.String pageToken,
-      core.List<core.String> ids,
-      core.List<core.String> companionCreativeIds,
-      core.List<core.String> renderingIds,
-      core.bool archived,
-      core.String sortOrder,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CreativesListResponse> list(
+    core.String profileId, {
+    core.int maxResults,
+    core.List<core.String> creativeFieldIds,
+    core.List<core.String> types,
+    core.List<core.String> sizeIds,
+    core.String campaignId,
+    core.String advertiserId,
+    core.bool active,
+    core.String sortField,
+    core.String searchString,
+    core.String studioCreativeId,
+    core.String pageToken,
+    core.List<core.String> ids,
+    core.List<core.String> companionCreativeIds,
+    core.List<core.String> renderingIds,
+    core.bool archived,
+    core.String sortOrder,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -5474,13 +5922,16 @@ class CreativesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creatives';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreativesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreativesListResponse.fromJson(data));
   }
 
   /// Updates an existing creative. This method supports patch semantics.
@@ -5504,23 +5955,26 @@ class CreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Creative> patch(
-      Creative request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Creative request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -5531,13 +5985,16 @@ class CreativesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creatives';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Creative.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Creative.fromJson(data));
   }
 
   /// Updates an existing creative.
@@ -5558,20 +6015,23 @@ class CreativesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Creative> update(Creative request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Creative> update(
+    Creative request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5581,13 +6041,16 @@ class CreativesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creatives';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Creative.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Creative.fromJson(data));
   }
 }
 
@@ -5615,20 +6078,22 @@ class CustomEventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomEventsBatchInsertResponse> batchinsert(
-      CustomEventsBatchInsertRequest request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CustomEventsBatchInsertRequest request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5638,14 +6103,17 @@ class CustomEventsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/customEvents/batchinsert';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new CustomEventsBatchInsertResponse.fromJson(data));
+        .then((data) => CustomEventsBatchInsertResponse.fromJson(data));
   }
 }
 
@@ -5678,20 +6146,24 @@ class DimensionValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DimensionValueList> query(
-      DimensionValueRequest request, core.String profileId,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    DimensionValueRequest request,
+    core.String profileId, {
+    core.String pageToken,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -5707,13 +6179,16 @@ class DimensionValuesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/dimensionvalues/query';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DimensionValueList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DimensionValueList.fromJson(data));
   }
 }
 
@@ -5740,20 +6215,23 @@ class DirectorySitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DirectorySite> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DirectorySite> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5764,13 +6242,16 @@ class DirectorySitesResourceApi {
         '/directorySites/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DirectorySite.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DirectorySite.fromJson(data));
   }
 
   /// Inserts a new directory site.
@@ -5792,20 +6273,22 @@ class DirectorySitesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DirectorySite> insert(
-      DirectorySite request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    DirectorySite request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5815,13 +6298,16 @@ class DirectorySitesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/directorySites';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DirectorySite.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DirectorySite.fromJson(data));
   }
 
   /// Retrieves a list of directory sites, possibly filtered. This method
@@ -5881,28 +6367,30 @@ class DirectorySitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DirectorySitesListResponse> list(core.String profileId,
-      {core.bool acceptsPublisherPaidPlacements,
-      core.String sortField,
-      core.String sortOrder,
-      core.List<core.String> ids,
-      core.bool active,
-      core.String pageToken,
-      core.int maxResults,
-      core.bool acceptsInStreamVideoPlacements,
-      core.String searchString,
-      core.String dfpNetworkCode,
-      core.bool acceptsInterstitialPlacements,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DirectorySitesListResponse> list(
+    core.String profileId, {
+    core.bool acceptsPublisherPaidPlacements,
+    core.String sortField,
+    core.String sortOrder,
+    core.List<core.String> ids,
+    core.bool active,
+    core.String pageToken,
+    core.int maxResults,
+    core.bool acceptsInStreamVideoPlacements,
+    core.String searchString,
+    core.String dfpNetworkCode,
+    core.bool acceptsInterstitialPlacements,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (acceptsPublisherPaidPlacements != null) {
       _queryParams["acceptsPublisherPaidPlacements"] = [
@@ -5951,14 +6439,16 @@ class DirectorySitesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/directorySites';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new DirectorySitesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DirectorySitesListResponse.fromJson(data));
   }
 }
 
@@ -5997,28 +6487,32 @@ class DynamicTargetingKeysResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String objectId,
-      core.String name, core.String objectType,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String profileId,
+    core.String objectId,
+    core.String name,
+    core.String objectType, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (objectId == null) {
-      throw new core.ArgumentError("Parameter objectId is required.");
+      throw core.ArgumentError("Parameter objectId is required.");
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     _queryParams["name"] = [name];
     if (objectType == null) {
-      throw new core.ArgumentError("Parameter objectType is required.");
+      throw core.ArgumentError("Parameter objectType is required.");
     }
     _queryParams["objectType"] = [objectType];
     if ($fields != null) {
@@ -6032,12 +6526,15 @@ class DynamicTargetingKeysResourceApi {
         '/dynamicTargetingKeys/' +
         commons.Escaper.ecapeVariable('$objectId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -6063,20 +6560,22 @@ class DynamicTargetingKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DynamicTargetingKey> insert(
-      DynamicTargetingKey request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    DynamicTargetingKey request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6086,13 +6585,16 @@ class DynamicTargetingKeysResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/dynamicTargetingKeys';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DynamicTargetingKey.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DynamicTargetingKey.fromJson(data));
   }
 
   /// Retrieves a list of dynamic targeting keys.
@@ -6125,21 +6627,23 @@ class DynamicTargetingKeysResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DynamicTargetingKeysListResponse> list(core.String profileId,
-      {core.String objectType,
-      core.String objectId,
-      core.List<core.String> names,
-      core.String advertiserId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DynamicTargetingKeysListResponse> list(
+    core.String profileId, {
+    core.String objectType,
+    core.String objectId,
+    core.List<core.String> names,
+    core.String advertiserId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (objectType != null) {
       _queryParams["objectType"] = [objectType];
@@ -6161,14 +6665,17 @@ class DynamicTargetingKeysResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/dynamicTargetingKeys';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new DynamicTargetingKeysListResponse.fromJson(data));
+        .then((data) => DynamicTargetingKeysListResponse.fromJson(data));
   }
 }
 
@@ -6193,20 +6700,23 @@ class EventTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6219,12 +6729,15 @@ class EventTagsResourceApi {
         '/eventTags/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -6246,20 +6759,23 @@ class EventTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<EventTag> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<EventTag> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6270,13 +6786,16 @@ class EventTagsResourceApi {
         '/eventTags/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new EventTag.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => EventTag.fromJson(data));
   }
 
   /// Inserts a new event tag.
@@ -6297,20 +6816,23 @@ class EventTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<EventTag> insert(EventTag request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<EventTag> insert(
+    EventTag request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6320,13 +6842,16 @@ class EventTagsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/eventTags';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new EventTag.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => EventTag.fromJson(data));
   }
 
   /// Retrieves a list of event tags, possibly filtered.
@@ -6391,27 +6916,29 @@ class EventTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<EventTagsListResponse> list(core.String profileId,
-      {core.bool definitionsOnly,
-      core.String adId,
-      core.String searchString,
-      core.String advertiserId,
-      core.List<core.String> ids,
-      core.String sortField,
-      core.bool enabled,
-      core.List<core.String> eventTagTypes,
-      core.String campaignId,
-      core.String sortOrder,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<EventTagsListResponse> list(
+    core.String profileId, {
+    core.bool definitionsOnly,
+    core.String adId,
+    core.String searchString,
+    core.String advertiserId,
+    core.List<core.String> ids,
+    core.String sortField,
+    core.bool enabled,
+    core.List<core.String> eventTagTypes,
+    core.String campaignId,
+    core.String sortOrder,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (definitionsOnly != null) {
       _queryParams["definitionsOnly"] = ["${definitionsOnly}"];
@@ -6451,13 +6978,16 @@ class EventTagsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/eventTags';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new EventTagsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => EventTagsListResponse.fromJson(data));
   }
 
   /// Updates an existing event tag. This method supports patch semantics.
@@ -6481,23 +7011,26 @@ class EventTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EventTag> patch(
-      EventTag request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    EventTag request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -6508,13 +7041,16 @@ class EventTagsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/eventTags';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new EventTag.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => EventTag.fromJson(data));
   }
 
   /// Updates an existing event tag.
@@ -6535,20 +7071,23 @@ class EventTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<EventTag> update(EventTag request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<EventTag> update(
+    EventTag request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6558,13 +7097,16 @@ class EventTagsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/eventTags';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new EventTag.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => EventTag.fromJson(data));
   }
 }
 
@@ -6600,22 +7142,24 @@ class FilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future get(core.String reportId, core.String fileId,
-      {core.String $fields,
-      commons.DownloadOptions downloadOptions =
-          commons.DownloadOptions.Metadata}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future get(
+    core.String reportId,
+    core.String fileId, {
+    core.String $fields,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (reportId == null) {
-      throw new core.ArgumentError("Parameter reportId is required.");
+      throw core.ArgumentError("Parameter reportId is required.");
     }
     if (fileId == null) {
-      throw new core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError("Parameter fileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6628,15 +7172,18 @@ class FilesResourceApi {
         '/files/' +
         commons.Escaper.ecapeVariable('$fileId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => new File.fromJson(data));
+      return _response.then((data) => File.fromJson(data));
     } else {
       return _response;
     }
@@ -6679,22 +7226,24 @@ class FilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FileList> list(core.String profileId,
-      {core.String scope,
-      core.String pageToken,
-      core.String sortOrder,
-      core.String sortField,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FileList> list(
+    core.String profileId, {
+    core.String scope,
+    core.String pageToken,
+    core.String sortOrder,
+    core.String sortField,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (scope != null) {
       _queryParams["scope"] = [scope];
@@ -6719,13 +7268,16 @@ class FilesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/files';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FileList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FileList.fromJson(data));
   }
 }
 
@@ -6751,20 +7303,23 @@ class FloodlightActivitiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6777,12 +7332,15 @@ class FloodlightActivitiesResourceApi {
         '/floodlightActivities/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -6806,18 +7364,19 @@ class FloodlightActivitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivitiesGenerateTagResponse> generatetag(
-      core.String profileId,
-      {core.String floodlightActivityId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId, {
+    core.String floodlightActivityId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (floodlightActivityId != null) {
       _queryParams["floodlightActivityId"] = [floodlightActivityId];
@@ -6830,14 +7389,17 @@ class FloodlightActivitiesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities/generatetag';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new FloodlightActivitiesGenerateTagResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => FloodlightActivitiesGenerateTagResponse.fromJson(data));
   }
 
   /// Gets one floodlight activity by ID.
@@ -6858,20 +7420,23 @@ class FloodlightActivitiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FloodlightActivity> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FloodlightActivity> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6882,13 +7447,16 @@ class FloodlightActivitiesResourceApi {
         '/floodlightActivities/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FloodlightActivity.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FloodlightActivity.fromJson(data));
   }
 
   /// Inserts a new floodlight activity.
@@ -6910,20 +7478,22 @@ class FloodlightActivitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivity> insert(
-      FloodlightActivity request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    FloodlightActivity request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6933,13 +7503,16 @@ class FloodlightActivitiesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FloodlightActivity.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FloodlightActivity.fromJson(data));
   }
 
   /// Retrieves a list of floodlight activities, possibly filtered. This method
@@ -7013,30 +7586,32 @@ class FloodlightActivitiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FloodlightActivitiesListResponse> list(core.String profileId,
-      {core.String advertiserId,
-      core.String sortField,
-      core.String sortOrder,
-      core.List<core.String> floodlightActivityGroupIds,
-      core.String floodlightConfigurationId,
-      core.int maxResults,
-      core.List<core.String> ids,
-      core.String tagString,
-      core.String pageToken,
-      core.String floodlightActivityGroupName,
-      core.String floodlightActivityGroupTagString,
-      core.String floodlightActivityGroupType,
-      core.String searchString,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FloodlightActivitiesListResponse> list(
+    core.String profileId, {
+    core.String advertiserId,
+    core.String sortField,
+    core.String sortOrder,
+    core.List<core.String> floodlightActivityGroupIds,
+    core.String floodlightConfigurationId,
+    core.int maxResults,
+    core.List<core.String> ids,
+    core.String tagString,
+    core.String pageToken,
+    core.String floodlightActivityGroupName,
+    core.String floodlightActivityGroupTagString,
+    core.String floodlightActivityGroupType,
+    core.String searchString,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -7091,14 +7666,17 @@ class FloodlightActivitiesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new FloodlightActivitiesListResponse.fromJson(data));
+        .then((data) => FloodlightActivitiesListResponse.fromJson(data));
   }
 
   /// Updates an existing floodlight activity. This method supports patch
@@ -7123,23 +7701,26 @@ class FloodlightActivitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivity> patch(
-      FloodlightActivity request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    FloodlightActivity request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -7150,13 +7731,16 @@ class FloodlightActivitiesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FloodlightActivity.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FloodlightActivity.fromJson(data));
   }
 
   /// Updates an existing floodlight activity.
@@ -7178,20 +7762,22 @@ class FloodlightActivitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivity> update(
-      FloodlightActivity request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    FloodlightActivity request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7201,13 +7787,16 @@ class FloodlightActivitiesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FloodlightActivity.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FloodlightActivity.fromJson(data));
   }
 }
 
@@ -7236,20 +7825,22 @@ class FloodlightActivityGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivityGroup> get(
-      core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7260,13 +7851,16 @@ class FloodlightActivityGroupsResourceApi {
         '/floodlightActivityGroups/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FloodlightActivityGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FloodlightActivityGroup.fromJson(data));
   }
 
   /// Inserts a new floodlight activity group.
@@ -7288,20 +7882,22 @@ class FloodlightActivityGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivityGroup> insert(
-      FloodlightActivityGroup request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    FloodlightActivityGroup request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7311,13 +7907,16 @@ class FloodlightActivityGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FloodlightActivityGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FloodlightActivityGroup.fromJson(data));
   }
 
   /// Retrieves a list of floodlight activity groups, possibly filtered. This
@@ -7380,26 +7979,28 @@ class FloodlightActivityGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FloodlightActivityGroupsListResponse> list(core.String profileId,
-      {core.String advertiserId,
-      core.String sortOrder,
-      core.List<core.String> ids,
-      core.String floodlightConfigurationId,
-      core.String sortField,
-      core.int maxResults,
-      core.String searchString,
-      core.String pageToken,
-      core.String type,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FloodlightActivityGroupsListResponse> list(
+    core.String profileId, {
+    core.String advertiserId,
+    core.String sortOrder,
+    core.List<core.String> ids,
+    core.String floodlightConfigurationId,
+    core.String sortField,
+    core.int maxResults,
+    core.String searchString,
+    core.String pageToken,
+    core.String type,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -7436,14 +8037,17 @@ class FloodlightActivityGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new FloodlightActivityGroupsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => FloodlightActivityGroupsListResponse.fromJson(data));
   }
 
   /// Updates an existing floodlight activity group. This method supports patch
@@ -7468,23 +8072,26 @@ class FloodlightActivityGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivityGroup> patch(
-      FloodlightActivityGroup request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    FloodlightActivityGroup request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -7495,13 +8102,16 @@ class FloodlightActivityGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FloodlightActivityGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FloodlightActivityGroup.fromJson(data));
   }
 
   /// Updates an existing floodlight activity group.
@@ -7523,20 +8133,22 @@ class FloodlightActivityGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivityGroup> update(
-      FloodlightActivityGroup request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    FloodlightActivityGroup request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7546,13 +8158,16 @@ class FloodlightActivityGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FloodlightActivityGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FloodlightActivityGroup.fromJson(data));
   }
 }
 
@@ -7581,20 +8196,22 @@ class FloodlightConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightConfiguration> get(
-      core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7605,13 +8222,16 @@ class FloodlightConfigurationsResourceApi {
         '/floodlightConfigurations/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FloodlightConfiguration.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FloodlightConfiguration.fromJson(data));
   }
 
   /// Retrieves a list of floodlight configurations, possibly filtered.
@@ -7633,17 +8253,20 @@ class FloodlightConfigurationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FloodlightConfigurationsListResponse> list(core.String profileId,
-      {core.List<core.String> ids, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FloodlightConfigurationsListResponse> list(
+    core.String profileId, {
+    core.List<core.String> ids,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (ids != null) {
       _queryParams["ids"] = ids;
@@ -7656,14 +8279,17 @@ class FloodlightConfigurationsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightConfigurations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new FloodlightConfigurationsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => FloodlightConfigurationsListResponse.fromJson(data));
   }
 
   /// Updates an existing floodlight configuration. This method supports patch
@@ -7688,23 +8314,26 @@ class FloodlightConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightConfiguration> patch(
-      FloodlightConfiguration request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    FloodlightConfiguration request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -7715,13 +8344,16 @@ class FloodlightConfigurationsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightConfigurations';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FloodlightConfiguration.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FloodlightConfiguration.fromJson(data));
   }
 
   /// Updates an existing floodlight configuration.
@@ -7743,20 +8375,22 @@ class FloodlightConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightConfiguration> update(
-      FloodlightConfiguration request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    FloodlightConfiguration request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7766,13 +8400,16 @@ class FloodlightConfigurationsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightConfigurations';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FloodlightConfiguration.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FloodlightConfiguration.fromJson(data));
   }
 }
 
@@ -7802,23 +8439,26 @@ class InventoryItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InventoryItem> get(
-      core.String profileId, core.String projectId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String projectId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7831,13 +8471,16 @@ class InventoryItemsResourceApi {
         '/inventoryItems/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new InventoryItem.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => InventoryItem.fromJson(data));
   }
 
   /// Retrieves a list of inventory items, possibly filtered. This method
@@ -7889,29 +8532,31 @@ class InventoryItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InventoryItemsListResponse> list(
-      core.String profileId, core.String projectId,
-      {core.bool inPlan,
-      core.List<core.String> orderId,
-      core.List<core.String> siteId,
-      core.List<core.String> ids,
-      core.String sortOrder,
-      core.String sortField,
-      core.int maxResults,
-      core.String pageToken,
-      core.String type,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String projectId, {
+    core.bool inPlan,
+    core.List<core.String> orderId,
+    core.List<core.String> siteId,
+    core.List<core.String> ids,
+    core.String sortOrder,
+    core.String sortField,
+    core.int maxResults,
+    core.String pageToken,
+    core.String type,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (inPlan != null) {
       _queryParams["inPlan"] = ["${inPlan}"];
@@ -7950,14 +8595,16 @@ class InventoryItemsResourceApi {
         commons.Escaper.ecapeVariable('$projectId') +
         '/inventoryItems';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new InventoryItemsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => InventoryItemsListResponse.fromJson(data));
   }
 }
 
@@ -7982,17 +8629,19 @@ class LanguagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LanguagesListResponse> list(core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LanguagesListResponse> list(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8002,13 +8651,16 @@ class LanguagesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/languages';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LanguagesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LanguagesListResponse.fromJson(data));
   }
 }
 
@@ -8033,17 +8685,19 @@ class MetrosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MetrosListResponse> list(core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<MetrosListResponse> list(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8053,13 +8707,16 @@ class MetrosResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/metros';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new MetrosListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => MetrosListResponse.fromJson(data));
   }
 }
 
@@ -8086,20 +8743,23 @@ class MobileAppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MobileApp> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<MobileApp> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8110,13 +8770,16 @@ class MobileAppsResourceApi {
         '/mobileApps/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new MobileApp.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => MobileApp.fromJson(data));
   }
 
   /// Retrieves list of available mobile apps.
@@ -8151,22 +8814,24 @@ class MobileAppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MobileAppsListResponse> list(core.String profileId,
-      {core.String pageToken,
-      core.List<core.String> directories,
-      core.String searchString,
-      core.int maxResults,
-      core.List<core.String> ids,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<MobileAppsListResponse> list(
+    core.String profileId, {
+    core.String pageToken,
+    core.List<core.String> directories,
+    core.String searchString,
+    core.int maxResults,
+    core.List<core.String> ids,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -8191,13 +8856,16 @@ class MobileAppsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/mobileApps';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new MobileAppsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => MobileAppsListResponse.fromJson(data));
   }
 }
 
@@ -8224,20 +8892,23 @@ class MobileCarriersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MobileCarrier> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<MobileCarrier> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8248,13 +8919,16 @@ class MobileCarriersResourceApi {
         '/mobileCarriers/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new MobileCarrier.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => MobileCarrier.fromJson(data));
   }
 
   /// Retrieves a list of mobile carriers.
@@ -8273,17 +8947,19 @@ class MobileCarriersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MobileCarriersListResponse> list(core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<MobileCarriersListResponse> list(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8293,14 +8969,16 @@ class MobileCarriersResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/mobileCarriers';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new MobileCarriersListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => MobileCarriersListResponse.fromJson(data));
   }
 }
 
@@ -8329,20 +9007,22 @@ class OperatingSystemVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OperatingSystemVersion> get(
-      core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8353,13 +9033,16 @@ class OperatingSystemVersionsResourceApi {
         '/operatingSystemVersions/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new OperatingSystemVersion.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => OperatingSystemVersion.fromJson(data));
   }
 
   /// Retrieves a list of operating system versions.
@@ -8378,17 +9061,19 @@ class OperatingSystemVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OperatingSystemVersionsListResponse> list(core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<OperatingSystemVersionsListResponse> list(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8398,14 +9083,17 @@ class OperatingSystemVersionsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/operatingSystemVersions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new OperatingSystemVersionsListResponse.fromJson(data));
+        .then((data) => OperatingSystemVersionsListResponse.fromJson(data));
   }
 }
 
@@ -8433,20 +9121,23 @@ class OperatingSystemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OperatingSystem> get(core.String profileId, core.String dartId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<OperatingSystem> get(
+    core.String profileId,
+    core.String dartId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (dartId == null) {
-      throw new core.ArgumentError("Parameter dartId is required.");
+      throw core.ArgumentError("Parameter dartId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8457,13 +9148,16 @@ class OperatingSystemsResourceApi {
         '/operatingSystems/' +
         commons.Escaper.ecapeVariable('$dartId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new OperatingSystem.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => OperatingSystem.fromJson(data));
   }
 
   /// Retrieves a list of operating systems.
@@ -8482,17 +9176,19 @@ class OperatingSystemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OperatingSystemsListResponse> list(core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<OperatingSystemsListResponse> list(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8502,14 +9198,17 @@ class OperatingSystemsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/operatingSystems';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new OperatingSystemsListResponse.fromJson(data));
+        .then((data) => OperatingSystemsListResponse.fromJson(data));
   }
 }
 
@@ -8539,23 +9238,26 @@ class OrderDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrderDocument> get(
-      core.String profileId, core.String projectId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String projectId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8568,13 +9270,16 @@ class OrderDocumentsResourceApi {
         '/orderDocuments/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new OrderDocument.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => OrderDocument.fromJson(data));
   }
 
   /// Retrieves a list of order documents, possibly filtered. This method
@@ -8631,29 +9336,31 @@ class OrderDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrderDocumentsListResponse> list(
-      core.String profileId, core.String projectId,
-      {core.int maxResults,
-      core.String pageToken,
-      core.bool approved,
-      core.String sortOrder,
-      core.List<core.String> orderId,
-      core.List<core.String> siteId,
-      core.String sortField,
-      core.String searchString,
-      core.List<core.String> ids,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String projectId, {
+    core.int maxResults,
+    core.String pageToken,
+    core.bool approved,
+    core.String sortOrder,
+    core.List<core.String> orderId,
+    core.List<core.String> siteId,
+    core.String sortField,
+    core.String searchString,
+    core.List<core.String> ids,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -8692,14 +9399,16 @@ class OrderDocumentsResourceApi {
         commons.Escaper.ecapeVariable('$projectId') +
         '/orderDocuments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new OrderDocumentsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => OrderDocumentsListResponse.fromJson(data));
   }
 }
 
@@ -8729,23 +9438,26 @@ class OrdersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Order> get(
-      core.String profileId, core.String projectId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String projectId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8758,13 +9470,16 @@ class OrdersResourceApi {
         '/orders/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Order.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Order.fromJson(data));
   }
 
   /// Retrieves a list of orders, possibly filtered. This method supports
@@ -8813,27 +9528,29 @@ class OrdersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrdersListResponse> list(
-      core.String profileId, core.String projectId,
-      {core.String sortOrder,
-      core.String sortField,
-      core.String pageToken,
-      core.String searchString,
-      core.List<core.String> siteId,
-      core.int maxResults,
-      core.List<core.String> ids,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String projectId, {
+    core.String sortOrder,
+    core.String sortField,
+    core.String pageToken,
+    core.String searchString,
+    core.List<core.String> siteId,
+    core.int maxResults,
+    core.List<core.String> ids,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
@@ -8866,13 +9583,16 @@ class OrdersResourceApi {
         commons.Escaper.ecapeVariable('$projectId') +
         '/orders';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new OrdersListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => OrdersListResponse.fromJson(data));
   }
 }
 
@@ -8899,20 +9619,23 @@ class PlacementGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlacementGroup> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PlacementGroup> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8923,13 +9646,16 @@ class PlacementGroupsResourceApi {
         '/placementGroups/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlacementGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlacementGroup.fromJson(data));
   }
 
   /// Inserts a new placement group.
@@ -8951,20 +9677,22 @@ class PlacementGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlacementGroup> insert(
-      PlacementGroup request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    PlacementGroup request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8974,13 +9702,16 @@ class PlacementGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementGroups';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlacementGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlacementGroup.fromJson(data));
   }
 
   /// Retrieves a list of placement groups, possibly filtered. This method
@@ -9076,36 +9807,38 @@ class PlacementGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlacementGroupsListResponse> list(core.String profileId,
-      {core.List<core.String> placementStrategyIds,
-      core.List<core.String> contentCategoryIds,
-      core.String searchString,
-      core.String sortField,
-      core.List<core.String> advertiserIds,
-      core.List<core.String> campaignIds,
-      core.String minEndDate,
-      core.bool archived,
-      core.List<core.String> directorySiteIds,
-      core.List<core.String> siteIds,
-      core.List<core.String> pricingTypes,
-      core.String pageToken,
-      core.List<core.String> ids,
-      core.String sortOrder,
-      core.String placementGroupType,
-      core.String maxEndDate,
-      core.int maxResults,
-      core.String minStartDate,
-      core.String maxStartDate,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PlacementGroupsListResponse> list(
+    core.String profileId, {
+    core.List<core.String> placementStrategyIds,
+    core.List<core.String> contentCategoryIds,
+    core.String searchString,
+    core.String sortField,
+    core.List<core.String> advertiserIds,
+    core.List<core.String> campaignIds,
+    core.String minEndDate,
+    core.bool archived,
+    core.List<core.String> directorySiteIds,
+    core.List<core.String> siteIds,
+    core.List<core.String> pricingTypes,
+    core.String pageToken,
+    core.List<core.String> ids,
+    core.String sortOrder,
+    core.String placementGroupType,
+    core.String maxEndDate,
+    core.int maxResults,
+    core.String minStartDate,
+    core.String maxStartDate,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (placementStrategyIds != null) {
       _queryParams["placementStrategyIds"] = placementStrategyIds;
@@ -9172,14 +9905,16 @@ class PlacementGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementGroups';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new PlacementGroupsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlacementGroupsListResponse.fromJson(data));
   }
 
   /// Updates an existing placement group. This method supports patch semantics.
@@ -9203,23 +9938,26 @@ class PlacementGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlacementGroup> patch(
-      PlacementGroup request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    PlacementGroup request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -9230,13 +9968,16 @@ class PlacementGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementGroups';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlacementGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlacementGroup.fromJson(data));
   }
 
   /// Updates an existing placement group.
@@ -9258,20 +9999,22 @@ class PlacementGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlacementGroup> update(
-      PlacementGroup request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    PlacementGroup request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9281,13 +10024,16 @@ class PlacementGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementGroups';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlacementGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlacementGroup.fromJson(data));
   }
 }
 
@@ -9313,20 +10059,23 @@ class PlacementStrategiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9339,12 +10088,15 @@ class PlacementStrategiesResourceApi {
         '/placementStrategies/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -9366,20 +10118,23 @@ class PlacementStrategiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlacementStrategy> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PlacementStrategy> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9390,13 +10145,16 @@ class PlacementStrategiesResourceApi {
         '/placementStrategies/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlacementStrategy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlacementStrategy.fromJson(data));
   }
 
   /// Inserts a new placement strategy.
@@ -9418,20 +10176,22 @@ class PlacementStrategiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlacementStrategy> insert(
-      PlacementStrategy request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    PlacementStrategy request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9441,13 +10201,16 @@ class PlacementStrategiesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementStrategies';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlacementStrategy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlacementStrategy.fromJson(data));
   }
 
   /// Retrieves a list of placement strategies, possibly filtered. This method
@@ -9493,23 +10256,25 @@ class PlacementStrategiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlacementStrategiesListResponse> list(core.String profileId,
-      {core.int maxResults,
-      core.String searchString,
-      core.String pageToken,
-      core.List<core.String> ids,
-      core.String sortOrder,
-      core.String sortField,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PlacementStrategiesListResponse> list(
+    core.String profileId, {
+    core.int maxResults,
+    core.String searchString,
+    core.String pageToken,
+    core.List<core.String> ids,
+    core.String sortOrder,
+    core.String sortField,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -9537,14 +10302,17 @@ class PlacementStrategiesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementStrategies';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new PlacementStrategiesListResponse.fromJson(data));
+        .then((data) => PlacementStrategiesListResponse.fromJson(data));
   }
 
   /// Updates an existing placement strategy. This method supports patch
@@ -9569,23 +10337,26 @@ class PlacementStrategiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlacementStrategy> patch(
-      PlacementStrategy request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    PlacementStrategy request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -9596,13 +10367,16 @@ class PlacementStrategiesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementStrategies';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlacementStrategy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlacementStrategy.fromJson(data));
   }
 
   /// Updates an existing placement strategy.
@@ -9624,20 +10398,22 @@ class PlacementStrategiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlacementStrategy> update(
-      PlacementStrategy request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    PlacementStrategy request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9647,13 +10423,16 @@ class PlacementStrategiesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementStrategies';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlacementStrategy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlacementStrategy.fromJson(data));
   }
 }
 
@@ -9687,20 +10466,21 @@ class PlacementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlacementsGenerateTagsResponse> generatetags(
-      core.String profileId,
-      {core.List<core.String> tagFormats,
-      core.List<core.String> placementIds,
-      core.String campaignId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId, {
+    core.List<core.String> tagFormats,
+    core.List<core.String> placementIds,
+    core.String campaignId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (tagFormats != null) {
       _queryParams["tagFormats"] = tagFormats;
@@ -9719,14 +10499,17 @@ class PlacementsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements/generatetags';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new PlacementsGenerateTagsResponse.fromJson(data));
+        .then((data) => PlacementsGenerateTagsResponse.fromJson(data));
   }
 
   /// Gets one placement by ID.
@@ -9747,20 +10530,23 @@ class PlacementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Placement> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Placement> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9771,13 +10557,16 @@ class PlacementsResourceApi {
         '/placements/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Placement.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Placement.fromJson(data));
   }
 
   /// Inserts a new placement.
@@ -9798,20 +10587,23 @@ class PlacementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Placement> insert(Placement request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Placement> insert(
+    Placement request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9821,13 +10613,16 @@ class PlacementsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Placement.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Placement.fromJson(data));
   }
 
   /// Retrieves a list of placements, possibly filtered. This method supports
@@ -9924,39 +10719,41 @@ class PlacementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlacementsListResponse> list(core.String profileId,
-      {core.bool archived,
-      core.List<core.String> campaignIds,
-      core.String maxEndDate,
-      core.List<core.String> compatibilities,
-      core.List<core.String> advertiserIds,
-      core.String minEndDate,
-      core.String sortOrder,
-      core.List<core.String> siteIds,
-      core.String pageToken,
-      core.String sortField,
-      core.String searchString,
-      core.List<core.String> groupIds,
-      core.List<core.String> contentCategoryIds,
-      core.List<core.String> pricingTypes,
-      core.String maxStartDate,
-      core.List<core.String> directorySiteIds,
-      core.String paymentSource,
-      core.List<core.String> ids,
-      core.String minStartDate,
-      core.List<core.String> sizeIds,
-      core.int maxResults,
-      core.List<core.String> placementStrategyIds,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PlacementsListResponse> list(
+    core.String profileId, {
+    core.bool archived,
+    core.List<core.String> campaignIds,
+    core.String maxEndDate,
+    core.List<core.String> compatibilities,
+    core.List<core.String> advertiserIds,
+    core.String minEndDate,
+    core.String sortOrder,
+    core.List<core.String> siteIds,
+    core.String pageToken,
+    core.String sortField,
+    core.String searchString,
+    core.List<core.String> groupIds,
+    core.List<core.String> contentCategoryIds,
+    core.List<core.String> pricingTypes,
+    core.String maxStartDate,
+    core.List<core.String> directorySiteIds,
+    core.String paymentSource,
+    core.List<core.String> ids,
+    core.String minStartDate,
+    core.List<core.String> sizeIds,
+    core.int maxResults,
+    core.List<core.String> placementStrategyIds,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (archived != null) {
       _queryParams["archived"] = ["${archived}"];
@@ -10032,13 +10829,16 @@ class PlacementsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlacementsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlacementsListResponse.fromJson(data));
   }
 
   /// Updates an existing placement. This method supports patch semantics.
@@ -10062,23 +10862,26 @@ class PlacementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Placement> patch(
-      Placement request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Placement request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -10089,13 +10892,16 @@ class PlacementsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Placement.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Placement.fromJson(data));
   }
 
   /// Updates an existing placement.
@@ -10116,20 +10922,23 @@ class PlacementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Placement> update(Placement request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Placement> update(
+    Placement request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10139,13 +10948,16 @@ class PlacementsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Placement.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Placement.fromJson(data));
   }
 }
 
@@ -10172,20 +10984,23 @@ class PlatformTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlatformType> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PlatformType> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10196,13 +11011,16 @@ class PlatformTypesResourceApi {
         '/platformTypes/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlatformType.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlatformType.fromJson(data));
   }
 
   /// Retrieves a list of platform types.
@@ -10221,17 +11039,19 @@ class PlatformTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlatformTypesListResponse> list(core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PlatformTypesListResponse> list(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10241,14 +11061,16 @@ class PlatformTypesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/platformTypes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new PlatformTypesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlatformTypesListResponse.fromJson(data));
   }
 }
 
@@ -10275,20 +11097,23 @@ class PostalCodesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PostalCode> get(core.String profileId, core.String code,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PostalCode> get(
+    core.String profileId,
+    core.String code, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (code == null) {
-      throw new core.ArgumentError("Parameter code is required.");
+      throw core.ArgumentError("Parameter code is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10299,13 +11124,16 @@ class PostalCodesResourceApi {
         '/postalCodes/' +
         commons.Escaper.ecapeVariable('$code');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PostalCode.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PostalCode.fromJson(data));
   }
 
   /// Retrieves a list of postal codes.
@@ -10324,17 +11152,19 @@ class PostalCodesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PostalCodesListResponse> list(core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PostalCodesListResponse> list(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10344,13 +11174,16 @@ class PostalCodesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/postalCodes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PostalCodesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PostalCodesListResponse.fromJson(data));
   }
 }
 
@@ -10377,20 +11210,23 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Project> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Project> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10401,13 +11237,16 @@ class ProjectsResourceApi {
         '/projects/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Project.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Project.fromJson(data));
   }
 
   /// Retrieves a list of projects, possibly filtered. This method supports
@@ -10454,24 +11293,26 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ProjectsListResponse> list(core.String profileId,
-      {core.int maxResults,
-      core.List<core.String> advertiserIds,
-      core.String sortOrder,
-      core.List<core.String> ids,
-      core.String pageToken,
-      core.String sortField,
-      core.String searchString,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ProjectsListResponse> list(
+    core.String profileId, {
+    core.int maxResults,
+    core.List<core.String> advertiserIds,
+    core.String sortOrder,
+    core.List<core.String> ids,
+    core.String pageToken,
+    core.String sortField,
+    core.String searchString,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -10502,13 +11343,16 @@ class ProjectsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/projects';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ProjectsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ProjectsListResponse.fromJson(data));
   }
 }
 
@@ -10533,17 +11377,19 @@ class RegionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RegionsListResponse> list(core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RegionsListResponse> list(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10553,13 +11399,16 @@ class RegionsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/regions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RegionsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RegionsListResponse.fromJson(data));
   }
 }
 
@@ -10588,20 +11437,22 @@ class RemarketingListSharesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemarketingListShare> get(
-      core.String profileId, core.String remarketingListId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String remarketingListId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (remarketingListId == null) {
-      throw new core.ArgumentError("Parameter remarketingListId is required.");
+      throw core.ArgumentError("Parameter remarketingListId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10612,13 +11463,16 @@ class RemarketingListSharesResourceApi {
         '/remarketingListShares/' +
         commons.Escaper.ecapeVariable('$remarketingListId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RemarketingListShare.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RemarketingListShare.fromJson(data));
   }
 
   /// Updates an existing remarketing list share. This method supports patch
@@ -10643,23 +11497,26 @@ class RemarketingListSharesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemarketingListShare> patch(
-      RemarketingListShare request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RemarketingListShare request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -10670,13 +11527,16 @@ class RemarketingListSharesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingListShares';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RemarketingListShare.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RemarketingListShare.fromJson(data));
   }
 
   /// Updates an existing remarketing list share.
@@ -10698,20 +11558,22 @@ class RemarketingListSharesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemarketingListShare> update(
-      RemarketingListShare request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RemarketingListShare request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10721,13 +11583,16 @@ class RemarketingListSharesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingListShares';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RemarketingListShare.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RemarketingListShare.fromJson(data));
   }
 }
 
@@ -10755,20 +11620,23 @@ class RemarketingListsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RemarketingList> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RemarketingList> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10779,13 +11647,16 @@ class RemarketingListsResourceApi {
         '/remarketingLists/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RemarketingList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RemarketingList.fromJson(data));
   }
 
   /// Inserts a new remarketing list.
@@ -10807,20 +11678,22 @@ class RemarketingListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemarketingList> insert(
-      RemarketingList request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RemarketingList request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10830,13 +11703,16 @@ class RemarketingListsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingLists';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RemarketingList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RemarketingList.fromJson(data));
   }
 
   /// Retrieves a list of remarketing lists, possibly filtered. This method
@@ -10887,27 +11763,29 @@ class RemarketingListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemarketingListsListResponse> list(
-      core.String profileId, core.String advertiserId,
-      {core.String sortField,
-      core.String sortOrder,
-      core.String floodlightActivityId,
-      core.String pageToken,
-      core.int maxResults,
-      core.bool active,
-      core.String name,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String advertiserId, {
+    core.String sortField,
+    core.String sortOrder,
+    core.String floodlightActivityId,
+    core.String pageToken,
+    core.int maxResults,
+    core.bool active,
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     _queryParams["advertiserId"] = [advertiserId];
     if (sortField != null) {
@@ -10939,14 +11817,17 @@ class RemarketingListsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingLists';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new RemarketingListsListResponse.fromJson(data));
+        .then((data) => RemarketingListsListResponse.fromJson(data));
   }
 
   /// Updates an existing remarketing list. This method supports patch
@@ -10971,23 +11852,26 @@ class RemarketingListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemarketingList> patch(
-      RemarketingList request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RemarketingList request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -10998,13 +11882,16 @@ class RemarketingListsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingLists';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RemarketingList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RemarketingList.fromJson(data));
   }
 
   /// Updates an existing remarketing list.
@@ -11026,20 +11913,22 @@ class RemarketingListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemarketingList> update(
-      RemarketingList request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RemarketingList request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -11049,13 +11938,16 @@ class RemarketingListsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingLists';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RemarketingList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RemarketingList.fromJson(data));
   }
 }
 
@@ -11063,8 +11955,8 @@ class ReportsResourceApi {
   final commons.ApiRequester _requester;
 
   ReportsCompatibleFieldsResourceApi get compatibleFields =>
-      new ReportsCompatibleFieldsResourceApi(_requester);
-  ReportsFilesResourceApi get files => new ReportsFilesResourceApi(_requester);
+      ReportsCompatibleFieldsResourceApi(_requester);
+  ReportsFilesResourceApi get files => ReportsFilesResourceApi(_requester);
 
   ReportsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -11084,20 +11976,23 @@ class ReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String reportId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String profileId,
+    core.String reportId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (reportId == null) {
-      throw new core.ArgumentError("Parameter reportId is required.");
+      throw core.ArgumentError("Parameter reportId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -11110,12 +12005,15 @@ class ReportsResourceApi {
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -11137,20 +12035,23 @@ class ReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Report> get(core.String profileId, core.String reportId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Report> get(
+    core.String profileId,
+    core.String reportId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (reportId == null) {
-      throw new core.ArgumentError("Parameter reportId is required.");
+      throw core.ArgumentError("Parameter reportId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -11161,13 +12062,16 @@ class ReportsResourceApi {
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Report.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Report.fromJson(data));
   }
 
   /// Creates a report.
@@ -11188,20 +12092,23 @@ class ReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Report> insert(Report request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Report> insert(
+    Report request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -11211,13 +12118,16 @@ class ReportsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Report.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Report.fromJson(data));
   }
 
   /// Retrieves list of reports.
@@ -11257,22 +12167,24 @@ class ReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ReportList> list(core.String profileId,
-      {core.String sortOrder,
-      core.String scope,
-      core.int maxResults,
-      core.String pageToken,
-      core.String sortField,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ReportList> list(
+    core.String profileId, {
+    core.String sortOrder,
+    core.String scope,
+    core.int maxResults,
+    core.String pageToken,
+    core.String sortField,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
@@ -11297,13 +12209,16 @@ class ReportsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ReportList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ReportList.fromJson(data));
   }
 
   /// Updates an existing report. This method supports patch semantics.
@@ -11327,23 +12242,26 @@ class ReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Report> patch(
-      Report request, core.String profileId, core.String reportId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Report request,
+    core.String profileId,
+    core.String reportId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (reportId == null) {
-      throw new core.ArgumentError("Parameter reportId is required.");
+      throw core.ArgumentError("Parameter reportId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -11354,13 +12272,16 @@ class ReportsResourceApi {
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Report.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Report.fromJson(data));
   }
 
   /// Runs a report.
@@ -11383,20 +12304,24 @@ class ReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<File> run(core.String profileId, core.String reportId,
-      {core.bool synchronous, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<File> run(
+    core.String profileId,
+    core.String reportId, {
+    core.bool synchronous,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (reportId == null) {
-      throw new core.ArgumentError("Parameter reportId is required.");
+      throw core.ArgumentError("Parameter reportId is required.");
     }
     if (synchronous != null) {
       _queryParams["synchronous"] = ["${synchronous}"];
@@ -11411,13 +12336,16 @@ class ReportsResourceApi {
         commons.Escaper.ecapeVariable('$reportId') +
         '/run';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new File.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => File.fromJson(data));
   }
 
   /// Updates a report.
@@ -11441,23 +12369,26 @@ class ReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Report> update(
-      Report request, core.String profileId, core.String reportId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Report request,
+    core.String profileId,
+    core.String reportId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (reportId == null) {
-      throw new core.ArgumentError("Parameter reportId is required.");
+      throw core.ArgumentError("Parameter reportId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -11468,13 +12399,16 @@ class ReportsResourceApi {
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Report.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Report.fromJson(data));
   }
 }
 
@@ -11504,20 +12438,23 @@ class ReportsCompatibleFieldsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CompatibleFields> query(Report request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CompatibleFields> query(
+    Report request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -11527,13 +12464,16 @@ class ReportsCompatibleFieldsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports/compatiblefields/query';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CompatibleFields.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CompatibleFields.fromJson(data));
   }
 }
 
@@ -11572,25 +12512,27 @@ class ReportsFilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future get(
-      core.String profileId, core.String reportId, core.String fileId,
-      {core.String $fields,
-      commons.DownloadOptions downloadOptions =
-          commons.DownloadOptions.Metadata}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String reportId,
+    core.String fileId, {
+    core.String $fields,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (reportId == null) {
-      throw new core.ArgumentError("Parameter reportId is required.");
+      throw core.ArgumentError("Parameter reportId is required.");
     }
     if (fileId == null) {
-      throw new core.ArgumentError("Parameter fileId is required.");
+      throw core.ArgumentError("Parameter fileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -11605,15 +12547,18 @@ class ReportsFilesResourceApi {
         '/files/' +
         commons.Escaper.ecapeVariable('$fileId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => new File.fromJson(data));
+      return _response.then((data) => File.fromJson(data));
     } else {
       return _response;
     }
@@ -11652,24 +12597,27 @@ class ReportsFilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FileList> list(core.String profileId, core.String reportId,
-      {core.int maxResults,
-      core.String sortOrder,
-      core.String pageToken,
-      core.String sortField,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FileList> list(
+    core.String profileId,
+    core.String reportId, {
+    core.int maxResults,
+    core.String sortOrder,
+    core.String pageToken,
+    core.String sortField,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (reportId == null) {
-      throw new core.ArgumentError("Parameter reportId is required.");
+      throw core.ArgumentError("Parameter reportId is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -11693,13 +12641,16 @@ class ReportsFilesResourceApi {
         commons.Escaper.ecapeVariable('$reportId') +
         '/files';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FileList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FileList.fromJson(data));
   }
 }
 
@@ -11726,20 +12677,23 @@ class SitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Site> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Site> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -11750,13 +12704,16 @@ class SitesResourceApi {
         '/sites/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Site.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Site.fromJson(data));
   }
 
   /// Inserts a new site.
@@ -11777,20 +12734,23 @@ class SitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Site> insert(Site request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Site> insert(
+    Site request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -11800,13 +12760,16 @@ class SitesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/sites';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Site.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Site.fromJson(data));
   }
 
   /// Retrieves a list of sites, possibly filtered. This method supports paging.
@@ -11871,32 +12834,34 @@ class SitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SitesListResponse> list(core.String profileId,
-      {core.bool unmappedSite,
-      core.String sortOrder,
-      core.bool acceptsInStreamVideoPlacements,
-      core.bool acceptsPublisherPaidPlacements,
-      core.int maxResults,
-      core.List<core.String> campaignIds,
-      core.String searchString,
-      core.List<core.String> directorySiteIds,
-      core.bool adWordsSite,
-      core.bool approved,
-      core.String pageToken,
-      core.List<core.String> ids,
-      core.bool acceptsInterstitialPlacements,
-      core.String subaccountId,
-      core.String sortField,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SitesListResponse> list(
+    core.String profileId, {
+    core.bool unmappedSite,
+    core.String sortOrder,
+    core.bool acceptsInStreamVideoPlacements,
+    core.bool acceptsPublisherPaidPlacements,
+    core.int maxResults,
+    core.List<core.String> campaignIds,
+    core.String searchString,
+    core.List<core.String> directorySiteIds,
+    core.bool adWordsSite,
+    core.bool approved,
+    core.String pageToken,
+    core.List<core.String> ids,
+    core.bool acceptsInterstitialPlacements,
+    core.String subaccountId,
+    core.String sortField,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (unmappedSite != null) {
       _queryParams["unmappedSite"] = ["${unmappedSite}"];
@@ -11957,13 +12922,16 @@ class SitesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/sites';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SitesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SitesListResponse.fromJson(data));
   }
 
   /// Updates an existing site. This method supports patch semantics.
@@ -11986,23 +12954,27 @@ class SitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Site> patch(Site request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Site> patch(
+    Site request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -12013,13 +12985,16 @@ class SitesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/sites';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Site.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Site.fromJson(data));
   }
 
   /// Updates an existing site.
@@ -12040,20 +13015,23 @@ class SitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Site> update(Site request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Site> update(
+    Site request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -12063,13 +13041,16 @@ class SitesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/sites';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Site.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Site.fromJson(data));
   }
 }
 
@@ -12096,20 +13077,23 @@ class SizesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Size> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Size> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -12120,13 +13104,16 @@ class SizesResourceApi {
         '/sizes/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Size.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Size.fromJson(data));
   }
 
   /// Inserts a new size.
@@ -12147,20 +13134,23 @@ class SizesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Size> insert(Size request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Size> insert(
+    Size request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -12170,13 +13160,16 @@ class SizesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/sizes';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Size.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Size.fromJson(data));
   }
 
   /// Retrieves a list of sizes, possibly filtered. Retrieved sizes are globally
@@ -12208,21 +13201,23 @@ class SizesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SizesListResponse> list(core.String profileId,
-      {core.int height,
-      core.bool iabStandard,
-      core.int width,
-      core.List<core.String> ids,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SizesListResponse> list(
+    core.String profileId, {
+    core.int height,
+    core.bool iabStandard,
+    core.int width,
+    core.List<core.String> ids,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (height != null) {
       _queryParams["height"] = ["${height}"];
@@ -12244,13 +13239,16 @@ class SizesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/sizes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SizesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SizesListResponse.fromJson(data));
   }
 }
 
@@ -12277,20 +13275,23 @@ class SubaccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Subaccount> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Subaccount> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -12301,13 +13302,16 @@ class SubaccountsResourceApi {
         '/subaccounts/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subaccount.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subaccount.fromJson(data));
   }
 
   /// Inserts a new subaccount.
@@ -12328,20 +13332,23 @@ class SubaccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Subaccount> insert(Subaccount request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Subaccount> insert(
+    Subaccount request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -12351,13 +13358,16 @@ class SubaccountsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/subaccounts';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subaccount.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subaccount.fromJson(data));
   }
 
   /// Gets a list of subaccounts, possibly filtered. This method supports
@@ -12402,23 +13412,25 @@ class SubaccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SubaccountsListResponse> list(core.String profileId,
-      {core.int maxResults,
-      core.String searchString,
-      core.String sortOrder,
-      core.List<core.String> ids,
-      core.String pageToken,
-      core.String sortField,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SubaccountsListResponse> list(
+    core.String profileId, {
+    core.int maxResults,
+    core.String searchString,
+    core.String sortOrder,
+    core.List<core.String> ids,
+    core.String pageToken,
+    core.String sortField,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -12446,13 +13458,16 @@ class SubaccountsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/subaccounts';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SubaccountsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SubaccountsListResponse.fromJson(data));
   }
 
   /// Updates an existing subaccount. This method supports patch semantics.
@@ -12476,23 +13491,26 @@ class SubaccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subaccount> patch(
-      Subaccount request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Subaccount request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -12503,13 +13521,16 @@ class SubaccountsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/subaccounts';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subaccount.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subaccount.fromJson(data));
   }
 
   /// Updates an existing subaccount.
@@ -12530,20 +13551,23 @@ class SubaccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Subaccount> update(Subaccount request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Subaccount> update(
+    Subaccount request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -12553,13 +13577,16 @@ class SubaccountsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/subaccounts';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subaccount.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subaccount.fromJson(data));
   }
 }
 
@@ -12588,20 +13615,22 @@ class TargetableRemarketingListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetableRemarketingList> get(
-      core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -12612,14 +13641,16 @@ class TargetableRemarketingListsResourceApi {
         '/targetableRemarketingLists/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TargetableRemarketingList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TargetableRemarketingList.fromJson(data));
   }
 
   /// Retrieves a list of targetable remarketing lists, possibly filtered. This
@@ -12669,26 +13700,28 @@ class TargetableRemarketingListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetableRemarketingListsListResponse> list(
-      core.String profileId, core.String advertiserId,
-      {core.String sortField,
-      core.String sortOrder,
-      core.bool active,
-      core.String name,
-      core.String pageToken,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String advertiserId, {
+    core.String sortField,
+    core.String sortOrder,
+    core.bool active,
+    core.String name,
+    core.String pageToken,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
+      throw core.ArgumentError("Parameter advertiserId is required.");
     }
     _queryParams["advertiserId"] = [advertiserId];
     if (sortField != null) {
@@ -12717,14 +13750,17 @@ class TargetableRemarketingListsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetableRemarketingLists';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new TargetableRemarketingListsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => TargetableRemarketingListsListResponse.fromJson(data));
   }
 }
 
@@ -12752,20 +13788,23 @@ class TargetingTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TargetingTemplate> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<TargetingTemplate> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -12776,13 +13815,16 @@ class TargetingTemplatesResourceApi {
         '/targetingTemplates/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TargetingTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TargetingTemplate.fromJson(data));
   }
 
   /// Inserts a new targeting template.
@@ -12804,20 +13846,22 @@ class TargetingTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetingTemplate> insert(
-      TargetingTemplate request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TargetingTemplate request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -12827,13 +13871,16 @@ class TargetingTemplatesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetingTemplates';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TargetingTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TargetingTemplate.fromJson(data));
   }
 
   /// Retrieves a list of targeting templates, optionally filtered. This method
@@ -12880,24 +13927,26 @@ class TargetingTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TargetingTemplatesListResponse> list(core.String profileId,
-      {core.int maxResults,
-      core.String sortField,
-      core.String searchString,
-      core.String pageToken,
-      core.String advertiserId,
-      core.String sortOrder,
-      core.List<core.String> ids,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<TargetingTemplatesListResponse> list(
+    core.String profileId, {
+    core.int maxResults,
+    core.String sortField,
+    core.String searchString,
+    core.String pageToken,
+    core.String advertiserId,
+    core.String sortOrder,
+    core.List<core.String> ids,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -12928,14 +13977,17 @@ class TargetingTemplatesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetingTemplates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new TargetingTemplatesListResponse.fromJson(data));
+        .then((data) => TargetingTemplatesListResponse.fromJson(data));
   }
 
   /// Updates an existing targeting template. This method supports patch
@@ -12960,23 +14012,26 @@ class TargetingTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetingTemplate> patch(
-      TargetingTemplate request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TargetingTemplate request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -12987,13 +14042,16 @@ class TargetingTemplatesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetingTemplates';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TargetingTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TargetingTemplate.fromJson(data));
   }
 
   /// Updates an existing targeting template.
@@ -13015,20 +14073,22 @@ class TargetingTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetingTemplate> update(
-      TargetingTemplate request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TargetingTemplate request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13038,13 +14098,16 @@ class TargetingTemplatesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetingTemplates';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TargetingTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TargetingTemplate.fromJson(data));
   }
 }
 
@@ -13069,16 +14132,19 @@ class UserProfilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserProfile> get(core.String profileId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UserProfile> get(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13086,13 +14152,16 @@ class UserProfilesResourceApi {
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UserProfile.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UserProfile.fromJson(data));
   }
 
   /// Retrieves list of user profiles for a user.
@@ -13109,13 +14178,15 @@ class UserProfilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserProfileList> list({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UserProfileList> list({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13123,13 +14194,16 @@ class UserProfilesResourceApi {
 
     _url = 'userprofiles';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UserProfileList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UserProfileList.fromJson(data));
   }
 }
 
@@ -13158,20 +14232,22 @@ class UserRolePermissionGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UserRolePermissionGroup> get(
-      core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13182,13 +14258,16 @@ class UserRolePermissionGroupsResourceApi {
         '/userRolePermissionGroups/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UserRolePermissionGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UserRolePermissionGroup.fromJson(data));
   }
 
   /// Gets a list of all supported user role permission groups.
@@ -13207,17 +14286,19 @@ class UserRolePermissionGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserRolePermissionGroupsListResponse> list(core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UserRolePermissionGroupsListResponse> list(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13227,14 +14308,17 @@ class UserRolePermissionGroupsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRolePermissionGroups';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new UserRolePermissionGroupsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => UserRolePermissionGroupsListResponse.fromJson(data));
   }
 }
 
@@ -13262,20 +14346,23 @@ class UserRolePermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserRolePermission> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UserRolePermission> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13286,13 +14373,16 @@ class UserRolePermissionsResourceApi {
         '/userRolePermissions/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UserRolePermission.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UserRolePermission.fromJson(data));
   }
 
   /// Gets a list of user role permissions, possibly filtered.
@@ -13313,17 +14403,20 @@ class UserRolePermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserRolePermissionsListResponse> list(core.String profileId,
-      {core.List<core.String> ids, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UserRolePermissionsListResponse> list(
+    core.String profileId, {
+    core.List<core.String> ids,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (ids != null) {
       _queryParams["ids"] = ids;
@@ -13336,14 +14429,17 @@ class UserRolePermissionsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRolePermissions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new UserRolePermissionsListResponse.fromJson(data));
+        .then((data) => UserRolePermissionsListResponse.fromJson(data));
   }
 }
 
@@ -13368,20 +14464,23 @@ class UserRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13394,12 +14493,15 @@ class UserRolesResourceApi {
         '/userRoles/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -13421,20 +14523,23 @@ class UserRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserRole> get(core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UserRole> get(
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13445,13 +14550,16 @@ class UserRolesResourceApi {
         '/userRoles/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UserRole.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UserRole.fromJson(data));
   }
 
   /// Inserts a new user role.
@@ -13472,20 +14580,23 @@ class UserRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserRole> insert(UserRole request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UserRole> insert(
+    UserRole request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13495,13 +14606,16 @@ class UserRolesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRoles';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UserRole.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UserRole.fromJson(data));
   }
 
   /// Retrieves a list of user roles, possibly filtered. This method supports
@@ -13551,25 +14665,27 @@ class UserRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserRolesListResponse> list(core.String profileId,
-      {core.String subaccountId,
-      core.String sortOrder,
-      core.List<core.String> ids,
-      core.bool accountUserRoleOnly,
-      core.String sortField,
-      core.String searchString,
-      core.int maxResults,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UserRolesListResponse> list(
+    core.String profileId, {
+    core.String subaccountId,
+    core.String sortOrder,
+    core.List<core.String> ids,
+    core.bool accountUserRoleOnly,
+    core.String sortField,
+    core.String searchString,
+    core.int maxResults,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (subaccountId != null) {
       _queryParams["subaccountId"] = [subaccountId];
@@ -13603,13 +14719,16 @@ class UserRolesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRoles';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UserRolesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UserRolesListResponse.fromJson(data));
   }
 
   /// Updates an existing user role. This method supports patch semantics.
@@ -13633,23 +14752,26 @@ class UserRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UserRole> patch(
-      UserRole request, core.String profileId, core.String id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    UserRole request,
+    core.String profileId,
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -13660,13 +14782,16 @@ class UserRolesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRoles';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UserRole.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UserRole.fromJson(data));
   }
 
   /// Updates an existing user role.
@@ -13687,20 +14812,23 @@ class UserRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserRole> update(UserRole request, core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UserRole> update(
+    UserRole request,
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13710,13 +14838,16 @@ class UserRolesResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRoles';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UserRole.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UserRole.fromJson(data));
   }
 }
 
@@ -13743,20 +14874,23 @@ class VideoFormatsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VideoFormat> get(core.String profileId, core.int id,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<VideoFormat> get(
+    core.String profileId,
+    core.int id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13767,13 +14901,16 @@ class VideoFormatsResourceApi {
         '/videoFormats/' +
         commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new VideoFormat.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => VideoFormat.fromJson(data));
   }
 
   /// Lists available video formats.
@@ -13792,17 +14929,19 @@ class VideoFormatsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VideoFormatsListResponse> list(core.String profileId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<VideoFormatsListResponse> list(
+    core.String profileId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
+      throw core.ArgumentError("Parameter profileId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13812,14 +14951,16 @@ class VideoFormatsResourceApi {
         commons.Escaper.ecapeVariable('$profileId') +
         '/videoFormats';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new VideoFormatsListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => VideoFormatsListResponse.fromJson(data));
   }
 }
 
@@ -13971,7 +15112,7 @@ class Account {
     }
     if (_json.containsKey("reportsConfiguration")) {
       reportsConfiguration =
-          new ReportsConfiguration.fromJson(_json["reportsConfiguration"]);
+          ReportsConfiguration.fromJson(_json["reportsConfiguration"]);
     }
     if (_json.containsKey("shareReportsWithTwitter")) {
       shareReportsWithTwitter = _json["shareReportsWithTwitter"];
@@ -13983,7 +15124,7 @@ class Account {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountPermissionIds != null) {
       _json["accountPermissionIds"] = accountPermissionIds;
     }
@@ -14033,7 +15174,7 @@ class Account {
       _json["nielsenOcrEnabled"] = nielsenOcrEnabled;
     }
     if (reportsConfiguration != null) {
-      _json["reportsConfiguration"] = (reportsConfiguration).toJson();
+      _json["reportsConfiguration"] = reportsConfiguration.toJson();
     }
     if (shareReportsWithTwitter != null) {
       _json["shareReportsWithTwitter"] = shareReportsWithTwitter;
@@ -14094,7 +15235,7 @@ class AccountActiveAdSummary {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -14167,7 +15308,7 @@ class AccountPermission {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountProfiles != null) {
       _json["accountProfiles"] = accountProfiles;
     }
@@ -14219,7 +15360,7 @@ class AccountPermissionGroup {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -14248,7 +15389,7 @@ class AccountPermissionGroupsListResponse {
     if (_json.containsKey("accountPermissionGroups")) {
       accountPermissionGroups = (_json["accountPermissionGroups"] as core.List)
           .map<AccountPermissionGroup>(
-              (value) => new AccountPermissionGroup.fromJson(value))
+              (value) => AccountPermissionGroup.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -14258,10 +15399,10 @@ class AccountPermissionGroupsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountPermissionGroups != null) {
       _json["accountPermissionGroups"] =
-          accountPermissionGroups.map((value) => (value).toJson()).toList();
+          accountPermissionGroups.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -14284,8 +15425,7 @@ class AccountPermissionsListResponse {
   AccountPermissionsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("accountPermissions")) {
       accountPermissions = (_json["accountPermissions"] as core.List)
-          .map<AccountPermission>(
-              (value) => new AccountPermission.fromJson(value))
+          .map<AccountPermission>((value) => AccountPermission.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -14295,10 +15435,10 @@ class AccountPermissionsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountPermissions != null) {
       _json["accountPermissions"] =
-          accountPermissions.map((value) => (value).toJson()).toList();
+          accountPermissions.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -14392,10 +15532,10 @@ class AccountUserProfile {
       active = _json["active"];
     }
     if (_json.containsKey("advertiserFilter")) {
-      advertiserFilter = new ObjectFilter.fromJson(_json["advertiserFilter"]);
+      advertiserFilter = ObjectFilter.fromJson(_json["advertiserFilter"]);
     }
     if (_json.containsKey("campaignFilter")) {
-      campaignFilter = new ObjectFilter.fromJson(_json["campaignFilter"]);
+      campaignFilter = ObjectFilter.fromJson(_json["campaignFilter"]);
     }
     if (_json.containsKey("comments")) {
       comments = _json["comments"];
@@ -14416,7 +15556,7 @@ class AccountUserProfile {
       name = _json["name"];
     }
     if (_json.containsKey("siteFilter")) {
-      siteFilter = new ObjectFilter.fromJson(_json["siteFilter"]);
+      siteFilter = ObjectFilter.fromJson(_json["siteFilter"]);
     }
     if (_json.containsKey("subaccountId")) {
       subaccountId = _json["subaccountId"];
@@ -14428,7 +15568,7 @@ class AccountUserProfile {
       userAccessType = _json["userAccessType"];
     }
     if (_json.containsKey("userRoleFilter")) {
-      userRoleFilter = new ObjectFilter.fromJson(_json["userRoleFilter"]);
+      userRoleFilter = ObjectFilter.fromJson(_json["userRoleFilter"]);
     }
     if (_json.containsKey("userRoleId")) {
       userRoleId = _json["userRoleId"];
@@ -14437,7 +15577,7 @@ class AccountUserProfile {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -14445,10 +15585,10 @@ class AccountUserProfile {
       _json["active"] = active;
     }
     if (advertiserFilter != null) {
-      _json["advertiserFilter"] = (advertiserFilter).toJson();
+      _json["advertiserFilter"] = advertiserFilter.toJson();
     }
     if (campaignFilter != null) {
-      _json["campaignFilter"] = (campaignFilter).toJson();
+      _json["campaignFilter"] = campaignFilter.toJson();
     }
     if (comments != null) {
       _json["comments"] = comments;
@@ -14469,7 +15609,7 @@ class AccountUserProfile {
       _json["name"] = name;
     }
     if (siteFilter != null) {
-      _json["siteFilter"] = (siteFilter).toJson();
+      _json["siteFilter"] = siteFilter.toJson();
     }
     if (subaccountId != null) {
       _json["subaccountId"] = subaccountId;
@@ -14481,7 +15621,7 @@ class AccountUserProfile {
       _json["userAccessType"] = userAccessType;
     }
     if (userRoleFilter != null) {
-      _json["userRoleFilter"] = (userRoleFilter).toJson();
+      _json["userRoleFilter"] = userRoleFilter.toJson();
     }
     if (userRoleId != null) {
       _json["userRoleId"] = userRoleId;
@@ -14508,7 +15648,7 @@ class AccountUserProfilesListResponse {
     if (_json.containsKey("accountUserProfiles")) {
       accountUserProfiles = (_json["accountUserProfiles"] as core.List)
           .map<AccountUserProfile>(
-              (value) => new AccountUserProfile.fromJson(value))
+              (value) => AccountUserProfile.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -14521,10 +15661,10 @@ class AccountUserProfilesListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountUserProfiles != null) {
       _json["accountUserProfiles"] =
-          accountUserProfiles.map((value) => (value).toJson()).toList();
+          accountUserProfiles.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -14553,7 +15693,7 @@ class AccountsListResponse {
   AccountsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("accounts")) {
       accounts = (_json["accounts"] as core.List)
-          .map<Account>((value) => new Account.fromJson(value))
+          .map<Account>((value) => Account.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -14566,9 +15706,9 @@ class AccountsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accounts != null) {
-      _json["accounts"] = accounts.map((value) => (value).toJson()).toList();
+      _json["accounts"] = accounts.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -14597,7 +15737,7 @@ class Activities {
   Activities.fromJson(core.Map _json) {
     if (_json.containsKey("filters")) {
       filters = (_json["filters"] as core.List)
-          .map<DimensionValue>((value) => new DimensionValue.fromJson(value))
+          .map<DimensionValue>((value) => DimensionValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -14610,9 +15750,9 @@ class Activities {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (filters != null) {
-      _json["filters"] = filters.map((value) => (value).toJson()).toList();
+      _json["filters"] = filters.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -14812,7 +15952,7 @@ class Ad {
     }
     if (_json.containsKey("advertiserIdDimensionValue")) {
       advertiserIdDimensionValue =
-          new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+          DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
     }
     if (_json.containsKey("archived")) {
       archived = _json["archived"];
@@ -14825,14 +15965,14 @@ class Ad {
     }
     if (_json.containsKey("campaignIdDimensionValue")) {
       campaignIdDimensionValue =
-          new DimensionValue.fromJson(_json["campaignIdDimensionValue"]);
+          DimensionValue.fromJson(_json["campaignIdDimensionValue"]);
     }
     if (_json.containsKey("clickThroughUrl")) {
-      clickThroughUrl = new ClickThroughUrl.fromJson(_json["clickThroughUrl"]);
+      clickThroughUrl = ClickThroughUrl.fromJson(_json["clickThroughUrl"]);
     }
     if (_json.containsKey("clickThroughUrlSuffixProperties")) {
       clickThroughUrlSuffixProperties =
-          new ClickThroughUrlSuffixProperties.fromJson(
+          ClickThroughUrlSuffixProperties.fromJson(
               _json["clickThroughUrlSuffixProperties"]);
     }
     if (_json.containsKey("comments")) {
@@ -14842,31 +15982,28 @@ class Ad {
       compatibility = _json["compatibility"];
     }
     if (_json.containsKey("createInfo")) {
-      createInfo = new LastModifiedInfo.fromJson(_json["createInfo"]);
+      createInfo = LastModifiedInfo.fromJson(_json["createInfo"]);
     }
     if (_json.containsKey("creativeGroupAssignments")) {
       creativeGroupAssignments =
           (_json["creativeGroupAssignments"] as core.List)
               .map<CreativeGroupAssignment>(
-                  (value) => new CreativeGroupAssignment.fromJson(value))
+                  (value) => CreativeGroupAssignment.fromJson(value))
               .toList();
     }
     if (_json.containsKey("creativeRotation")) {
-      creativeRotation =
-          new CreativeRotation.fromJson(_json["creativeRotation"]);
+      creativeRotation = CreativeRotation.fromJson(_json["creativeRotation"]);
     }
     if (_json.containsKey("dayPartTargeting")) {
-      dayPartTargeting =
-          new DayPartTargeting.fromJson(_json["dayPartTargeting"]);
+      dayPartTargeting = DayPartTargeting.fromJson(_json["dayPartTargeting"]);
     }
     if (_json.containsKey("defaultClickThroughEventTagProperties")) {
       defaultClickThroughEventTagProperties =
-          new DefaultClickThroughEventTagProperties.fromJson(
+          DefaultClickThroughEventTagProperties.fromJson(
               _json["defaultClickThroughEventTagProperties"]);
     }
     if (_json.containsKey("deliverySchedule")) {
-      deliverySchedule =
-          new DeliverySchedule.fromJson(_json["deliverySchedule"]);
+      deliverySchedule = DeliverySchedule.fromJson(_json["deliverySchedule"]);
     }
     if (_json.containsKey("dynamicClickTracker")) {
       dynamicClickTracker = _json["dynamicClickTracker"];
@@ -14876,21 +16013,20 @@ class Ad {
     }
     if (_json.containsKey("eventTagOverrides")) {
       eventTagOverrides = (_json["eventTagOverrides"] as core.List)
-          .map<EventTagOverride>(
-              (value) => new EventTagOverride.fromJson(value))
+          .map<EventTagOverride>((value) => EventTagOverride.fromJson(value))
           .toList();
     }
     if (_json.containsKey("geoTargeting")) {
-      geoTargeting = new GeoTargeting.fromJson(_json["geoTargeting"]);
+      geoTargeting = GeoTargeting.fromJson(_json["geoTargeting"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("idDimensionValue")) {
-      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+      idDimensionValue = DimensionValue.fromJson(_json["idDimensionValue"]);
     }
     if (_json.containsKey("keyValueTargetingExpression")) {
-      keyValueTargetingExpression = new KeyValueTargetingExpression.fromJson(
+      keyValueTargetingExpression = KeyValueTargetingExpression.fromJson(
           _json["keyValueTargetingExpression"]);
     }
     if (_json.containsKey("kind")) {
@@ -14898,11 +16034,10 @@ class Ad {
     }
     if (_json.containsKey("languageTargeting")) {
       languageTargeting =
-          new LanguageTargeting.fromJson(_json["languageTargeting"]);
+          LanguageTargeting.fromJson(_json["languageTargeting"]);
     }
     if (_json.containsKey("lastModifiedInfo")) {
-      lastModifiedInfo =
-          new LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
+      lastModifiedInfo = LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -14910,15 +16045,15 @@ class Ad {
     if (_json.containsKey("placementAssignments")) {
       placementAssignments = (_json["placementAssignments"] as core.List)
           .map<PlacementAssignment>(
-              (value) => new PlacementAssignment.fromJson(value))
+              (value) => PlacementAssignment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("remarketingListExpression")) {
-      remarketingListExpression = new ListTargetingExpression.fromJson(
-          _json["remarketingListExpression"]);
+      remarketingListExpression =
+          ListTargetingExpression.fromJson(_json["remarketingListExpression"]);
     }
     if (_json.containsKey("size")) {
-      size = new Size.fromJson(_json["size"]);
+      size = Size.fromJson(_json["size"]);
     }
     if (_json.containsKey("sslCompliant")) {
       sslCompliant = _json["sslCompliant"];
@@ -14937,7 +16072,7 @@ class Ad {
     }
     if (_json.containsKey("technologyTargeting")) {
       technologyTargeting =
-          new TechnologyTargeting.fromJson(_json["technologyTargeting"]);
+          TechnologyTargeting.fromJson(_json["technologyTargeting"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -14946,7 +16081,7 @@ class Ad {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -14957,8 +16092,7 @@ class Ad {
       _json["advertiserId"] = advertiserId;
     }
     if (advertiserIdDimensionValue != null) {
-      _json["advertiserIdDimensionValue"] =
-          (advertiserIdDimensionValue).toJson();
+      _json["advertiserIdDimensionValue"] = advertiserIdDimensionValue.toJson();
     }
     if (archived != null) {
       _json["archived"] = archived;
@@ -14970,14 +16104,14 @@ class Ad {
       _json["campaignId"] = campaignId;
     }
     if (campaignIdDimensionValue != null) {
-      _json["campaignIdDimensionValue"] = (campaignIdDimensionValue).toJson();
+      _json["campaignIdDimensionValue"] = campaignIdDimensionValue.toJson();
     }
     if (clickThroughUrl != null) {
-      _json["clickThroughUrl"] = (clickThroughUrl).toJson();
+      _json["clickThroughUrl"] = clickThroughUrl.toJson();
     }
     if (clickThroughUrlSuffixProperties != null) {
       _json["clickThroughUrlSuffixProperties"] =
-          (clickThroughUrlSuffixProperties).toJson();
+          clickThroughUrlSuffixProperties.toJson();
     }
     if (comments != null) {
       _json["comments"] = comments;
@@ -14986,24 +16120,24 @@ class Ad {
       _json["compatibility"] = compatibility;
     }
     if (createInfo != null) {
-      _json["createInfo"] = (createInfo).toJson();
+      _json["createInfo"] = createInfo.toJson();
     }
     if (creativeGroupAssignments != null) {
       _json["creativeGroupAssignments"] =
-          creativeGroupAssignments.map((value) => (value).toJson()).toList();
+          creativeGroupAssignments.map((value) => value.toJson()).toList();
     }
     if (creativeRotation != null) {
-      _json["creativeRotation"] = (creativeRotation).toJson();
+      _json["creativeRotation"] = creativeRotation.toJson();
     }
     if (dayPartTargeting != null) {
-      _json["dayPartTargeting"] = (dayPartTargeting).toJson();
+      _json["dayPartTargeting"] = dayPartTargeting.toJson();
     }
     if (defaultClickThroughEventTagProperties != null) {
       _json["defaultClickThroughEventTagProperties"] =
-          (defaultClickThroughEventTagProperties).toJson();
+          defaultClickThroughEventTagProperties.toJson();
     }
     if (deliverySchedule != null) {
-      _json["deliverySchedule"] = (deliverySchedule).toJson();
+      _json["deliverySchedule"] = deliverySchedule.toJson();
     }
     if (dynamicClickTracker != null) {
       _json["dynamicClickTracker"] = dynamicClickTracker;
@@ -15013,42 +16147,42 @@ class Ad {
     }
     if (eventTagOverrides != null) {
       _json["eventTagOverrides"] =
-          eventTagOverrides.map((value) => (value).toJson()).toList();
+          eventTagOverrides.map((value) => value.toJson()).toList();
     }
     if (geoTargeting != null) {
-      _json["geoTargeting"] = (geoTargeting).toJson();
+      _json["geoTargeting"] = geoTargeting.toJson();
     }
     if (id != null) {
       _json["id"] = id;
     }
     if (idDimensionValue != null) {
-      _json["idDimensionValue"] = (idDimensionValue).toJson();
+      _json["idDimensionValue"] = idDimensionValue.toJson();
     }
     if (keyValueTargetingExpression != null) {
       _json["keyValueTargetingExpression"] =
-          (keyValueTargetingExpression).toJson();
+          keyValueTargetingExpression.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (languageTargeting != null) {
-      _json["languageTargeting"] = (languageTargeting).toJson();
+      _json["languageTargeting"] = languageTargeting.toJson();
     }
     if (lastModifiedInfo != null) {
-      _json["lastModifiedInfo"] = (lastModifiedInfo).toJson();
+      _json["lastModifiedInfo"] = lastModifiedInfo.toJson();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (placementAssignments != null) {
       _json["placementAssignments"] =
-          placementAssignments.map((value) => (value).toJson()).toList();
+          placementAssignments.map((value) => value.toJson()).toList();
     }
     if (remarketingListExpression != null) {
-      _json["remarketingListExpression"] = (remarketingListExpression).toJson();
+      _json["remarketingListExpression"] = remarketingListExpression.toJson();
     }
     if (size != null) {
-      _json["size"] = (size).toJson();
+      _json["size"] = size.toJson();
     }
     if (sslCompliant != null) {
       _json["sslCompliant"] = sslCompliant;
@@ -15066,7 +16200,7 @@ class Ad {
       _json["targetingTemplateId"] = targetingTemplateId;
     }
     if (technologyTargeting != null) {
-      _json["technologyTargeting"] = (technologyTargeting).toJson();
+      _json["technologyTargeting"] = technologyTargeting.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -15116,7 +16250,7 @@ class AdBlockingConfiguration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clickThroughUrl != null) {
       _json["clickThroughUrl"] = clickThroughUrl;
     }
@@ -15205,7 +16339,7 @@ class AdSlot {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (comment != null) {
       _json["comment"] = comment;
     }
@@ -15251,7 +16385,7 @@ class AdsListResponse {
   AdsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("ads")) {
       ads = (_json["ads"] as core.List)
-          .map<Ad>((value) => new Ad.fromJson(value))
+          .map<Ad>((value) => Ad.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -15264,9 +16398,9 @@ class AdsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ads != null) {
-      _json["ads"] = ads.map((value) => (value).toJson()).toList();
+      _json["ads"] = ads.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -15373,14 +16507,14 @@ class Advertiser {
       floodlightConfigurationId = _json["floodlightConfigurationId"];
     }
     if (_json.containsKey("floodlightConfigurationIdDimensionValue")) {
-      floodlightConfigurationIdDimensionValue = new DimensionValue.fromJson(
+      floodlightConfigurationIdDimensionValue = DimensionValue.fromJson(
           _json["floodlightConfigurationIdDimensionValue"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("idDimensionValue")) {
-      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+      idDimensionValue = DimensionValue.fromJson(_json["idDimensionValue"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -15405,7 +16539,7 @@ class Advertiser {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -15426,13 +16560,13 @@ class Advertiser {
     }
     if (floodlightConfigurationIdDimensionValue != null) {
       _json["floodlightConfigurationIdDimensionValue"] =
-          (floodlightConfigurationIdDimensionValue).toJson();
+          floodlightConfigurationIdDimensionValue.toJson();
     }
     if (id != null) {
       _json["id"] = id;
     }
     if (idDimensionValue != null) {
-      _json["idDimensionValue"] = (idDimensionValue).toJson();
+      _json["idDimensionValue"] = idDimensionValue.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -15495,7 +16629,7 @@ class AdvertiserGroup {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -15529,7 +16663,7 @@ class AdvertiserGroupsListResponse {
   AdvertiserGroupsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("advertiserGroups")) {
       advertiserGroups = (_json["advertiserGroups"] as core.List)
-          .map<AdvertiserGroup>((value) => new AdvertiserGroup.fromJson(value))
+          .map<AdvertiserGroup>((value) => AdvertiserGroup.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -15542,10 +16676,10 @@ class AdvertiserGroupsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertiserGroups != null) {
       _json["advertiserGroups"] =
-          advertiserGroups.map((value) => (value).toJson()).toList();
+          advertiserGroups.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -15577,7 +16711,7 @@ class AdvertiserLandingPagesListResponse {
     }
     if (_json.containsKey("landingPages")) {
       landingPages = (_json["landingPages"] as core.List)
-          .map<LandingPage>((value) => new LandingPage.fromJson(value))
+          .map<LandingPage>((value) => LandingPage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -15587,13 +16721,13 @@ class AdvertiserLandingPagesListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (landingPages != null) {
       _json["landingPages"] =
-          landingPages.map((value) => (value).toJson()).toList();
+          landingPages.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -15619,7 +16753,7 @@ class AdvertisersListResponse {
   AdvertisersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("advertisers")) {
       advertisers = (_json["advertisers"] as core.List)
-          .map<Advertiser>((value) => new Advertiser.fromJson(value))
+          .map<Advertiser>((value) => Advertiser.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -15632,10 +16766,10 @@ class AdvertisersListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertisers != null) {
       _json["advertisers"] =
-          advertisers.map((value) => (value).toJson()).toList();
+          advertisers.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -15677,7 +16811,7 @@ class AudienceSegment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allocation != null) {
       _json["allocation"] = allocation;
     }
@@ -15710,7 +16844,7 @@ class AudienceSegmentGroup {
   AudienceSegmentGroup.fromJson(core.Map _json) {
     if (_json.containsKey("audienceSegments")) {
       audienceSegments = (_json["audienceSegments"] as core.List)
-          .map<AudienceSegment>((value) => new AudienceSegment.fromJson(value))
+          .map<AudienceSegment>((value) => AudienceSegment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -15723,10 +16857,10 @@ class AudienceSegmentGroup {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audienceSegments != null) {
       _json["audienceSegments"] =
-          audienceSegments.map((value) => (value).toJson()).toList();
+          audienceSegments.map((value) => value.toJson()).toList();
     }
     if (id != null) {
       _json["id"] = id;
@@ -15799,7 +16933,7 @@ class Browser {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (browserVersionId != null) {
       _json["browserVersionId"] = browserVersionId;
     }
@@ -15836,7 +16970,7 @@ class BrowsersListResponse {
   BrowsersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("browsers")) {
       browsers = (_json["browsers"] as core.List)
-          .map<Browser>((value) => new Browser.fromJson(value))
+          .map<Browser>((value) => Browser.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -15846,9 +16980,9 @@ class BrowsersListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (browsers != null) {
-      _json["browsers"] = browsers.map((value) => (value).toJson()).toList();
+      _json["browsers"] = browsers.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -15959,14 +17093,14 @@ class Campaign {
       accountId = _json["accountId"];
     }
     if (_json.containsKey("adBlockingConfiguration")) {
-      adBlockingConfiguration = new AdBlockingConfiguration.fromJson(
-          _json["adBlockingConfiguration"]);
+      adBlockingConfiguration =
+          AdBlockingConfiguration.fromJson(_json["adBlockingConfiguration"]);
     }
     if (_json.containsKey("additionalCreativeOptimizationConfigurations")) {
       additionalCreativeOptimizationConfigurations =
           (_json["additionalCreativeOptimizationConfigurations"] as core.List)
-              .map<CreativeOptimizationConfiguration>((value) =>
-                  new CreativeOptimizationConfiguration.fromJson(value))
+              .map<CreativeOptimizationConfiguration>(
+                  (value) => CreativeOptimizationConfiguration.fromJson(value))
               .toList();
     }
     if (_json.containsKey("advertiserGroupId")) {
@@ -15977,7 +17111,7 @@ class Campaign {
     }
     if (_json.containsKey("advertiserIdDimensionValue")) {
       advertiserIdDimensionValue =
-          new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+          DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
     }
     if (_json.containsKey("archived")) {
       archived = _json["archived"];
@@ -15985,7 +17119,7 @@ class Campaign {
     if (_json.containsKey("audienceSegmentGroups")) {
       audienceSegmentGroups = (_json["audienceSegmentGroups"] as core.List)
           .map<AudienceSegmentGroup>(
-              (value) => new AudienceSegmentGroup.fromJson(value))
+              (value) => AudienceSegmentGroup.fromJson(value))
           .toList();
     }
     if (_json.containsKey("billingInvoiceCode")) {
@@ -15993,14 +17127,14 @@ class Campaign {
     }
     if (_json.containsKey("clickThroughUrlSuffixProperties")) {
       clickThroughUrlSuffixProperties =
-          new ClickThroughUrlSuffixProperties.fromJson(
+          ClickThroughUrlSuffixProperties.fromJson(
               _json["clickThroughUrlSuffixProperties"]);
     }
     if (_json.containsKey("comment")) {
       comment = _json["comment"];
     }
     if (_json.containsKey("createInfo")) {
-      createInfo = new LastModifiedInfo.fromJson(_json["createInfo"]);
+      createInfo = LastModifiedInfo.fromJson(_json["createInfo"]);
     }
     if (_json.containsKey("creativeGroupIds")) {
       creativeGroupIds =
@@ -16008,12 +17142,12 @@ class Campaign {
     }
     if (_json.containsKey("creativeOptimizationConfiguration")) {
       creativeOptimizationConfiguration =
-          new CreativeOptimizationConfiguration.fromJson(
+          CreativeOptimizationConfiguration.fromJson(
               _json["creativeOptimizationConfiguration"]);
     }
     if (_json.containsKey("defaultClickThroughEventTagProperties")) {
       defaultClickThroughEventTagProperties =
-          new DefaultClickThroughEventTagProperties.fromJson(
+          DefaultClickThroughEventTagProperties.fromJson(
               _json["defaultClickThroughEventTagProperties"]);
     }
     if (_json.containsKey("defaultLandingPageId")) {
@@ -16024,8 +17158,7 @@ class Campaign {
     }
     if (_json.containsKey("eventTagOverrides")) {
       eventTagOverrides = (_json["eventTagOverrides"] as core.List)
-          .map<EventTagOverride>(
-              (value) => new EventTagOverride.fromJson(value))
+          .map<EventTagOverride>((value) => EventTagOverride.fromJson(value))
           .toList();
     }
     if (_json.containsKey("externalId")) {
@@ -16035,14 +17168,13 @@ class Campaign {
       id = _json["id"];
     }
     if (_json.containsKey("idDimensionValue")) {
-      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+      idDimensionValue = DimensionValue.fromJson(_json["idDimensionValue"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("lastModifiedInfo")) {
-      lastModifiedInfo =
-          new LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
+      lastModifiedInfo = LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -16064,17 +17196,17 @@ class Campaign {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
     if (adBlockingConfiguration != null) {
-      _json["adBlockingConfiguration"] = (adBlockingConfiguration).toJson();
+      _json["adBlockingConfiguration"] = adBlockingConfiguration.toJson();
     }
     if (additionalCreativeOptimizationConfigurations != null) {
       _json["additionalCreativeOptimizationConfigurations"] =
           additionalCreativeOptimizationConfigurations
-              .map((value) => (value).toJson())
+              .map((value) => value.toJson())
               .toList();
     }
     if (advertiserGroupId != null) {
@@ -16084,39 +17216,38 @@ class Campaign {
       _json["advertiserId"] = advertiserId;
     }
     if (advertiserIdDimensionValue != null) {
-      _json["advertiserIdDimensionValue"] =
-          (advertiserIdDimensionValue).toJson();
+      _json["advertiserIdDimensionValue"] = advertiserIdDimensionValue.toJson();
     }
     if (archived != null) {
       _json["archived"] = archived;
     }
     if (audienceSegmentGroups != null) {
       _json["audienceSegmentGroups"] =
-          audienceSegmentGroups.map((value) => (value).toJson()).toList();
+          audienceSegmentGroups.map((value) => value.toJson()).toList();
     }
     if (billingInvoiceCode != null) {
       _json["billingInvoiceCode"] = billingInvoiceCode;
     }
     if (clickThroughUrlSuffixProperties != null) {
       _json["clickThroughUrlSuffixProperties"] =
-          (clickThroughUrlSuffixProperties).toJson();
+          clickThroughUrlSuffixProperties.toJson();
     }
     if (comment != null) {
       _json["comment"] = comment;
     }
     if (createInfo != null) {
-      _json["createInfo"] = (createInfo).toJson();
+      _json["createInfo"] = createInfo.toJson();
     }
     if (creativeGroupIds != null) {
       _json["creativeGroupIds"] = creativeGroupIds;
     }
     if (creativeOptimizationConfiguration != null) {
       _json["creativeOptimizationConfiguration"] =
-          (creativeOptimizationConfiguration).toJson();
+          creativeOptimizationConfiguration.toJson();
     }
     if (defaultClickThroughEventTagProperties != null) {
       _json["defaultClickThroughEventTagProperties"] =
-          (defaultClickThroughEventTagProperties).toJson();
+          defaultClickThroughEventTagProperties.toJson();
     }
     if (defaultLandingPageId != null) {
       _json["defaultLandingPageId"] = defaultLandingPageId;
@@ -16127,7 +17258,7 @@ class Campaign {
     }
     if (eventTagOverrides != null) {
       _json["eventTagOverrides"] =
-          eventTagOverrides.map((value) => (value).toJson()).toList();
+          eventTagOverrides.map((value) => value.toJson()).toList();
     }
     if (externalId != null) {
       _json["externalId"] = externalId;
@@ -16136,13 +17267,13 @@ class Campaign {
       _json["id"] = id;
     }
     if (idDimensionValue != null) {
-      _json["idDimensionValue"] = (idDimensionValue).toJson();
+      _json["idDimensionValue"] = idDimensionValue.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (lastModifiedInfo != null) {
-      _json["lastModifiedInfo"] = (lastModifiedInfo).toJson();
+      _json["lastModifiedInfo"] = lastModifiedInfo.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -16186,7 +17317,7 @@ class CampaignCreativeAssociation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creativeId != null) {
       _json["creativeId"] = creativeId;
     }
@@ -16216,7 +17347,7 @@ class CampaignCreativeAssociationsListResponse {
       campaignCreativeAssociations =
           (_json["campaignCreativeAssociations"] as core.List)
               .map<CampaignCreativeAssociation>(
-                  (value) => new CampaignCreativeAssociation.fromJson(value))
+                  (value) => CampaignCreativeAssociation.fromJson(value))
               .toList();
     }
     if (_json.containsKey("kind")) {
@@ -16229,11 +17360,10 @@ class CampaignCreativeAssociationsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (campaignCreativeAssociations != null) {
-      _json["campaignCreativeAssociations"] = campaignCreativeAssociations
-          .map((value) => (value).toJson())
-          .toList();
+      _json["campaignCreativeAssociations"] =
+          campaignCreativeAssociations.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -16291,7 +17421,7 @@ class CampaignManagerIds {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adId != null) {
       _json["adId"] = adId;
     }
@@ -16331,7 +17461,7 @@ class CampaignsListResponse {
   CampaignsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("campaigns")) {
       campaigns = (_json["campaigns"] as core.List)
-          .map<Campaign>((value) => new Campaign.fromJson(value))
+          .map<Campaign>((value) => Campaign.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -16344,9 +17474,9 @@ class CampaignsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (campaigns != null) {
-      _json["campaigns"] = campaigns.map((value) => (value).toJson()).toList();
+      _json["campaigns"] = campaigns.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -16453,7 +17583,7 @@ class ChangeLog {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -16517,7 +17647,7 @@ class ChangeLogsListResponse {
   ChangeLogsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("changeLogs")) {
       changeLogs = (_json["changeLogs"] as core.List)
-          .map<ChangeLog>((value) => new ChangeLog.fromJson(value))
+          .map<ChangeLog>((value) => ChangeLog.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -16530,10 +17660,9 @@ class ChangeLogsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (changeLogs != null) {
-      _json["changeLogs"] =
-          changeLogs.map((value) => (value).toJson()).toList();
+      _json["changeLogs"] = changeLogs.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -16574,14 +17703,14 @@ class ChannelGrouping {
     if (_json.containsKey("rules")) {
       rules = (_json["rules"] as core.List)
           .map<ChannelGroupingRule>(
-              (value) => new ChannelGroupingRule.fromJson(value))
+              (value) => ChannelGroupingRule.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fallbackName != null) {
       _json["fallbackName"] = fallbackName;
     }
@@ -16592,7 +17721,7 @@ class ChannelGrouping {
       _json["name"] = name;
     }
     if (rules != null) {
-      _json["rules"] = rules.map((value) => (value).toJson()).toList();
+      _json["rules"] = rules.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -16617,7 +17746,7 @@ class ChannelGroupingRule {
       disjunctiveMatchStatements =
           (_json["disjunctiveMatchStatements"] as core.List)
               .map<DisjunctiveMatchStatement>(
-                  (value) => new DisjunctiveMatchStatement.fromJson(value))
+                  (value) => DisjunctiveMatchStatement.fromJson(value))
               .toList();
     }
     if (_json.containsKey("kind")) {
@@ -16630,10 +17759,10 @@ class ChannelGroupingRule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (disjunctiveMatchStatements != null) {
       _json["disjunctiveMatchStatements"] =
-          disjunctiveMatchStatements.map((value) => (value).toJson()).toList();
+          disjunctiveMatchStatements.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -16659,7 +17788,7 @@ class CitiesListResponse {
   CitiesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("cities")) {
       cities = (_json["cities"] as core.List)
-          .map<City>((value) => new City.fromJson(value))
+          .map<City>((value) => City.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -16669,9 +17798,9 @@ class CitiesListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cities != null) {
-      _json["cities"] = cities.map((value) => (value).toJson()).toList();
+      _json["cities"] = cities.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -16745,7 +17874,7 @@ class City {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (countryCode != null) {
       _json["countryCode"] = countryCode;
     }
@@ -16798,7 +17927,7 @@ class ClickTag {
   ClickTag.fromJson(core.Map _json) {
     if (_json.containsKey("clickThroughUrl")) {
       clickThroughUrl =
-          new CreativeClickThroughUrl.fromJson(_json["clickThroughUrl"]);
+          CreativeClickThroughUrl.fromJson(_json["clickThroughUrl"]);
     }
     if (_json.containsKey("eventName")) {
       eventName = _json["eventName"];
@@ -16810,9 +17939,9 @@ class ClickTag {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clickThroughUrl != null) {
-      _json["clickThroughUrl"] = (clickThroughUrl).toJson();
+      _json["clickThroughUrl"] = clickThroughUrl.toJson();
     }
     if (eventName != null) {
       _json["eventName"] = eventName;
@@ -16865,7 +17994,7 @@ class ClickThroughUrl {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (computedClickThroughUrl != null) {
       _json["computedClickThroughUrl"] = computedClickThroughUrl;
     }
@@ -16905,7 +18034,7 @@ class ClickThroughUrlSuffixProperties {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clickThroughUrlSuffix != null) {
       _json["clickThroughUrlSuffix"] = clickThroughUrlSuffix;
     }
@@ -16928,7 +18057,7 @@ class CompanionClickThroughOverride {
 
   CompanionClickThroughOverride.fromJson(core.Map _json) {
     if (_json.containsKey("clickThroughUrl")) {
-      clickThroughUrl = new ClickThroughUrl.fromJson(_json["clickThroughUrl"]);
+      clickThroughUrl = ClickThroughUrl.fromJson(_json["clickThroughUrl"]);
     }
     if (_json.containsKey("creativeId")) {
       creativeId = _json["creativeId"];
@@ -16937,9 +18066,9 @@ class CompanionClickThroughOverride {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clickThroughUrl != null) {
-      _json["clickThroughUrl"] = (clickThroughUrl).toJson();
+      _json["clickThroughUrl"] = clickThroughUrl.toJson();
     }
     if (creativeId != null) {
       _json["creativeId"] = creativeId;
@@ -16972,7 +18101,7 @@ class CompanionSetting {
     }
     if (_json.containsKey("enabledSizes")) {
       enabledSizes = (_json["enabledSizes"] as core.List)
-          .map<Size>((value) => new Size.fromJson(value))
+          .map<Size>((value) => Size.fromJson(value))
           .toList();
     }
     if (_json.containsKey("imageOnly")) {
@@ -16985,13 +18114,13 @@ class CompanionSetting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (companionsDisabled != null) {
       _json["companionsDisabled"] = companionsDisabled;
     }
     if (enabledSizes != null) {
       _json["enabledSizes"] =
-          enabledSizes.map((value) => (value).toJson()).toList();
+          enabledSizes.map((value) => value.toJson()).toList();
     }
     if (imageOnly != null) {
       _json["imageOnly"] = imageOnly;
@@ -17042,12 +18171,12 @@ class CompatibleFields {
   CompatibleFields.fromJson(core.Map _json) {
     if (_json.containsKey("crossDimensionReachReportCompatibleFields")) {
       crossDimensionReachReportCompatibleFields =
-          new CrossDimensionReachReportCompatibleFields.fromJson(
+          CrossDimensionReachReportCompatibleFields.fromJson(
               _json["crossDimensionReachReportCompatibleFields"]);
     }
     if (_json.containsKey("floodlightReportCompatibleFields")) {
       floodlightReportCompatibleFields =
-          new FloodlightReportCompatibleFields.fromJson(
+          FloodlightReportCompatibleFields.fromJson(
               _json["floodlightReportCompatibleFields"]);
     }
     if (_json.containsKey("kind")) {
@@ -17055,60 +18184,59 @@ class CompatibleFields {
     }
     if (_json.containsKey("pathAttributionReportCompatibleFields")) {
       pathAttributionReportCompatibleFields =
-          new PathReportCompatibleFields.fromJson(
+          PathReportCompatibleFields.fromJson(
               _json["pathAttributionReportCompatibleFields"]);
     }
     if (_json.containsKey("pathReportCompatibleFields")) {
-      pathReportCompatibleFields = new PathReportCompatibleFields.fromJson(
+      pathReportCompatibleFields = PathReportCompatibleFields.fromJson(
           _json["pathReportCompatibleFields"]);
     }
     if (_json.containsKey("pathToConversionReportCompatibleFields")) {
       pathToConversionReportCompatibleFields =
-          new PathToConversionReportCompatibleFields.fromJson(
+          PathToConversionReportCompatibleFields.fromJson(
               _json["pathToConversionReportCompatibleFields"]);
     }
     if (_json.containsKey("reachReportCompatibleFields")) {
-      reachReportCompatibleFields = new ReachReportCompatibleFields.fromJson(
+      reachReportCompatibleFields = ReachReportCompatibleFields.fromJson(
           _json["reachReportCompatibleFields"]);
     }
     if (_json.containsKey("reportCompatibleFields")) {
       reportCompatibleFields =
-          new ReportCompatibleFields.fromJson(_json["reportCompatibleFields"]);
+          ReportCompatibleFields.fromJson(_json["reportCompatibleFields"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (crossDimensionReachReportCompatibleFields != null) {
       _json["crossDimensionReachReportCompatibleFields"] =
-          (crossDimensionReachReportCompatibleFields).toJson();
+          crossDimensionReachReportCompatibleFields.toJson();
     }
     if (floodlightReportCompatibleFields != null) {
       _json["floodlightReportCompatibleFields"] =
-          (floodlightReportCompatibleFields).toJson();
+          floodlightReportCompatibleFields.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (pathAttributionReportCompatibleFields != null) {
       _json["pathAttributionReportCompatibleFields"] =
-          (pathAttributionReportCompatibleFields).toJson();
+          pathAttributionReportCompatibleFields.toJson();
     }
     if (pathReportCompatibleFields != null) {
-      _json["pathReportCompatibleFields"] =
-          (pathReportCompatibleFields).toJson();
+      _json["pathReportCompatibleFields"] = pathReportCompatibleFields.toJson();
     }
     if (pathToConversionReportCompatibleFields != null) {
       _json["pathToConversionReportCompatibleFields"] =
-          (pathToConversionReportCompatibleFields).toJson();
+          pathToConversionReportCompatibleFields.toJson();
     }
     if (reachReportCompatibleFields != null) {
       _json["reachReportCompatibleFields"] =
-          (reachReportCompatibleFields).toJson();
+          reachReportCompatibleFields.toJson();
     }
     if (reportCompatibleFields != null) {
-      _json["reportCompatibleFields"] = (reportCompatibleFields).toJson();
+      _json["reportCompatibleFields"] = reportCompatibleFields.toJson();
     }
     return _json;
   }
@@ -17144,7 +18272,7 @@ class ConnectionType {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -17172,7 +18300,7 @@ class ConnectionTypesListResponse {
   ConnectionTypesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("connectionTypes")) {
       connectionTypes = (_json["connectionTypes"] as core.List)
-          .map<ConnectionType>((value) => new ConnectionType.fromJson(value))
+          .map<ConnectionType>((value) => ConnectionType.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -17182,10 +18310,10 @@ class ConnectionTypesListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (connectionTypes != null) {
       _json["connectionTypes"] =
-          connectionTypes.map((value) => (value).toJson()).toList();
+          connectionTypes.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -17211,7 +18339,7 @@ class ContentCategoriesListResponse {
   ContentCategoriesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("contentCategories")) {
       contentCategories = (_json["contentCategories"] as core.List)
-          .map<ContentCategory>((value) => new ContentCategory.fromJson(value))
+          .map<ContentCategory>((value) => ContentCategory.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -17224,10 +18352,10 @@ class ContentCategoriesListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentCategories != null) {
       _json["contentCategories"] =
-          contentCategories.map((value) => (value).toJson()).toList();
+          contentCategories.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -17276,7 +18404,7 @@ class ContentCategory {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -17392,7 +18520,7 @@ class Conversion {
     if (_json.containsKey("customVariables")) {
       customVariables = (_json["customVariables"] as core.List)
           .map<CustomFloodlightVariable>(
-              (value) => new CustomFloodlightVariable.fromJson(value))
+              (value) => CustomFloodlightVariable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dclid")) {
@@ -17448,13 +18576,13 @@ class Conversion {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (childDirectedTreatment != null) {
       _json["childDirectedTreatment"] = childDirectedTreatment;
     }
     if (customVariables != null) {
       _json["customVariables"] =
-          customVariables.map((value) => (value).toJson()).toList();
+          customVariables.map((value) => value.toJson()).toList();
     }
     if (dclid != null) {
       _json["dclid"] = dclid;
@@ -17542,7 +18670,7 @@ class ConversionError {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -17573,11 +18701,11 @@ class ConversionStatus {
 
   ConversionStatus.fromJson(core.Map _json) {
     if (_json.containsKey("conversion")) {
-      conversion = new Conversion.fromJson(_json["conversion"]);
+      conversion = Conversion.fromJson(_json["conversion"]);
     }
     if (_json.containsKey("errors")) {
       errors = (_json["errors"] as core.List)
-          .map<ConversionError>((value) => new ConversionError.fromJson(value))
+          .map<ConversionError>((value) => ConversionError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -17587,12 +18715,12 @@ class ConversionStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (conversion != null) {
-      _json["conversion"] = (conversion).toJson();
+      _json["conversion"] = conversion.toJson();
     }
     if (errors != null) {
-      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+      _json["errors"] = errors.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -17620,11 +18748,11 @@ class ConversionsBatchInsertRequest {
   ConversionsBatchInsertRequest.fromJson(core.Map _json) {
     if (_json.containsKey("conversions")) {
       conversions = (_json["conversions"] as core.List)
-          .map<Conversion>((value) => new Conversion.fromJson(value))
+          .map<Conversion>((value) => Conversion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("encryptionInfo")) {
-      encryptionInfo = new EncryptionInfo.fromJson(_json["encryptionInfo"]);
+      encryptionInfo = EncryptionInfo.fromJson(_json["encryptionInfo"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -17633,13 +18761,13 @@ class ConversionsBatchInsertRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (conversions != null) {
       _json["conversions"] =
-          conversions.map((value) => (value).toJson()).toList();
+          conversions.map((value) => value.toJson()).toList();
     }
     if (encryptionInfo != null) {
-      _json["encryptionInfo"] = (encryptionInfo).toJson();
+      _json["encryptionInfo"] = encryptionInfo.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -17672,15 +18800,14 @@ class ConversionsBatchInsertResponse {
     }
     if (_json.containsKey("status")) {
       status = (_json["status"] as core.List)
-          .map<ConversionStatus>(
-              (value) => new ConversionStatus.fromJson(value))
+          .map<ConversionStatus>((value) => ConversionStatus.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hasFailures != null) {
       _json["hasFailures"] = hasFailures;
     }
@@ -17688,7 +18815,7 @@ class ConversionsBatchInsertResponse {
       _json["kind"] = kind;
     }
     if (status != null) {
-      _json["status"] = status.map((value) => (value).toJson()).toList();
+      _json["status"] = status.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -17712,11 +18839,11 @@ class ConversionsBatchUpdateRequest {
   ConversionsBatchUpdateRequest.fromJson(core.Map _json) {
     if (_json.containsKey("conversions")) {
       conversions = (_json["conversions"] as core.List)
-          .map<Conversion>((value) => new Conversion.fromJson(value))
+          .map<Conversion>((value) => Conversion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("encryptionInfo")) {
-      encryptionInfo = new EncryptionInfo.fromJson(_json["encryptionInfo"]);
+      encryptionInfo = EncryptionInfo.fromJson(_json["encryptionInfo"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -17725,13 +18852,13 @@ class ConversionsBatchUpdateRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (conversions != null) {
       _json["conversions"] =
-          conversions.map((value) => (value).toJson()).toList();
+          conversions.map((value) => value.toJson()).toList();
     }
     if (encryptionInfo != null) {
-      _json["encryptionInfo"] = (encryptionInfo).toJson();
+      _json["encryptionInfo"] = encryptionInfo.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -17764,15 +18891,14 @@ class ConversionsBatchUpdateResponse {
     }
     if (_json.containsKey("status")) {
       status = (_json["status"] as core.List)
-          .map<ConversionStatus>(
-              (value) => new ConversionStatus.fromJson(value))
+          .map<ConversionStatus>((value) => ConversionStatus.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hasFailures != null) {
       _json["hasFailures"] = hasFailures;
     }
@@ -17780,7 +18906,7 @@ class ConversionsBatchUpdateResponse {
       _json["kind"] = kind;
     }
     if (status != null) {
-      _json["status"] = status.map((value) => (value).toJson()).toList();
+      _json["status"] = status.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -17800,7 +18926,7 @@ class CountriesListResponse {
   CountriesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("countries")) {
       countries = (_json["countries"] as core.List)
-          .map<Country>((value) => new Country.fromJson(value))
+          .map<Country>((value) => Country.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -17810,9 +18936,9 @@ class CountriesListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (countries != null) {
-      _json["countries"] = countries.map((value) => (value).toJson()).toList();
+      _json["countries"] = countries.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -17862,7 +18988,7 @@ class Country {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (countryCode != null) {
       _json["countryCode"] = countryCode;
     }
@@ -18288,7 +19414,7 @@ class Creative {
     }
     if (_json.containsKey("additionalSizes")) {
       additionalSizes = (_json["additionalSizes"] as core.List)
-          .map<Size>((value) => new Size.fromJson(value))
+          .map<Size>((value) => Size.fromJson(value))
           .toList();
     }
     if (_json.containsKey("advertiserId")) {
@@ -18316,8 +19442,8 @@ class Creative {
       backgroundColor = _json["backgroundColor"];
     }
     if (_json.containsKey("backupImageClickThroughUrl")) {
-      backupImageClickThroughUrl = new CreativeClickThroughUrl.fromJson(
-          _json["backupImageClickThroughUrl"]);
+      backupImageClickThroughUrl =
+          CreativeClickThroughUrl.fromJson(_json["backupImageClickThroughUrl"]);
     }
     if (_json.containsKey("backupImageFeatures")) {
       backupImageFeatures =
@@ -18328,11 +19454,11 @@ class Creative {
     }
     if (_json.containsKey("backupImageTargetWindow")) {
       backupImageTargetWindow =
-          new TargetWindow.fromJson(_json["backupImageTargetWindow"]);
+          TargetWindow.fromJson(_json["backupImageTargetWindow"]);
     }
     if (_json.containsKey("clickTags")) {
       clickTags = (_json["clickTags"] as core.List)
-          .map<ClickTag>((value) => new ClickTag.fromJson(value))
+          .map<ClickTag>((value) => ClickTag.fromJson(value))
           .toList();
     }
     if (_json.containsKey("commercialId")) {
@@ -18351,23 +19477,23 @@ class Creative {
     if (_json.containsKey("counterCustomEvents")) {
       counterCustomEvents = (_json["counterCustomEvents"] as core.List)
           .map<CreativeCustomEvent>(
-              (value) => new CreativeCustomEvent.fromJson(value))
+              (value) => CreativeCustomEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("creativeAssetSelection")) {
       creativeAssetSelection =
-          new CreativeAssetSelection.fromJson(_json["creativeAssetSelection"]);
+          CreativeAssetSelection.fromJson(_json["creativeAssetSelection"]);
     }
     if (_json.containsKey("creativeAssets")) {
       creativeAssets = (_json["creativeAssets"] as core.List)
-          .map<CreativeAsset>((value) => new CreativeAsset.fromJson(value))
+          .map<CreativeAsset>((value) => CreativeAsset.fromJson(value))
           .toList();
     }
     if (_json.containsKey("creativeFieldAssignments")) {
       creativeFieldAssignments =
           (_json["creativeFieldAssignments"] as core.List)
               .map<CreativeFieldAssignment>(
-                  (value) => new CreativeFieldAssignment.fromJson(value))
+                  (value) => CreativeFieldAssignment.fromJson(value))
               .toList();
     }
     if (_json.containsKey("customKeyValues")) {
@@ -18380,11 +19506,11 @@ class Creative {
     if (_json.containsKey("exitCustomEvents")) {
       exitCustomEvents = (_json["exitCustomEvents"] as core.List)
           .map<CreativeCustomEvent>(
-              (value) => new CreativeCustomEvent.fromJson(value))
+              (value) => CreativeCustomEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fsCommand")) {
-      fsCommand = new FsCommand.fromJson(_json["fsCommand"]);
+      fsCommand = FsCommand.fromJson(_json["fsCommand"]);
     }
     if (_json.containsKey("htmlCode")) {
       htmlCode = _json["htmlCode"];
@@ -18396,14 +19522,13 @@ class Creative {
       id = _json["id"];
     }
     if (_json.containsKey("idDimensionValue")) {
-      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+      idDimensionValue = DimensionValue.fromJson(_json["idDimensionValue"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("lastModifiedInfo")) {
-      lastModifiedInfo =
-          new LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
+      lastModifiedInfo = LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
     }
     if (_json.containsKey("latestTraffickedCreativeId")) {
       latestTraffickedCreativeId = _json["latestTraffickedCreativeId"];
@@ -18418,13 +19543,13 @@ class Creative {
       name = _json["name"];
     }
     if (_json.containsKey("obaIcon")) {
-      obaIcon = new ObaIcon.fromJson(_json["obaIcon"]);
+      obaIcon = ObaIcon.fromJson(_json["obaIcon"]);
     }
     if (_json.containsKey("overrideCss")) {
       overrideCss = _json["overrideCss"];
     }
     if (_json.containsKey("progressOffset")) {
-      progressOffset = new VideoOffset.fromJson(_json["progressOffset"]);
+      progressOffset = VideoOffset.fromJson(_json["progressOffset"]);
     }
     if (_json.containsKey("redirectUrl")) {
       redirectUrl = _json["redirectUrl"];
@@ -18434,7 +19559,7 @@ class Creative {
     }
     if (_json.containsKey("renderingIdDimensionValue")) {
       renderingIdDimensionValue =
-          new DimensionValue.fromJson(_json["renderingIdDimensionValue"]);
+          DimensionValue.fromJson(_json["renderingIdDimensionValue"]);
     }
     if (_json.containsKey("requiredFlashPluginVersion")) {
       requiredFlashPluginVersion = _json["requiredFlashPluginVersion"];
@@ -18443,10 +19568,10 @@ class Creative {
       requiredFlashVersion = _json["requiredFlashVersion"];
     }
     if (_json.containsKey("size")) {
-      size = new Size.fromJson(_json["size"]);
+      size = Size.fromJson(_json["size"]);
     }
     if (_json.containsKey("skipOffset")) {
-      skipOffset = new VideoOffset.fromJson(_json["skipOffset"]);
+      skipOffset = VideoOffset.fromJson(_json["skipOffset"]);
     }
     if (_json.containsKey("skippable")) {
       skippable = _json["skippable"];
@@ -18480,13 +19605,13 @@ class Creative {
     if (_json.containsKey("thirdPartyUrls")) {
       thirdPartyUrls = (_json["thirdPartyUrls"] as core.List)
           .map<ThirdPartyTrackingUrl>(
-              (value) => new ThirdPartyTrackingUrl.fromJson(value))
+              (value) => ThirdPartyTrackingUrl.fromJson(value))
           .toList();
     }
     if (_json.containsKey("timerCustomEvents")) {
       timerCustomEvents = (_json["timerCustomEvents"] as core.List)
           .map<CreativeCustomEvent>(
-              (value) => new CreativeCustomEvent.fromJson(value))
+              (value) => CreativeCustomEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("totalFileSize")) {
@@ -18496,7 +19621,7 @@ class Creative {
       type = _json["type"];
     }
     if (_json.containsKey("universalAdId")) {
-      universalAdId = new UniversalAdId.fromJson(_json["universalAdId"]);
+      universalAdId = UniversalAdId.fromJson(_json["universalAdId"]);
     }
     if (_json.containsKey("version")) {
       version = _json["version"];
@@ -18505,7 +19630,7 @@ class Creative {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -18520,7 +19645,7 @@ class Creative {
     }
     if (additionalSizes != null) {
       _json["additionalSizes"] =
-          additionalSizes.map((value) => (value).toJson()).toList();
+          additionalSizes.map((value) => value.toJson()).toList();
     }
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
@@ -18547,8 +19672,7 @@ class Creative {
       _json["backgroundColor"] = backgroundColor;
     }
     if (backupImageClickThroughUrl != null) {
-      _json["backupImageClickThroughUrl"] =
-          (backupImageClickThroughUrl).toJson();
+      _json["backupImageClickThroughUrl"] = backupImageClickThroughUrl.toJson();
     }
     if (backupImageFeatures != null) {
       _json["backupImageFeatures"] = backupImageFeatures;
@@ -18557,10 +19681,10 @@ class Creative {
       _json["backupImageReportingLabel"] = backupImageReportingLabel;
     }
     if (backupImageTargetWindow != null) {
-      _json["backupImageTargetWindow"] = (backupImageTargetWindow).toJson();
+      _json["backupImageTargetWindow"] = backupImageTargetWindow.toJson();
     }
     if (clickTags != null) {
-      _json["clickTags"] = clickTags.map((value) => (value).toJson()).toList();
+      _json["clickTags"] = clickTags.map((value) => value.toJson()).toList();
     }
     if (commercialId != null) {
       _json["commercialId"] = commercialId;
@@ -18576,18 +19700,18 @@ class Creative {
     }
     if (counterCustomEvents != null) {
       _json["counterCustomEvents"] =
-          counterCustomEvents.map((value) => (value).toJson()).toList();
+          counterCustomEvents.map((value) => value.toJson()).toList();
     }
     if (creativeAssetSelection != null) {
-      _json["creativeAssetSelection"] = (creativeAssetSelection).toJson();
+      _json["creativeAssetSelection"] = creativeAssetSelection.toJson();
     }
     if (creativeAssets != null) {
       _json["creativeAssets"] =
-          creativeAssets.map((value) => (value).toJson()).toList();
+          creativeAssets.map((value) => value.toJson()).toList();
     }
     if (creativeFieldAssignments != null) {
       _json["creativeFieldAssignments"] =
-          creativeFieldAssignments.map((value) => (value).toJson()).toList();
+          creativeFieldAssignments.map((value) => value.toJson()).toList();
     }
     if (customKeyValues != null) {
       _json["customKeyValues"] = customKeyValues;
@@ -18597,10 +19721,10 @@ class Creative {
     }
     if (exitCustomEvents != null) {
       _json["exitCustomEvents"] =
-          exitCustomEvents.map((value) => (value).toJson()).toList();
+          exitCustomEvents.map((value) => value.toJson()).toList();
     }
     if (fsCommand != null) {
-      _json["fsCommand"] = (fsCommand).toJson();
+      _json["fsCommand"] = fsCommand.toJson();
     }
     if (htmlCode != null) {
       _json["htmlCode"] = htmlCode;
@@ -18612,13 +19736,13 @@ class Creative {
       _json["id"] = id;
     }
     if (idDimensionValue != null) {
-      _json["idDimensionValue"] = (idDimensionValue).toJson();
+      _json["idDimensionValue"] = idDimensionValue.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (lastModifiedInfo != null) {
-      _json["lastModifiedInfo"] = (lastModifiedInfo).toJson();
+      _json["lastModifiedInfo"] = lastModifiedInfo.toJson();
     }
     if (latestTraffickedCreativeId != null) {
       _json["latestTraffickedCreativeId"] = latestTraffickedCreativeId;
@@ -18633,13 +19757,13 @@ class Creative {
       _json["name"] = name;
     }
     if (obaIcon != null) {
-      _json["obaIcon"] = (obaIcon).toJson();
+      _json["obaIcon"] = obaIcon.toJson();
     }
     if (overrideCss != null) {
       _json["overrideCss"] = overrideCss;
     }
     if (progressOffset != null) {
-      _json["progressOffset"] = (progressOffset).toJson();
+      _json["progressOffset"] = progressOffset.toJson();
     }
     if (redirectUrl != null) {
       _json["redirectUrl"] = redirectUrl;
@@ -18648,7 +19772,7 @@ class Creative {
       _json["renderingId"] = renderingId;
     }
     if (renderingIdDimensionValue != null) {
-      _json["renderingIdDimensionValue"] = (renderingIdDimensionValue).toJson();
+      _json["renderingIdDimensionValue"] = renderingIdDimensionValue.toJson();
     }
     if (requiredFlashPluginVersion != null) {
       _json["requiredFlashPluginVersion"] = requiredFlashPluginVersion;
@@ -18657,10 +19781,10 @@ class Creative {
       _json["requiredFlashVersion"] = requiredFlashVersion;
     }
     if (size != null) {
-      _json["size"] = (size).toJson();
+      _json["size"] = size.toJson();
     }
     if (skipOffset != null) {
-      _json["skipOffset"] = (skipOffset).toJson();
+      _json["skipOffset"] = skipOffset.toJson();
     }
     if (skippable != null) {
       _json["skippable"] = skippable;
@@ -18693,11 +19817,11 @@ class Creative {
     }
     if (thirdPartyUrls != null) {
       _json["thirdPartyUrls"] =
-          thirdPartyUrls.map((value) => (value).toJson()).toList();
+          thirdPartyUrls.map((value) => value.toJson()).toList();
     }
     if (timerCustomEvents != null) {
       _json["timerCustomEvents"] =
-          timerCustomEvents.map((value) => (value).toJson()).toList();
+          timerCustomEvents.map((value) => value.toJson()).toList();
     }
     if (totalFileSize != null) {
       _json["totalFileSize"] = totalFileSize;
@@ -18706,7 +19830,7 @@ class Creative {
       _json["type"] = type;
     }
     if (universalAdId != null) {
-      _json["universalAdId"] = (universalAdId).toJson();
+      _json["universalAdId"] = universalAdId.toJson();
     }
     if (version != null) {
       _json["version"] = version;
@@ -19050,7 +20174,7 @@ class CreativeAsset {
     }
     if (_json.containsKey("additionalSizes")) {
       additionalSizes = (_json["additionalSizes"] as core.List)
-          .map<Size>((value) => new Size.fromJson(value))
+          .map<Size>((value) => Size.fromJson(value))
           .toList();
     }
     if (_json.containsKey("alignment")) {
@@ -19060,7 +20184,7 @@ class CreativeAsset {
       artworkType = _json["artworkType"];
     }
     if (_json.containsKey("assetIdentifier")) {
-      assetIdentifier = new CreativeAssetId.fromJson(_json["assetIdentifier"]);
+      assetIdentifier = CreativeAssetId.fromJson(_json["assetIdentifier"]);
     }
     if (_json.containsKey("audioBitRate")) {
       audioBitRate = _json["audioBitRate"];
@@ -19069,8 +20193,7 @@ class CreativeAsset {
       audioSampleRate = _json["audioSampleRate"];
     }
     if (_json.containsKey("backupImageExit")) {
-      backupImageExit =
-          new CreativeCustomEvent.fromJson(_json["backupImageExit"]);
+      backupImageExit = CreativeCustomEvent.fromJson(_json["backupImageExit"]);
     }
     if (_json.containsKey("bitRate")) {
       bitRate = _json["bitRate"];
@@ -19079,7 +20202,7 @@ class CreativeAsset {
       childAssetType = _json["childAssetType"];
     }
     if (_json.containsKey("collapsedSize")) {
-      collapsedSize = new Size.fromJson(_json["collapsedSize"]);
+      collapsedSize = Size.fromJson(_json["collapsedSize"]);
     }
     if (_json.containsKey("companionCreativeIds")) {
       companionCreativeIds =
@@ -19102,7 +20225,7 @@ class CreativeAsset {
       durationType = _json["durationType"];
     }
     if (_json.containsKey("expandedDimension")) {
-      expandedDimension = new Size.fromJson(_json["expandedDimension"]);
+      expandedDimension = Size.fromJson(_json["expandedDimension"]);
     }
     if (_json.containsKey("fileSize")) {
       fileSize = _json["fileSize"];
@@ -19126,7 +20249,7 @@ class CreativeAsset {
       id = _json["id"];
     }
     if (_json.containsKey("idDimensionValue")) {
-      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+      idDimensionValue = DimensionValue.fromJson(_json["idDimensionValue"]);
     }
     if (_json.containsKey("mediaDuration")) {
       mediaDuration = _json["mediaDuration"].toDouble();
@@ -19135,7 +20258,7 @@ class CreativeAsset {
       mimeType = _json["mimeType"];
     }
     if (_json.containsKey("offset")) {
-      offset = new OffsetPosition.fromJson(_json["offset"]);
+      offset = OffsetPosition.fromJson(_json["offset"]);
     }
     if (_json.containsKey("orientation")) {
       orientation = _json["orientation"];
@@ -19147,7 +20270,7 @@ class CreativeAsset {
       politeLoad = _json["politeLoad"];
     }
     if (_json.containsKey("position")) {
-      position = new OffsetPosition.fromJson(_json["position"]);
+      position = OffsetPosition.fromJson(_json["position"]);
     }
     if (_json.containsKey("positionLeftUnit")) {
       positionLeftUnit = _json["positionLeftUnit"];
@@ -19168,7 +20291,7 @@ class CreativeAsset {
       role = _json["role"];
     }
     if (_json.containsKey("size")) {
-      size = new Size.fromJson(_json["size"]);
+      size = Size.fromJson(_json["size"]);
     }
     if (_json.containsKey("sslCompliant")) {
       sslCompliant = _json["sslCompliant"];
@@ -19201,7 +20324,7 @@ class CreativeAsset {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (actionScript3 != null) {
       _json["actionScript3"] = actionScript3;
     }
@@ -19210,7 +20333,7 @@ class CreativeAsset {
     }
     if (additionalSizes != null) {
       _json["additionalSizes"] =
-          additionalSizes.map((value) => (value).toJson()).toList();
+          additionalSizes.map((value) => value.toJson()).toList();
     }
     if (alignment != null) {
       _json["alignment"] = alignment;
@@ -19219,7 +20342,7 @@ class CreativeAsset {
       _json["artworkType"] = artworkType;
     }
     if (assetIdentifier != null) {
-      _json["assetIdentifier"] = (assetIdentifier).toJson();
+      _json["assetIdentifier"] = assetIdentifier.toJson();
     }
     if (audioBitRate != null) {
       _json["audioBitRate"] = audioBitRate;
@@ -19228,7 +20351,7 @@ class CreativeAsset {
       _json["audioSampleRate"] = audioSampleRate;
     }
     if (backupImageExit != null) {
-      _json["backupImageExit"] = (backupImageExit).toJson();
+      _json["backupImageExit"] = backupImageExit.toJson();
     }
     if (bitRate != null) {
       _json["bitRate"] = bitRate;
@@ -19237,7 +20360,7 @@ class CreativeAsset {
       _json["childAssetType"] = childAssetType;
     }
     if (collapsedSize != null) {
-      _json["collapsedSize"] = (collapsedSize).toJson();
+      _json["collapsedSize"] = collapsedSize.toJson();
     }
     if (companionCreativeIds != null) {
       _json["companionCreativeIds"] = companionCreativeIds;
@@ -19258,7 +20381,7 @@ class CreativeAsset {
       _json["durationType"] = durationType;
     }
     if (expandedDimension != null) {
-      _json["expandedDimension"] = (expandedDimension).toJson();
+      _json["expandedDimension"] = expandedDimension.toJson();
     }
     if (fileSize != null) {
       _json["fileSize"] = fileSize;
@@ -19282,7 +20405,7 @@ class CreativeAsset {
       _json["id"] = id;
     }
     if (idDimensionValue != null) {
-      _json["idDimensionValue"] = (idDimensionValue).toJson();
+      _json["idDimensionValue"] = idDimensionValue.toJson();
     }
     if (mediaDuration != null) {
       _json["mediaDuration"] = mediaDuration;
@@ -19291,7 +20414,7 @@ class CreativeAsset {
       _json["mimeType"] = mimeType;
     }
     if (offset != null) {
-      _json["offset"] = (offset).toJson();
+      _json["offset"] = offset.toJson();
     }
     if (orientation != null) {
       _json["orientation"] = orientation;
@@ -19303,7 +20426,7 @@ class CreativeAsset {
       _json["politeLoad"] = politeLoad;
     }
     if (position != null) {
-      _json["position"] = (position).toJson();
+      _json["position"] = position.toJson();
     }
     if (positionLeftUnit != null) {
       _json["positionLeftUnit"] = positionLeftUnit;
@@ -19324,7 +20447,7 @@ class CreativeAsset {
       _json["role"] = role;
     }
     if (size != null) {
-      _json["size"] = (size).toJson();
+      _json["size"] = size.toJson();
     }
     if (sslCompliant != null) {
       _json["sslCompliant"] = sslCompliant;
@@ -19389,7 +20512,7 @@ class CreativeAssetId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -19461,17 +20584,17 @@ class CreativeAssetMetadata {
 
   CreativeAssetMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("assetIdentifier")) {
-      assetIdentifier = new CreativeAssetId.fromJson(_json["assetIdentifier"]);
+      assetIdentifier = CreativeAssetId.fromJson(_json["assetIdentifier"]);
     }
     if (_json.containsKey("clickTags")) {
       clickTags = (_json["clickTags"] as core.List)
-          .map<ClickTag>((value) => new ClickTag.fromJson(value))
+          .map<ClickTag>((value) => ClickTag.fromJson(value))
           .toList();
     }
     if (_json.containsKey("counterCustomEvents")) {
       counterCustomEvents = (_json["counterCustomEvents"] as core.List)
           .map<CreativeCustomEvent>(
-              (value) => new CreativeCustomEvent.fromJson(value))
+              (value) => CreativeCustomEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("detectedFeatures")) {
@@ -19481,14 +20604,14 @@ class CreativeAssetMetadata {
     if (_json.containsKey("exitCustomEvents")) {
       exitCustomEvents = (_json["exitCustomEvents"] as core.List)
           .map<CreativeCustomEvent>(
-              (value) => new CreativeCustomEvent.fromJson(value))
+              (value) => CreativeCustomEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("idDimensionValue")) {
-      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+      idDimensionValue = DimensionValue.fromJson(_json["idDimensionValue"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -19499,7 +20622,7 @@ class CreativeAssetMetadata {
     if (_json.containsKey("timerCustomEvents")) {
       timerCustomEvents = (_json["timerCustomEvents"] as core.List)
           .map<CreativeCustomEvent>(
-              (value) => new CreativeCustomEvent.fromJson(value))
+              (value) => CreativeCustomEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("warnedValidationRules")) {
@@ -19510,29 +20633,29 @@ class CreativeAssetMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assetIdentifier != null) {
-      _json["assetIdentifier"] = (assetIdentifier).toJson();
+      _json["assetIdentifier"] = assetIdentifier.toJson();
     }
     if (clickTags != null) {
-      _json["clickTags"] = clickTags.map((value) => (value).toJson()).toList();
+      _json["clickTags"] = clickTags.map((value) => value.toJson()).toList();
     }
     if (counterCustomEvents != null) {
       _json["counterCustomEvents"] =
-          counterCustomEvents.map((value) => (value).toJson()).toList();
+          counterCustomEvents.map((value) => value.toJson()).toList();
     }
     if (detectedFeatures != null) {
       _json["detectedFeatures"] = detectedFeatures;
     }
     if (exitCustomEvents != null) {
       _json["exitCustomEvents"] =
-          exitCustomEvents.map((value) => (value).toJson()).toList();
+          exitCustomEvents.map((value) => value.toJson()).toList();
     }
     if (id != null) {
       _json["id"] = id;
     }
     if (idDimensionValue != null) {
-      _json["idDimensionValue"] = (idDimensionValue).toJson();
+      _json["idDimensionValue"] = idDimensionValue.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -19542,7 +20665,7 @@ class CreativeAssetMetadata {
     }
     if (timerCustomEvents != null) {
       _json["timerCustomEvents"] =
-          timerCustomEvents.map((value) => (value).toJson()).toList();
+          timerCustomEvents.map((value) => value.toJson()).toList();
     }
     if (warnedValidationRules != null) {
       _json["warnedValidationRules"] = warnedValidationRules;
@@ -19572,19 +20695,19 @@ class CreativeAssetSelection {
     }
     if (_json.containsKey("rules")) {
       rules = (_json["rules"] as core.List)
-          .map<Rule>((value) => new Rule.fromJson(value))
+          .map<Rule>((value) => Rule.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (defaultAssetId != null) {
       _json["defaultAssetId"] = defaultAssetId;
     }
     if (rules != null) {
-      _json["rules"] = rules.map((value) => (value).toJson()).toList();
+      _json["rules"] = rules.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -19654,20 +20777,20 @@ class CreativeAssignment {
       applyEventTags = _json["applyEventTags"];
     }
     if (_json.containsKey("clickThroughUrl")) {
-      clickThroughUrl = new ClickThroughUrl.fromJson(_json["clickThroughUrl"]);
+      clickThroughUrl = ClickThroughUrl.fromJson(_json["clickThroughUrl"]);
     }
     if (_json.containsKey("companionCreativeOverrides")) {
       companionCreativeOverrides =
           (_json["companionCreativeOverrides"] as core.List)
               .map<CompanionClickThroughOverride>(
-                  (value) => new CompanionClickThroughOverride.fromJson(value))
+                  (value) => CompanionClickThroughOverride.fromJson(value))
               .toList();
     }
     if (_json.containsKey("creativeGroupAssignments")) {
       creativeGroupAssignments =
           (_json["creativeGroupAssignments"] as core.List)
               .map<CreativeGroupAssignment>(
-                  (value) => new CreativeGroupAssignment.fromJson(value))
+                  (value) => CreativeGroupAssignment.fromJson(value))
               .toList();
     }
     if (_json.containsKey("creativeId")) {
@@ -19675,7 +20798,7 @@ class CreativeAssignment {
     }
     if (_json.containsKey("creativeIdDimensionValue")) {
       creativeIdDimensionValue =
-          new DimensionValue.fromJson(_json["creativeIdDimensionValue"]);
+          DimensionValue.fromJson(_json["creativeIdDimensionValue"]);
     }
     if (_json.containsKey("endTime")) {
       endTime = core.DateTime.parse(_json["endTime"]);
@@ -19683,7 +20806,7 @@ class CreativeAssignment {
     if (_json.containsKey("richMediaExitOverrides")) {
       richMediaExitOverrides = (_json["richMediaExitOverrides"] as core.List)
           .map<RichMediaExitOverride>(
-              (value) => new RichMediaExitOverride.fromJson(value))
+              (value) => RichMediaExitOverride.fromJson(value))
           .toList();
     }
     if (_json.containsKey("sequence")) {
@@ -19702,7 +20825,7 @@ class CreativeAssignment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (active != null) {
       _json["active"] = active;
     }
@@ -19710,28 +20833,28 @@ class CreativeAssignment {
       _json["applyEventTags"] = applyEventTags;
     }
     if (clickThroughUrl != null) {
-      _json["clickThroughUrl"] = (clickThroughUrl).toJson();
+      _json["clickThroughUrl"] = clickThroughUrl.toJson();
     }
     if (companionCreativeOverrides != null) {
       _json["companionCreativeOverrides"] =
-          companionCreativeOverrides.map((value) => (value).toJson()).toList();
+          companionCreativeOverrides.map((value) => value.toJson()).toList();
     }
     if (creativeGroupAssignments != null) {
       _json["creativeGroupAssignments"] =
-          creativeGroupAssignments.map((value) => (value).toJson()).toList();
+          creativeGroupAssignments.map((value) => value.toJson()).toList();
     }
     if (creativeId != null) {
       _json["creativeId"] = creativeId;
     }
     if (creativeIdDimensionValue != null) {
-      _json["creativeIdDimensionValue"] = (creativeIdDimensionValue).toJson();
+      _json["creativeIdDimensionValue"] = creativeIdDimensionValue.toJson();
     }
     if (endTime != null) {
       _json["endTime"] = (endTime).toIso8601String();
     }
     if (richMediaExitOverrides != null) {
       _json["richMediaExitOverrides"] =
-          richMediaExitOverrides.map((value) => (value).toJson()).toList();
+          richMediaExitOverrides.map((value) => value.toJson()).toList();
     }
     if (sequence != null) {
       _json["sequence"] = sequence;
@@ -19780,7 +20903,7 @@ class CreativeClickThroughUrl {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (computedClickThroughUrl != null) {
       _json["computedClickThroughUrl"] = computedClickThroughUrl;
     }
@@ -19868,14 +20991,14 @@ class CreativeCustomEvent {
     }
     if (_json.containsKey("exitClickThroughUrl")) {
       exitClickThroughUrl =
-          new CreativeClickThroughUrl.fromJson(_json["exitClickThroughUrl"]);
+          CreativeClickThroughUrl.fromJson(_json["exitClickThroughUrl"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("popupWindowProperties")) {
       popupWindowProperties =
-          new PopupWindowProperties.fromJson(_json["popupWindowProperties"]);
+          PopupWindowProperties.fromJson(_json["popupWindowProperties"]);
     }
     if (_json.containsKey("targetType")) {
       targetType = _json["targetType"];
@@ -19887,7 +21010,7 @@ class CreativeCustomEvent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertiserCustomEventId != null) {
       _json["advertiserCustomEventId"] = advertiserCustomEventId;
     }
@@ -19904,13 +21027,13 @@ class CreativeCustomEvent {
       _json["artworkType"] = artworkType;
     }
     if (exitClickThroughUrl != null) {
-      _json["exitClickThroughUrl"] = (exitClickThroughUrl).toJson();
+      _json["exitClickThroughUrl"] = exitClickThroughUrl.toJson();
     }
     if (id != null) {
       _json["id"] = id;
     }
     if (popupWindowProperties != null) {
-      _json["popupWindowProperties"] = (popupWindowProperties).toJson();
+      _json["popupWindowProperties"] = popupWindowProperties.toJson();
     }
     if (targetType != null) {
       _json["targetType"] = targetType;
@@ -19963,7 +21086,7 @@ class CreativeField {
     }
     if (_json.containsKey("advertiserIdDimensionValue")) {
       advertiserIdDimensionValue =
-          new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+          DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -19981,7 +21104,7 @@ class CreativeField {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -19989,8 +21112,7 @@ class CreativeField {
       _json["advertiserId"] = advertiserId;
     }
     if (advertiserIdDimensionValue != null) {
-      _json["advertiserIdDimensionValue"] =
-          (advertiserIdDimensionValue).toJson();
+      _json["advertiserIdDimensionValue"] = advertiserIdDimensionValue.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -20029,7 +21151,7 @@ class CreativeFieldAssignment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creativeFieldId != null) {
       _json["creativeFieldId"] = creativeFieldId;
     }
@@ -20070,7 +21192,7 @@ class CreativeFieldValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -20102,7 +21224,7 @@ class CreativeFieldValuesListResponse {
     if (_json.containsKey("creativeFieldValues")) {
       creativeFieldValues = (_json["creativeFieldValues"] as core.List)
           .map<CreativeFieldValue>(
-              (value) => new CreativeFieldValue.fromJson(value))
+              (value) => CreativeFieldValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -20115,10 +21237,10 @@ class CreativeFieldValuesListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creativeFieldValues != null) {
       _json["creativeFieldValues"] =
-          creativeFieldValues.map((value) => (value).toJson()).toList();
+          creativeFieldValues.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -20147,7 +21269,7 @@ class CreativeFieldsListResponse {
   CreativeFieldsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("creativeFields")) {
       creativeFields = (_json["creativeFields"] as core.List)
-          .map<CreativeField>((value) => new CreativeField.fromJson(value))
+          .map<CreativeField>((value) => CreativeField.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -20160,10 +21282,10 @@ class CreativeFieldsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creativeFields != null) {
       _json["creativeFields"] =
-          creativeFields.map((value) => (value).toJson()).toList();
+          creativeFields.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -20222,7 +21344,7 @@ class CreativeGroup {
     }
     if (_json.containsKey("advertiserIdDimensionValue")) {
       advertiserIdDimensionValue =
-          new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+          DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
     }
     if (_json.containsKey("groupNumber")) {
       groupNumber = _json["groupNumber"];
@@ -20243,7 +21365,7 @@ class CreativeGroup {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -20251,8 +21373,7 @@ class CreativeGroup {
       _json["advertiserId"] = advertiserId;
     }
     if (advertiserIdDimensionValue != null) {
-      _json["advertiserIdDimensionValue"] =
-          (advertiserIdDimensionValue).toJson();
+      _json["advertiserIdDimensionValue"] = advertiserIdDimensionValue.toJson();
     }
     if (groupNumber != null) {
       _json["groupNumber"] = groupNumber;
@@ -20297,7 +21418,7 @@ class CreativeGroupAssignment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creativeGroupId != null) {
       _json["creativeGroupId"] = creativeGroupId;
     }
@@ -20325,7 +21446,7 @@ class CreativeGroupsListResponse {
   CreativeGroupsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("creativeGroups")) {
       creativeGroups = (_json["creativeGroups"] as core.List)
-          .map<CreativeGroup>((value) => new CreativeGroup.fromJson(value))
+          .map<CreativeGroup>((value) => CreativeGroup.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -20338,10 +21459,10 @@ class CreativeGroupsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creativeGroups != null) {
       _json["creativeGroups"] =
-          creativeGroups.map((value) => (value).toJson()).toList();
+          creativeGroups.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -20388,7 +21509,7 @@ class CreativeOptimizationConfiguration {
     if (_json.containsKey("optimizationActivitys")) {
       optimizationActivitys = (_json["optimizationActivitys"] as core.List)
           .map<OptimizationActivity>(
-              (value) => new OptimizationActivity.fromJson(value))
+              (value) => OptimizationActivity.fromJson(value))
           .toList();
     }
     if (_json.containsKey("optimizationModel")) {
@@ -20398,7 +21519,7 @@ class CreativeOptimizationConfiguration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -20407,7 +21528,7 @@ class CreativeOptimizationConfiguration {
     }
     if (optimizationActivitys != null) {
       _json["optimizationActivitys"] =
-          optimizationActivitys.map((value) => (value).toJson()).toList();
+          optimizationActivitys.map((value) => value.toJson()).toList();
     }
     if (optimizationModel != null) {
       _json["optimizationModel"] = optimizationModel;
@@ -20448,7 +21569,7 @@ class CreativeRotation {
     if (_json.containsKey("creativeAssignments")) {
       creativeAssignments = (_json["creativeAssignments"] as core.List)
           .map<CreativeAssignment>(
-              (value) => new CreativeAssignment.fromJson(value))
+              (value) => CreativeAssignment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("creativeOptimizationConfigurationId")) {
@@ -20465,10 +21586,10 @@ class CreativeRotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creativeAssignments != null) {
       _json["creativeAssignments"] =
-          creativeAssignments.map((value) => (value).toJson()).toList();
+          creativeAssignments.map((value) => value.toJson()).toList();
     }
     if (creativeOptimizationConfigurationId != null) {
       _json["creativeOptimizationConfigurationId"] =
@@ -20501,7 +21622,7 @@ class CreativesListResponse {
   CreativesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("creatives")) {
       creatives = (_json["creatives"] as core.List)
-          .map<Creative>((value) => new Creative.fromJson(value))
+          .map<Creative>((value) => Creative.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -20514,9 +21635,9 @@ class CreativesListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creatives != null) {
-      _json["creatives"] = creatives.map((value) => (value).toJson()).toList();
+      _json["creatives"] = creatives.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -20556,12 +21677,12 @@ class CrossDimensionReachReportCompatibleFields {
   CrossDimensionReachReportCompatibleFields.fromJson(core.Map _json) {
     if (_json.containsKey("breakdown")) {
       breakdown = (_json["breakdown"] as core.List)
-          .map<Dimension>((value) => new Dimension.fromJson(value))
+          .map<Dimension>((value) => Dimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dimensionFilters")) {
       dimensionFilters = (_json["dimensionFilters"] as core.List)
-          .map<Dimension>((value) => new Dimension.fromJson(value))
+          .map<Dimension>((value) => Dimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -20569,35 +21690,35 @@ class CrossDimensionReachReportCompatibleFields {
     }
     if (_json.containsKey("metrics")) {
       metrics = (_json["metrics"] as core.List)
-          .map<Metric>((value) => new Metric.fromJson(value))
+          .map<Metric>((value) => Metric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("overlapMetrics")) {
       overlapMetrics = (_json["overlapMetrics"] as core.List)
-          .map<Metric>((value) => new Metric.fromJson(value))
+          .map<Metric>((value) => Metric.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (breakdown != null) {
-      _json["breakdown"] = breakdown.map((value) => (value).toJson()).toList();
+      _json["breakdown"] = breakdown.map((value) => value.toJson()).toList();
     }
     if (dimensionFilters != null) {
       _json["dimensionFilters"] =
-          dimensionFilters.map((value) => (value).toJson()).toList();
+          dimensionFilters.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
     }
     if (overlapMetrics != null) {
       _json["overlapMetrics"] =
-          overlapMetrics.map((value) => (value).toJson()).toList();
+          overlapMetrics.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -20654,15 +21775,15 @@ class CustomEvent {
   CustomEvent.fromJson(core.Map _json) {
     if (_json.containsKey("annotateClickEvent")) {
       annotateClickEvent =
-          new CustomEventClickAnnotation.fromJson(_json["annotateClickEvent"]);
+          CustomEventClickAnnotation.fromJson(_json["annotateClickEvent"]);
     }
     if (_json.containsKey("annotateImpressionEvent")) {
-      annotateImpressionEvent = new CustomEventImpressionAnnotation.fromJson(
+      annotateImpressionEvent = CustomEventImpressionAnnotation.fromJson(
           _json["annotateImpressionEvent"]);
     }
     if (_json.containsKey("customVariables")) {
       customVariables = (_json["customVariables"] as core.List)
-          .map<CustomVariable>((value) => new CustomVariable.fromJson(value))
+          .map<CustomVariable>((value) => CustomVariable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("eventType")) {
@@ -20672,7 +21793,7 @@ class CustomEvent {
       floodlightConfigurationId = _json["floodlightConfigurationId"];
     }
     if (_json.containsKey("insertEvent")) {
-      insertEvent = new CustomEventInsert.fromJson(_json["insertEvent"]);
+      insertEvent = CustomEventInsert.fromJson(_json["insertEvent"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -20687,16 +21808,16 @@ class CustomEvent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (annotateClickEvent != null) {
-      _json["annotateClickEvent"] = (annotateClickEvent).toJson();
+      _json["annotateClickEvent"] = annotateClickEvent.toJson();
     }
     if (annotateImpressionEvent != null) {
-      _json["annotateImpressionEvent"] = (annotateImpressionEvent).toJson();
+      _json["annotateImpressionEvent"] = annotateImpressionEvent.toJson();
     }
     if (customVariables != null) {
       _json["customVariables"] =
-          customVariables.map((value) => (value).toJson()).toList();
+          customVariables.map((value) => value.toJson()).toList();
     }
     if (eventType != null) {
       _json["eventType"] = eventType;
@@ -20705,7 +21826,7 @@ class CustomEvent {
       _json["floodlightConfigurationId"] = floodlightConfigurationId;
     }
     if (insertEvent != null) {
-      _json["insertEvent"] = (insertEvent).toJson();
+      _json["insertEvent"] = insertEvent.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -20743,7 +21864,7 @@ class CustomEventClickAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gclid != null) {
       _json["gclid"] = gclid;
     }
@@ -20788,7 +21909,7 @@ class CustomEventError {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -20825,7 +21946,7 @@ class CustomEventImpressionAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -20869,10 +21990,10 @@ class CustomEventInsert {
 
   CustomEventInsert.fromJson(core.Map _json) {
     if (_json.containsKey("cmDimensions")) {
-      cmDimensions = new CampaignManagerIds.fromJson(_json["cmDimensions"]);
+      cmDimensions = CampaignManagerIds.fromJson(_json["cmDimensions"]);
     }
     if (_json.containsKey("dv3Dimensions")) {
-      dv3Dimensions = new DV3Ids.fromJson(_json["dv3Dimensions"]);
+      dv3Dimensions = DV3Ids.fromJson(_json["dv3Dimensions"]);
     }
     if (_json.containsKey("insertEventType")) {
       insertEventType = _json["insertEventType"];
@@ -20890,12 +22011,12 @@ class CustomEventInsert {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cmDimensions != null) {
-      _json["cmDimensions"] = (cmDimensions).toJson();
+      _json["cmDimensions"] = cmDimensions.toJson();
     }
     if (dv3Dimensions != null) {
-      _json["dv3Dimensions"] = (dv3Dimensions).toJson();
+      _json["dv3Dimensions"] = dv3Dimensions.toJson();
     }
     if (insertEventType != null) {
       _json["insertEventType"] = insertEventType;
@@ -20930,12 +22051,11 @@ class CustomEventStatus {
 
   CustomEventStatus.fromJson(core.Map _json) {
     if (_json.containsKey("customEvent")) {
-      customEvent = new CustomEvent.fromJson(_json["customEvent"]);
+      customEvent = CustomEvent.fromJson(_json["customEvent"]);
     }
     if (_json.containsKey("errors")) {
       errors = (_json["errors"] as core.List)
-          .map<CustomEventError>(
-              (value) => new CustomEventError.fromJson(value))
+          .map<CustomEventError>((value) => CustomEventError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -20945,12 +22065,12 @@ class CustomEventStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customEvent != null) {
-      _json["customEvent"] = (customEvent).toJson();
+      _json["customEvent"] = customEvent.toJson();
     }
     if (errors != null) {
-      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+      _json["errors"] = errors.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -20973,7 +22093,7 @@ class CustomEventsBatchInsertRequest {
   CustomEventsBatchInsertRequest.fromJson(core.Map _json) {
     if (_json.containsKey("customEvents")) {
       customEvents = (_json["customEvents"] as core.List)
-          .map<CustomEvent>((value) => new CustomEvent.fromJson(value))
+          .map<CustomEvent>((value) => CustomEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -20983,10 +22103,10 @@ class CustomEventsBatchInsertRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customEvents != null) {
       _json["customEvents"] =
-          customEvents.map((value) => (value).toJson()).toList();
+          customEvents.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -21019,15 +22139,14 @@ class CustomEventsBatchInsertResponse {
     }
     if (_json.containsKey("status")) {
       status = (_json["status"] as core.List)
-          .map<CustomEventStatus>(
-              (value) => new CustomEventStatus.fromJson(value))
+          .map<CustomEventStatus>((value) => CustomEventStatus.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hasFailures != null) {
       _json["hasFailures"] = hasFailures;
     }
@@ -21035,7 +22154,7 @@ class CustomEventsBatchInsertResponse {
       _json["kind"] = kind;
     }
     if (status != null) {
-      _json["status"] = status.map((value) => (value).toJson()).toList();
+      _json["status"] = status.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -21172,7 +22291,7 @@ class CustomFloodlightVariable {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -21201,7 +22320,7 @@ class CustomRichMediaEvents {
   CustomRichMediaEvents.fromJson(core.Map _json) {
     if (_json.containsKey("filteredEventIds")) {
       filteredEventIds = (_json["filteredEventIds"] as core.List)
-          .map<DimensionValue>((value) => new DimensionValue.fromJson(value))
+          .map<DimensionValue>((value) => DimensionValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -21211,10 +22330,10 @@ class CustomRichMediaEvents {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (filteredEventIds != null) {
       _json["filteredEventIds"] =
-          filteredEventIds.map((value) => (value).toJson()).toList();
+          filteredEventIds.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -21252,7 +22371,7 @@ class CustomVariable {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (index != null) {
       _json["index"] = index;
     }
@@ -21281,8 +22400,8 @@ class CustomViewabilityMetric {
 
   CustomViewabilityMetric.fromJson(core.Map _json) {
     if (_json.containsKey("configuration")) {
-      configuration = new CustomViewabilityMetricConfiguration.fromJson(
-          _json["configuration"]);
+      configuration =
+          CustomViewabilityMetricConfiguration.fromJson(_json["configuration"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -21294,9 +22413,9 @@ class CustomViewabilityMetric {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (configuration != null) {
-      _json["configuration"] = (configuration).toJson();
+      _json["configuration"] = configuration.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -21347,7 +22466,7 @@ class CustomViewabilityMetricConfiguration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audible != null) {
       _json["audible"] = audible;
     }
@@ -21410,7 +22529,7 @@ class DV3Ids {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dvCampaignId != null) {
       _json["dvCampaignId"] = dvCampaignId;
     }
@@ -21481,7 +22600,7 @@ class DateRange {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endDate != null) {
       _json["endDate"] =
           "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}";
@@ -21535,7 +22654,7 @@ class DayPartTargeting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (daysOfWeek != null) {
       _json["daysOfWeek"] = daysOfWeek;
     }
@@ -21582,7 +22701,7 @@ class DeepLink {
       kind = _json["kind"];
     }
     if (_json.containsKey("mobileApp")) {
-      mobileApp = new MobileApp.fromJson(_json["mobileApp"]);
+      mobileApp = MobileApp.fromJson(_json["mobileApp"]);
     }
     if (_json.containsKey("remarketingListIds")) {
       remarketingListIds =
@@ -21592,7 +22711,7 @@ class DeepLink {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appUrl != null) {
       _json["appUrl"] = appUrl;
     }
@@ -21603,7 +22722,7 @@ class DeepLink {
       _json["kind"] = kind;
     }
     if (mobileApp != null) {
-      _json["mobileApp"] = (mobileApp).toJson();
+      _json["mobileApp"] = mobileApp.toJson();
     }
     if (remarketingListIds != null) {
       _json["remarketingListIds"] = remarketingListIds;
@@ -21637,7 +22756,7 @@ class DefaultClickThroughEventTagProperties {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (defaultClickThroughEventTagId != null) {
       _json["defaultClickThroughEventTagId"] = defaultClickThroughEventTagId;
     }
@@ -21691,7 +22810,7 @@ class DeliverySchedule {
 
   DeliverySchedule.fromJson(core.Map _json) {
     if (_json.containsKey("frequencyCap")) {
-      frequencyCap = new FrequencyCap.fromJson(_json["frequencyCap"]);
+      frequencyCap = FrequencyCap.fromJson(_json["frequencyCap"]);
     }
     if (_json.containsKey("hardCutoff")) {
       hardCutoff = _json["hardCutoff"];
@@ -21706,9 +22825,9 @@ class DeliverySchedule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (frequencyCap != null) {
-      _json["frequencyCap"] = (frequencyCap).toJson();
+      _json["frequencyCap"] = frequencyCap.toJson();
     }
     if (hardCutoff != null) {
       _json["hardCutoff"] = hardCutoff;
@@ -21762,7 +22881,7 @@ class DfpSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dfpNetworkCode != null) {
       _json["dfpNetworkCode"] = dfpNetworkCode;
     }
@@ -21803,7 +22922,7 @@ class Dimension {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -21841,7 +22960,7 @@ class DimensionFilter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimensionName != null) {
       _json["dimensionName"] = dimensionName;
     }
@@ -21909,7 +23028,7 @@ class DimensionValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimensionName != null) {
       _json["dimensionName"] = dimensionName;
     }
@@ -21957,7 +23076,7 @@ class DimensionValueList {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<DimensionValue>((value) => new DimensionValue.fromJson(value))
+          .map<DimensionValue>((value) => DimensionValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -21970,12 +23089,12 @@ class DimensionValueList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -22012,7 +23131,7 @@ class DimensionValueRequest {
     }
     if (_json.containsKey("filters")) {
       filters = (_json["filters"] as core.List)
-          .map<DimensionFilter>((value) => new DimensionFilter.fromJson(value))
+          .map<DimensionFilter>((value) => DimensionFilter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -22025,7 +23144,7 @@ class DimensionValueRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimensionName != null) {
       _json["dimensionName"] = dimensionName;
     }
@@ -22034,7 +23153,7 @@ class DimensionValueRequest {
           "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}";
     }
     if (filters != null) {
-      _json["filters"] = filters.map((value) => (value).toJson()).toList();
+      _json["filters"] = filters.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -22088,7 +23207,7 @@ class DirectorySite {
       id = _json["id"];
     }
     if (_json.containsKey("idDimensionValue")) {
-      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+      idDimensionValue = DimensionValue.fromJson(_json["idDimensionValue"]);
     }
     if (_json.containsKey("inpageTagFormats")) {
       inpageTagFormats =
@@ -22105,7 +23224,7 @@ class DirectorySite {
       name = _json["name"];
     }
     if (_json.containsKey("settings")) {
-      settings = new DirectorySiteSettings.fromJson(_json["settings"]);
+      settings = DirectorySiteSettings.fromJson(_json["settings"]);
     }
     if (_json.containsKey("url")) {
       url = _json["url"];
@@ -22114,12 +23233,12 @@ class DirectorySite {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
     if (idDimensionValue != null) {
-      _json["idDimensionValue"] = (idDimensionValue).toJson();
+      _json["idDimensionValue"] = idDimensionValue.toJson();
     }
     if (inpageTagFormats != null) {
       _json["inpageTagFormats"] = inpageTagFormats;
@@ -22134,7 +23253,7 @@ class DirectorySite {
       _json["name"] = name;
     }
     if (settings != null) {
-      _json["settings"] = (settings).toJson();
+      _json["settings"] = settings.toJson();
     }
     if (url != null) {
       _json["url"] = url;
@@ -22164,7 +23283,7 @@ class DirectorySiteSettings {
       activeViewOptOut = _json["activeViewOptOut"];
     }
     if (_json.containsKey("dfpSettings")) {
-      dfpSettings = new DfpSettings.fromJson(_json["dfpSettings"]);
+      dfpSettings = DfpSettings.fromJson(_json["dfpSettings"]);
     }
     if (_json.containsKey("instreamVideoPlacementAccepted")) {
       instreamVideoPlacementAccepted = _json["instreamVideoPlacementAccepted"];
@@ -22176,12 +23295,12 @@ class DirectorySiteSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activeViewOptOut != null) {
       _json["activeViewOptOut"] = activeViewOptOut;
     }
     if (dfpSettings != null) {
-      _json["dfpSettings"] = (dfpSettings).toJson();
+      _json["dfpSettings"] = dfpSettings.toJson();
     }
     if (instreamVideoPlacementAccepted != null) {
       _json["instreamVideoPlacementAccepted"] = instreamVideoPlacementAccepted;
@@ -22210,7 +23329,7 @@ class DirectorySitesListResponse {
   DirectorySitesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("directorySites")) {
       directorySites = (_json["directorySites"] as core.List)
-          .map<DirectorySite>((value) => new DirectorySite.fromJson(value))
+          .map<DirectorySite>((value) => DirectorySite.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -22223,10 +23342,10 @@ class DirectorySitesListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (directorySites != null) {
       _json["directorySites"] =
-          directorySites.map((value) => (value).toJson()).toList();
+          directorySites.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -22253,7 +23372,7 @@ class DisjunctiveMatchStatement {
   DisjunctiveMatchStatement.fromJson(core.Map _json) {
     if (_json.containsKey("eventFilters")) {
       eventFilters = (_json["eventFilters"] as core.List)
-          .map<EventFilter>((value) => new EventFilter.fromJson(value))
+          .map<EventFilter>((value) => EventFilter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -22263,10 +23382,10 @@ class DisjunctiveMatchStatement {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (eventFilters != null) {
       _json["eventFilters"] =
-          eventFilters.map((value) => (value).toJson()).toList();
+          eventFilters.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -22322,7 +23441,7 @@ class DynamicTargetingKey {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -22354,7 +23473,7 @@ class DynamicTargetingKeysListResponse {
     if (_json.containsKey("dynamicTargetingKeys")) {
       dynamicTargetingKeys = (_json["dynamicTargetingKeys"] as core.List)
           .map<DynamicTargetingKey>(
-              (value) => new DynamicTargetingKey.fromJson(value))
+              (value) => DynamicTargetingKey.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -22364,10 +23483,10 @@ class DynamicTargetingKeysListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dynamicTargetingKeys != null) {
       _json["dynamicTargetingKeys"] =
-          dynamicTargetingKeys.map((value) => (value).toJson()).toList();
+          dynamicTargetingKeys.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -22425,7 +23544,7 @@ class EncryptionInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (encryptionEntityId != null) {
       _json["encryptionEntityId"] = encryptionEntityId;
     }
@@ -22455,7 +23574,7 @@ class EventFilter {
   EventFilter.fromJson(core.Map _json) {
     if (_json.containsKey("dimensionFilter")) {
       dimensionFilter =
-          new PathReportDimensionValue.fromJson(_json["dimensionFilter"]);
+          PathReportDimensionValue.fromJson(_json["dimensionFilter"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -22464,9 +23583,9 @@ class EventFilter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimensionFilter != null) {
-      _json["dimensionFilter"] = (dimensionFilter).toJson();
+      _json["dimensionFilter"] = dimensionFilter.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -22573,14 +23692,14 @@ class EventTag {
     }
     if (_json.containsKey("advertiserIdDimensionValue")) {
       advertiserIdDimensionValue =
-          new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+          DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
     }
     if (_json.containsKey("campaignId")) {
       campaignId = _json["campaignId"];
     }
     if (_json.containsKey("campaignIdDimensionValue")) {
       campaignIdDimensionValue =
-          new DimensionValue.fromJson(_json["campaignIdDimensionValue"]);
+          DimensionValue.fromJson(_json["campaignIdDimensionValue"]);
     }
     if (_json.containsKey("enabledByDefault")) {
       enabledByDefault = _json["enabledByDefault"];
@@ -22625,7 +23744,7 @@ class EventTag {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -22633,14 +23752,13 @@ class EventTag {
       _json["advertiserId"] = advertiserId;
     }
     if (advertiserIdDimensionValue != null) {
-      _json["advertiserIdDimensionValue"] =
-          (advertiserIdDimensionValue).toJson();
+      _json["advertiserIdDimensionValue"] = advertiserIdDimensionValue.toJson();
     }
     if (campaignId != null) {
       _json["campaignId"] = campaignId;
     }
     if (campaignIdDimensionValue != null) {
-      _json["campaignIdDimensionValue"] = (campaignIdDimensionValue).toJson();
+      _json["campaignIdDimensionValue"] = campaignIdDimensionValue.toJson();
     }
     if (enabledByDefault != null) {
       _json["enabledByDefault"] = enabledByDefault;
@@ -22706,7 +23824,7 @@ class EventTagOverride {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -22731,7 +23849,7 @@ class EventTagsListResponse {
   EventTagsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("eventTags")) {
       eventTags = (_json["eventTags"] as core.List)
-          .map<EventTag>((value) => new EventTag.fromJson(value))
+          .map<EventTag>((value) => EventTag.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -22741,9 +23859,9 @@ class EventTagsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (eventTags != null) {
-      _json["eventTags"] = eventTags.map((value) => (value).toJson()).toList();
+      _json["eventTags"] = eventTags.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -22773,7 +23891,7 @@ class FileUrls {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiUrl != null) {
       _json["apiUrl"] = apiUrl;
     }
@@ -22834,7 +23952,7 @@ class File {
 
   File.fromJson(core.Map _json) {
     if (_json.containsKey("dateRange")) {
-      dateRange = new DateRange.fromJson(_json["dateRange"]);
+      dateRange = DateRange.fromJson(_json["dateRange"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -22861,15 +23979,15 @@ class File {
       status = _json["status"];
     }
     if (_json.containsKey("urls")) {
-      urls = new FileUrls.fromJson(_json["urls"]);
+      urls = FileUrls.fromJson(_json["urls"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dateRange != null) {
-      _json["dateRange"] = (dateRange).toJson();
+      _json["dateRange"] = dateRange.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -22896,7 +24014,7 @@ class File {
       _json["status"] = status;
     }
     if (urls != null) {
-      _json["urls"] = (urls).toJson();
+      _json["urls"] = urls.toJson();
     }
     return _json;
   }
@@ -22928,7 +24046,7 @@ class FileList {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<File>((value) => new File.fromJson(value))
+          .map<File>((value) => File.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -22941,12 +24059,12 @@ class FileList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -22988,7 +24106,7 @@ class Flight {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endDate != null) {
       _json["endDate"] =
           "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}";
@@ -23038,7 +24156,7 @@ class FloodlightActivitiesGenerateTagResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (floodlightActivityTag != null) {
       _json["floodlightActivityTag"] = floodlightActivityTag;
     }
@@ -23070,7 +24188,7 @@ class FloodlightActivitiesListResponse {
     if (_json.containsKey("floodlightActivities")) {
       floodlightActivities = (_json["floodlightActivities"] as core.List)
           .map<FloodlightActivity>(
-              (value) => new FloodlightActivity.fromJson(value))
+              (value) => FloodlightActivity.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -23083,10 +24201,10 @@ class FloodlightActivitiesListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (floodlightActivities != null) {
       _json["floodlightActivities"] =
-          floodlightActivities.map((value) => (value).toJson()).toList();
+          floodlightActivities.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -23259,7 +24377,7 @@ class FloodlightActivity {
     }
     if (_json.containsKey("advertiserIdDimensionValue")) {
       advertiserIdDimensionValue =
-          new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+          DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
     }
     if (_json.containsKey("attributionEnabled")) {
       attributionEnabled = _json["attributionEnabled"];
@@ -23273,7 +24391,7 @@ class FloodlightActivity {
     if (_json.containsKey("defaultTags")) {
       defaultTags = (_json["defaultTags"] as core.List)
           .map<FloodlightActivityDynamicTag>(
-              (value) => new FloodlightActivityDynamicTag.fromJson(value))
+              (value) => FloodlightActivityDynamicTag.fromJson(value))
           .toList();
     }
     if (_json.containsKey("expectedUrl")) {
@@ -23296,7 +24414,7 @@ class FloodlightActivity {
       floodlightConfigurationId = _json["floodlightConfigurationId"];
     }
     if (_json.containsKey("floodlightConfigurationIdDimensionValue")) {
-      floodlightConfigurationIdDimensionValue = new DimensionValue.fromJson(
+      floodlightConfigurationIdDimensionValue = DimensionValue.fromJson(
           _json["floodlightConfigurationIdDimensionValue"]);
     }
     if (_json.containsKey("floodlightTagType")) {
@@ -23306,7 +24424,7 @@ class FloodlightActivity {
       id = _json["id"];
     }
     if (_json.containsKey("idDimensionValue")) {
-      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+      idDimensionValue = DimensionValue.fromJson(_json["idDimensionValue"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -23319,8 +24437,8 @@ class FloodlightActivity {
     }
     if (_json.containsKey("publisherTags")) {
       publisherTags = (_json["publisherTags"] as core.List)
-          .map<FloodlightActivityPublisherDynamicTag>((value) =>
-              new FloodlightActivityPublisherDynamicTag.fromJson(value))
+          .map<FloodlightActivityPublisherDynamicTag>(
+              (value) => FloodlightActivityPublisherDynamicTag.fromJson(value))
           .toList();
     }
     if (_json.containsKey("secure")) {
@@ -23352,7 +24470,7 @@ class FloodlightActivity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -23360,8 +24478,7 @@ class FloodlightActivity {
       _json["advertiserId"] = advertiserId;
     }
     if (advertiserIdDimensionValue != null) {
-      _json["advertiserIdDimensionValue"] =
-          (advertiserIdDimensionValue).toJson();
+      _json["advertiserIdDimensionValue"] = advertiserIdDimensionValue.toJson();
     }
     if (attributionEnabled != null) {
       _json["attributionEnabled"] = attributionEnabled;
@@ -23374,7 +24491,7 @@ class FloodlightActivity {
     }
     if (defaultTags != null) {
       _json["defaultTags"] =
-          defaultTags.map((value) => (value).toJson()).toList();
+          defaultTags.map((value) => value.toJson()).toList();
     }
     if (expectedUrl != null) {
       _json["expectedUrl"] = expectedUrl;
@@ -23397,7 +24514,7 @@ class FloodlightActivity {
     }
     if (floodlightConfigurationIdDimensionValue != null) {
       _json["floodlightConfigurationIdDimensionValue"] =
-          (floodlightConfigurationIdDimensionValue).toJson();
+          floodlightConfigurationIdDimensionValue.toJson();
     }
     if (floodlightTagType != null) {
       _json["floodlightTagType"] = floodlightTagType;
@@ -23406,7 +24523,7 @@ class FloodlightActivity {
       _json["id"] = id;
     }
     if (idDimensionValue != null) {
-      _json["idDimensionValue"] = (idDimensionValue).toJson();
+      _json["idDimensionValue"] = idDimensionValue.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -23419,7 +24536,7 @@ class FloodlightActivity {
     }
     if (publisherTags != null) {
       _json["publisherTags"] =
-          publisherTags.map((value) => (value).toJson()).toList();
+          publisherTags.map((value) => value.toJson()).toList();
     }
     if (secure != null) {
       _json["secure"] = secure;
@@ -23476,7 +24593,7 @@ class FloodlightActivityDynamicTag {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -23560,20 +24677,20 @@ class FloodlightActivityGroup {
     }
     if (_json.containsKey("advertiserIdDimensionValue")) {
       advertiserIdDimensionValue =
-          new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+          DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
     }
     if (_json.containsKey("floodlightConfigurationId")) {
       floodlightConfigurationId = _json["floodlightConfigurationId"];
     }
     if (_json.containsKey("floodlightConfigurationIdDimensionValue")) {
-      floodlightConfigurationIdDimensionValue = new DimensionValue.fromJson(
+      floodlightConfigurationIdDimensionValue = DimensionValue.fromJson(
           _json["floodlightConfigurationIdDimensionValue"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("idDimensionValue")) {
-      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+      idDimensionValue = DimensionValue.fromJson(_json["idDimensionValue"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -23594,7 +24711,7 @@ class FloodlightActivityGroup {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -23602,21 +24719,20 @@ class FloodlightActivityGroup {
       _json["advertiserId"] = advertiserId;
     }
     if (advertiserIdDimensionValue != null) {
-      _json["advertiserIdDimensionValue"] =
-          (advertiserIdDimensionValue).toJson();
+      _json["advertiserIdDimensionValue"] = advertiserIdDimensionValue.toJson();
     }
     if (floodlightConfigurationId != null) {
       _json["floodlightConfigurationId"] = floodlightConfigurationId;
     }
     if (floodlightConfigurationIdDimensionValue != null) {
       _json["floodlightConfigurationIdDimensionValue"] =
-          (floodlightConfigurationIdDimensionValue).toJson();
+          floodlightConfigurationIdDimensionValue.toJson();
     }
     if (id != null) {
       _json["id"] = id;
     }
     if (idDimensionValue != null) {
-      _json["idDimensionValue"] = (idDimensionValue).toJson();
+      _json["idDimensionValue"] = idDimensionValue.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -23656,7 +24772,7 @@ class FloodlightActivityGroupsListResponse {
       floodlightActivityGroups =
           (_json["floodlightActivityGroups"] as core.List)
               .map<FloodlightActivityGroup>(
-                  (value) => new FloodlightActivityGroup.fromJson(value))
+                  (value) => FloodlightActivityGroup.fromJson(value))
               .toList();
     }
     if (_json.containsKey("kind")) {
@@ -23669,10 +24785,10 @@ class FloodlightActivityGroupsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (floodlightActivityGroups != null) {
       _json["floodlightActivityGroups"] =
-          floodlightActivityGroups.map((value) => (value).toJson()).toList();
+          floodlightActivityGroups.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -23717,15 +24833,14 @@ class FloodlightActivityPublisherDynamicTag {
       directorySiteId = _json["directorySiteId"];
     }
     if (_json.containsKey("dynamicTag")) {
-      dynamicTag =
-          new FloodlightActivityDynamicTag.fromJson(_json["dynamicTag"]);
+      dynamicTag = FloodlightActivityDynamicTag.fromJson(_json["dynamicTag"]);
     }
     if (_json.containsKey("siteId")) {
       siteId = _json["siteId"];
     }
     if (_json.containsKey("siteIdDimensionValue")) {
       siteIdDimensionValue =
-          new DimensionValue.fromJson(_json["siteIdDimensionValue"]);
+          DimensionValue.fromJson(_json["siteIdDimensionValue"]);
     }
     if (_json.containsKey("viewThrough")) {
       viewThrough = _json["viewThrough"];
@@ -23734,7 +24849,7 @@ class FloodlightActivityPublisherDynamicTag {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clickThrough != null) {
       _json["clickThrough"] = clickThrough;
     }
@@ -23742,13 +24857,13 @@ class FloodlightActivityPublisherDynamicTag {
       _json["directorySiteId"] = directorySiteId;
     }
     if (dynamicTag != null) {
-      _json["dynamicTag"] = (dynamicTag).toJson();
+      _json["dynamicTag"] = dynamicTag.toJson();
     }
     if (siteId != null) {
       _json["siteId"] = siteId;
     }
     if (siteIdDimensionValue != null) {
-      _json["siteIdDimensionValue"] = (siteIdDimensionValue).toJson();
+      _json["siteIdDimensionValue"] = siteIdDimensionValue.toJson();
     }
     if (viewThrough != null) {
       _json["viewThrough"] = viewThrough;
@@ -23840,14 +24955,14 @@ class FloodlightConfiguration {
     }
     if (_json.containsKey("advertiserIdDimensionValue")) {
       advertiserIdDimensionValue =
-          new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+          DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
     }
     if (_json.containsKey("analyticsDataSharingEnabled")) {
       analyticsDataSharingEnabled = _json["analyticsDataSharingEnabled"];
     }
     if (_json.containsKey("customViewabilityMetric")) {
-      customViewabilityMetric = new CustomViewabilityMetric.fromJson(
-          _json["customViewabilityMetric"]);
+      customViewabilityMetric =
+          CustomViewabilityMetric.fromJson(_json["customViewabilityMetric"]);
     }
     if (_json.containsKey("exposureToConversionEnabled")) {
       exposureToConversionEnabled = _json["exposureToConversionEnabled"];
@@ -23859,7 +24974,7 @@ class FloodlightConfiguration {
       id = _json["id"];
     }
     if (_json.containsKey("idDimensionValue")) {
-      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+      idDimensionValue = DimensionValue.fromJson(_json["idDimensionValue"]);
     }
     if (_json.containsKey("inAppAttributionTrackingEnabled")) {
       inAppAttributionTrackingEnabled =
@@ -23870,41 +24985,40 @@ class FloodlightConfiguration {
     }
     if (_json.containsKey("lookbackConfiguration")) {
       lookbackConfiguration =
-          new LookbackConfiguration.fromJson(_json["lookbackConfiguration"]);
+          LookbackConfiguration.fromJson(_json["lookbackConfiguration"]);
     }
     if (_json.containsKey("naturalSearchConversionAttributionOption")) {
       naturalSearchConversionAttributionOption =
           _json["naturalSearchConversionAttributionOption"];
     }
     if (_json.containsKey("omnitureSettings")) {
-      omnitureSettings =
-          new OmnitureSettings.fromJson(_json["omnitureSettings"]);
+      omnitureSettings = OmnitureSettings.fromJson(_json["omnitureSettings"]);
     }
     if (_json.containsKey("subaccountId")) {
       subaccountId = _json["subaccountId"];
     }
     if (_json.containsKey("tagSettings")) {
-      tagSettings = new TagSettings.fromJson(_json["tagSettings"]);
+      tagSettings = TagSettings.fromJson(_json["tagSettings"]);
     }
     if (_json.containsKey("thirdPartyAuthenticationTokens")) {
       thirdPartyAuthenticationTokens =
           (_json["thirdPartyAuthenticationTokens"] as core.List)
               .map<ThirdPartyAuthenticationToken>(
-                  (value) => new ThirdPartyAuthenticationToken.fromJson(value))
+                  (value) => ThirdPartyAuthenticationToken.fromJson(value))
               .toList();
     }
     if (_json.containsKey("userDefinedVariableConfigurations")) {
       userDefinedVariableConfigurations =
           (_json["userDefinedVariableConfigurations"] as core.List)
-              .map<UserDefinedVariableConfiguration>((value) =>
-                  new UserDefinedVariableConfiguration.fromJson(value))
+              .map<UserDefinedVariableConfiguration>(
+                  (value) => UserDefinedVariableConfiguration.fromJson(value))
               .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -23912,14 +25026,13 @@ class FloodlightConfiguration {
       _json["advertiserId"] = advertiserId;
     }
     if (advertiserIdDimensionValue != null) {
-      _json["advertiserIdDimensionValue"] =
-          (advertiserIdDimensionValue).toJson();
+      _json["advertiserIdDimensionValue"] = advertiserIdDimensionValue.toJson();
     }
     if (analyticsDataSharingEnabled != null) {
       _json["analyticsDataSharingEnabled"] = analyticsDataSharingEnabled;
     }
     if (customViewabilityMetric != null) {
-      _json["customViewabilityMetric"] = (customViewabilityMetric).toJson();
+      _json["customViewabilityMetric"] = customViewabilityMetric.toJson();
     }
     if (exposureToConversionEnabled != null) {
       _json["exposureToConversionEnabled"] = exposureToConversionEnabled;
@@ -23931,7 +25044,7 @@ class FloodlightConfiguration {
       _json["id"] = id;
     }
     if (idDimensionValue != null) {
-      _json["idDimensionValue"] = (idDimensionValue).toJson();
+      _json["idDimensionValue"] = idDimensionValue.toJson();
     }
     if (inAppAttributionTrackingEnabled != null) {
       _json["inAppAttributionTrackingEnabled"] =
@@ -23941,30 +25054,30 @@ class FloodlightConfiguration {
       _json["kind"] = kind;
     }
     if (lookbackConfiguration != null) {
-      _json["lookbackConfiguration"] = (lookbackConfiguration).toJson();
+      _json["lookbackConfiguration"] = lookbackConfiguration.toJson();
     }
     if (naturalSearchConversionAttributionOption != null) {
       _json["naturalSearchConversionAttributionOption"] =
           naturalSearchConversionAttributionOption;
     }
     if (omnitureSettings != null) {
-      _json["omnitureSettings"] = (omnitureSettings).toJson();
+      _json["omnitureSettings"] = omnitureSettings.toJson();
     }
     if (subaccountId != null) {
       _json["subaccountId"] = subaccountId;
     }
     if (tagSettings != null) {
-      _json["tagSettings"] = (tagSettings).toJson();
+      _json["tagSettings"] = tagSettings.toJson();
     }
     if (thirdPartyAuthenticationTokens != null) {
       _json["thirdPartyAuthenticationTokens"] = thirdPartyAuthenticationTokens
-          .map((value) => (value).toJson())
+          .map((value) => value.toJson())
           .toList();
     }
     if (userDefinedVariableConfigurations != null) {
       _json["userDefinedVariableConfigurations"] =
           userDefinedVariableConfigurations
-              .map((value) => (value).toJson())
+              .map((value) => value.toJson())
               .toList();
     }
     return _json;
@@ -23987,7 +25100,7 @@ class FloodlightConfigurationsListResponse {
       floodlightConfigurations =
           (_json["floodlightConfigurations"] as core.List)
               .map<FloodlightConfiguration>(
-                  (value) => new FloodlightConfiguration.fromJson(value))
+                  (value) => FloodlightConfiguration.fromJson(value))
               .toList();
     }
     if (_json.containsKey("kind")) {
@@ -23997,10 +25110,10 @@ class FloodlightConfigurationsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (floodlightConfigurations != null) {
       _json["floodlightConfigurations"] =
-          floodlightConfigurations.map((value) => (value).toJson()).toList();
+          floodlightConfigurations.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -24033,12 +25146,12 @@ class FloodlightReportCompatibleFields {
   FloodlightReportCompatibleFields.fromJson(core.Map _json) {
     if (_json.containsKey("dimensionFilters")) {
       dimensionFilters = (_json["dimensionFilters"] as core.List)
-          .map<Dimension>((value) => new Dimension.fromJson(value))
+          .map<Dimension>((value) => Dimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dimensions")) {
       dimensions = (_json["dimensions"] as core.List)
-          .map<Dimension>((value) => new Dimension.fromJson(value))
+          .map<Dimension>((value) => Dimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -24046,27 +25159,26 @@ class FloodlightReportCompatibleFields {
     }
     if (_json.containsKey("metrics")) {
       metrics = (_json["metrics"] as core.List)
-          .map<Metric>((value) => new Metric.fromJson(value))
+          .map<Metric>((value) => Metric.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimensionFilters != null) {
       _json["dimensionFilters"] =
-          dimensionFilters.map((value) => (value).toJson()).toList();
+          dimensionFilters.map((value) => value.toJson()).toList();
     }
     if (dimensions != null) {
-      _json["dimensions"] =
-          dimensions.map((value) => (value).toJson()).toList();
+      _json["dimensions"] = dimensions.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -24095,7 +25207,7 @@ class FrequencyCap {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (duration != null) {
       _json["duration"] = duration;
     }
@@ -24150,7 +25262,7 @@ class FsCommand {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (left != null) {
       _json["left"] = left;
     }
@@ -24211,12 +25323,12 @@ class GeoTargeting {
   GeoTargeting.fromJson(core.Map _json) {
     if (_json.containsKey("cities")) {
       cities = (_json["cities"] as core.List)
-          .map<City>((value) => new City.fromJson(value))
+          .map<City>((value) => City.fromJson(value))
           .toList();
     }
     if (_json.containsKey("countries")) {
       countries = (_json["countries"] as core.List)
-          .map<Country>((value) => new Country.fromJson(value))
+          .map<Country>((value) => Country.fromJson(value))
           .toList();
     }
     if (_json.containsKey("excludeCountries")) {
@@ -24224,42 +25336,42 @@ class GeoTargeting {
     }
     if (_json.containsKey("metros")) {
       metros = (_json["metros"] as core.List)
-          .map<Metro>((value) => new Metro.fromJson(value))
+          .map<Metro>((value) => Metro.fromJson(value))
           .toList();
     }
     if (_json.containsKey("postalCodes")) {
       postalCodes = (_json["postalCodes"] as core.List)
-          .map<PostalCode>((value) => new PostalCode.fromJson(value))
+          .map<PostalCode>((value) => PostalCode.fromJson(value))
           .toList();
     }
     if (_json.containsKey("regions")) {
       regions = (_json["regions"] as core.List)
-          .map<Region>((value) => new Region.fromJson(value))
+          .map<Region>((value) => Region.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cities != null) {
-      _json["cities"] = cities.map((value) => (value).toJson()).toList();
+      _json["cities"] = cities.map((value) => value.toJson()).toList();
     }
     if (countries != null) {
-      _json["countries"] = countries.map((value) => (value).toJson()).toList();
+      _json["countries"] = countries.map((value) => value.toJson()).toList();
     }
     if (excludeCountries != null) {
       _json["excludeCountries"] = excludeCountries;
     }
     if (metros != null) {
-      _json["metros"] = metros.map((value) => (value).toJson()).toList();
+      _json["metros"] = metros.map((value) => value.toJson()).toList();
     }
     if (postalCodes != null) {
       _json["postalCodes"] =
-          postalCodes.map((value) => (value).toJson()).toList();
+          postalCodes.map((value) => value.toJson()).toList();
     }
     if (regions != null) {
-      _json["regions"] = regions.map((value) => (value).toJson()).toList();
+      _json["regions"] = regions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -24344,7 +25456,7 @@ class InventoryItem {
     }
     if (_json.containsKey("adSlots")) {
       adSlots = (_json["adSlots"] as core.List)
-          .map<AdSlot>((value) => new AdSlot.fromJson(value))
+          .map<AdSlot>((value) => AdSlot.fromJson(value))
           .toList();
     }
     if (_json.containsKey("advertiserId")) {
@@ -24369,8 +25481,7 @@ class InventoryItem {
       kind = _json["kind"];
     }
     if (_json.containsKey("lastModifiedInfo")) {
-      lastModifiedInfo =
-          new LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
+      lastModifiedInfo = LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -24385,7 +25496,7 @@ class InventoryItem {
       placementStrategyId = _json["placementStrategyId"];
     }
     if (_json.containsKey("pricing")) {
-      pricing = new Pricing.fromJson(_json["pricing"]);
+      pricing = Pricing.fromJson(_json["pricing"]);
     }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
@@ -24406,12 +25517,12 @@ class InventoryItem {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
     if (adSlots != null) {
-      _json["adSlots"] = adSlots.map((value) => (value).toJson()).toList();
+      _json["adSlots"] = adSlots.map((value) => value.toJson()).toList();
     }
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
@@ -24435,7 +25546,7 @@ class InventoryItem {
       _json["kind"] = kind;
     }
     if (lastModifiedInfo != null) {
-      _json["lastModifiedInfo"] = (lastModifiedInfo).toJson();
+      _json["lastModifiedInfo"] = lastModifiedInfo.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -24450,7 +25561,7 @@ class InventoryItem {
       _json["placementStrategyId"] = placementStrategyId;
     }
     if (pricing != null) {
-      _json["pricing"] = (pricing).toJson();
+      _json["pricing"] = pricing.toJson();
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
@@ -24488,7 +25599,7 @@ class InventoryItemsListResponse {
   InventoryItemsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("inventoryItems")) {
       inventoryItems = (_json["inventoryItems"] as core.List)
-          .map<InventoryItem>((value) => new InventoryItem.fromJson(value))
+          .map<InventoryItem>((value) => InventoryItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -24501,10 +25612,10 @@ class InventoryItemsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inventoryItems != null) {
       _json["inventoryItems"] =
-          inventoryItems.map((value) => (value).toJson()).toList();
+          inventoryItems.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -24531,7 +25642,7 @@ class KeyValueTargetingExpression {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (expression != null) {
       _json["expression"] = expression;
     }
@@ -24576,7 +25687,7 @@ class LandingPage {
     }
     if (_json.containsKey("deepLinks")) {
       deepLinks = (_json["deepLinks"] as core.List)
-          .map<DeepLink>((value) => new DeepLink.fromJson(value))
+          .map<DeepLink>((value) => DeepLink.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -24595,7 +25706,7 @@ class LandingPage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
@@ -24603,7 +25714,7 @@ class LandingPage {
       _json["archived"] = archived;
     }
     if (deepLinks != null) {
-      _json["deepLinks"] = deepLinks.map((value) => (value).toJson()).toList();
+      _json["deepLinks"] = deepLinks.map((value) => value.toJson()).toList();
     }
     if (id != null) {
       _json["id"] = id;
@@ -24658,7 +25769,7 @@ class Language {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -24687,16 +25798,16 @@ class LanguageTargeting {
   LanguageTargeting.fromJson(core.Map _json) {
     if (_json.containsKey("languages")) {
       languages = (_json["languages"] as core.List)
-          .map<Language>((value) => new Language.fromJson(value))
+          .map<Language>((value) => Language.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (languages != null) {
-      _json["languages"] = languages.map((value) => (value).toJson()).toList();
+      _json["languages"] = languages.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -24719,19 +25830,19 @@ class LanguagesListResponse {
     }
     if (_json.containsKey("languages")) {
       languages = (_json["languages"] as core.List)
-          .map<Language>((value) => new Language.fromJson(value))
+          .map<Language>((value) => Language.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (languages != null) {
-      _json["languages"] = languages.map((value) => (value).toJson()).toList();
+      _json["languages"] = languages.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -24752,7 +25863,7 @@ class LastModifiedInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (time != null) {
       _json["time"] = time;
     }
@@ -24773,16 +25884,16 @@ class ListPopulationClause {
     if (_json.containsKey("terms")) {
       terms = (_json["terms"] as core.List)
           .map<ListPopulationTerm>(
-              (value) => new ListPopulationTerm.fromJson(value))
+              (value) => ListPopulationTerm.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (terms != null) {
-      _json["terms"] = terms.map((value) => (value).toJson()).toList();
+      _json["terms"] = terms.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -24815,14 +25926,14 @@ class ListPopulationRule {
     if (_json.containsKey("listPopulationClauses")) {
       listPopulationClauses = (_json["listPopulationClauses"] as core.List)
           .map<ListPopulationClause>(
-              (value) => new ListPopulationClause.fromJson(value))
+              (value) => ListPopulationClause.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (floodlightActivityId != null) {
       _json["floodlightActivityId"] = floodlightActivityId;
     }
@@ -24831,7 +25942,7 @@ class ListPopulationRule {
     }
     if (listPopulationClauses != null) {
       _json["listPopulationClauses"] =
-          listPopulationClauses.map((value) => (value).toJson()).toList();
+          listPopulationClauses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -24922,7 +26033,7 @@ class ListPopulationTerm {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contains != null) {
       _json["contains"] = contains;
     }
@@ -24966,7 +26077,7 @@ class ListTargetingExpression {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (expression != null) {
       _json["expression"] = expression;
     }
@@ -25004,7 +26115,7 @@ class LookbackConfiguration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clickDuration != null) {
       _json["clickDuration"] = clickDuration;
     }
@@ -25037,7 +26148,7 @@ class Metric {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -25101,7 +26212,7 @@ class Metro {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (countryCode != null) {
       _json["countryCode"] = countryCode;
     }
@@ -25144,19 +26255,19 @@ class MetrosListResponse {
     }
     if (_json.containsKey("metros")) {
       metros = (_json["metros"] as core.List)
-          .map<Metro>((value) => new Metro.fromJson(value))
+          .map<Metro>((value) => Metro.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (metros != null) {
-      _json["metros"] = metros.map((value) => (value).toJson()).toList();
+      _json["metros"] = metros.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -25206,7 +26317,7 @@ class MobileApp {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (directory != null) {
       _json["directory"] = directory;
     }
@@ -25246,7 +26357,7 @@ class MobileAppsListResponse {
     }
     if (_json.containsKey("mobileApps")) {
       mobileApps = (_json["mobileApps"] as core.List)
-          .map<MobileApp>((value) => new MobileApp.fromJson(value))
+          .map<MobileApp>((value) => MobileApp.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -25256,13 +26367,12 @@ class MobileAppsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (mobileApps != null) {
-      _json["mobileApps"] =
-          mobileApps.map((value) => (value).toJson()).toList();
+      _json["mobileApps"] = mobileApps.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -25311,7 +26421,7 @@ class MobileCarrier {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (countryCode != null) {
       _json["countryCode"] = countryCode;
     }
@@ -25348,20 +26458,20 @@ class MobileCarriersListResponse {
     }
     if (_json.containsKey("mobileCarriers")) {
       mobileCarriers = (_json["mobileCarriers"] as core.List)
-          .map<MobileCarrier>((value) => new MobileCarrier.fromJson(value))
+          .map<MobileCarrier>((value) => MobileCarrier.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (mobileCarriers != null) {
       _json["mobileCarriers"] =
-          mobileCarriers.map((value) => (value).toJson()).toList();
+          mobileCarriers.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -25414,7 +26524,7 @@ class ObaIcon {
       resourceUrl = _json["resourceUrl"];
     }
     if (_json.containsKey("size")) {
-      size = new Size.fromJson(_json["size"]);
+      size = Size.fromJson(_json["size"]);
     }
     if (_json.containsKey("xPosition")) {
       xPosition = _json["xPosition"];
@@ -25426,7 +26536,7 @@ class ObaIcon {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (iconClickThroughUrl != null) {
       _json["iconClickThroughUrl"] = iconClickThroughUrl;
     }
@@ -25443,7 +26553,7 @@ class ObaIcon {
       _json["resourceUrl"] = resourceUrl;
     }
     if (size != null) {
-      _json["size"] = (size).toJson();
+      _json["size"] = size.toJson();
     }
     if (xPosition != null) {
       _json["xPosition"] = xPosition;
@@ -25490,7 +26600,7 @@ class ObjectFilter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -25525,7 +26635,7 @@ class OffsetPosition {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (left != null) {
       _json["left"] = left;
     }
@@ -25559,7 +26669,7 @@ class OmnitureSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (omnitureCostDataEnabled != null) {
       _json["omnitureCostDataEnabled"] = omnitureCostDataEnabled;
     }
@@ -25610,7 +26720,7 @@ class OperatingSystem {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dartId != null) {
       _json["dartId"] = dartId;
     }
@@ -25672,13 +26782,13 @@ class OperatingSystemVersion {
       name = _json["name"];
     }
     if (_json.containsKey("operatingSystem")) {
-      operatingSystem = new OperatingSystem.fromJson(_json["operatingSystem"]);
+      operatingSystem = OperatingSystem.fromJson(_json["operatingSystem"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -25695,7 +26805,7 @@ class OperatingSystemVersion {
       _json["name"] = name;
     }
     if (operatingSystem != null) {
-      _json["operatingSystem"] = (operatingSystem).toJson();
+      _json["operatingSystem"] = operatingSystem.toJson();
     }
     return _json;
   }
@@ -25719,20 +26829,20 @@ class OperatingSystemVersionsListResponse {
     if (_json.containsKey("operatingSystemVersions")) {
       operatingSystemVersions = (_json["operatingSystemVersions"] as core.List)
           .map<OperatingSystemVersion>(
-              (value) => new OperatingSystemVersion.fromJson(value))
+              (value) => OperatingSystemVersion.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (operatingSystemVersions != null) {
       _json["operatingSystemVersions"] =
-          operatingSystemVersions.map((value) => (value).toJson()).toList();
+          operatingSystemVersions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -25755,20 +26865,20 @@ class OperatingSystemsListResponse {
     }
     if (_json.containsKey("operatingSystems")) {
       operatingSystems = (_json["operatingSystems"] as core.List)
-          .map<OperatingSystem>((value) => new OperatingSystem.fromJson(value))
+          .map<OperatingSystem>((value) => OperatingSystem.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (operatingSystems != null) {
       _json["operatingSystems"] =
-          operatingSystems.map((value) => (value).toJson()).toList();
+          operatingSystems.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -25796,8 +26906,8 @@ class OptimizationActivity {
       floodlightActivityId = _json["floodlightActivityId"];
     }
     if (_json.containsKey("floodlightActivityIdDimensionValue")) {
-      floodlightActivityIdDimensionValue = new DimensionValue.fromJson(
-          _json["floodlightActivityIdDimensionValue"]);
+      floodlightActivityIdDimensionValue =
+          DimensionValue.fromJson(_json["floodlightActivityIdDimensionValue"]);
     }
     if (_json.containsKey("weight")) {
       weight = _json["weight"];
@@ -25806,13 +26916,13 @@ class OptimizationActivity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (floodlightActivityId != null) {
       _json["floodlightActivityId"] = floodlightActivityId;
     }
     if (floodlightActivityIdDimensionValue != null) {
       _json["floodlightActivityIdDimensionValue"] =
-          (floodlightActivityIdDimensionValue).toJson();
+          floodlightActivityIdDimensionValue.toJson();
     }
     if (weight != null) {
       _json["weight"] = weight;
@@ -25908,7 +27018,7 @@ class Order {
     }
     if (_json.containsKey("contacts")) {
       contacts = (_json["contacts"] as core.List)
-          .map<OrderContact>((value) => new OrderContact.fromJson(value))
+          .map<OrderContact>((value) => OrderContact.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -25918,8 +27028,7 @@ class Order {
       kind = _json["kind"];
     }
     if (_json.containsKey("lastModifiedInfo")) {
-      lastModifiedInfo =
-          new LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
+      lastModifiedInfo = LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -25955,7 +27064,7 @@ class Order {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -25975,7 +27084,7 @@ class Order {
       _json["comments"] = comments;
     }
     if (contacts != null) {
-      _json["contacts"] = contacts.map((value) => (value).toJson()).toList();
+      _json["contacts"] = contacts.map((value) => value.toJson()).toList();
     }
     if (id != null) {
       _json["id"] = id;
@@ -25984,7 +27093,7 @@ class Order {
       _json["kind"] = kind;
     }
     if (lastModifiedInfo != null) {
-      _json["lastModifiedInfo"] = (lastModifiedInfo).toJson();
+      _json["lastModifiedInfo"] = lastModifiedInfo.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -26066,7 +27175,7 @@ class OrderContact {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contactInfo != null) {
       _json["contactInfo"] = contactInfo;
     }
@@ -26161,7 +27270,7 @@ class OrderDocument {
       cancelled = _json["cancelled"];
     }
     if (_json.containsKey("createdInfo")) {
-      createdInfo = new LastModifiedInfo.fromJson(_json["createdInfo"]);
+      createdInfo = LastModifiedInfo.fromJson(_json["createdInfo"]);
     }
     if (_json.containsKey("effectiveDate")) {
       effectiveDate = core.DateTime.parse(_json["effectiveDate"]);
@@ -26201,7 +27310,7 @@ class OrderDocument {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -26218,7 +27327,7 @@ class OrderDocument {
       _json["cancelled"] = cancelled;
     }
     if (createdInfo != null) {
-      _json["createdInfo"] = (createdInfo).toJson();
+      _json["createdInfo"] = createdInfo.toJson();
     }
     if (effectiveDate != null) {
       _json["effectiveDate"] =
@@ -26281,14 +27390,14 @@ class OrderDocumentsListResponse {
     }
     if (_json.containsKey("orderDocuments")) {
       orderDocuments = (_json["orderDocuments"] as core.List)
-          .map<OrderDocument>((value) => new OrderDocument.fromJson(value))
+          .map<OrderDocument>((value) => OrderDocument.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -26297,7 +27406,7 @@ class OrderDocumentsListResponse {
     }
     if (orderDocuments != null) {
       _json["orderDocuments"] =
-          orderDocuments.map((value) => (value).toJson()).toList();
+          orderDocuments.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -26326,14 +27435,14 @@ class OrdersListResponse {
     }
     if (_json.containsKey("orders")) {
       orders = (_json["orders"] as core.List)
-          .map<Order>((value) => new Order.fromJson(value))
+          .map<Order>((value) => Order.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -26341,7 +27450,7 @@ class OrdersListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (orders != null) {
-      _json["orders"] = orders.map((value) => (value).toJson()).toList();
+      _json["orders"] = orders.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -26372,7 +27481,7 @@ class PathFilter {
   PathFilter.fromJson(core.Map _json) {
     if (_json.containsKey("eventFilters")) {
       eventFilters = (_json["eventFilters"] as core.List)
-          .map<EventFilter>((value) => new EventFilter.fromJson(value))
+          .map<EventFilter>((value) => EventFilter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -26385,10 +27494,10 @@ class PathFilter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (eventFilters != null) {
       _json["eventFilters"] =
-          eventFilters.map((value) => (value).toJson()).toList();
+          eventFilters.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -26428,12 +27537,12 @@ class PathReportCompatibleFields {
   PathReportCompatibleFields.fromJson(core.Map _json) {
     if (_json.containsKey("channelGroupings")) {
       channelGroupings = (_json["channelGroupings"] as core.List)
-          .map<Dimension>((value) => new Dimension.fromJson(value))
+          .map<Dimension>((value) => Dimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dimensions")) {
       dimensions = (_json["dimensions"] as core.List)
-          .map<Dimension>((value) => new Dimension.fromJson(value))
+          .map<Dimension>((value) => Dimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -26441,36 +27550,35 @@ class PathReportCompatibleFields {
     }
     if (_json.containsKey("metrics")) {
       metrics = (_json["metrics"] as core.List)
-          .map<Metric>((value) => new Metric.fromJson(value))
+          .map<Metric>((value) => Metric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pathFilters")) {
       pathFilters = (_json["pathFilters"] as core.List)
-          .map<Dimension>((value) => new Dimension.fromJson(value))
+          .map<Dimension>((value) => Dimension.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channelGroupings != null) {
       _json["channelGroupings"] =
-          channelGroupings.map((value) => (value).toJson()).toList();
+          channelGroupings.map((value) => value.toJson()).toList();
     }
     if (dimensions != null) {
-      _json["dimensions"] =
-          dimensions.map((value) => (value).toJson()).toList();
+      _json["dimensions"] = dimensions.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
     }
     if (pathFilters != null) {
       _json["pathFilters"] =
-          pathFilters.map((value) => (value).toJson()).toList();
+          pathFilters.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -26525,7 +27633,7 @@ class PathReportDimensionValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimensionName != null) {
       _json["dimensionName"] = dimensionName;
     }
@@ -26573,13 +27681,13 @@ class PathToConversionReportCompatibleFields {
   PathToConversionReportCompatibleFields.fromJson(core.Map _json) {
     if (_json.containsKey("conversionDimensions")) {
       conversionDimensions = (_json["conversionDimensions"] as core.List)
-          .map<Dimension>((value) => new Dimension.fromJson(value))
+          .map<Dimension>((value) => Dimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("customFloodlightVariables")) {
       customFloodlightVariables =
           (_json["customFloodlightVariables"] as core.List)
-              .map<Dimension>((value) => new Dimension.fromJson(value))
+              .map<Dimension>((value) => Dimension.fromJson(value))
               .toList();
     }
     if (_json.containsKey("kind")) {
@@ -26587,37 +27695,37 @@ class PathToConversionReportCompatibleFields {
     }
     if (_json.containsKey("metrics")) {
       metrics = (_json["metrics"] as core.List)
-          .map<Metric>((value) => new Metric.fromJson(value))
+          .map<Metric>((value) => Metric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("perInteractionDimensions")) {
       perInteractionDimensions =
           (_json["perInteractionDimensions"] as core.List)
-              .map<Dimension>((value) => new Dimension.fromJson(value))
+              .map<Dimension>((value) => Dimension.fromJson(value))
               .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (conversionDimensions != null) {
       _json["conversionDimensions"] =
-          conversionDimensions.map((value) => (value).toJson()).toList();
+          conversionDimensions.map((value) => value.toJson()).toList();
     }
     if (customFloodlightVariables != null) {
       _json["customFloodlightVariables"] =
-          customFloodlightVariables.map((value) => (value).toJson()).toList();
+          customFloodlightVariables.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
     }
     if (perInteractionDimensions != null) {
       _json["perInteractionDimensions"] =
-          perInteractionDimensions.map((value) => (value).toJson()).toList();
+          perInteractionDimensions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -26836,7 +27944,7 @@ class Placement {
     }
     if (_json.containsKey("additionalSizes")) {
       additionalSizes = (_json["additionalSizes"] as core.List)
-          .map<Size>((value) => new Size.fromJson(value))
+          .map<Size>((value) => Size.fromJson(value))
           .toList();
     }
     if (_json.containsKey("advertiserId")) {
@@ -26844,7 +27952,7 @@ class Placement {
     }
     if (_json.containsKey("advertiserIdDimensionValue")) {
       advertiserIdDimensionValue =
-          new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+          DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
     }
     if (_json.containsKey("archived")) {
       archived = _json["archived"];
@@ -26854,7 +27962,7 @@ class Placement {
     }
     if (_json.containsKey("campaignIdDimensionValue")) {
       campaignIdDimensionValue =
-          new DimensionValue.fromJson(_json["campaignIdDimensionValue"]);
+          DimensionValue.fromJson(_json["campaignIdDimensionValue"]);
     }
     if (_json.containsKey("comment")) {
       comment = _json["comment"];
@@ -26866,14 +27974,14 @@ class Placement {
       contentCategoryId = _json["contentCategoryId"];
     }
     if (_json.containsKey("createInfo")) {
-      createInfo = new LastModifiedInfo.fromJson(_json["createInfo"]);
+      createInfo = LastModifiedInfo.fromJson(_json["createInfo"]);
     }
     if (_json.containsKey("directorySiteId")) {
       directorySiteId = _json["directorySiteId"];
     }
     if (_json.containsKey("directorySiteIdDimensionValue")) {
       directorySiteIdDimensionValue =
-          new DimensionValue.fromJson(_json["directorySiteIdDimensionValue"]);
+          DimensionValue.fromJson(_json["directorySiteIdDimensionValue"]);
     }
     if (_json.containsKey("externalId")) {
       externalId = _json["externalId"];
@@ -26882,7 +27990,7 @@ class Placement {
       id = _json["id"];
     }
     if (_json.containsKey("idDimensionValue")) {
-      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+      idDimensionValue = DimensionValue.fromJson(_json["idDimensionValue"]);
     }
     if (_json.containsKey("keyName")) {
       keyName = _json["keyName"];
@@ -26891,12 +27999,11 @@ class Placement {
       kind = _json["kind"];
     }
     if (_json.containsKey("lastModifiedInfo")) {
-      lastModifiedInfo =
-          new LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
+      lastModifiedInfo = LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
     }
     if (_json.containsKey("lookbackConfiguration")) {
       lookbackConfiguration =
-          new LookbackConfiguration.fromJson(_json["lookbackConfiguration"]);
+          LookbackConfiguration.fromJson(_json["lookbackConfiguration"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -26912,30 +28019,30 @@ class Placement {
     }
     if (_json.containsKey("placementGroupIdDimensionValue")) {
       placementGroupIdDimensionValue =
-          new DimensionValue.fromJson(_json["placementGroupIdDimensionValue"]);
+          DimensionValue.fromJson(_json["placementGroupIdDimensionValue"]);
     }
     if (_json.containsKey("placementStrategyId")) {
       placementStrategyId = _json["placementStrategyId"];
     }
     if (_json.containsKey("pricingSchedule")) {
-      pricingSchedule = new PricingSchedule.fromJson(_json["pricingSchedule"]);
+      pricingSchedule = PricingSchedule.fromJson(_json["pricingSchedule"]);
     }
     if (_json.containsKey("primary")) {
       primary = _json["primary"];
     }
     if (_json.containsKey("publisherUpdateInfo")) {
       publisherUpdateInfo =
-          new LastModifiedInfo.fromJson(_json["publisherUpdateInfo"]);
+          LastModifiedInfo.fromJson(_json["publisherUpdateInfo"]);
     }
     if (_json.containsKey("siteId")) {
       siteId = _json["siteId"];
     }
     if (_json.containsKey("siteIdDimensionValue")) {
       siteIdDimensionValue =
-          new DimensionValue.fromJson(_json["siteIdDimensionValue"]);
+          DimensionValue.fromJson(_json["siteIdDimensionValue"]);
     }
     if (_json.containsKey("size")) {
-      size = new Size.fromJson(_json["size"]);
+      size = Size.fromJson(_json["size"]);
     }
     if (_json.containsKey("sslRequired")) {
       sslRequired = _json["sslRequired"];
@@ -26950,13 +28057,13 @@ class Placement {
       tagFormats = (_json["tagFormats"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("tagSetting")) {
-      tagSetting = new TagSetting.fromJson(_json["tagSetting"]);
+      tagSetting = TagSetting.fromJson(_json["tagSetting"]);
     }
     if (_json.containsKey("videoActiveViewOptOut")) {
       videoActiveViewOptOut = _json["videoActiveViewOptOut"];
     }
     if (_json.containsKey("videoSettings")) {
-      videoSettings = new VideoSettings.fromJson(_json["videoSettings"]);
+      videoSettings = VideoSettings.fromJson(_json["videoSettings"]);
     }
     if (_json.containsKey("vpaidAdapterChoice")) {
       vpaidAdapterChoice = _json["vpaidAdapterChoice"];
@@ -26965,7 +28072,7 @@ class Placement {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -26974,14 +28081,13 @@ class Placement {
     }
     if (additionalSizes != null) {
       _json["additionalSizes"] =
-          additionalSizes.map((value) => (value).toJson()).toList();
+          additionalSizes.map((value) => value.toJson()).toList();
     }
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
     if (advertiserIdDimensionValue != null) {
-      _json["advertiserIdDimensionValue"] =
-          (advertiserIdDimensionValue).toJson();
+      _json["advertiserIdDimensionValue"] = advertiserIdDimensionValue.toJson();
     }
     if (archived != null) {
       _json["archived"] = archived;
@@ -26990,7 +28096,7 @@ class Placement {
       _json["campaignId"] = campaignId;
     }
     if (campaignIdDimensionValue != null) {
-      _json["campaignIdDimensionValue"] = (campaignIdDimensionValue).toJson();
+      _json["campaignIdDimensionValue"] = campaignIdDimensionValue.toJson();
     }
     if (comment != null) {
       _json["comment"] = comment;
@@ -27002,14 +28108,14 @@ class Placement {
       _json["contentCategoryId"] = contentCategoryId;
     }
     if (createInfo != null) {
-      _json["createInfo"] = (createInfo).toJson();
+      _json["createInfo"] = createInfo.toJson();
     }
     if (directorySiteId != null) {
       _json["directorySiteId"] = directorySiteId;
     }
     if (directorySiteIdDimensionValue != null) {
       _json["directorySiteIdDimensionValue"] =
-          (directorySiteIdDimensionValue).toJson();
+          directorySiteIdDimensionValue.toJson();
     }
     if (externalId != null) {
       _json["externalId"] = externalId;
@@ -27018,7 +28124,7 @@ class Placement {
       _json["id"] = id;
     }
     if (idDimensionValue != null) {
-      _json["idDimensionValue"] = (idDimensionValue).toJson();
+      _json["idDimensionValue"] = idDimensionValue.toJson();
     }
     if (keyName != null) {
       _json["keyName"] = keyName;
@@ -27027,10 +28133,10 @@ class Placement {
       _json["kind"] = kind;
     }
     if (lastModifiedInfo != null) {
-      _json["lastModifiedInfo"] = (lastModifiedInfo).toJson();
+      _json["lastModifiedInfo"] = lastModifiedInfo.toJson();
     }
     if (lookbackConfiguration != null) {
-      _json["lookbackConfiguration"] = (lookbackConfiguration).toJson();
+      _json["lookbackConfiguration"] = lookbackConfiguration.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -27046,28 +28152,28 @@ class Placement {
     }
     if (placementGroupIdDimensionValue != null) {
       _json["placementGroupIdDimensionValue"] =
-          (placementGroupIdDimensionValue).toJson();
+          placementGroupIdDimensionValue.toJson();
     }
     if (placementStrategyId != null) {
       _json["placementStrategyId"] = placementStrategyId;
     }
     if (pricingSchedule != null) {
-      _json["pricingSchedule"] = (pricingSchedule).toJson();
+      _json["pricingSchedule"] = pricingSchedule.toJson();
     }
     if (primary != null) {
       _json["primary"] = primary;
     }
     if (publisherUpdateInfo != null) {
-      _json["publisherUpdateInfo"] = (publisherUpdateInfo).toJson();
+      _json["publisherUpdateInfo"] = publisherUpdateInfo.toJson();
     }
     if (siteId != null) {
       _json["siteId"] = siteId;
     }
     if (siteIdDimensionValue != null) {
-      _json["siteIdDimensionValue"] = (siteIdDimensionValue).toJson();
+      _json["siteIdDimensionValue"] = siteIdDimensionValue.toJson();
     }
     if (size != null) {
-      _json["size"] = (size).toJson();
+      _json["size"] = size.toJson();
     }
     if (sslRequired != null) {
       _json["sslRequired"] = sslRequired;
@@ -27082,13 +28188,13 @@ class Placement {
       _json["tagFormats"] = tagFormats;
     }
     if (tagSetting != null) {
-      _json["tagSetting"] = (tagSetting).toJson();
+      _json["tagSetting"] = tagSetting.toJson();
     }
     if (videoActiveViewOptOut != null) {
       _json["videoActiveViewOptOut"] = videoActiveViewOptOut;
     }
     if (videoSettings != null) {
-      _json["videoSettings"] = (videoSettings).toJson();
+      _json["videoSettings"] = videoSettings.toJson();
     }
     if (vpaidAdapterChoice != null) {
       _json["vpaidAdapterChoice"] = vpaidAdapterChoice;
@@ -27125,7 +28231,7 @@ class PlacementAssignment {
     }
     if (_json.containsKey("placementIdDimensionValue")) {
       placementIdDimensionValue =
-          new DimensionValue.fromJson(_json["placementIdDimensionValue"]);
+          DimensionValue.fromJson(_json["placementIdDimensionValue"]);
     }
     if (_json.containsKey("sslRequired")) {
       sslRequired = _json["sslRequired"];
@@ -27134,7 +28240,7 @@ class PlacementAssignment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (active != null) {
       _json["active"] = active;
     }
@@ -27142,7 +28248,7 @@ class PlacementAssignment {
       _json["placementId"] = placementId;
     }
     if (placementIdDimensionValue != null) {
-      _json["placementIdDimensionValue"] = (placementIdDimensionValue).toJson();
+      _json["placementIdDimensionValue"] = placementIdDimensionValue.toJson();
     }
     if (sslRequired != null) {
       _json["sslRequired"] = sslRequired;
@@ -27273,7 +28379,7 @@ class PlacementGroup {
     }
     if (_json.containsKey("advertiserIdDimensionValue")) {
       advertiserIdDimensionValue =
-          new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+          DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
     }
     if (_json.containsKey("archived")) {
       archived = _json["archived"];
@@ -27283,7 +28389,7 @@ class PlacementGroup {
     }
     if (_json.containsKey("campaignIdDimensionValue")) {
       campaignIdDimensionValue =
-          new DimensionValue.fromJson(_json["campaignIdDimensionValue"]);
+          DimensionValue.fromJson(_json["campaignIdDimensionValue"]);
     }
     if (_json.containsKey("childPlacementIds")) {
       childPlacementIds =
@@ -27296,14 +28402,14 @@ class PlacementGroup {
       contentCategoryId = _json["contentCategoryId"];
     }
     if (_json.containsKey("createInfo")) {
-      createInfo = new LastModifiedInfo.fromJson(_json["createInfo"]);
+      createInfo = LastModifiedInfo.fromJson(_json["createInfo"]);
     }
     if (_json.containsKey("directorySiteId")) {
       directorySiteId = _json["directorySiteId"];
     }
     if (_json.containsKey("directorySiteIdDimensionValue")) {
       directorySiteIdDimensionValue =
-          new DimensionValue.fromJson(_json["directorySiteIdDimensionValue"]);
+          DimensionValue.fromJson(_json["directorySiteIdDimensionValue"]);
     }
     if (_json.containsKey("externalId")) {
       externalId = _json["externalId"];
@@ -27312,14 +28418,13 @@ class PlacementGroup {
       id = _json["id"];
     }
     if (_json.containsKey("idDimensionValue")) {
-      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+      idDimensionValue = DimensionValue.fromJson(_json["idDimensionValue"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("lastModifiedInfo")) {
-      lastModifiedInfo =
-          new LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
+      lastModifiedInfo = LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -27331,21 +28436,21 @@ class PlacementGroup {
       placementStrategyId = _json["placementStrategyId"];
     }
     if (_json.containsKey("pricingSchedule")) {
-      pricingSchedule = new PricingSchedule.fromJson(_json["pricingSchedule"]);
+      pricingSchedule = PricingSchedule.fromJson(_json["pricingSchedule"]);
     }
     if (_json.containsKey("primaryPlacementId")) {
       primaryPlacementId = _json["primaryPlacementId"];
     }
     if (_json.containsKey("primaryPlacementIdDimensionValue")) {
-      primaryPlacementIdDimensionValue = new DimensionValue.fromJson(
-          _json["primaryPlacementIdDimensionValue"]);
+      primaryPlacementIdDimensionValue =
+          DimensionValue.fromJson(_json["primaryPlacementIdDimensionValue"]);
     }
     if (_json.containsKey("siteId")) {
       siteId = _json["siteId"];
     }
     if (_json.containsKey("siteIdDimensionValue")) {
       siteIdDimensionValue =
-          new DimensionValue.fromJson(_json["siteIdDimensionValue"]);
+          DimensionValue.fromJson(_json["siteIdDimensionValue"]);
     }
     if (_json.containsKey("subaccountId")) {
       subaccountId = _json["subaccountId"];
@@ -27354,7 +28459,7 @@ class PlacementGroup {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -27362,8 +28467,7 @@ class PlacementGroup {
       _json["advertiserId"] = advertiserId;
     }
     if (advertiserIdDimensionValue != null) {
-      _json["advertiserIdDimensionValue"] =
-          (advertiserIdDimensionValue).toJson();
+      _json["advertiserIdDimensionValue"] = advertiserIdDimensionValue.toJson();
     }
     if (archived != null) {
       _json["archived"] = archived;
@@ -27372,7 +28476,7 @@ class PlacementGroup {
       _json["campaignId"] = campaignId;
     }
     if (campaignIdDimensionValue != null) {
-      _json["campaignIdDimensionValue"] = (campaignIdDimensionValue).toJson();
+      _json["campaignIdDimensionValue"] = campaignIdDimensionValue.toJson();
     }
     if (childPlacementIds != null) {
       _json["childPlacementIds"] = childPlacementIds;
@@ -27384,14 +28488,14 @@ class PlacementGroup {
       _json["contentCategoryId"] = contentCategoryId;
     }
     if (createInfo != null) {
-      _json["createInfo"] = (createInfo).toJson();
+      _json["createInfo"] = createInfo.toJson();
     }
     if (directorySiteId != null) {
       _json["directorySiteId"] = directorySiteId;
     }
     if (directorySiteIdDimensionValue != null) {
       _json["directorySiteIdDimensionValue"] =
-          (directorySiteIdDimensionValue).toJson();
+          directorySiteIdDimensionValue.toJson();
     }
     if (externalId != null) {
       _json["externalId"] = externalId;
@@ -27400,13 +28504,13 @@ class PlacementGroup {
       _json["id"] = id;
     }
     if (idDimensionValue != null) {
-      _json["idDimensionValue"] = (idDimensionValue).toJson();
+      _json["idDimensionValue"] = idDimensionValue.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (lastModifiedInfo != null) {
-      _json["lastModifiedInfo"] = (lastModifiedInfo).toJson();
+      _json["lastModifiedInfo"] = lastModifiedInfo.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -27418,20 +28522,20 @@ class PlacementGroup {
       _json["placementStrategyId"] = placementStrategyId;
     }
     if (pricingSchedule != null) {
-      _json["pricingSchedule"] = (pricingSchedule).toJson();
+      _json["pricingSchedule"] = pricingSchedule.toJson();
     }
     if (primaryPlacementId != null) {
       _json["primaryPlacementId"] = primaryPlacementId;
     }
     if (primaryPlacementIdDimensionValue != null) {
       _json["primaryPlacementIdDimensionValue"] =
-          (primaryPlacementIdDimensionValue).toJson();
+          primaryPlacementIdDimensionValue.toJson();
     }
     if (siteId != null) {
       _json["siteId"] = siteId;
     }
     if (siteIdDimensionValue != null) {
-      _json["siteIdDimensionValue"] = (siteIdDimensionValue).toJson();
+      _json["siteIdDimensionValue"] = siteIdDimensionValue.toJson();
     }
     if (subaccountId != null) {
       _json["subaccountId"] = subaccountId;
@@ -27463,14 +28567,14 @@ class PlacementGroupsListResponse {
     }
     if (_json.containsKey("placementGroups")) {
       placementGroups = (_json["placementGroups"] as core.List)
-          .map<PlacementGroup>((value) => new PlacementGroup.fromJson(value))
+          .map<PlacementGroup>((value) => PlacementGroup.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -27479,7 +28583,7 @@ class PlacementGroupsListResponse {
     }
     if (placementGroups != null) {
       _json["placementGroups"] =
-          placementGroups.map((value) => (value).toJson()).toList();
+          placementGroups.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -27508,15 +28612,14 @@ class PlacementStrategiesListResponse {
     }
     if (_json.containsKey("placementStrategies")) {
       placementStrategies = (_json["placementStrategies"] as core.List)
-          .map<PlacementStrategy>(
-              (value) => new PlacementStrategy.fromJson(value))
+          .map<PlacementStrategy>((value) => PlacementStrategy.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -27525,7 +28628,7 @@ class PlacementStrategiesListResponse {
     }
     if (placementStrategies != null) {
       _json["placementStrategies"] =
-          placementStrategies.map((value) => (value).toJson()).toList();
+          placementStrategies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -27568,7 +28671,7 @@ class PlacementStrategy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -27601,19 +28704,19 @@ class PlacementTag {
     }
     if (_json.containsKey("tagDatas")) {
       tagDatas = (_json["tagDatas"] as core.List)
-          .map<TagData>((value) => new TagData.fromJson(value))
+          .map<TagData>((value) => TagData.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (placementId != null) {
       _json["placementId"] = placementId;
     }
     if (tagDatas != null) {
-      _json["tagDatas"] = tagDatas.map((value) => (value).toJson()).toList();
+      _json["tagDatas"] = tagDatas.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -27636,20 +28739,20 @@ class PlacementsGenerateTagsResponse {
     }
     if (_json.containsKey("placementTags")) {
       placementTags = (_json["placementTags"] as core.List)
-          .map<PlacementTag>((value) => new PlacementTag.fromJson(value))
+          .map<PlacementTag>((value) => PlacementTag.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (placementTags != null) {
       _json["placementTags"] =
-          placementTags.map((value) => (value).toJson()).toList();
+          placementTags.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -27678,14 +28781,14 @@ class PlacementsListResponse {
     }
     if (_json.containsKey("placements")) {
       placements = (_json["placements"] as core.List)
-          .map<Placement>((value) => new Placement.fromJson(value))
+          .map<Placement>((value) => Placement.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -27693,8 +28796,7 @@ class PlacementsListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (placements != null) {
-      _json["placements"] =
-          placements.map((value) => (value).toJson()).toList();
+      _json["placements"] = placements.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -27728,7 +28830,7 @@ class PlatformType {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -27759,20 +28861,20 @@ class PlatformTypesListResponse {
     }
     if (_json.containsKey("platformTypes")) {
       platformTypes = (_json["platformTypes"] as core.List)
-          .map<PlatformType>((value) => new PlatformType.fromJson(value))
+          .map<PlatformType>((value) => PlatformType.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (platformTypes != null) {
       _json["platformTypes"] =
-          platformTypes.map((value) => (value).toJson()).toList();
+          platformTypes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -27816,10 +28918,10 @@ class PopupWindowProperties {
 
   PopupWindowProperties.fromJson(core.Map _json) {
     if (_json.containsKey("dimension")) {
-      dimension = new Size.fromJson(_json["dimension"]);
+      dimension = Size.fromJson(_json["dimension"]);
     }
     if (_json.containsKey("offset")) {
-      offset = new OffsetPosition.fromJson(_json["offset"]);
+      offset = OffsetPosition.fromJson(_json["offset"]);
     }
     if (_json.containsKey("positionType")) {
       positionType = _json["positionType"];
@@ -27846,12 +28948,12 @@ class PopupWindowProperties {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimension != null) {
-      _json["dimension"] = (dimension).toJson();
+      _json["dimension"] = dimension.toJson();
     }
     if (offset != null) {
-      _json["offset"] = (offset).toJson();
+      _json["offset"] = offset.toJson();
     }
     if (positionType != null) {
       _json["positionType"] = positionType;
@@ -27918,7 +29020,7 @@ class PostalCode {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -27955,20 +29057,20 @@ class PostalCodesListResponse {
     }
     if (_json.containsKey("postalCodes")) {
       postalCodes = (_json["postalCodes"] as core.List)
-          .map<PostalCode>((value) => new PostalCode.fromJson(value))
+          .map<PostalCode>((value) => PostalCode.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (postalCodes != null) {
       _json["postalCodes"] =
-          postalCodes.map((value) => (value).toJson()).toList();
+          postalCodes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -28026,7 +29128,7 @@ class Pricing {
     }
     if (_json.containsKey("flights")) {
       flights = (_json["flights"] as core.List)
-          .map<Flight>((value) => new Flight.fromJson(value))
+          .map<Flight>((value) => Flight.fromJson(value))
           .toList();
     }
     if (_json.containsKey("groupType")) {
@@ -28042,7 +29144,7 @@ class Pricing {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (capCostType != null) {
       _json["capCostType"] = capCostType;
     }
@@ -28051,7 +29153,7 @@ class Pricing {
           "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}";
     }
     if (flights != null) {
-      _json["flights"] = flights.map((value) => (value).toJson()).toList();
+      _json["flights"] = flights.map((value) => value.toJson()).toList();
     }
     if (groupType != null) {
       _json["groupType"] = groupType;
@@ -28118,7 +29220,7 @@ class PricingSchedule {
     if (_json.containsKey("pricingPeriods")) {
       pricingPeriods = (_json["pricingPeriods"] as core.List)
           .map<PricingSchedulePricingPeriod>(
-              (value) => new PricingSchedulePricingPeriod.fromJson(value))
+              (value) => PricingSchedulePricingPeriod.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pricingType")) {
@@ -28134,7 +29236,7 @@ class PricingSchedule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (capCostOption != null) {
       _json["capCostOption"] = capCostOption;
     }
@@ -28150,7 +29252,7 @@ class PricingSchedule {
     }
     if (pricingPeriods != null) {
       _json["pricingPeriods"] =
-          pricingPeriods.map((value) => (value).toJson()).toList();
+          pricingPeriods.map((value) => value.toJson()).toList();
     }
     if (pricingType != null) {
       _json["pricingType"] = pricingType;
@@ -28205,7 +29307,7 @@ class PricingSchedulePricingPeriod {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endDate != null) {
       _json["endDate"] =
           "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}";
@@ -28340,8 +29442,7 @@ class Project {
       kind = _json["kind"];
     }
     if (_json.containsKey("lastModifiedInfo")) {
-      lastModifiedInfo =
-          new LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
+      lastModifiedInfo = LastModifiedInfo.fromJson(_json["lastModifiedInfo"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -28380,7 +29481,7 @@ class Project {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -28413,7 +29514,7 @@ class Project {
       _json["kind"] = kind;
     }
     if (lastModifiedInfo != null) {
-      _json["lastModifiedInfo"] = (lastModifiedInfo).toJson();
+      _json["lastModifiedInfo"] = lastModifiedInfo.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -28476,14 +29577,14 @@ class ProjectsListResponse {
     }
     if (_json.containsKey("projects")) {
       projects = (_json["projects"] as core.List)
-          .map<Project>((value) => new Project.fromJson(value))
+          .map<Project>((value) => Project.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -28491,7 +29592,7 @@ class ProjectsListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (projects != null) {
-      _json["projects"] = projects.map((value) => (value).toJson()).toList();
+      _json["projects"] = projects.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -28529,12 +29630,12 @@ class ReachReportCompatibleFields {
   ReachReportCompatibleFields.fromJson(core.Map _json) {
     if (_json.containsKey("dimensionFilters")) {
       dimensionFilters = (_json["dimensionFilters"] as core.List)
-          .map<Dimension>((value) => new Dimension.fromJson(value))
+          .map<Dimension>((value) => Dimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dimensions")) {
       dimensions = (_json["dimensions"] as core.List)
-          .map<Dimension>((value) => new Dimension.fromJson(value))
+          .map<Dimension>((value) => Dimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -28542,45 +29643,44 @@ class ReachReportCompatibleFields {
     }
     if (_json.containsKey("metrics")) {
       metrics = (_json["metrics"] as core.List)
-          .map<Metric>((value) => new Metric.fromJson(value))
+          .map<Metric>((value) => Metric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pivotedActivityMetrics")) {
       pivotedActivityMetrics = (_json["pivotedActivityMetrics"] as core.List)
-          .map<Metric>((value) => new Metric.fromJson(value))
+          .map<Metric>((value) => Metric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("reachByFrequencyMetrics")) {
       reachByFrequencyMetrics = (_json["reachByFrequencyMetrics"] as core.List)
-          .map<Metric>((value) => new Metric.fromJson(value))
+          .map<Metric>((value) => Metric.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimensionFilters != null) {
       _json["dimensionFilters"] =
-          dimensionFilters.map((value) => (value).toJson()).toList();
+          dimensionFilters.map((value) => value.toJson()).toList();
     }
     if (dimensions != null) {
-      _json["dimensions"] =
-          dimensions.map((value) => (value).toJson()).toList();
+      _json["dimensions"] = dimensions.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
     }
     if (pivotedActivityMetrics != null) {
       _json["pivotedActivityMetrics"] =
-          pivotedActivityMetrics.map((value) => (value).toJson()).toList();
+          pivotedActivityMetrics.map((value) => value.toJson()).toList();
     }
     if (reachByFrequencyMetrics != null) {
       _json["reachByFrequencyMetrics"] =
-          reachByFrequencyMetrics.map((value) => (value).toJson()).toList();
+          reachByFrequencyMetrics.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -28616,7 +29716,7 @@ class Recipient {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deliveryType != null) {
       _json["deliveryType"] = deliveryType;
     }
@@ -28676,7 +29776,7 @@ class Region {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (countryCode != null) {
       _json["countryCode"] = countryCode;
     }
@@ -28716,19 +29816,19 @@ class RegionsListResponse {
     }
     if (_json.containsKey("regions")) {
       regions = (_json["regions"] as core.List)
-          .map<Region>((value) => new Region.fromJson(value))
+          .map<Region>((value) => Region.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (regions != null) {
-      _json["regions"] = regions.map((value) => (value).toJson()).toList();
+      _json["regions"] = regions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -28813,7 +29913,7 @@ class RemarketingList {
     }
     if (_json.containsKey("advertiserIdDimensionValue")) {
       advertiserIdDimensionValue =
-          new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+          DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -28829,7 +29929,7 @@ class RemarketingList {
     }
     if (_json.containsKey("listPopulationRule")) {
       listPopulationRule =
-          new ListPopulationRule.fromJson(_json["listPopulationRule"]);
+          ListPopulationRule.fromJson(_json["listPopulationRule"]);
     }
     if (_json.containsKey("listSize")) {
       listSize = _json["listSize"];
@@ -28847,7 +29947,7 @@ class RemarketingList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -28858,8 +29958,7 @@ class RemarketingList {
       _json["advertiserId"] = advertiserId;
     }
     if (advertiserIdDimensionValue != null) {
-      _json["advertiserIdDimensionValue"] =
-          (advertiserIdDimensionValue).toJson();
+      _json["advertiserIdDimensionValue"] = advertiserIdDimensionValue.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -28874,7 +29973,7 @@ class RemarketingList {
       _json["lifeSpan"] = lifeSpan;
     }
     if (listPopulationRule != null) {
-      _json["listPopulationRule"] = (listPopulationRule).toJson();
+      _json["listPopulationRule"] = listPopulationRule.toJson();
     }
     if (listSize != null) {
       _json["listSize"] = listSize;
@@ -28931,7 +30030,7 @@ class RemarketingListShare {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -28971,14 +30070,14 @@ class RemarketingListsListResponse {
     }
     if (_json.containsKey("remarketingLists")) {
       remarketingLists = (_json["remarketingLists"] as core.List)
-          .map<RemarketingList>((value) => new RemarketingList.fromJson(value))
+          .map<RemarketingList>((value) => RemarketingList.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -28987,7 +30086,7 @@ class RemarketingListsListResponse {
     }
     if (remarketingLists != null) {
       _json["remarketingLists"] =
-          remarketingLists.map((value) => (value).toJson()).toList();
+          remarketingLists.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -29019,23 +30118,23 @@ class ReportCriteria {
 
   ReportCriteria.fromJson(core.Map _json) {
     if (_json.containsKey("activities")) {
-      activities = new Activities.fromJson(_json["activities"]);
+      activities = Activities.fromJson(_json["activities"]);
     }
     if (_json.containsKey("customRichMediaEvents")) {
       customRichMediaEvents =
-          new CustomRichMediaEvents.fromJson(_json["customRichMediaEvents"]);
+          CustomRichMediaEvents.fromJson(_json["customRichMediaEvents"]);
     }
     if (_json.containsKey("dateRange")) {
-      dateRange = new DateRange.fromJson(_json["dateRange"]);
+      dateRange = DateRange.fromJson(_json["dateRange"]);
     }
     if (_json.containsKey("dimensionFilters")) {
       dimensionFilters = (_json["dimensionFilters"] as core.List)
-          .map<DimensionValue>((value) => new DimensionValue.fromJson(value))
+          .map<DimensionValue>((value) => DimensionValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dimensions")) {
       dimensions = (_json["dimensions"] as core.List)
-          .map<SortedDimension>((value) => new SortedDimension.fromJson(value))
+          .map<SortedDimension>((value) => SortedDimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("metricNames")) {
@@ -29045,23 +30144,22 @@ class ReportCriteria {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activities != null) {
-      _json["activities"] = (activities).toJson();
+      _json["activities"] = activities.toJson();
     }
     if (customRichMediaEvents != null) {
-      _json["customRichMediaEvents"] = (customRichMediaEvents).toJson();
+      _json["customRichMediaEvents"] = customRichMediaEvents.toJson();
     }
     if (dateRange != null) {
-      _json["dateRange"] = (dateRange).toJson();
+      _json["dateRange"] = dateRange.toJson();
     }
     if (dimensionFilters != null) {
       _json["dimensionFilters"] =
-          dimensionFilters.map((value) => (value).toJson()).toList();
+          dimensionFilters.map((value) => value.toJson()).toList();
     }
     if (dimensions != null) {
-      _json["dimensions"] =
-          dimensions.map((value) => (value).toJson()).toList();
+      _json["dimensions"] = dimensions.map((value) => value.toJson()).toList();
     }
     if (metricNames != null) {
       _json["metricNames"] = metricNames;
@@ -29103,18 +30201,18 @@ class ReportCrossDimensionReachCriteria {
   ReportCrossDimensionReachCriteria.fromJson(core.Map _json) {
     if (_json.containsKey("breakdown")) {
       breakdown = (_json["breakdown"] as core.List)
-          .map<SortedDimension>((value) => new SortedDimension.fromJson(value))
+          .map<SortedDimension>((value) => SortedDimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dateRange")) {
-      dateRange = new DateRange.fromJson(_json["dateRange"]);
+      dateRange = DateRange.fromJson(_json["dateRange"]);
     }
     if (_json.containsKey("dimension")) {
       dimension = _json["dimension"];
     }
     if (_json.containsKey("dimensionFilters")) {
       dimensionFilters = (_json["dimensionFilters"] as core.List)
-          .map<DimensionValue>((value) => new DimensionValue.fromJson(value))
+          .map<DimensionValue>((value) => DimensionValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("metricNames")) {
@@ -29131,19 +30229,19 @@ class ReportCrossDimensionReachCriteria {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (breakdown != null) {
-      _json["breakdown"] = breakdown.map((value) => (value).toJson()).toList();
+      _json["breakdown"] = breakdown.map((value) => value.toJson()).toList();
     }
     if (dateRange != null) {
-      _json["dateRange"] = (dateRange).toJson();
+      _json["dateRange"] = dateRange.toJson();
     }
     if (dimension != null) {
       _json["dimension"] = dimension;
     }
     if (dimensionFilters != null) {
       _json["dimensionFilters"] =
-          dimensionFilters.map((value) => (value).toJson()).toList();
+          dimensionFilters.map((value) => value.toJson()).toList();
     }
     if (metricNames != null) {
       _json["metricNames"] = metricNames;
@@ -29189,14 +30287,14 @@ class ReportDelivery {
     }
     if (_json.containsKey("recipients")) {
       recipients = (_json["recipients"] as core.List)
-          .map<Recipient>((value) => new Recipient.fromJson(value))
+          .map<Recipient>((value) => Recipient.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (emailOwner != null) {
       _json["emailOwner"] = emailOwner;
     }
@@ -29207,8 +30305,7 @@ class ReportDelivery {
       _json["message"] = message;
     }
     if (recipients != null) {
-      _json["recipients"] =
-          recipients.map((value) => (value).toJson()).toList();
+      _json["recipients"] = recipients.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -29248,7 +30345,7 @@ class ReportFloodlightCriteriaReportProperties {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (includeAttributedIPConversions != null) {
       _json["includeAttributedIPConversions"] = includeAttributedIPConversions;
     }
@@ -29296,61 +30393,59 @@ class ReportFloodlightCriteria {
   ReportFloodlightCriteria.fromJson(core.Map _json) {
     if (_json.containsKey("customRichMediaEvents")) {
       customRichMediaEvents = (_json["customRichMediaEvents"] as core.List)
-          .map<DimensionValue>((value) => new DimensionValue.fromJson(value))
+          .map<DimensionValue>((value) => DimensionValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dateRange")) {
-      dateRange = new DateRange.fromJson(_json["dateRange"]);
+      dateRange = DateRange.fromJson(_json["dateRange"]);
     }
     if (_json.containsKey("dimensionFilters")) {
       dimensionFilters = (_json["dimensionFilters"] as core.List)
-          .map<DimensionValue>((value) => new DimensionValue.fromJson(value))
+          .map<DimensionValue>((value) => DimensionValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dimensions")) {
       dimensions = (_json["dimensions"] as core.List)
-          .map<SortedDimension>((value) => new SortedDimension.fromJson(value))
+          .map<SortedDimension>((value) => SortedDimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("floodlightConfigId")) {
-      floodlightConfigId =
-          new DimensionValue.fromJson(_json["floodlightConfigId"]);
+      floodlightConfigId = DimensionValue.fromJson(_json["floodlightConfigId"]);
     }
     if (_json.containsKey("metricNames")) {
       metricNames = (_json["metricNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("reportProperties")) {
-      reportProperties = new ReportFloodlightCriteriaReportProperties.fromJson(
+      reportProperties = ReportFloodlightCriteriaReportProperties.fromJson(
           _json["reportProperties"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customRichMediaEvents != null) {
       _json["customRichMediaEvents"] =
-          customRichMediaEvents.map((value) => (value).toJson()).toList();
+          customRichMediaEvents.map((value) => value.toJson()).toList();
     }
     if (dateRange != null) {
-      _json["dateRange"] = (dateRange).toJson();
+      _json["dateRange"] = dateRange.toJson();
     }
     if (dimensionFilters != null) {
       _json["dimensionFilters"] =
-          dimensionFilters.map((value) => (value).toJson()).toList();
+          dimensionFilters.map((value) => value.toJson()).toList();
     }
     if (dimensions != null) {
-      _json["dimensions"] =
-          dimensions.map((value) => (value).toJson()).toList();
+      _json["dimensions"] = dimensions.map((value) => value.toJson()).toList();
     }
     if (floodlightConfigId != null) {
-      _json["floodlightConfigId"] = (floodlightConfigId).toJson();
+      _json["floodlightConfigId"] = floodlightConfigId.toJson();
     }
     if (metricNames != null) {
       _json["metricNames"] = metricNames;
     }
     if (reportProperties != null) {
-      _json["reportProperties"] = (reportProperties).toJson();
+      _json["reportProperties"] = reportProperties.toJson();
     }
     return _json;
   }
@@ -29386,61 +30481,59 @@ class ReportPathAttributionCriteria {
   ReportPathAttributionCriteria.fromJson(core.Map _json) {
     if (_json.containsKey("activityFilters")) {
       activityFilters = (_json["activityFilters"] as core.List)
-          .map<DimensionValue>((value) => new DimensionValue.fromJson(value))
+          .map<DimensionValue>((value) => DimensionValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("customChannelGrouping")) {
       customChannelGrouping =
-          new ChannelGrouping.fromJson(_json["customChannelGrouping"]);
+          ChannelGrouping.fromJson(_json["customChannelGrouping"]);
     }
     if (_json.containsKey("dateRange")) {
-      dateRange = new DateRange.fromJson(_json["dateRange"]);
+      dateRange = DateRange.fromJson(_json["dateRange"]);
     }
     if (_json.containsKey("dimensions")) {
       dimensions = (_json["dimensions"] as core.List)
-          .map<SortedDimension>((value) => new SortedDimension.fromJson(value))
+          .map<SortedDimension>((value) => SortedDimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("floodlightConfigId")) {
-      floodlightConfigId =
-          new DimensionValue.fromJson(_json["floodlightConfigId"]);
+      floodlightConfigId = DimensionValue.fromJson(_json["floodlightConfigId"]);
     }
     if (_json.containsKey("metricNames")) {
       metricNames = (_json["metricNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("pathFilters")) {
       pathFilters = (_json["pathFilters"] as core.List)
-          .map<PathFilter>((value) => new PathFilter.fromJson(value))
+          .map<PathFilter>((value) => PathFilter.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activityFilters != null) {
       _json["activityFilters"] =
-          activityFilters.map((value) => (value).toJson()).toList();
+          activityFilters.map((value) => value.toJson()).toList();
     }
     if (customChannelGrouping != null) {
-      _json["customChannelGrouping"] = (customChannelGrouping).toJson();
+      _json["customChannelGrouping"] = customChannelGrouping.toJson();
     }
     if (dateRange != null) {
-      _json["dateRange"] = (dateRange).toJson();
+      _json["dateRange"] = dateRange.toJson();
     }
     if (dimensions != null) {
-      _json["dimensions"] =
-          dimensions.map((value) => (value).toJson()).toList();
+      _json["dimensions"] = dimensions.map((value) => value.toJson()).toList();
     }
     if (floodlightConfigId != null) {
-      _json["floodlightConfigId"] = (floodlightConfigId).toJson();
+      _json["floodlightConfigId"] = floodlightConfigId.toJson();
     }
     if (metricNames != null) {
       _json["metricNames"] = metricNames;
     }
     if (pathFilters != null) {
       _json["pathFilters"] =
-          pathFilters.map((value) => (value).toJson()).toList();
+          pathFilters.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -29476,61 +30569,59 @@ class ReportPathCriteria {
   ReportPathCriteria.fromJson(core.Map _json) {
     if (_json.containsKey("activityFilters")) {
       activityFilters = (_json["activityFilters"] as core.List)
-          .map<DimensionValue>((value) => new DimensionValue.fromJson(value))
+          .map<DimensionValue>((value) => DimensionValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("customChannelGrouping")) {
       customChannelGrouping =
-          new ChannelGrouping.fromJson(_json["customChannelGrouping"]);
+          ChannelGrouping.fromJson(_json["customChannelGrouping"]);
     }
     if (_json.containsKey("dateRange")) {
-      dateRange = new DateRange.fromJson(_json["dateRange"]);
+      dateRange = DateRange.fromJson(_json["dateRange"]);
     }
     if (_json.containsKey("dimensions")) {
       dimensions = (_json["dimensions"] as core.List)
-          .map<SortedDimension>((value) => new SortedDimension.fromJson(value))
+          .map<SortedDimension>((value) => SortedDimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("floodlightConfigId")) {
-      floodlightConfigId =
-          new DimensionValue.fromJson(_json["floodlightConfigId"]);
+      floodlightConfigId = DimensionValue.fromJson(_json["floodlightConfigId"]);
     }
     if (_json.containsKey("metricNames")) {
       metricNames = (_json["metricNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("pathFilters")) {
       pathFilters = (_json["pathFilters"] as core.List)
-          .map<PathFilter>((value) => new PathFilter.fromJson(value))
+          .map<PathFilter>((value) => PathFilter.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activityFilters != null) {
       _json["activityFilters"] =
-          activityFilters.map((value) => (value).toJson()).toList();
+          activityFilters.map((value) => value.toJson()).toList();
     }
     if (customChannelGrouping != null) {
-      _json["customChannelGrouping"] = (customChannelGrouping).toJson();
+      _json["customChannelGrouping"] = customChannelGrouping.toJson();
     }
     if (dateRange != null) {
-      _json["dateRange"] = (dateRange).toJson();
+      _json["dateRange"] = dateRange.toJson();
     }
     if (dimensions != null) {
-      _json["dimensions"] =
-          dimensions.map((value) => (value).toJson()).toList();
+      _json["dimensions"] = dimensions.map((value) => value.toJson()).toList();
     }
     if (floodlightConfigId != null) {
-      _json["floodlightConfigId"] = (floodlightConfigId).toJson();
+      _json["floodlightConfigId"] = floodlightConfigId.toJson();
     }
     if (metricNames != null) {
       _json["metricNames"] = metricNames;
     }
     if (pathFilters != null) {
       _json["pathFilters"] =
-          pathFilters.map((value) => (value).toJson()).toList();
+          pathFilters.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -29618,7 +30709,7 @@ class ReportPathToConversionCriteriaReportProperties {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clicksLookbackWindow != null) {
       _json["clicksLookbackWindow"] = clicksLookbackWindow;
     }
@@ -29688,82 +30779,81 @@ class ReportPathToConversionCriteria {
   ReportPathToConversionCriteria.fromJson(core.Map _json) {
     if (_json.containsKey("activityFilters")) {
       activityFilters = (_json["activityFilters"] as core.List)
-          .map<DimensionValue>((value) => new DimensionValue.fromJson(value))
+          .map<DimensionValue>((value) => DimensionValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("conversionDimensions")) {
       conversionDimensions = (_json["conversionDimensions"] as core.List)
-          .map<SortedDimension>((value) => new SortedDimension.fromJson(value))
+          .map<SortedDimension>((value) => SortedDimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("customFloodlightVariables")) {
-      customFloodlightVariables = (_json["customFloodlightVariables"]
-              as core.List)
-          .map<SortedDimension>((value) => new SortedDimension.fromJson(value))
-          .toList();
+      customFloodlightVariables =
+          (_json["customFloodlightVariables"] as core.List)
+              .map<SortedDimension>((value) => SortedDimension.fromJson(value))
+              .toList();
     }
     if (_json.containsKey("customRichMediaEvents")) {
       customRichMediaEvents = (_json["customRichMediaEvents"] as core.List)
-          .map<DimensionValue>((value) => new DimensionValue.fromJson(value))
+          .map<DimensionValue>((value) => DimensionValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dateRange")) {
-      dateRange = new DateRange.fromJson(_json["dateRange"]);
+      dateRange = DateRange.fromJson(_json["dateRange"]);
     }
     if (_json.containsKey("floodlightConfigId")) {
-      floodlightConfigId =
-          new DimensionValue.fromJson(_json["floodlightConfigId"]);
+      floodlightConfigId = DimensionValue.fromJson(_json["floodlightConfigId"]);
     }
     if (_json.containsKey("metricNames")) {
       metricNames = (_json["metricNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("perInteractionDimensions")) {
-      perInteractionDimensions = (_json["perInteractionDimensions"]
-              as core.List)
-          .map<SortedDimension>((value) => new SortedDimension.fromJson(value))
-          .toList();
+      perInteractionDimensions =
+          (_json["perInteractionDimensions"] as core.List)
+              .map<SortedDimension>((value) => SortedDimension.fromJson(value))
+              .toList();
     }
     if (_json.containsKey("reportProperties")) {
       reportProperties =
-          new ReportPathToConversionCriteriaReportProperties.fromJson(
+          ReportPathToConversionCriteriaReportProperties.fromJson(
               _json["reportProperties"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activityFilters != null) {
       _json["activityFilters"] =
-          activityFilters.map((value) => (value).toJson()).toList();
+          activityFilters.map((value) => value.toJson()).toList();
     }
     if (conversionDimensions != null) {
       _json["conversionDimensions"] =
-          conversionDimensions.map((value) => (value).toJson()).toList();
+          conversionDimensions.map((value) => value.toJson()).toList();
     }
     if (customFloodlightVariables != null) {
       _json["customFloodlightVariables"] =
-          customFloodlightVariables.map((value) => (value).toJson()).toList();
+          customFloodlightVariables.map((value) => value.toJson()).toList();
     }
     if (customRichMediaEvents != null) {
       _json["customRichMediaEvents"] =
-          customRichMediaEvents.map((value) => (value).toJson()).toList();
+          customRichMediaEvents.map((value) => value.toJson()).toList();
     }
     if (dateRange != null) {
-      _json["dateRange"] = (dateRange).toJson();
+      _json["dateRange"] = dateRange.toJson();
     }
     if (floodlightConfigId != null) {
-      _json["floodlightConfigId"] = (floodlightConfigId).toJson();
+      _json["floodlightConfigId"] = floodlightConfigId.toJson();
     }
     if (metricNames != null) {
       _json["metricNames"] = metricNames;
     }
     if (perInteractionDimensions != null) {
       _json["perInteractionDimensions"] =
-          perInteractionDimensions.map((value) => (value).toJson()).toList();
+          perInteractionDimensions.map((value) => value.toJson()).toList();
     }
     if (reportProperties != null) {
-      _json["reportProperties"] = (reportProperties).toJson();
+      _json["reportProperties"] = reportProperties.toJson();
     }
     return _json;
   }
@@ -29803,23 +30893,23 @@ class ReportReachCriteria {
 
   ReportReachCriteria.fromJson(core.Map _json) {
     if (_json.containsKey("activities")) {
-      activities = new Activities.fromJson(_json["activities"]);
+      activities = Activities.fromJson(_json["activities"]);
     }
     if (_json.containsKey("customRichMediaEvents")) {
       customRichMediaEvents =
-          new CustomRichMediaEvents.fromJson(_json["customRichMediaEvents"]);
+          CustomRichMediaEvents.fromJson(_json["customRichMediaEvents"]);
     }
     if (_json.containsKey("dateRange")) {
-      dateRange = new DateRange.fromJson(_json["dateRange"]);
+      dateRange = DateRange.fromJson(_json["dateRange"]);
     }
     if (_json.containsKey("dimensionFilters")) {
       dimensionFilters = (_json["dimensionFilters"] as core.List)
-          .map<DimensionValue>((value) => new DimensionValue.fromJson(value))
+          .map<DimensionValue>((value) => DimensionValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dimensions")) {
       dimensions = (_json["dimensions"] as core.List)
-          .map<SortedDimension>((value) => new SortedDimension.fromJson(value))
+          .map<SortedDimension>((value) => SortedDimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("enableAllDimensionCombinations")) {
@@ -29837,23 +30927,22 @@ class ReportReachCriteria {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activities != null) {
-      _json["activities"] = (activities).toJson();
+      _json["activities"] = activities.toJson();
     }
     if (customRichMediaEvents != null) {
-      _json["customRichMediaEvents"] = (customRichMediaEvents).toJson();
+      _json["customRichMediaEvents"] = customRichMediaEvents.toJson();
     }
     if (dateRange != null) {
-      _json["dateRange"] = (dateRange).toJson();
+      _json["dateRange"] = dateRange.toJson();
     }
     if (dimensionFilters != null) {
       _json["dimensionFilters"] =
-          dimensionFilters.map((value) => (value).toJson()).toList();
+          dimensionFilters.map((value) => value.toJson()).toList();
     }
     if (dimensions != null) {
-      _json["dimensions"] =
-          dimensions.map((value) => (value).toJson()).toList();
+      _json["dimensions"] = dimensions.map((value) => value.toJson()).toList();
     }
     if (enableAllDimensionCombinations != null) {
       _json["enableAllDimensionCombinations"] = enableAllDimensionCombinations;
@@ -29930,7 +31019,7 @@ class ReportSchedule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (active != null) {
       _json["active"] = active;
     }
@@ -30043,15 +31132,14 @@ class Report {
       accountId = _json["accountId"];
     }
     if (_json.containsKey("criteria")) {
-      criteria = new ReportCriteria.fromJson(_json["criteria"]);
+      criteria = ReportCriteria.fromJson(_json["criteria"]);
     }
     if (_json.containsKey("crossDimensionReachCriteria")) {
-      crossDimensionReachCriteria =
-          new ReportCrossDimensionReachCriteria.fromJson(
-              _json["crossDimensionReachCriteria"]);
+      crossDimensionReachCriteria = ReportCrossDimensionReachCriteria.fromJson(
+          _json["crossDimensionReachCriteria"]);
     }
     if (_json.containsKey("delivery")) {
-      delivery = new ReportDelivery.fromJson(_json["delivery"]);
+      delivery = ReportDelivery.fromJson(_json["delivery"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -30061,7 +31149,7 @@ class Report {
     }
     if (_json.containsKey("floodlightCriteria")) {
       floodlightCriteria =
-          new ReportFloodlightCriteria.fromJson(_json["floodlightCriteria"]);
+          ReportFloodlightCriteria.fromJson(_json["floodlightCriteria"]);
     }
     if (_json.containsKey("format")) {
       format = _json["format"];
@@ -30082,21 +31170,21 @@ class Report {
       ownerProfileId = _json["ownerProfileId"];
     }
     if (_json.containsKey("pathAttributionCriteria")) {
-      pathAttributionCriteria = new ReportPathAttributionCriteria.fromJson(
+      pathAttributionCriteria = ReportPathAttributionCriteria.fromJson(
           _json["pathAttributionCriteria"]);
     }
     if (_json.containsKey("pathCriteria")) {
-      pathCriteria = new ReportPathCriteria.fromJson(_json["pathCriteria"]);
+      pathCriteria = ReportPathCriteria.fromJson(_json["pathCriteria"]);
     }
     if (_json.containsKey("pathToConversionCriteria")) {
-      pathToConversionCriteria = new ReportPathToConversionCriteria.fromJson(
+      pathToConversionCriteria = ReportPathToConversionCriteria.fromJson(
           _json["pathToConversionCriteria"]);
     }
     if (_json.containsKey("reachCriteria")) {
-      reachCriteria = new ReportReachCriteria.fromJson(_json["reachCriteria"]);
+      reachCriteria = ReportReachCriteria.fromJson(_json["reachCriteria"]);
     }
     if (_json.containsKey("schedule")) {
-      schedule = new ReportSchedule.fromJson(_json["schedule"]);
+      schedule = ReportSchedule.fromJson(_json["schedule"]);
     }
     if (_json.containsKey("subAccountId")) {
       subAccountId = _json["subAccountId"];
@@ -30108,19 +31196,19 @@ class Report {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
     if (criteria != null) {
-      _json["criteria"] = (criteria).toJson();
+      _json["criteria"] = criteria.toJson();
     }
     if (crossDimensionReachCriteria != null) {
       _json["crossDimensionReachCriteria"] =
-          (crossDimensionReachCriteria).toJson();
+          crossDimensionReachCriteria.toJson();
     }
     if (delivery != null) {
-      _json["delivery"] = (delivery).toJson();
+      _json["delivery"] = delivery.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -30129,7 +31217,7 @@ class Report {
       _json["fileName"] = fileName;
     }
     if (floodlightCriteria != null) {
-      _json["floodlightCriteria"] = (floodlightCriteria).toJson();
+      _json["floodlightCriteria"] = floodlightCriteria.toJson();
     }
     if (format != null) {
       _json["format"] = format;
@@ -30150,19 +31238,19 @@ class Report {
       _json["ownerProfileId"] = ownerProfileId;
     }
     if (pathAttributionCriteria != null) {
-      _json["pathAttributionCriteria"] = (pathAttributionCriteria).toJson();
+      _json["pathAttributionCriteria"] = pathAttributionCriteria.toJson();
     }
     if (pathCriteria != null) {
-      _json["pathCriteria"] = (pathCriteria).toJson();
+      _json["pathCriteria"] = pathCriteria.toJson();
     }
     if (pathToConversionCriteria != null) {
-      _json["pathToConversionCriteria"] = (pathToConversionCriteria).toJson();
+      _json["pathToConversionCriteria"] = pathToConversionCriteria.toJson();
     }
     if (reachCriteria != null) {
-      _json["reachCriteria"] = (reachCriteria).toJson();
+      _json["reachCriteria"] = reachCriteria.toJson();
     }
     if (schedule != null) {
-      _json["schedule"] = (schedule).toJson();
+      _json["schedule"] = schedule.toJson();
     }
     if (subAccountId != null) {
       _json["subAccountId"] = subAccountId;
@@ -30202,12 +31290,12 @@ class ReportCompatibleFields {
   ReportCompatibleFields.fromJson(core.Map _json) {
     if (_json.containsKey("dimensionFilters")) {
       dimensionFilters = (_json["dimensionFilters"] as core.List)
-          .map<Dimension>((value) => new Dimension.fromJson(value))
+          .map<Dimension>((value) => Dimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dimensions")) {
       dimensions = (_json["dimensions"] as core.List)
-          .map<Dimension>((value) => new Dimension.fromJson(value))
+          .map<Dimension>((value) => Dimension.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -30215,36 +31303,35 @@ class ReportCompatibleFields {
     }
     if (_json.containsKey("metrics")) {
       metrics = (_json["metrics"] as core.List)
-          .map<Metric>((value) => new Metric.fromJson(value))
+          .map<Metric>((value) => Metric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pivotedActivityMetrics")) {
       pivotedActivityMetrics = (_json["pivotedActivityMetrics"] as core.List)
-          .map<Metric>((value) => new Metric.fromJson(value))
+          .map<Metric>((value) => Metric.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimensionFilters != null) {
       _json["dimensionFilters"] =
-          dimensionFilters.map((value) => (value).toJson()).toList();
+          dimensionFilters.map((value) => value.toJson()).toList();
     }
     if (dimensions != null) {
-      _json["dimensions"] =
-          dimensions.map((value) => (value).toJson()).toList();
+      _json["dimensions"] = dimensions.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
     }
     if (pivotedActivityMetrics != null) {
       _json["pivotedActivityMetrics"] =
-          pivotedActivityMetrics.map((value) => (value).toJson()).toList();
+          pivotedActivityMetrics.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -30275,7 +31362,7 @@ class ReportList {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Report>((value) => new Report.fromJson(value))
+          .map<Report>((value) => Report.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -30288,12 +31375,12 @@ class ReportList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -30341,7 +31428,7 @@ class ReportsConfiguration {
     }
     if (_json.containsKey("lookbackConfiguration")) {
       lookbackConfiguration =
-          new LookbackConfiguration.fromJson(_json["lookbackConfiguration"]);
+          LookbackConfiguration.fromJson(_json["lookbackConfiguration"]);
     }
     if (_json.containsKey("reportGenerationTimeZoneId")) {
       reportGenerationTimeZoneId = _json["reportGenerationTimeZoneId"];
@@ -30350,12 +31437,12 @@ class ReportsConfiguration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exposureToConversionEnabled != null) {
       _json["exposureToConversionEnabled"] = exposureToConversionEnabled;
     }
     if (lookbackConfiguration != null) {
-      _json["lookbackConfiguration"] = (lookbackConfiguration).toJson();
+      _json["lookbackConfiguration"] = lookbackConfiguration.toJson();
     }
     if (reportGenerationTimeZoneId != null) {
       _json["reportGenerationTimeZoneId"] = reportGenerationTimeZoneId;
@@ -30381,7 +31468,7 @@ class RichMediaExitOverride {
 
   RichMediaExitOverride.fromJson(core.Map _json) {
     if (_json.containsKey("clickThroughUrl")) {
-      clickThroughUrl = new ClickThroughUrl.fromJson(_json["clickThroughUrl"]);
+      clickThroughUrl = ClickThroughUrl.fromJson(_json["clickThroughUrl"]);
     }
     if (_json.containsKey("enabled")) {
       enabled = _json["enabled"];
@@ -30393,9 +31480,9 @@ class RichMediaExitOverride {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clickThroughUrl != null) {
-      _json["clickThroughUrl"] = (clickThroughUrl).toJson();
+      _json["clickThroughUrl"] = clickThroughUrl.toJson();
     }
     if (enabled != null) {
       _json["enabled"] = enabled;
@@ -30438,7 +31525,7 @@ class Rule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assetId != null) {
       _json["assetId"] = assetId;
     }
@@ -30518,13 +31605,13 @@ class Site {
     }
     if (_json.containsKey("directorySiteIdDimensionValue")) {
       directorySiteIdDimensionValue =
-          new DimensionValue.fromJson(_json["directorySiteIdDimensionValue"]);
+          DimensionValue.fromJson(_json["directorySiteIdDimensionValue"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("idDimensionValue")) {
-      idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
+      idDimensionValue = DimensionValue.fromJson(_json["idDimensionValue"]);
     }
     if (_json.containsKey("keyName")) {
       keyName = _json["keyName"];
@@ -30537,23 +31624,23 @@ class Site {
     }
     if (_json.containsKey("siteContacts")) {
       siteContacts = (_json["siteContacts"] as core.List)
-          .map<SiteContact>((value) => new SiteContact.fromJson(value))
+          .map<SiteContact>((value) => SiteContact.fromJson(value))
           .toList();
     }
     if (_json.containsKey("siteSettings")) {
-      siteSettings = new SiteSettings.fromJson(_json["siteSettings"]);
+      siteSettings = SiteSettings.fromJson(_json["siteSettings"]);
     }
     if (_json.containsKey("subaccountId")) {
       subaccountId = _json["subaccountId"];
     }
     if (_json.containsKey("videoSettings")) {
-      videoSettings = new SiteVideoSettings.fromJson(_json["videoSettings"]);
+      videoSettings = SiteVideoSettings.fromJson(_json["videoSettings"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -30565,13 +31652,13 @@ class Site {
     }
     if (directorySiteIdDimensionValue != null) {
       _json["directorySiteIdDimensionValue"] =
-          (directorySiteIdDimensionValue).toJson();
+          directorySiteIdDimensionValue.toJson();
     }
     if (id != null) {
       _json["id"] = id;
     }
     if (idDimensionValue != null) {
-      _json["idDimensionValue"] = (idDimensionValue).toJson();
+      _json["idDimensionValue"] = idDimensionValue.toJson();
     }
     if (keyName != null) {
       _json["keyName"] = keyName;
@@ -30584,16 +31671,16 @@ class Site {
     }
     if (siteContacts != null) {
       _json["siteContacts"] =
-          siteContacts.map((value) => (value).toJson()).toList();
+          siteContacts.map((value) => value.toJson()).toList();
     }
     if (siteSettings != null) {
-      _json["siteSettings"] = (siteSettings).toJson();
+      _json["siteSettings"] = siteSettings.toJson();
     }
     if (subaccountId != null) {
       _json["subaccountId"] = subaccountId;
     }
     if (videoSettings != null) {
-      _json["videoSettings"] = (videoSettings).toJson();
+      _json["videoSettings"] = videoSettings.toJson();
     }
     return _json;
   }
@@ -30623,7 +31710,7 @@ class SiteCompanionSetting {
     }
     if (_json.containsKey("enabledSizes")) {
       enabledSizes = (_json["enabledSizes"] as core.List)
-          .map<Size>((value) => new Size.fromJson(value))
+          .map<Size>((value) => Size.fromJson(value))
           .toList();
     }
     if (_json.containsKey("imageOnly")) {
@@ -30636,13 +31723,13 @@ class SiteCompanionSetting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (companionsDisabled != null) {
       _json["companionsDisabled"] = companionsDisabled;
     }
     if (enabledSizes != null) {
       _json["enabledSizes"] =
-          enabledSizes.map((value) => (value).toJson()).toList();
+          enabledSizes.map((value) => value.toJson()).toList();
     }
     if (imageOnly != null) {
       _json["imageOnly"] = imageOnly;
@@ -30714,7 +31801,7 @@ class SiteContact {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (address != null) {
       _json["address"] = address;
     }
@@ -30795,7 +31882,7 @@ class SiteSettings {
       disableNewCookie = _json["disableNewCookie"];
     }
     if (_json.containsKey("tagSetting")) {
-      tagSetting = new TagSetting.fromJson(_json["tagSetting"]);
+      tagSetting = TagSetting.fromJson(_json["tagSetting"]);
     }
     if (_json.containsKey("videoActiveViewOptOutTemplate")) {
       videoActiveViewOptOutTemplate = _json["videoActiveViewOptOutTemplate"];
@@ -30807,7 +31894,7 @@ class SiteSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activeViewOptOut != null) {
       _json["activeViewOptOut"] = activeViewOptOut;
     }
@@ -30818,7 +31905,7 @@ class SiteSettings {
       _json["disableNewCookie"] = disableNewCookie;
     }
     if (tagSetting != null) {
-      _json["tagSetting"] = (tagSetting).toJson();
+      _json["tagSetting"] = tagSetting.toJson();
     }
     if (videoActiveViewOptOutTemplate != null) {
       _json["videoActiveViewOptOutTemplate"] = videoActiveViewOptOutTemplate;
@@ -30855,10 +31942,10 @@ class SiteSkippableSetting {
       kind = _json["kind"];
     }
     if (_json.containsKey("progressOffset")) {
-      progressOffset = new VideoOffset.fromJson(_json["progressOffset"]);
+      progressOffset = VideoOffset.fromJson(_json["progressOffset"]);
     }
     if (_json.containsKey("skipOffset")) {
-      skipOffset = new VideoOffset.fromJson(_json["skipOffset"]);
+      skipOffset = VideoOffset.fromJson(_json["skipOffset"]);
     }
     if (_json.containsKey("skippable")) {
       skippable = _json["skippable"];
@@ -30867,15 +31954,15 @@ class SiteSkippableSetting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (progressOffset != null) {
-      _json["progressOffset"] = (progressOffset).toJson();
+      _json["progressOffset"] = progressOffset.toJson();
     }
     if (skipOffset != null) {
-      _json["skipOffset"] = (skipOffset).toJson();
+      _json["skipOffset"] = skipOffset.toJson();
     }
     if (skippable != null) {
       _json["skippable"] = skippable;
@@ -30908,7 +31995,7 @@ class SiteTranscodeSetting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabledVideoFormats != null) {
       _json["enabledVideoFormats"] = enabledVideoFormats;
     }
@@ -30957,7 +32044,7 @@ class SiteVideoSettings {
   SiteVideoSettings.fromJson(core.Map _json) {
     if (_json.containsKey("companionSettings")) {
       companionSettings =
-          new SiteCompanionSetting.fromJson(_json["companionSettings"]);
+          SiteCompanionSetting.fromJson(_json["companionSettings"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -30966,26 +32053,26 @@ class SiteVideoSettings {
       obaEnabled = _json["obaEnabled"];
     }
     if (_json.containsKey("obaSettings")) {
-      obaSettings = new ObaIcon.fromJson(_json["obaSettings"]);
+      obaSettings = ObaIcon.fromJson(_json["obaSettings"]);
     }
     if (_json.containsKey("orientation")) {
       orientation = _json["orientation"];
     }
     if (_json.containsKey("skippableSettings")) {
       skippableSettings =
-          new SiteSkippableSetting.fromJson(_json["skippableSettings"]);
+          SiteSkippableSetting.fromJson(_json["skippableSettings"]);
     }
     if (_json.containsKey("transcodeSettings")) {
       transcodeSettings =
-          new SiteTranscodeSetting.fromJson(_json["transcodeSettings"]);
+          SiteTranscodeSetting.fromJson(_json["transcodeSettings"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (companionSettings != null) {
-      _json["companionSettings"] = (companionSettings).toJson();
+      _json["companionSettings"] = companionSettings.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -30994,16 +32081,16 @@ class SiteVideoSettings {
       _json["obaEnabled"] = obaEnabled;
     }
     if (obaSettings != null) {
-      _json["obaSettings"] = (obaSettings).toJson();
+      _json["obaSettings"] = obaSettings.toJson();
     }
     if (orientation != null) {
       _json["orientation"] = orientation;
     }
     if (skippableSettings != null) {
-      _json["skippableSettings"] = (skippableSettings).toJson();
+      _json["skippableSettings"] = skippableSettings.toJson();
     }
     if (transcodeSettings != null) {
-      _json["transcodeSettings"] = (transcodeSettings).toJson();
+      _json["transcodeSettings"] = transcodeSettings.toJson();
     }
     return _json;
   }
@@ -31032,14 +32119,14 @@ class SitesListResponse {
     }
     if (_json.containsKey("sites")) {
       sites = (_json["sites"] as core.List)
-          .map<Site>((value) => new Site.fromJson(value))
+          .map<Site>((value) => Site.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -31047,7 +32134,7 @@ class SitesListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (sites != null) {
-      _json["sites"] = sites.map((value) => (value).toJson()).toList();
+      _json["sites"] = sites.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -31093,7 +32180,7 @@ class Size {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (height != null) {
       _json["height"] = height;
     }
@@ -31130,19 +32217,19 @@ class SizesListResponse {
     }
     if (_json.containsKey("sizes")) {
       sizes = (_json["sizes"] as core.List)
-          .map<Size>((value) => new Size.fromJson(value))
+          .map<Size>((value) => Size.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (sizes != null) {
-      _json["sizes"] = sizes.map((value) => (value).toJson()).toList();
+      _json["sizes"] = sizes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -31172,10 +32259,10 @@ class SkippableSetting {
       kind = _json["kind"];
     }
     if (_json.containsKey("progressOffset")) {
-      progressOffset = new VideoOffset.fromJson(_json["progressOffset"]);
+      progressOffset = VideoOffset.fromJson(_json["progressOffset"]);
     }
     if (_json.containsKey("skipOffset")) {
-      skipOffset = new VideoOffset.fromJson(_json["skipOffset"]);
+      skipOffset = VideoOffset.fromJson(_json["skipOffset"]);
     }
     if (_json.containsKey("skippable")) {
       skippable = _json["skippable"];
@@ -31184,15 +32271,15 @@ class SkippableSetting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (progressOffset != null) {
-      _json["progressOffset"] = (progressOffset).toJson();
+      _json["progressOffset"] = progressOffset.toJson();
     }
     if (skipOffset != null) {
-      _json["skipOffset"] = (skipOffset).toJson();
+      _json["skipOffset"] = skipOffset.toJson();
     }
     if (skippable != null) {
       _json["skippable"] = skippable;
@@ -31231,7 +32318,7 @@ class SortedDimension {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -31288,7 +32375,7 @@ class Subaccount {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -31331,14 +32418,14 @@ class SubaccountsListResponse {
     }
     if (_json.containsKey("subaccounts")) {
       subaccounts = (_json["subaccounts"] as core.List)
-          .map<Subaccount>((value) => new Subaccount.fromJson(value))
+          .map<Subaccount>((value) => Subaccount.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -31347,7 +32434,7 @@ class SubaccountsListResponse {
     }
     if (subaccounts != null) {
       _json["subaccounts"] =
-          subaccounts.map((value) => (value).toJson()).toList();
+          subaccounts.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -31414,7 +32501,7 @@ class TagData {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adId != null) {
       _json["adId"] = adId;
     }
@@ -31478,7 +32565,7 @@ class TagSetting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (additionalKeyValues != null) {
       _json["additionalKeyValues"] = additionalKeyValues;
     }
@@ -31516,7 +32603,7 @@ class TagSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dynamicTagEnabled != null) {
       _json["dynamicTagEnabled"] = dynamicTagEnabled;
     }
@@ -31553,7 +32640,7 @@ class TargetWindow {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customHtml != null) {
       _json["customHtml"] = customHtml;
     }
@@ -31641,7 +32728,7 @@ class TargetableRemarketingList {
     }
     if (_json.containsKey("advertiserIdDimensionValue")) {
       advertiserIdDimensionValue =
-          new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+          DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -31671,7 +32758,7 @@ class TargetableRemarketingList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -31682,8 +32769,7 @@ class TargetableRemarketingList {
       _json["advertiserId"] = advertiserId;
     }
     if (advertiserIdDimensionValue != null) {
-      _json["advertiserIdDimensionValue"] =
-          (advertiserIdDimensionValue).toJson();
+      _json["advertiserIdDimensionValue"] = advertiserIdDimensionValue.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -31738,14 +32824,14 @@ class TargetableRemarketingListsListResponse {
       targetableRemarketingLists =
           (_json["targetableRemarketingLists"] as core.List)
               .map<TargetableRemarketingList>(
-                  (value) => new TargetableRemarketingList.fromJson(value))
+                  (value) => TargetableRemarketingList.fromJson(value))
               .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -31754,7 +32840,7 @@ class TargetableRemarketingListsListResponse {
     }
     if (targetableRemarketingLists != null) {
       _json["targetableRemarketingLists"] =
-          targetableRemarketingLists.map((value) => (value).toJson()).toList();
+          targetableRemarketingLists.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -31819,20 +32905,19 @@ class TargetingTemplate {
     }
     if (_json.containsKey("advertiserIdDimensionValue")) {
       advertiserIdDimensionValue =
-          new DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
+          DimensionValue.fromJson(_json["advertiserIdDimensionValue"]);
     }
     if (_json.containsKey("dayPartTargeting")) {
-      dayPartTargeting =
-          new DayPartTargeting.fromJson(_json["dayPartTargeting"]);
+      dayPartTargeting = DayPartTargeting.fromJson(_json["dayPartTargeting"]);
     }
     if (_json.containsKey("geoTargeting")) {
-      geoTargeting = new GeoTargeting.fromJson(_json["geoTargeting"]);
+      geoTargeting = GeoTargeting.fromJson(_json["geoTargeting"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("keyValueTargetingExpression")) {
-      keyValueTargetingExpression = new KeyValueTargetingExpression.fromJson(
+      keyValueTargetingExpression = KeyValueTargetingExpression.fromJson(
           _json["keyValueTargetingExpression"]);
     }
     if (_json.containsKey("kind")) {
@@ -31840,11 +32925,11 @@ class TargetingTemplate {
     }
     if (_json.containsKey("languageTargeting")) {
       languageTargeting =
-          new LanguageTargeting.fromJson(_json["languageTargeting"]);
+          LanguageTargeting.fromJson(_json["languageTargeting"]);
     }
     if (_json.containsKey("listTargetingExpression")) {
-      listTargetingExpression = new ListTargetingExpression.fromJson(
-          _json["listTargetingExpression"]);
+      listTargetingExpression =
+          ListTargetingExpression.fromJson(_json["listTargetingExpression"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -31854,13 +32939,13 @@ class TargetingTemplate {
     }
     if (_json.containsKey("technologyTargeting")) {
       technologyTargeting =
-          new TechnologyTargeting.fromJson(_json["technologyTargeting"]);
+          TechnologyTargeting.fromJson(_json["technologyTargeting"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -31868,30 +32953,29 @@ class TargetingTemplate {
       _json["advertiserId"] = advertiserId;
     }
     if (advertiserIdDimensionValue != null) {
-      _json["advertiserIdDimensionValue"] =
-          (advertiserIdDimensionValue).toJson();
+      _json["advertiserIdDimensionValue"] = advertiserIdDimensionValue.toJson();
     }
     if (dayPartTargeting != null) {
-      _json["dayPartTargeting"] = (dayPartTargeting).toJson();
+      _json["dayPartTargeting"] = dayPartTargeting.toJson();
     }
     if (geoTargeting != null) {
-      _json["geoTargeting"] = (geoTargeting).toJson();
+      _json["geoTargeting"] = geoTargeting.toJson();
     }
     if (id != null) {
       _json["id"] = id;
     }
     if (keyValueTargetingExpression != null) {
       _json["keyValueTargetingExpression"] =
-          (keyValueTargetingExpression).toJson();
+          keyValueTargetingExpression.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (languageTargeting != null) {
-      _json["languageTargeting"] = (languageTargeting).toJson();
+      _json["languageTargeting"] = languageTargeting.toJson();
     }
     if (listTargetingExpression != null) {
-      _json["listTargetingExpression"] = (listTargetingExpression).toJson();
+      _json["listTargetingExpression"] = listTargetingExpression.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -31900,7 +32984,7 @@ class TargetingTemplate {
       _json["subaccountId"] = subaccountId;
     }
     if (technologyTargeting != null) {
-      _json["technologyTargeting"] = (technologyTargeting).toJson();
+      _json["technologyTargeting"] = technologyTargeting.toJson();
     }
     return _json;
   }
@@ -31929,15 +33013,14 @@ class TargetingTemplatesListResponse {
     }
     if (_json.containsKey("targetingTemplates")) {
       targetingTemplates = (_json["targetingTemplates"] as core.List)
-          .map<TargetingTemplate>(
-              (value) => new TargetingTemplate.fromJson(value))
+          .map<TargetingTemplate>((value) => TargetingTemplate.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -31946,7 +33029,7 @@ class TargetingTemplatesListResponse {
     }
     if (targetingTemplates != null) {
       _json["targetingTemplates"] =
-          targetingTemplates.map((value) => (value).toJson()).toList();
+          targetingTemplates.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -31995,62 +33078,62 @@ class TechnologyTargeting {
   TechnologyTargeting.fromJson(core.Map _json) {
     if (_json.containsKey("browsers")) {
       browsers = (_json["browsers"] as core.List)
-          .map<Browser>((value) => new Browser.fromJson(value))
+          .map<Browser>((value) => Browser.fromJson(value))
           .toList();
     }
     if (_json.containsKey("connectionTypes")) {
       connectionTypes = (_json["connectionTypes"] as core.List)
-          .map<ConnectionType>((value) => new ConnectionType.fromJson(value))
+          .map<ConnectionType>((value) => ConnectionType.fromJson(value))
           .toList();
     }
     if (_json.containsKey("mobileCarriers")) {
       mobileCarriers = (_json["mobileCarriers"] as core.List)
-          .map<MobileCarrier>((value) => new MobileCarrier.fromJson(value))
+          .map<MobileCarrier>((value) => MobileCarrier.fromJson(value))
           .toList();
     }
     if (_json.containsKey("operatingSystemVersions")) {
       operatingSystemVersions = (_json["operatingSystemVersions"] as core.List)
           .map<OperatingSystemVersion>(
-              (value) => new OperatingSystemVersion.fromJson(value))
+              (value) => OperatingSystemVersion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("operatingSystems")) {
       operatingSystems = (_json["operatingSystems"] as core.List)
-          .map<OperatingSystem>((value) => new OperatingSystem.fromJson(value))
+          .map<OperatingSystem>((value) => OperatingSystem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("platformTypes")) {
       platformTypes = (_json["platformTypes"] as core.List)
-          .map<PlatformType>((value) => new PlatformType.fromJson(value))
+          .map<PlatformType>((value) => PlatformType.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (browsers != null) {
-      _json["browsers"] = browsers.map((value) => (value).toJson()).toList();
+      _json["browsers"] = browsers.map((value) => value.toJson()).toList();
     }
     if (connectionTypes != null) {
       _json["connectionTypes"] =
-          connectionTypes.map((value) => (value).toJson()).toList();
+          connectionTypes.map((value) => value.toJson()).toList();
     }
     if (mobileCarriers != null) {
       _json["mobileCarriers"] =
-          mobileCarriers.map((value) => (value).toJson()).toList();
+          mobileCarriers.map((value) => value.toJson()).toList();
     }
     if (operatingSystemVersions != null) {
       _json["operatingSystemVersions"] =
-          operatingSystemVersions.map((value) => (value).toJson()).toList();
+          operatingSystemVersions.map((value) => value.toJson()).toList();
     }
     if (operatingSystems != null) {
       _json["operatingSystems"] =
-          operatingSystems.map((value) => (value).toJson()).toList();
+          operatingSystems.map((value) => value.toJson()).toList();
     }
     if (platformTypes != null) {
       _json["platformTypes"] =
-          platformTypes.map((value) => (value).toJson()).toList();
+          platformTypes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -32078,7 +33161,7 @@ class ThirdPartyAuthenticationToken {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -32130,7 +33213,7 @@ class ThirdPartyTrackingUrl {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (thirdPartyUrlType != null) {
       _json["thirdPartyUrlType"] = thirdPartyUrlType;
     }
@@ -32165,7 +33248,7 @@ class TranscodeSetting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabledVideoFormats != null) {
       _json["enabledVideoFormats"] = enabledVideoFormats;
     }
@@ -32205,7 +33288,7 @@ class UniversalAdId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (registry != null) {
       _json["registry"] = registry;
     }
@@ -32349,7 +33432,7 @@ class UserDefinedVariableConfiguration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dataType != null) {
       _json["dataType"] = dataType;
     }
@@ -32423,7 +33506,7 @@ class UserProfile {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -32472,7 +33555,7 @@ class UserProfileList {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<UserProfile>((value) => new UserProfile.fromJson(value))
+          .map<UserProfile>((value) => UserProfile.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -32482,12 +33565,12 @@ class UserProfileList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -32556,7 +33639,7 @@ class UserRole {
     if (_json.containsKey("permissions")) {
       permissions = (_json["permissions"] as core.List)
           .map<UserRolePermission>(
-              (value) => new UserRolePermission.fromJson(value))
+              (value) => UserRolePermission.fromJson(value))
           .toList();
     }
     if (_json.containsKey("subaccountId")) {
@@ -32566,7 +33649,7 @@ class UserRole {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -32587,7 +33670,7 @@ class UserRole {
     }
     if (permissions != null) {
       _json["permissions"] =
-          permissions.map((value) => (value).toJson()).toList();
+          permissions.map((value) => value.toJson()).toList();
     }
     if (subaccountId != null) {
       _json["subaccountId"] = subaccountId;
@@ -32642,7 +33725,7 @@ class UserRolePermission {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (availability != null) {
       _json["availability"] = availability;
     }
@@ -32690,7 +33773,7 @@ class UserRolePermissionGroup {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -32723,20 +33806,20 @@ class UserRolePermissionGroupsListResponse {
       userRolePermissionGroups =
           (_json["userRolePermissionGroups"] as core.List)
               .map<UserRolePermissionGroup>(
-                  (value) => new UserRolePermissionGroup.fromJson(value))
+                  (value) => UserRolePermissionGroup.fromJson(value))
               .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (userRolePermissionGroups != null) {
       _json["userRolePermissionGroups"] =
-          userRolePermissionGroups.map((value) => (value).toJson()).toList();
+          userRolePermissionGroups.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -32760,20 +33843,20 @@ class UserRolePermissionsListResponse {
     if (_json.containsKey("userRolePermissions")) {
       userRolePermissions = (_json["userRolePermissions"] as core.List)
           .map<UserRolePermission>(
-              (value) => new UserRolePermission.fromJson(value))
+              (value) => UserRolePermission.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (userRolePermissions != null) {
       _json["userRolePermissions"] =
-          userRolePermissions.map((value) => (value).toJson()).toList();
+          userRolePermissions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -32802,14 +33885,14 @@ class UserRolesListResponse {
     }
     if (_json.containsKey("userRoles")) {
       userRoles = (_json["userRoles"] as core.List)
-          .map<UserRole>((value) => new UserRole.fromJson(value))
+          .map<UserRole>((value) => UserRole.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -32817,7 +33900,7 @@ class UserRolesListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (userRoles != null) {
-      _json["userRoles"] = userRoles.map((value) => (value).toJson()).toList();
+      _json["userRoles"] = userRoles.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -32860,7 +33943,7 @@ class VideoFormat {
       kind = _json["kind"];
     }
     if (_json.containsKey("resolution")) {
-      resolution = new Size.fromJson(_json["resolution"]);
+      resolution = Size.fromJson(_json["resolution"]);
     }
     if (_json.containsKey("targetBitRate")) {
       targetBitRate = _json["targetBitRate"];
@@ -32869,7 +33952,7 @@ class VideoFormat {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fileType != null) {
       _json["fileType"] = fileType;
     }
@@ -32880,7 +33963,7 @@ class VideoFormat {
       _json["kind"] = kind;
     }
     if (resolution != null) {
-      _json["resolution"] = (resolution).toJson();
+      _json["resolution"] = resolution.toJson();
     }
     if (targetBitRate != null) {
       _json["targetBitRate"] = targetBitRate;
@@ -32906,20 +33989,20 @@ class VideoFormatsListResponse {
     }
     if (_json.containsKey("videoFormats")) {
       videoFormats = (_json["videoFormats"] as core.List)
-          .map<VideoFormat>((value) => new VideoFormat.fromJson(value))
+          .map<VideoFormat>((value) => VideoFormat.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (videoFormats != null) {
       _json["videoFormats"] =
-          videoFormats.map((value) => (value).toJson()).toList();
+          videoFormats.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -32948,7 +34031,7 @@ class VideoOffset {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (offsetPercentage != null) {
       _json["offsetPercentage"] = offsetPercentage;
     }
@@ -32999,8 +34082,7 @@ class VideoSettings {
 
   VideoSettings.fromJson(core.Map _json) {
     if (_json.containsKey("companionSettings")) {
-      companionSettings =
-          new CompanionSetting.fromJson(_json["companionSettings"]);
+      companionSettings = CompanionSetting.fromJson(_json["companionSettings"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -33009,26 +34091,24 @@ class VideoSettings {
       obaEnabled = _json["obaEnabled"];
     }
     if (_json.containsKey("obaSettings")) {
-      obaSettings = new ObaIcon.fromJson(_json["obaSettings"]);
+      obaSettings = ObaIcon.fromJson(_json["obaSettings"]);
     }
     if (_json.containsKey("orientation")) {
       orientation = _json["orientation"];
     }
     if (_json.containsKey("skippableSettings")) {
-      skippableSettings =
-          new SkippableSetting.fromJson(_json["skippableSettings"]);
+      skippableSettings = SkippableSetting.fromJson(_json["skippableSettings"]);
     }
     if (_json.containsKey("transcodeSettings")) {
-      transcodeSettings =
-          new TranscodeSetting.fromJson(_json["transcodeSettings"]);
+      transcodeSettings = TranscodeSetting.fromJson(_json["transcodeSettings"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (companionSettings != null) {
-      _json["companionSettings"] = (companionSettings).toJson();
+      _json["companionSettings"] = companionSettings.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -33037,16 +34117,16 @@ class VideoSettings {
       _json["obaEnabled"] = obaEnabled;
     }
     if (obaSettings != null) {
-      _json["obaSettings"] = (obaSettings).toJson();
+      _json["obaSettings"] = obaSettings.toJson();
     }
     if (orientation != null) {
       _json["orientation"] = orientation;
     }
     if (skippableSettings != null) {
-      _json["skippableSettings"] = (skippableSettings).toJson();
+      _json["skippableSettings"] = skippableSettings.toJson();
     }
     if (transcodeSettings != null) {
-      _json["transcodeSettings"] = (transcodeSettings).toJson();
+      _json["transcodeSettings"] = transcodeSettings.toJson();
     }
     return _json;
   }

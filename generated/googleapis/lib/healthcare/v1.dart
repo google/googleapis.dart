@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.healthcare.v1;
 
@@ -24,20 +42,20 @@ class HealthcareApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   HealthcareApi(http.Client client,
       {core.String rootUrl = "https://healthcare.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsResourceApi get locations =>
-      new ProjectsLocationsResourceApi(_requester);
+      ProjectsLocationsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -46,7 +64,7 @@ class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDatasetsResourceApi get datasets =>
-      new ProjectsLocationsDatasetsResourceApi(_requester);
+      ProjectsLocationsDatasetsResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -68,16 +86,19 @@ class ProjectsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Location> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -85,13 +106,16 @@ class ProjectsLocationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Location.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Location.fromJson(data));
   }
 
   /// Lists information about the supported locations for this service.
@@ -117,20 +141,22 @@ class ProjectsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListLocationsResponse> list(
+    core.String name, {
+    core.String filter,
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -148,13 +174,16 @@ class ProjectsLocationsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListLocationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListLocationsResponse.fromJson(data));
   }
 }
 
@@ -162,13 +191,13 @@ class ProjectsLocationsDatasetsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDatasetsDicomStoresResourceApi get dicomStores =>
-      new ProjectsLocationsDatasetsDicomStoresResourceApi(_requester);
+      ProjectsLocationsDatasetsDicomStoresResourceApi(_requester);
   ProjectsLocationsDatasetsFhirStoresResourceApi get fhirStores =>
-      new ProjectsLocationsDatasetsFhirStoresResourceApi(_requester);
+      ProjectsLocationsDatasetsFhirStoresResourceApi(_requester);
   ProjectsLocationsDatasetsHl7V2StoresResourceApi get hl7V2Stores =>
-      new ProjectsLocationsDatasetsHl7V2StoresResourceApi(_requester);
+      ProjectsLocationsDatasetsHl7V2StoresResourceApi(_requester);
   ProjectsLocationsDatasetsOperationsResourceApi get operations =>
-      new ProjectsLocationsDatasetsOperationsResourceApi(_requester);
+      ProjectsLocationsDatasetsOperationsResourceApi(_requester);
 
   ProjectsLocationsDatasetsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -199,20 +228,24 @@ class ProjectsLocationsDatasetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(Dataset request, core.String parent,
-      {core.String datasetId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> create(
+    Dataset request,
+    core.String parent, {
+    core.String datasetId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (datasetId != null) {
       _queryParams["datasetId"] = [datasetId];
@@ -224,13 +257,16 @@ class ProjectsLocationsDatasetsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/datasets';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Creates a new dataset containing de-identified data from the source
@@ -261,20 +297,22 @@ class ProjectsLocationsDatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> deidentify(
-      DeidentifyDatasetRequest request, core.String sourceDataset,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    DeidentifyDatasetRequest request,
+    core.String sourceDataset, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (sourceDataset == null) {
-      throw new core.ArgumentError("Parameter sourceDataset is required.");
+      throw core.ArgumentError("Parameter sourceDataset is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -284,13 +322,16 @@ class ProjectsLocationsDatasetsResourceApi {
         commons.Escaper.ecapeVariableReserved('$sourceDataset') +
         ':deidentify';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes the specified health dataset and all data contained in the
@@ -313,16 +354,19 @@ class ProjectsLocationsDatasetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -330,13 +374,16 @@ class ProjectsLocationsDatasetsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets any metadata associated with a dataset.
@@ -357,16 +404,19 @@ class ProjectsLocationsDatasetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Dataset> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Dataset> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -374,13 +424,16 @@ class ProjectsLocationsDatasetsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Dataset.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Dataset.fromJson(data));
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -411,17 +464,20 @@ class ProjectsLocationsDatasetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(core.String resource,
-      {core.int options_requestedPolicyVersion, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int options_requestedPolicyVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if (options_requestedPolicyVersion != null) {
       _queryParams["options.requestedPolicyVersion"] = [
@@ -436,13 +492,16 @@ class ProjectsLocationsDatasetsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Lists the health datasets in the current project.
@@ -469,17 +528,21 @@ class ProjectsLocationsDatasetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListDatasetsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListDatasetsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -494,13 +557,16 @@ class ProjectsLocationsDatasetsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/datasets';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListDatasetsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListDatasetsResponse.fromJson(data));
   }
 
   /// Updates dataset metadata.
@@ -527,20 +593,24 @@ class ProjectsLocationsDatasetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Dataset> patch(Dataset request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Dataset> patch(
+    Dataset request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -551,13 +621,16 @@ class ProjectsLocationsDatasetsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Dataset.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Dataset.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -584,20 +657,22 @@ class ProjectsLocationsDatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -607,13 +682,16 @@ class ProjectsLocationsDatasetsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -642,20 +720,22 @@ class ProjectsLocationsDatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -665,14 +745,16 @@ class ProjectsLocationsDatasetsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -680,7 +762,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDatasetsDicomStoresStudiesResourceApi get studies =>
-      new ProjectsLocationsDatasetsDicomStoresStudiesResourceApi(_requester);
+      ProjectsLocationsDatasetsDicomStoresStudiesResourceApi(_requester);
 
   ProjectsLocationsDatasetsDicomStoresResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -707,20 +789,24 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DicomStore> create(DicomStore request, core.String parent,
-      {core.String dicomStoreId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DicomStore> create(
+    DicomStore request,
+    core.String parent, {
+    core.String dicomStoreId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomStoreId != null) {
       _queryParams["dicomStoreId"] = [dicomStoreId];
@@ -733,13 +819,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomStores';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DicomStore.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DicomStore.fromJson(data));
   }
 
   /// De-identifies data from the source store and writes it to the destination
@@ -771,20 +860,22 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> deidentify(
-      DeidentifyDicomStoreRequest request, core.String sourceStore,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    DeidentifyDicomStoreRequest request,
+    core.String sourceStore, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (sourceStore == null) {
-      throw new core.ArgumentError("Parameter sourceStore is required.");
+      throw core.ArgumentError("Parameter sourceStore is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -794,13 +885,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$sourceStore') +
         ':deidentify';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes the specified DICOM store and removes all images that are
@@ -822,16 +916,19 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -839,13 +936,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Exports data to the specified destination by copying it from the DICOM
@@ -874,20 +974,22 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> export(
-      ExportDicomDataRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ExportDicomDataRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -895,13 +997,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':export';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Gets the specified DICOM store.
@@ -922,16 +1027,19 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DicomStore> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DicomStore> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -939,13 +1047,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DicomStore.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DicomStore.fromJson(data));
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -977,17 +1088,20 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(core.String resource,
-      {core.int options_requestedPolicyVersion, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int options_requestedPolicyVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if (options_requestedPolicyVersion != null) {
       _queryParams["options.requestedPolicyVersion"] = [
@@ -1002,13 +1116,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Imports data into the DICOM store by copying it from the specified source.
@@ -1037,20 +1154,22 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> import(
-      ImportDicomDataRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ImportDicomDataRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1058,13 +1177,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':import';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists the DICOM stores in the given dataset.
@@ -1094,20 +1216,22 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListDicomStoresResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListDicomStoresResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1126,13 +1250,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomStores';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListDicomStoresResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListDicomStoresResponse.fromJson(data));
   }
 
   /// Updates the specified DICOM store.
@@ -1160,20 +1287,24 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DicomStore> patch(DicomStore request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DicomStore> patch(
+    DicomStore request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1184,13 +1315,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DicomStore.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DicomStore.fromJson(data));
   }
 
   /// SearchForInstances returns a list of matching instances. See [Search
@@ -1227,20 +1361,22 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> searchForInstances(
-      core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1251,13 +1387,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// SearchForSeries returns a list of matching series. See [Search
@@ -1293,20 +1432,22 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> searchForSeries(
-      core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1317,13 +1458,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// SearchForStudies returns a list of matching studies. See [Search
@@ -1359,20 +1503,22 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> searchForStudies(
-      core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1383,13 +1529,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -1417,20 +1566,22 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1440,13 +1591,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// StoreInstances stores DICOM instances associated with study instance
@@ -1483,23 +1637,26 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> storeInstances(
-      HttpBody request, core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    HttpBody request,
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1510,13 +1667,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -1546,20 +1706,22 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1569,14 +1731,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -1584,8 +1748,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi get series =>
-      new ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi(
-          _requester);
+      ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi(_requester);
 
   ProjectsLocationsDatasetsDicomStoresStudiesResourceApi(
       commons.ApiRequester client)
@@ -1621,20 +1784,23 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1645,13 +1811,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// RetrieveStudyMetadata returns instance associated with the given study
@@ -1687,20 +1856,22 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> retrieveMetadata(
-      core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1711,13 +1882,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// RetrieveStudy returns all instances within the given study. See
@@ -1752,20 +1926,22 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> retrieveStudy(
-      core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1776,13 +1952,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// SearchForInstances returns a list of matching instances. See [Search
@@ -1819,20 +1998,22 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> searchForInstances(
-      core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1843,13 +2024,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// SearchForSeries returns a list of matching series. See [Search
@@ -1885,20 +2069,22 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> searchForSeries(
-      core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1909,13 +2095,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// StoreInstances stores DICOM instances associated with study instance
@@ -1952,23 +2141,26 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> storeInstances(
-      HttpBody request, core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    HttpBody request,
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1979,13 +2171,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 }
 
@@ -1994,7 +2189,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
 
   ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi
       get instances =>
-          new ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi(
+          ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi(
               _requester);
 
   ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi(
@@ -2033,20 +2228,23 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2057,13 +2255,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// RetrieveSeriesMetadata returns instance associated with the given study
@@ -2099,20 +2300,22 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> retrieveMetadata(
-      core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2123,13 +2326,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// RetrieveSeries returns all instances within the given study and series.
@@ -2164,20 +2370,22 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> retrieveSeries(
-      core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2188,13 +2396,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// SearchForInstances returns a list of matching instances. See [Search
@@ -2231,20 +2442,22 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> searchForInstances(
-      core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2255,13 +2468,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 }
 
@@ -2270,7 +2486,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
 
   ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceApi
       get frames =>
-          new ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceApi(
+          ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceApi(
               _requester);
 
   ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi(
@@ -2307,20 +2523,23 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2331,13 +2550,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// RetrieveInstance returns instance associated with the given study, series,
@@ -2375,20 +2597,22 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> retrieveInstance(
-      core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2399,13 +2623,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// RetrieveInstanceMetadata returns instance associated with the given study,
@@ -2444,20 +2671,22 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> retrieveMetadata(
-      core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2468,13 +2697,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// RetrieveRenderedInstance returns instance associated with the given study,
@@ -2513,20 +2745,22 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> retrieveRendered(
-      core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2537,13 +2771,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 }
 
@@ -2588,20 +2825,22 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceAp
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> retrieveFrames(
-      core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2612,13 +2851,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceAp
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// RetrieveRenderedFrames returns instances associated with the given study,
@@ -2656,20 +2898,22 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceAp
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> retrieveRendered(
-      core.String parent, core.String dicomWebPath,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String dicomWebPath, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (dicomWebPath == null) {
-      throw new core.ArgumentError("Parameter dicomWebPath is required.");
+      throw core.ArgumentError("Parameter dicomWebPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2680,13 +2924,16 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceAp
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 }
 
@@ -2694,7 +2941,7 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDatasetsFhirStoresFhirResourceApi get fhir =>
-      new ProjectsLocationsDatasetsFhirStoresFhirResourceApi(_requester);
+      ProjectsLocationsDatasetsFhirStoresFhirResourceApi(_requester);
 
   ProjectsLocationsDatasetsFhirStoresResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -2721,20 +2968,24 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FhirStore> create(FhirStore request, core.String parent,
-      {core.String fhirStoreId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FhirStore> create(
+    FhirStore request,
+    core.String parent, {
+    core.String fhirStoreId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (fhirStoreId != null) {
       _queryParams["fhirStoreId"] = [fhirStoreId];
@@ -2747,13 +2998,16 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/fhirStores';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FhirStore.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FhirStore.fromJson(data));
   }
 
   /// De-identifies data from the source store and writes it to the destination
@@ -2782,20 +3036,22 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> deidentify(
-      DeidentifyFhirStoreRequest request, core.String sourceStore,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    DeidentifyFhirStoreRequest request,
+    core.String sourceStore, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (sourceStore == null) {
-      throw new core.ArgumentError("Parameter sourceStore is required.");
+      throw core.ArgumentError("Parameter sourceStore is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2805,13 +3061,16 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$sourceStore') +
         ':deidentify';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes the specified FHIR store and removes all resources within it.
@@ -2832,16 +3091,19 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2849,13 +3111,16 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Export resources from the FHIR store to the specified destination. This
@@ -2888,20 +3153,22 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> export(
-      ExportResourcesRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ExportResourcesRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2909,13 +3176,16 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':export';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Gets the configuration of the specified FHIR store.
@@ -2936,16 +3206,19 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FhirStore> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FhirStore> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2953,13 +3226,16 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FhirStore.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FhirStore.fromJson(data));
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -2991,17 +3267,20 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(core.String resource,
-      {core.int options_requestedPolicyVersion, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int options_requestedPolicyVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if (options_requestedPolicyVersion != null) {
       _queryParams["options.requestedPolicyVersion"] = [
@@ -3016,13 +3295,16 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Imports resources to the FHIR store by loading data from the specified
@@ -3098,20 +3380,22 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> import(
-      ImportResourcesRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ImportResourcesRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3119,13 +3403,16 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':import';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists the FHIR stores in the given dataset.
@@ -3155,20 +3442,22 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListFhirStoresResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String filter,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListFhirStoresResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String filter,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -3187,13 +3476,16 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/fhirStores';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListFhirStoresResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListFhirStoresResponse.fromJson(data));
   }
 
   /// Updates the configuration of the specified FHIR store.
@@ -3221,20 +3513,24 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FhirStore> patch(FhirStore request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FhirStore> patch(
+    FhirStore request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -3245,13 +3541,16 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FhirStore.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FhirStore.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -3279,20 +3578,22 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3302,13 +3603,16 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -3338,20 +3642,22 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3361,14 +3667,16 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -3441,23 +3749,25 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> Patient_everything(core.String name,
-      {core.String P_type,
-      core.int P_count,
-      core.String start,
-      core.String P_since,
-      core.String end,
-      core.String P_pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<HttpBody> Patient_everything(
+    core.String name, {
+    core.String P_type,
+    core.int P_count,
+    core.String start,
+    core.String P_since,
+    core.String end,
+    core.String P_pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (P_type != null) {
       _queryParams["_type"] = [P_type];
@@ -3485,13 +3795,16 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/\$everything';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// Deletes all the historical versions of a resource (excluding the current
@@ -3517,16 +3830,19 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> Resource_purge(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> Resource_purge(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3534,13 +3850,16 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/\$purge';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the FHIR capability statement
@@ -3574,16 +3893,19 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> capabilities(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<HttpBody> capabilities(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3593,13 +3915,16 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/fhir/metadata';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// Creates a FHIR resource. Implements the FHIR standard create interaction
@@ -3645,23 +3970,26 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> create(
-      HttpBody request, core.String parent, core.String type,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    HttpBody request,
+    core.String parent,
+    core.String type, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (type == null) {
-      throw new core.ArgumentError("Parameter type is required.");
+      throw core.ArgumentError("Parameter type is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3672,13 +4000,16 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
         '/fhir/' +
         commons.Escaper.ecapeVariableReserved('$type');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// Deletes a FHIR resource. Implements the FHIR standard delete interaction
@@ -3708,16 +4039,19 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<HttpBody> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3725,13 +4059,16 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// Executes all the requests in the given Bundle. Implements the FHIR
@@ -3780,20 +4117,23 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> executeBundle(HttpBody request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<HttpBody> executeBundle(
+    HttpBody request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3801,13 +4141,16 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/fhir';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// Lists all the versions of a resource (including the current version and
@@ -3864,21 +4207,23 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> history(core.String name,
-      {core.String P_pageToken,
-      core.String P_at,
-      core.int P_count,
-      core.String P_since,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<HttpBody> history(
+    core.String name, {
+    core.String P_pageToken,
+    core.String P_at,
+    core.int P_count,
+    core.String P_since,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (P_pageToken != null) {
       _queryParams["_page_token"] = [P_pageToken];
@@ -3898,13 +4243,16 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/_history';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// Updates part of an existing resource by applying the operations specified
@@ -3942,20 +4290,23 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> patch(HttpBody request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<HttpBody> patch(
+    HttpBody request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3963,13 +4314,16 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// Gets the contents of a FHIR resource. Implements the FHIR standard read
@@ -4007,16 +4361,19 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> read(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<HttpBody> read(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4024,13 +4381,16 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// Searches for resources in the given FHIR store according to criteria
@@ -4097,20 +4457,22 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> search(
-      SearchResourcesRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SearchResourcesRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4120,13 +4482,16 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/fhir/_search';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// Updates the entire contents of a resource. Implements the FHIR standard
@@ -4166,20 +4531,23 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> update(HttpBody request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<HttpBody> update(
+    HttpBody request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4187,13 +4555,16 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 
   /// Gets the contents of a version (current or historical) of a FHIR resource
@@ -4225,16 +4596,19 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> vread(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<HttpBody> vread(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4242,13 +4616,16 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => HttpBody.fromJson(data));
   }
 }
 
@@ -4256,7 +4633,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi get messages =>
-      new ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi(_requester);
+      ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi(_requester);
 
   ProjectsLocationsDatasetsHl7V2StoresResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -4283,20 +4660,24 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Hl7V2Store> create(Hl7V2Store request, core.String parent,
-      {core.String hl7V2StoreId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Hl7V2Store> create(
+    Hl7V2Store request,
+    core.String parent, {
+    core.String hl7V2StoreId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (hl7V2StoreId != null) {
       _queryParams["hl7V2StoreId"] = [hl7V2StoreId];
@@ -4309,13 +4690,16 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/hl7V2Stores';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Hl7V2Store.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Hl7V2Store.fromJson(data));
   }
 
   /// Deletes the specified HL7v2 store and removes all messages that it
@@ -4337,16 +4721,19 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4354,13 +4741,16 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the specified HL7v2 store.
@@ -4381,16 +4771,19 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Hl7V2Store> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Hl7V2Store> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4398,13 +4791,16 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Hl7V2Store.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Hl7V2Store.fromJson(data));
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -4436,17 +4832,20 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(core.String resource,
-      {core.int options_requestedPolicyVersion, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int options_requestedPolicyVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if (options_requestedPolicyVersion != null) {
       _queryParams["options.requestedPolicyVersion"] = [
@@ -4461,13 +4860,16 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Lists the HL7v2 stores in the given dataset.
@@ -4497,20 +4899,22 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListHl7V2StoresResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListHl7V2StoresResponse> list(
+    core.String parent, {
+    core.String filter,
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -4529,13 +4933,16 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/hl7V2Stores';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListHl7V2StoresResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListHl7V2StoresResponse.fromJson(data));
   }
 
   /// Updates the HL7v2 store.
@@ -4563,20 +4970,24 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Hl7V2Store> patch(Hl7V2Store request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Hl7V2Store> patch(
+    Hl7V2Store request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -4587,13 +4998,16 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Hl7V2Store.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Hl7V2Store.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -4621,20 +5035,22 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4644,13 +5060,16 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -4680,20 +5099,22 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4703,14 +5124,16 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -4746,20 +5169,23 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Message> create(CreateMessageRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Message> create(
+    CreateMessageRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4768,13 +5194,16 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Message.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Message.fromJson(data));
   }
 
   /// Deletes an HL7v2 message.
@@ -4795,16 +5224,19 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4812,13 +5244,16 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets an HL7v2 message.
@@ -4850,17 +5285,20 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Message> get(core.String name,
-      {core.String view, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Message> get(
+    core.String name, {
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (view != null) {
       _queryParams["view"] = [view];
@@ -4871,13 +5309,16 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Message.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Message.fromJson(data));
   }
 
   /// Parses and stores an HL7v2 message. This method triggers an asynchronous
@@ -4909,20 +5350,22 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<IngestMessageResponse> ingest(
-      IngestMessageRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IngestMessageRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4932,13 +5375,16 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/messages:ingest';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new IngestMessageResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => IngestMessageResponse.fromJson(data));
   }
 
   /// Lists all the messages in the given HL7v2 store with support for
@@ -5003,22 +5449,24 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListMessagesResponse> list(core.String parent,
-      {core.String view,
-      core.String pageToken,
-      core.String filter,
-      core.int pageSize,
-      core.String orderBy,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListMessagesResponse> list(
+    core.String parent, {
+    core.String view,
+    core.String pageToken,
+    core.String filter,
+    core.int pageSize,
+    core.String orderBy,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (view != null) {
       _queryParams["view"] = [view];
@@ -5042,13 +5490,16 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListMessagesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListMessagesResponse.fromJson(data));
   }
 
   /// Update the message. The contents of the message in Message.data and data
@@ -5081,20 +5532,24 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Message> patch(Message request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Message> patch(
+    Message request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -5105,13 +5560,16 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Message.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Message.fromJson(data));
   }
 }
 
@@ -5149,20 +5607,23 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5170,13 +5631,16 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -5199,16 +5663,19 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5216,13 +5683,16 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -5256,20 +5726,22 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -5287,13 +5759,16 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListOperationsResponse.fromJson(data));
   }
 }
 
@@ -5327,7 +5802,7 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey("auditLogConfigs")) {
       auditLogConfigs = (_json["auditLogConfigs"] as core.List)
-          .map<AuditLogConfig>((value) => new AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("service")) {
@@ -5337,10 +5812,10 @@ class AuditConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (auditLogConfigs != null) {
       _json["auditLogConfigs"] =
-          auditLogConfigs.map((value) => (value).toJson()).toList();
+          auditLogConfigs.map((value) => value.toJson()).toList();
     }
     if (service != null) {
       _json["service"] = service;
@@ -5381,7 +5856,7 @@ class AuditLogConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exemptedMembers != null) {
       _json["exemptedMembers"] = exemptedMembers;
     }
@@ -5442,7 +5917,7 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey("condition")) {
-      condition = new Expr.fromJson(_json["condition"]);
+      condition = Expr.fromJson(_json["condition"]);
     }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
@@ -5454,9 +5929,9 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (condition != null) {
-      _json["condition"] = (condition).toJson();
+      _json["condition"] = condition.toJson();
     }
     if (members != null) {
       _json["members"] = members;
@@ -5476,7 +5951,7 @@ class CancelOperationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -5496,7 +5971,7 @@ class CharacterMaskConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maskingCharacter != null) {
       _json["maskingCharacter"] = maskingCharacter;
     }
@@ -5513,15 +5988,15 @@ class CreateMessageRequest {
 
   CreateMessageRequest.fromJson(core.Map _json) {
     if (_json.containsKey("message")) {
-      message = new Message.fromJson(_json["message"]);
+      message = Message.fromJson(_json["message"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (message != null) {
-      _json["message"] = (message).toJson();
+      _json["message"] = message.toJson();
     }
     return _json;
   }
@@ -5535,9 +6010,7 @@ class CryptoHashConfig {
   /// key. A default key is generated for each Deidentify operation and is used
   /// wherever crypto_key is not specified.
   core.String cryptoKey;
-  core.List<core.int> get cryptoKeyAsBytes {
-    return convert.base64.decode(cryptoKey);
-  }
+  core.List<core.int> get cryptoKeyAsBytes => convert.base64.decode(cryptoKey);
 
   set cryptoKeyAsBytes(core.List<core.int> _bytes) {
     cryptoKey =
@@ -5554,7 +6027,7 @@ class CryptoHashConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cryptoKey != null) {
       _json["cryptoKey"] = cryptoKey;
     }
@@ -5590,7 +6063,7 @@ class Dataset {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -5608,9 +6081,7 @@ class DateShiftConfig {
   /// key and the patient ID. A default key is generated for each Deidentify
   /// operation and is used wherever crypto_key is not specified.
   core.String cryptoKey;
-  core.List<core.int> get cryptoKeyAsBytes {
-    return convert.base64.decode(cryptoKey);
-  }
+  core.List<core.int> get cryptoKeyAsBytes => convert.base64.decode(cryptoKey);
 
   set cryptoKeyAsBytes(core.List<core.int> _bytes) {
     cryptoKey =
@@ -5627,7 +6098,7 @@ class DateShiftConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cryptoKey != null) {
       _json["cryptoKey"] = cryptoKey;
     }
@@ -5657,33 +6128,33 @@ class DeidentifyConfig {
 
   DeidentifyConfig.fromJson(core.Map _json) {
     if (_json.containsKey("dicom")) {
-      dicom = new DicomConfig.fromJson(_json["dicom"]);
+      dicom = DicomConfig.fromJson(_json["dicom"]);
     }
     if (_json.containsKey("fhir")) {
-      fhir = new FhirConfig.fromJson(_json["fhir"]);
+      fhir = FhirConfig.fromJson(_json["fhir"]);
     }
     if (_json.containsKey("image")) {
-      image = new ImageConfig.fromJson(_json["image"]);
+      image = ImageConfig.fromJson(_json["image"]);
     }
     if (_json.containsKey("text")) {
-      text = new TextConfig.fromJson(_json["text"]);
+      text = TextConfig.fromJson(_json["text"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dicom != null) {
-      _json["dicom"] = (dicom).toJson();
+      _json["dicom"] = dicom.toJson();
     }
     if (fhir != null) {
-      _json["fhir"] = (fhir).toJson();
+      _json["fhir"] = fhir.toJson();
     }
     if (image != null) {
-      _json["image"] = (image).toJson();
+      _json["image"] = image.toJson();
     }
     if (text != null) {
-      _json["text"] = (text).toJson();
+      _json["text"] = text.toJson();
     }
     return _json;
   }
@@ -5704,7 +6175,7 @@ class DeidentifyDatasetRequest {
 
   DeidentifyDatasetRequest.fromJson(core.Map _json) {
     if (_json.containsKey("config")) {
-      config = new DeidentifyConfig.fromJson(_json["config"]);
+      config = DeidentifyConfig.fromJson(_json["config"]);
     }
     if (_json.containsKey("destinationDataset")) {
       destinationDataset = _json["destinationDataset"];
@@ -5713,9 +6184,9 @@ class DeidentifyDatasetRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (config != null) {
-      _json["config"] = (config).toJson();
+      _json["config"] = config.toJson();
     }
     if (destinationDataset != null) {
       _json["destinationDataset"] = destinationDataset;
@@ -5746,27 +6217,27 @@ class DeidentifyDicomStoreRequest {
 
   DeidentifyDicomStoreRequest.fromJson(core.Map _json) {
     if (_json.containsKey("config")) {
-      config = new DeidentifyConfig.fromJson(_json["config"]);
+      config = DeidentifyConfig.fromJson(_json["config"]);
     }
     if (_json.containsKey("destinationStore")) {
       destinationStore = _json["destinationStore"];
     }
     if (_json.containsKey("filterConfig")) {
-      filterConfig = new DicomFilterConfig.fromJson(_json["filterConfig"]);
+      filterConfig = DicomFilterConfig.fromJson(_json["filterConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (config != null) {
-      _json["config"] = (config).toJson();
+      _json["config"] = config.toJson();
     }
     if (destinationStore != null) {
       _json["destinationStore"] = destinationStore;
     }
     if (filterConfig != null) {
-      _json["filterConfig"] = (filterConfig).toJson();
+      _json["filterConfig"] = filterConfig.toJson();
     }
     return _json;
   }
@@ -5795,27 +6266,27 @@ class DeidentifyFhirStoreRequest {
 
   DeidentifyFhirStoreRequest.fromJson(core.Map _json) {
     if (_json.containsKey("config")) {
-      config = new DeidentifyConfig.fromJson(_json["config"]);
+      config = DeidentifyConfig.fromJson(_json["config"]);
     }
     if (_json.containsKey("destinationStore")) {
       destinationStore = _json["destinationStore"];
     }
     if (_json.containsKey("resourceFilter")) {
-      resourceFilter = new FhirFilter.fromJson(_json["resourceFilter"]);
+      resourceFilter = FhirFilter.fromJson(_json["resourceFilter"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (config != null) {
-      _json["config"] = (config).toJson();
+      _json["config"] = config.toJson();
     }
     if (destinationStore != null) {
       _json["destinationStore"] = destinationStore;
     }
     if (resourceFilter != null) {
-      _json["resourceFilter"] = (resourceFilter).toJson();
+      _json["resourceFilter"] = resourceFilter.toJson();
     }
     return _json;
   }
@@ -5829,7 +6300,7 @@ class DeidentifySummary {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -5876,10 +6347,10 @@ class DicomConfig {
       filterProfile = _json["filterProfile"];
     }
     if (_json.containsKey("keepList")) {
-      keepList = new TagFilterList.fromJson(_json["keepList"]);
+      keepList = TagFilterList.fromJson(_json["keepList"]);
     }
     if (_json.containsKey("removeList")) {
-      removeList = new TagFilterList.fromJson(_json["removeList"]);
+      removeList = TagFilterList.fromJson(_json["removeList"]);
     }
     if (_json.containsKey("skipIdRedaction")) {
       skipIdRedaction = _json["skipIdRedaction"];
@@ -5888,15 +6359,15 @@ class DicomConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (filterProfile != null) {
       _json["filterProfile"] = filterProfile;
     }
     if (keepList != null) {
-      _json["keepList"] = (keepList).toJson();
+      _json["keepList"] = keepList.toJson();
     }
     if (removeList != null) {
-      _json["removeList"] = (removeList).toJson();
+      _json["removeList"] = removeList.toJson();
     }
     if (skipIdRedaction != null) {
       _json["skipIdRedaction"] = skipIdRedaction;
@@ -5927,7 +6398,7 @@ class DicomFilterConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourcePathsGcsUri != null) {
       _json["resourcePathsGcsUri"] = resourcePathsGcsUri;
     }
@@ -5965,13 +6436,13 @@ class DicomStore {
     }
     if (_json.containsKey("notificationConfig")) {
       notificationConfig =
-          new NotificationConfig.fromJson(_json["notificationConfig"]);
+          NotificationConfig.fromJson(_json["notificationConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -5979,7 +6450,7 @@ class DicomStore {
       _json["name"] = name;
     }
     if (notificationConfig != null) {
-      _json["notificationConfig"] = (notificationConfig).toJson();
+      _json["notificationConfig"] = notificationConfig.toJson();
     }
     return _json;
   }
@@ -5997,7 +6468,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -6022,23 +6493,23 @@ class ExportDicomDataRequest {
   ExportDicomDataRequest.fromJson(core.Map _json) {
     if (_json.containsKey("bigqueryDestination")) {
       bigqueryDestination =
-          new GoogleCloudHealthcareV1DicomBigQueryDestination.fromJson(
+          GoogleCloudHealthcareV1DicomBigQueryDestination.fromJson(
               _json["bigqueryDestination"]);
     }
     if (_json.containsKey("gcsDestination")) {
-      gcsDestination = new GoogleCloudHealthcareV1DicomGcsDestination.fromJson(
+      gcsDestination = GoogleCloudHealthcareV1DicomGcsDestination.fromJson(
           _json["gcsDestination"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bigqueryDestination != null) {
-      _json["bigqueryDestination"] = (bigqueryDestination).toJson();
+      _json["bigqueryDestination"] = bigqueryDestination.toJson();
     }
     if (gcsDestination != null) {
-      _json["gcsDestination"] = (gcsDestination).toJson();
+      _json["gcsDestination"] = gcsDestination.toJson();
     }
     return _json;
   }
@@ -6052,7 +6523,7 @@ class ExportDicomDataResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -6076,23 +6547,23 @@ class ExportResourcesRequest {
   ExportResourcesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("bigqueryDestination")) {
       bigqueryDestination =
-          new GoogleCloudHealthcareV1FhirBigQueryDestination.fromJson(
+          GoogleCloudHealthcareV1FhirBigQueryDestination.fromJson(
               _json["bigqueryDestination"]);
     }
     if (_json.containsKey("gcsDestination")) {
-      gcsDestination = new GoogleCloudHealthcareV1FhirGcsDestination.fromJson(
+      gcsDestination = GoogleCloudHealthcareV1FhirGcsDestination.fromJson(
           _json["gcsDestination"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bigqueryDestination != null) {
-      _json["bigqueryDestination"] = (bigqueryDestination).toJson();
+      _json["bigqueryDestination"] = bigqueryDestination.toJson();
     }
     if (gcsDestination != null) {
-      _json["gcsDestination"] = (gcsDestination).toJson();
+      _json["gcsDestination"] = gcsDestination.toJson();
     }
     return _json;
   }
@@ -6108,7 +6579,7 @@ class ExportResourcesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -6165,7 +6636,7 @@ class Expr {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -6194,17 +6665,17 @@ class FhirConfig {
   FhirConfig.fromJson(core.Map _json) {
     if (_json.containsKey("fieldMetadataList")) {
       fieldMetadataList = (_json["fieldMetadataList"] as core.List)
-          .map<FieldMetadata>((value) => new FieldMetadata.fromJson(value))
+          .map<FieldMetadata>((value) => FieldMetadata.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fieldMetadataList != null) {
       _json["fieldMetadataList"] =
-          fieldMetadataList.map((value) => (value).toJson()).toList();
+          fieldMetadataList.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6220,15 +6691,15 @@ class FhirFilter {
 
   FhirFilter.fromJson(core.Map _json) {
     if (_json.containsKey("resources")) {
-      resources = new Resources.fromJson(_json["resources"]);
+      resources = Resources.fromJson(_json["resources"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resources != null) {
-      _json["resources"] = (resources).toJson();
+      _json["resources"] = resources.toJson();
     }
     return _json;
   }
@@ -6333,11 +6804,11 @@ class FhirStore {
     }
     if (_json.containsKey("notificationConfig")) {
       notificationConfig =
-          new NotificationConfig.fromJson(_json["notificationConfig"]);
+          NotificationConfig.fromJson(_json["notificationConfig"]);
     }
     if (_json.containsKey("streamConfigs")) {
       streamConfigs = (_json["streamConfigs"] as core.List)
-          .map<StreamConfig>((value) => new StreamConfig.fromJson(value))
+          .map<StreamConfig>((value) => StreamConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("version")) {
@@ -6347,7 +6818,7 @@ class FhirStore {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (disableReferentialIntegrity != null) {
       _json["disableReferentialIntegrity"] = disableReferentialIntegrity;
     }
@@ -6364,11 +6835,11 @@ class FhirStore {
       _json["name"] = name;
     }
     if (notificationConfig != null) {
-      _json["notificationConfig"] = (notificationConfig).toJson();
+      _json["notificationConfig"] = notificationConfig.toJson();
     }
     if (streamConfigs != null) {
       _json["streamConfigs"] =
-          streamConfigs.map((value) => (value).toJson()).toList();
+          streamConfigs.map((value) => value.toJson()).toList();
     }
     if (version != null) {
       _json["version"] = version;
@@ -6412,7 +6883,7 @@ class FieldMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (action != null) {
       _json["action"] = action;
     }
@@ -6432,7 +6903,7 @@ class GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -6446,7 +6917,7 @@ class GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -6476,7 +6947,7 @@ class GoogleCloudHealthcareV1DicomBigQueryDestination {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (force != null) {
       _json["force"] = force;
     }
@@ -6535,7 +7006,7 @@ class GoogleCloudHealthcareV1DicomGcsDestination {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (mimeType != null) {
       _json["mimeType"] = mimeType;
     }
@@ -6572,7 +7043,7 @@ class GoogleCloudHealthcareV1DicomGcsSource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (uri != null) {
       _json["uri"] = uri;
     }
@@ -6604,13 +7075,13 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
       force = _json["force"];
     }
     if (_json.containsKey("schemaConfig")) {
-      schemaConfig = new SchemaConfig.fromJson(_json["schemaConfig"]);
+      schemaConfig = SchemaConfig.fromJson(_json["schemaConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (datasetUri != null) {
       _json["datasetUri"] = datasetUri;
     }
@@ -6618,7 +7089,7 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
       _json["force"] = force;
     }
     if (schemaConfig != null) {
-      _json["schemaConfig"] = (schemaConfig).toJson();
+      _json["schemaConfig"] = schemaConfig.toJson();
     }
     return _json;
   }
@@ -6643,7 +7114,7 @@ class GoogleCloudHealthcareV1FhirGcsDestination {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (uriPrefix != null) {
       _json["uriPrefix"] = uriPrefix;
     }
@@ -6677,7 +7148,7 @@ class GoogleCloudHealthcareV1FhirGcsSource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (uri != null) {
       _json["uri"] = uri;
     }
@@ -6739,7 +7210,7 @@ class Hl7V2NotificationConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (filter != null) {
       _json["filter"] = filter;
     }
@@ -6799,11 +7270,11 @@ class Hl7V2Store {
     if (_json.containsKey("notificationConfigs")) {
       notificationConfigs = (_json["notificationConfigs"] as core.List)
           .map<Hl7V2NotificationConfig>(
-              (value) => new Hl7V2NotificationConfig.fromJson(value))
+              (value) => Hl7V2NotificationConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("parserConfig")) {
-      parserConfig = new ParserConfig.fromJson(_json["parserConfig"]);
+      parserConfig = ParserConfig.fromJson(_json["parserConfig"]);
     }
     if (_json.containsKey("rejectDuplicateMessage")) {
       rejectDuplicateMessage = _json["rejectDuplicateMessage"];
@@ -6812,7 +7283,7 @@ class Hl7V2Store {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -6821,10 +7292,10 @@ class Hl7V2Store {
     }
     if (notificationConfigs != null) {
       _json["notificationConfigs"] =
-          notificationConfigs.map((value) => (value).toJson()).toList();
+          notificationConfigs.map((value) => value.toJson()).toList();
     }
     if (parserConfig != null) {
-      _json["parserConfig"] = (parserConfig).toJson();
+      _json["parserConfig"] = parserConfig.toJson();
     }
     if (rejectDuplicateMessage != null) {
       _json["rejectDuplicateMessage"] = rejectDuplicateMessage;
@@ -6857,9 +7328,7 @@ class HttpBody {
 
   /// The HTTP request/response body as raw binary.
   core.String data;
-  core.List<core.int> get dataAsBytes {
-    return convert.base64.decode(data);
-  }
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -6892,7 +7361,7 @@ class HttpBody {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentType != null) {
       _json["contentType"] = contentType;
     }
@@ -6927,7 +7396,7 @@ class ImageConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (textRedactionMode != null) {
       _json["textRedactionMode"] = textRedactionMode;
     }
@@ -6947,16 +7416,16 @@ class ImportDicomDataRequest {
 
   ImportDicomDataRequest.fromJson(core.Map _json) {
     if (_json.containsKey("gcsSource")) {
-      gcsSource = new GoogleCloudHealthcareV1DicomGcsSource.fromJson(
-          _json["gcsSource"]);
+      gcsSource =
+          GoogleCloudHealthcareV1DicomGcsSource.fromJson(_json["gcsSource"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gcsSource != null) {
-      _json["gcsSource"] = (gcsSource).toJson();
+      _json["gcsSource"] = gcsSource.toJson();
     }
     return _json;
   }
@@ -6970,7 +7439,7 @@ class ImportDicomDataResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -7008,18 +7477,18 @@ class ImportResourcesRequest {
     }
     if (_json.containsKey("gcsSource")) {
       gcsSource =
-          new GoogleCloudHealthcareV1FhirGcsSource.fromJson(_json["gcsSource"]);
+          GoogleCloudHealthcareV1FhirGcsSource.fromJson(_json["gcsSource"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentStructure != null) {
       _json["contentStructure"] = contentStructure;
     }
     if (gcsSource != null) {
-      _json["gcsSource"] = (gcsSource).toJson();
+      _json["gcsSource"] = gcsSource.toJson();
     }
     return _json;
   }
@@ -7035,7 +7504,7 @@ class ImportResourcesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -7067,47 +7536,46 @@ class InfoTypeTransformation {
   InfoTypeTransformation.fromJson(core.Map _json) {
     if (_json.containsKey("characterMaskConfig")) {
       characterMaskConfig =
-          new CharacterMaskConfig.fromJson(_json["characterMaskConfig"]);
+          CharacterMaskConfig.fromJson(_json["characterMaskConfig"]);
     }
     if (_json.containsKey("cryptoHashConfig")) {
-      cryptoHashConfig =
-          new CryptoHashConfig.fromJson(_json["cryptoHashConfig"]);
+      cryptoHashConfig = CryptoHashConfig.fromJson(_json["cryptoHashConfig"]);
     }
     if (_json.containsKey("dateShiftConfig")) {
-      dateShiftConfig = new DateShiftConfig.fromJson(_json["dateShiftConfig"]);
+      dateShiftConfig = DateShiftConfig.fromJson(_json["dateShiftConfig"]);
     }
     if (_json.containsKey("infoTypes")) {
       infoTypes = (_json["infoTypes"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("redactConfig")) {
-      redactConfig = new RedactConfig.fromJson(_json["redactConfig"]);
+      redactConfig = RedactConfig.fromJson(_json["redactConfig"]);
     }
     if (_json.containsKey("replaceWithInfoTypeConfig")) {
-      replaceWithInfoTypeConfig = new ReplaceWithInfoTypeConfig.fromJson(
+      replaceWithInfoTypeConfig = ReplaceWithInfoTypeConfig.fromJson(
           _json["replaceWithInfoTypeConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (characterMaskConfig != null) {
-      _json["characterMaskConfig"] = (characterMaskConfig).toJson();
+      _json["characterMaskConfig"] = characterMaskConfig.toJson();
     }
     if (cryptoHashConfig != null) {
-      _json["cryptoHashConfig"] = (cryptoHashConfig).toJson();
+      _json["cryptoHashConfig"] = cryptoHashConfig.toJson();
     }
     if (dateShiftConfig != null) {
-      _json["dateShiftConfig"] = (dateShiftConfig).toJson();
+      _json["dateShiftConfig"] = dateShiftConfig.toJson();
     }
     if (infoTypes != null) {
       _json["infoTypes"] = infoTypes;
     }
     if (redactConfig != null) {
-      _json["redactConfig"] = (redactConfig).toJson();
+      _json["redactConfig"] = redactConfig.toJson();
     }
     if (replaceWithInfoTypeConfig != null) {
-      _json["replaceWithInfoTypeConfig"] = (replaceWithInfoTypeConfig).toJson();
+      _json["replaceWithInfoTypeConfig"] = replaceWithInfoTypeConfig.toJson();
     }
     return _json;
   }
@@ -7122,15 +7590,15 @@ class IngestMessageRequest {
 
   IngestMessageRequest.fromJson(core.Map _json) {
     if (_json.containsKey("message")) {
-      message = new Message.fromJson(_json["message"]);
+      message = Message.fromJson(_json["message"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (message != null) {
-      _json["message"] = (message).toJson();
+      _json["message"] = message.toJson();
     }
     return _json;
   }
@@ -7141,9 +7609,7 @@ class IngestMessageRequest {
 class IngestMessageResponse {
   /// HL7v2 ACK message.
   core.String hl7Ack;
-  core.List<core.int> get hl7AckAsBytes {
-    return convert.base64.decode(hl7Ack);
-  }
+  core.List<core.int> get hl7AckAsBytes => convert.base64.decode(hl7Ack);
 
   set hl7AckAsBytes(core.List<core.int> _bytes) {
     hl7Ack =
@@ -7160,18 +7626,18 @@ class IngestMessageResponse {
       hl7Ack = _json["hl7Ack"];
     }
     if (_json.containsKey("message")) {
-      message = new Message.fromJson(_json["message"]);
+      message = Message.fromJson(_json["message"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hl7Ack != null) {
       _json["hl7Ack"] = hl7Ack;
     }
     if (message != null) {
-      _json["message"] = (message).toJson();
+      _json["message"] = message.toJson();
     }
     return _json;
   }
@@ -7191,7 +7657,7 @@ class ListDatasetsResponse {
   ListDatasetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("datasets")) {
       datasets = (_json["datasets"] as core.List)
-          .map<Dataset>((value) => new Dataset.fromJson(value))
+          .map<Dataset>((value) => Dataset.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -7201,9 +7667,9 @@ class ListDatasetsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (datasets != null) {
-      _json["datasets"] = datasets.map((value) => (value).toJson()).toList();
+      _json["datasets"] = datasets.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -7227,7 +7693,7 @@ class ListDicomStoresResponse {
   ListDicomStoresResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dicomStores")) {
       dicomStores = (_json["dicomStores"] as core.List)
-          .map<DicomStore>((value) => new DicomStore.fromJson(value))
+          .map<DicomStore>((value) => DicomStore.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -7237,10 +7703,10 @@ class ListDicomStoresResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dicomStores != null) {
       _json["dicomStores"] =
-          dicomStores.map((value) => (value).toJson()).toList();
+          dicomStores.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -7264,7 +7730,7 @@ class ListFhirStoresResponse {
   ListFhirStoresResponse.fromJson(core.Map _json) {
     if (_json.containsKey("fhirStores")) {
       fhirStores = (_json["fhirStores"] as core.List)
-          .map<FhirStore>((value) => new FhirStore.fromJson(value))
+          .map<FhirStore>((value) => FhirStore.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -7274,10 +7740,9 @@ class ListFhirStoresResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fhirStores != null) {
-      _json["fhirStores"] =
-          fhirStores.map((value) => (value).toJson()).toList();
+      _json["fhirStores"] = fhirStores.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -7301,7 +7766,7 @@ class ListHl7V2StoresResponse {
   ListHl7V2StoresResponse.fromJson(core.Map _json) {
     if (_json.containsKey("hl7V2Stores")) {
       hl7V2Stores = (_json["hl7V2Stores"] as core.List)
-          .map<Hl7V2Store>((value) => new Hl7V2Store.fromJson(value))
+          .map<Hl7V2Store>((value) => Hl7V2Store.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -7311,10 +7776,10 @@ class ListHl7V2StoresResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hl7V2Stores != null) {
       _json["hl7V2Stores"] =
-          hl7V2Stores.map((value) => (value).toJson()).toList();
+          hl7V2Stores.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -7336,7 +7801,7 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("locations")) {
       locations = (_json["locations"] as core.List)
-          .map<Location>((value) => new Location.fromJson(value))
+          .map<Location>((value) => Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -7346,9 +7811,9 @@ class ListLocationsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (locations != null) {
-      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+      _json["locations"] = locations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -7372,7 +7837,7 @@ class ListMessagesResponse {
   ListMessagesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("hl7V2Messages")) {
       hl7V2Messages = (_json["hl7V2Messages"] as core.List)
-          .map<Message>((value) => new Message.fromJson(value))
+          .map<Message>((value) => Message.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -7382,10 +7847,10 @@ class ListMessagesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hl7V2Messages != null) {
       _json["hl7V2Messages"] =
-          hl7V2Messages.map((value) => (value).toJson()).toList();
+          hl7V2Messages.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -7410,20 +7875,19 @@ class ListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = (_json["operations"] as core.List)
-          .map<Operation>((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
+      _json["operations"] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7476,7 +7940,7 @@ class Location {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -7505,9 +7969,7 @@ class Message {
 
   /// Raw message bytes.
   core.String data;
-  core.List<core.int> get dataAsBytes {
-    return convert.base64.decode(data);
-  }
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -7564,11 +8026,11 @@ class Message {
       name = _json["name"];
     }
     if (_json.containsKey("parsedData")) {
-      parsedData = new ParsedData.fromJson(_json["parsedData"]);
+      parsedData = ParsedData.fromJson(_json["parsedData"]);
     }
     if (_json.containsKey("patientIds")) {
       patientIds = (_json["patientIds"] as core.List)
-          .map<PatientId>((value) => new PatientId.fromJson(value))
+          .map<PatientId>((value) => PatientId.fromJson(value))
           .toList();
     }
     if (_json.containsKey("sendFacility")) {
@@ -7581,7 +8043,7 @@ class Message {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -7598,11 +8060,10 @@ class Message {
       _json["name"] = name;
     }
     if (parsedData != null) {
-      _json["parsedData"] = (parsedData).toJson();
+      _json["parsedData"] = parsedData.toJson();
     }
     if (patientIds != null) {
-      _json["patientIds"] =
-          patientIds.map((value) => (value).toJson()).toList();
+      _json["patientIds"] = patientIds.map((value) => value.toJson()).toList();
     }
     if (sendFacility != null) {
       _json["sendFacility"] = sendFacility;
@@ -7644,7 +8105,7 @@ class NotificationConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pubsubTopic != null) {
       _json["pubsubTopic"] = pubsubTopic;
     }
@@ -7696,7 +8157,7 @@ class Operation {
       done = _json["done"];
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
       metadata =
@@ -7713,12 +8174,12 @@ class Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -7764,7 +8225,7 @@ class OperationMetadata {
       cancelRequested = _json["cancelRequested"];
     }
     if (_json.containsKey("counter")) {
-      counter = new ProgressCounter.fromJson(_json["counter"]);
+      counter = ProgressCounter.fromJson(_json["counter"]);
     }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
@@ -7779,7 +8240,7 @@ class OperationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiMethodName != null) {
       _json["apiMethodName"] = apiMethodName;
     }
@@ -7787,7 +8248,7 @@ class OperationMetadata {
       _json["cancelRequested"] = cancelRequested;
     }
     if (counter != null) {
-      _json["counter"] = (counter).toJson();
+      _json["counter"] = counter.toJson();
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
@@ -7811,16 +8272,16 @@ class ParsedData {
   ParsedData.fromJson(core.Map _json) {
     if (_json.containsKey("segments")) {
       segments = (_json["segments"] as core.List)
-          .map<Segment>((value) => new Segment.fromJson(value))
+          .map<Segment>((value) => Segment.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (segments != null) {
-      _json["segments"] = segments.map((value) => (value).toJson()).toList();
+      _json["segments"] = segments.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7835,9 +8296,8 @@ class ParserConfig {
   /// Byte(s) to use as the segment terminator. If this is unset, '\r' is used
   /// as segment terminator.
   core.String segmentTerminator;
-  core.List<core.int> get segmentTerminatorAsBytes {
-    return convert.base64.decode(segmentTerminator);
-  }
+  core.List<core.int> get segmentTerminatorAsBytes =>
+      convert.base64.decode(segmentTerminator);
 
   set segmentTerminatorAsBytes(core.List<core.int> _bytes) {
     segmentTerminator =
@@ -7857,7 +8317,7 @@ class ParserConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allowNullHeader != null) {
       _json["allowNullHeader"] = allowNullHeader;
     }
@@ -7889,7 +8349,7 @@ class PatientId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (type != null) {
       _json["type"] = type;
     }
@@ -7950,9 +8410,7 @@ class Policy {
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.base64.decode(etag);
-  }
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -7981,12 +8439,12 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("auditConfigs")) {
       auditConfigs = (_json["auditConfigs"] as core.List)
-          .map<AuditConfig>((value) => new AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => AuditConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bindings")) {
       bindings = (_json["bindings"] as core.List)
-          .map<Binding>((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -7999,13 +8457,13 @@ class Policy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (auditConfigs != null) {
       _json["auditConfigs"] =
-          auditConfigs.map((value) => (value).toJson()).toList();
+          auditConfigs.map((value) => value.toJson()).toList();
     }
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -8044,7 +8502,7 @@ class ProgressCounter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (failure != null) {
       _json["failure"] = failure;
     }
@@ -8067,7 +8525,7 @@ class RedactConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -8082,7 +8540,7 @@ class ReplaceWithInfoTypeConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -8102,7 +8560,7 @@ class Resources {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resources != null) {
       _json["resources"] = resources;
     }
@@ -8147,7 +8605,7 @@ class SchemaConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (recursiveStructureDepth != null) {
       _json["recursiveStructureDepth"] = recursiveStructureDepth;
     }
@@ -8177,7 +8635,7 @@ class SearchResourcesRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceType != null) {
       _json["resourceType"] = resourceType;
     }
@@ -8222,7 +8680,7 @@ class Segment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fields != null) {
       _json["fields"] = fields;
     }
@@ -8253,7 +8711,7 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("policy")) {
-      policy = new Policy.fromJson(_json["policy"]);
+      policy = Policy.fromJson(_json["policy"]);
     }
     if (_json.containsKey("updateMask")) {
       updateMask = _json["updateMask"];
@@ -8262,9 +8720,9 @@ class SetIamPolicyRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = (policy).toJson();
+      _json["policy"] = policy.toJson();
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;
@@ -8314,7 +8772,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -8372,7 +8830,7 @@ class StreamConfig {
   StreamConfig.fromJson(core.Map _json) {
     if (_json.containsKey("bigqueryDestination")) {
       bigqueryDestination =
-          new GoogleCloudHealthcareV1FhirBigQueryDestination.fromJson(
+          GoogleCloudHealthcareV1FhirBigQueryDestination.fromJson(
               _json["bigqueryDestination"]);
     }
     if (_json.containsKey("resourceTypes")) {
@@ -8382,9 +8840,9 @@ class StreamConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bigqueryDestination != null) {
-      _json["bigqueryDestination"] = (bigqueryDestination).toJson();
+      _json["bigqueryDestination"] = bigqueryDestination.toJson();
     }
     if (resourceTypes != null) {
       _json["resourceTypes"] = resourceTypes;
@@ -8412,7 +8870,7 @@ class TagFilterList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (tags != null) {
       _json["tags"] = tags;
     }
@@ -8438,7 +8896,7 @@ class TestIamPermissionsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -8462,7 +8920,7 @@ class TestIamPermissionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -8480,17 +8938,17 @@ class TextConfig {
     if (_json.containsKey("transformations")) {
       transformations = (_json["transformations"] as core.List)
           .map<InfoTypeTransformation>(
-              (value) => new InfoTypeTransformation.fromJson(value))
+              (value) => InfoTypeTransformation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (transformations != null) {
       _json["transformations"] =
-          transformations.map((value) => (value).toJson()).toList();
+          transformations.map((value) => value.toJson()).toList();
     }
     return _json;
   }

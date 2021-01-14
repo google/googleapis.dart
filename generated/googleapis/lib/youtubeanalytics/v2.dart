@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.youtubeAnalytics.v2;
 
@@ -40,15 +58,15 @@ class YoutubeAnalyticsApi {
 
   final commons.ApiRequester _requester;
 
-  GroupItemsResourceApi get groupItems => new GroupItemsResourceApi(_requester);
-  GroupsResourceApi get groups => new GroupsResourceApi(_requester);
-  ReportsResourceApi get reports => new ReportsResourceApi(_requester);
+  GroupItemsResourceApi get groupItems => GroupItemsResourceApi(_requester);
+  GroupsResourceApi get groups => GroupsResourceApi(_requester);
+  ReportsResourceApi get reports => ReportsResourceApi(_requester);
 
   YoutubeAnalyticsApi(http.Client client,
       {core.String rootUrl = "https://youtubeanalytics.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class GroupItemsResourceApi {
@@ -84,16 +102,17 @@ class GroupItemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<EmptyResponse> delete(
-      {core.String id,
-      core.String onBehalfOfContentOwner,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<EmptyResponse> delete({
+    core.String id,
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id != null) {
       _queryParams["id"] = [id];
@@ -107,13 +126,16 @@ class GroupItemsResourceApi {
 
     _url = 'v2/groupItems';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new EmptyResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => EmptyResponse.fromJson(data));
   }
 
   /// Creates a group item.
@@ -143,17 +165,20 @@ class GroupItemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GroupItem> insert(GroupItem request,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GroupItem> insert(
+    GroupItem request, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -164,13 +189,16 @@ class GroupItemsResourceApi {
 
     _url = 'v2/groupItems';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GroupItem.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GroupItem.fromJson(data));
   }
 
   /// Returns a collection of group items that match the API request parameters.
@@ -201,16 +229,17 @@ class GroupItemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListGroupItemsResponse> list(
-      {core.String groupId,
-      core.String onBehalfOfContentOwner,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListGroupItemsResponse> list({
+    core.String groupId,
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (groupId != null) {
       _queryParams["groupId"] = [groupId];
@@ -224,13 +253,16 @@ class GroupItemsResourceApi {
 
     _url = 'v2/groupItems';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListGroupItemsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListGroupItemsResponse.fromJson(data));
   }
 }
 
@@ -267,16 +299,17 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<EmptyResponse> delete(
-      {core.String id,
-      core.String onBehalfOfContentOwner,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<EmptyResponse> delete({
+    core.String id,
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id != null) {
       _queryParams["id"] = [id];
@@ -290,13 +323,16 @@ class GroupsResourceApi {
 
     _url = 'v2/groups';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new EmptyResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => EmptyResponse.fromJson(data));
   }
 
   /// Creates a group.
@@ -326,17 +362,20 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> insert(Group request,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Group> insert(
+    Group request, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -347,13 +386,16 @@ class GroupsResourceApi {
 
     _url = 'v2/groups';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Group.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Group.fromJson(data));
   }
 
   /// Returns a collection of groups that match the API request parameters. For
@@ -398,18 +440,19 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListGroupsResponse> list(
-      {core.bool mine,
-      core.String onBehalfOfContentOwner,
-      core.String id,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListGroupsResponse> list({
+    core.bool mine,
+    core.String onBehalfOfContentOwner,
+    core.String id,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (mine != null) {
       _queryParams["mine"] = ["${mine}"];
@@ -429,13 +472,16 @@ class GroupsResourceApi {
 
     _url = 'v2/groups';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListGroupsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListGroupsResponse.fromJson(data));
   }
 
   /// Modifies a group. For example, you could change a group's title.
@@ -465,17 +511,20 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> update(Group request,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Group> update(
+    Group request, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -486,13 +535,16 @@ class GroupsResourceApi {
 
     _url = 'v2/groups';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Group.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Group.fromJson(data));
   }
 }
 
@@ -577,25 +629,26 @@ class ReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<QueryResponse> query(
-      {core.int startIndex,
-      core.String metrics,
-      core.String sort,
-      core.bool includeHistoricalChannelData,
-      core.String dimensions,
-      core.String filters,
-      core.int maxResults,
-      core.String currency,
-      core.String endDate,
-      core.String startDate,
-      core.String ids,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<QueryResponse> query({
+    core.int startIndex,
+    core.String metrics,
+    core.String sort,
+    core.bool includeHistoricalChannelData,
+    core.String dimensions,
+    core.String filters,
+    core.int maxResults,
+    core.String currency,
+    core.String endDate,
+    core.String startDate,
+    core.String ids,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
@@ -638,13 +691,16 @@ class ReportsResourceApi {
 
     _url = 'v2/reports';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new QueryResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => QueryResponse.fromJson(data));
   }
 }
 
@@ -657,15 +713,15 @@ class EmptyResponse {
 
   EmptyResponse.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
-      errors = new Errors.fromJson(_json["errors"]);
+      errors = Errors.fromJson(_json["errors"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errors != null) {
-      _json["errors"] = (errors).toJson();
+      _json["errors"] = errors.toJson();
     }
     return _json;
   }
@@ -743,7 +799,7 @@ class ErrorProto {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (argument != null) {
       _json["argument"] = argument;
     }
@@ -800,7 +856,7 @@ class Errors {
     }
     if (_json.containsKey("error")) {
       error = (_json["error"] as core.List)
-          .map<ErrorProto>((value) => new ErrorProto.fromJson(value))
+          .map<ErrorProto>((value) => ErrorProto.fromJson(value))
           .toList();
     }
     if (_json.containsKey("requestId")) {
@@ -810,12 +866,12 @@ class Errors {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
     if (error != null) {
-      _json["error"] = error.map((value) => (value).toJson()).toList();
+      _json["error"] = error.map((value) => value.toJson()).toList();
     }
     if (requestId != null) {
       _json["requestId"] = requestId;
@@ -850,11 +906,10 @@ class Group {
 
   Group.fromJson(core.Map _json) {
     if (_json.containsKey("contentDetails")) {
-      contentDetails =
-          new GroupContentDetails.fromJson(_json["contentDetails"]);
+      contentDetails = GroupContentDetails.fromJson(_json["contentDetails"]);
     }
     if (_json.containsKey("errors")) {
-      errors = new Errors.fromJson(_json["errors"]);
+      errors = Errors.fromJson(_json["errors"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -866,18 +921,18 @@ class Group {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new GroupSnippet.fromJson(_json["snippet"]);
+      snippet = GroupSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentDetails != null) {
-      _json["contentDetails"] = (contentDetails).toJson();
+      _json["contentDetails"] = contentDetails.toJson();
     }
     if (errors != null) {
-      _json["errors"] = (errors).toJson();
+      _json["errors"] = errors.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -889,7 +944,7 @@ class Group {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -918,7 +973,7 @@ class GroupContentDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (itemCount != null) {
       _json["itemCount"] = itemCount;
     }
@@ -961,7 +1016,7 @@ class GroupItem {
 
   GroupItem.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
-      errors = new Errors.fromJson(_json["errors"]);
+      errors = Errors.fromJson(_json["errors"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -976,15 +1031,15 @@ class GroupItem {
       kind = _json["kind"];
     }
     if (_json.containsKey("resource")) {
-      resource = new GroupItemResource.fromJson(_json["resource"]);
+      resource = GroupItemResource.fromJson(_json["resource"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errors != null) {
-      _json["errors"] = (errors).toJson();
+      _json["errors"] = errors.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -999,7 +1054,7 @@ class GroupItem {
       _json["kind"] = kind;
     }
     if (resource != null) {
-      _json["resource"] = (resource).toJson();
+      _json["resource"] = resource.toJson();
     }
     return _json;
   }
@@ -1028,7 +1083,7 @@ class GroupItemResource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -1061,7 +1116,7 @@ class GroupSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (publishedAt != null) {
       _json["publishedAt"] = publishedAt;
     }
@@ -1092,14 +1147,14 @@ class ListGroupItemsResponse {
 
   ListGroupItemsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
-      errors = new Errors.fromJson(_json["errors"]);
+      errors = Errors.fromJson(_json["errors"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<GroupItem>((value) => new GroupItem.fromJson(value))
+          .map<GroupItem>((value) => GroupItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1109,15 +1164,15 @@ class ListGroupItemsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errors != null) {
-      _json["errors"] = (errors).toJson();
+      _json["errors"] = errors.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1150,14 +1205,14 @@ class ListGroupsResponse {
 
   ListGroupsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("errors")) {
-      errors = new Errors.fromJson(_json["errors"]);
+      errors = Errors.fromJson(_json["errors"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Group>((value) => new Group.fromJson(value))
+          .map<Group>((value) => Group.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1170,15 +1225,15 @@ class ListGroupsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errors != null) {
-      _json["errors"] = (errors).toJson();
+      _json["errors"] = errors.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1230,11 +1285,11 @@ class QueryResponse {
     if (_json.containsKey("columnHeaders")) {
       columnHeaders = (_json["columnHeaders"] as core.List)
           .map<ResultTableColumnHeader>(
-              (value) => new ResultTableColumnHeader.fromJson(value))
+              (value) => ResultTableColumnHeader.fromJson(value))
           .toList();
     }
     if (_json.containsKey("errors")) {
-      errors = new Errors.fromJson(_json["errors"]);
+      errors = Errors.fromJson(_json["errors"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1249,13 +1304,13 @@ class QueryResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (columnHeaders != null) {
       _json["columnHeaders"] =
-          columnHeaders.map((value) => (value).toJson()).toList();
+          columnHeaders.map((value) => value.toJson()).toList();
     }
     if (errors != null) {
-      _json["errors"] = (errors).toJson();
+      _json["errors"] = errors.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1294,7 +1349,7 @@ class ResultTableColumnHeader {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (columnType != null) {
       _json["columnType"] = columnType;
     }

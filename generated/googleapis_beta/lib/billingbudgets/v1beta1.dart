@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis_beta.billingbudgets.v1beta1;
 
@@ -30,20 +48,20 @@ class BillingbudgetsApi {
   final commons.ApiRequester _requester;
 
   BillingAccountsResourceApi get billingAccounts =>
-      new BillingAccountsResourceApi(_requester);
+      BillingAccountsResourceApi(_requester);
 
   BillingbudgetsApi(http.Client client,
       {core.String rootUrl = "https://billingbudgets.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class BillingAccountsResourceApi {
   final commons.ApiRequester _requester;
 
   BillingAccountsBudgetsResourceApi get budgets =>
-      new BillingAccountsBudgetsResourceApi(_requester);
+      BillingAccountsBudgetsResourceApi(_requester);
 
   BillingAccountsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -76,21 +94,22 @@ class BillingAccountsBudgetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudBillingBudgetsV1beta1Budget> create(
-      GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest request,
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -100,14 +119,17 @@ class BillingAccountsBudgetsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/budgets';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudBillingBudgetsV1beta1Budget.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudBillingBudgetsV1beta1Budget.fromJson(data));
   }
 
   /// Deletes a budget. Returns successfully if already deleted.
@@ -128,17 +150,19 @@ class BillingAccountsBudgetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -146,13 +170,16 @@ class BillingAccountsBudgetsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Returns a budget. WARNING: There are some fields exposed on the Google
@@ -176,17 +203,19 @@ class BillingAccountsBudgetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudBillingBudgetsV1beta1Budget> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudBillingBudgetsV1beta1Budget> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -194,14 +223,17 @@ class BillingAccountsBudgetsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudBillingBudgetsV1beta1Budget.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudBillingBudgetsV1beta1Budget.fromJson(data));
   }
 
   /// Returns a list of budgets for a billing account. WARNING: There are some
@@ -234,19 +266,20 @@ class BillingAccountsBudgetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse> list(
-      core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -262,14 +295,17 @@ class BillingAccountsBudgetsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/budgets';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse.fromJson(data));
+        GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse.fromJson(data));
   }
 
   /// Updates a budget and returns the updated budget. WARNING: There are some
@@ -297,21 +333,22 @@ class BillingAccountsBudgetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudBillingBudgetsV1beta1Budget> patch(
-      GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest request,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -319,14 +356,17 @@ class BillingAccountsBudgetsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudBillingBudgetsV1beta1Budget.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudBillingBudgetsV1beta1Budget.fromJson(data));
   }
 }
 
@@ -387,7 +427,7 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (disableDefaultIamRecipients != null) {
       _json["disableDefaultIamRecipients"] = disableDefaultIamRecipients;
     }
@@ -442,16 +482,15 @@ class GoogleCloudBillingBudgetsV1beta1Budget {
 
   GoogleCloudBillingBudgetsV1beta1Budget.fromJson(core.Map _json) {
     if (_json.containsKey("allUpdatesRule")) {
-      allUpdatesRule =
-          new GoogleCloudBillingBudgetsV1beta1AllUpdatesRule.fromJson(
-              _json["allUpdatesRule"]);
+      allUpdatesRule = GoogleCloudBillingBudgetsV1beta1AllUpdatesRule.fromJson(
+          _json["allUpdatesRule"]);
     }
     if (_json.containsKey("amount")) {
-      amount = new GoogleCloudBillingBudgetsV1beta1BudgetAmount.fromJson(
+      amount = GoogleCloudBillingBudgetsV1beta1BudgetAmount.fromJson(
           _json["amount"]);
     }
     if (_json.containsKey("budgetFilter")) {
-      budgetFilter = new GoogleCloudBillingBudgetsV1beta1Filter.fromJson(
+      budgetFilter = GoogleCloudBillingBudgetsV1beta1Filter.fromJson(
           _json["budgetFilter"]);
     }
     if (_json.containsKey("displayName")) {
@@ -466,22 +505,22 @@ class GoogleCloudBillingBudgetsV1beta1Budget {
     if (_json.containsKey("thresholdRules")) {
       thresholdRules = (_json["thresholdRules"] as core.List)
           .map<GoogleCloudBillingBudgetsV1beta1ThresholdRule>((value) =>
-              new GoogleCloudBillingBudgetsV1beta1ThresholdRule.fromJson(value))
+              GoogleCloudBillingBudgetsV1beta1ThresholdRule.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allUpdatesRule != null) {
-      _json["allUpdatesRule"] = (allUpdatesRule).toJson();
+      _json["allUpdatesRule"] = allUpdatesRule.toJson();
     }
     if (amount != null) {
-      _json["amount"] = (amount).toJson();
+      _json["amount"] = amount.toJson();
     }
     if (budgetFilter != null) {
-      _json["budgetFilter"] = (budgetFilter).toJson();
+      _json["budgetFilter"] = budgetFilter.toJson();
     }
     if (displayName != null) {
       _json["displayName"] = displayName;
@@ -494,7 +533,7 @@ class GoogleCloudBillingBudgetsV1beta1Budget {
     }
     if (thresholdRules != null) {
       _json["thresholdRules"] =
-          thresholdRules.map((value) => (value).toJson()).toList();
+          thresholdRules.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -515,22 +554,22 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmount {
   GoogleCloudBillingBudgetsV1beta1BudgetAmount.fromJson(core.Map _json) {
     if (_json.containsKey("lastPeriodAmount")) {
       lastPeriodAmount =
-          new GoogleCloudBillingBudgetsV1beta1LastPeriodAmount.fromJson(
+          GoogleCloudBillingBudgetsV1beta1LastPeriodAmount.fromJson(
               _json["lastPeriodAmount"]);
     }
     if (_json.containsKey("specifiedAmount")) {
-      specifiedAmount = new GoogleTypeMoney.fromJson(_json["specifiedAmount"]);
+      specifiedAmount = GoogleTypeMoney.fromJson(_json["specifiedAmount"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (lastPeriodAmount != null) {
-      _json["lastPeriodAmount"] = (lastPeriodAmount).toJson();
+      _json["lastPeriodAmount"] = lastPeriodAmount.toJson();
     }
     if (specifiedAmount != null) {
-      _json["specifiedAmount"] = (specifiedAmount).toJson();
+      _json["specifiedAmount"] = specifiedAmount.toJson();
     }
     return _json;
   }
@@ -545,16 +584,15 @@ class GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest {
 
   GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest.fromJson(core.Map _json) {
     if (_json.containsKey("budget")) {
-      budget =
-          new GoogleCloudBillingBudgetsV1beta1Budget.fromJson(_json["budget"]);
+      budget = GoogleCloudBillingBudgetsV1beta1Budget.fromJson(_json["budget"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (budget != null) {
-      _json["budget"] = (budget).toJson();
+      _json["budget"] = budget.toJson();
     }
     return _json;
   }
@@ -626,7 +664,7 @@ class GoogleCloudBillingBudgetsV1beta1Filter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creditTypesTreatment != null) {
       _json["creditTypesTreatment"] = creditTypesTreatment;
     }
@@ -657,7 +695,7 @@ class GoogleCloudBillingBudgetsV1beta1LastPeriodAmount {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -676,8 +714,8 @@ class GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse {
   GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("budgets")) {
       budgets = (_json["budgets"] as core.List)
-          .map<GoogleCloudBillingBudgetsV1beta1Budget>((value) =>
-              new GoogleCloudBillingBudgetsV1beta1Budget.fromJson(value))
+          .map<GoogleCloudBillingBudgetsV1beta1Budget>(
+              (value) => GoogleCloudBillingBudgetsV1beta1Budget.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -687,9 +725,9 @@ class GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (budgets != null) {
-      _json["budgets"] = budgets.map((value) => (value).toJson()).toList();
+      _json["budgets"] = budgets.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -732,7 +770,7 @@ class GoogleCloudBillingBudgetsV1beta1ThresholdRule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (spendBasis != null) {
       _json["spendBasis"] = spendBasis;
     }
@@ -761,8 +799,7 @@ class GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest {
 
   GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest.fromJson(core.Map _json) {
     if (_json.containsKey("budget")) {
-      budget =
-          new GoogleCloudBillingBudgetsV1beta1Budget.fromJson(_json["budget"]);
+      budget = GoogleCloudBillingBudgetsV1beta1Budget.fromJson(_json["budget"]);
     }
     if (_json.containsKey("updateMask")) {
       updateMask = _json["updateMask"];
@@ -771,9 +808,9 @@ class GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (budget != null) {
-      _json["budget"] = (budget).toJson();
+      _json["budget"] = budget.toJson();
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;
@@ -794,7 +831,7 @@ class GoogleProtobufEmpty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -832,7 +869,7 @@ class GoogleTypeMoney {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currencyCode != null) {
       _json["currencyCode"] = currencyCode;
     }
