@@ -1,7 +1,6 @@
 // Copyright (c) 2015, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-// @dart=2.11
 
 library discoveryapis_commons_test;
 
@@ -19,8 +18,8 @@ typedef ServerMockCallback<T> = Future<http.StreamedResponse> Function(
 const String USER_AGENT = 'google-api-dart-client test.client/0.1.0-dev';
 
 class HttpServerMock extends http.BaseClient {
-  ServerMockCallback _callback;
-  bool _expectJson;
+  late ServerMockCallback _callback;
+  late bool _expectJson;
 
   void register(ServerMockCallback callback, bool expectJson) {
     _callback = callback;
@@ -41,14 +40,9 @@ class HttpServerMock extends http.BaseClient {
         }
       });
     } else {
-      var stream = request.finalize();
-      if (stream == null) {
-        return _callback(request, []);
-      } else {
-        return stream.toBytes().then((data) {
-          return _callback(request, data);
-        });
-      }
+      return request.finalize().toBytes().then((data) {
+        return _callback(request, data);
+      });
     }
   }
 }
@@ -265,10 +259,6 @@ void main() {
 
       // Tests for [Media]
       var stream = StreamController<List<int>>().stream;
-      expect(() => Media(null, 0, contentType: 'foobar'),
-          throwsA(isArgumentError));
-      expect(
-          () => Media(stream, 0, contentType: null), throwsA(isArgumentError));
       expect(() => Media(stream, -1, contentType: 'foobar'),
           throwsA(isArgumentError));
 
@@ -289,9 +279,9 @@ void main() {
     });
 
     group('api-requester', () {
-      HttpServerMock httpMock;
+      late HttpServerMock httpMock;
       String rootUrl, basePath;
-      ApiRequester requester;
+      late ApiRequester requester;
 
       var responseHeaders = {
         'content-type': 'application/json; charset=utf-8',
@@ -384,8 +374,8 @@ void main() {
             var media = result as Media;
             expect(media.contentType, equals('foobar'));
             expect(media.length, equals(data256.length));
-            media.stream
-                .fold([], (b, d) => b..addAll(d)).then(expectAsync1((d) {
+            media.stream.fold([], (dynamic b, d) => b..addAll(d)).then(
+                expectAsync1((d) {
               expect(d, equals(data256));
             }));
           }));
@@ -417,8 +407,8 @@ void main() {
             var media = result as Media;
             expect(media.contentType, equals('foobar'));
             expect(media.length, equals(data64.length));
-            media.stream
-                .fold([], (b, d) => b..addAll(d)).then(expectAsync1((d) {
+            media.stream.fold([], (dynamic b, d) => b..addAll(d)).then(
+                expectAsync1((d) {
               expect(d, equals(data64));
             }));
           }));
@@ -450,8 +440,8 @@ void main() {
             var media = result as Media;
             expect(media.contentType, equals('foobar'));
             expect(media.length, equals(data256.length));
-            media.stream
-                .fold([], (b, d) => b..addAll(d)).then(expectAsync1((d) {
+            media.stream.fold([], (dynamic b, d) => b..addAll(d)).then(
+                expectAsync1((d) {
               expect(d, equals(data256));
             }));
           }));
@@ -473,14 +463,14 @@ void main() {
         Media mediaFromByteArrays(List<List<int>> byteArrays,
             {bool withLen = true}) {
           var len = withLen
-              ? byteArrays.fold(0, (int v, array) => v + array.length)
+              ? byteArrays.fold<int>(0, ((int v, array) => v + array.length))
               : null;
           return Media(streamFromByteArrays(byteArrays), len,
               contentType: 'foobar');
         }
 
         Future<http.StreamedResponse> validateServerRequest(
-            e, http.BaseRequest request, List<int> data) {
+            e, http.BaseRequest request, List<int>? data) {
           return Future.sync(() {
             var h = e['headers'];
             var r = e['response'] as http.StreamedResponse;
@@ -500,7 +490,7 @@ void main() {
           var i = 0;
           return (http.BaseRequest request, data) {
             return validateServerRequest(
-                expectations[i++], request, data as List<int>);
+                expectations[i++], request, data as List<int>?);
           };
         }
 
@@ -655,9 +645,9 @@ void main() {
           void runTest(
               int chunkSizeInBlocks, int length, List<int> splits, bool stream,
               {int numberOfServerErrors = 0,
-              ResumableUploadOptions resumableOptions,
-              int expectedErrorStatus,
-              int messagesNrOfFailure}) {
+              ResumableUploadOptions? resumableOptions,
+              int? expectedErrorStatus,
+              int? messagesNrOfFailure}) {
             var chunkSize = chunkSizeInBlocks * 256 * 1024;
 
             var bytes = List<int>.generate(length, (i) => i % 256);
@@ -686,7 +676,7 @@ void main() {
             var result = requester.request('/xyz', 'POST',
                 uploadMedia: media, uploadOptions: resumableOptions);
             if (expectedErrorStatus != null) {
-              result.catchError(expectAsync1((error) {
+              result.catchError(expectAsync1((dynamic error) {
                 expect(error is DetailedApiRequestError, isTrue);
                 expect(error.status, equals(expectedErrorStatus));
               }));
@@ -882,7 +872,7 @@ void main() {
           makeDetailed400Error();
           requester
               .request('abc', 'GET')
-              .catchError(expectAsync2((error, stack) {
+              .catchError(expectAsync2((dynamic error, dynamic stack) {
             expect(error, isDetailedApiRequestError);
             var e = error as DetailedApiRequestError;
             expect(e.status, equals(42));
@@ -894,7 +884,7 @@ void main() {
           makeErrorsError();
           requester
               .request('abc', 'GET')
-              .catchError(expectAsync2((error, stack) {
+              .catchError(expectAsync2((dynamic error, dynamic stack) {
             expect(error, isDetailedApiRequestError);
             var e = error as DetailedApiRequestError;
             expect(e.status, equals(42));
@@ -927,7 +917,7 @@ void main() {
           makeDetailed400Error();
           requester
               .request('abc', 'GET')
-              .catchError(expectAsync2((error, stack) {
+              .catchError(expectAsync2((dynamic error, dynamic stack) {
             expect(error, isDetailedApiRequestError);
             var e = error as DetailedApiRequestError;
             expect(e.status, equals(42));
